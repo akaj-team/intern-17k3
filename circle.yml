@@ -1,0 +1,20 @@
+machine:
+  ruby:
+    version: 2.0.0-p648
+  environment:
+    _JAVA_OPTIONS: "-Xms350m -Xmx2048m -XX:MaxPermSize=350m"
+    GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx1536m -XX:+HeapDumpOnOutOfMemoryError"'
+  java:
+    version:
+      oraclejdk8
+  timezone: Asia/Saigon
+dependencies:
+  pre:
+    - echo y | android update sdk --no-ui --all --filter "tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository"
+    - echo y | $ANDROID_HOME/tools/bin/sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
+
+  cache_directories:
+    - ~/.android
+test:
+  override:
+    - scripts/saddler.sh
