@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">hieucap-17k3</string>
+    <string name="app_name">My Application</string>
+    <string name="welcome">Welcome to urbi</string>
+    <string name="login_fb">LOG IN WITH FACEBOOK</string>
+    <string name="or">or</string>
+    <string name="login_pn">LOG IN WITH PHONE NUMBER</string>
+    <string name="new_urbi">New to urbi?</string>
+
 </resources>
