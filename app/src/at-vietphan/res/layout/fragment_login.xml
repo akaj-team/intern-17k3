@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Enter your details below to get started"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_flag" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/dropdownlist" />
+
+        <EditText
+            android:id="@+id/edtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layer_line_edit_text"
+            android:hint="Enter mobile number"
+            android:inputType="number"
+            android:textCursorDrawable="@color/colorCusor" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtFullName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/layer_line_edit_text"
+        android:hint="Full name"
+        android:inputType="text"
+        android:textCursorDrawable="@color/colorCusor" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/layer_line_edit_text"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textCursorDrawable="@color/colorCusor" />
+
+    <CheckBox
+        android:id="@+id/chkTermsAccept"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:button="@drawable/selector_btn_check"
+        android:text="  I have read and agree with the" />
+
+    <TextView
+        android:id="@+id/tvTerms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="-70dp"
+        android:layout_marginTop="-10dp"
+        android:text="terms and conditions"
+        android:textColor="@color/colorPrimary"
+        android:textColorLink="#ffffff" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:background="@drawable/selector_btn_submit"
+        android:clickable="true" />
+</LinearLayout>
