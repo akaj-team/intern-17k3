@@ -10,10 +10,26 @@ android {
         versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        debug {
+            storeFile file('../keystores/debug.jks')
+        }
+
+        release {
+
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            applicationIdSuffix ".debug"
         }
     }
     flavorDimensions "at-name"
@@ -26,9 +42,9 @@ android {
             dimension "at-name"
             applicationIdSuffix "hieucap"
         }
-        'at-hoaphan' {
+        'at-hiepphan' {
             dimension "at-name"
-            applicationIdSuffix "hoaphan"
+            applicationIdSuffix "hiepphan"
         }
         'at-nhatnguyen' {
             dimension "at-name"
