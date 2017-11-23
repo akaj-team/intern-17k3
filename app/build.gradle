@@ -1,17 +1,13 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "intern.asiantech.intern_17k3"
+        applicationId "vn.asiantech.internship"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,15 +16,45 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "at-name"
+    productFlavors {
+        'at-anhquach' {
+            dimension "at-name"
+            applicationIdSuffix "anhquach"
+        }
+        'at-hieucap' {
+            dimension "at-name"
+            applicationIdSuffix "hieucap"
+        }
+        'at-hoaphan' {
+            dimension "at-name"
+            applicationIdSuffix "hoaphan"
+        }
+        'at-nhatnguyen' {
+            dimension "at-name"
+            applicationIdSuffix "nhatnguyen"
+        }
+        'at-phongle' {
+            dimension "at-name"
+            applicationIdSuffix "phongle"
+        }
+        'at-tienhuynh' {
+            dimension "at-name"
+            applicationIdSuffix "tienhuynh"
+        }
+        'at-tungnguyen' {
+            dimension "at-name"
+            applicationIdSuffix "tungnguyen"
+        }
+        'at-vietphan' {
+            dimension "at-name"
+            applicationIdSuffix "vietphan"
+        }
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
