@@ -68,9 +68,18 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+        lintConfig file('lint.xml')
+        xmlOutput file("${buildDir}/reports/lint-results.xml")
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
 }
+
+//apply from: "https://raw.githubusercontent.com/tientun/gradle-android-ci-check/master/ci.gradle"
+apply from: "../ci-java.gradle"
