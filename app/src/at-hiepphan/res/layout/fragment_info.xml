@@ -1,86 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center|top">
+    android:gravity="center|top"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        tools:ignore="UselessParent">
+
         <TextView
-            android:text="@string/info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:text="@string/info"
+            android:textColor="#000000"
             android:textSize="18dp"
-            android:textColor="#000000"/>
+            android:textStyle="bold" />
+
         <LinearLayout
-            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:paddingTop="10dp">
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="30dp"
-                android:background="@drawable/ic_flag">
-            </ImageView>
+                android:background="@drawable/ic_flag"/>
+
             <ImageView
                 android:layout_width="15dp"
-                android:background="@drawable/ic_custom"
-                android:layout_height="15dp">
-            </ImageView>
+                android:layout_height="15dp"
+                android:background="@drawable/ic_custom"/>
+
             <EditText
-                android:inputType="number"
                 android:id="@+id/txtMobile"
-                android:paddingLeft="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter mobile number"/>
+                android:layout_marginBottom="10dp"
+                android:hint="@string/edittext.hint.enter_mobile_number"
+                android:inputType="number"
+                android:paddingLeft="10dp" />
         </LinearLayout>
+
         <EditText
             android:id="@+id/txtName"
-            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full mane" />
+            android:layout_marginBottom="10dp"
+            android:hint="@string/edittext.hint.full_name" />
+
         <EditText
             android:id="@+id/txtEmail"
-            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"/>
+            android:layout_marginBottom="10dp"
+            android:hint="@string/edittext.hint.email"
+            android:inputType="textEmailAddress" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <CheckBox
-                android:layout_width="50dp"
-                android:layout_height="50dp"
                 android:id="@+id/chk"
-                android:button="@drawable/ic_selector"
-                android:checked="false"/>
-            <LinearLayout
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical">
+                android:button="@drawable/ic_selector"
+                android:checked="false"
+                android:enabled="false" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="I have read and agree with the"
-                    android:textColor="@color/colorTestBlack"/>
+                    android:text="@string/textview.text.i_have_read_and_agree_with_the"
+                    android:textColor="@color/colorTestBlack" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="terms and conditions."
-                    android:textColor="@color/colorTestBlue"/>
+                    android:text="@string/textview.text.terms_and_condition"
+                    android:textColor="@color/colorTestBlue" />
 
             </LinearLayout>
         </LinearLayout>
@@ -88,15 +101,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
             <ImageView
                 android:id="@+id/imgNext"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@drawable/ic_disable"
-                android:enabled="false"
-                />
+                android:enabled="false" />
         </LinearLayout>
 
     </LinearLayout>
