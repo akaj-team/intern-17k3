@@ -9,7 +9,6 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 
 public class LoginFragment extends Fragment {
-    private TextView mTxtLogin;
 
     public LoginFragment() {
     }
@@ -18,7 +17,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        mTxtLogin =view.findViewById(R.id.txtLogin);
+        TextView mTxtLogin = view.findViewById(R.id.txtLogin);
         mTxtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
