@@ -1,4 +1,5 @@
 package vn.asiantech.internship.ui.login;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -13,7 +14,9 @@ import android.widget.ImageView;
 import vn.asiantech.internship.R;
 
 public class InfoFragment extends Fragment {
-    private EditText mEdtMobile, mEdtName, mEdtEmail;
+    private EditText mEdtMobile;
+    private EditText mEdtName;
+    private EditText mEdtEmail;
     private CheckBox mChkBox;
     private ImageView mImgNext;
 
@@ -39,12 +42,12 @@ public class InfoFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                changeCheckBoxState();
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                changeCheckBoxState();
             }
         });
 
@@ -56,12 +59,12 @@ public class InfoFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                changeCheckBoxState();
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                changeCheckBoxState();
             }
         });
 
@@ -73,12 +76,12 @@ public class InfoFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                changeCheckBoxState();
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                changeCheckBoxState();
             }
         });
 
@@ -86,9 +89,11 @@ public class InfoFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    mImgNext.setImageResource(R.drawable.ic_enable);
+                    if (mEdtMobile.getText().length() != 0 && mEdtName.getText().length() != 0 && mEdtEmail.getText().length() != 0) {
+                        mImgNext.setSelected(true);
+                    }
                 } else {
-                    mImgNext.setImageResource(R.drawable.ic_disable);
+                    mImgNext.setSelected(false);
                 }
             }
         });
@@ -97,11 +102,10 @@ public class InfoFragment extends Fragment {
     }
 
     private void changeCheckBoxState() {
-        if (mEdtMobile.getText().length() != 0 && mEdtName.getText().length() != 0 && mEdtEmail.getText().length() != 0) {
-            mChkBox.setEnabled(true);
+        if (mEdtMobile.getText().length() != 0 && mEdtName.getText().length() != 0 && mEdtEmail.getText().length() != 0 && mChkBox.isChecked()) {
+            mImgNext.setSelected(true);
         } else {
-            mChkBox.setChecked(false);
-            mChkBox.setEnabled(false);
+            mImgNext.setSelected(false);
         }
     }
 }

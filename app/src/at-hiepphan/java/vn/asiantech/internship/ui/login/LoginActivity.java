@@ -1,4 +1,5 @@
 package vn.asiantech.internship.ui.login;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void replace(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frmMain, fragment)
+                .replace(R.id.frMain, fragment).addToBackStack(null)
                 .commit();
     }
 }

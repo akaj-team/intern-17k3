@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">hiepphan-17k3</string>
     <string name="title">a bike for everyone, always</string>
     <string name="info">Enter your details below to get started</string>
     <string name="edittext.hint.enter_mobile_number">Enter mobile number</string>
     <string name="edittext.hint.full_name">Full name</string>
     <string name="edittext.hint.email">Email</string>
     <string name="textview.text.i_have_read_and_agree_with_the">I have read and agree with the</string>
-    <string name="textview.text.terms_and_condition">terms and conditions.</string>
+    <string name="textview.text.terms_and_condition">terms and conditions</string>
+    <string name="textview.text.">.</string>
     <string name="textview.text.welcome_to_urbi">Welcome to urbi</string>
     <string name="textview.text.log_in_with_facebook">LOG IN WITH FACEBOOK</string>
     <string name="textview.text.log_in_with_phone_number">LOG IN WITH PHONE NUNBER</string>
