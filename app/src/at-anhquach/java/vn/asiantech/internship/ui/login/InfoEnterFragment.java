@@ -2,9 +2,11 @@ package vn.asiantech.internship.ui.login;
 /**
  * Created by anh.quach on 11/23/17.
  */
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,16 +15,18 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+
 import vn.asiantech.internship.R;
 
 public class InfoEnterFragment extends Fragment {
     ImageView imgNext;
     EditText edtNumber, edtEmail, edtFullName;
     CheckBox chkTerm;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_info_enter, container, false);
+        View view = inflater.inflate(R.layout.fragment_info_enter, container, false);
         imgNext = view.findViewById(R.id.imgBtnNext);
         edtEmail = view.findViewById(R.id.edtEmail);
         edtFullName = view.findViewById(R.id.edtFullname);
@@ -41,10 +45,10 @@ public class InfoEnterFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (edtNumber.getText().toString().equals("")==false && edtFullName.getText().toString().equals("")==false &&
-                        edtEmail.getText().toString().equals("")==false && chkTerm.isChecked() ){
+                if (!TextUtils.isEmpty(edtNumber.getText()) && !TextUtils.isEmpty(edtFullName.getText()) &&
+                        !TextUtils.isEmpty(edtEmail.getText()) && chkTerm.isChecked()) {
                     imgNext.setSelected(true);
-                }else{
+                } else {
                     imgNext.setSelected(false);
                 }
             }
@@ -62,10 +66,10 @@ public class InfoEnterFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (edtNumber.getText().toString().equals("")==false && edtFullName.getText().toString().equals("")==false &&
-                        edtEmail.getText().toString().equals("")==false && chkTerm.isChecked() ){
+                if (!TextUtils.isEmpty(edtNumber.getText()) && !TextUtils.isEmpty(edtFullName.getText()) &&
+                        !TextUtils.isEmpty(edtEmail.getText()) && chkTerm.isChecked()) {
                     imgNext.setSelected(true);
-                }else{
+                } else {
                     imgNext.setSelected(false);
                 }
             }
@@ -83,10 +87,10 @@ public class InfoEnterFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (edtNumber.getText().toString().equals("")==false && edtFullName.getText().toString().equals("")==false &&
-                        edtEmail.getText().toString().equals("")==false && chkTerm.isChecked()  ){
+                if (!TextUtils.isEmpty(edtNumber.getText()) && !TextUtils.isEmpty(edtFullName.getText()) &&
+                        !TextUtils.isEmpty(edtEmail.getText()) && chkTerm.isChecked()) {
                     imgNext.setSelected(true);
-                }else{
+                } else {
                     imgNext.setSelected(false);
                 }
             }
@@ -95,11 +99,13 @@ public class InfoEnterFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    if (edtNumber.getText().toString().equals("")==false && edtFullName.getText().toString().equals("")==false &&
-                            edtEmail.getText().toString().equals("")==false){
+                    if (!TextUtils.isEmpty(edtNumber.getText()) && !TextUtils.isEmpty(edtFullName.getText()) &&
+                            !TextUtils.isEmpty(edtEmail.getText())) {
                         imgNext.setSelected(true);
                     }
-                }else imgNext.setSelected(false);
+                } else {
+                    imgNext.setSelected(false);
+                }
             }
         });
         return view;
