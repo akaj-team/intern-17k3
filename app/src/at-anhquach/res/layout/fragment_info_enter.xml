@@ -88,6 +88,7 @@
                 android:textColor="@android:color/holo_blue_bright"
                 android:textSize="13dp" />
         </LinearLayout>
+
     </LinearLayout>
 
     <ImageView
@@ -97,6 +98,5 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:src="@drawable/selecter_next" />
+
 </LinearLayout>
-
-
