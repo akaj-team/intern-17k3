@@ -30,7 +30,7 @@
                 android:layout_width="172dp"
                 android:layout_height="90dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_bg_urbi_reverseb" />
+                android:src="@drawable/ic_urbi_reverseb" />
 
             <TextView
                 android:layout_width="wrap_content"

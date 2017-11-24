@@ -18,7 +18,7 @@ import android.widget.Spinner;
 
 public class SignupFragment extends Fragment implements AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
     private String[] mCountryNames = {"VietNam", "Australia"};
-    private int mFlags[] = {R.drawable.ic_vietnam_flag, R.drawable.ic_uc_flag};
+    private int mFlags[] = {R.drawable.ic_vietnam_flag, R.drawable.ic_ustrailia_flag};
     private Spinner mSpnCountry;
     private View mView;
     private EditText mEdtPhone;

@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/ic_bg_btn_login"
+                android:background="@drawable/bg_btn_login"
                 android:text="@string/btnLoginPhone"
                 android:textColor="@color/colorFB"
                 android:textStyle="bold" />
