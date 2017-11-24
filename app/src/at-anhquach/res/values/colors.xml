@@ -8,4 +8,5 @@
     <color name="colorTextWhite">#ffffff</color>
     <color name="colorEdt">#9E9E9E</color>
     <color name="colorTextBlack">#000000</color>
+    <color name="colorLine">#E0E0E0</color>
 </resources>

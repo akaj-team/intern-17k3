@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_button_loginfb"
         android:layout_margin="10dp"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:text="@string/bnt.login_facebook"
         android:textColor="@color/colorTextWhite"
         android:textStyle="bold"/>
@@ -38,7 +38,7 @@
             android:layout_width="120dp"
             android:layout_height="1dp"
             android:layout_marginRight="15dp"
-            android:background="@color/colorTextBlack"
+            android:background="@color/colorLine"
             android:textSize="2dp" />
 
         <TextView
@@ -51,7 +51,7 @@
             android:layout_width="120dp"
             android:layout_height="1dp"
             android:layout_marginLeft="15dp"
-            android:background="@color/colorTextBlack"
+            android:background="@color/colorLine"
             android:textSize="2dp"/>
 
     </LinearLayout>
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_button_loginnumb"
         android:text="@string/bnt.login_number_phone"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:layout_margin="10dp"
         android:textColor="@color/colorTextBlue"
         android:textStyle="bold"/>
