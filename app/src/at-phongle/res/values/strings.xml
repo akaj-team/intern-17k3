@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">phongle-17k3</string>
+    <string name="edt_full_name">Full name</string>
+    <string name="tv_enter_detail">Enter your details below to get started</string>
+    <string name="btn_login_facebook">LOG IN WITH FACEBOOK</string>
+    <string name="btn_login_phone">LOG IN WITH PHONE NUMBER</string>
+    <string name="tv_welcome">Welcome to urbi</string>
+    <string name="tv_sign_up">Sign up for an account</string>
+    <string name="tv_new_urbi">New to urbi?&#160;</string>
+    <string name="or">or</string>
+    <string name="edt_email">Email</string>
+    <string name="edt_phone"> +67 Enter mobile number</string>
+    <string name="tv_banner">a bike for everyone , always</string>
 </resources>
+
