@@ -5,13 +5,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
+import android.widget.TextView;
 import vn.asiantech.internship.R;
-
-/**
- * Created by tiboo on 23/11/2017.
- */
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
@@ -22,9 +17,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.fragment_log_in, null);
-        Button btnLogin = v.findViewById(R.id.btnLogIn2);
-        btnLogin.setOnClickListener(this);
+        View v =  inflater.inflate(R.layout.fragment_log_in, container,false);
+        TextView tvSignUp = v.findViewById(R.id.tvSignUp);
+        tvSignUp.setOnClickListener(this);
         return v;
     }
 

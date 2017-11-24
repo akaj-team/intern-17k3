@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:textSize="15sp"
-        android:text="@string/enter_your" />
+        android:text="@string/enter_your"
+        android:textSize="15sp" />
 
     <LinearLayout
         android:id="@+id/lnPhone"
@@ -20,18 +20,27 @@
         android:layout_height="40dp"
         android:layout_below="@+id/tvEnter"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_australia"/>
+            android:src="@drawable/ic_australia" />
+
         <ImageView
             android:layout_width="15dp"
             android:layout_height="13dp"
             android:layout_marginLeft="7dp"
-            android:src="@drawable/ic_drop_down"/>
+            android:src="@drawable/ic_drop_down" />
+
+        <EditText
+            android:id="@+id/edtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/enter_number"
+            android:inputType="phone" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -43,8 +52,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:hint="@string/area_code"
-                android:textSize="20sp"
-                android:textColorHint="@color/colorBlack"/>
+                android:textColorHint="@color/colorBlack"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/edtPhoneNumber"
@@ -62,9 +71,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lnPhone"
+        android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:hint="@string/full_name"
-        android:layout_marginTop="10dp"/>
+        android:hint="@string/full_name" />
 
     <EditText
         android:id="@+id/edtEmail"
@@ -72,53 +81,44 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/edtFullName"
         android:layout_marginTop="10dp"
-        android:inputType="textEmailAddress"
         android:gravity="center_vertical"
-        android:hint="@string/email" />
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
 
     <LinearLayout
         android:id="@+id/lnCheck"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@+id/edtEmail"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/chk"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:button="@drawable/selector_chk_tern_service" />
+            android:id="@+id/chkSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:button="@drawable/selector_chk_tern_service"
+            android:scaleX="2"
+            android:scaleY="2" />
 
         <TextView
-            style="@style/blackText"
+            android:id="@+id/tvLinkSp"
+            style="@style/boldText"
+            android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="I have read and agree with me" />
-
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv2"
-        style="@style/boldText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ln2"
-        android:layout_marginLeft="60dp"
-        android:gravity="center_vertical"
-        android:text="terms and conditions."
-        android:textColor="@color/colorBlue" />
-
     <ImageView
-        android:id="@+id/imgBack"
+        android:id="@+id/imgNext"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@id/tv2"
+        android:layout_below="@id/lnCheck"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/selector_img_back" />
+        android:background="@drawable/selector_img_next" />
 
 </RelativeLayout>

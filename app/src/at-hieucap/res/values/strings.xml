@@ -5,7 +5,7 @@
     <string name="or">or</string>
     <string name="login_pn">LOG IN WITH PHONE NUMBER</string>
     <string name="new_to">New to urbi?</string>
-    <string name="enter_number">Enter mobile number</string>
+    <string name="enter_number">+61 Enter mobile number</string>
     <string name="slogan">a bike for everyone, always</string>
     <string name="sign_up">Sign up for an account</string>
     <string name="enter_your">Enter your details below to get started</string>
@@ -14,4 +14,3 @@
     <string name="full_name">Full name</string>
     <string name="email">Email</string>
 </resources>
-
