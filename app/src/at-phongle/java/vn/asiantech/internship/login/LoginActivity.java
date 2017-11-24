@@ -17,7 +17,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mImgBack = findViewById(R.id.imgBack);
-
         addFragment(LoginFragment.getInstance(), false);
 
     }
@@ -36,5 +35,4 @@ public class LoginActivity extends AppCompatActivity {
         }
         fragmentTransaction.commit();
     }
-
 }

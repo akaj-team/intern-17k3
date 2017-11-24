@@ -11,5 +11,6 @@
     <string name="edt_email">Email</string>
     <string name="edt_phone"> +67 Enter mobile number</string>
     <string name="tv_banner">a bike for everyone , always</string>
+    <string name="tv_term_services">I have read and agree with the terms and conditions</string>
 </resources>
 

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
-
     public static Fragment getInstance() {
         return new LoginFragment();
     }
