@@ -10,4 +10,7 @@
     <string name="text_checkbox_confirm">I have read and agree with the</string>
     <string name="text_link">terms and conditions</string>
     <string name="text_inputPhone">Enter mobie phone number</string>
+    <string name="text_or">or</string>
+    <string name="text_fullname">Full Name</string>
+    <string name="text_email">Email</string>
 </resources>
