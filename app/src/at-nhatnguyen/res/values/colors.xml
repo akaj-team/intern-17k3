@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorMain">#041e42</color>
+    <color name="color_text_slogan">#3366CC</color>
+    <color name="color_text_button_facebook">#FFFFFF</color>
+    <color name="color_text_subject_login">#000000</color>
+    <color name="color_textview">#181407</color>
+    <color name="color_button_phonenum_and_signup">#3399FF</color>
 </resources>

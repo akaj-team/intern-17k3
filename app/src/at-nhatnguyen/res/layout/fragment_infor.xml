@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@color/color_text_button_facebook"
+    tools:context="vn.asiantech.internship.InforFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_subject_infor"
+        android:textStyle="bold"
+        android:textSize="19dp"
+        android:gravity="center"
+        android:textColor="@color/color_text_subject_login"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full name"
+        android:textSize="20dp"
+        android:id="@+id/edtFullname"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textSize="20dp"
+        android:id="@+id/edtEmail"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/chk"
+            android:text="I have read and agree with the"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="terms and conditions"
+            android:textColor="#3399FF"
+            android:paddingLeft="35dp"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_btn_next_pressed"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
