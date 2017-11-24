@@ -24,9 +24,11 @@ public class LoginButtonFragment extends Fragment {
         tvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((LoginActivity)getActivity()).replace(new InfoEnterFragment());
+                ((LoginActivity)getActivity()).replace(new InfoEnterFragment(),true);
             }
         });
         return view;
     }
+
 }
+
