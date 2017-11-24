@@ -10,5 +10,8 @@
     <string name="textview.memo_info_enter">Enter your details below to get started </string>
     <string name="textview.memo_term">I have read and agree with the</string>
     <string name="textview.memo_term2">terms and conditions</string>
+    <string name="btn.hint.enter_number">Enter your number</string>
+    <string name="btn.hint.full_name">Full name</string>
+    <string name="btn.hint.email">Email</string>
 </resources>
 

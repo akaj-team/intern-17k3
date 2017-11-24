@@ -1,7 +1,4 @@
 package vn.asiantech.internship.ui.login;
-/**
- * Created by anh.quach on 11/23/17.
- */
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,7 +16,9 @@ import vn.asiantech.internship.R;
 
 public class InfoEnterFragment extends Fragment {
     ImageView imgNext;
-    EditText edtNumber, edtEmail, edtFullName;
+    EditText edtNumber;
+    EditText edtEmail;
+    EditText edtFullName;
     CheckBox chkTerm;
 
     @Override
@@ -63,6 +62,7 @@ public class InfoEnterFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
+
                 checkInputInfo();
             }
         });
@@ -80,6 +80,7 @@ public class InfoEnterFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
+
                 checkInputInfo();
             }
         });

@@ -37,7 +37,7 @@
             android:id="@+id/edtEnNum"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Enter your number"
+            android:hint="@string/btn.hint.enter_number"
             android:inputType="phone" />
     </LinearLayout>
 
@@ -45,14 +45,14 @@
         android:id="@+id/edtFullname"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Full name"
+        android:hint="@string/btn.hint.full_name"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Email"
+        android:hint="@string/btn.hint.email"
         android:inputType="textEmailAddress" />
 
     <LinearLayout
