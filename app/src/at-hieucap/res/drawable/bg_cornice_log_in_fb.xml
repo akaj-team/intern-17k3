@@ -5,12 +5,12 @@
 
     <!-- Set màu nền-->
     <solid
-        android:color="#8500FF" >
+        android:color="#305FDF" >
     </solid>
 
     <!-- bán kính đường tròn ở 4 góc -->
     <corners
-        android:radius="10dp" >
+        android:radius="3dp" >
     </corners>
 
 </shape>

@@ -8,15 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import vn.asiantech.internship.R;
 
-/**
- * Created by tiboo on 23/11/2017.
- */
 
-public class LoginActivity extends AppCompatActivity {
+public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_log_in);
 
         // add firstFragment
         addFragment(LoginFragment.getInstance(), false);
@@ -25,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void addFragment(Fragment fragment, boolean addBackStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.replace(R.id.fr, fragment);
+        ft.replace(R.id.fr_contain, fragment);
         if (addBackStack) {
             ft.addToBackStack(fragment.getClass().getSimpleName());
         }

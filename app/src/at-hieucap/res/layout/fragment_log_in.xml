@@ -2,15 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="30dp">
 
     <TextView
-        android:id="@+id/tw1"
+        android:id="@+id/twWelCome"
         style="@style/boldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:textSize="20sp"
         android:text="@string/welcome" />
 
     <Button
@@ -18,31 +18,30 @@
         style="@style/loginFb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tw1"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_cornice"
+        android:layout_below="@+id/twWelCome"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_cornice_log_in_fb"
         android:text="@string/login_fb"
         android:textSize="20sp" />
 
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@+id/btnLogIn"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:gravity="center">
 
         <View
-            android:id="@+id/view1"
+            android:id="@+id/viewLineLeft"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/tw"
+            android:layout_toLeftOf="@+id/twOr"
             android:background="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/tw"
+            android:id="@+id/twOr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -51,12 +50,12 @@
             android:textSize="15sp" />
 
         <View
-            android:id="@+id/view2"
+            android:id="@+id/viewLineRight"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/tw"
+            android:layout_toRightOf="@+id/twOr"
             android:background="@android:color/darker_gray" />
 
 
@@ -67,13 +66,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_cornice2"
+        android:background="@drawable/bg_cornice_log_in_pn"
         android:text="@string/login_pn"
-        style="@style/blueText"/>
+        android:textStyle="bold"
+        android:textColor="@color/colorBlue"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_below="@id/btnLogIn2"
         android:layout_marginTop="10dp">
@@ -81,17 +80,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:text="@string/new_urbi"
-            android:gravity="right"
-            android:layout_gravity="center"
+            android:text="@string/new_to"
+            android:gravity="right|center"
             style="@style/blackText"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:textStyle="bold"
             android:layout_marginLeft="2dp"
-            android:text="@string/sig_up"
-            style="@style/blueText"/>
+            android:gravity="center_vertical"
+            android:text="@string/sign_up"
+            android:textColor="@color/colorBlue"/>
     </LinearLayout>
 
 </RelativeLayout>

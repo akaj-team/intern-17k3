@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
->
-
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        android:background="@color/color">
+        android:background="@color/colorActivity">
 
         <ImageView
-            android:id="@+id/img"
-            android:layout_width="100dp"
+            android:id="@+id/img_logo"
+            android:layout_width="192dp"
             android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
             android:background="@drawable/ic_logo" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/img"
-            android:layout_centerHorizontal="true"
-            android:text="a bike for evryone , always"
-            android:textColor="#00B2BF" />
+            android:layout_below="@+id/img_logo"
+            android:gravity="center"
+            android:text="@string/slogan"
+            android:textColor="@color/colorBlue" />
     </RelativeLayout>
 
     <FrameLayout
-        android:id="@+id/fr"
+        android:id="@+id/fr_contain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />

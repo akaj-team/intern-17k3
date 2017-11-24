@@ -11,12 +11,12 @@
     <!-- đặt thuộc tính màu và độ rộng của đường viền -->
     <stroke
         android:width="2dp"
-        android:color="#0101DF" >
+        android:color="@color/colorBlue" >
     </stroke>
 
     <!-- bán kính đường tròn ở 4 góc -->
     <corners
-        android:radius="10dp" >
+        android:radius="3dp" >
     </corners>
 
 </shape>

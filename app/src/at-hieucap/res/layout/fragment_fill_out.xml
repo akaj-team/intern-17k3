@@ -2,82 +2,94 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="30dp">
 
     <TextView
-        android:id="@+id/tv1"
+        android:id="@+id/tvEnter"
         style="@style/boldText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Enter your details below to get started" />
+        android:textSize="15sp"
+        android:text="@string/enter_your" />
 
     <LinearLayout
-        android:id="@+id/ln1"
+        android:id="@+id/lnPhone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv1"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal">
+        android:layout_height="40dp"
+        android:layout_below="@+id/tvEnter"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_australia"/>
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="13dp"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/ic_drop_down"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvMaVung"
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/edtAreaCode"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:gravity="center_vertical"
-                android:text="+61"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:hint="@string/area_code"
+                android:textSize="20sp"
+                android:textColorHint="@color/colorBlack"/>
 
             <EditText
-                android:inputType="phone"
+                android:id="@+id/edtPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:hint="Enter mobile number" />
+                android:hint="@string/enter_number"
+                android:inputType="phone" />
         </LinearLayout>
 
     </LinearLayout>
 
     <EditText
-        android:id="@+id/edt_full_name"
+        android:id="@+id/edtFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ln1"
+        android:layout_below="@id/lnPhone"
         android:gravity="center_vertical"
-        android:hint="Full name" />
+        android:hint="@string/full_name"
+        android:layout_marginTop="10dp"/>
 
     <EditText
-        android:id="@+id/edt_email"
+        android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edt_full_name"
+        android:layout_below="@id/edtFullName"
         android:layout_marginTop="10dp"
+        android:inputType="textEmailAddress"
         android:gravity="center_vertical"
-        android:hint="Email" />
+        android:hint="@string/email" />
 
     <LinearLayout
-        android:id="@+id/ln2"
+        android:id="@+id/lnCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edt_email"
+        android:layout_below="@+id/edtEmail"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/cb"
+            android:id="@+id/chk"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="5"/>
+            android:layout_weight="5"
+            android:button="@drawable/selector_chk_tern_service" />
 
         <TextView
             style="@style/blackText"
@@ -91,20 +103,22 @@
 
     <TextView
         android:id="@+id/tv2"
-        style="@style/blueText2"
+        style="@style/boldText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ln2"
         android:layout_marginLeft="60dp"
         android:gravity="center_vertical"
-        android:text="terms and conditions." />
+        android:text="terms and conditions."
+        android:textColor="@color/colorBlue" />
+
     <ImageView
-        android:id="@+id/btnGo"
-        android:layout_below="@id/tv2"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/imgBack"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/ic_unable_back"/>
+        android:layout_below="@id/tv2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_img_back" />
 
 </RelativeLayout>

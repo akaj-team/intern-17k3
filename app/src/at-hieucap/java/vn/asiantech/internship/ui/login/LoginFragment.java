@@ -22,7 +22,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.login_fragment, null);
+        View v =  inflater.inflate(R.layout.fragment_log_in, null);
         Button btnLogin = v.findViewById(R.id.btnLogIn2);
         btnLogin.setOnClickListener(this);
         return v;
@@ -30,7 +30,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ((LoginActivity)getActivity()).addFragment(new FilloutFragment(), true);
+        ((LogInActivity)getActivity()).addFragment(new FillOutFragment(), true);
     }
 
 }
