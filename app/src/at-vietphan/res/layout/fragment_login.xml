@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/layer_line_edit_text"
             android:hint="@string/enter_mobile_number"
-            android:inputType="number"
+            android:inputType="phone"
             android:textCursorDrawable="@color/colorCusor"
             tools:ignore="TextFields" />
     </LinearLayout>
