@@ -1,5 +1,4 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
@@ -32,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@color/colorFB"
+                android:background="@drawable/bg_btn_loginfb"
                 android:text="@string/btnLoginFb"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold" />
@@ -77,12 +76,13 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/bg_btn_login"
                 android:text="@string/btnLoginPhone"
-                android:textColor="@color/colorFB"
+                android:textColor="@color/colorLink"
                 android:textStyle="bold" />
+
             <LinearLayout
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
@@ -92,21 +92,19 @@
                     android:textColor="@color/colorBlack"
 
                     />
+
                 <TextView
                     android:id="@+id/tvSignup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="@string/tvSignup2"
-                    android:textColor="@color/colorLink"
-
-                    />
+                    android:textColor="@color/colorLink" />
             </LinearLayout>
-
-
 
         </LinearLayout>
 
-
     </LinearLayout>
+
 </FrameLayout>
+

@@ -2,6 +2,9 @@ package vn.asiantech.internship;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +24,7 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
     private int mFlags[] = {R.drawable.ic_vietnam_flag, R.drawable.ic_ustrailia_flag};
     private Spinner mSpnCountry;
     private View mView;
-    private EditText mEdtPhone;
+    private EditText mEdtPhone, mEdtName, mEdtMail;
     private ImageView mImgNext;
     private CheckBox chkAgree;
 
@@ -42,12 +45,14 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
         mView = inflater.inflate(R.layout.fragment_signup, container, false);
         // Inflate the layout for this fragment
         inits();
-
+        validate();
         return mView;
     }
 
     private void inits() {
         mEdtPhone = mView.findViewById(R.id.edtPhoneNum);
+        mEdtName = mView.findViewById(R.id.edtFullName);
+        mEdtMail = mView.findViewById(R.id.edtEmail);
         mSpnCountry = mView.findViewById(R.id.spnCountry);
         mImgNext = mView.findViewById(R.id.imgNext);
         chkAgree = mView.findViewById(R.id.chkCheck);
@@ -55,6 +60,7 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
         mSpnCountry.setAdapter(customSpnPhone);
         mSpnCountry.setOnItemSelectedListener(this);
         chkAgree.setOnCheckedChangeListener(this);
+        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -71,23 +77,79 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
-
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         int id = compoundButton.getId();
         if (b) {
             switch (id) {
                 case R.id.chkCheck:
-                    mImgNext.setImageResource(R.drawable.ic_btn_next_select);
+                    if (!TextUtils.isEmpty(mEdtPhone.getText()) && !TextUtils.isEmpty(mEdtName.getText()) && !TextUtils.isEmpty(mEdtMail.getText())) {
+                        mImgNext.setSelected(true);
+                    }
                     break;
 
             }
         } else {
             switch (id) {
                 case R.id.chkCheck:
-                    mImgNext.setImageResource(R.drawable.ic_btn_next);
+                    mImgNext.setSelected(false);
                     break;
             }
+        }
+    }
+
+    private void validate() {
+        mEdtPhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                checkemtytext();
+            }
+        });
+        mEdtPhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                checkemtytext();
+            }
+        });
+        mEdtMail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                checkemtytext();
+            }
+        });
+    }
+
+    private void checkemtytext() {
+        if (!TextUtils.isEmpty(mEdtPhone.getText()) && !TextUtils.isEmpty(mEdtName.getText()) && !TextUtils.isEmpty(mEdtMail.getText()) && chkAgree.isChecked()) {
+            mImgNext.setSelected(true);
+        } else {
+            mImgNext.setSelected(false);
         }
     }
 }

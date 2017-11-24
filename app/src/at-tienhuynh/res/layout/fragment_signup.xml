@@ -34,61 +34,74 @@
             <EditText
                 android:id="@+id/edtPhoneNum"
                 style="@style/EditTextSiginUp"
-                android:hint="Phone Number"
                 android:inputType="number" />
         </LinearLayout>
 
         <EditText
             android:id="@+id/edtFullName"
             style="@style/EditTextSiginUp"
-            android:hint="Your Name"
             android:inputType="text" />
 
         <EditText
             android:id="@+id/edtEmail"
             style="@style/EditTextSiginUp"
-            android:hint="Your Email"
             android:inputType="textEmailAddress" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/chkCheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:button="@drawable/bg_btn_agree" />
+                android:layout_margin="15dp"
+                android:button="@drawable/bg_btn_agree"
+                android:scaleX="2"
+                android:scaleY="2" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="I have read and agree with the" />
+                    android:text="@string/tv_term_cofilm"
+                    android:textColor="@color/colorBlack" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="terms and conditions"
-                    android:textColor="@color/colorLink" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_term_link"
+                        android:textColor="@color/colorFB" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="."
+                        android:textColor="@color/colorBlack" />
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
         <ImageView
             android:id="@+id/imgNext"
+            android:background="@drawable/bg_btn_next"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_btn_next" />
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 </FrameLayout>
 

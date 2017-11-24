@@ -46,6 +46,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         mBtnLoginFaceBook.setOnClickListener(this);
         mBtnLoginPhone.setOnClickListener(this);
         mTvSignup.setOnClickListener(this);
+        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -61,7 +62,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.tvSignup:
                 //
-                ((LoginActivity) getActivity()).replaceFragment(SignupFragment.newInstance());
+                ((LoginActivity) getActivity()).replaceFragment(SignupFragment.newInstance(), true);
                 break;
         }
     }

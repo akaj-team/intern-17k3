@@ -14,9 +14,10 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imgBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="10dp"
+            android:layout_margin="15dp"
             android:src="@drawable/ic_btn_back" />
 
         <LinearLayout
