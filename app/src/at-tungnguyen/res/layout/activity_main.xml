@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="vn.asiantech.internship.MainActivity">
+    <LinearLayout
+        android:background="#041e42"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/imgtitl"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/bg_urbi_reverseb" />
+        <TextView
+
+            android:textColor="#0288d1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a bike for everyone, always"/>
+
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frgContainer"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
+</LinearLayout>

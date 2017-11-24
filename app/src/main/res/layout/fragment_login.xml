@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="@string/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <Button
+                    android:background="@drawable/bg_btn_login"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:textColor="#FFF"
+                    android:text="@string/btnLoginFb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <View
+                android:background="#635e5e"
+                android:id="@+id/lineA"
+                android:layout_marginTop="30dp"
+                android:layout_width="120dp"
+                android:layout_height="1dp"/>
+            <TextView
+                android:textSize="17dp"
+                android:layout_margin="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="or"
+                />
+
+            <View
+                android:id="@+id/lineB"
+                android:layout_width="120dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="30dp"
+                android:background="#635e5e"/>
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:textAlignment="center"
+                android:textColor="#357ada"
+                android:background="@drawable/bg_btn_signup"
+                android:text="@string/btnSignUp"
+                android:id="@+id/btnSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="@string/tvnewto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="13dp"
+                android:id="@+id/tvSignup"
+                android:textColor="#357ada"
+                android:text="@string/tvSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

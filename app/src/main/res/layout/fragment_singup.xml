@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvEnterSignup"/>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="300dp"
+            android:layout_height="50dp">
+            <ImageView
+                android:background="@drawable/ic_australia"
+                android:layout_margin="10dp"
+                android:layout_width="50dp"
+                android:layout_height="25dp" />
+            <ImageView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:background="@drawable/ic_drop_down"/>
+            <EditText
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+            <EditText
+                android:textSize="15dp"
+                android:id="@+id/edtfullname"
+                android:hint="@string/edtfullname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"
+                android:hint="@string/Gmail"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp">
+            <CheckBox
+                android:button="@drawable/selector_check_nocheck"
+                android:layout_marginRight="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:layout_gravity="center"
+                android:text="@string/tvAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+        <Button
+            android:layout_gravity="center"
+            android:background="@drawable/ic_button_disable"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+</FrameLayout>
