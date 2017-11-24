@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,9 @@ import android.widget.EditText;
 
 public class LoginFragment extends Fragment {
     private Button btnSubmit;
-    private EditText edtPhone, edtFullName, edtMail;
+    private EditText edtPhone;
+    private EditText edtFullName;
+    private EditText edtMail;
     protected CheckBox chkTermsAccept;
 
     public static LoginFragment newInstance() {
@@ -47,7 +49,7 @@ public class LoginFragment extends Fragment {
         checkChk(chkTermsAccept);
     }
 
-    public void checkEdt(EditText editText) {
+    private void checkEdt(EditText editText) {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -61,25 +63,23 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!((edtPhone.getText().toString()) == "") && !"".equals(edtFullName.getText().toString()) && !"".equals(edtMail.getText().toString()) && chkTermsAccept.isChecked() == true) {
-                    btnSubmit.setEnabled(true);
-                    Log.d("submit", "ok: ");
+                if (!TextUtils.isEmpty(edtPhone.getText()) && !TextUtils.isEmpty(edtFullName.getText()) && !TextUtils.isEmpty(edtMail.getText()) && chkTermsAccept.isChecked()) {
+                    btnSubmit.setSelected(true);
                 } else {
-                    btnSubmit.setEnabled(false);
+                    btnSubmit.setSelected(false);
                 }
             }
         });
     }
 
-    public void checkChk(CheckBox checkBox) {
+    private void checkChk(CheckBox checkBox) {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (!"".equals(edtPhone.getText().toString()) && !"".equals(edtFullName.getText().toString()) && !"".equals(edtMail.getText().toString()) && b) {
-                    btnSubmit.setEnabled(true);
-                    Log.d("submit", "ok: ");
+                if (!TextUtils.isEmpty(edtPhone.getText()) && !TextUtils.isEmpty(edtFullName.getText()) && !TextUtils.isEmpty(edtMail.getText()) && b) {
+                    btnSubmit.setSelected(true);
                 } else {
-                    btnSubmit.setEnabled(false);
+                    btnSubmit.setSelected(false);
                 }
             }
         });
