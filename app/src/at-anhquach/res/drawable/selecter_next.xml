@@ -3,4 +3,3 @@
     <item android:drawable="@drawable/ic_nexted" android:state_selected="true" /> <!-- pressed -->
     <item android:drawable="@drawable/ic_un_next" android:state_selected="false"></item>
 </selector>
-

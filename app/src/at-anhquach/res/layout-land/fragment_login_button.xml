@@ -56,7 +56,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnLogNum"
+        android:id="@+id/btnLoginPhoneNumber"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:layout_margin="10dp"

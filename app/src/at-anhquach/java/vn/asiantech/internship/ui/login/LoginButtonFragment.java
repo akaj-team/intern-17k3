@@ -13,14 +13,14 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 
 public class LoginButtonFragment extends Fragment {
-    TextView tvSignup;
+    private TextView mtvSignup;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login_button, container, false);
-        tvSignup = view.findViewById(R.id.tvSignUp);
-        tvSignup.setOnClickListener(new View.OnClickListener() {
+        mtvSignup = view.findViewById(R.id.tvSignUp);
+        mtvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((LoginActivity) getActivity()).replace(new InfoEnterFragment(), true);
@@ -30,4 +30,3 @@ public class LoginButtonFragment extends Fragment {
     }
 
 }
-

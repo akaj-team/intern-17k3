@@ -16,29 +16,30 @@ import android.widget.ImageView;
 import vn.asiantech.internship.R;
 
 public class InfoEnterFragment extends Fragment {
-    ImageView imgNext;
-    EditText edtNumber;
-    EditText edtEmail;
-    EditText edtFullName;
-    CheckBox chkTerm;
+    private ImageView mimgNext;
+    private EditText medtNumber;
+    private EditText medtEmail;
+    private EditText medtFullName;
+    private CheckBox mchkTerm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info_enter, container, false);
 
-        imgNext = view.findViewById(R.id.imgNext);
-        edtEmail = view.findViewById(R.id.edtEmail);
-        edtFullName = view.findViewById(R.id.edtFullname);
-        edtNumber = view.findViewById(R.id.edtEnNum);
-        chkTerm = view.findViewById(R.id.chkTermAccept);
+        mimgNext = view.findViewById(R.id.imgNext);
+        medtEmail = view.findViewById(R.id.edtEmail);
+        medtFullName = view.findViewById(R.id.edtFullName);
+        medtNumber = view.findViewById(R.id.edtPhoneNumber);
+        mchkTerm = view.findViewById(R.id.chkTermAccept);
 
-        edtEmail.addTextChangedListener(new TextWatcher() {
+        medtEmail.addTextChangedListener(new TextWatcher() {
+            //No-op
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
+            //No-op
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -50,30 +51,13 @@ public class InfoEnterFragment extends Fragment {
             }
         });
 
-        edtNumber.addTextChangedListener(new TextWatcher() {
+        medtNumber.addTextChangedListener(new TextWatcher() {
+            //No-op
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-                checkInputInfo();
-            }
-        });
-
-        edtFullName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
+            //No-op
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -86,16 +70,35 @@ public class InfoEnterFragment extends Fragment {
             }
         });
 
-        chkTerm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        medtFullName.addTextChangedListener(new TextWatcher() {
+            //No-op
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            //No-op
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                checkInputInfo();
+            }
+        });
+
+        mchkTerm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    if (!TextUtils.isEmpty(edtNumber.getText()) && !TextUtils.isEmpty(edtFullName.getText()) &&
-                            !TextUtils.isEmpty(edtEmail.getText())) {
-                        imgNext.setSelected(true);
+                    if (!TextUtils.isEmpty(medtNumber.getText()) && !TextUtils.isEmpty(medtFullName.getText()) &&
+                            !TextUtils.isEmpty(medtEmail.getText())) {
+                        mimgNext.setSelected(true);
                     }
                 } else {
-                    imgNext.setSelected(false);
+                    mimgNext.setSelected(false);
                 }
             }
         });
@@ -104,13 +107,12 @@ public class InfoEnterFragment extends Fragment {
     }
 
     private void checkInputInfo() {
-        if (!TextUtils.isEmpty(edtNumber.getText()) && !TextUtils.isEmpty(edtFullName.getText()) &&
-                !TextUtils.isEmpty(edtEmail.getText()) && chkTerm.isChecked()) {
-            imgNext.setSelected(true);
+        if (!TextUtils.isEmpty(medtNumber.getText()) && !TextUtils.isEmpty(medtFullName.getText()) &&
+                !TextUtils.isEmpty(medtEmail.getText()) && mchkTerm.isChecked()) {
+            mimgNext.setSelected(true);
         } else {
-            imgNext.setSelected(false);
+            mimgNext.setSelected(false);
         }
     }
 
 }
-
