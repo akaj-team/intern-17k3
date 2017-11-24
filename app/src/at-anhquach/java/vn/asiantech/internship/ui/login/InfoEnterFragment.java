@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+
 import vn.asiantech.internship.R;
 
 public class InfoEnterFragment extends Fragment {
@@ -102,7 +103,7 @@ public class InfoEnterFragment extends Fragment {
         return view;
     }
 
-    private void checkInputInfo(){
+    private void checkInputInfo() {
         if (!TextUtils.isEmpty(edtNumber.getText()) && !TextUtils.isEmpty(edtFullName.getText()) &&
                 !TextUtils.isEmpty(edtEmail.getText()) && chkTerm.isChecked()) {
             imgNext.setSelected(true);
@@ -112,5 +113,4 @@ public class InfoEnterFragment extends Fragment {
     }
 
 }
-
 

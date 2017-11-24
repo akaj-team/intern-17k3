@@ -5,7 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import vn.asiantech.internship.R;
+
 /**
  * Created by anh.quach on 11/23/17.
  */
@@ -29,5 +31,4 @@ public class LoginActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 }
-
 
