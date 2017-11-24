@@ -7,4 +7,7 @@
     <string name="text_click_new_urbi">Sign up for an account</string>
     <string name="text_subject_infor">Enter your details below to get started</string>
     <string name="text_subject_login">Welcome to urbi</string>
+    <string name="text_checkbox_confirm">I have read and agree with the</string>
+    <string name="text_link">terms and conditions</string>
+    <string name="text_inputPhone">Enter mobie phone number</string>
 </resources>

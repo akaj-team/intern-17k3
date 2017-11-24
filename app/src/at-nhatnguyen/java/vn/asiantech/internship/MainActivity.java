@@ -1,6 +1,5 @@
 package vn.asiantech.internship;
 
-import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,15 +13,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
-        callFragment(new LoginFragment());
+        callFragment(new LoginFragment(),false);
     }
 
-    public void callFragment(Fragment fragment) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        //Khi được goi, fragment truyền vào sẽ thay thế vào vị trí FrameLayout trong Activity chính
-        transaction.replace(R.id.fmContent,fragment);
-        transaction.commit();
+    public void callFragment(Fragment fragment, boolean addStack) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fmContent,fragment);
+        if(addStack){
+            fragmentTransaction.addToBackStack(fragment.getClass().getName());
+        }
+        fragmentTransaction.commit();
     }
-
 }

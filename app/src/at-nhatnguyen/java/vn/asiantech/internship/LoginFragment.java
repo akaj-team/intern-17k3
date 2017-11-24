@@ -24,7 +24,7 @@ public class LoginFragment extends Fragment {
         btnLoginFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ( ( MainActivity) getActivity()).callFragment(new InforFragment());
+                ( ( MainActivity) getActivity()).callFragment(new InforFragment(),true);
             }
         });
         return view;

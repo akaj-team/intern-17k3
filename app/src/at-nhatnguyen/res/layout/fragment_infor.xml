@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:background="@color/color_text_button_facebook"
     tools:context="vn.asiantech.internship.InforFragment">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,40 +16,79 @@
         android:gravity="center"
         android:textColor="@color/color_text_subject_login"
         android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_australia"/>
+        
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_dropdown"/>
+        
+        <TextView
+            android:id="@+id/edtPhonenum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/text_inputPhone"
+            android:inputType="phone"
+            android:layout_marginLeft="5dp"
+            android:textSize="25dp"/>
+    </LinearLayout>
+
     <EditText
+        android:id="@+id/edtFullname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:hint="Full name"
-        android:textSize="20dp"
-        android:id="@+id/edtFullname"/>
+        android:textSize="25dp"
+        android:background="@drawable/shape_line_edittext"/>
+
     <EditText
+        android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:hint="Email"
-        android:textSize="20dp"
-        android:id="@+id/edtEmail"/>
+        android:inputType="textEmailAddress"
+        android:textSize="25dp"
+        android:background="@drawable/shape_line_edittext"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <CheckBox
+            android:id="@+id/chkConfirm"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/chk"
-            android:text="I have read and agree with the"
+            android:button="@drawable/chk_confirm"
+            android:text="@string/text_checkbox_confirm"
             android:textSize="20dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="terms and conditions"
-            android:textColor="#3399FF"
-            android:paddingLeft="35dp"/>
+            android:text="@string/text_link"
+            android:textColor="@color/color_text_link"
+            android:paddingLeft="30dp"/>
+
     </LinearLayout>
+
     <Button
+        android:id="@+id/btnNext"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/ic_btn_next_pressed"
-        android:layout_marginTop="50dp"
+        android:background="@drawable/selector_button_next"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"/>
 
 </LinearLayout>
