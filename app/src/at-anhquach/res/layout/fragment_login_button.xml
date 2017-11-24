@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/welcom"
+        android:text="@string/textview.welcom"
         android:layout_margin="10dp"
         android:layout_gravity="center"
         android:textSize="15dp"
@@ -25,7 +25,7 @@
         android:background="@drawable/shape_button_loginfb"
         android:layout_margin="10dp"
         android:textSize="15dp"
-        android:text="@string/bntLoginFb"
+        android:text="@string/bnt.login_facebook"
         android:textColor="@color/colorTextWhite"
         android:textStyle="bold"/>
 
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/or"
+            android:text="@string/textview.or"
             android:textSize="15dp"/>
 
         <TextView
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_button_loginnumb"
-        android:text="@string/bntLoginNumb"
+        android:text="@string/bnt.login_number_phone"
         android:textSize="15dp"
         android:layout_margin="10dp"
         android:textColor="@color/colorTextBlue"
@@ -77,7 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/memoLogin"
+            android:text="@string/textview.memo_login"
             android:textColor="@color/colorTextBlack"
             android:layout_gravity="center"/>
 
@@ -85,7 +85,7 @@
             android:id="@+id/tvSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/memoLogin2"
+            android:text="@string/textview.memo_login2"
             android:textColor="@color/colorTextBlue"
             android:textStyle="bold"
             android:layout_gravity="center"/>
