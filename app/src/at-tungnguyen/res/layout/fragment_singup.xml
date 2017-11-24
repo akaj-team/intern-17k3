@@ -22,7 +22,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp">
             <ImageView
-                android:background="@drawable/ic_australia"
+                android:background="@drawable/ic_flag_australia"
                 android:layout_margin="10dp"
                 android:layout_width="50dp"
                 android:layout_height="25dp" />
@@ -64,8 +64,8 @@
             <CheckBox
                 android:button="@drawable/selector_check_nocheck"
                 android:layout_marginRight="20dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
             <TextView
                 android:layout_gravity="center"
                 android:text="@string/tvAccept"
@@ -76,7 +76,7 @@
         </LinearLayout>
         <Button
             android:layout_gravity="center"
-            android:background="@drawable/ic_button_disable"
+            android:background="@drawable/ic_next_disable"
             android:layout_width="50dp"
             android:layout_height="50dp" />
     </LinearLayout>

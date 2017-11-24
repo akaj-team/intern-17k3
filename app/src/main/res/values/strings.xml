@@ -1,13 +1,3 @@
 <resources>
-    <string name="app_name">intern-17k3</string>
-    <string name="tvTitle">Welcome to urbi</string>
-    <string name="btnLoginFb">Log in with facebook</string>
-    <string name="btnSignUp">Log in with phone number</string>
-    <string name="tvnewto">New to urbi?</string>
-    <string name="tvSignUp">Sign up for account</string>
-    <string name="tvEnterSignup">Enter your details below to get started</string>
-    <string name="edtfullname">Full name</string>
-    <string name="edtmail">Email</string>
-    <string name="Gmail">Email</string>
-    <string name="tvAccept">I have read and agree with me</string>
+
 </resources>
