@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">intern-17k3</string>
+    <string name="app_name">tungnguyen-17k3</string>
     <string name="tvTitle">Welcome to urbi</string>
     <string name="btnLoginFb">Log in with facebook</string>
     <string name="btnSignUp">Log in with phone number</string>
@@ -10,4 +10,5 @@
     <string name="edtmail">Email</string>
     <string name="Gmail">Email</string>
     <string name="tvAccept">I have read and agree with me</string>
+    <string name="tvTerms">terms and conditions</string>
 </resources>

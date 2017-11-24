@@ -10,16 +10,20 @@
         android:background="#041e42"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:gravity="center"
         android:orientation="vertical">
-
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
         <ImageView
             android:id="@+id/imgtitl"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:src="@drawable/bg_urbi_reverseb" />
         <TextView
-
+            android:layout_gravity="center"
             android:textColor="#0288d1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
