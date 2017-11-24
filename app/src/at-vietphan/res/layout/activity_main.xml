@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layout_main"
     tools:context="vn.asiantech.internship.MainActivity"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="200dp"
         android:background="@color/colorheader"
+        android:orientation="vertical"
         android:gravity="center">
 
         <ImageView
@@ -21,15 +23,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imgHeader"
-            android:text="a bike for everyone, always"
+            android:text="@string/a_bike_for_everyone_always"
             android:textSize="16dp"
             android:textColor="@color/colorTitle" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>
-

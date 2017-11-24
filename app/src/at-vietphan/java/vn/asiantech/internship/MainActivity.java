@@ -1,6 +1,5 @@
 package vn.asiantech.internship;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,13 +12,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        goToFragment(IndexFragment.newInstance());
-    }
-    protected void goToFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frContent,fragment);
-        fragmentTransaction.commit();
+        getSupportActionBar().hide();
+        goToFragment(IndexFragment.newInstance(), false);
     }
 
+    protected void goToFragment(Fragment fragment, boolean isAdd) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frContent, fragment);
+        /*befor commit() add addToBackStack() to back befor fragment
+        * addToBackStack(null): all fragment add in stack
+        * or addToBackStack(IndexFragment.newInstance()): back to Indexfragment
+        * */
+        if (isAdd) {
+            fragmentTransaction.addToBackStack(fragment.getClass().getName());
+        }
+        fragmentTransaction.commit();
+    }
 }

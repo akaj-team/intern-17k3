@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Enter your details below to get started"
+        android:text="@string/enter_your_details_below_to_get_started"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18dp"
@@ -39,9 +40,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/layer_line_edit_text"
-            android:hint="Enter mobile number"
+            android:hint="@string/enter_mobile_number"
             android:inputType="number"
-            android:textCursorDrawable="@color/colorCusor" />
+            android:textCursorDrawable="@color/colorCusor"
+            tools:ignore="TextFields" />
     </LinearLayout>
 
     <EditText
@@ -50,7 +52,7 @@
         android:layout_height="40dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/layer_line_edit_text"
-        android:hint="Full name"
+        android:hint="@string/full_name"
         android:inputType="text"
         android:textCursorDrawable="@color/colorCusor" />
 
@@ -60,7 +62,7 @@
         android:layout_height="40dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/layer_line_edit_text"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textCursorDrawable="@color/colorCusor" />
 
@@ -69,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:button="@drawable/selector_btn_check"
-        android:text="  I have read and agree with the" />
+        android:text="@string/i_have_read_and_agree_with_the" />
 
     <TextView
         android:id="@+id/tvTerms"
@@ -78,14 +80,15 @@
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="-70dp"
         android:layout_marginTop="-10dp"
-        android:text="terms and conditions"
+        android:text="@string/terms_and_conditions"
         android:textColor="@color/colorPrimary"
         android:textColorLink="#ffffff" />
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/selector_btn_submit"
-        android:clickable="true" />
+        android:clickable="true"
+        android:focusable="true" />
 </LinearLayout>
