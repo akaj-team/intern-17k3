@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">tienhuynh-17k3</string>
+    <string name="app_name">intern-17k3</string>
+    <string name="tvSloganLogin">a bike for everyone, always</string>
+    <string name="tvWelcome">Welcome to urbi</string>
+    <string name="btnLoginFb">login with facebook</string>
+    <string name="btnLoginPhone">login with phone number</string>
+    <string name="tvSignup1">New to urbi?</string>
+    <string name="tvSignup2">Sign up for an account</string>
+    <string name="tvTitleSignup">Enter your details belows to get stared</string>
 </resources>
