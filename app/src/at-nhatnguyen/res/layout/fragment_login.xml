@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF"
+    android:background="@color/color_text_button_facebook"
     tools:context="vn.asiantech.internship.LoginFragment">
     <TextView
         android:layout_width="match_parent"
@@ -74,5 +74,4 @@
             android:textStyle="bold"
             android:textColor="@color/color_button_phonenum_and_signup"/>
     </LinearLayout>
-
 </LinearLayout>

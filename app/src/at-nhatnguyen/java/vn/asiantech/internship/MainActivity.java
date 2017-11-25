@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
-        callFragment(new LoginFragment(),false);
+        replaceFragment(new LoginFragment(),false);
     }
 
-    public void callFragment(Fragment fragment, boolean addStack) {
+    public void replaceFragment(Fragment fragment, boolean addStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fmContent,fragment);

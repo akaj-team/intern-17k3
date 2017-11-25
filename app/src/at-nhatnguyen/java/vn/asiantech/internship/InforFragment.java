@@ -1,6 +1,5 @@
 package vn.asiantech.internship;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -13,16 +12,15 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class InforFragment extends Fragment {
-    EditText mEdtPhone;
-    EditText mEdtFullName;
-    EditText mEdtEmail;
-    CheckBox mChkConfirm;
-    Button mBtnNext;
+    private EditText mEdtPhone;
+    private EditText mEdtFullName;
+    private EditText mEdtEmail;
+    private CheckBox mChkConfirm;
+    private Button mBtnNext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,21 +32,23 @@ public class InforFragment extends Fragment {
         mEdtEmail = view.findViewById(R.id.edtEmail);
         mChkConfirm = view.findViewById(R.id.chkConfirm);
         mBtnNext = view.findViewById(R.id.btnNext);
-        checkEdt(mEdtEmail);
-        checkEdt(mEdtFullName);
-        checkEdt(mEdtPhone);
-        checkChk(mChkConfirm);
+        checkInputData(mEdtEmail);
+        checkInputData(mEdtFullName);
+        checkInputData(mEdtPhone);
+        checkStatusCheckBox(mChkConfirm);
         return view;
     }
 
-    private void checkEdt(EditText editText){
+    private void checkInputData(EditText editText){
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
@@ -63,7 +63,7 @@ public class InforFragment extends Fragment {
         });
     }
 
-    private void checkChk(CheckBox checkBox){
+    private void checkStatusCheckBox(CheckBox checkBox){
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

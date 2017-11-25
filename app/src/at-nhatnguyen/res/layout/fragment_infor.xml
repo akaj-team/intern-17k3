@@ -81,7 +81,6 @@
             android:text="@string/text_link"
             android:textColor="@color/color_text_link"
             android:paddingLeft="30dp"/>
-
     </LinearLayout>
 
     <Button
@@ -91,5 +90,4 @@
         android:background="@drawable/selector_button_next"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"/>
-
 </LinearLayout>
