@@ -8,6 +8,7 @@
     <color name="colorTextLoginPhone">#00A9FE</color>
     <color name="colorCusor">#ababb2</color>
     <color name="colorBottomLine">#ababb2</color>
+    <color name="colorBgBtnLogin">#325C94</color>
     <color name="colorSolidBtnLogin">#325C94</color>
     <color name="colorBgBtnLoginPhone">#00A9FE</color>
     <color name="colorSolidBtnLoginPhone">#ffffff</color>
