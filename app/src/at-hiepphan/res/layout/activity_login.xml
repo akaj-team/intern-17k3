@@ -15,11 +15,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:background="@drawable/ic_back"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_back" />
 
         <ImageView
-            android:id="@+id/img_logo"
+            android:id="@+id/imgLogo"
             android:layout_width="172dp"
             android:layout_height="90dp"
             android:background="@drawable/ic_logo" />
@@ -31,12 +31,10 @@
             android:text="@string/title"
             android:textColor="@color/colorTestBlue"
             android:textSize="18dp" />
-
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frMain"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
-
+        android:layout_height="wrap_content" />
 </LinearLayout>

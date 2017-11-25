@@ -11,14 +11,15 @@ import vn.asiantech.internship.R;
 public class LoginFragment extends Fragment {
 
     public LoginFragment() {
+        // No-op
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        TextView mTxtLogin = view.findViewById(R.id.txtLogin);
-        mTxtLogin.setOnClickListener(new View.OnClickListener() {
+        TextView tvLogin = view.findViewById(R.id.txtLogin);
+        tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((LoginActivity)getActivity()).replace(new InfoFragment());

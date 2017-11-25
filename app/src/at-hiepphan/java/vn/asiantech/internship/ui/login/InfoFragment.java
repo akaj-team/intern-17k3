@@ -19,17 +19,17 @@ public class InfoFragment extends Fragment {
     private ImageView mImgNext;
 
     public InfoFragment() {
-
+        // No-op
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info, container, false);
-        mEdtMobile = view.findViewById(R.id.txtMobile);
-        mEdtName = view.findViewById(R.id.txtName);
-        mEdtEmail = view.findViewById(R.id.txtEmail);
-        mChkBox = view.findViewById(R.id.chk);
+        mEdtMobile = view.findViewById(R.id.edtPhoneNumber);
+        mEdtName = view.findViewById(R.id.edtUserName);
+        mEdtEmail = view.findViewById(R.id.edtEmail);
+        mChkBox = view.findViewById(R.id.chkAcceptTerm);
         mImgNext = view.findViewById(R.id.imgNext);
 
         mChkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -44,7 +44,6 @@ public class InfoFragment extends Fragment {
                 }
             }
         });
-
         return view;
     }
 }

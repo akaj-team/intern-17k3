@@ -14,7 +14,7 @@ public class LoginActivity extends AppCompatActivity {
         replace(new LoginFragment());
     }
 
-    public void replace(Fragment fragment) {
+    protected void replace(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frMain, fragment).addToBackStack(null)
                 .commit();

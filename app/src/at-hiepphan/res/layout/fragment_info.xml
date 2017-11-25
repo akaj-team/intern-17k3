@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/info"
-        android:textColor="#000000"
+        android:textColor="@color/colorTestBlack"
         android:textSize="15dp"
         android:textStyle="bold" />
 
@@ -31,25 +31,25 @@
             android:layout_height="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/ic_custom" />
+            android:background="@drawable/ic_dropdown" />
 
         <EditText
-            android:id="@+id/txtMobile"
+            android:id="@+id/edtPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edittext.hint.enter_mobile_number"
-            android:inputType="number" />
+            android:inputType="phone" />
     </LinearLayout>
 
     <EditText
-        android:id="@+id/txtName"
+        android:id="@+id/edtUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:hint="@string/edittext.hint.full_name" />
 
     <EditText
-        android:id="@+id/txtEmail"
+        android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -62,10 +62,10 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/chk"
+            android:id="@+id/chkAcceptTerm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:button="@drawable/selector" />
+            android:button="@drawable/selector_btn_check" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -95,7 +95,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/textview.text." />
-
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -111,8 +110,6 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:enabled="false"
-            android:src="@drawable/selector_next" />
-
+            android:src="@drawable/selector_btn_next" />
     </LinearLayout>
-
 </LinearLayout>
