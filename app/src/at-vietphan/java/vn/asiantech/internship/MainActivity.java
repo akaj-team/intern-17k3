@@ -13,17 +13,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-        goToFragment(IndexFragment.newInstance(), false);
+        replaceFragment(IndexFragment.newInstance(), false);
     }
 
-    protected void goToFragment(Fragment fragment, boolean isAdd) {
+    protected void replaceFragment(Fragment fragment, boolean isAdd) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frContent, fragment);
-        /*befor commit() add addToBackStack() to back befor fragment
-        * addToBackStack(null): all fragment add in stack
-        * or addToBackStack(IndexFragment.newInstance()): back to Indexfragment
-        * */
         if (isAdd) {
             fragmentTransaction.addToBackStack(fragment.getClass().getName());
         }

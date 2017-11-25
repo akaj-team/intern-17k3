@@ -24,7 +24,7 @@ public class IndexFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).goToFragment(LoginFragment.newInstance(), true);
+                ((MainActivity) getActivity()).replaceFragment(LoginFragment.newInstance(), true);
             }
         });
         return view;

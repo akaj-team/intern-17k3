@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -41,7 +42,8 @@
             android:background="@drawable/bg_bottom_line_edt"
             android:hint="@string/enter_mobile_number"
             android:inputType="phone"
-            android:textCursorDrawable="@color/colorCusor"/>
+            android:textCursorDrawable="@color/colorCusor"
+            tools:ignore="TextFields" />
     </LinearLayout>
 
     <EditText
@@ -86,5 +88,7 @@
         android:id="@+id/btnSubmit"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/selector_btn_submit"/>
+        android:background="@drawable/selector_btn_submit"
+        android:clickable="true"
+        android:focusable="true" />
 </LinearLayout>
