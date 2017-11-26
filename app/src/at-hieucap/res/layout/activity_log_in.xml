@@ -15,10 +15,10 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp" />
 
         <ImageView
-            android:id="@+id/img_logo"
+            android:id="@+id/imgLogo"
             android:layout_width="192dp"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/img_logo"
+            android:layout_below="@+id/imgLogo"
             android:gravity="center"
             android:text="@string/slogan"
             android:textColor="@color/colorBlue" />

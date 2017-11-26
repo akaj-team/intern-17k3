@@ -47,7 +47,7 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
 
         //Color TextView
         TextView mTvCheck = v.findViewById(R.id.tvLinkSp);
-        String text = "I have read and agree with me <font color='#34A4F1'><br>tewms and conditions</font><font color='black'>.</font>";
+        String text = "I have read and agree with the <font color='#34A4F1'><br>term    s and conditions</font><font color='black'>.</font>";
         mTvCheck.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
         mChkCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -59,27 +59,27 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
         return v;
     }
 
-    private boolean CheckSignUp(EditText mEditPhone, EditText mEdtEmail, EditText mEdtFullName, CheckBox mChkCheck) {
+    private boolean checkSignUp(EditText mEditPhone, EditText mEdtEmail, EditText mEdtFullName, CheckBox mChkCheck) {
         return (((mEditPhone.getText().toString().trim().length() != 0) && (mEdtEmail.getText().toString().trim().length() != 0) && (mEdtFullName.getText().toString().trim().length() != 0)) && mChkCheck.isChecked());
     }
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        mImgNext.setSelected(CheckSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
+        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        mImgNext.setSelected(CheckSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
+        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
     }
 
     @Override
     public void afterTextChanged(Editable s) {
-        mImgNext.setSelected(CheckSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
+        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
     }
 
     @Override
     public void onClick(View v) {
-        mImgNext.setSelected(CheckSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
+        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
     }
 }
