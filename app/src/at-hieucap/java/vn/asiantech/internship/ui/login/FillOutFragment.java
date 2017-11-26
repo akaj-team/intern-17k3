@@ -47,7 +47,7 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
 
         //Color TextView
         TextView mTvCheck = v.findViewById(R.id.tvLinkSp);
-        String text = "I have read and agree with the <font color='#34A4F1'><br>term    s and conditions</font><font color='black'>.</font>";
+        String text = "I have read and agree with the <font color='#34A4F1'><br>terms and conditions</font><font color='black'>.</font>";
         mTvCheck.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
         mChkCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

@@ -3,6 +3,6 @@
     android:shape="rectangle">
     <!--Set background color-->
     <solid android:color="#305FDF" />
-    <!--line bound -->
+    <!--Line bound -->
     <corners android:radius="1.5dp" />
 </shape>
