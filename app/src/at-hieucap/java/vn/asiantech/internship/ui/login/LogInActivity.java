@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import vn.asiantech.internship.R;
@@ -39,8 +38,7 @@ public class LogInActivity extends AppCompatActivity {
         ft.replace(R.id.frContain, fragment);
         if (addBackStack) {
             ft.addToBackStack(fragment.getClass().getSimpleName());
-            Log.d("vv", "addFragment: " + ft);
-        } else Log.d("v", "addFragment: " + ft);
+        }
         ft.commit();
     }
 
