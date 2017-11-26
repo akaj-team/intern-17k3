@@ -30,25 +30,25 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
         // Item back
         mImgNext = v.findViewById(R.id.imgNext);
 
-        //Checkbox
+        // Checkbox
         mChkCheck = v.findViewById(R.id.chkSignUp);
 
-        //Email
+        // Email
         mEdtEmail = v.findViewById(R.id.edtEmail);
         mEdtEmail.addTextChangedListener(this);
 
-        //Phone
+        // Phone
         mEdtPhone = v.findViewById(R.id.edtPhone);
         mEdtPhone.addTextChangedListener(this);
 
-        //Full Name
+        // Full Name
         mEdtFullName = v.findViewById(R.id.edtFullName);
         mEdtFullName.addTextChangedListener(this);
 
-        //Color TextView
-        TextView mTvCheck = v.findViewById(R.id.tvLinkSp);
+        // Color TextView
+        TextView tvCheck = v.findViewById(R.id.tvLinkSp);
         String text = "I have read and agree with the <font color='#34A4F1'><br>terms and conditions</font><font color='black'>.</font>";
-        mTvCheck.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
+        tvCheck.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
         mChkCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -59,8 +59,8 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
         return v;
     }
 
-    private boolean checkSignUp(EditText mEditPhone, EditText mEdtEmail, EditText mEdtFullName, CheckBox mChkCheck) {
-        return (((mEditPhone.getText().toString().trim().length() != 0) && (mEdtEmail.getText().toString().trim().length() != 0) && (mEdtFullName.getText().toString().trim().length() != 0)) && mChkCheck.isChecked());
+    private boolean checkSignUp(EditText edtPhone, EditText edtEmail, EditText edtFullName, CheckBox chkCheck) {
+        return (((edtPhone.getText().toString().trim().length() != 0) && (edtEmail.getText().toString().trim().length() != 0) && (edtFullName.getText().toString().trim().length() != 0)) && chkCheck.isChecked());
     }
 
     @Override

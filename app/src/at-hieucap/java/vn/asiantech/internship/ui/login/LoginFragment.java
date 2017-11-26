@@ -25,7 +25,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ((LogInActivity) getActivity()).addFragment(new FillOutFragment(), true);
+        ((LogInActivity) getActivity()).replaceFragment(new FillOutFragment(), true);
         ((LogInActivity) getActivity()).updateBackButton(true);
     }
 }

@@ -63,7 +63,6 @@
                 android:hint="@string/enter_number"
                 android:inputType="phone" />
         </LinearLayout>
-
     </LinearLayout>
 
     <EditText

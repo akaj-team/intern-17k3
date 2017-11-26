@@ -18,21 +18,21 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         mImgBack = findViewById(R.id.imgBack);
         mImgBack.setImageDrawable(getResources().getDrawable(R.drawable.selector_event_back));
-        mImgBack.setEnabled(false);//Can't press button back
+        mImgBack.setEnabled(false);// Can't press back button
         mImgBack.setSelected(false);
         // Add firstFragment
-        addFragment(LoginFragment.getInstance(), false);
+        replaceFragment(LoginFragment.getInstance(), false);
         mImgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addFragment(LoginFragment.getInstance(), false);
+                replaceFragment(LoginFragment.getInstance(), false);
                 mImgBack.setEnabled(false);//Can't press button back
                 mImgBack.setSelected(false);
             }
         });
     }
 
-    protected void addFragment(Fragment fragment, boolean addBackStack) {
+    protected void replaceFragment(Fragment fragment, boolean addBackStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.frContain, fragment);

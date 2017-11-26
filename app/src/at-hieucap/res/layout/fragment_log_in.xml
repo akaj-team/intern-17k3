@@ -5,7 +5,7 @@
     android:padding="30dp">
 
     <TextView
-        android:id="@+id/twWelCome"
+        android:id="@+id/tvWelCome"
         style="@style/boldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,10 +15,10 @@
 
     <Button
         android:id="@+id/btnLogInFB"
-        style="@style/loginFb"
+        style="@style/btn_loginFb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/twWelCome"
+        android:layout_below="@+id/tvWelCome"
         android:layout_marginTop="30dp"
         android:background="@drawable/bg_cornice_log_in_fb"
         android:text="@string/login_fb"
@@ -35,13 +35,13 @@
         <View
             android:id="@+id/viewLineLeft"
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="1dp"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/twOr"
+            android:layout_toLeftOf="@+id/tvOr"
             android:background="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/twOr"
+            android:id="@+id/tvOr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -52,13 +52,11 @@
         <View
             android:id="@+id/viewLineRight"
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="1dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/twOr"
+            android:layout_toRightOf="@+id/tvOr"
             android:background="@android:color/darker_gray" />
-
-
     </RelativeLayout>
 
     <Button
