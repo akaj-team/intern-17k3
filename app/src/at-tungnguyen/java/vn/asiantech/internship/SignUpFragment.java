@@ -16,48 +16,44 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by tungnguyen on 23/11/2017.
- */
-
-public class SignUpFragment extends Fragment {
-    private TextView mtvNumber;
-    private Button mbtnSingUp;
-    private EditText medtNumber;
-    private EditText medtEmail;
-    private EditText medtFullname;
-    private CheckBox mchkTerms;
-    private ImageView mimgNext;
+public class    SignUpFragment extends Fragment {
+    private TextView mTvNumber;
+    private Button mBtnSingUp;
+    private EditText mEdtNumber;
+    private EditText mEdtEmail;
+    private EditText mEdtFullname;
+    private CheckBox mChkTerms;
+    private ImageView mImgNext;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_singup, container, false);
-        mtvNumber = view.findViewById(R.id.tvTerm);
-        medtEmail = view.findViewById(R.id.edtEmail);
-        medtNumber = view.findViewById(R.id.edtNumber);
-        mchkTerms = view.findViewById(R.id.chkSignup);
-        medtFullname = view.findViewById(R.id.edtFullname);
-        mimgNext = view.findViewById(R.id.imgSignUp);
-        Event();
+        mTvNumber = view.findViewById(R.id.tvTerm);
+        mEdtEmail = view.findViewById(R.id.edtEmail);
+        mEdtNumber = view.findViewById(R.id.edtNumBer);
+        mChkTerms = view.findViewById(R.id.chkSignUp);
+        mEdtFullname = view.findViewById(R.id.edtFullName);
+        mImgNext = view.findViewById(R.id.imgSignUp);
+        initListenter();
         ((MainActivity) getActivity()).getBack().setVisibility(View.VISIBLE);
         return view;
     }
 
-    private void Event() {
-        mchkTerms.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    private void initListenter() {
+        mChkTerms.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    if (!TextUtils.isEmpty(medtNumber.getText()) && !TextUtils.isEmpty(medtEmail.getText()) && !TextUtils.isEmpty(medtFullname.getText())) {
-                        mimgNext.setSelected(true);
+                    if (!TextUtils.isEmpty(mEdtNumber.getText()) && !TextUtils.isEmpty(mEdtEmail.getText()) && !TextUtils.isEmpty(mEdtFullname.getText())) {
+                        mImgNext.setSelected(true);
                     }
                 } else {
-                    mimgNext.setSelected(false);
+                    mImgNext.setSelected(false);
                 }
             }
         });
-        medtNumber.addTextChangedListener(new TextWatcher() {
+        mEdtNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -68,10 +64,10 @@ public class SignUpFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                changeImage();
+                updateNextButtonStatus();
             }
         });
-        medtFullname.addTextChangedListener(new TextWatcher() {
+        mEdtFullname.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -84,11 +80,11 @@ public class SignUpFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                changeImage();
+                updateNextButtonStatus();
 
             }
         });
-        medtEmail.addTextChangedListener(new TextWatcher() {
+        mEdtEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -99,16 +95,16 @@ public class SignUpFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                changeImage();
+                updateNextButtonStatus();
             }
         });
     }
 
-    private void changeImage() {
-        if (!TextUtils.isEmpty(medtNumber.getText()) && !TextUtils.isEmpty(medtEmail.getText()) && !TextUtils.isEmpty(medtFullname.getText()) && mchkTerms.isChecked()) {
-            mimgNext.setSelected(true);
+    private void updateNextButtonStatus() {
+        if (!TextUtils.isEmpty(mEdtNumber.getText()) && !TextUtils.isEmpty(mEdtEmail.getText()) && !TextUtils.isEmpty(mEdtFullname.getText()) && mChkTerms.isChecked()) {
+            mImgNext.setSelected(true);
         } else {
-            mimgNext.setSelected(false);
+            mImgNext.setSelected(false);
         }
     }
 }

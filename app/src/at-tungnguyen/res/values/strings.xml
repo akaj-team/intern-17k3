@@ -3,7 +3,7 @@
     <string name="tvTitle">Welcome to urbi</string>
     <string name="btnLoginFb">Log in with facebook</string>
     <string name="btnSignUp">Log in with phone number</string>
-    <string name="tvnewto">New to urbi?</string>
+    <string name="tvNewto">New to urbi?</string>
     <string name="tvSignUp">Sign up for account</string>
     <string name="tvEnterSignup">Enter your details below to get started</string>
     <string name="edtfullname">Full name</string>
@@ -11,4 +11,7 @@
     <string name="Gmail">Email</string>
     <string name="tvAccept">I have read and agree with me</string>
     <string name="tvTerms">terms and conditions</string>
+    <string name="telephone">+64</string>
+    <string name="tvOr">or</string>
+    <string name="tvSlogan">a bike for everyone, always</string>
 </resources>

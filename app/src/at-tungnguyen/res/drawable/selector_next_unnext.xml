@@ -4,4 +4,5 @@
         android:drawable="@drawable/ic_next_disable" />
     <item android:state_selected="true"
         android:drawable="@drawable/ic_next_enable" />
+
 </selector>
