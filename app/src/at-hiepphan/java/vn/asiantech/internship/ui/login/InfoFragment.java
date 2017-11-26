@@ -12,10 +12,10 @@ import android.widget.ImageView;
 import vn.asiantech.internship.R;
 
 public class InfoFragment extends Fragment {
-    private EditText mEdtMobile;
-    private EditText mEdtName;
+    private EditText mEdtPhoneNumber;
+    private EditText mEdtUserName;
     private EditText mEdtEmail;
-    private CheckBox mChkBox;
+    private CheckBox mChkAcceptTerm;
     private ImageView mImgNext;
 
     public InfoFragment() {
@@ -26,17 +26,17 @@ public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info, container, false);
-        mEdtMobile = view.findViewById(R.id.edtPhoneNumber);
-        mEdtName = view.findViewById(R.id.edtUserName);
+        mEdtPhoneNumber = view.findViewById(R.id.edtPhoneNumber);
+        mEdtUserName = view.findViewById(R.id.edtUserName);
         mEdtEmail = view.findViewById(R.id.edtEmail);
-        mChkBox = view.findViewById(R.id.chkAcceptTerm);
+        mChkAcceptTerm = view.findViewById(R.id.chkAcceptTerm);
         mImgNext = view.findViewById(R.id.imgNext);
 
-        mChkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mChkAcceptTerm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    if (mEdtMobile.getText().length() != 0 && mEdtName.getText().length() != 0 && mEdtEmail.getText().length() != 0) {
+                    if (mEdtPhoneNumber.getText().length() != 0 && mEdtUserName.getText().length() != 0 && mEdtEmail.getText().length() != 0) {
                         mImgNext.setSelected(true);
                     }
                 } else {

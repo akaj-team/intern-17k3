@@ -22,7 +22,7 @@ public class LoginFragment extends Fragment {
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((LoginActivity)getActivity()).replace(new InfoFragment());
+                ((LoginActivity)getActivity()).replaceFragment(new InfoFragment());
             }
         });
         return view;

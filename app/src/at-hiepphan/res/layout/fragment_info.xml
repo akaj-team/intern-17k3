@@ -24,7 +24,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="20dp"
-            android:background="@drawable/ic_flag" />
+            android:background="@drawable/ic_australia_flag" />
 
         <ImageView
             android:layout_width="10dp"

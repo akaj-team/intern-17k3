@@ -20,7 +20,7 @@
         android:id="@+id/btnLoginFacebook"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/bg_btn_login_facebook"
+        android:background="@drawable/shape_btn_login_facebook"
         android:text="@string/textview.text.log_in_with_facebook"
         android:textColor="@color/colorTestWhite"
         android:textSize="15dp"
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/bg_btn_login_phone"
+        android:background="@drawable/shape_btn_login_phone"
         android:text="@string/textview.text.log_in_with_phone_number"
         android:textColor="@color/colorTestBlue"
         android:textSize="15dp" />

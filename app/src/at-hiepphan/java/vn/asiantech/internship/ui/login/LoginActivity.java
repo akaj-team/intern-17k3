@@ -11,10 +11,10 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        replace(new LoginFragment());
+        replaceFragment(new LoginFragment());
     }
 
-    protected void replace(Fragment fragment) {
+    protected void replaceFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frMain, fragment).addToBackStack(null)
                 .commit();
