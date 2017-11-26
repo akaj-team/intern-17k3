@@ -82,7 +82,7 @@
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/txtLogin"
+            android:id="@+id/tvLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textview.text.sing_up_for_an_account"
