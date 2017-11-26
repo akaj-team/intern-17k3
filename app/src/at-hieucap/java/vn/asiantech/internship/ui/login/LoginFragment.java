@@ -17,7 +17,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.fragment_log_in, container,false);
+        View v = inflater.inflate(R.layout.fragment_log_in, container, false);
         TextView tvSignUp = v.findViewById(R.id.tvSignUp);
         tvSignUp.setOnClickListener(this);
         return v;
@@ -25,7 +25,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ((LogInActivity)getActivity()).addFragment(new FillOutFragment(), true);
+        ((LogInActivity) getActivity()).addFragment(new FillOutFragment(), true);
+        ((LogInActivity) getActivity()).updateBackButton(true);
     }
-
 }

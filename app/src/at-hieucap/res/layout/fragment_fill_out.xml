@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:button="@drawable/selector_chk_tern_service"
+            android:button="@drawable/selector_chk_term_service"
             android:scaleX="2"
             android:scaleY="2" />
 
@@ -119,6 +119,6 @@
         android:layout_below="@id/lnCheck"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/selector_img_next" />
+        android:background="@drawable/selector_event_next" />
 
 </RelativeLayout>

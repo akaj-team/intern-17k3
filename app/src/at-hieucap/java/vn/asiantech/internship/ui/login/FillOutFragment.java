@@ -60,7 +60,7 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
     }
 
     private boolean CheckSignUp(EditText mEditPhone, EditText mEdtEmail, EditText mEdtFullName, CheckBox mChkCheck) {
-        return (((mEdtPhone.getText().toString().trim().length() != 0) && (mEdtEmail.getText().toString().trim().length() != 0) && (mEdtFullName.getText().toString().trim().length() != 0)) && mChkCheck.isChecked());
+        return (((mEditPhone.getText().toString().trim().length() != 0) && (mEdtEmail.getText().toString().trim().length() != 0) && (mEdtFullName.getText().toString().trim().length() != 0)) && mChkCheck.isChecked());
     }
 
     @Override
