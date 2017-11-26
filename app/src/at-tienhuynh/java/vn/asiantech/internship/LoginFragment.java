@@ -53,15 +53,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLoginFacebook:
-                //
+                // onclick
                 Toast.makeText(getContext(), "FB", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnLoginPhone:
-                //
+                // onclick
                 Toast.makeText(getContext(), "phone", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tvSignup:
-                //
+                // onclick
                 ((LoginActivity) getActivity()).replaceFragment(SignupFragment.newInstance(), true);
                 break;
         }

@@ -66,10 +66,10 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if (mSpnCountry.getSelectedItemPosition() == 0) {
-            mEdtPhone.setText("+84");
+            mEdtPhone.setText(R.string.HeadNumPhoneVN);
         }
         if (mSpnCountry.getSelectedItemPosition() == 1) {
-            mEdtPhone.setText("+64");
+            mEdtPhone.setText(R.string.HeadNumPhoneAus);
         }
     }
 
