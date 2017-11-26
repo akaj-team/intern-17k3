@@ -15,13 +15,13 @@ public class CustomSpnPhone extends BaseAdapter {
     private Context mcontext;
     private int mflags[];
     private String[] mcountryNames;
-    private LayoutInflater mLIfinflter;
+    private LayoutInflater mLifinflter;
 
     public CustomSpnPhone(Context applicationContext, int[] mflags, String[] mcountryNames) {
         this.mcontext = applicationContext;
         this.mflags = mflags;
         this.mcountryNames = mcountryNames;
-        mLIfinflter = (LayoutInflater.from(applicationContext));
+        mLifinflter = (LayoutInflater.from(applicationContext));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CustomSpnPhone extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = mLIfinflter.inflate(R.layout.item_spn_phonesignup, null);
+        view = mLifinflter.inflate(R.layout.item_spn_phonesignup, null);
         ImageView icon = (ImageView) view.findViewById(R.id.imageView);
         icon.setImageResource(mflags[i]);
         return view;
