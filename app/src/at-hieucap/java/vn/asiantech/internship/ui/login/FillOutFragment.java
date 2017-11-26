@@ -16,7 +16,7 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 
 public class FillOutFragment extends Fragment implements TextWatcher, View.OnClickListener {
-    private CheckBox mChkCheck;
+    private CheckBox mChkTermAccept;
     private EditText mEdtEmail;
     private EditText mEdtFullName;
     private ImageView mImgNext;
@@ -31,7 +31,7 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
         mImgNext = v.findViewById(R.id.imgNext);
 
         // Checkbox
-        mChkCheck = v.findViewById(R.id.chkSignUp);
+        mChkTermAccept = v.findViewById(R.id.chkSignUp);
 
         // Email
         mEdtEmail = v.findViewById(R.id.edtEmail);
@@ -49,13 +49,13 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
         TextView tvCheck = v.findViewById(R.id.tvLinkSp);
         String text = "I have read and agree with the <font color='#34A4F1'><br>terms and conditions</font><font color='black'>.</font>";
         tvCheck.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
-        mChkCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mChkTermAccept.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mChkCheck.setSelected(!mChkCheck.isSelected());
+                mChkTermAccept.setSelected(!mChkTermAccept.isSelected());
             }
         });
-        mChkCheck.setOnClickListener(this);
+        mChkTermAccept.setOnClickListener(this);
         return v;
     }
 
@@ -65,21 +65,21 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
+        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermAccept));
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
+        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermAccept));
     }
 
     @Override
     public void afterTextChanged(Editable s) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
+        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermAccept));
     }
 
     @Override
     public void onClick(View v) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkCheck));
+        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermAccept));
     }
 }
