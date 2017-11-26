@@ -19,7 +19,9 @@ import vn.asiantech.internship.R;
 public class SingUpFragment extends Fragment implements View.OnClickListener, TextWatcher {
     private CheckBox mChkTermService;
     private ImageView mImgNext;
-    private EditText mEdtPhone, mEdtEmail, mEdtFullName;
+    private EditText mEdtPhone;
+    private EditText mEdtEmail;
+    private EditText mEdtFullName;
 
     @Nullable
     @Override
@@ -32,11 +34,11 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
         mEdtEmail = v.findViewById(R.id.edtEmail);
         mEdtFullName = v.findViewById(R.id.edtFullName);
         mEdtPhone = v.findViewById(R.id.edtPhone);
-        //handle edit text listener
+        // Handle edit text listener
         mEdtEmail.addTextChangedListener(this);
         mEdtFullName.addTextChangedListener(this);
         mEdtFullName.addTextChangedListener(this);
-        //Set text with two color
+        // Set text with two color
         TextView tvTermService = v.findViewById(R.id.tvTermService);
         String text = "I have read and agree with the <font color='#00bfff'> <br/> term and conditions</font>. ";
         tvTermService.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
@@ -48,7 +50,7 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
         mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermService));
     }
 
-    protected boolean checkSignUp(TextView tv1, TextView tv2, TextView tv3, CheckBox chk) {
+    private boolean checkSignUp(TextView tv1, TextView tv2, TextView tv3, CheckBox chk) {
         return (!(tv1.getText().toString().isEmpty()) && !(tv2.getText().toString().isEmpty()) && !(tv3.getText().toString().isEmpty()) && chk.isChecked());
     }
 

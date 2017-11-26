@@ -4,5 +4,4 @@
     <solid android:color="@color/blue_facebook" />
     <stroke android:width="0.5dp" />
     <corners android:radius="5dp" />
-
 </shape>

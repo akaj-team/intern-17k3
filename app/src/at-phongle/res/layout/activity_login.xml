@@ -43,7 +43,7 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:id="@+id/frlContainer"
+        android:id="@+id/frContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/rlContainer" />

@@ -18,7 +18,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mImgBack = findViewById(R.id.imgBack);
         addFragment(LoginFragment.getInstance(), false);
-
     }
 
     protected void addFragment(Fragment fragment, boolean addBackStack) {
@@ -29,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frlContainer, fragment);
+        fragmentTransaction.replace(R.id.frContainer, fragment);
         if (addBackStack) {
             fragmentTransaction.addToBackStack(fragment.getTag());
         }

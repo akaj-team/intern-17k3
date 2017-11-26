@@ -20,7 +20,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-
+        // Set listener for tvSingUp
         TextView tvSignUp = view.findViewById(R.id.tvSingUp);
         tvSignUp.setOnClickListener(this);
         return view;
