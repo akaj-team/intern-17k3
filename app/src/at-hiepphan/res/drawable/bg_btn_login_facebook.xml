@@ -7,5 +7,5 @@
         android:color="@color/colorTestBlue" />
     <gradient
         android:endColor="@color/colorPrimary"
-        android:startColor="@color/colorPrimary"></gradient>
+        android:startColor="@color/colorPrimary"/>
 </shape>
