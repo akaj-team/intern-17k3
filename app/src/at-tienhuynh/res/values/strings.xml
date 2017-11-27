@@ -12,4 +12,7 @@
     <string name="tvOrFrLogin">or</string>
     <string name="tvDotSignupFragment">.</string>
     <string name="tvSignup">New to urbi? Sign up for an account</string>
+    <string name="SelectEx">Select Example</string>
+    <string name="SelectExLogin">Login Screen</string>
+    <string name="SelectExCaculator">Caculator</string>
 </resources>

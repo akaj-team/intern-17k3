@@ -10,14 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="vn.asiantech.internship.LoginActivity"
-            android:theme="@style/NoActionBarTheme">
+            android:name=".BeginActivity"
+            android:label="@string/SelectEx"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".CaculatorActivity"></activity>
     </application>
 
 </manifest>
