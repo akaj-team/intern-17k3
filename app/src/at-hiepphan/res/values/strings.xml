@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">hiepphan-17k3</string>
+    <string name="textview.text.addition">+</string>
+    <string name="textview.text.subtraction">-</string>
+    <string name="textview.text.multiplication">*</string>
+    <string name="textview.text.Division">/</string>
 </resources>

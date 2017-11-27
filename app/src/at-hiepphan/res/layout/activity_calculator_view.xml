@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context="vn.asiantech.internship.CalculatorView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <EditText
+            android:id="@+id/edtFirstNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/shape_border"/>
+
+        <TextView
+            android:id="@+id/tvOperator"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="0.3"
+            android:textColor="@color/colorBlack"/>
+
+        <EditText
+            android:id="@+id/edtSecondNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/shape_border" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TableRow>
+            <Button
+                android:id="@+id/btnAddition"
+                android:layout_height="wrap_content"
+                android:text="@string/textview.text.addition"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnSubtraction"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/textview.text.subtraction" />
+
+            <Button
+                android:id="@+id/btnMultiplication"
+                android:layout_height="wrap_content"
+                android:text="@string/textview.text.multiplication"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btnDivision"
+                android:layout_height="wrap_content"
+                android:text="@string/textview.text.Division"
+                android:layout_weight="1" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+</LinearLayout>
