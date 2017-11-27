@@ -13,20 +13,20 @@ import android.widget.ImageView;
 
 public class CustomSpnPhone extends BaseAdapter {
     private Context mcontext;
-    private int mflags[];
-    private String[] mcountryNames;
+    private int mFlags[];
+    private String[] mCountryNames;
     private LayoutInflater mLifinflter;
 
-    public CustomSpnPhone(Context applicationContext, int[] mflags, String[] mcountryNames) {
-        this.mcontext = applicationContext;
-        this.mflags = mflags;
-        this.mcountryNames = mcountryNames;
-        mLifinflter = (LayoutInflater.from(applicationContext));
+    public CustomSpnPhone(Context context, int[] flags, String[] countrynames) {
+        this.mcontext = context;
+        this.mFlags = flags;
+        this.mCountryNames = countrynames;
+        mLifinflter = (LayoutInflater.from(context));
     }
 
     @Override
     public int getCount() {
-        return mflags.length;
+        return mFlags.length;
     }
 
     @Override
@@ -42,8 +42,8 @@ public class CustomSpnPhone extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = mLifinflter.inflate(R.layout.item_spn_phonesignup, null);
-        ImageView icon = (ImageView) view.findViewById(R.id.imageView);
-        icon.setImageResource(mflags[i]);
+        ImageView icon = (ImageView) view.findViewById(R.id.imgNext);
+        icon.setImageResource(mFlags[i]);
         return view;
     }
 }

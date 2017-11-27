@@ -11,4 +11,6 @@
     <string name="tv_term_link">terms and conditions</string>
     <string name="HeadNumPhoneVN">+84</string>
     <string name="HeadNumPhoneAus">+64</string>
+    <string name="tvOrFrLogin">or</string>
+    <string name="tvDotSignupFragment">.</string>
 </resources>

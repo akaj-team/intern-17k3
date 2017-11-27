@@ -1,6 +1,5 @@
 package vn.asiantech.internship;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,7 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,11 +21,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         replaceFragment(LoginFragment.newInstance(), false);
     }
 
-    protected void replaceFragment(Fragment fragment, boolean isadd) {
+    protected void replaceFragment(Fragment fragment, boolean isAdd) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.flLogin, fragment);
-        if (isadd) {
+        fragmentTransaction.replace(R.id.frLogin, fragment);
+        if (isAdd) {
             fragmentTransaction.addToBackStack(fragment.getClass().getName());
         }
         fragmentTransaction.commit();

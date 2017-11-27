@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
     private View mView;
-    private Button mBtnLoginFaceBook, mBtnLoginPhone;
+    private Button mBtnLoginFaceBook;
+    private Button mBtnLoginPhone;
     private TextView mTvSignup;
 
     public static LoginFragment newInstance() {
@@ -23,10 +24,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         LoginFragment fragment = new LoginFragment();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public LoginFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -42,7 +39,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         mBtnLoginFaceBook = mView.findViewById(R.id.btnLoginFacebook);
         mBtnLoginPhone = mView.findViewById(R.id.btnLoginPhone);
         mTvSignup = mView.findViewById(R.id.tvSignup);
-        // onclick btn
+        // Init OnClickListener
         mBtnLoginFaceBook.setOnClickListener(this);
         mBtnLoginPhone.setOnClickListener(this);
         mTvSignup.setOnClickListener(this);
@@ -53,15 +50,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLoginFacebook:
-                // onclick
                 Toast.makeText(getContext(), "FB", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnLoginPhone:
-                // onclick
                 Toast.makeText(getContext(), "phone", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tvSignup:
-                // onclick
                 ((LoginActivity) getActivity()).replaceFragment(SignupFragment.newInstance(), true);
                 break;
         }

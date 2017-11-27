@@ -1,107 +1,101 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tvTitleSignup"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <TextView
+        <Spinner
+            android:id="@+id/spnCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/edtPhoneNum"
+            style="@style/EditTextSiginUp"
+            android:inputType="phone" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtFullName"
+        style="@style/EditTextSiginUp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        style="@style/EditTextSiginUp"
+        android:inputType="textEmailAddress" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/chkAgree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/tvTitleSignup"
-            android:textColor="@color/colorBlack"
-            android:textSize="15dp"
-            android:textStyle="bold" />
+            android:layout_margin="15dp"
+            android:button="@drawable/bg_btn_agree"
+            android:scaleX="2"
+            android:scaleY="2" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/spnCountry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:id="@+id/edtPhoneNum"
-                style="@style/EditTextSiginUp"
-                android:inputType="number" />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/edtFullName"
-            style="@style/EditTextSiginUp"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/edtEmail"
-            style="@style/EditTextSiginUp"
-            android:inputType="textEmailAddress" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <CheckBox
-                android:id="@+id/chkCheck"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:button="@drawable/bg_btn_agree"
-                android:scaleX="2"
-                android:scaleY="2" />
+                android:text="@string/tv_term_cofilm"
+                android:textColor="@color/colorBlack" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_term_cofilm"
-                    android:textColor="@color/colorBlack" />
+                    android:text="@string/tv_term_link"
+                    android:textColor="@color/colorFB" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_term_link"
-                        android:textColor="@color/colorFB" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="."
-                        android:textColor="@color/colorBlack" />
-
-                </LinearLayout>
+                    android:text="@string/tvDotSignupFragment"
+                    android:textColor="@color/colorBlack" />
             </LinearLayout>
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imgNext"
-            android:background="@drawable/bg_btn_next"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"/>
     </LinearLayout>
-</FrameLayout>
+
+    <ImageView
+        android:id="@+id/imgNext"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_btn_next" />
+</LinearLayout>
 

@@ -24,7 +24,9 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
     private int mFlags[] = {R.drawable.ic_vietnam_flag, R.drawable.ic_ustrailia_flag};
     private Spinner mSpnCountry;
     private View mView;
-    private EditText mEdtPhone, mEdtName, mEdtMail;
+    private EditText mEdtPhone;
+    private EditText mEdtName;
+    private EditText mEdtMail;
     private ImageView mImgNext;
     private CheckBox chkAgree;
 
@@ -35,27 +37,23 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
         return fragment;
     }
 
-    public SignupFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_signup, container, false);
         // Inflate the layout for this fragment
-        inits();
+        initViewAndListener();
         validate();
         return mView;
     }
 
-    private void inits() {
+    private void initViewAndListener() {
         mEdtPhone = mView.findViewById(R.id.edtPhoneNum);
         mEdtName = mView.findViewById(R.id.edtFullName);
         mEdtMail = mView.findViewById(R.id.edtEmail);
         mSpnCountry = mView.findViewById(R.id.spnCountry);
         mImgNext = mView.findViewById(R.id.imgNext);
-        chkAgree = mView.findViewById(R.id.chkCheck);
+        chkAgree = mView.findViewById(R.id.chkAgree);
         CustomSpnPhone customSpnPhone = new CustomSpnPhone(getContext(), mFlags, mCountryNames);
         mSpnCountry.setAdapter(customSpnPhone);
         mSpnCountry.setOnItemSelectedListener(this);
@@ -73,6 +71,7 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
         }
     }
 
+    // No-op
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
@@ -82,16 +81,15 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
         int id = compoundButton.getId();
         if (b) {
             switch (id) {
-                case R.id.chkCheck:
+                case R.id.chkAgree:
                     if (!TextUtils.isEmpty(mEdtPhone.getText()) && !TextUtils.isEmpty(mEdtName.getText()) && !TextUtils.isEmpty(mEdtMail.getText())) {
                         mImgNext.setSelected(true);
                     }
                     break;
-
             }
         } else {
             switch (id) {
-                case R.id.chkCheck:
+                case R.id.chkAgree:
                     mImgNext.setSelected(false);
                     break;
             }
@@ -100,30 +98,34 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
 
     private void validate() {
         mEdtPhone.addTextChangedListener(new TextWatcher() {
+            // No-op
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
+            // No-op
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
+            // No-op
             @Override
             public void afterTextChanged(Editable editable) {
                 checkemtytext();
             }
         });
         mEdtPhone.addTextChangedListener(new TextWatcher() {
+            // No-op
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
+            // No-op
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
+            // No-op
             @Override
             public void afterTextChanged(Editable editable) {
                 checkemtytext();
@@ -134,10 +136,12 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
+            // No-op
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
+            // No-op
             @Override
             public void afterTextChanged(Editable editable) {
                 checkemtytext();
