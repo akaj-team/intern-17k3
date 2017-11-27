@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_bottom_line"
             android:hint="@string/edittext.hint.enter_mobile_number"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:textSize="16dp"/>
     </LinearLayout>
 
     <EditText
@@ -49,7 +50,8 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/shape_bottom_line"
-        android:hint="@string/edittext.hint.full_name" />
+        android:hint="@string/edittext.hint.full_name"
+        android:textSize="16dp"/>
 
     <EditText
         android:id="@+id/edtEmail"
@@ -58,7 +60,8 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/shape_bottom_line"
         android:hint="@string/edittext.hint.email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textSize="16dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
