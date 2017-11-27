@@ -34,7 +34,7 @@
             android:src="@drawable/ic_drop_down" />
 
         <EditText
-            android:id="@+id/edtPhoneNumber"
+            android:id="@+id/edtEnterPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="@string/btn.hint.enter_number"
