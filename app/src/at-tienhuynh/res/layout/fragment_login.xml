@@ -1,96 +1,91 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:layout_marginTop="10dp"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/tvWelcome"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnLoginFacebook"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/tvWelcome"
-            android:textColor="@color/colorBlack"
-            android:textSize="20dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_btn_loginfb"
+            android:text="@string/btnLoginFb"
+            android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnLoginFacebook"
-                android:layout_width="match_parent"
+            <View
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/colorGray"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="@drawable/bg_btn_loginfb"
-                android:text="@string/btnLoginFb"
-                android:textColor="@color/colorWhite"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="150dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center"
-                    android:background="@color/colorGray"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:text="@string/tvOrFrLogin"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20dp" />
-
-                <View
-                    android:layout_width="150dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center"
-                    android:background="@color/colorGray"
-                    android:gravity="center" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btnLoginPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/bg_btn_login"
-                android:text="@string/btnLoginPhone"
-                android:textColor="@color/colorLink"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:text="@string/tvOrFrLogin"
+                android:textColor="@color/colorBlack"
+                android:textSize="20dp" />
 
-                <TextView
-                    android:id="@+id/tvSignup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/tvSignup"
-                    android:textColor="@color/colorBlack" />
-            </LinearLayout>
+            <View
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/colorGray"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLoginPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_btn_login"
+            android:text="@string/btnLoginPhone"
+            android:textColor="@color/colorLink"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSignup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/tvSignup"
+                android:textColor="@color/colorBlack" />
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>
 

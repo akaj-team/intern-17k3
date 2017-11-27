@@ -37,7 +37,7 @@ public class CustomSpnPhone extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = mLayoutIfinflter.inflate(R.layout.item_spn_phonesignup, null);
+        view = mLayoutIfinflter.inflate(R.layout.item_spn_phonesignup,null);
         ImageView icon = view.findViewById(R.id.imgNext);
         icon.setImageResource(mFlags[i]);
         return view;
