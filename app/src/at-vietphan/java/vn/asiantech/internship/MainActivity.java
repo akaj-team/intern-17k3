@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+git
     protected void replaceFragment(Fragment fragment, boolean isAdd) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public ImageView getmImgBack() {
-        return mImgBack;
+    public void setVisibilityBackImageView(int visible) {
+         mImgBack.setVisibility(visible);
     }
 }

@@ -41,6 +41,12 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).setVisibilityBackImageView(View.VISIBLE);
+    }
+
     private void checkAllInputData() {
         checkInputEdt(mEdtPhone);
         checkInputEdt(mEdtFullName);

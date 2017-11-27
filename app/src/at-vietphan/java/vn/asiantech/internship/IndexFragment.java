@@ -29,12 +29,10 @@ public class IndexFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_index, container, false);
         Button btnLogin = view.findViewById(R.id.btnLogin);
-        ((MainActivity) getActivity()).getmImgBack().setVisibility(View.INVISIBLE);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).replaceFragment(LoginFragment.newInstance(), true);
-                ((MainActivity) getActivity()).getmImgBack().setVisibility(View.VISIBLE);
             }
         });
         TextView tvMemoLogin = view.findViewById(R.id.tvMemoLogin);
@@ -43,7 +41,6 @@ public class IndexFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).replaceFragment(new LoginFragment(), true);
-                ((MainActivity) getActivity()).getmImgBack().setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -59,5 +56,11 @@ public class IndexFragment extends Fragment {
         tvMemoLogin.setText(spannableString);
         tvMemoLogin.setMovementMethod(LinkMovementMethod.getInstance());
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).setVisibilityBackImageView(View.INVISIBLE);
     }
 }
