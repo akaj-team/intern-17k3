@@ -47,20 +47,24 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.btnSum:
                 getCaculator(mBtnSum);
-                mCaculation.Sum();
+                mCaculation.Sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 break;
             case R.id.btnSubtraction:
                 getCaculator(mBtnSubtraction);
+                mCaculation.Subtraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 break;
             case R.id.btnMultiplication:
                 getCaculator(mBtnMultiplication);
+                mCaculation.Multiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 break;
             case R.id.btnDivision:
                 getCaculator(mBtnDivision);
+                mCaculation.Division(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 break;
         }
     }
-    private void getCaculator(Button btnCaculator){
+
+    private void getCaculator(Button btnCaculator) {
         mTvCaculation.setText(btnCaculator.getText().toString());
     }
 }
