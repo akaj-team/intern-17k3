@@ -36,7 +36,7 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
         mEdtPhone = v.findViewById(R.id.edtPhone);
         // Handle edit text listener
         mEdtEmail.addTextChangedListener(this);
-        mEdtFullName.addTextChangedListener(this);
+        mEdtPhone.addTextChangedListener(this);
         mEdtFullName.addTextChangedListener(this);
         // Set text with two color
         TextView tvTermService = v.findViewById(R.id.tvTermService);
