@@ -56,7 +56,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 ds.bgColor = Color.WHITE;
                 ds.setARGB(255, 255, 255, 255);
                 ds.setUnderlineText(false);
-                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorFB));
+                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorLink));
             }
         };
         spannableString.setSpan(clickableSpan, 13, mTvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

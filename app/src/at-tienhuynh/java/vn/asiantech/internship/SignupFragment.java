@@ -8,20 +8,16 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 
 /**
  * Created at 2017
  * Created by jackty on 23/11/2017.
  */
-public class SignupFragment extends Fragment implements AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
-    private int mFlags[] = {R.drawable.ic_vietnam_flag, R.drawable.ic_ustrailia_flag};
-    private Spinner mSpnCountry;
+public class SignupFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
     private View mView;
     private EditText mEdtPhone;
     private EditText mEdtName;
@@ -50,29 +46,11 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
         mEdtPhone = mView.findViewById(R.id.edtPhoneNum);
         mEdtName = mView.findViewById(R.id.edtFullName);
         mEdtMail = mView.findViewById(R.id.edtEmail);
-        mSpnCountry = mView.findViewById(R.id.spnCountry);
+//        mSpnCountry = mView.findViewById(R.id.spnCountry);
         mImgNext = mView.findViewById(R.id.imgNext);
         chkAgree = mView.findViewById(R.id.chkAgree);
-        CustomSpnPhone customSpnPhone = new CustomSpnPhone(getContext(), mFlags);
-        mSpnCountry.setAdapter(customSpnPhone);
-        mSpnCountry.setOnItemSelectedListener(this);
         chkAgree.setOnCheckedChangeListener(this);
         ((LoginActivity) getActivity()).getImgBack().setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if (mSpnCountry.getSelectedItemPosition() == 0) {
-            mEdtPhone.setText(R.string.HeadNumPhoneVN);
-        }
-        if (mSpnCountry.getSelectedItemPosition() == 1) {
-            mEdtPhone.setText(R.string.HeadNumPhoneAus);
-        }
-    }
-
-    // No-op
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
     @Override

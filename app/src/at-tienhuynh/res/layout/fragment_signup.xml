@@ -22,25 +22,34 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spnCountry"
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_vietnam_flag" />
+
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_dropdown" />
 
         <EditText
             android:id="@+id/edtPhoneNum"
             style="@style/EditTextSiginUp"
+            android:hint="@string/hintedtPhoneNumber"
             android:inputType="phone" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/edtFullName"
         style="@style/EditTextSiginUp"
+        android:hint="@string/hintFullName"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/edtEmail"
         style="@style/EditTextSiginUp"
+        android:hint="@string/hintEmail"
         android:inputType="textEmailAddress" />
 
     <LinearLayout
@@ -55,8 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:button="@drawable/bg_btn_agree"
-            android:scaleX="2"
-            android:scaleY="2" />
+            android:scaleX="2.5"
+            android:scaleY="2.5" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -79,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_term_link"
-                    android:textColor="@color/colorFB" />
+                    android:textColor="@color/colorLink" />
 
                 <TextView
                     android:layout_width="wrap_content"

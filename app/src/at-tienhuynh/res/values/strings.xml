@@ -15,4 +15,7 @@
     <string name="SelectEx">Select Example</string>
     <string name="SelectExLogin">Login Screen</string>
     <string name="SelectExCaculator">Caculator</string>
+    <string name="hintedtPhoneNumber">Enter mobile number</string>
+    <string name="hintFullName">Full name</string>
+    <string name="hintEmail">Email</string>
 </resources>

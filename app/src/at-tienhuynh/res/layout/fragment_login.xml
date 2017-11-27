@@ -29,6 +29,7 @@
             android:background="@drawable/bg_btn_loginfb"
             android:text="@string/btnLoginFb"
             android:textColor="@color/colorWhite"
+            android:textSize="17dp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -70,6 +71,7 @@
             android:background="@drawable/bg_btn_login"
             android:text="@string/btnLoginPhone"
             android:textColor="@color/colorLink"
+            android:textSize="17dp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -84,7 +86,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="@string/tvSignup"
-                android:textColor="@color/colorBlack" />
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp"
+                android:layout_marginTop="3dp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
