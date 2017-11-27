@@ -10,9 +10,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="@string/textview.memo_login"
+        android:text="@string/textview.memo_info_enter"
         android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         android:textStyle="bold" />
@@ -24,8 +24,8 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
             android:src="@drawable/ic_austra_flag" />
 
         <ImageView
@@ -36,58 +36,51 @@
         <EditText
             android:id="@+id/edtEnterPhoneNumber"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:hint="@string/btn.hint.enter_number"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:background="@drawable/layer_edt"/>
     </LinearLayout>
 
     <EditText
         android:id="@+id/edtFullName"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:hint="@string/btn.hint.full_name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:background="@drawable/layer_edt"/>
 
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:hint="@string/btn.hint.email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:background="@drawable/layer_edt"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
 
         <CheckBox
             android:id="@+id/chkTermAccept"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:button="@drawable/selecter_chk_term_accept" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:button="@drawable/selecter_chk_term_accept"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
 
             <TextView
+                android:id="@+id/tvReadAndAgreeTerm"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textview.memo_term"
+                android:layout_marginRight="25dp"
+                android:layout_height="40dp"
+                android:text="@string/textview_memo_term"
                 android:textColor="@android:color/background_dark"
                 android:textSize="13dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="@string/textview.memo_term2"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="13dp" />
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -96,7 +89,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/selecter_next" />
 
 </LinearLayout>

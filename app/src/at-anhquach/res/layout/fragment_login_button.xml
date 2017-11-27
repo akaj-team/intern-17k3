@@ -45,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textview.or"
+            android:textColor="@color/colorTextBlack"
             android:textSize="15dp" />
 
         <TextView
@@ -74,19 +75,11 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tvMemoLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/textview.memo_login"
-            android:textColor="@color/colorTextBlack" />
-
-        <TextView
-            android:id="@+id/tvSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textview.memo_login2"
-            android:textColor="@color/colorTextBlue"
-            android:textStyle="bold" />
-
+            android:text="@string/textview_memo_login"
+            android:textColor="@color/colorTextBlack"
+            android:textColorHighlight="@android:color/transparent" />
     </LinearLayout>
-
 </LinearLayout>

@@ -1,10 +1,18 @@
 package vn.asiantech.internship.ui.login;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +20,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
@@ -33,6 +42,26 @@ public class InfoEnterFragment extends Fragment {
         mEdtEnterPhoneNumber = view.findViewById(R.id.edtEnterPhoneNumber);
         mChkTermAccept = view.findViewById(R.id.chkTermAccept);
         ((LoginActivity) getActivity()).getImgBack().setVisibility(View.VISIBLE);
+        TextView tvReadAgreeTerm = view.findViewById(R.id.tvReadAndAgreeTerm);
+        SpannableString spannableString = new SpannableString(tvReadAgreeTerm.getText());
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.bgColor = Color.WHITE;
+                ds.setARGB(255, 255, 255, 255);
+                ds.setUnderlineText(false);
+                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorTextBlue));
+            }
+        };
+        spannableString.setSpan(clickableSpan, 30, tvReadAgreeTerm.getText().length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tvReadAgreeTerm.setText(spannableString);
+        tvReadAgreeTerm.setMovementMethod(LinkMovementMethod.getInstance());
         mEdtEmail.addTextChangedListener(new TextWatcher() {
 
             @Override
