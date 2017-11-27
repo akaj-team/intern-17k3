@@ -13,14 +13,14 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 
 public class LoginButtonFragment extends Fragment {
-    private TextView mtvSignup;
+    private TextView mTvSignup;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login_button, container, false);
-        mtvSignup = view.findViewById(R.id.tvSignUp);
-        mtvSignup.setOnClickListener(new View.OnClickListener() {
+        mTvSignup = view.findViewById(R.id.tvSignUp);
+        mTvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((LoginActivity) getActivity()).replace(new InfoEnterFragment(), true);

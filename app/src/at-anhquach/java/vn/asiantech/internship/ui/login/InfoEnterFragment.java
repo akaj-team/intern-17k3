@@ -16,24 +16,24 @@ import android.widget.ImageView;
 import vn.asiantech.internship.R;
 
 public class InfoEnterFragment extends Fragment {
-    private ImageView mimgNext;
-    private EditText medtNumber;
-    private EditText medtEmail;
-    private EditText medtFullName;
-    private CheckBox mchkTerm;
+    private ImageView mImgNext;
+    private EditText mEdtNumber;
+    private EditText mEdtEmail;
+    private EditText mEdtFullName;
+    private CheckBox mChkTerm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info_enter, container, false);
 
-        mimgNext = view.findViewById(R.id.imgNext);
-        medtEmail = view.findViewById(R.id.edtEmail);
-        medtFullName = view.findViewById(R.id.edtFullName);
-        medtNumber = view.findViewById(R.id.edtEnterPhoneNumber);
-        mchkTerm = view.findViewById(R.id.chkTermAccept);
+        mImgNext = view.findViewById(R.id.imgNext);
+        mEdtEmail = view.findViewById(R.id.edtEmail);
+        mEdtFullName = view.findViewById(R.id.edtFullName);
+        mEdtNumber = view.findViewById(R.id.edtEnterPhoneNumber);
+        mChkTerm = view.findViewById(R.id.chkTermAccept);
 
-        medtEmail.addTextChangedListener(new TextWatcher() {
+        mEdtEmail.addTextChangedListener(new TextWatcher() {
             //No-op
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -51,26 +51,7 @@ public class InfoEnterFragment extends Fragment {
             }
         });
 
-        medtNumber.addTextChangedListener(new TextWatcher() {
-            //No-op
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-            //No-op
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-                checkInputInfo();
-            }
-        });
-
-        medtFullName.addTextChangedListener(new TextWatcher() {
+        mEdtNumber.addTextChangedListener(new TextWatcher() {
             //No-op
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -89,16 +70,35 @@ public class InfoEnterFragment extends Fragment {
             }
         });
 
-        mchkTerm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mEdtFullName.addTextChangedListener(new TextWatcher() {
+            //No-op
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            //No-op
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                checkInputInfo();
+            }
+        });
+
+        mChkTerm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    if (!TextUtils.isEmpty(medtNumber.getText()) && !TextUtils.isEmpty(medtFullName.getText()) &&
-                            !TextUtils.isEmpty(medtEmail.getText())) {
-                        mimgNext.setSelected(true);
+                    if (!TextUtils.isEmpty(mEdtNumber.getText()) && !TextUtils.isEmpty(mEdtFullName.getText()) &&
+                            !TextUtils.isEmpty(mEdtEmail.getText())) {
+                        mImgNext.setSelected(true);
                     }
                 } else {
-                    mimgNext.setSelected(false);
+                    mImgNext.setSelected(false);
                 }
             }
         });
@@ -107,11 +107,11 @@ public class InfoEnterFragment extends Fragment {
     }
 
     private void checkInputInfo() {
-        if (!TextUtils.isEmpty(medtNumber.getText()) && !TextUtils.isEmpty(medtFullName.getText()) &&
-                !TextUtils.isEmpty(medtEmail.getText()) && mchkTerm.isChecked()) {
-            mimgNext.setSelected(true);
+        if (!TextUtils.isEmpty(mEdtNumber.getText()) && !TextUtils.isEmpty(mEdtFullName.getText()) &&
+                !TextUtils.isEmpty(mEdtEmail.getText()) && mChkTerm.isChecked()) {
+            mImgNext.setSelected(true);
         } else {
-            mimgNext.setSelected(false);
+            mImgNext.setSelected(false);
         }
     }
 
