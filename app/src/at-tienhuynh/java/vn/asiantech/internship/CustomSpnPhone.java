@@ -6,22 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-
 /**
+ * Created at 2017
  * Created by jackty on 23/11/2017.
  */
-
 public class CustomSpnPhone extends BaseAdapter {
-    private Context mcontext;
     private int mFlags[];
-    private String[] mCountryNames;
-    private LayoutInflater mLifinflter;
+    private LayoutInflater mLayoutIfinflter;
 
-    public CustomSpnPhone(Context context, int[] flags, String[] countrynames) {
-        this.mcontext = context;
+    public CustomSpnPhone(Context context, int[] flags) {
         this.mFlags = flags;
-        this.mCountryNames = countrynames;
-        mLifinflter = (LayoutInflater.from(context));
+        mLayoutIfinflter = (LayoutInflater.from(context));
     }
 
     @Override
@@ -41,8 +36,8 @@ public class CustomSpnPhone extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = mLifinflter.inflate(R.layout.item_spn_phonesignup, null);
-        ImageView icon = (ImageView) view.findViewById(R.id.imgNext);
+        view = mLayoutIfinflter.inflate(R.layout.item_spn_phonesignup, null);
+        ImageView icon =  view.findViewById(R.id.imgNext);
         icon.setImageResource(mFlags[i]);
         return view;
     }

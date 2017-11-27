@@ -10,14 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
+ * Created at 2017
  * Created by jackty on 23/11/2017.
  */
-
 public class LoginFragment extends Fragment implements View.OnClickListener {
     private View mView;
-    private Button mBtnLoginFaceBook;
-    private Button mBtnLoginPhone;
-    private TextView mTvSignup;
 
     public static LoginFragment newInstance() {
         Bundle args = new Bundle();
@@ -36,13 +33,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     private void init() {
-        mBtnLoginFaceBook = mView.findViewById(R.id.btnLoginFacebook);
-        mBtnLoginPhone = mView.findViewById(R.id.btnLoginPhone);
-        mTvSignup = mView.findViewById(R.id.tvSignup);
+        Button mBtnLoginFaceBook = mView.findViewById(R.id.btnLoginFacebook);
+        Button mBtnLoginPhone = mView.findViewById(R.id.btnLoginPhone);
+        TextView mTvSignUp = mView.findViewById(R.id.tvSignup);
         // Init OnClickListener
         mBtnLoginFaceBook.setOnClickListener(this);
         mBtnLoginPhone.setOnClickListener(this);
-        mTvSignup.setOnClickListener(this);
+        mTvSignUp.setOnClickListener(this);
         ((LoginActivity) getActivity()).getImgBack().setVisibility(View.INVISIBLE);
     }
 

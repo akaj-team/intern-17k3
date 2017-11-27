@@ -14,11 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 /**
+ * Created at 2017
  * Created by jackty on 23/11/2017.
  */
-
 public class SignupFragment extends Fragment implements AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
-    private String[] mCountryNames = {"VietNam", "Australia"};
     private int mFlags[] = {R.drawable.ic_vietnam_flag, R.drawable.ic_ustrailia_flag};
     private Spinner mSpnCountry;
     private View mView;
@@ -52,7 +51,7 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
         mSpnCountry = mView.findViewById(R.id.spnCountry);
         mImgNext = mView.findViewById(R.id.imgNext);
         chkAgree = mView.findViewById(R.id.chkAgree);
-        CustomSpnPhone customSpnPhone = new CustomSpnPhone(getContext(), mFlags, mCountryNames);
+        CustomSpnPhone customSpnPhone = new CustomSpnPhone(getContext(), mFlags);
         mSpnCountry.setAdapter(customSpnPhone);
         mSpnCountry.setOnItemSelectedListener(this);
         chkAgree.setOnCheckedChangeListener(this);
