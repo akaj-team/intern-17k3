@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
     private ImageView mImgBack;
 
     @Override
@@ -31,7 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fragmentTransaction.commit();
     }
 
-    public ImageView getImgBack() {
+    protected ImageView getImgBack() {
         return mImgBack;
     }
 

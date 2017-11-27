@@ -46,7 +46,6 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         mEdtPhone = mView.findViewById(R.id.edtPhoneNum);
         mEdtName = mView.findViewById(R.id.edtFullName);
         mEdtMail = mView.findViewById(R.id.edtEmail);
-//        mSpnCountry = mView.findViewById(R.id.spnCountry);
         mImgNext = mView.findViewById(R.id.imgNext);
         chkAgree = mView.findViewById(R.id.chkAgree);
         chkAgree.setOnCheckedChangeListener(this);
@@ -73,54 +72,46 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         }
     }
 
+    //no-op
     private void validate() {
         mEdtPhone.addTextChangedListener(new TextWatcher() {
             @Override
-            // No-op
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
             @Override
-            // No-op
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
             @Override
-            // No-op
             public void afterTextChanged(Editable editable) {
                 checkemtytext();
             }
         });
         mEdtPhone.addTextChangedListener(new TextWatcher() {
             @Override
-            // No-op
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
             @Override
-            // No-op
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
             @Override
-            // No-op
             public void afterTextChanged(Editable editable) {
                 checkemtytext();
             }
         });
         mEdtMail.addTextChangedListener(new TextWatcher() {
             @Override
-            // No-op
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
             @Override
-            // No-op
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
             @Override
-            // No-op
             public void afterTextChanged(Editable editable) {
                 checkemtytext();
             }
