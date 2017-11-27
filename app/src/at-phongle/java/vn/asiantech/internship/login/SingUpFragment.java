@@ -29,7 +29,6 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_signup, container, false);
         mChkTermService = v.findViewById(R.id.chkTermServices);
-        mChkTermService.setOnClickListener(this);
         mImgNext = v.findViewById(R.id.imgNext);
         mEdtEmail = v.findViewById(R.id.edtEmail);
         mEdtFullName = v.findViewById(R.id.edtFullName);
@@ -38,6 +37,7 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
         mEdtEmail.addTextChangedListener(this);
         mEdtPhone.addTextChangedListener(this);
         mEdtFullName.addTextChangedListener(this);
+        mChkTermService.setOnClickListener(this);
         // Set text with two color
         TextView tvTermService = v.findViewById(R.id.tvTermService);
         String text = "I have read and agree with the <font color='#00bfff'> <br/> term and conditions</font>. ";
