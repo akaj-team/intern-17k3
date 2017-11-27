@@ -2,104 +2,97 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tvTitle"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_margin="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_login"
+            android:text="@string/btnLoginFb"
+            android:textColor="@color/colorBlack"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/viewLeft"
+            android:layout_width="120dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorView" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/tvTitle"
-            android:textSize="15dp"
-            android:textStyle="bold" />
+            android:layout_margin="15dp"
+            android:text="@string/tvOr"
+            android:textSize="17dp" />
 
-        <LinearLayout
+        <View
+            android:id="@+id/viewRight"
+            android:layout_width="120dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorView" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            android:background="@drawable/bg_btn_signup"
+            android:text="@string/btnSignUp"
+            android:textAlignment="center"
+            android:textColor="@color/colorSignup" />
+    </LinearLayout>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_btn_login"
-                android:text="@string/btnLoginFb"
-                android:textColor="@color/colorBlack"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
 
-        <LinearLayout
-
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:text="@string/tvNewto" />
 
-            <View
-                android:id="@+id/viewLeft"
-                android:layout_width="120dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="30dp"
-                android:background="@color/colorView" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="@string/tvOr"
-                android:textSize="17dp" />
-
-            <View
-                android:id="@+id/viewRight"
-                android:layout_width="120dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="30dp"
-                android:background="@color/colorView" />
-        </LinearLayout>
-
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/btnSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_btn_signup"
-                android:text="@string/btnSignUp"
-                android:textAlignment="center"
-                android:textColor="@color/colorSignup" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tvNewto" />
-
-            <TextView
-                android:id="@+id/tvSignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tvSignUp"
-                android:textColor="@color/colorSignup"
-                android:textSize="13dp" />
-
-        </LinearLayout>
+            android:text="@string/tvSignUp"
+            android:textColor="@color/colorSignup"
+            android:textSize="13dp" />
 
     </LinearLayout>
 
 </LinearLayout>
+

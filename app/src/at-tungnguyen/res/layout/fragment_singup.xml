@@ -1,114 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tvEnterSignup"
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_marginTop="30dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
 
-        <TextView
-            android:textStyle="bold"
-            android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_flag_australia" />
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tvEnterSignup"/>
-
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:orientation="horizontal"
-            android:layout_width="300dp"
-
-            android:layout_height="50dp">
-            <ImageView
-                android:background="@drawable/ic_flag_australia"
-                android:layout_margin="10dp"
-                android:layout_width="50dp"
-                android:layout_height="25dp" />
-
-            <ImageView
-                android:layout_marginTop="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_drop_down"/>
-
-            <EditText
-                android:text="@string/telephone"
-                android:inputType="number"
-                android:id="@+id/edtNumBer"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content">
-            <EditText
-                android:textSize="15dp"
-                android:id="@+id/edtFullName"
-                android:hint="@string/edtfullname"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content" />
-
-            <EditTextedt
-                android:inputType="textEmailAddress"
-                android:id="@+id/edtEmail"
-                android:textSize="15dp"
-                android:layout_marginTop="15dp"
-                android:hint="@string/Gmail"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
             android:layout_marginTop="15dp"
+            android:background="@drawable/ic_drop_down" />
+
+        <EditText
+            android:id="@+id/edtNumBer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp">
-
-            <CheckBox
-                android:id="@+id/chkSignUp"
-                android:button="@drawable/selector_check_nocheck"
-                android:layout_marginRight="20dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                android:layout_gravity="center"
-                android:text="@string/tvAccept"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/tvTerm"
-                    android:textColor="@color/colorSignup"
-                    android:text="@string/tvTerms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-        </LinearLayout>
-        <ImageView
-            android:id="@+id/imgSignUp"
-            android:layout_gravity="center"
-            android:background="@drawable/selector_next_unnext"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:inputType="number"
+            android:text="@string/telephone" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edtFullName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/edtfullname"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="@string/Gmail"
+            android:inputType="textEmailAddress"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/chkSignUp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="20dp"
+            android:button="@drawable/selector_check_nocheck" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/tvAccept" />
+
+            <TextView
+                android:id="@+id/tvTerm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tvTerms"
+                android:textColor="@color/colorSignup" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgSignUp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/selector_next_unnext" />
+
 </LinearLayout>
