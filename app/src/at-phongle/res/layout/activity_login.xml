@@ -8,8 +8,7 @@
     <RelativeLayout
         android:id="@+id/rlContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="match_parent"
@@ -18,8 +17,8 @@
 
         <ImageView
             android:id="@+id/imgBack"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_margin="10dp"
             android:src="@drawable/selector_img_back" />
 
