@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vn.asiantech.internship.MainActivity">
+
+    <TextView
+        android:id="@+id/tvMenuBt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:gravity="center"
+        android:text="@string/menu_bai_tap"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnBt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMenuBt"
+        android:layout_marginLeft="30dp"
+        android:text="@string/bai_tap_1" />
+
+    <Button
+        android:id="@+id/btnBt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnBt1"
+        android:layout_marginLeft="30dp"
+        android:text="@string/bai_tap_2" />
+</RelativeLayout>
