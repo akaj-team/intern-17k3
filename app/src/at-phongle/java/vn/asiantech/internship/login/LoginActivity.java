@@ -20,10 +20,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         mImgBack = findViewById(R.id.imgBack);
         mImgBack.setOnClickListener(this);
-        addFragment(LoginFragment.getInstance(), false);
+        replaceFragment(LoginFragment.getInstance(), false);
     }
 
-    protected void addFragment(Fragment fragment, boolean addBackStack) {
+    protected void replaceFragment(Fragment fragment, boolean addBackStack) {
         mImgBack.setSelected(addBackStack);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        addFragment(new LoginFragment(), false);
+        replaceFragment(new LoginFragment(), false);
     }
 
     @Override

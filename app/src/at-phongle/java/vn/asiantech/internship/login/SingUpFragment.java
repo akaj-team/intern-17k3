@@ -51,7 +51,7 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
     }
 
     private boolean checkSignUp(TextView tv1, TextView tv2, TextView tv3, CheckBox chk) {
-        return (!(tv1.getText().toString().isEmpty()) && !(tv2.getText().toString().isEmpty()) && !(tv3.getText().toString().isEmpty()) && chk.isChecked());
+        return (!(tv1.getText().toString().trim().isEmpty()) && !(tv2.getText().toString().trim().isEmpty()) && !(tv3.getText().toString().trim().isEmpty()) && chk.isChecked());
     }
 
     @Override

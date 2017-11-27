@@ -28,6 +28,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ((LoginActivity) getActivity()).addFragment(new SingUpFragment(), true);
+        ((LoginActivity) getActivity()).replaceFragment(new SingUpFragment(), true);
     }
 }

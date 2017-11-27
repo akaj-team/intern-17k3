@@ -59,9 +59,9 @@
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableBottom="@android:color/darker_gray"
         android:hint="@string/edt_email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textCursorDrawable="@drawable/cursor_edt_sing_up" />
 
     <LinearLayout
         android:layout_width="match_parent"
