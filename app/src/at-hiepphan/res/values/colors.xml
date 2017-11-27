@@ -8,4 +8,5 @@
     <color name="colorTestBlack">#000000</color>
     <color name="colorBackground">#041e42</color>
     <color name="colorLine">#000</color>
+    <color name="colorEditTextLine">#BDBDBD</color>
 </resources>

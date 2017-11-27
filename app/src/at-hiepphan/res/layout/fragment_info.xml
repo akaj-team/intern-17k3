@@ -37,6 +37,7 @@
             android:id="@+id/edtPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/shape_bottom_line"
             android:hint="@string/edittext.hint.enter_mobile_number"
             android:inputType="phone" />
     </LinearLayout>
@@ -45,14 +46,17 @@
         android:id="@+id/edtUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_bottom_line"
         android:hint="@string/edittext.hint.full_name" />
 
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_bottom_line"
         android:hint="@string/edittext.hint.email"
         android:inputType="textEmailAddress" />
 
@@ -65,37 +69,26 @@
             android:id="@+id/chkAcceptTerm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:button="@drawable/selector_btn_check" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:button="@drawable/selector_btn_check"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="30dp"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvMemo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/textview.text.i_have_read_and_agree_with_the"
+                android:text="@string/textview.text.memo"
                 android:textColor="@color/colorTestBlack" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/textview.text.terms_and_condition"
-                    android:textColor="@color/colorTestBlue" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/textview.text." />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -107,8 +100,8 @@
 
         <ImageView
             android:id="@+id/imgNext"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:enabled="false"
             android:src="@drawable/selector_btn_next" />
     </LinearLayout>
