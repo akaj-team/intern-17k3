@@ -3,71 +3,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="30dp"
-    android:paddingTop="20dp"
-    android:paddingRight="20dp"
     android:orientation="vertical"
+    android:paddingLeft="30dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
     tools:context="vn.asiantech.internship.CalculatorActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp">
+        android:gravity="fill_horizontal">
+
         <EditText
-            android:id="@+id/edtNumA"
-            android:layout_width="148dp"
+            android:id="@+id/edtNumberA"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:layout_weight="2"
             android:background="@drawable/bg_number_text_view"
-            android:hint="Input num A..." />
+            android:gravity="center"
+            android:hint="@string/input_a"
+            android:inputType="numberDecimal" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:text="+" />
+            android:id="@+id/tvCalculation"
+            android:layout_width="46dp"
+            android:layout_height="match_parent"
+            android:textSize="18dp"
+            android:gravity="center" />
 
         <EditText
-            android:id="@+id/edtNumB"
-            android:layout_width="148dp"
+            android:id="@+id/edtNumberB"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_weight="2"
             android:background="@drawable/bg_number_text_view"
-            android:hint="Input num B..." />
+            android:gravity="center"
+            android:hint="@string/input_b"
+            android:inputType="numberDecimal" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
+
         <Button
-            android:id="@+id/btnCong"
+            android:id="@+id/btnPlus"
+            style="@style/ButtonTheme"
             android:layout_width="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:layout_height="50dp"
-            android:text="+"/>
+            android:enabled="false"
+            android:text="@string/plus" />
+
         <Button
-            android:id="@+id/btnTru"
-            android:layout_weight="1"
+            android:id="@+id/btnMinus"
+            style="@style/ButtonTheme"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="-"/>
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/minus" />
+
         <Button
-            android:id="@+id/btnNhan"
-            android:layout_weight="1"
+            android:id="@+id/btnMultiplication"
+            style="@style/ButtonTheme"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="*"/>
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/mul" />
+
         <Button
-            android:id="@+id/btnChia"
-            android:layout_weight="1"
+            android:id="@+id/btnDivision"
+            style="@style/ButtonTheme"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="/"/>
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/chia" />
     </LinearLayout>
+
     <TextView
         android:id="@+id/tvResult"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorAccent"/>
+        android:layout_height="40dp"
+        android:background="@color/colorTvResult"
+        android:gravity="center"
+        android:hint="@string/result"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 </LinearLayout>
