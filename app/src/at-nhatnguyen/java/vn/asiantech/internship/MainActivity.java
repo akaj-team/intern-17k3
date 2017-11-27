@@ -16,10 +16,10 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new LoginFragment(),false);
     }
 
-    public void replaceFragment(Fragment fragment, boolean addStack) {
+    protected void replaceFragment(Fragment fragment, boolean addStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fmContent,fragment);
+        fragmentTransaction.replace(R.id.frContent,fragment);
         if(addStack){
             fragmentTransaction.addToBackStack(fragment.getClass().getName());
         }

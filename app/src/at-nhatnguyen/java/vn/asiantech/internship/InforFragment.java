@@ -26,7 +26,7 @@ public class InforFragment extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container,savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_infor, container, false);
-        mEdtPhone = view.findViewById(R.id.edtPhonenum);
+        mEdtPhone = view.findViewById(R.id.edtPhoneNumber);
         mEdtFullName = view.findViewById(R.id.edtFullname);
         mEdtEmail = view.findViewById(R.id.edtEmail);
         mChkConfirm = view.findViewById(R.id.chkConfirm);

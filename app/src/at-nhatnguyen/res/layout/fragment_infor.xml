@@ -2,20 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:orientation="vertical"
     android:background="@color/color_text_button_facebook"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context="vn.asiantech.internship.InforFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_subject_infor"
-        android:textStyle="bold"
-        android:textSize="19dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
+        android:text="@string/text_subject_infor"
         android:textColor="@color/color_text_subject_login"
-        android:layout_marginTop="10dp"/>
+        android:textSize="19dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,22 +25,22 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_australia"/>
-        
+            android:src="@drawable/ic_australia" />
+
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/ic_dropdown"/>
-        
+            android:src="@drawable/ic_dropdown" />
+
         <EditText
-            android:id="@+id/edtPhonenum"
+            android:id="@+id/edtPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/shape_line_edittext"
             android:hint="@string/text_inputPhone"
             android:inputType="phone"
-            android:layout_marginLeft="5dp"
-            android:textSize="25dp"
-            android:background="@drawable/shape_line_edittext"/>
+            android:textSize="25dp" />
     </LinearLayout>
 
     <EditText
@@ -48,19 +48,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:background="@drawable/shape_line_edittext"
         android:hint="@string/text_fullname"
-        android:textSize="25dp"
-        android:background="@drawable/shape_line_edittext"/>
+        android:textSize="25dp" />
 
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:background="@drawable/shape_line_edittext"
         android:hint="@string/text_email"
         android:inputType="textEmailAddress"
-        android:textSize="25dp"
-        android:background="@drawable/shape_line_edittext"/>
+        android:textSize="25dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,21 +73,21 @@
             android:layout_height="50dp"
             android:button="@drawable/chk_confirm"
             android:text="@string/text_checkbox_confirm"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
             android:text="@string/text_link"
-            android:textColor="@color/color_text_link"
-            android:paddingLeft="30dp"/>
+            android:textColor="@color/color_text_link" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnNext"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/selector_button_next"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center"/>
+        android:background="@drawable/selector_button_next" />
 </LinearLayout>
