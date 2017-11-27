@@ -46,6 +46,12 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ((LoginActivity) getActivity()).setVisibilityBackButton(View.VISIBLE);
+    }
+
+    @Override
     public void onClick(View v) {
         mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermService));
     }

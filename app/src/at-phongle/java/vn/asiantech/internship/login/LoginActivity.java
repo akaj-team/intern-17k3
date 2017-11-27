@@ -13,7 +13,6 @@ import vn.asiantech.internship.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView mImgBack;
-    private Boolean mCheckBackStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +21,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mImgBack = findViewById(R.id.imgBack);
         mImgBack.setOnClickListener(this);
         replaceFragment(LoginFragment.getInstance(), false);
-        mImgBack.setSelected(mCheckBackStatus);
     }
 
     protected void replaceFragment(Fragment fragment, boolean addBackStack) {
-        mCheckBackStatus = addBackStack;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frContainer, fragment);
@@ -36,21 +33,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fragmentTransaction.commit();
     }
 
-    protected void setStatusBack() {
-        mImgBack.setSelected(mCheckBackStatus);
+    protected void setVisibilityBackButton(int visibility) {
+        mImgBack.setVisibility(visibility);
     }
 
     @Override
     public void onClick(View v) {
-        replaceFragment(new LoginFragment(), false);
-        setStatusBack();
+        onBackPressed();
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            mImgBack.setSelected(false);
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 }

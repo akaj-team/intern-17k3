@@ -27,8 +27,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ((LoginActivity) getActivity()).setVisibilityBackButton(View.GONE);
+    }
+
+    @Override
     public void onClick(View v) {
         ((LoginActivity) getActivity()).replaceFragment(new SingUpFragment(), true);
-        ((LoginActivity) getActivity()).setStatusBack();
     }
 }
