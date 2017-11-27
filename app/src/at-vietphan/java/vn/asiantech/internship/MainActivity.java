@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-git
+
     protected void replaceFragment(Fragment fragment, boolean isAdd) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
