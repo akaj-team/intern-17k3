@@ -41,7 +41,6 @@
                 android:textColor="@color/colorTitle"
                 android:textSize="16dp" />
         </LinearLayout>
-
     </LinearLayout>
 
     <FrameLayout

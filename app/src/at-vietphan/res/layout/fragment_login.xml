@@ -2,14 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="15dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_margin="10dp"
         android:text="@string/enter_your_details_below_to_get_started"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -19,6 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -41,50 +41,73 @@
             android:background="@drawable/bg_bottom_line_edt"
             android:hint="@string/enter_mobile_number"
             android:inputType="phone"
-            android:textCursorDrawable="@color/colorCusor"/>
+            android:textCursorDrawable="@color/colorCusor"
+            android:textSize="18dp" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/edtFullName"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="5dp"
+        android:layout_height="36dp"
+        android:layout_margin="10dp"
         android:background="@drawable/bg_bottom_line_edt"
         android:hint="@string/full_name"
         android:inputType="text"
-        android:textCursorDrawable="@color/colorCusor" />
+        android:textCursorDrawable="@color/colorCusor"
+        android:textSize="18dp" />
 
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="5dp"
+        android:layout_height="36dp"
+        android:layout_margin="10dp"
         android:background="@drawable/bg_bottom_line_edt"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textCursorDrawable="@color/colorCusor" />
+        android:textCursorDrawable="@color/colorCusor"
+        android:textSize="18dp" />
 
-    <CheckBox
-        android:id="@+id/chkTermsAccept"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:button="@drawable/selector_btn_check"
-        android:text="@string/i_have_read_and_agree_with_the" />
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/chkTermsAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/selector_btn_check"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+
+        <TextView
+            android:id="@+id/tvHaveAgree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/i_have_read_and_agree_with_the"
+            android:textColor="@android:color/black"
+            android:textSize="18dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvTerms"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="-70dp"
-        android:layout_marginTop="-10dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="-25dp"
         android:text="@string/terms_and_conditions"
-        android:textColor="@color/colorPrimary"
-        android:textColorLink="@android:color/white" />
+        android:textColor="@color/colorTerms"
+        android:textSize="18dp" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/selector_btn_submit"/>
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/selector_btn_submit" />
 </LinearLayout>
