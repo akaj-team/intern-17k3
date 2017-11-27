@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">phongle-17k3</string>
+    <string name="btn_calculator_screen">Calculator</string>
+    <string name="btn_login_screen">Log in</string>
+    <string name="btn_add">+</string>
+    <string name="btn_sub">-</string>
+    <string name="btn_mul">*</string>
+    <string name="btn_div">/</string>
 </resources>
