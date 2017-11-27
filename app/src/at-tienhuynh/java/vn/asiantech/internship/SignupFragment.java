@@ -1,4 +1,5 @@
 package vn.asiantech.internship;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -13,6 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+
 /**
  * Created at 2017
  * Created by jackty on 23/11/2017.
@@ -99,10 +101,12 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
             // No-op
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             // No-op
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             // No-op
             public void afterTextChanged(Editable editable) {
@@ -114,10 +118,12 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
             // No-op
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             // No-op
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             // No-op
             public void afterTextChanged(Editable editable) {
@@ -129,10 +135,12 @@ public class SignupFragment extends Fragment implements AdapterView.OnItemSelect
             // No-op
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             // No-op
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             // No-op
             public void afterTextChanged(Editable editable) {

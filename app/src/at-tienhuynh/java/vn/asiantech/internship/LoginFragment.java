@@ -1,7 +1,14 @@
 package vn.asiantech.internship;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +43,25 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         Button mBtnLoginFaceBook = mView.findViewById(R.id.btnLoginFacebook);
         Button mBtnLoginPhone = mView.findViewById(R.id.btnLoginPhone);
         TextView mTvSignUp = mView.findViewById(R.id.tvSignup);
+        SpannableString spannableString = new SpannableString(mTvSignUp.getText());
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                ((LoginActivity) getActivity()).replaceFragment(new SignupFragment(), true);
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.bgColor = Color.WHITE;
+                ds.setARGB(255, 255, 255, 255);
+                ds.setUnderlineText(false);
+                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorFB));
+            }
+        };
+        spannableString.setSpan(clickableSpan, 13, mTvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mTvSignUp.setText(spannableString);
+        mTvSignUp.setMovementMethod(LinkMovementMethod.getInstance());
         // Init OnClickListener
         mBtnLoginFaceBook.setOnClickListener(this);
         mBtnLoginPhone.setOnClickListener(this);
@@ -51,9 +77,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btnLoginPhone:
                 Toast.makeText(getContext(), "phone", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.tvSignup:
-                ((LoginActivity) getActivity()).replaceFragment(SignupFragment.newInstance(), true);
                 break;
         }
     }

@@ -4,8 +4,6 @@
     <string name="tvWelcome">Welcome to urbi</string>
     <string name="btnLoginFb">login with facebook</string>
     <string name="btnLoginPhone">login with phone number</string>
-    <string name="tvSignup1">New to urbi?</string>
-    <string name="tvSignup2">Sign up for an account</string>
     <string name="tvTitleSignup">Enter your details belows to get stared</string>
     <string name="tv_term_cofilm">I have read and agree with the</string>
     <string name="tv_term_link">terms and conditions</string>
@@ -13,4 +11,5 @@
     <string name="HeadNumPhoneAus">+64</string>
     <string name="tvOrFrLogin">or</string>
     <string name="tvDotSignupFragment">.</string>
+    <string name="tvSignup">New to urbi? Sign up for an account</string>
 </resources>

@@ -83,18 +83,12 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tvSignup1"
-                    android:textColor="@color/colorBlack" />
-
-                <TextView
                     android:id="@+id/tvSignup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/tvSignup2"
-                    android:textColor="@color/colorLink" />
+                    android:text="@string/tvSignup"
+                    android:textColor="@color/colorBlack" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

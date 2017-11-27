@@ -10,5 +10,4 @@
         android:layout_height="50dp"
         android:padding="5dp"
         android:src="@drawable/ic_next" />
-
 </LinearLayout>
