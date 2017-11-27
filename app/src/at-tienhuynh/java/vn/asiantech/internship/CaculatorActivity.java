@@ -22,10 +22,10 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caculator_);
-        InnitsViewandClick();
+        innitsViewandClick();
     }
 
-    private void InnitsViewandClick() {
+    private void innitsViewandClick() {
         mEdtNumberA = findViewById(R.id.edtNumberA);
         mEdtNumberB = findViewById(R.id.edtNumberB);
         mBtnSum = findViewById(R.id.btnSum);
@@ -47,19 +47,19 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.btnSum:
                 getCaculator(mBtnSum);
-                mCaculation.Sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                mCaculation.sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 break;
             case R.id.btnSubtraction:
                 getCaculator(mBtnSubtraction);
-                mCaculation.Subtraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                mCaculation.subTraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 break;
             case R.id.btnMultiplication:
                 getCaculator(mBtnMultiplication);
-                mCaculation.Multiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                mCaculation.mulTiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 break;
             case R.id.btnDivision:
                 getCaculator(mBtnDivision);
-                mCaculation.Division(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                mCaculation.diVision(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 break;
         }
     }

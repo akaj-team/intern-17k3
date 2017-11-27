@@ -4,4 +4,5 @@
     <string name="edtSub">-</string>
     <string name="edtMulti">*</string>
     <string name="edtDivi">/</string>
+    <string name="tvResult">Result</string>
 </resources>

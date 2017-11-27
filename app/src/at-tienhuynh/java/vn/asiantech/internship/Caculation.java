@@ -12,25 +12,25 @@ public class Caculation {
     public Caculation() {
     }
 
-    protected Float Sum(float numA, float numB, TextView tvResult) {
+    protected Float sum(float numA, float numB, TextView tvResult) {
         mResult = numA + numB;
         tvResult.setText(String.valueOf(mResult));
         return mResult;
     }
 
-    protected Float Subtraction(float numA, float numB, TextView tvResult) {
+    protected Float subTraction(float numA, float numB, TextView tvResult) {
         mResult = numA - numB;
         tvResult.setText(String.valueOf(mResult));
         return mResult;
     }
 
-    protected Float Multiplication(float numA, float numB, TextView tvResult) {
+    protected Float mulTiplication(float numA, float numB, TextView tvResult) {
         mResult = numA * numB;
         tvResult.setText(String.valueOf(mResult));
         return mResult;
     }
 
-    protected Float Division(float numA, float numB, TextView tvResult) {
+    protected Float diVision(float numA, float numB, TextView tvResult) {
         mResult = numA / numB;
         tvResult.setText(String.valueOf(mResult));
         return mResult;
