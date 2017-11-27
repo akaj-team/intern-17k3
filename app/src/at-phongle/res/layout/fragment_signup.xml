@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="40dp">
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -43,6 +44,7 @@
             android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/cursor_edt_sing_up"
             android:hint="@string/edt_phone"
             android:inputType="phone"
             android:textCursorDrawable="@drawable/cursor_edt_sing_up" />
@@ -53,7 +55,8 @@
         android:id="@+id/edtFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/cursor_edt_sing_up"
         android:hint="@string/edt_full_name"
         android:textCursorDrawable="@drawable/cursor_edt_sing_up" />
 
@@ -61,7 +64,8 @@
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/cursor_edt_sing_up"
         android:hint="@string/edt_email"
         android:inputType="textEmailAddress"
         android:textCursorDrawable="@drawable/cursor_edt_sing_up" />
@@ -75,11 +79,11 @@
             android:id="@+id/chkTermServices"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="5dp"
             android:button="@drawable/selector_chk_term_service"
-            android:scaleX="1.5"
-            android:scaleY="1.5" />
+            android:scaleX="2"
+            android:scaleY="2" />
 
         <TextView
             android:id="@+id/tvTermService"
