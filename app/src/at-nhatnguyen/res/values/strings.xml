@@ -3,8 +3,7 @@
     <string name="text_slogan_below_logo">a bike for everyone, always</string>
     <string name="text_button_login_facebook">LOG IN WITH FACEBOOK</string>
     <string name="text_button_login_phonenum">LOG IN WITH PHONE NUMBER</string>
-    <string name="text_new_urbi">New to urbi?</string>
-    <string name="text_click_new_urbi">Sign up for an account</string>
+    <string name="text_new_urbi">New to urbi? Sign up for an account</string>
     <string name="text_subject_infor">Enter your details below to get started</string>
     <string name="text_subject_login">Welcome to urbi</string>
     <string name="text_checkbox_confirm">I have read and agree with the</string>

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -36,6 +37,12 @@ public class InforFragment extends Fragment {
         checkInputData(mEdtPhone);
         checkStatusCheckBox(mChkConfirm);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ( ( MainActivity) getActivity()).setVisibleBackButton(View.VISIBLE);
     }
 
     private void checkInputData(EditText editText){
