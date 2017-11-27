@@ -26,6 +26,7 @@ public class LoginButtonFragment extends Fragment {
                 ((LoginActivity) getActivity()).replace(new InfoEnterFragment(), true);
             }
         });
+        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.INVISIBLE);
         return view;
     }
 

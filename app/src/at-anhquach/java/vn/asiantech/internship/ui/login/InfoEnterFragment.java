@@ -17,10 +17,10 @@ import vn.asiantech.internship.R;
 
 public class InfoEnterFragment extends Fragment {
     private ImageView mImgNext;
-    private EditText mEdtNumber;
+    private EditText mEdtEnterPhoneNumber;
     private EditText mEdtEmail;
     private EditText mEdtFullName;
-    private CheckBox mChkTerm;
+    private CheckBox mChkTermAccept;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,19 +30,19 @@ public class InfoEnterFragment extends Fragment {
         mImgNext = view.findViewById(R.id.imgNext);
         mEdtEmail = view.findViewById(R.id.edtEmail);
         mEdtFullName = view.findViewById(R.id.edtFullName);
-        mEdtNumber = view.findViewById(R.id.edtEnterPhoneNumber);
-        mChkTerm = view.findViewById(R.id.chkTermAccept);
-
+        mEdtEnterPhoneNumber = view.findViewById(R.id.edtEnterPhoneNumber);
+        mChkTermAccept = view.findViewById(R.id.chkTermAccept);
+        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.VISIBLE);
         mEdtEmail.addTextChangedListener(new TextWatcher() {
-            //No-op
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //No-op
             }
-            //No-op
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //No-op
             }
 
             @Override
@@ -51,49 +51,47 @@ public class InfoEnterFragment extends Fragment {
             }
         });
 
-        mEdtNumber.addTextChangedListener(new TextWatcher() {
-            //No-op
+        mEdtEnterPhoneNumber.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //No-op
             }
-            //No-op
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //No-op
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
                 checkInputInfo();
             }
         });
 
         mEdtFullName.addTextChangedListener(new TextWatcher() {
-            //No-op
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //No-op
             }
-            //No-op
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //No-op
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
                 checkInputInfo();
             }
         });
 
-        mChkTerm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mChkTermAccept.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    if (!TextUtils.isEmpty(mEdtNumber.getText()) && !TextUtils.isEmpty(mEdtFullName.getText()) &&
+                    if (!TextUtils.isEmpty(mEdtEnterPhoneNumber.getText()) && !TextUtils.isEmpty(mEdtFullName.getText()) &&
                             !TextUtils.isEmpty(mEdtEmail.getText())) {
                         mImgNext.setSelected(true);
                     }
@@ -102,13 +100,12 @@ public class InfoEnterFragment extends Fragment {
                 }
             }
         });
-
         return view;
     }
 
     private void checkInputInfo() {
-        if (!TextUtils.isEmpty(mEdtNumber.getText()) && !TextUtils.isEmpty(mEdtFullName.getText()) &&
-                !TextUtils.isEmpty(mEdtEmail.getText()) && mChkTerm.isChecked()) {
+        if (!TextUtils.isEmpty(mEdtEnterPhoneNumber.getText()) && !TextUtils.isEmpty(mEdtFullName.getText()) &&
+                !TextUtils.isEmpty(mEdtEmail.getText()) && mChkTermAccept.isChecked()) {
             mImgNext.setSelected(true);
         } else {
             mImgNext.setSelected(false);

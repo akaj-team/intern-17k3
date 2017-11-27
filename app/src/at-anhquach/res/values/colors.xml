@@ -9,4 +9,6 @@
     <color name="colorEdt">#9E9E9E</color>
     <color name="colorTextBlack">#000000</color>
     <color name="colorLine">#E0E0E0</color>
+    <color name="colorBtnPhoneNumber">#83bdf4</color>
+    <color name="colorShapeEdt">#9E9E9E</color>
 </resources>
