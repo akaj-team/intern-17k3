@@ -47,15 +47,16 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
         mEdtFullName.addTextChangedListener(this);
 
         // Color TextView
-        TextView tvCheck = v.findViewById(R.id.tvLinkSp);
-        String text = "I have read and agree with the <font color='#34A4F1'><br>terms and conditions</font><font color='black'>.</font>";
-        tvCheck.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
+        TextView tvLinkCheck = v.findViewById(R.id.tvLinkSp);
+        String text = "<font color='black'>I have read and agree with me</font><font color='#34A4F1'><br>terms and conditions</font><font color='black'>.</font>";
+        tvLinkCheck.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
         mChkTermAccept.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mChkTermAccept.setSelected(!mChkTermAccept.isSelected());
             }
         });
+
         mChkTermAccept.setOnClickListener(this);
         return v;
     }
