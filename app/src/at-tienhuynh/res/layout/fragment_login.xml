@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tvSignup1"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorBlack" />a
 
                 <TextView
                     android:id="@+id/tvSignup"

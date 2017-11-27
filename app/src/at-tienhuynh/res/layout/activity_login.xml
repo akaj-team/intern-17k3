@@ -37,9 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tvSloganLogin"
                 android:textColor="@color/colorSlogan" />
-
         </LinearLayout>
-
     </LinearLayout>
 
     <FrameLayout
@@ -47,5 +45,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"></FrameLayout>
-
 </LinearLayout>

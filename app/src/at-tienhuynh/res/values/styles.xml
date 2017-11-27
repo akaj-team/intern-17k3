@@ -7,6 +7,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="EditTextSiginUp" parent="Widget.AppCompat.EditText">
         <item name="android:layout_margin">7dp</item>
         <item name="android:textCursorDrawable">@drawable/color_cursor</item>
