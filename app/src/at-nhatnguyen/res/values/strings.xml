@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">nhatnguyen-17k3</string>
+    <string name="app_name">nhatnguyen-17k3-calculator</string>
+    <string name="summation">+</string>
+    <string name="Subtraction">-</string>
+    <string name="multiplication">*</string>
+    <string name="division">/</string>
 </resources>

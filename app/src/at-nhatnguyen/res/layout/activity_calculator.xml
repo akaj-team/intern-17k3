@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="vn.asiantech.internship.CalculatorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/edtNumOne"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvCalculator"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/edtNumTwo"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btnSummation"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="@string/summation"/>
+
+        <Button
+            android:id="@+id/btnSubtraction"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="@string/Subtraction"/>
+
+        <Button
+            android:id="@+id/btnMultiplication"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="@string/multiplication"/>
+
+        <Button
+            android:id="@+id/btnDivision"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="@string/division"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorAccent"
+        android:textSize="30dp"
+        android:gravity="center"/>
+</LinearLayout>
