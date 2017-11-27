@@ -7,7 +7,6 @@ import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ public class LoginFragment extends Fragment {
                 ((MainActivity) getActivity()).replaceFragment(new InforFragment(), true);
             }
         });
-        clickOnTextView(mTvSignin,12,mTvSignin.getText().length());
+        clickOnTextView(mTvSignin, 12, mTvSignin.getText().length());
         return view;
     }
 
@@ -42,9 +41,8 @@ public class LoginFragment extends Fragment {
         ((MainActivity) getActivity()).setVisibleBackButton(View.GONE);
     }
 
-    private void clickOnTextView(TextView textView, int start, int end){
+    private void clickOnTextView(TextView textView, int start, int end) {
         Spannable mSpannable = new SpannableString(textView.getText().toString());
-        //mSpannable.setSpan(new ForegroundColorSpan(R.color.color_text_slogan), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         mSpannable.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View view) {

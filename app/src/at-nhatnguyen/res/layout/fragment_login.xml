@@ -79,6 +79,5 @@
             android:layout_height="wrap_content"
             android:text="@string/text_new_urbi"
             android:textColor="@color/color_text_subject_login" />
-
     </LinearLayout>
 </LinearLayout>
