@@ -13,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import vn.asiantech.internship.R;
 
 public class FillOutFragment extends Fragment implements TextWatcher, View.OnClickListener {

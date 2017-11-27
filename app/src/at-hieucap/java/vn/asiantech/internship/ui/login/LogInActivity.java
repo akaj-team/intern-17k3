@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+
 import vn.asiantech.internship.R;
 
 public class LogInActivity extends AppCompatActivity {
@@ -18,15 +19,15 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         mImgBack = findViewById(R.id.imgBack);
         mImgBack.setImageDrawable(getResources().getDrawable(R.drawable.selector_event_back));
-        mImgBack.setEnabled(false);// Can't press back button
+        mImgBack.setEnabled(false); // Can't press back button
         mImgBack.setSelected(false);
-        // Add firstFragment
+        // Add first fragment
         replaceFragment(LoginFragment.getInstance(), false);
         mImgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(LoginFragment.getInstance(), false);
-                mImgBack.setEnabled(false);//Can't press button back
+                mImgBack.setEnabled(false); // Can't press button back
                 mImgBack.setSelected(false);
             }
         });
