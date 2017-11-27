@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Caculator View</string>
+    <string name="edtSum">+</string>
+    <string name="edtSub">-</string>
+    <string name="edtMulti">*</string>
+    <string name="edtDivi">/</string>
 </resources>
