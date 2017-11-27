@@ -30,7 +30,7 @@ public class InfoEnterFragment extends Fragment {
         mimgNext = view.findViewById(R.id.imgNext);
         medtEmail = view.findViewById(R.id.edtEmail);
         medtFullName = view.findViewById(R.id.edtFullName);
-        medtNumber = view.findViewById(R.id.edtPhoneNumber);
+        medtNumber = view.findViewById(R.id.edtEnterPhoneNumber);
         mchkTerm = view.findViewById(R.id.chkTermAccept);
 
         medtEmail.addTextChangedListener(new TextWatcher() {
