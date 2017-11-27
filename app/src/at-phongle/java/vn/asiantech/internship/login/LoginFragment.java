@@ -29,5 +29,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         ((LoginActivity) getActivity()).replaceFragment(new SingUpFragment(), true);
+        ((LoginActivity) getActivity()).setStatusBack();
     }
 }

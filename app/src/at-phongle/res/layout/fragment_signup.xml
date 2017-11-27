@@ -52,6 +52,7 @@
         android:id="@+id/edtFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:hint="@string/edt_full_name"
         android:textCursorDrawable="@drawable/cursor_edt_sing_up" />
 
@@ -59,15 +60,15 @@
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:hint="@string/edt_email"
         android:inputType="textEmailAddress"
         android:textCursorDrawable="@drawable/cursor_edt_sing_up" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center">
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp">
 
         <CheckBox
             android:id="@+id/chkTermServices"
@@ -83,6 +84,7 @@
             android:id="@+id/tvTermService"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
             android:textColor="@android:color/black" />
     </LinearLayout>
 
