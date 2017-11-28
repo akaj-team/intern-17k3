@@ -70,6 +70,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                     break;
                 case R.id.btnDivision:
                     if (checkSecondTerm(mEdtSecondTerm)) {
+                        mTvResult.setText(" ");
                         Toast.makeText(CalculatorActivity.this, "Second term no value = 0 !", Toast.LENGTH_SHORT).show();
                     } else {
                         mTvOperation.setText("/");
