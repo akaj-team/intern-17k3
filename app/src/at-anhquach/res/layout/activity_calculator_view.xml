@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <EditText
@@ -18,37 +18,40 @@
             android:layout_width="130dp"
             android:layout_height="35dp"
             android:layout_margin="20dp"
-            android:background="@drawable/bg_edt_input_number" />
+            android:background="@drawable/bg_edt_input_number"
+            android:gravity="center"
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/tvOperator"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:gravity="center"
-            android:text="+" />
+            android:gravity="center"/>
 
         <EditText
             android:id="@+id/edtInputB"
             android:layout_width="130dp"
             android:layout_height="35dp"
             android:layout_margin="20dp"
-            android:background="@drawable/bg_edt_input_number" />
+            android:background="@drawable/bg_edt_input_number"
+            android:gravity="center"
+            android:inputType="number"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnPlus"
+            android:id="@+id/btnAdd"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="+" />
 
         <Button
-            android:id="@+id/btnMinus"
+            android:id="@+id/btnSub"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="-" />
@@ -73,5 +76,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
-        android:background="@color/colorAccent" />
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:textColor="@color/colorResutl"/>
 </LinearLayout>

@@ -2,8 +2,7 @@ package vn.asiantech.internship;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,8 +28,8 @@ public class CalculatorViewActivity extends Activity implements View.OnClickList
         mEdtInputB = findViewById(R.id.edtInputB);
         mTvOperator = findViewById(R.id.tvOperator);
         mTvResutl = findViewById(R.id.tvResutl);
-        mBtnAdd = findViewById(R.id.btnPlus);
-        mBtnSub = findViewById(R.id.btnMinus);
+        mBtnAdd = findViewById(R.id.btnAdd);
+        mBtnSub = findViewById(R.id.btnSub);
         mBtnMulti = findViewById(R.id.btnMulti);
         mBtnDiv = findViewById(R.id.btnDiv);
 
@@ -42,6 +41,40 @@ public class CalculatorViewActivity extends Activity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+        float numA=0;
+        float numB=0;
+        float result=0;
+        String oper="";
 
+        if (TextUtils.isEmpty(mEdtInputA.getText().toString())
+                || TextUtils.isEmpty(mEdtInputB.getText().toString())) {
+            return;
+        }
+
+        numA = Float.parseFloat(mEdtInputA.getText().toString());
+        numB = Float.parseFloat(mEdtInputB.getText().toString());
+
+        switch (view.getId()) {
+            case R.id.btnAdd:
+                oper = "+";
+                result = numA + numB;
+                break;
+            case R.id.btnSub:
+                oper = "-";
+                result = numA - numB;
+                break;
+            case R.id.btnMulti:
+                oper = "*";
+                result = numA * numB;
+                break;
+            case R.id.btnDiv:
+                oper = "/";
+                result = numA / numB;
+                break;
+            default:
+                break;
+        }
+        mTvResutl.setText(""+result);
+        mTvOperator.setText(oper);
     }
 }
