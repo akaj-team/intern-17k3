@@ -3,6 +3,8 @@ package vn.asiantech.internship.calculator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +13,7 @@ import android.widget.Toast;
 import java.math.BigDecimal;
 import vn.asiantech.internship.R;
 
-public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
+public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     private EditText mEdtFirstTerm;
     private EditText mEdtSecondTerm;
     private TextView mTvOperation;
@@ -34,71 +36,49 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         mBtnSub.setOnClickListener(this);
         mBtnMul.setOnClickListener(this);
         mBtnDivision.setOnClickListener(this);
+        mEdtFirstTerm.addTextChangedListener(this);
+        mEdtSecondTerm.addTextChangedListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnSum:
-                if (checkAllTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "First term and second term no empty !", Toast.LENGTH_LONG).show();
-                } else if (checkFirstTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "First term no empty !", Toast.LENGTH_LONG).show();
-                } else if (checkSecondTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "Second term no empty !", Toast.LENGTH_LONG).show();
-                } else {
+        if (checkAllTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
+            Toast.makeText(CalculatorActivity.this, "First term and second term no empty !", Toast.LENGTH_LONG).show();
+        } else if (checkFirstTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
+            Toast.makeText(CalculatorActivity.this, "First term no empty !", Toast.LENGTH_LONG).show();
+        } else if (checkSecondTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
+            Toast.makeText(CalculatorActivity.this, "Second term no empty !", Toast.LENGTH_LONG).show();
+        } else {
+            switch (v.getId()) {
+                case R.id.btnSum:
                     mTvOperation.setText("+");
                     BigDecimal bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
                     BigDecimal bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
                     mTvResult.setText(String.valueOf(bdFirstTerm.add(bdSecondTerm)));
-                }
-                break;
-            case R.id.btnSub:
-                if (checkAllTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "First term and second term no empty !", Toast.LENGTH_SHORT).show();
-                } else if (checkFirstTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "First term no empty !", Toast.LENGTH_SHORT).show();
-                } else if (checkSecondTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "Second term no empty !", Toast.LENGTH_SHORT).show();
-                } else {
+                    break;
+                case R.id.btnSub:
                     mTvOperation.setText("-");
-                    BigDecimal bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
-                    BigDecimal bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
+                    bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
+                    bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
                     mTvResult.setText(String.valueOf(bdFirstTerm.subtract(bdSecondTerm)));
-                }
-                break;
-            case R.id.btnMul:
-                if (checkAllTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "First term and second term no empty !", Toast.LENGTH_SHORT).show();
-                } else if (checkFirstTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "First term no empty !", Toast.LENGTH_SHORT).show();
-                } else if (checkSecondTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "Second term no empty !", Toast.LENGTH_SHORT).show();
-                } else {
+                    break;
+                case R.id.btnMul:
                     mTvOperation.setText("*");
-                    BigDecimal bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
-                    BigDecimal bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
+                    bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
+                    bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
                     mTvResult.setText(String.valueOf(bdFirstTerm.multiply(bdSecondTerm)));
-                }
-                break;
-            case R.id.btnDivision:
-                if (checkAllTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "First term and second term no empty !", Toast.LENGTH_SHORT).show();
-                } else if (checkFirstTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "First term no empty !", Toast.LENGTH_SHORT).show();
-                } else if (checkSecondTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-                    Toast.makeText(CalculatorActivity.this, "Second term no empty !", Toast.LENGTH_SHORT).show();
-                } else {
+                    break;
+                case R.id.btnDivision:
                     if (checkSecondTerm(mEdtSecondTerm)) {
                         Toast.makeText(CalculatorActivity.this, "Second term no value = 0 !", Toast.LENGTH_SHORT).show();
                     } else {
                         mTvOperation.setText("/");
-                        BigDecimal bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
-                        BigDecimal bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
+                        bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
+                        bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
                         mTvResult.setText(String.valueOf(bdFirstTerm.divide((bdSecondTerm), 4, BigDecimal.ROUND_HALF_UP)));
                     }
-                }
-                break;
+                    break;
+            }
         }
     }
 
@@ -116,5 +96,20 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     private boolean checkSecondTerm(EditText edtSecondTerm) {
         return ((edtSecondTerm).getText().toString().equals("0"));
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        mTvResult.setText(" ");
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
     }
 }
