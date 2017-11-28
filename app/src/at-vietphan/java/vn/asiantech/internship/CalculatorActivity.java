@@ -27,7 +27,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_calculator);
         initViews();
         setTextWatcher();
-        implementClicks();
+        initListener();
     }
 
     private void initViews() {
@@ -41,7 +41,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         mTvResult = findViewById(R.id.tvResult);
     }
 
-    private void implementClicks() {
+    private void initListener() {
         mBtnPlus.setOnClickListener(this);
         mBtnMinus.setOnClickListener(this);
         mBtnMultiplication.setOnClickListener(this);
@@ -53,54 +53,39 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         mEdtNumberB.addTextChangedListener(textWatcher);
     }
 
-    private void isEnableBtn(Boolean aBoolean) {
-        mBtnPlus.setEnabled(aBoolean);
-        mBtnMinus.setEnabled(aBoolean);
-        mBtnMultiplication.setEnabled(aBoolean);
-        mBtnDivision.setEnabled(aBoolean);
+    private void isEnableBtn(Boolean isCheck) {
+        mBtnPlus.setEnabled(isCheck);
+        mBtnMinus.setEnabled(isCheck);
+        mBtnMultiplication.setEnabled(isCheck);
+        mBtnDivision.setEnabled(isCheck);
     }
 
     @Override
     public void onClick(View view) {
-        double result;
         double numberA = Double.parseDouble(mEdtNumberA.getText().toString().trim());
         double numberB = Double.parseDouble(mEdtNumberB.getText().toString().trim());
         switch (view.getId()) {
             case R.id.btnPlus:
                 mTvCalculation.setText(R.string.plus);
-                result = plus(numberA, numberB);
-                convertResult(result);
+                mTvResult.setText(String.valueOf(plus(numberA, numberB)));
                 break;
             case R.id.btnMinus:
                 mTvCalculation.setText(R.string.minus);
-                result = minus(numberA, numberB);
-                convertResult(result);
+                mTvResult.setText(String.valueOf(minus(numberA, numberB)));
                 break;
             case R.id.btnMultiplication:
                 mTvCalculation.setText(R.string.mul);
-                result = multiplication(numberA, numberB);
-                convertResult(result);
+                mTvResult.setText(String.valueOf(multiplication(numberA, numberB)));
                 break;
             case R.id.btnDivision:
-                if (Double.parseDouble(mEdtNumberB.getText().toString().trim()) == 0) {
-                    mTvCalculation.setText(R.string.result_null);
+                mTvCalculation.setText(R.string.div);
+                if (numberB == 0) {
                     mTvResult.setText(R.string.result_null);
                     Toast.makeText(CalculatorActivity.this, R.string.validate_number_0, Toast.LENGTH_SHORT).show();
                 } else {
-                    mTvCalculation.setText(R.string.div);
-                    result = division(numberA, numberB);
-                    convertResult(result);
+                    mTvResult.setText(String.valueOf(division(numberA, numberB)));
                 }
                 break;
-        }
-    }
-
-    private void convertResult(double result) {
-        int temp = (int) result;
-        if (result == temp) {
-            mTvResult.setText(String.valueOf(temp));
-        } else {
-            mTvResult.setText(String.valueOf(result));
         }
     }
 
@@ -128,17 +113,17 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            // No-op
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
             if (TextUtils.isEmpty(mEdtNumberA.getText()) || TextUtils.isEmpty(mEdtNumberB.getText())) {
                 isEnableBtn(false);
                 Toast.makeText(CalculatorActivity.this, R.string.validate_input_data, Toast.LENGTH_LONG).show();
             } else {
                 isEnableBtn(true);
             }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            // No-op
         }
     };
 }
