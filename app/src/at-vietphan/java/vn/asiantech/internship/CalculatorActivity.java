@@ -25,6 +25,13 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
+        initView();
+        checkAllInputData();
+        implementClick();
+
+    }
+
+    private void initView() {
         mBtnPlus = findViewById(R.id.btnPlus);
         mBtnMinus = findViewById(R.id.btnMinus);
         mBtnMultiplication = findViewById(R.id.btnMultiplication);
@@ -33,13 +40,18 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         mEdtNumberB = findViewById(R.id.edtNumberB);
         mTvCalculation = findViewById(R.id.tvCalculation);
         mTvResult = findViewById(R.id.tvResult);
-        checkEdtInputData(mEdtNumberA);
-        checkEdtInputData(mEdtNumberB);
+    }
+
+    private void implementClick() {
         mBtnPlus.setOnClickListener(this);
         mBtnMinus.setOnClickListener(this);
         mBtnMultiplication.setOnClickListener(this);
         mBtnDivision.setOnClickListener(this);
+    }
 
+    private void checkAllInputData() {
+        checkEdtInputData(mEdtNumberA);
+        checkEdtInputData(mEdtNumberB);
     }
 
     private void checkEdtInputData(EditText editText) {
@@ -61,7 +73,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                     mBtnMinus.setEnabled(false);
                     mBtnMultiplication.setEnabled(false);
                     mBtnDivision.setEnabled(false);
-                    Toast.makeText(CalculatorActivity.this,"Number A or Number B is Empty !",Toast.LENGTH_LONG).show();
+                    Toast.makeText(CalculatorActivity.this, "Number A or Number B is Empty !", Toast.LENGTH_LONG).show();
                 } else {
                     mBtnPlus.setEnabled(true);
                     mBtnMinus.setEnabled(true);
@@ -75,7 +87,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         double result;
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnPlus:
                 mTvCalculation.setText("+");
                 result = plus(Double.parseDouble(mEdtNumberA.getText().toString()), Double.parseDouble(mEdtNumberB.getText().toString()));
@@ -93,8 +105,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.btnDivision:
                 if (Integer.parseInt(mEdtNumberB.getText().toString()) == 0) {
+                    mTvResult.setText("");
                     Toast.makeText(CalculatorActivity.this, "Number B other number 0", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     mTvCalculation.setText("/");
                     result = division(Double.parseDouble(mEdtNumberA.getText().toString()), Double.parseDouble(mEdtNumberB.getText().toString()));
                     mTvResult.setText(String.valueOf(result));
