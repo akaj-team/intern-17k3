@@ -40,10 +40,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     private void init() {
-        Button mBtnLoginFaceBook = mView.findViewById(R.id.btnLoginFacebook);
-        Button mBtnLoginPhone = mView.findViewById(R.id.btnLoginPhone);
-        TextView mTvSignUp = mView.findViewById(R.id.tvSignup);
-        SpannableString spannableString = new SpannableString(mTvSignUp.getText());
+        Button btnLoginFaceBook = mView.findViewById(R.id.btnLoginFacebook);
+        Button btnLoginPhone = mView.findViewById(R.id.btnLoginPhone);
+        TextView tvSignUp = mView.findViewById(R.id.tvSignup);
+        SpannableString spannableString = new SpannableString(tvSignUp.getText());
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
@@ -59,13 +59,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 ds.setColor(ContextCompat.getColor(getContext(), R.color.colorLink));
             }
         };
-        spannableString.setSpan(clickableSpan, 13, mTvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        mTvSignUp.setText(spannableString);
-        mTvSignUp.setMovementMethod(LinkMovementMethod.getInstance());
+        spannableString.setSpan(clickableSpan, 13, tvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tvSignUp.setText(spannableString);
+        tvSignUp.setMovementMethod(LinkMovementMethod.getInstance());
         // Init OnClickListener
-        mBtnLoginFaceBook.setOnClickListener(this);
-        mBtnLoginPhone.setOnClickListener(this);
-        mTvSignUp.setOnClickListener(this);
+        btnLoginFaceBook.setOnClickListener(this);
+        btnLoginPhone.setOnClickListener(this);
+        tvSignUp.setOnClickListener(this);
         ((LoginActivity) getActivity()).getImgBack().setVisibility(View.INVISIBLE);
     }
 

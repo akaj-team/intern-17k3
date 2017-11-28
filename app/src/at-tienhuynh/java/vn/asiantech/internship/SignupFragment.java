@@ -72,15 +72,16 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         }
     }
 
-    //no-op
     private void validate() {
         mEdtPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
@@ -91,10 +92,12 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         mEdtPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
@@ -105,16 +108,19 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         mEdtMail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
                 checkemtytext();
             }
+            // No-op
         });
     }
 

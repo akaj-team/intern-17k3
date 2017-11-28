@@ -14,7 +14,7 @@
 
     <style name="EditTextSiginUp" parent="Widget.AppCompat.EditText">
         <item name="android:layout_margin">7dp</item>
-        <item name="android:textCursorDrawable">@drawable/color_cursor</item>
+        <item name="android:textCursorDrawable">@drawable/bg_cursor</item>
         <item name="android:background">@drawable/bg_bottom_line_edt</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
