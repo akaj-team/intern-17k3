@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
-
 public class LoginButtonFragment extends Fragment {
 
     @Override
@@ -24,7 +23,26 @@ public class LoginButtonFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login_button, container, false);
         ((LoginActivity) getActivity()).getImgBack().setVisibility(View.INVISIBLE);
+        TextView tvMemoLogin = view.findViewById(R.id.tvMemoLogin);
+        SpannableString spannableString = new SpannableString(tvMemoLogin.getText());
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                ((LoginActivity) getActivity()).replace(new InfoEnterFragment(), true);
+            }
 
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.bgColor = Color.WHITE;
+                ds.setARGB(255, 255, 255, 255);
+                ds.setUnderlineText(false);
+                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorTextBlue));
+            }
+        };
+        spannableString.setSpan(clickableSpan, 12, tvMemoLogin.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tvMemoLogin.setText(spannableString);
+        tvMemoLogin.setMovementMethod(LinkMovementMethod.getInstance());
         return view;
     }
 

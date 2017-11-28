@@ -10,12 +10,12 @@ import android.widget.ImageView;
 
 import vn.asiantech.internship.R;
 
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity {
     private ImageView mImgBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         replace(new LoginButtonFragment(), false);
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity{
         fragmentTransaction.commit();
     }
 
-    public ImageView getImgBack(){
+    public ImageView getImgBack() {
         return mImgBack;
     }
 
