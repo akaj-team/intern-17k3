@@ -16,8 +16,8 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     private Button mBtnMultiplication;
     private Button mBtnDivision;
     private TextView mTvResult;
-    private TextView mTvCaculation;
-    private Caculation mCaculation;
+    private TextView mTvCalculation;
+    private Calculation mCalculation;
     private Boolean mIsEmty;
 
     @Override
@@ -35,8 +35,8 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         mBtnMultiplication = findViewById(R.id.btnMultiplication);
         mBtnDivision = findViewById(R.id.btnDivision);
         mTvResult = findViewById(R.id.tvResult);
-        mTvCaculation = findViewById(R.id.tvCalculation);
-        mCaculation = new Caculation();
+        mTvCalculation = findViewById(R.id.tvCalculation);
+        mCalculation = new Calculation();
         mBtnSum.setOnClickListener(this);
         mBtnSubtraction.setOnClickListener(this);
         mBtnMultiplication.setOnClickListener(this);
@@ -51,35 +51,35 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
                 getCaculator(mBtnSum);
                 checkEmty();
                 if (mIsEmty) {
-                    mCaculation.sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                    mCalculation.sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 }
                 break;
             case R.id.btnSubtraction:
                 getCaculator(mBtnSubtraction);
                 checkEmty();
                 if (mIsEmty) {
-                    mCaculation.subTraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                    mCalculation.subTraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 }
                 break;
             case R.id.btnMultiplication:
                 getCaculator(mBtnMultiplication);
                 checkEmty();
                 if (mIsEmty) {
-                    mCaculation.mulTiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                    mCalculation.mulTiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 }
                 break;
             case R.id.btnDivision:
                 getCaculator(mBtnDivision);
                 checkEmty();
                 if (mIsEmty) {
-                    mCaculation.diVision(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                    mCalculation.diVision(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 }
                 break;
         }
     }
 
     private void getCaculator(Button btnCaculator) {
-        mTvCaculation.setText(btnCaculator.getText().toString());
+        mTvCalculation.setText(btnCaculator.getText().toString());
     }
 
     private void checkEmty() {
@@ -90,7 +90,7 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
             mIsEmty = false;
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setTitle(R.string.DialogTitle);
-            alertDialogBuilder.setMessage("Please input number!");
+            alertDialogBuilder.setMessage(R.string.dialogMessage);
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
             mTvResult.setText(R.string.tvResult);

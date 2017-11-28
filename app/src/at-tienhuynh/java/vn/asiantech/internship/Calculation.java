@@ -6,10 +6,10 @@ import android.widget.TextView;
  * Created at 2017
  * Created by jackty on 27/11/2017.
  */
-public class Caculation {
+public class Calculation {
     private float mResult;
 
-    public Caculation() {
+    public Calculation() {
     }
 
     protected Float sum(float numA, float numB, TextView tvResult) {
