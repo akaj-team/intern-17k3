@@ -2,19 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
     android:paddingTop="20dp"
-    tools:context="vn.asiantech.internship.ui.login.InfoEnterFragment">
+    tools:context="vn.asiantech.internship.ui.login.SignUpFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="@string/textview.memo_info_enter"
+        android:text="@string/textview_memo_info_enter"
         android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         android:textStyle="bold" />
@@ -39,8 +39,8 @@
             android:id="@+id/edtEnterPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/layer_edt"
-            android:hint="@string/btn.hint.enter_number"
+            android:background="@drawable/bg_edt"
+            android:hint="@string/btn_hint_enter_number"
             android:inputType="phone" />
     </LinearLayout>
 
@@ -48,16 +48,16 @@
         android:id="@+id/edtFullName"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/layer_edt"
-        android:hint="@string/btn.hint.full_name"
+        android:background="@drawable/bg_edt"
+        android:hint="@string/btn_hint_full_name"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/layer_edt"
-        android:hint="@string/btn.hint.email"
+        android:background="@drawable/bg_edt"
+        android:hint="@string/btn_hint_email"
         android:inputType="textEmailAddress" />
 
     <LinearLayout
@@ -71,7 +71,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
-            android:button="@drawable/selecter_chk_term_accept"
+            android:button="@drawable/bg_chk_term_accept"
             android:scaleX="1.5"
             android:scaleY="1.5" />
 
@@ -92,6 +92,6 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:src="@drawable/selecter_next" />
+        android:src="@drawable/selecter_btn_next" />
 
 </LinearLayout>

@@ -5,14 +5,14 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context="vn.asiantech.internship.ui.login.LoginButtonFragment">
+    tools:context="vn.asiantech.internship.ui.login.IndexFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="@string/textview.welcom"
+        android:text="@string/textview_welcom"
         android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         android:textStyle="bold" />
@@ -22,9 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/shape_button_login_facebook"
-        android:text="@string/bnt.login_facebook"
-        android:textColor="@color/colorTextWhite"
+        android:background="@drawable/bg_btn_login_facebook"
+        android:text="@string/bnt_login_facebook"
+        android:textColor="@color/colorWhite"
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -38,21 +38,21 @@
             android:layout_width="120dp"
             android:layout_height="1dp"
             android:layout_marginRight="15dp"
-            android:background="@color/colorLine"
+            android:background="@color/colorLineGray"
             android:textSize="2dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/textview.or"
-            android:textColor="@color/colorTextBlack"
+            android:text="@string/textview_or"
+            android:textColor="@color/colorBlack"
             android:textSize="15dp" />
 
         <TextView
             android:layout_width="120dp"
             android:layout_height="1dp"
             android:layout_marginLeft="15dp"
-            android:background="@color/colorLine"
+            android:background="@color/colorLineGray"
             android:textSize="2dp" />
 
     </LinearLayout>
@@ -62,9 +62,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/shape_button_login_number"
-        android:text="@string/bnt.login_number_phone"
-        android:textColor="@color/colorTextBlue"
+        android:background="@drawable/bg_btn_login_number"
+        android:text="@string/bnt_login_number_phone"
+        android:textColor="@color/colorBlue"
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textview_memo_login"
-            android:textColor="@color/colorTextBlack"
+            android:textColor="@color/colorBlack"
             android:textColorHighlight="@android:color/transparent" />
     </LinearLayout>
 </LinearLayout>

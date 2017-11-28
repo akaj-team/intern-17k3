@@ -15,20 +15,19 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        replace(new LoginButtonFragment(), false);
+        replaceFragment(new IndexFragment(), false);
         mImgBack = findViewById(R.id.imgBack);
         mImgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getSupportFragmentManager().popBackStack();
+                onBackPressed();
             }
         });
     }
 
-    public void replace(Fragment fragment, boolean isAdd) {
+    public void replaceFragment(Fragment fragment, boolean isAdd) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frLogin, fragment);
@@ -38,8 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public ImageView getImgBack() {
-        return mImgBack;
+    protected void setVisibilityImageBack(int visibility) {
+        mImgBack.setVisibility(visibility);
     }
 
 }

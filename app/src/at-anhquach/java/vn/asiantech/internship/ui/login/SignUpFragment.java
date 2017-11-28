@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
-public class InfoEnterFragment extends Fragment {
+public class SignUpFragment extends Fragment {
     private ImageView mImgNext;
     private EditText mEdtEnterPhoneNumber;
     private EditText mEdtEmail;
@@ -40,13 +40,12 @@ public class InfoEnterFragment extends Fragment {
         mEdtFullName = view.findViewById(R.id.edtFullName);
         mEdtEnterPhoneNumber = view.findViewById(R.id.edtEnterPhoneNumber);
         mChkTermAccept = view.findViewById(R.id.chkTermAccept);
-        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.VISIBLE);
         TextView tvReadAgreeTerm = view.findViewById(R.id.tvReadAndAgreeTerm);
         SpannableString spannableString = new SpannableString(tvReadAgreeTerm.getText());
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-
+                // No-op
             }
 
             @Override
@@ -55,7 +54,7 @@ public class InfoEnterFragment extends Fragment {
                 ds.bgColor = Color.WHITE;
                 ds.setARGB(255, 255, 255, 255);
                 ds.setUnderlineText(false);
-                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorTextBlue));
+                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorBlue));
             }
         };
         spannableString.setSpan(clickableSpan, 30, tvReadAgreeTerm.getText().length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -65,12 +64,12 @@ public class InfoEnterFragment extends Fragment {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //No-op
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //No-op
+                // No-op
             }
 
             @Override
@@ -83,12 +82,12 @@ public class InfoEnterFragment extends Fragment {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //No-op
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //No-op
+                // No-op
             }
 
             @Override
@@ -101,12 +100,12 @@ public class InfoEnterFragment extends Fragment {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //No-op
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //No-op
+                // No-op
             }
 
             @Override
@@ -129,6 +128,12 @@ public class InfoEnterFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((LoginActivity) getActivity()).setVisibilityImageBack(View.VISIBLE);
     }
 
     private void checkInputInfo() {

@@ -16,19 +16,18 @@ import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
-public class LoginButtonFragment extends Fragment {
+public class IndexFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login_button, container, false);
-        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.INVISIBLE);
         TextView tvMemoLogin = view.findViewById(R.id.tvMemoLogin);
         SpannableString spannableString = new SpannableString(tvMemoLogin.getText());
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                ((LoginActivity) getActivity()).replace(new InfoEnterFragment(), true);
+                ((LoginActivity) getActivity()).replaceFragment(new SignUpFragment(), true);
             }
 
             @Override
@@ -37,7 +36,7 @@ public class LoginButtonFragment extends Fragment {
                 ds.bgColor = Color.WHITE;
                 ds.setARGB(255, 255, 255, 255);
                 ds.setUnderlineText(false);
-                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorTextBlue));
+                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorBlue));
             }
         };
         spannableString.setSpan(clickableSpan, 12, tvMemoLogin.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -46,4 +45,9 @@ public class LoginButtonFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((LoginActivity) getActivity()).setVisibilityImageBack(View.INVISIBLE);
+    }
 }
