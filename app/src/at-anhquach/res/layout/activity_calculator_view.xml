@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="25dp"
+    android:padding="15dp"
     tools:context="vn.asiantech.internship.CalculatorViewActivity">
 
     <LinearLayout
@@ -16,30 +16,33 @@
 
         <EditText
             android:id="@+id/edtInputA"
-            android:layout_width="140dp"
+            android:layout_width="130dp"
             android:layout_height="35dp"
             android:background="@drawable/bg_edt_input_number"
             android:gravity="center"
-            android:inputType="numberSigned" />
+            android:inputType="numberSigned|numberDecimal" />
 
         <TextView
             android:id="@+id/tvOperator"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:gravity="center"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center" />
 
         <EditText
             android:id="@+id/edtInputB"
-            android:layout_width="140dp"
+            android:layout_width="130dp"
             android:layout_height="35dp"
             android:background="@drawable/bg_edt_input_number"
             android:gravity="center"
-            android:inputType="numberSigned"/>
+            android:inputType="numberSigned|numberDecimal" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -47,34 +50,34 @@
             android:id="@+id/btnAdd"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="+" />
+            android:text="@string/Add" />
 
         <Button
             android:id="@+id/btnSub"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="-" />
+            android:text="@string/Sub" />
 
         <Button
             android:id="@+id/btnMulti"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="*" />
+            android:text="@string/Multi" />
 
         <Button
             android:id="@+id/btnDiv"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="/" />
+            android:text="@string/Divide" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvResutl"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:background="@color/colorAccent"
         android:gravity="center"
         android:textColor="@color/colorResutl"
-        android:textSize="15dp"/>
+        android:textSize="30dp" />
 </LinearLayout>

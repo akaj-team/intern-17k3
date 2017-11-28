@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">anhquach-17k3</string>
+    <string name="Add">+</string>
+    <string name="Divide">/</string>
+    <string name="Multi">*</string>
+    <string name="Sub">-</string>
+    <string name="NoteDivideZero">Cant divide for 0</string>
 </resources>
