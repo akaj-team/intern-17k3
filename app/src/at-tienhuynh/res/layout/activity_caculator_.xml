@@ -54,22 +54,22 @@
 
         <Button
             android:id="@+id/btnSum"
-            style="@style/BtnCaculation"
+            style="@style/BtnCalculation"
             android:text="@string/edtSum" />
 
         <Button
             android:id="@+id/btnSubtraction"
-            style="@style/BtnCaculation"
+            style="@style/BtnCalculation"
             android:text="@string/edtSub" />
 
         <Button
             android:id="@+id/btnMultiplication"
-            style="@style/BtnCaculation"
+            style="@style/BtnCalculation"
             android:text="@string/edtMulti" />
 
         <Button
             android:id="@+id/btnDivision"
-            style="@style/BtnCaculation"
+            style="@style/BtnCalculation"
             android:text="@string/edtDivi" />
     </LinearLayout>
 
