@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import vn.asiantech.internship.R;
 
-public class LogInActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private ImageView mImgBack;
 
     @Override
