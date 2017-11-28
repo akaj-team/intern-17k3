@@ -34,7 +34,7 @@ public class CalculatorView extends AppCompatActivity {
         mBtnAddition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mTvResult.setText("");
+                //mTvResult.setText("");
                 mTvOperator.setText("+");
                 if (checkInput()) {
                     final float firstNumber = Float.parseFloat(mEdtFirstNumber.getText().toString());
@@ -47,7 +47,6 @@ public class CalculatorView extends AppCompatActivity {
         mBtnSubtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mTvResult.setText("");
                 mTvOperator.setText("-");
                 if (checkInput()) {
                     final float firstNumber = Float.parseFloat(mEdtFirstNumber.getText().toString());
@@ -60,7 +59,6 @@ public class CalculatorView extends AppCompatActivity {
         mBtnMultiplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mTvResult.setText("");
                 mTvOperator.setText("*");
                 if (checkInput()) {
                     final float firstNumber = Float.parseFloat(mEdtFirstNumber.getText().toString());
@@ -73,7 +71,6 @@ public class CalculatorView extends AppCompatActivity {
         mBtnDivision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mTvResult.setText("");
                 mTvOperator.setText("/");
                 if (checkInput()) {
                     final float firstNumber = Float.parseFloat(mEdtFirstNumber.getText().toString());
