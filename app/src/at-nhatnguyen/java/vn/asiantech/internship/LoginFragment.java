@@ -23,7 +23,7 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        TextView mTvSignin = view.findViewById(R.id.tvSignin);
+        TextView tvSignin = view.findViewById(R.id.tvSignin);
         Button btnLoginFacebook = view.findViewById(R.id.btnLoginFacebook);
         btnLoginFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +31,7 @@ public class LoginFragment extends Fragment {
                 ((MainActivity) getActivity()).replaceFragment(new InforFragment(), true);
             }
         });
-        clickOnTextView(mTvSignin, 12, mTvSignin.getText().length());
+        clickOnTextView(tvSignin, 12, tvSignin.getText().length());
         return view;
     }
 

@@ -61,7 +61,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:background="@drawable/border_buttonphone"
+        android:background="@drawable/bg_bottom_gray_border"
         android:text="@string/text_button_login_phonenum"
         android:textColor="@color/color_button_phonenum_and_signup"
         android:textSize="15dp"
