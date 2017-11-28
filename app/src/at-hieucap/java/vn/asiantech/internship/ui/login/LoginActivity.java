@@ -16,7 +16,7 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in);
+        setContentView(R.layout.activity_login);
         mImgBack = findViewById(R.id.imgBack);
         mImgBack.setImageDrawable(getResources().getDrawable(R.drawable.selector_event_back));
         mImgBack.setEnabled(false); // Can't press back button
