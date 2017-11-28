@@ -51,19 +51,35 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         switch (v.getId()) {
             case R.id.btAdd:
                 mTvOperator.setText("+");
-                mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '+')));
+                if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '+'))) {
+                    mTvResult.setText("Số quá giới hạn cho phép !");
+                } else {
+                    mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '+')));
+                }
                 break;
             case R.id.btSub:
                 mTvOperator.setText("-");
-                mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '-')));
+                if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '-'))) {
+                    mTvResult.setText("Số quá giới hạn cho phép !");
+                } else {
+                    mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '-')));
+                }
                 break;
             case R.id.btMul:
                 mTvOperator.setText("*");
-                mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '*')));
+                if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '*'))) {
+                    mTvResult.setText("Số quá giới hạn cho phép !");
+                } else {
+                    mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '*')));
+                }
                 break;
             case R.id.btDiv:
                 mTvOperator.setText("/");
-                mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '/')));
+                if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '/'))) {
+                    mTvResult.setText("Số quá giới hạn cho phép !");
+                } else {
+                    mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '/')));
+                }
                 break;
         }
     }

@@ -10,28 +10,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <EditText
             android:id="@+id/edtNumberA"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="50dp"
             android:background="@drawable/bg_edt_input"
-            android:inputType="numberDecimal"
+            android:inputType="numberSigned|numberDecimal"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/tvOperator"
             android:layout_width="40dp"
             android:layout_height="50dp"
-            android:textAlignment="center" />
+            android:gravity="center" />
 
         <EditText
             android:id="@+id/edtNumberB"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="50dp"
             android:background="@drawable/bg_edt_input"
-            android:inputType="numberDecimal"
+            android:inputType="numberSigned|numberDecimal"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -48,6 +51,7 @@
             android:layout_weight="1"
             android:enabled="false"
             android:text="@string/btn_add"
+            android:textSize="20dp"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -57,6 +61,7 @@
             android:layout_weight="1"
             android:enabled="false"
             android:text="@string/btn_sub"
+            android:textSize="20dp"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -66,6 +71,7 @@
             android:layout_weight="1"
             android:enabled="false"
             android:text="@string/btn_mul"
+            android:textSize="20dp"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -75,6 +81,7 @@
             android:layout_weight="1"
             android:enabled="false"
             android:text="@string/btn_div"
+            android:textSize="20dp"
             tools:ignore="ButtonStyle" />
     </LinearLayout>
 
