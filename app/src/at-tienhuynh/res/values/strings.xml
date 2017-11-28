@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">tienhuynh-17k3</string>
+    <string name="RecyclerView">RecyclerView</string>
+    <string name="btnIsuses1">Isuses 1</string>
+    <string name="btnIsuses2">Isuses 2</string>
+    <string name="btnIsuses3">Isuses 3</string>
 </resources>
