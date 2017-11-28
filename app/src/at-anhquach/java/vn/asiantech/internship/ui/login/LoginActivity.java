@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void replaceFragment(Fragment fragment, boolean isAdd) {
+    protected void replaceFragment(Fragment fragment, boolean isAdd) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frLogin, fragment);

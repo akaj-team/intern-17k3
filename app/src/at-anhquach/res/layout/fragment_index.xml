@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/bg_btn_login_facebook"
-        android:text="@string/bnt_login_facebook"
+        android:text="@string/bnt_login_facebook_title"
         android:textColor="@color/colorWhite"
         android:textSize="18dp"
         android:textStyle="bold" />
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/bg_btn_login_number"
+        android:background="@drawable/bg_btn_login_number_phone"
         android:text="@string/bnt_login_number_phone"
         android:textColor="@color/colorBlue"
         android:textSize="18dp"

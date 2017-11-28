@@ -21,7 +21,7 @@ public class IndexFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login_button, container, false);
+        View view = inflater.inflate(R.layout.fragment_index, container, false);
         TextView tvMemoLogin = view.findViewById(R.id.tvMemoLogin);
         SpannableString spannableString = new SpannableString(tvMemoLogin.getText());
         ClickableSpan clickableSpan = new ClickableSpan() {

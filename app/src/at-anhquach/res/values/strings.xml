@@ -2,7 +2,7 @@
     <string name="app_name">anhquach-17k3</string>
     <string name="textview_or">or</string>
     <string name="textview_slogan">a bike for everyone, always</string>
-    <string name="bnt_login_facebook">LOG IN WITH FACEBOOK</string>
+    <string name="bnt_login_facebook_title">LOG IN WITH FACEBOOK</string>
     <string name="bnt_login_number_phone">LOG IN WITH PHONE NUMBER</string>
     <string name="textview_memo_login">New to urbi? Sign up for an account</string>
     <string name="textview_welcom">Welcome to urbi</string>

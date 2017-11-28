@@ -33,7 +33,7 @@ public class SignUpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_info_enter, container, false);
+        View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
         mImgNext = view.findViewById(R.id.imgNext);
         mEdtEmail = view.findViewById(R.id.edtEmail);
