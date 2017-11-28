@@ -1,12 +1,14 @@
 package vn.asiantech.internship;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import vn.asiantech.internship.R;
 
@@ -69,7 +71,15 @@ public class CalculatorViewActivity extends Activity implements View.OnClickList
                 break;
             case R.id.btnDiv:
                 oper = "/";
-                result = numA / numB;
+                if (numB!=0){
+                    result = numA / numB;
+                }else{
+                    Context context = getApplicationContext();
+                    CharSequence text = "Cant divide for 0";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
                 break;
             default:
                 break;

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:padding="25dp"
     tools:context="vn.asiantech.internship.CalculatorViewActivity">
 
     <LinearLayout
@@ -15,12 +16,11 @@
 
         <EditText
             android:id="@+id/edtInputA"
-            android:layout_width="130dp"
+            android:layout_width="140dp"
             android:layout_height="35dp"
-            android:layout_margin="20dp"
             android:background="@drawable/bg_edt_input_number"
             android:gravity="center"
-            android:inputType="number"/>
+            android:inputType="numberSigned" />
 
         <TextView
             android:id="@+id/tvOperator"
@@ -30,12 +30,11 @@
 
         <EditText
             android:id="@+id/edtInputB"
-            android:layout_width="130dp"
+            android:layout_width="140dp"
             android:layout_height="35dp"
-            android:layout_margin="20dp"
             android:background="@drawable/bg_edt_input_number"
             android:gravity="center"
-            android:inputType="number"/>
+            android:inputType="numberSigned"/>
     </LinearLayout>
 
     <LinearLayout
@@ -73,10 +72,9 @@
         android:id="@+id/tvResutl"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:background="@color/colorAccent"
         android:gravity="center"
-        android:textColor="@color/colorResutl"/>
+        android:textColor="@color/colorResutl"
+        android:textSize="15dp"/>
 </LinearLayout>
