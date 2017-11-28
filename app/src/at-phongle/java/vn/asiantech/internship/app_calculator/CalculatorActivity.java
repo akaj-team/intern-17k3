@@ -52,7 +52,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             case R.id.btAdd:
                 mTvOperator.setText("+");
                 if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '+'))) {
-                    mTvResult.setText("Số quá giới hạn cho phép !");
+                    mTvResult.setText(R.string.tv_fail);
                 } else {
                     mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '+')));
                 }
@@ -60,7 +60,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             case R.id.btSub:
                 mTvOperator.setText("-");
                 if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '-'))) {
-                    mTvResult.setText("Số quá giới hạn cho phép !");
+                    mTvResult.setText(R.string.tv_fail);
                 } else {
                     mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '-')));
                 }
@@ -68,7 +68,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             case R.id.btMul:
                 mTvOperator.setText("*");
                 if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '*'))) {
-                    mTvResult.setText("Số quá giới hạn cho phép !");
+                    mTvResult.setText(R.string.tv_fail);
                 } else {
                     mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '*')));
                 }
@@ -76,7 +76,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             case R.id.btDiv:
                 mTvOperator.setText("/");
                 if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '/'))) {
-                    mTvResult.setText("Số quá giới hạn cho phép !");
+                    mTvResult.setText(R.string.tv_fail);
                 } else {
                     mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '/')));
                 }
