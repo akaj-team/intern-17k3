@@ -11,24 +11,39 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.app_calculator.CalculatorActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
+    private Button mBtnLoginScreen;
+    private Button mBtnCalculatorScreen;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-        Button btnLoginScreen = findViewById(R.id.btn_login_screen);
-        Button btnCalculatorScreen = findViewById(R.id.btn_calculator_screen);
-        btnCalculatorScreen.setOnClickListener(this);
-        btnLoginScreen.setOnClickListener(this);
+        initViews();
+        addListener();
+    }
+
+    private void initViews() {
+        mBtnLoginScreen = findViewById(R.id.btnLoginScreen);
+        mBtnCalculatorScreen = findViewById(R.id.btnCalculatorScreen);
+    }
+
+    private void addListener() {
+        mBtnLoginScreen.setOnClickListener(this);
+        mBtnCalculatorScreen.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
-            case R.id.btn_calculator_screen:
+            case R.id.btnCalculatorScreen:
                 intent = new Intent(AppActivity.this, CalculatorActivity.class);
                 startActivity(intent);
                 break;
+//            case R.id.btnRecyclerScreen:
+//                intent = new Intent(AppActivity.this, RecyclerActivity.class);
+//                startActivity(intent);
+//                break;
 //            case R.id.btn_login_screen:
 //                intent = new Intent(AppActivity.this , LoginActivity.class);
 //                break;

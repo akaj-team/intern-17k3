@@ -45,7 +45,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btAdd"
+            android:id="@+id/btnAdd"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_weight="1"
@@ -55,7 +55,7 @@
             tools:ignore="ButtonStyle" />
 
         <Button
-            android:id="@+id/btSub"
+            android:id="@+id/btnSub"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_weight="1"
@@ -65,7 +65,7 @@
             tools:ignore="ButtonStyle" />
 
         <Button
-            android:id="@+id/btMul"
+            android:id="@+id/btnMul"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_weight="1"
@@ -75,7 +75,7 @@
             tools:ignore="ButtonStyle" />
 
         <Button
-            android:id="@+id/btDiv"
+            android:id="@+id/btnDiv"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_weight="1"

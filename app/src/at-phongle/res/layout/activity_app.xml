@@ -8,13 +8,13 @@
     android:padding="50dp">
 
     <Button
-        android:id="@+id/btn_login_screen"
+        android:id="@+id/btnLoginScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_login_screen" />
 
     <Button
-        android:id="@+id/btn_calculator_screen"
+        android:id="@+id/btnCalculatorScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_calculator_screen" />

@@ -27,6 +27,22 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator_activity);
         initViews();
+        setButtonEnable();
+        addListener();
+    }
+
+    private void initViews() {
+        mEdtNumberA = findViewById(R.id.edtNumberA);
+        mEdtNumberB = findViewById(R.id.edtNumberB);
+        mBtnAdd = findViewById(R.id.btnAdd);
+        mBtnSub = findViewById(R.id.btnSub);
+        mBtnMul = findViewById(R.id.btnMul);
+        mBtnDiv = findViewById(R.id.btnDiv);
+        mTvOperator = findViewById(R.id.tvOperator);
+        mTvResult = findViewById(R.id.tvResult);
+    }
+
+    private void addListener() {
         mEdtNumberA.addTextChangedListener(this);
         mEdtNumberB.addTextChangedListener(this);
         mBtnAdd.setOnClickListener(this);
@@ -35,66 +51,57 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         mBtnDiv.setOnClickListener(this);
     }
 
-    private void initViews() {
-        mEdtNumberA = findViewById(R.id.edtNumberA);
-        mEdtNumberB = findViewById(R.id.edtNumberB);
-        mBtnAdd = findViewById(R.id.btAdd);
-        mBtnSub = findViewById(R.id.btSub);
-        mBtnMul = findViewById(R.id.btMul);
-        mBtnDiv = findViewById(R.id.btDiv);
-        mTvOperator = findViewById(R.id.tvOperator);
-        mTvResult = findViewById(R.id.tvResult);
-    }
-
     @Override
     public void onClick(View v) {
+        Float numA = Float.parseFloat(mEdtNumberA.getText().toString());
+        Float numB = Float.parseFloat(mEdtNumberB.getText().toString());
         switch (v.getId()) {
-            case R.id.btAdd:
+            case R.id.btnAdd:
                 mTvOperator.setText("+");
-                if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '+'))) {
+                if (Float.isInfinite(operator(numA, numB, '+'))) {
                     mTvResult.setText(R.string.tv_fail);
                 } else {
-                    mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '+')));
+                    mTvResult.setText(String.valueOf(operator(numA, numB, '+')));
                 }
                 break;
-            case R.id.btSub:
+            case R.id.btnSub:
                 mTvOperator.setText("-");
-                if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '-'))) {
+                if (Float.isInfinite(operator(numA, numB, '-'))) {
                     mTvResult.setText(R.string.tv_fail);
                 } else {
-                    mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '-')));
+                    mTvResult.setText(String.valueOf(operator(numA, numB, '-')));
                 }
                 break;
-            case R.id.btMul:
+            case R.id.btnMul:
                 mTvOperator.setText("*");
-                if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '*'))) {
+                if (Float.isInfinite(operator(numA, numB, '*'))) {
                     mTvResult.setText(R.string.tv_fail);
                 } else {
-                    mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '*')));
+                    mTvResult.setText(String.valueOf(operator(numA, numB, '*')));
                 }
                 break;
-            case R.id.btDiv:
+            case R.id.btnDiv:
                 mTvOperator.setText("/");
-                if (Float.isInfinite(operator(mEdtNumberA, mEdtNumberB, '/'))) {
+                if (Float.isInfinite(operator(numA, numB, '/'))) {
                     mTvResult.setText(R.string.tv_fail);
                 } else {
-                    mTvResult.setText(String.valueOf(operator(mEdtNumberA, mEdtNumberB, '/')));
+                    mTvResult.setText(String.valueOf(operator(numA, numB, '/')));
                 }
                 break;
         }
     }
 
     private void setButtonEnable() {
-        mBtnAdd.setEnabled(checkInvalidNumber(mEdtNumberA, mEdtNumberB));
-        mBtnSub.setEnabled(checkInvalidNumber(mEdtNumberA, mEdtNumberB));
-        mBtnMul.setEnabled(checkInvalidNumber(mEdtNumberA, mEdtNumberB));
-        mBtnDiv.setEnabled(checkInvalidNumber(mEdtNumberA, mEdtNumberB));
-        mBtnDiv.setEnabled(checkZeroNumber(mEdtNumberB));
+        String numA = mEdtNumberA.getText().toString();
+        String numB = mEdtNumberB.getText().toString();
+        mBtnAdd.setEnabled(checkInvalidNumber(numA) && checkInvalidNumber(numB));
+        mBtnSub.setEnabled(checkInvalidNumber(numA) && checkInvalidNumber(numB));
+        mBtnMul.setEnabled(checkInvalidNumber(numA) && checkInvalidNumber(numB));
+        mBtnDiv.setEnabled(checkInvalidNumber(numA) && checkInvalidNumber(numB));
+        mBtnDiv.setEnabled(checkZeroNumber(numB));
     }
 
-    private float operator(EditText edtA, EditText edtB, char operator) {
-        float numA = Float.parseFloat(edtA.getText().toString());
-        float numB = Float.parseFloat(edtB.getText().toString());
+    private float operator(Float numA, Float numB, char operator) {
         switch (operator) {
             case '+':
                 return numA + numB;
@@ -109,19 +116,18 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private boolean checkInvalidNumber(EditText edtA, EditText edtB) {
+    private boolean checkInvalidNumber(String edt) {
         try {
-            Float.parseFloat(edtA.getText().toString());
-            Float.parseFloat(edtB.getText().toString());
+            Float.parseFloat(edt);
         } catch (NumberFormatException e) {
             return false;
         }
         return true;
     }
 
-    private boolean checkZeroNumber(EditText edt) {
+    private boolean checkZeroNumber(String edt) {
         try {
-            Float num = Float.parseFloat(edt.getText().toString());
+            Float num = Float.parseFloat(edt);
             return num != 0;
         } catch (NumberFormatException e) {
             return false;
@@ -130,7 +136,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        setButtonEnable();
     }
 
     @Override
@@ -140,6 +145,5 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void afterTextChanged(Editable s) {
-        setButtonEnable();
     }
 }
