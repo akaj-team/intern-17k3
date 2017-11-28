@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">nhatnguyen-17k3-calculator</string>
     <string name="summation">+</string>
-    <string name="Subtraction">-</string>
+    <string name="subtraction">-</string>
     <string name="multiplication">*</string>
     <string name="division">/</string>
+    <string name="numberone">Number One</string>
+    <string name="numbertwo">Number Two</string>
+    <string name="exercise_calculator">Calculator</string>
 </resources>
