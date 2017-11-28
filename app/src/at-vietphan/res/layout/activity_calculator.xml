@@ -29,8 +29,8 @@
             android:id="@+id/tvCalculation"
             android:layout_width="46dp"
             android:layout_height="match_parent"
-            android:textSize="18dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/edtNumberB"

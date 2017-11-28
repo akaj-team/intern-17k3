@@ -28,7 +28,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         initViews();
         setTextWatcher();
         implementClicks();
-
     }
 
     private void initViews() {
@@ -63,30 +62,46 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
+        double result = 0;
         double numberA = Double.parseDouble(mEdtNumberA.getText().toString().trim());
         double numberB = Double.parseDouble(mEdtNumberB.getText().toString().trim());
         switch (view.getId()) {
             case R.id.btnPlus:
                 mTvCalculation.setText("+");
-                mTvResult.setText(String.valueOf(plus(numberA,numberB)));
+                result = plus(numberA, numberB);
+                convertResult(result);
                 break;
             case R.id.btnMinus:
                 mTvCalculation.setText("-");
-                mTvResult.setText(String.valueOf(minus(numberA,numberB)));
+                result = minus(numberA, numberB);
+                convertResult(result);
                 break;
             case R.id.btnMultiplication:
                 mTvCalculation.setText("*");
-                mTvResult.setText(String.valueOf(multiplication(numberA,numberB)));
+                result = multiplication(numberA, numberB);
+                convertResult(result);
                 break;
             case R.id.btnDivision:
-                if (Double.parseDouble(mEdtNumberB.getText().toString()) == 0) {
+                if (Double.parseDouble(mEdtNumberB.getText().toString().trim()) == 0) {
+                    mTvCalculation.setText("");
                     mTvResult.setText("");
-                    Toast.makeText(CalculatorActivity.this, "Number B other number 0", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CalculatorActivity.this, R.string.validate_number_0, Toast.LENGTH_SHORT).show();
                 } else {
                     mTvCalculation.setText("/");
-                    mTvResult.setText(String.valueOf(division(numberA,numberB)));
+                    result = division(numberA, numberB);
+                    convertResult(result);
                 }
                 break;
+        }
+
+    }
+
+    private void convertResult(double result) {
+        int temp = (int) result;
+        if (result == temp) {
+            mTvResult.setText(String.valueOf(temp));
+        } else {
+            mTvResult.setText(String.valueOf(result));
         }
     }
 
@@ -121,11 +136,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         public void afterTextChanged(Editable editable) {
             if (TextUtils.isEmpty(mEdtNumberA.getText()) || TextUtils.isEmpty(mEdtNumberB.getText())) {
                 isEnableBtn(false);
-                Toast.makeText(CalculatorActivity.this, "Number A or Number B is Empty !", Toast.LENGTH_LONG).show();
+                Toast.makeText(CalculatorActivity.this, R.string.validate_input_data, Toast.LENGTH_LONG).show();
             } else {
                 isEnableBtn(true);
             }
         }
     };
 }
-
