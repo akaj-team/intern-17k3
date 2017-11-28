@@ -1,6 +1,7 @@
 package vn.asiantech.internship;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     private TextView mTvResult;
     private TextView mTvCaculation;
     private Caculation mCaculation;
+    private Boolean mIsEmty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +49,51 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.btnSum:
                 getCaculator(mBtnSum);
-                mCaculation.sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                checkEmty();
+                if (mIsEmty) {
+                    mCaculation.sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                }
                 break;
             case R.id.btnSubtraction:
                 getCaculator(mBtnSubtraction);
-                mCaculation.subTraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                checkEmty();
+                if (mIsEmty) {
+                    mCaculation.subTraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                }
                 break;
             case R.id.btnMultiplication:
                 getCaculator(mBtnMultiplication);
-                mCaculation.mulTiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                checkEmty();
+                if (mIsEmty) {
+                    mCaculation.mulTiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                }
                 break;
             case R.id.btnDivision:
                 getCaculator(mBtnDivision);
-                mCaculation.diVision(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                checkEmty();
+                if (mIsEmty) {
+                    mCaculation.diVision(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                }
                 break;
         }
     }
 
     private void getCaculator(Button btnCaculator) {
         mTvCaculation.setText(btnCaculator.getText().toString());
+    }
+
+    private void checkEmty() {
+        if (mEdtNumberA.getText().toString().length() > 0 && mEdtNumberB.getText().toString().length() > 0) {
+            mIsEmty = true;
+
+        } else {
+            mIsEmty = false;
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(R.string.DialogTitle);
+            alertDialogBuilder.setMessage("Please input number!");
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+            mTvResult.setText(R.string.tvResult);
+        }
     }
 }

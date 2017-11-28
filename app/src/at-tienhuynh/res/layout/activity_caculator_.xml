@@ -22,6 +22,7 @@
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="@drawable/bg_edt_number"
+            android:gravity="center"
             android:inputType="number"
             android:maxLines="1" />
 
@@ -41,6 +42,7 @@
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="@drawable/bg_edt_number"
+            android:gravity="center"
             android:inputType="number"
             android:maxLines="1" />
     </LinearLayout>

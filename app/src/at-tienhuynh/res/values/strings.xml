@@ -5,4 +5,5 @@
     <string name="edtMulti">*</string>
     <string name="edtDivi">/</string>
     <string name="tvResult">Result</string>
+    <string name="DialogTitle">Warning</string>
 </resources>
