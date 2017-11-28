@@ -66,7 +66,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         btnLoginFaceBook.setOnClickListener(this);
         btnLoginPhone.setOnClickListener(this);
         tvSignUp.setOnClickListener(this);
-        ((LoginActivity) getActivity()).setVisible(View.INVISIBLE);
+        ((LoginActivity) getActivity()).setVisiblilyImageBack(View.INVISIBLE);
     }
 
     @Override
