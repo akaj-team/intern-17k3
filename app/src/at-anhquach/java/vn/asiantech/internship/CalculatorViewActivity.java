@@ -19,8 +19,8 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
     private Button mBtnSub;
     private Button mBtnMulti;
     private Button mBtnDiv;
-    private float result = 0;
-    private String oper = "";
+    private float mResult = 0;
+    private String mOper = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +45,24 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
 
         switch (view.getId()) {
             case R.id.btnAdd:
-                oper = this.getString(R.string.Add);
-                result = numA + numB;
+                mOper = this.getString(R.string.Add);
+                mResult = numA + numB;
                 convertFloattoInt();
                 break;
             case R.id.btnSub:
-                oper = this.getString(R.string.Sub);
-                result = numA - numB;
+                mOper = this.getString(R.string.Sub);
+                mResult = numA - numB;
                 convertFloattoInt();
                 break;
             case R.id.btnMulti:
-                oper = this.getString(R.string.Multi);
-                result = numA * numB;
+                mOper = this.getString(R.string.Multi);
+                mResult = numA * numB;
                 convertFloattoInt();
                 break;
             case R.id.btnDiv:
-                oper = this.getString(R.string.Divide);
+                mOper = this.getString(R.string.Divide);
                 if (numB != 0) {
-                    result = numA / numB;
+                    mResult = numA / numB;
                     convertFloattoInt();
                 } else {
                     Context context = getApplicationContext();
@@ -98,12 +98,12 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
     }
 
     private void convertFloattoInt() {
-        int intResult = (int) result;
-        if (result == intResult) {
+        int intResult = (int) mResult;
+        if (mResult == intResult) {
             mTvResutl.setText(String.valueOf(intResult));
         } else {
-            mTvResutl.setText(String.valueOf(result));
+            mTvResutl.setText(String.valueOf(mResult));
         }
-        mTvOperator.setText(oper);
+        mTvOperator.setText(mOper);
     }
 }
