@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -17,9 +17,9 @@
             android:id="@+id/edtNumOne"
             android:layout_width="125dp"
             android:layout_height="50dp"
+            android:background="@drawable/bg_edittext_number"
             android:gravity="center"
             android:hint="@string/numberone"
-            android:background="@drawable/bg_edittext_number"
             android:inputType="numberDecimal|numberSigned" />
 
         <TextView
@@ -32,9 +32,9 @@
             android:id="@+id/edtNumTwo"
             android:layout_width="125dp"
             android:layout_height="50dp"
+            android:background="@drawable/bg_edittext_number"
             android:gravity="center"
             android:hint="@string/numbertwo"
-            android:background="@drawable/bg_edittext_number"
             android:inputType="numberDecimal|numberSigned" />
     </LinearLayout>
 
@@ -47,7 +47,7 @@
 
         <Button
             android:id="@+id/btnSummation"
-            style="@style/Button"
+            style="@style/btn_default"
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:enabled="false"
@@ -55,7 +55,7 @@
 
         <Button
             android:id="@+id/btnSubtraction"
-            style="@style/Button"
+            style="@style/btn_default"
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:enabled="false"
@@ -63,7 +63,7 @@
 
         <Button
             android:id="@+id/btnMultiplication"
-            style="@style/Button"
+            style="@style/btn_default"
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:enabled="false"
@@ -71,7 +71,7 @@
 
         <Button
             android:id="@+id/btnDivision"
-            style="@style/Button"
+            style="@style/btn_default"
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:enabled="false"
