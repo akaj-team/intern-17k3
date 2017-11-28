@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">vietphan-17k3</string>
     <string name="result">Result</string>
-    <string name="chia">/</string>
+    <string name="div">/</string>
     <string name="mul">*</string>
     <string name="minus">-</string>
     <string name="plus">+</string>

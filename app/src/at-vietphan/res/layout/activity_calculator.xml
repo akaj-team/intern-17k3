@@ -23,7 +23,7 @@
             android:background="@drawable/bg_number_text_view"
             android:gravity="center"
             android:hint="@string/input_a"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal|numberSigned" />
 
         <TextView
             android:id="@+id/tvCalculation"
@@ -41,7 +41,7 @@
             android:background="@drawable/bg_number_text_view"
             android:gravity="center"
             android:hint="@string/input_b"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal|numberSigned" />
     </LinearLayout>
 
     <LinearLayout
@@ -85,12 +85,12 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:enabled="false"
-            android:text="@string/chia" />
+            android:text="@string/div" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvResult"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:background="@color/colorTvResult"
         android:gravity="center"
