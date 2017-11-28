@@ -11,4 +11,5 @@
     <string name="validate_number_0">Number B other number 0</string>
     <string name="validate_input_data">Number A or Number B is Empty !</string>
     <string name="calculator_demo">Calculator Demo</string>
+    <string name="result_null" />
 </resources>

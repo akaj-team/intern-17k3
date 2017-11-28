@@ -62,38 +62,37 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        double result = 0;
+        double result;
         double numberA = Double.parseDouble(mEdtNumberA.getText().toString().trim());
         double numberB = Double.parseDouble(mEdtNumberB.getText().toString().trim());
         switch (view.getId()) {
             case R.id.btnPlus:
-                mTvCalculation.setText("+");
+                mTvCalculation.setText(R.string.plus);
                 result = plus(numberA, numberB);
                 convertResult(result);
                 break;
             case R.id.btnMinus:
-                mTvCalculation.setText("-");
+                mTvCalculation.setText(R.string.minus);
                 result = minus(numberA, numberB);
                 convertResult(result);
                 break;
             case R.id.btnMultiplication:
-                mTvCalculation.setText("*");
+                mTvCalculation.setText(R.string.mul);
                 result = multiplication(numberA, numberB);
                 convertResult(result);
                 break;
             case R.id.btnDivision:
                 if (Double.parseDouble(mEdtNumberB.getText().toString().trim()) == 0) {
-                    mTvCalculation.setText("");
-                    mTvResult.setText("");
+                    mTvCalculation.setText(R.string.result_null);
+                    mTvResult.setText(R.string.result_null);
                     Toast.makeText(CalculatorActivity.this, R.string.validate_number_0, Toast.LENGTH_SHORT).show();
                 } else {
-                    mTvCalculation.setText("/");
+                    mTvCalculation.setText(R.string.div);
                     result = division(numberA, numberB);
                     convertResult(result);
                 }
                 break;
         }
-
     }
 
     private void convertResult(double result) {
