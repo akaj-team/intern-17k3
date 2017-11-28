@@ -47,7 +47,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                ((LoginActivity) getActivity()).replaceFragment(new SignupFragment(), true);
+                ((LoginActivity) getActivity()).replaceFragment(SignupFragment.newInstance(), true);
             }
 
             @Override
@@ -66,7 +66,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         btnLoginFaceBook.setOnClickListener(this);
         btnLoginPhone.setOnClickListener(this);
         tvSignUp.setOnClickListener(this);
-        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.INVISIBLE);
+        ((LoginActivity) getActivity()).setVisible(View.INVISIBLE);
     }
 
     @Override

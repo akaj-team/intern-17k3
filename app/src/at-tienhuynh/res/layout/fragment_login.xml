@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     android:background="@color/colorWhite"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="25dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <Button
@@ -36,29 +37,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="11">
 
             <View
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_gravity="center"
+                android:layout_weight="5"
                 android:background="@color/colorGray"
                 android:gravity="center" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/tvOrFrLogin"
                 android:textColor="@color/colorBlack"
                 android:textSize="20dp" />
 
             <View
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_gravity="center"
+                android:layout_weight="5"
                 android:background="@color/colorGray"
                 android:gravity="center" />
         </LinearLayout>

@@ -49,7 +49,7 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         mImgNext = mView.findViewById(R.id.imgNext);
         chkAgree = mView.findViewById(R.id.chkAgree);
         chkAgree.setOnCheckedChangeListener(this);
-        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.VISIBLE);
+        ((LoginActivity) getActivity()).setVisible(View.VISIBLE);
     }
 
     @Override
