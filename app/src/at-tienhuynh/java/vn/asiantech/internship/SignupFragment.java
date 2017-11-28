@@ -38,7 +38,7 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         mView = inflater.inflate(R.layout.fragment_signup, container, false);
         // Inflate the layout for this fragment
         initViewAndListener();
-        validate();
+        validateInputData();
         return mView;
     }
 
@@ -72,7 +72,7 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         }
     }
 
-    private void validate() {
+    private void validateInputData() {
         mEdtPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -120,7 +120,6 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
             public void afterTextChanged(Editable editable) {
                 checkemtytext();
             }
-            // No-op
         });
     }
 

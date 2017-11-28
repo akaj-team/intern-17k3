@@ -22,6 +22,7 @@ import android.widget.Toast;
  */
 public class LoginFragment extends Fragment implements View.OnClickListener {
     private View mView;
+    private static final int START_SPAN_ENBLE_STRING = 13;
 
     public static LoginFragment newInstance() {
         Bundle args = new Bundle();
@@ -59,7 +60,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 ds.setColor(ContextCompat.getColor(getContext(), R.color.colorLink));
             }
         };
-        spannableString.setSpan(clickableSpan, 13, tvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, START_SPAN_ENBLE_STRING, tvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvSignUp.setText(spannableString);
         tvSignUp.setMovementMethod(LinkMovementMethod.getInstance());
         // Init OnClickListener
