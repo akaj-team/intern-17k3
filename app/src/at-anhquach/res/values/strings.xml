@@ -4,7 +4,7 @@
     <string name="Divide">/</string>
     <string name="Multi">*</string>
     <string name="Sub">-</string>
-    <string name="NoteDivideZero">Cant divide for 0</string>
+    <string name="NoteDivideZero">Cannot divide for 0</string>
     <string name="issueName1">Issue 1</string>
     <string name="issuename2">Issue 2</string>
 </resources>
