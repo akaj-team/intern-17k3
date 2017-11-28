@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/colorBackground"
+        android:background="@color/colorDarkBlue"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/title"
-            android:textColor="@color/colorTestBlue"
+            android:textColor="@color/colorBlue"
             android:textSize="16dp" />
     </LinearLayout>
 
@@ -39,5 +39,5 @@
         android:id="@+id/frMain"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorTestWhite" />
+        android:background="@color/colorWhite" />
 </LinearLayout>

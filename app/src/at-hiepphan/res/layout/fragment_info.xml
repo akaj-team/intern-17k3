@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/info"
-        android:textColor="@color/colorTestBlack"
+        android:textColor="@color/colorBlack"
         android:textSize="15dp"
         android:textStyle="bold" />
 
@@ -38,9 +38,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_bottom_line"
-            android:hint="@string/edittext.hint.enter_mobile_number"
+            android:hint="@string/edittext_hint_enter_mobile_number"
             android:inputType="phone"
-            android:textSize="16dp"/>
+            android:textSize="16dp" />
     </LinearLayout>
 
     <EditText
@@ -50,8 +50,8 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_bottom_line"
-        android:hint="@string/edittext.hint.full_name"
-        android:textSize="16dp"/>
+        android:hint="@string/edittext_hint_full_name"
+        android:textSize="16dp" />
 
     <EditText
         android:id="@+id/edtEmail"
@@ -59,9 +59,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:background="@drawable/bg_bottom_line"
-        android:hint="@string/edittext.hint.email"
+        android:hint="@string/edittext_hint_email"
         android:inputType="textEmailAddress"
-        android:textSize="16dp"/>
+        android:textSize="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -90,8 +90,8 @@
                 android:id="@+id/tvMemo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/textview.text.memo"
-                android:textColor="@color/colorTestBlack" />
+                android:text="@string/textview_text_memo"
+                android:textColor="@color/colorBlack" />
         </LinearLayout>
     </LinearLayout>
 

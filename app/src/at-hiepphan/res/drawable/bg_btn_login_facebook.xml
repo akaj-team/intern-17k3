@@ -4,7 +4,7 @@
     <corners android:radius="3dp" />
     <stroke
         android:width="1px"
-        android:color="@color/colorTestBlue" />
+        android:color="@color/colorBlue" />
     <gradient
         android:endColor="@color/colorPrimary"
         android:startColor="@color/colorPrimary"/>

@@ -23,7 +23,6 @@ public class InfoFragment extends Fragment {
     private EditText mEdtPhoneNumber;
     private EditText mEdtUserName;
     private EditText mEdtEmail;
-    private TextView mTvMemo;
     private CheckBox mChkAcceptTerm;
     private ImageView mImgNext;
 
@@ -40,8 +39,7 @@ public class InfoFragment extends Fragment {
         mEdtEmail = view.findViewById(R.id.edtEmail);
         mChkAcceptTerm = view.findViewById(R.id.chkAcceptTerm);
         mImgNext = view.findViewById(R.id.imgNext);
-        mTvMemo = view.findViewById(R.id.tvMemo);
-        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.VISIBLE);
+        TextView tvMemo = view.findViewById(R.id.tvMemo);
 
         mEdtPhoneNumber.addTextChangedListener(new TextWatcher() {
             @Override
@@ -106,10 +104,16 @@ public class InfoFragment extends Fragment {
                 }
             }
         });
-        Spannable spannableString = new SpannableString(mTvMemo.getText());
-        spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getContext(), R.color.colorTestBlue)), 31, 51, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        mTvMemo.setText(spannableString);
+        Spannable spannableString = new SpannableString(tvMemo.getText());
+        spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getContext(), R.color.colorBlue)), 31, 51, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tvMemo.setText(spannableString);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((LoginActivity) getActivity()).setVisibilityImageBack(View.VISIBLE);
     }
 
     private void checkInputInfo() {

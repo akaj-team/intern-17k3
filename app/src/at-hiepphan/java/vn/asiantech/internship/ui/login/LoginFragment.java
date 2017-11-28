@@ -26,7 +26,6 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         TextView tvLogin = view.findViewById(R.id.tvLogin);
-        ((LoginActivity) getActivity()).getImgBack().setVisibility(View.INVISIBLE);
         SpannableString spannableString = new SpannableString(tvLogin.getText());
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
@@ -40,12 +39,18 @@ public class LoginFragment extends Fragment {
                 ds.bgColor = Color.WHITE;
                 ds.setARGB(255, 255, 255, 255);
                 ds.setUnderlineText(false);
-                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorTestBlue));
+                ds.setColor(ContextCompat.getColor(getContext(), R.color.colorBlue));
             }
         };
         spannableString.setSpan(clickableSpan, 12, tvLogin.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvLogin.setText(spannableString);
         tvLogin.setMovementMethod(LinkMovementMethod.getInstance());
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((LoginActivity) getActivity()).setVisibilityImageBack(View.INVISIBLE);
     }
 }

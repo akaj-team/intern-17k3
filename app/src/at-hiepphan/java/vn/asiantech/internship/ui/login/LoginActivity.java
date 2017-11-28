@@ -33,10 +33,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        getSupportFragmentManager().popBackStack();
+        onBackPressed();
     }
 
-    public ImageView getImgBack() {
-        return mImgBack;
+    protected void setVisibilityImageBack(int visibility) {
+        mImgBack.setVisibility(visibility);
     }
 }
