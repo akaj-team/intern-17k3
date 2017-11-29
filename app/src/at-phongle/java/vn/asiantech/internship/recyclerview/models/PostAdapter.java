@@ -75,10 +75,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             if (i > 0) {
                 mTvLikeNumber.setTextColor(context.getResources().getColor(R.color.greenLike));
                 mImgLike.setSelected(true);
-            }
-            if (i < 0) {
+                mImgDislike.setSelected(false);
+            } else if (i < 0) {
                 mTvLikeNumber.setTextColor(context.getResources().getColor(R.color.redDislike));
                 mImgDislike.setSelected(true);
+                mImgLike.setSelected(false);
+            } else {
+                mTvLikeNumber.setTextColor(context.getResources().getColor(R.color.black));
+                mImgDislike.setSelected(false);
+                mImgLike.setSelected(false);
             }
         }
 
