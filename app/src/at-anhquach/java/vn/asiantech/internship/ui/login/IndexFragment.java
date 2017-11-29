@@ -17,6 +17,12 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 
 public class IndexFragment extends Fragment {
+    public static IndexFragment newInstance() {
+        Bundle args = new Bundle();
+        IndexFragment fragment = new IndexFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,7 +33,7 @@ public class IndexFragment extends Fragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                ((LoginActivity) getActivity()).replaceFragment(new SignUpFragment(), true);
+                ((LoginActivity) getActivity()).replaceFragment(SignUpFragment.newInstance(), true);
             }
 
             @Override

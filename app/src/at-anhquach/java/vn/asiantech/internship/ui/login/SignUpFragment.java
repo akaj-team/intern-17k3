@@ -24,6 +24,13 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 
 public class SignUpFragment extends Fragment {
+    public static SignUpFragment newInstance() {
+        Bundle args = new Bundle();
+        SignUpFragment fragment = new SignUpFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     private ImageView mImgNext;
     private EditText mEdtEnterPhoneNumber;
     private EditText mEdtEmail;

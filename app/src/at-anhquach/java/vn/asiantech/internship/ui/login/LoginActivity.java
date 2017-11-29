@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        replaceFragment(new IndexFragment(), false);
+        replaceFragment(IndexFragment.newInstance(), false);
         mImgBack = findViewById(R.id.imgBack);
         mImgBack.setOnClickListener(new View.OnClickListener() {
             @Override
