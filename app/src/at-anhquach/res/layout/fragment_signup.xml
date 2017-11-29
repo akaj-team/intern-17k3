@@ -93,7 +93,6 @@
             android:textColor="@android:color/background_dark"
             android:textSize="15dp" />
 
-
     </LinearLayout>
 
     <ImageView
