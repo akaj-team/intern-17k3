@@ -48,31 +48,35 @@
 
         <Button
             android:id="@+id/btnAdd"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/Add" />
+            android:layout_weight="1"
+            android:text="@string/operator_add" />
 
         <Button
             android:id="@+id/btnSub"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/Sub" />
+            android:layout_weight="1"
+            android:text="@string/operator_sub" />
 
         <Button
             android:id="@+id/btnMulti"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/Multi" />
+            android:layout_weight="1"
+            android:text="@string/operator_multi" />
 
         <Button
             android:id="@+id/btnDiv"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/Divide" />
+            android:layout_weight="1"
+            android:text="@string/operator_divide" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvResutl"
+        android:id="@+id/tvResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

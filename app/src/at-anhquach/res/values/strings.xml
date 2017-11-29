@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">anhquach-17k3</string>
-    <string name="Add">+</string>
-    <string name="Divide">/</string>
-    <string name="Multi">*</string>
-    <string name="Sub">-</string>
-    <string name="NoteDivideZero">Cannot divide for 0</string>
-    <string name="issueName1">Issue 1</string>
-    <string name="issuename2">Issue 2</string>
+    <string name="operator_add">+</string>
+    <string name="operator_divide">/</string>
+    <string name="operator_multi">*</string>
+    <string name="operator_sub">-</string>
+    <string name="error_divide_zero">Cannot divide for 0</string>
+    <string name="button_issue_name1">Issue 1</string>
+    <string name="button_issue_name2">Issue 2</string>
 </resources>

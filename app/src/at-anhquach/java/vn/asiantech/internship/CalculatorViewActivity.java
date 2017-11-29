@@ -14,7 +14,7 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
     private EditText mEdtNumberA;
     private EditText mEdtInputB;
     private TextView mTvOperator;
-    private TextView mTvResutl;
+    private TextView mTvResult;
     private Button mBtnAdd;
     private Button mBtnSub;
     private Button mBtnMulti;
@@ -26,51 +26,50 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator_view);
-        init();
-        onClickListener();
+        initView();
+        initListener();
     }
 
     @Override
     public void onClick(View view) {
-        float numA;
-        float numB;
 
         if (TextUtils.isEmpty(mEdtNumberA.getText().toString())
                 || TextUtils.isEmpty(mEdtInputB.getText().toString())) {
             return;
         }
-
+        float numA;
+        float numB;
         numA = Float.parseFloat(mEdtNumberA.getText().toString());
         numB = Float.parseFloat(mEdtInputB.getText().toString());
 
         switch (view.getId()) {
             case R.id.btnAdd:
-                mOper = this.getString(R.string.Add);
+                mOper = this.getString(R.string.operator_add);
                 mResult = numA + numB;
-                convertFloattoInt();
+                convertFloattoInt(mResult, mOper);
                 break;
             case R.id.btnSub:
-                mOper = this.getString(R.string.Sub);
+                mOper = this.getString(R.string.operator_sub);
                 mResult = numA - numB;
-                convertFloattoInt();
+                convertFloattoInt(mResult, mOper);
                 break;
             case R.id.btnMulti:
-                mOper = this.getString(R.string.Multi);
+                mOper = this.getString(R.string.operator_multi);
                 mResult = numA * numB;
-                convertFloattoInt();
+                convertFloattoInt(mResult, mOper);
                 break;
             case R.id.btnDiv:
-                mOper = this.getString(R.string.Divide);
+                mOper = this.getString(R.string.operator_divide);
                 if (numB != 0) {
                     mResult = numA / numB;
-                    convertFloattoInt();
+                    convertFloattoInt(mResult, mOper);
                 } else {
                     Context context = getApplicationContext();
-                    CharSequence text = context.getString(R.string.NoteDivideZero);
+                    CharSequence text = context.getString(R.string.error_divide_zero);
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
-                    mTvResutl.setText("");
+                    mTvResult.setText("");
                 }
                 break;
             default:
@@ -79,31 +78,31 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
 
     }
 
-    private void init() {
+    private void initView() {
         mEdtNumberA = findViewById(R.id.edtInputA);
         mEdtInputB = findViewById(R.id.edtInputB);
         mTvOperator = findViewById(R.id.tvOperator);
-        mTvResutl = findViewById(R.id.tvResutl);
+        mTvResult = findViewById(R.id.tvResult);
         mBtnAdd = findViewById(R.id.btnAdd);
         mBtnSub = findViewById(R.id.btnSub);
         mBtnMulti = findViewById(R.id.btnMulti);
         mBtnDiv = findViewById(R.id.btnDiv);
     }
 
-    private void onClickListener() {
+    private void initListener() {
         mBtnAdd.setOnClickListener(this);
         mBtnSub.setOnClickListener(this);
         mBtnMulti.setOnClickListener(this);
         mBtnDiv.setOnClickListener(this);
     }
 
-    private void convertFloattoInt() {
-        int intResult = (int) mResult;
-        if (mResult == intResult) {
-            mTvResutl.setText(String.valueOf(intResult));
+    private void convertFloattoInt(float result, String oper) {
+        int intResult = (int) result;
+        if (result == intResult) {
+            mTvResult.setText(String.valueOf(intResult));
         } else {
-            mTvResutl.setText(String.valueOf(mResult));
+            mTvResult.setText(String.valueOf(result));
         }
-        mTvOperator.setText(mOper);
+        mTvOperator.setText(oper);
     }
 }
