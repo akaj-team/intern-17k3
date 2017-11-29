@@ -7,6 +7,7 @@ package vn.asiantech.internship.model;
 public class NewFeed {
     private String name;
     private String status;
+    private int sumReact=0;
 
     public NewFeed(String name, String status){
         this.name = name;
@@ -18,7 +19,7 @@ public class NewFeed {
     }
 
     public void setName(String name) {
-        name = name;
+        this.name = name;
     }
 
     public String getStatus() {
@@ -26,6 +27,14 @@ public class NewFeed {
     }
 
     public void setStatus(String status) {
-        status = status;
+        this.status = status;
+    }
+
+    public int getSumReact() {
+        return sumReact;
+    }
+
+    public void setSumReact(int sumReact) {
+        this.sumReact = sumReact;
     }
 }
