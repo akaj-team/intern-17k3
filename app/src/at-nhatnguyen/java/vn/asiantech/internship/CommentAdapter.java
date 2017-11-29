@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import java.util.List;
+
 import vn.asiantech.internship.models.Comment;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder> {
@@ -28,25 +30,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
     @Override
     public void onBindViewHolder(CommentViewHolder holder, int position) {
-        Comment comment = mComments.get(position);
-        holder.mTvName.setText(comment.getName());
-        holder.mTvCommentContent.setText(comment.getCommentContent());
-        if (comment.getTotalLike() > 0) {
-            holder.mBtnLike.setPressed(true);
-            holder.mBtnDislike.setPressed(false);
-            holder.mTvTotalLike.setTextColor(Color.GREEN);
-        }
-        if (comment.getTotalLike() < 0) {
-            holder.mBtnLike.setPressed(false);
-            holder.mBtnDislike.setPressed(true);
-            holder.mTvTotalLike.setTextColor(Color.RED);
-        }
-        if (comment.getTotalLike() == 0) {
-            holder.mBtnLike.setPressed(false);
-            holder.mBtnDislike.setPressed(false);
-            holder.mTvTotalLike.setTextColor(Color.GRAY);
-        }
-        holder.mTvTotalLike.setText(String.valueOf(comment.getTotalLike()));
+        holder.onBindData();
     }
 
     @Override
@@ -56,10 +40,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
     public interface OnItemClickListener {
         void onClickLike(int position);
+
         void onClickDislike(int position);
     }
 
-    class CommentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class CommentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTvName;
         private TextView mTvCommentContent;
         private TextView mTvTotalLike;
@@ -77,9 +62,31 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
             mBtnDislike.setOnClickListener(this);
         }
 
+        public void onBindData() {
+            Comment comment = mComments.get(getAdapterPosition());
+            mTvName.setText(comment.getName());
+            mTvCommentContent.setText(comment.getContent());
+            if (comment.getTotalLike() > 0) {
+                mBtnLike.setPressed(true);
+                mBtnDislike.setPressed(false);
+                mTvTotalLike.setTextColor(Color.GREEN);
+            }
+            if (comment.getTotalLike() < 0) {
+                mBtnLike.setPressed(false);
+                mBtnDislike.setPressed(true);
+                mTvTotalLike.setTextColor(Color.RED);
+            }
+            if (comment.getTotalLike() == 0) {
+                mBtnLike.setPressed(false);
+                mBtnDislike.setPressed(false);
+                mTvTotalLike.setTextColor(Color.GRAY);
+            }
+            mTvTotalLike.setText(String.valueOf(comment.getTotalLike()));
+        }
+
         @Override
         public void onClick(View view) {
-            switch (view.getId()){
+            switch (view.getId()) {
                 case R.id.btnLike:
                     if (mOnItemClickListener != null) {
                         mOnItemClickListener.onClickLike(getAdapterPosition());

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recycleViewComment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/recycleViewComment"
     android:background="@android:color/darker_gray"
-    tools:context="vn.asiantech.internship.RecyclerviewActivity"/>
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    tools:context="vn.asiantech.internship.CommentActivity" />

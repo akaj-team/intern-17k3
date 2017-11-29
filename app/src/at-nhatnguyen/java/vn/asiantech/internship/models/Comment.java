@@ -2,12 +2,12 @@ package vn.asiantech.internship.models;
 
 public class Comment {
     private String name;
-    private String commentContent;
+    private String content;
     private int totalLike;
 
     public Comment(String name, String commentContent, int totalLike) {
         this.name = name;
-        this.commentContent = commentContent;
+        this.content = commentContent;
         this.totalLike = totalLike;
     }
 
@@ -19,8 +19,8 @@ public class Comment {
         this.name = name;
     }
 
-    public String getCommentContent() {
-        return commentContent;
+    public String getContent() {
+        return content;
     }
 
     public int getTotalLike() {
