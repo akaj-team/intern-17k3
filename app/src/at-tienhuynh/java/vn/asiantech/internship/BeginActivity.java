@@ -35,7 +35,7 @@ public class BeginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btnIsuses2:
                 break;
             case R.id.btnIsuses3:
-                startActivity(new Intent(this,RecyclerViewActivity.class));
+                startActivity(new Intent(this,StatusActivity.class));
                 break;
         }
     }
