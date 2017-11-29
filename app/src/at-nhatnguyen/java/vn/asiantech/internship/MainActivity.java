@@ -5,9 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnBack;
 
     @Override
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mBtnBack = findViewById(R.id.btnBack);
+        mBtnBack.setOnClickListener(this);
         getSupportActionBar().hide();
         replaceFragment(new LoginFragment(),false);
     }
@@ -31,5 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
     protected void setVisibleBackButton(int visibility) {
         mBtnBack.setVisibility(visibility);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btnBack:
+                getSupportFragmentManager().popBackStack();
+                break;
+        }
     }
 }

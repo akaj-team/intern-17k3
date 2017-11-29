@@ -12,9 +12,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class InforFragment extends Fragment {
     private EditText mEdtPhone;
     private EditText mEdtFullName;
@@ -25,7 +22,7 @@ public class InforFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        super.onCreateView(inflater, container,savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_infor, container, false);
         mEdtPhone = view.findViewById(R.id.edtPhoneNumber);
         mEdtFullName = view.findViewById(R.id.edtFullname);
@@ -42,10 +39,10 @@ public class InforFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ( ( MainActivity) getActivity()).setVisibleBackButton(View.VISIBLE);
+        ((MainActivity) getActivity()).setVisibleBackButton(View.VISIBLE);
     }
 
-    private void checkInputData(EditText editText){
+    private void checkInputData(EditText editText) {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -59,24 +56,22 @@ public class InforFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(mChkConfirm.isChecked() && !"".equals(mEdtPhone.getText().toString()) && !"".equals(mEdtEmail.getText().toString()) && !"".equals(mEdtFullName.getText().toString())){
+                if (mChkConfirm.isChecked() && !"".equals(mEdtPhone.getText().toString()) && !"".equals(mEdtEmail.getText().toString()) && !"".equals(mEdtFullName.getText().toString())) {
                     mBtnNext.setSelected(true);
-                }
-                else{
+                } else {
                     mBtnNext.setSelected(false);
                 }
             }
         });
     }
 
-    private void checkStatusCheckBox(CheckBox checkBox){
+    private void checkStatusCheckBox(CheckBox checkBox) {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(mChkConfirm.isChecked() && !"".equals(mEdtPhone.getText().toString()) && !"".equals(mEdtEmail.getText().toString()) && !"".equals(mEdtFullName.getText().toString())){
+                if (mChkConfirm.isChecked() && !"".equals(mEdtPhone.getText().toString()) && !"".equals(mEdtEmail.getText().toString()) && !"".equals(mEdtFullName.getText().toString())) {
                     mBtnNext.setSelected(true);
-                }
-                else{
+                } else {
                     mBtnNext.setSelected(false);
                 }
             }
