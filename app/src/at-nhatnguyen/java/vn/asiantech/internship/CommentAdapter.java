@@ -11,11 +11,11 @@ import java.util.List;
 import vn.asiantech.internship.models.Comment;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder> {
-    private List<Comment> mCommentLists;
+    private List<Comment> mComments;
     private OnItemClickListener mOnItemClickListener;
 
-    CommentAdapter(List<Comment> commentLists, OnItemClickListener onItemClickListener) {
-        mCommentLists = commentLists;
+    CommentAdapter(List<Comment> comments, OnItemClickListener onItemClickListener) {
+        mComments = comments;
         mOnItemClickListener = onItemClickListener;
     }
 
@@ -28,7 +28,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
     @Override
     public void onBindViewHolder(CommentViewHolder holder, int position) {
-        Comment comment = mCommentLists.get(position);
+        Comment comment = mComments.get(position);
         holder.mTvName.setText(comment.getName());
         holder.mTvCommentContent.setText(comment.getCommentContent());
         if (comment.getTotalLike() > 0) {
@@ -51,7 +51,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
     @Override
     public int getItemCount() {
-        return mCommentLists.size();
+        return mComments.size();
     }
 
     public interface OnItemClickListener {
