@@ -19,7 +19,6 @@ public class RecyclerviewActivity extends AppCompatActivity implements CommentAd
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview);
-
         initViews();
         initData();
         initAdapter();
