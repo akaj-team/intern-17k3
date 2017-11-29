@@ -74,7 +74,7 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                checkEmtyText();
+                checkEmptyText();
             }
 
             @Override
@@ -91,7 +91,7 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                checkEmtyText();
+                checkEmptyText();
             }
 
             @Override
@@ -108,7 +108,7 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                checkEmtyText();
+                checkEmptyText();
             }
 
             @Override
@@ -118,11 +118,7 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         });
     }
 
-    private void checkEmtyText() {
-        if (!TextUtils.isEmpty(mEdtPhone.getText()) && !TextUtils.isEmpty(mEdtName.getText()) && !TextUtils.isEmpty(mEdtMail.getText()) && mChkAgree.isChecked()) {
-            mImgNext.setSelected(true);
-        } else {
-            mImgNext.setSelected(false);
-        }
+    private void checkEmptyText() {
+        mImgNext.setSelected(!TextUtils.isEmpty(mEdtPhone.getText()) && !TextUtils.isEmpty(mEdtName.getText()) && !TextUtils.isEmpty(mEdtMail.getText()) && mChkAgree.isChecked());
     }
 }
