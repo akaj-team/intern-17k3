@@ -23,7 +23,7 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
     private EditText mEdtName;
     private EditText mEdtMail;
     private ImageView mImgNext;
-    private CheckBox chkAgree;
+    private CheckBox mChkAgree;
 
     public static SignupFragment newInstance() {
         Bundle args = new Bundle();
@@ -47,28 +47,21 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
         mEdtName = mView.findViewById(R.id.edtFullName);
         mEdtMail = mView.findViewById(R.id.edtEmail);
         mImgNext = mView.findViewById(R.id.imgNext);
-        chkAgree = mView.findViewById(R.id.chkAgree);
-        chkAgree.setOnCheckedChangeListener(this);
-        ((LoginActivity) getActivity()).setVisiblilyImageBack(View.VISIBLE);
+        mChkAgree = mView.findViewById(R.id.chkAgree);
+        mChkAgree.setOnCheckedChangeListener(this);
+        ((LoginActivity) getActivity()).setVisibilityImageBack(View.VISIBLE);
     }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        int id = compoundButton.getId();
-        if (b) {
-            switch (id) {
-                case R.id.chkAgree:
-                    if (!TextUtils.isEmpty(mEdtPhone.getText()) && !TextUtils.isEmpty(mEdtName.getText()) && !TextUtils.isEmpty(mEdtMail.getText())) {
-                        mImgNext.setSelected(true);
-                    }
-                    break;
-            }
-        } else {
-            switch (id) {
-                case R.id.chkAgree:
+        switch (compoundButton.getId()) {
+            case R.id.chkAgree:
+                if (b && !TextUtils.isEmpty(mEdtPhone.getText()) && !TextUtils.isEmpty(mEdtName.getText()) && !TextUtils.isEmpty(mEdtMail.getText())) {
+                    mImgNext.setSelected(true);
+                } else {
                     mImgNext.setSelected(false);
-                    break;
-            }
+                }
+                break;
         }
     }
 
@@ -81,15 +74,16 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // No-op
+                checkEmtyText();
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                checkemtytext();
+                // No-op
             }
         });
-        mEdtPhone.addTextChangedListener(new TextWatcher() {
+
+        mEdtName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // No-op
@@ -97,14 +91,15 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // No-op
+                checkEmtyText();
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                checkemtytext();
+                // No-op
             }
         });
+
         mEdtMail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -113,18 +108,18 @@ public class SignupFragment extends Fragment implements CompoundButton.OnChecked
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // No-op
+                checkEmtyText();
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                checkemtytext();
+                // No-op
             }
         });
     }
 
-    private void checkemtytext() {
-        if (!TextUtils.isEmpty(mEdtPhone.getText()) && !TextUtils.isEmpty(mEdtName.getText()) && !TextUtils.isEmpty(mEdtMail.getText()) && chkAgree.isChecked()) {
+    private void checkEmtyText() {
+        if (!TextUtils.isEmpty(mEdtPhone.getText()) && !TextUtils.isEmpty(mEdtName.getText()) && !TextUtils.isEmpty(mEdtMail.getText()) && mChkAgree.isChecked()) {
             mImgNext.setSelected(true);
         } else {
             mImgNext.setSelected(false);

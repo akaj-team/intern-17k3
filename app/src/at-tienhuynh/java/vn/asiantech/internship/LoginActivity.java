@@ -30,12 +30,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fragmentTransaction.commit();
     }
 
-    protected void setVisiblilyImageBack(int visiblity) {
+    protected void setVisibilityImageBack(int visiblity) {
         mImgBack.setVisibility(visiblity);
     }
 
     @Override
     public void onClick(View view) {
-        getSupportFragmentManager().popBackStack();
+        switch (view.getId()) {
+            case R.id.imgBack:
+                getSupportFragmentManager().popBackStack();
+                break;
+        }
     }
 }
