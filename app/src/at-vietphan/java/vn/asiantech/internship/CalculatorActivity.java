@@ -31,12 +31,12 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initViews() {
+        mEdtNumberA = findViewById(R.id.edtNumberA);
+        mEdtNumberB = findViewById(R.id.edtNumberB);
         mBtnPlus = findViewById(R.id.btnPlus);
         mBtnMinus = findViewById(R.id.btnMinus);
         mBtnMultiplication = findViewById(R.id.btnMultiplication);
         mBtnDivision = findViewById(R.id.btnDivision);
-        mEdtNumberA = findViewById(R.id.edtNumberA);
-        mEdtNumberB = findViewById(R.id.edtNumberB);
         mTvCalculation = findViewById(R.id.tvCalculation);
         mTvResult = findViewById(R.id.tvResult);
     }

@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="@string/my_list_exercise"
         android:textColor="@android:color/black"
-        android:textSize="20dp"
+        android:textSize="@dimen/text_size_my_list_exercise"
         android:textStyle="bold" />
 
     <Button
