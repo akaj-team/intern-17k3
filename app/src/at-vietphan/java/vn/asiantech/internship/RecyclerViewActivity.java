@@ -29,16 +29,16 @@ public class RecyclerViewActivity extends AppCompatActivity implements StatusAda
     }
 
     private void initData() {
-        mStatusList.add(new Status("m_d", "Content Content Content Content", 1));
-        mStatusList.add(new Status("m_d 2", "Content Content Content Content Content Content Content Content", -2));
+        mStatusList.add(new Status("m_d 1", "Content Content Content Content", 1));
+        mStatusList.add(new Status("m_d 2", "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content", -2));
         mStatusList.add(new Status("m_d 3", "Content Content Content Content", 3));
-        mStatusList.add(new Status("m_d 4", "Content Content Content Content Content Content Content Content Content Content", 4));
+        mStatusList.add(new Status("m_d 4", "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content", 4));
         mStatusList.add(new Status("m_d 5", "Content Content Content Content", -5));
         mStatusList.add(new Status("m_d 6", "Content Content Content Content", 6));
-        mStatusList.add(new Status("m_d 7", "Content Content Content ContentContent Content Content Content Content Content Content Content Content Content", -7));
+        mStatusList.add(new Status("m_d 7", "Content Content Content Content Content Content ContentContent Content Content Content Content Content Content Content Content Content", -7));
         mStatusList.add(new Status("m_d 8", "Content Content Content Content", 8));
         mStatusList.add(new Status("m_d 9", "Content Content Content Content", 9));
-        mStatusList.add(new Status("m_d 10", "Content Content Content Content Content Content Content Content Content Content Content Content", 10));
+        mStatusList.add(new Status("m_d 10", "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content", 10));
     }
 
     private void initAdapter() {
@@ -50,12 +50,12 @@ public class RecyclerViewActivity extends AppCompatActivity implements StatusAda
     @Override
     public void onLikeClick(int position) {
         mStatusList.get(position).setCountLike(mStatusList.get(position).getCountLike() + 1);
-        mAdapter.notifyDataSetChanged();
+        mAdapter.notifyItemChanged(position);
     }
 
     @Override
     public void onDislikeClick(int position) {
         mStatusList.get(position).setCountLike(mStatusList.get(position).getCountLike() - 1);
-        mAdapter.notifyDataSetChanged();
+        mAdapter.notifyItemChanged(position);
     }
 }

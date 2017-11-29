@@ -44,7 +44,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
         void onDislikeClick(int position);
     }
 
-    class StatusViewHolder extends RecyclerView.ViewHolder {
+    class StatusViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTvStatus;
         private TextView mTvContent;
         private TextView mTvCountLike;
@@ -53,54 +53,60 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
 
         StatusViewHolder(View itemView) {
             super(itemView);
+            initViews();
+            initListener();
+        }
+
+        private void initViews() {
             mTvStatus = itemView.findViewById(R.id.tvStatus);
             mTvContent = itemView.findViewById(R.id.tvContent);
             mTvCountLike = itemView.findViewById(R.id.tvCountLike);
             mBtnLike = itemView.findViewById(R.id.btnLike);
             mBtnDislike = itemView.findViewById(R.id.btnDislike);
-            mBtnLike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onLikeClick(getAdapterPosition());
-                        checkLikeForStatus();
-                    }
-                }
-            });
-            mBtnDislike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onDislikeClick(getAdapterPosition());
-                        checkLikeForStatus();
-                    }
-                }
-            });
+        }
+
+        private void initListener() {
+            mBtnLike.setOnClickListener(this);
+            mBtnDislike.setOnClickListener(this);
         }
 
         private void onBindData() {
             Status status = mStatusList.get(getAdapterPosition());
             mTvStatus.setText(status.getName());
             mTvContent.setText(status.getContent());
-            String countLike = String.valueOf(status.getCountLike());
-            mTvCountLike.setText(countLike);
-            checkLikeForStatus();
+            mTvCountLike.setText(String.valueOf(status.getCountLike()));
+            checkLikeForStatus(status.getCountLike());
         }
 
-        private void checkLikeForStatus() {
-            int countLike = Integer.parseInt(mTvCountLike.getText().toString().trim());
+        private void checkLikeForStatus(int countLike) {
             if (countLike == 0) {
-                mBtnLike.setPressed(false);
-                mBtnDislike.setPressed(false);
+                mBtnLike.setSelected(false);
+                mBtnDislike.setSelected(false);
                 mTvCountLike.setTextColor(Color.GRAY);
             } else if (countLike < 0) {
-                mBtnLike.setPressed(false);
-                mBtnDislike.setPressed(true);
+                mBtnLike.setSelected(false);
+                mBtnDislike.setSelected(true);
                 mTvCountLike.setTextColor(Color.RED);
             } else {
-                mBtnLike.setPressed(true);
-                mBtnDislike.setPressed(false);
+                mBtnLike.setSelected(true);
+                mBtnDislike.setSelected(false);
                 mTvCountLike.setTextColor(Color.GREEN);
+            }
+        }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.btnLike:
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onLikeClick(getAdapterPosition());
+                        break;
+                    }
+                case R.id.btnDislike:
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onDislikeClick(getAdapterPosition());
+                        break;
+                    }
             }
         }
     }
