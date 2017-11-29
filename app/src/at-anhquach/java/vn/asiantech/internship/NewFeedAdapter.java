@@ -1,5 +1,6 @@
 package vn.asiantech.internship;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,19 +16,20 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.NewFeedV
     private List<NewFeed> mNewFeedList;
     private OnButtonClick mOnButtonClick;
 
-    NewFeedAdapter(List<NewFeed> newFeedList) {
+    NewFeedAdapter(List<NewFeed> newFeedList, OnButtonClick onButtonClick) {
         mNewFeedList = newFeedList;
+        mOnButtonClick = onButtonClick;
     }
 
     @Override
-    public NewFeedViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public NewFeedViewHolder onCreateViewHolder(ViewGroup viewGroup, int position) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_newfeed, viewGroup, false);
         return new NewFeedViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(NewFeedAdapter.NewFeedViewHolder holder, int i) {
+    public void onBindViewHolder(NewFeedAdapter.NewFeedViewHolder holder, int position) {
         holder.onBindData();
     }
 
@@ -36,7 +38,7 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.NewFeedV
         return mNewFeedList.size();
     }
 
-    class NewFeedViewHolder extends RecyclerView.ViewHolder {
+    class NewFeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTvName;
         private TextView mTvStatus;
         private ImageView mImgLike;
@@ -50,29 +52,50 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.NewFeedV
             mTvSumReact = itemView.findViewById(R.id.tvSumReact);
             mImgLike = itemView.findViewById(R.id.imgLike);
             mImgDisLike = itemView.findViewById(R.id.imgDisLike);
-            mImgLike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mOnButtonClick != null) {
-                        mOnButtonClick.onClickLike(getAdapterPosition());
-                    }
-                }
-            });
-            mImgDisLike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mOnButtonClick != null) {
-                        mOnButtonClick.onClickDisLike(getAdapterPosition());
-                    }
-                }
-            });
+            mImgLike.setOnClickListener(this);
+            mImgDisLike.setOnClickListener(this);
         }
 
         private void onBindData() {
             NewFeed newFeed = mNewFeedList.get(getAdapterPosition());
             mTvName.setText(newFeed.getName());
             mTvStatus.setText(newFeed.getStatus());
-            mTvSumReact.setText();
+            mTvSumReact.setText(String.valueOf(newFeed.getSumReact()));
+            setColorButtonReact(newFeed);
+        }
+
+        private void setColorButtonReact(NewFeed newFeed) {
+            if (newFeed.getSumReact() == 0) {
+                mImgLike.setSelected(false);
+                mImgDisLike.setSelected(false);
+                mTvSumReact.setTextColor(Color.BLACK);
+            } else {
+                if (newFeed.getSumReact() > 0) {
+                    mImgLike.setSelected(true);
+                    mImgDisLike.setSelected(false);
+                    mTvSumReact.setTextColor(Color.GREEN);
+                } else {
+                    mImgDisLike.setSelected(true);
+                    mImgLike.setSelected(false);
+                    mTvSumReact.setTextColor(Color.RED);
+                }
+            }
+        }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.imgLike:
+                    if (mOnButtonClick != null) {
+                        mOnButtonClick.onClickLike(getAdapterPosition());
+                    }
+                    break;
+                case R.id.imgDisLike:
+                    if (mOnButtonClick != null) {
+                        mOnButtonClick.onClickDisLike(getAdapterPosition());
+                    }
+                    break;
+            }
         }
     }
 

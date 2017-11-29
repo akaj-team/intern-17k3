@@ -7,11 +7,12 @@ package vn.asiantech.internship.model;
 public class NewFeed {
     private String name;
     private String status;
-    private int sumReact=0;
+    private int sumReact;
 
-    public NewFeed(String name, String status){
+    public NewFeed(String name, String status, int sumReact) {
         this.name = name;
         this.status = status;
+        this.sumReact = sumReact;
     }
 
     public String getName() {
@@ -24,10 +25,6 @@ public class NewFeed {
 
     public String getStatus() {
         return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public int getSumReact() {
