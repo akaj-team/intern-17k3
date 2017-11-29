@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">vietphan-17k3</string>
     <string name="recyclerview">RecyclerView</string>
-    <string name="text_example_status_content">This is also test post</string>
-    <string name="text_example_status">m_d</string>
 </resources>
