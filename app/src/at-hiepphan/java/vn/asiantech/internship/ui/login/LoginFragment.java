@@ -2,6 +2,7 @@ package vn.asiantech.internship.ui.login;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
@@ -13,12 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import vn.asiantech.internship.R;
 
 public class LoginFragment extends Fragment {
 
-    public LoginFragment() {
-        // No-op
+    @NonNull
+    public static Fragment getInstance() {
+        return new LoginFragment();
     }
 
     @Override
@@ -30,7 +33,7 @@ public class LoginFragment extends Fragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                ((LoginActivity) getActivity()).replaceFragment(new InfoFragment(), true);
+                ((LoginActivity) getActivity()).replaceFragment(InfoFragment.getInstance(), true);
             }
 
             @Override

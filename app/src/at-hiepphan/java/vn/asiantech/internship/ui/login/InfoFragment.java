@@ -1,6 +1,7 @@
 package vn.asiantech.internship.ui.login;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
@@ -26,8 +27,9 @@ public class InfoFragment extends Fragment {
     private CheckBox mChkAcceptTerm;
     private ImageView mImgNext;
 
-    public InfoFragment() {
-        // No-op
+    @NonNull
+    public static Fragment getInstance(){
+        return new InfoFragment();
     }
 
     @Override

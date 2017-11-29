@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mImgBack = findViewById(R.id.imgBack);
-        replaceFragment(new LoginFragment(), false);
+        replaceFragment(LoginFragment.getInstance(), false);
         mImgBack.setOnClickListener(this);
     }
 
