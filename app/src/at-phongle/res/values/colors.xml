@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="greenLike">#32CD32</color>
+    <color name="redDislike">#ce253c</color>
     <color name="snow">#FAFAFA</color>
 </resources>
