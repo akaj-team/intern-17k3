@@ -25,10 +25,10 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caculator);
-        innitsViewandClick();
+        innitViews();
     }
 
-    private void innitsViewandClick() {
+    private void innitViews() {
         mEdtNumberA = findViewById(R.id.edtNumberA);
         mEdtNumberB = findViewById(R.id.edtNumberB);
         mBtnSum = findViewById(R.id.btnSum);
@@ -49,38 +49,33 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         // Onclick Button
         switch (view.getId()) {
             case R.id.btnSum:
-                getCaculator(mBtnSum);
-                checkEmty();
+                getCalculator(mBtnSum);
+                checkEmpty();
                 if (mIsEmty) {
                     mCalculation.sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 }
                 break;
             case R.id.btnSubtraction:
-                getCaculator(mBtnSubtraction);
-                checkEmty();
+                getCalculator(mBtnSubtraction);
+                checkEmpty();
                 if (mIsEmty) {
                     mCalculation.subTraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 }
                 break;
             case R.id.btnMultiplication:
-                getCaculator(mBtnMultiplication);
-                checkEmty();
+                getCalculator(mBtnMultiplication);
+                checkEmpty();
                 if (mIsEmty) {
                     mCalculation.mulTiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                 }
                 break;
             case R.id.btnDivision:
-                getCaculator(mBtnDivision);
-                checkEmty();
+                getCalculator(mBtnDivision);
+                checkEmpty();
                 if (mIsEmty) {
                     mCalculation.diVision(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                     if (TextUtils.equals(mEdtNumberB.getText().toString(), getString(R.string.number_0))) {
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                        alertDialogBuilder.setTitle(R.string.dialog_title);
-                        alertDialogBuilder.setMessage(R.string.dialog_message_num0);
-                        AlertDialog alertDialog = alertDialogBuilder.create();
-                        alertDialog.show();
-                        mTvResult.setText(R.string.tv_result);
+                        showError(getString(R.string.dialog_message_num0));
                         mEdtNumberB.getText().clear();
                     }
                     break;
@@ -88,21 +83,25 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private void getCaculator(Button btnCaculator) {
-        mTvCalculation.setText(btnCaculator.getText().toString());
+    private void getCalculator(Button btnCalculator) {
+        mTvCalculation.setText(btnCalculator.getText().toString());
     }
 
-    private void checkEmty() {
+    private void checkEmpty() {
         if (mEdtNumberA.getText().toString().length() > 0 && mEdtNumberB.getText().toString().length() > 0) {
             mIsEmty = true;
         } else {
             mIsEmty = false;
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setTitle(R.string.dialog_title);
-            alertDialogBuilder.setMessage(R.string.dialog_message);
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
-            mTvResult.setText(R.string.tv_result);
+            showError(getString(R.string.dialog_message));
         }
+    }
+
+    private void showError(String message) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle(R.string.dialog_title);
+        alertDialogBuilder.setMessage(message);
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+        mTvResult.setText(R.string.tv_result);
     }
 }
