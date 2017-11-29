@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBack = findViewById(R.id.btnBack);
         mBtnBack.setOnClickListener(this);
         getSupportActionBar().hide();
-        replaceFragment(new LoginFragment(),false);
+        replaceFragment(LoginFragment.newInstance(),false);
     }
 
     protected void replaceFragment(Fragment fragment, boolean addStack) {

@@ -19,6 +19,15 @@ public class InforFragment extends Fragment {
     private CheckBox mChkConfirm;
     private Button mBtnNext;
 
+    public static InforFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        InforFragment fragment = new InforFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

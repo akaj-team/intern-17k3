@@ -14,6 +14,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class LoginFragment extends Fragment {
+    private static final int START_TEXT = 12;
+
+    public static LoginFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        LoginFragment fragment = new LoginFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,10 +35,10 @@ public class LoginFragment extends Fragment {
         btnLoginFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).replaceFragment(new InforFragment(), true);
+                ((MainActivity) getActivity()).replaceFragment(InforFragment.newInstance(), true);
             }
         });
-        clickOnTextView(tvSignin, 12, tvSignin.getText().length());
+        clickOnTextView(tvSignin, START_TEXT, tvSignin.getText().length());
         return view;
     }
 
