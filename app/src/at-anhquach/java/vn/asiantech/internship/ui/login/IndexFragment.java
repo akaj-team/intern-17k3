@@ -48,6 +48,7 @@ public class IndexFragment extends Fragment {
                 ds.setTypeface(Typeface.DEFAULT_BOLD);
             }
         };
+
         spannableString.setSpan(clickableSpan, 12, tvMemoLogin.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvMemoLogin.setText(spannableString);
         tvMemoLogin.setMovementMethod(LinkMovementMethod.getInstance());
