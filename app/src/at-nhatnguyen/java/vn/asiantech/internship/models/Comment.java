@@ -5,6 +5,12 @@ public class Comment {
     private String commentContent;
     private int totalLike;
 
+    public Comment(String name, String commentContent, int totalLike) {
+        this.name = name;
+        this.commentContent = commentContent;
+        this.totalLike = totalLike;
+    }
+
     public String getName() {
         return name;
     }
@@ -17,15 +23,15 @@ public class Comment {
         return commentContent;
     }
 
-    public void setCommentContent(String commentContent) {
-        this.commentContent = commentContent;
-    }
-
     public int getTotalLike() {
         return totalLike;
     }
 
-    public void setTotalLike(int totalLike) {
-        this.totalLike = totalLike;
+    public void clickLike() {
+        totalLike++;
+    }
+
+    public void clickDislike() {
+        totalLike--;
     }
 }
