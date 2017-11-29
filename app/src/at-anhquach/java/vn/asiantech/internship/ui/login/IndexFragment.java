@@ -1,6 +1,7 @@
 package vn.asiantech.internship.ui.login;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -9,6 +10,7 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,7 @@ public class IndexFragment extends Fragment {
                 ds.setARGB(255, 255, 255, 255);
                 ds.setUnderlineText(false);
                 ds.setColor(ContextCompat.getColor(getContext(), R.color.colorBlue));
+                ds.setTypeface(Typeface.DEFAULT_BOLD);
             }
         };
         spannableString.setSpan(clickableSpan, 12, tvMemoLogin.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
