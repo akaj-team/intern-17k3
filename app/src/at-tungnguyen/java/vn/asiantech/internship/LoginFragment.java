@@ -20,7 +20,7 @@ public class LoginFragment extends Fragment {
         mTvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).replaceFragment(new SignUpFragment(), true);
+                ((MainActivity) getActivity()).replaceFragment(SignUpFragment.newInstance(), true);
             }
         });
 

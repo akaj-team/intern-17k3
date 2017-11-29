@@ -25,6 +25,14 @@ public class    SignUpFragment extends Fragment {
     private CheckBox mChkTerms;
     private ImageView mImgNext;
 
+    public static SignUpFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        SignUpFragment fragment = new SignUpFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
