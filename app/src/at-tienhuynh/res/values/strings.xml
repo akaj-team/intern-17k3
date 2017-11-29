@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">Caculator View</string>
-    <string name="edtSum">+</string>
-    <string name="edtSub">-</string>
-    <string name="edtMulti">*</string>
-    <string name="edtDivi">/</string>
-    <string name="tvResult">Result</string>
-    <string name="DialogTitle">Warning</string>
-    <string name="dialogMessage">Please input number!</string>
+    <string name="edt_sum">+</string>
+    <string name="edt_sub">-</string>
+    <string name="edt_multi">*</string>
+    <string name="edt_divi">/</string>
+    <string name="tv_result">Result</string>
+    <string name="dialog_title">Warning</string>
+    <string name="dialog_message">Please input number!</string>
+    <string name="dialog_message_num0">Please not divided by 0</string>
+    <string name="number_0">0</string>
+    <string name="hint_edt_numa">Number A</string>
+    <string name="hint_edt_numb">Number B</string>
 </resources>

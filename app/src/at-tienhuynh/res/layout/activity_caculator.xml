@@ -14,35 +14,41 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="11">
 
         <EditText
             android:id="@+id/edtNumberA"
-            android:layout_width="120dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
+            android:layout_weight="5"
             android:background="@drawable/bg_edt_number"
             android:gravity="center"
+            android:hint="@string/hint_edt_numa"
             android:inputType="number"
             android:maxLines="1" />
 
         <TextView
             android:id="@+id/tvCalculation"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/edtSum"
+            android:text="@string/edt_sum"
             android:textColor="@android:color/black"
             android:textSize="20dp" />
 
         <EditText
             android:id="@+id/edtNumberB"
-            android:layout_width="120dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
+            android:layout_weight="5"
             android:background="@drawable/bg_edt_number"
             android:gravity="center"
+            android:hint="@string/hint_edt_numb"
             android:inputType="number"
             android:maxLines="1" />
     </LinearLayout>
@@ -57,22 +63,22 @@
         <Button
             android:id="@+id/btnSum"
             style="@style/BtnCalculation"
-            android:text="@string/edtSum" />
+            android:text="@string/edt_sum" />
 
         <Button
             android:id="@+id/btnSubtraction"
             style="@style/BtnCalculation"
-            android:text="@string/edtSub" />
+            android:text="@string/edt_sub" />
 
         <Button
             android:id="@+id/btnMultiplication"
             style="@style/BtnCalculation"
-            android:text="@string/edtMulti" />
+            android:text="@string/edt_multi" />
 
         <Button
             android:id="@+id/btnDivision"
             style="@style/BtnCalculation"
-            android:text="@string/edtDivi" />
+            android:text="@string/edt_divi" />
     </LinearLayout>
 
     <TextView
@@ -82,7 +88,7 @@
         android:layout_margin="10dp"
         android:background="@color/colorAccent"
         android:gravity="center"
-        android:text="@string/tvResult"
+        android:text="@string/tv_result"
         android:textColor="@android:color/white"
         android:textSize="20dp" />
 </LinearLayout>

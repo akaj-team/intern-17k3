@@ -3,6 +3,7 @@ package vn.asiantech.internship;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,8 +45,8 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
-    // Onclick Button
     public void onClick(View view) {
+        // Onclick Button
         switch (view.getId()) {
             case R.id.btnSum:
                 getCaculator(mBtnSum);
@@ -73,8 +74,17 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
                 checkEmty();
                 if (mIsEmty) {
                     mCalculation.diVision(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                    if (TextUtils.equals(mEdtNumberB.getText().toString(), getString(R.string.number_0))) {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                        alertDialogBuilder.setTitle(R.string.dialog_title);
+                        alertDialogBuilder.setMessage(R.string.dialog_message_num0);
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+                        mTvResult.setText(R.string.tv_result);
+                        mEdtNumberB.getText().clear();
+                    }
+                    break;
                 }
-                break;
         }
     }
 
@@ -85,15 +95,14 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     private void checkEmty() {
         if (mEdtNumberA.getText().toString().length() > 0 && mEdtNumberB.getText().toString().length() > 0) {
             mIsEmty = true;
-
         } else {
             mIsEmty = false;
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setTitle(R.string.DialogTitle);
-            alertDialogBuilder.setMessage(R.string.dialogMessage);
+            alertDialogBuilder.setTitle(R.string.dialog_title);
+            alertDialogBuilder.setMessage(R.string.dialog_message);
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
-            mTvResult.setText(R.string.tvResult);
+            mTvResult.setText(R.string.tv_result);
         }
     }
 }

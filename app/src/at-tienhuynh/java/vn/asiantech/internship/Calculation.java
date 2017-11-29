@@ -6,35 +6,29 @@ import android.widget.TextView;
  * Created at 2017
  * Created by jackty on 27/11/2017.
  */
-public class Calculation {
+class Calculation {
     private float mResult;
 
-    public Calculation() {
+    Calculation() {
     }
 
-    protected Float sum(float numA, float numB, TextView tvResult) {
+    void sum(float numA, float numB, TextView tvResult) {
         mResult = numA + numB;
         tvResult.setText(String.valueOf(mResult));
-        return mResult;
     }
 
-    protected Float subTraction(float numA, float numB, TextView tvResult) {
+    void subTraction(float numA, float numB, TextView tvResult) {
         mResult = numA - numB;
         tvResult.setText(String.valueOf(mResult));
-        return mResult;
     }
 
-    protected Float mulTiplication(float numA, float numB, TextView tvResult) {
+    void mulTiplication(float numA, float numB, TextView tvResult) {
         mResult = numA * numB;
         tvResult.setText(String.valueOf(mResult));
-        return mResult;
     }
 
-    protected Float diVision(float numA, float numB, TextView tvResult) {
+    void diVision(float numA, float numB, TextView tvResult) {
         mResult = numA / numB;
         tvResult.setText(String.valueOf(mResult));
-        return mResult;
     }
-
-
 }
