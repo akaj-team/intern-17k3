@@ -31,7 +31,7 @@ public class    SignUpFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_singup, container, false);
         mTvNumber = view.findViewById(R.id.tvTerm);
         mEdtEmail = view.findViewById(R.id.edtEmail);
-        mEdtNumber = view.findViewById(R.id.edtNumBer);
+        mEdtNumber = view.findViewById(R.id.edtPhoneNumBer);
         mChkTerms = view.findViewById(R.id.chkSignUp);
         mEdtFullname = view.findViewById(R.id.edtFullName);
         mImgNext = view.findViewById(R.id.imgSignUp);
@@ -56,10 +56,12 @@ public class    SignUpFragment extends Fragment {
         mEdtNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
@@ -70,12 +72,12 @@ public class    SignUpFragment extends Fragment {
         mEdtFullname.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                // No-op
             }
 
             @Override
@@ -87,10 +89,12 @@ public class    SignUpFragment extends Fragment {
         mEdtEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
             }
 
             @Override

@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="#041e42"
+        android:background="@color/colorBlack"
         android:orientation="vertical">
 
         <ImageView
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/tvSlogan"
-            android:textColor="#0288d1" />
+            android:textColor="@color/colorBlack" />
 
     </LinearLayout>
 

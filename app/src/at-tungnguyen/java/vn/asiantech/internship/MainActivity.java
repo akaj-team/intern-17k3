@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mImgBack = findViewById(R.id.imgBack);
-        replace(new LoginFragment(), false);
+        replaceFragment(new LoginFragment(), false);
         mImgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void replace(Fragment fragment, boolean isAdd) {
+    protected void replaceFragment(Fragment fragment, boolean isAdd) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frContainer, fragment);
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     public ImageView getBack() {
         return mImgBack;
+
     }
 
 }
