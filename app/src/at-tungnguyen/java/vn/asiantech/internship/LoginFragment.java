@@ -16,7 +16,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         mTvSignup = view.findViewById(R.id.tvSignUp);
-        ((MainActivity)getActivity()).getBack().setVisibility(View.INVISIBLE);
+        ((MainActivity) getActivity()).getBack().setVisibility(View.INVISIBLE);
         mTvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
