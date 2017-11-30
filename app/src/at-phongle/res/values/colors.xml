@@ -7,4 +7,5 @@
     <color name="redDislike">#ce253c</color>
     <color name="snow">#FAFAFA</color>
     <color name="black">#000000</color>
+    <color name="bg_recyclerview">#ece8e8</color>
 </resources>

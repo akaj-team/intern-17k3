@@ -1,4 +1,4 @@
-package vn.asiantech.internship.recyclerview.models;
+package vn.asiantech.internship.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.models.Posts;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
     private List<Posts> mPostList;

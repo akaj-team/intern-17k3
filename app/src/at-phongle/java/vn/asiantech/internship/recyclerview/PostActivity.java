@@ -1,4 +1,4 @@
-package vn.asiantech.internship.recyclerview.models;
+package vn.asiantech.internship.recyclerview;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.models.Posts;
 
 public class PostActivity extends AppCompatActivity implements PostAdapter.OnItemClickListener {
     private RecyclerView mRecyclerViewPost;
@@ -24,10 +26,10 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnIte
         initData();
         initAdapter();
     }
-
     private void initView() {
         mRecyclerViewPost = findViewById(R.id.rvPosts);
     }
+
 
     private void initAdapter() {
         mPostAdapter = new PostAdapter(mPostList, this);
@@ -41,7 +43,7 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnIte
         mPostList.add(new Posts("Post 03", "This is PostThree'Description", -4));
         mPostList.add(new Posts("Post 04", "This is PostFour'Description", 3));
         mPostList.add(new Posts("Post 05", "This is PostFive'Description", -5));
-        mPostList.add(new Posts("Post 06", "This is PostSix'Description", 0));
+        mPostList.add(new Posts("Post 06", "This is PostSix'Description", 100));
         mPostList.add(new Posts("Post 07", "This is PostSeven'Description", 1));
         mPostList.add(new Posts("Post 08", "This is PostEight'Description", 0));
         mPostList.add(new Posts("Post 09", "This is PostNine'Description", 4));
