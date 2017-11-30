@@ -41,9 +41,9 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.NewFeedV
     class NewFeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTvName;
         private TextView mTvStatus;
+        private TextView mTvSumReact;
         private ImageView mImgLike;
         private ImageView mImgDisLike;
-        private TextView mTvSumReact;
 
         public NewFeedViewHolder(View itemView) {
             super(itemView);
