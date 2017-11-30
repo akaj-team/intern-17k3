@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnRecyclerView;

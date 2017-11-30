@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui;
+package vn.asiantech.internship.ui.calculator;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
