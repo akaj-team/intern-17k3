@@ -13,5 +13,7 @@
     <string name="Enter_number">Enter mobile number</string>
     <string name="full_name">Full name</string>
     <string name="email">Email</string>
-    <string name="jk"></string>
+    <string name="string_change_color">
+        <font color='black'>I have read and agree with me </font><br/><br/><font color= 'blue'>terms and conditions</font><font color='blacck'>.</font>
+    </string>
 </resources>

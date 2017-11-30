@@ -92,6 +92,7 @@
 
         <TextView
             android:id="@+id/tvLinkSp"
+            android:text="@string/string_change_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"

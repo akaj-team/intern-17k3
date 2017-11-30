@@ -3,7 +3,6 @@ package vn.asiantech.internship.ui.login;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
@@ -47,9 +45,6 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
         mEdtFullName.addTextChangedListener(this);
 
         // Color TextView
-        TextView tvLinkCheck = v.findViewById(R.id.tvLinkSp);
-        String text = "<font color='black'>I have read and agree with me</font><font color='#34A4F1'><br>terms and conditions</font><font color='black'>.</font>";
-        tvLinkCheck.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
         mChkTermAccept.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
