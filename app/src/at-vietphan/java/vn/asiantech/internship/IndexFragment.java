@@ -29,7 +29,7 @@ public class IndexFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).replaceFragment(LoginFragment.newInstance(), true);
+                ((LoginActivity) getActivity()).replaceFragment(LoginFragment.newInstance(), true);
             }
         });
         TextView tvMemoLogin = view.findViewById(R.id.tvMemoLogin);
@@ -37,8 +37,8 @@ public class IndexFragment extends Fragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                if (getActivity() instanceof MainActivity){
-                    ((MainActivity) getActivity()).replaceFragment(new LoginFragment(), true);
+                if (getActivity() instanceof LoginActivity){
+                    ((LoginActivity) getActivity()).replaceFragment(new LoginFragment(), true);
                 }
             }
 
@@ -60,6 +60,6 @@ public class IndexFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).setVisibilityBackImageView(View.INVISIBLE);
+        ((LoginActivity) getActivity()).setVisibilityBackImageView(View.INVISIBLE);
     }
 }

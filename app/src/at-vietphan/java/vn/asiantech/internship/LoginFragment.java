@@ -41,7 +41,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).setVisibilityBackImageView(View.VISIBLE);
+        ((LoginActivity) getActivity()).setVisibilityBackImageView(View.VISIBLE);
     }
 
     private void checkAllInputData() {
