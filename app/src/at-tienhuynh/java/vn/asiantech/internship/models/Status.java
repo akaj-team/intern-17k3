@@ -1,8 +1,5 @@
 package vn.asiantech.internship.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created at 2017
  * Created by jackty on 29/11/2017.
@@ -12,9 +9,6 @@ public class Status {
     private String title;
     private String description;
     private int numLike;
-
-    public Status() {
-    }
 
     public Status(String title, String description, int numlike) {
         this.title = title;

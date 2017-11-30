@@ -1,5 +1,6 @@
 package vn.asiantech.internship.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +21,12 @@ import vn.asiantech.internship.models.Status;
 public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusViewHolder> {
     private List<Status> mStatusList;
     private OnItemClickListener mOnItemClickListener;
+    private Context mContext;
 
-    public StatusAdapter(List<Status> statusList, OnItemClickListener onItemClickListener) {
+    public StatusAdapter(List<Status> statusList, OnItemClickListener onItemClickListener, Context context) {
         mStatusList = statusList;
         mOnItemClickListener = onItemClickListener;
+        mContext = context;
 
     }
 
@@ -71,12 +74,15 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
             if (mStatusList.get(getAdapterPosition()).getNumlike() > 0) {
                 mImgLike.setSelected(true);
                 mImgDisLike.setSelected(false);
+                mTvCountLike.setTextColor(mContext.getResources().getColor(R.color.colorGreen));
             } else if (mStatusList.get(getAdapterPosition()).getNumlike() < 0) {
                 mImgLike.setSelected(false);
                 mImgDisLike.setSelected(true);
+                mTvCountLike.setTextColor(mContext.getResources().getColor(R.color.colorRed));
             } else if (mStatusList.get(getAdapterPosition()).getNumlike() == 0) {
                 mImgLike.setSelected(false);
                 mImgDisLike.setSelected(false);
+                mTvCountLike.setTextColor(mContext.getResources().getColor(R.color.colorGray));
             }
         }
 

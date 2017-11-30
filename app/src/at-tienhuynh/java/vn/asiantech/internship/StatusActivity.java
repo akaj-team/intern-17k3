@@ -38,7 +38,7 @@ public class StatusActivity extends AppCompatActivity implements StatusAdapter.O
     }
 
     private void initAdapter() {
-        mStatusAdapter = new StatusAdapter(mStatusList, this);
+        mStatusAdapter = new StatusAdapter(mStatusList, this, this);
         mRecyclerViewStatus.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewStatus.setAdapter(mStatusAdapter);
     }
@@ -55,4 +55,3 @@ public class StatusActivity extends AppCompatActivity implements StatusAdapter.O
         mStatusAdapter.notifyItemChanged(position);
     }
 }
-
