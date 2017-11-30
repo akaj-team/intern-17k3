@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import vn.asiantech.internship.ui.caculatorview.CalculatorViewActivity;
+import vn.asiantech.internship.ui.calculator.CalculatorViewActivity;
 
-public class IndexActivity extends AppCompatActivity implements View.OnClickListener {
+public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     @Override
@@ -24,7 +24,7 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnIssue2:
-                Intent intentMain = new Intent(IndexActivity.this,
+                Intent intentMain = new Intent(DrawerLayoutActivity.this,
                         CalculatorViewActivity.class);
                 startActivity(intentMain);
         }

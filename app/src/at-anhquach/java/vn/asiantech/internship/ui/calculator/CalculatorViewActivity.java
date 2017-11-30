@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.caculatorview;
+package vn.asiantech.internship.ui.calculator;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.text.DecimalFormat;
 
 import vn.asiantech.internship.R;
 
