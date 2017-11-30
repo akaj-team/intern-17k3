@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import vn.asiantech.internship.ui.Login.LoginActivity;
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.ui.Login.LoginActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 
