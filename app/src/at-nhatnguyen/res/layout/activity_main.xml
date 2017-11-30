@@ -12,19 +12,14 @@
         android:background="@color/colorMain"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginTop="10dp">
-
-            <Button
-                android:id="@+id/btnBack"
-                android:layout_width="35dp"
-                android:layout_height="20dp"
-                android:layout_gravity="left"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/ic_back" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="35dp"
+            android:layout_height="20dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_back" />
 
         <ImageView
             android:layout_width="150dp"
