@@ -28,6 +28,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.tvLikeCount.setText(String.valueOf(mListData.get(position).getLikeCount()));
         holder.tvUserName.setText(mListData.get(position).getName());
         holder.tvStatus.setText(mListData.get(position).getStatus());
     }
@@ -40,21 +41,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvUserName;
         private TextView tvStatus;
-        private TextView tvSumLike;
+        private TextView tvLikeCount;
         private Button btnLike;
-        private Button btnUnLike;
+        private Button btnDisLike;
 
         private ViewHolder(View itemView) {
             super(itemView);
             tvUserName = itemView.findViewById(R.id.tvUserName);
             tvStatus = itemView.findViewById(R.id.tvStatus);
-            tvSumLike = itemView.findViewById(R.id.tvSumLike);
+            tvLikeCount = itemView.findViewById(R.id.tvLikeCount);
             btnLike = itemView.findViewById(R.id.btnLike);
-            btnUnLike = itemView.findViewById(R.id.btnUnLike);
-            btnUnLike.setOnClickListener(new View.OnClickListener() {
+            btnDisLike = itemView.findViewById(R.id.btnDisLike);
+            btnDisLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int likeCount = Integer.parseInt(tvSumLike.getText().toString().trim());
+                    int likeCount = Integer.parseInt(tvLikeCount.getText().toString().trim());
                     checkLike(--likeCount);
 
                 }
@@ -62,17 +63,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             btnLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int likeCount = Integer.parseInt(tvSumLike.getText().toString());
+                    int likeCount = Integer.parseInt(tvLikeCount.getText().toString());
                     checkLike(++likeCount);
                 }
             });
         }
 
         private void checkLike(int likeCount) {
-            tvSumLike.setText(String.valueOf(likeCount));
+            tvLikeCount.setText(String.valueOf(likeCount));
             if (likeCount == 0) {
-                btnUnLike.setBackgroundResource(R.drawable.ic_unlike_default);
-                btnLike.setBackgroundResource(R.drawable.ic_unlike_clicked);
+                btnDisLike.setBackgroundResource(R.drawable.ic_dislike_default);
+                btnLike.setBackgroundResource(R.drawable.ic_like_default);
                 return;
             }
             if (likeCount > 0) {
@@ -80,7 +81,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 return;
             }
             if (likeCount < 0) {
-                btnUnLike.setBackgroundResource(R.drawable.ic_like_default);
+                btnDisLike.setBackgroundResource(R.drawable.ic_dislike_clicked);
             }
         }
     }

@@ -6,10 +6,10 @@ public class DataContent {
     private String status;
     private int likeCount;
 
-    public DataContent(String name, String status) {
+    public DataContent(String name, String status, int likeCount) {
         this.name = name;
         this.status = status;
-        likeCount = 0;
+        this.likeCount = likeCount;
     }
 
     public String getName() {
