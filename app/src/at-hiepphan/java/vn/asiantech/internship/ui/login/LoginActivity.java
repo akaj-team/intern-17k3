@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+
 import vn.asiantech.internship.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -33,7 +34,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        onBackPressed();
+        if (view.getId() == R.id.imgBack) {
+            onBackPressed();
+        }
     }
 
     protected void setVisibilityImageBack(int visibility) {

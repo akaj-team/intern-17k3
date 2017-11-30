@@ -18,6 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import vn.asiantech.internship.R;
 
 public class InfoFragment extends Fragment {
@@ -28,7 +29,7 @@ public class InfoFragment extends Fragment {
     private ImageView mImgNext;
 
     @NonNull
-    public static Fragment getInstance(){
+    public static Fragment getInstance() {
         return new InfoFragment();
     }
 

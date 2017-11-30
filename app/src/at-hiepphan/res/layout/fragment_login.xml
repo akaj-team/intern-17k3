@@ -68,18 +68,12 @@
         android:textColor="@color/colorBlue"
         android:textSize="15dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/tvLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textview_text_new_to_urbi_sing_up_for_an_account"
-            android:textColor="@color/colorBlack"
-            android:textSize="15dp" />
-    </LinearLayout>
+        android:layout_gravity="center"
+        android:text="@string/textview_text_new_to_urbi_sing_up_for_an_account"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp" />
 </LinearLayout>
