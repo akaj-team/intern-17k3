@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import vn.asiantech.internship.ui.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
 public class ExerciseActivity extends Activity implements View.OnClickListener{
     private Button mBtnLogin;
     private Button mBtnRecyclerView;
+    private Button mBtnDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +24,12 @@ public class ExerciseActivity extends Activity implements View.OnClickListener{
     private void initViews(){
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
+        mBtnDrawerLayout = findViewById(R.id.btnDrawerLayout);
     }
     private void initListener(){
         mBtnLogin.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
+        mBtnDrawerLayout.setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +40,9 @@ public class ExerciseActivity extends Activity implements View.OnClickListener{
                 break;
             case R.id.btnRecyclerView:
                 startActivity(new Intent(this, RecyclerViewActivity.class));
+                break;
+            case R.id.btnDrawerLayout:
+                startActivity(new Intent(this, DrawerLayoutActivity.class));
                 break;
         }
     }
