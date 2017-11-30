@@ -50,7 +50,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
         private TextView mTvDescription;
         private TextView mTvCountLike;
         private ImageView mImgLike;
-        private ImageView mLImgDisLike;
+        private ImageView mImgDisLike;
 
         StatusViewHolder(final View itemView) {
             super(itemView);
@@ -58,9 +58,9 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
             mTvDescription = itemView.findViewById(R.id.tvDescription);
             mTvCountLike = itemView.findViewById(R.id.tvNumCountLike);
             mImgLike = itemView.findViewById(R.id.imgLike);
-            mLImgDisLike = itemView.findViewById(R.id.imgDislike);
+            mImgDisLike = itemView.findViewById(R.id.imgDislike);
             mImgLike.setOnClickListener(this);
-            mLImgDisLike.setOnClickListener(this);
+            mImgDisLike.setOnClickListener(this);
         }
 
         private void onBindData() {
@@ -68,6 +68,16 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
             mTvTitle.setText(status.getTitle());
             mTvDescription.setText(status.getDescription());
             mTvCountLike.setText(String.valueOf(status.getNumlike()));
+            if (mStatusList.get(getAdapterPosition()).getNumlike() > 0) {
+                mImgLike.setSelected(true);
+                mImgDisLike.setSelected(false);
+            } else if (mStatusList.get(getAdapterPosition()).getNumlike() < 0) {
+                mImgLike.setSelected(false);
+                mImgDisLike.setSelected(true);
+            } else if (mStatusList.get(getAdapterPosition()).getNumlike() == 0) {
+                mImgLike.setSelected(false);
+                mImgDisLike.setSelected(false);
+            }
         }
 
         @Override
