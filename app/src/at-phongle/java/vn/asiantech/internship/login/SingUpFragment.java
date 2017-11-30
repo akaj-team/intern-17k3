@@ -1,11 +1,14 @@
 package vn.asiantech.internship.login;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
-import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,7 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
     private EditText mEdtPhone;
     private EditText mEdtEmail;
     private EditText mEdtFullName;
+    private TextView mTvTermService;
 
     @Nullable
     @Override
@@ -30,10 +34,7 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
         View v = inflater.inflate(R.layout.fragment_signup, container, false);
         initViews(v);
         initListener();
-        // Set text with two color
-        TextView tvTermService = v.findViewById(R.id.tvTermService);
-        String text = "I have read and agree with the <font color='#00bfff'> <br/> term and conditions</font>. ";
-        tvTermService.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
+        setColorTvTermService();
         return v;
     }
 
@@ -43,6 +44,7 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
         mEdtEmail = v.findViewById(R.id.edtEmail);
         mEdtFullName = v.findViewById(R.id.edtFullName);
         mEdtPhone = v.findViewById(R.id.edtPhone);
+        mTvTermService = v.findViewById(R.id.tvTermService);
     }
 
     private void initListener() {
@@ -50,6 +52,12 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
         mEdtPhone.addTextChangedListener(this);
         mEdtFullName.addTextChangedListener(this);
         mChkTermService.setOnClickListener(this);
+    }
+
+    private void setColorTvTermService() {
+        SpannableString ss = new SpannableString(getString(R.string.tv_term_services));
+        ss.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.blue_dark)), 32, 53, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mTvTermService.setText(ss);
     }
 
     @Override
