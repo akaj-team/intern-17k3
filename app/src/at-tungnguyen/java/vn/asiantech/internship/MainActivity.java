@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mImgBack = findViewById(R.id.imgBack);
-        replaceFragment(new LoginFragment(), false);
+        replaceFragment(LoginFragment.newInstance(), false);
         mImgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public ImageView getBack() {
+    protected ImageView getBack() {
         return mImgBack;
 
     }

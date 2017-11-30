@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="30dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,13 +31,12 @@
             android:background="@drawable/ic_drop_down" />
 
         <EditText
-            android:id="@+id/edtPhoneNumBer"
+            android:id="@+id/edtPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:inputType="phone"
             android:text="@string/telephone" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -66,20 +65,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <CheckBox
             android:id="@+id/chkSignUp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
             android:button="@drawable/selector_check_nocheck"
-            android:scaleX="3"
-            android:scaleY="3"
-            android:text="" />
+            android:scaleX="2"
+            android:scaleY="2"
+            android:text="@null" />
 
         <LinearLayout
+            android:layout_margin="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -91,7 +93,7 @@
                 android:text="@string/tvAccept" />
 
             <TextView
-                android:id="@+id/tvTerm"
+                android:id="@+id/tvSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tvTerms"
@@ -101,6 +103,7 @@
     </LinearLayout>
 
     <ImageView
+
         android:id="@+id/imgSignUp"
         android:layout_width="50dp"
         android:layout_height="50dp"

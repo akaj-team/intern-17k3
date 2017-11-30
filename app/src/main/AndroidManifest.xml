@@ -11,6 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name="vn.asiantech.internship.TestActivity">
         </activity>
-\    </application>
+    </application>
 
 </manifest>
