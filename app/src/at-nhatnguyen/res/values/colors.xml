@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="background_recyclerview">#DCDCDC</color>
     <color name="colorMain">#041e42</color>
     <color name="color_text_slogan">#3366CC</color>
     <color name="color_text_button_facebook">#FFFFFF</color>

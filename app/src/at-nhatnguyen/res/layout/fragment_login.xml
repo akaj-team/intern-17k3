@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_text_button_facebook"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.LoginFragment">
+    tools:context="vn.asiantech.internship.ui.Login.LoginFragment">
 
     <TextView
         android:layout_width="match_parent"

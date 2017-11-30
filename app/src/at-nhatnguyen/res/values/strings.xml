@@ -1,5 +1,14 @@
 <resources>
-    <string name="app_name">nhatnguyen-17k3</string>
+    <string name="app_name">nhatnguyen-17k3-recyclerview</string>
+    <string name="button_exercise">recyclerview</string>
+    <string name="summation">+</string>
+    <string name="subtraction">-</string>
+    <string name="multiplication">*</string>
+    <string name="division">/</string>
+    <string name="numberone">Number One</string>
+    <string name="numbertwo">Number Two</string>
+    <string name="exercise_calculator">Calculator</string>
+    <string name="notify_number_two_0">Second number can not 0</string>
     <string name="text_slogan_below_logo">a bike for everyone, always</string>
     <string name="text_button_login_facebook">LOG IN WITH FACEBOOK</string>
     <string name="text_button_login_phonenum">LOG IN WITH PHONE NUMBER</string>
@@ -12,4 +21,5 @@
     <string name="text_or">or</string>
     <string name="text_fullname">Full Name</string>
     <string name="text_email">Email</string>
+    <string name="exercise_login">Login</string>
 </resources>
