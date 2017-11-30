@@ -43,37 +43,37 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         if (checkAllTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-            Toast.makeText(CalculatorActivity.this, "First term and second term no empty !", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.event_two_term_is_empty,Toast.LENGTH_SHORT).show();
         } else if (checkFirstTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-            Toast.makeText(CalculatorActivity.this, "First term no empty !", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.event_first_term_is_empty,Toast.LENGTH_SHORT).show();
         } else if (checkSecondTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-            Toast.makeText(CalculatorActivity.this, "Second term no empty !", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.event_second_term_is_empty,Toast.LENGTH_SHORT).show();
         } else {
             switch (v.getId()) {
                 case R.id.btnSum:
-                    mTvOperation.setText("+");
+                    mTvOperation.setText(R.string.sum);
                     BigDecimal bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
                     BigDecimal bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
                     mTvResult.setText(String.valueOf(bdFirstTerm.add(bdSecondTerm)));
                     break;
                 case R.id.btnSub:
-                    mTvOperation.setText("-");
+                    mTvOperation.setText(R.string.sub);
                     bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
                     bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
                     mTvResult.setText(String.valueOf(bdFirstTerm.subtract(bdSecondTerm)));
                     break;
                 case R.id.btnMul:
-                    mTvOperation.setText("*");
+                    mTvOperation.setText(R.string.mul);
                     bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
                     bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
                     mTvResult.setText(String.valueOf(bdFirstTerm.multiply(bdSecondTerm)));
                     break;
                 case R.id.btnDivision:
                     if (checkSecondTerm(mEdtSecondTerm)) {
-                        mTvResult.setText(" ");
-                        Toast.makeText(CalculatorActivity.this, "Second term no value = 0 !", Toast.LENGTH_SHORT).show();
+                        mTvResult.setText(R.string.text_null);
+                        Toast.makeText(getApplicationContext(),R.string.event_second_term_is_value_0,Toast.LENGTH_SHORT).show();
                     } else {
-                        mTvOperation.setText("/");
+                        mTvOperation.setText(R.string.division);
                         bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
                         bdSecondTerm = new BigDecimal(mEdtSecondTerm.getText().toString());
                         mTvResult.setText(String.valueOf(bdFirstTerm.divide((bdSecondTerm), 4, BigDecimal.ROUND_HALF_UP)));
@@ -96,7 +96,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private boolean checkSecondTerm(EditText edtSecondTerm) {
-        return ((edtSecondTerm).getText().toString().equals("0"));
+        return ((edtSecondTerm).getText().toString().equals(getApplicationContext().getText(R.string.value_0)));
     }
 
     @Override
@@ -106,7 +106,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        mTvResult.setText(" ");
+        mTvResult.setText(R.string.text_null);
     }
 
     @Override
