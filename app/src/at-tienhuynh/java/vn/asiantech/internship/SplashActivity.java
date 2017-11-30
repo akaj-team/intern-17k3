@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
@@ -43,6 +44,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnRecyclerView:
                 break;
             case R.id.btnDrawerLayout:
+                startActivity(new Intent(this, DrawerLayoutActivity.class));
                 break;
         }
     }
