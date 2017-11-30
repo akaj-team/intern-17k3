@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.asiantech.internship.Adapter.CommentAdapter;
+import vn.asiantech.internship.adapter.CommentAdapter;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Comment;
 

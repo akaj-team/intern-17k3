@@ -1,4 +1,4 @@
-package vn.asiantech.internship.Adapter;
+package vn.asiantech.internship.adapter;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
@@ -63,7 +63,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
             mBtnDislike.setOnClickListener(this);
         }
 
-        public void onBindData() {
+        private void onBindData() {
             Comment comment = mComments.get(getAdapterPosition());
             mTvName.setText(comment.getName());
             mTvCommentContent.setText(comment.getContent());
