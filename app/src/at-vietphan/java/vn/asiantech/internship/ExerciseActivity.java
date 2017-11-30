@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import vn.asiantech.internship.ui.drawerlayout.DrawerLayoutActivity;
+import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
@@ -42,7 +42,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener{
                 startActivity(new Intent(this, RecyclerViewActivity.class));
                 break;
             case R.id.btnDrawerLayout:
-                startActivity(new Intent(this, DrawerLayoutActivity.class));
+                startActivity(new Intent(this, DrawerActivity.class));
                 break;
         }
     }

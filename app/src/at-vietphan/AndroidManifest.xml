@@ -18,5 +18,6 @@
         </activity>
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
+        <activity android:name=".ui.drawerlayout.DrawerActivity" />
     </application>
 </manifest>
