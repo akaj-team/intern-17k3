@@ -14,8 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="11">
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/edtNumberA"
@@ -57,8 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:weightSum="4">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnSum"

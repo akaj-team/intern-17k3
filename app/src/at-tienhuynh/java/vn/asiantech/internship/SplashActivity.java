@@ -18,11 +18,15 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         initViews();
+        initListener();
     }
 
     private void initViews() {
         mBtnLoginScreen = findViewById(R.id.btnLoginScreen);
         mBtnCalculationScreen = findViewById(R.id.btnCalculatorScreen);
+    }
+
+    private void initListener() {
         mBtnLoginScreen.setOnClickListener(this);
         mBtnCalculationScreen.setOnClickListener(this);
     }

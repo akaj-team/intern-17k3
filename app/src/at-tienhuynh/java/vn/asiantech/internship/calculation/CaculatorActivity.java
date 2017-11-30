@@ -21,13 +21,14 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     private TextView mTvResult;
     private TextView mTvCalculation;
     private Calculation mCalculation;
-    private Boolean mIsEmty;
+    private boolean mIsEmty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caculator);
         innitViews();
+        initListener();
     }
 
     private void innitViews() {
@@ -40,6 +41,9 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         mTvResult = findViewById(R.id.tvResult);
         mTvCalculation = findViewById(R.id.tvCalculation);
         mCalculation = new Calculation();
+    }
+
+    private void initListener() {
         mBtnSum.setOnClickListener(this);
         mBtnSubtraction.setOnClickListener(this);
         mBtnMultiplication.setOnClickListener(this);
@@ -90,10 +94,8 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void checkEmpty() {
-        if (mEdtNumberA.getText().toString().length() > 0 && mEdtNumberB.getText().toString().length() > 0) {
-            mIsEmty = true;
-        } else {
-            mIsEmty = false;
+        mIsEmty = !TextUtils.isEmpty(mEdtNumberA.getText()) && !TextUtils.isEmpty(mEdtNumberB.getText());
+        if (!mIsEmty) {
             showError(getString(R.string.dialog_message));
         }
     }
