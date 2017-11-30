@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.ui.recyclerview;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.NewFeed;
 
 public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.NewFeedViewHolder> {
