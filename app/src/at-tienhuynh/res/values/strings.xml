@@ -18,4 +18,8 @@
     <string name="hintedtPhoneNumber">Enter mobile number</string>
     <string name="hintFullName">Full name</string>
     <string name="hintEmail">Email</string>
+    <string name="text_btn_login_screen">Login Screen</string>
+    <string name="text_btn_calculator_screen">Calculation Screen</string>
+    <string name="text_btn_recycler_view">Recycler View Screen</string>
+    <string name="text_btn_drawer_layout">Drawer Layout Screen</string>
 </resources>

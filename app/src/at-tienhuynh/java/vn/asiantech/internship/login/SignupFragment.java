@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.login;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +12,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import vn.asiantech.internship.R;
 
 /**
  * Created at 2017
