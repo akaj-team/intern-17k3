@@ -25,9 +25,10 @@
             android:background="@drawable/ic_flag_australia" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
             android:background="@drawable/ic_drop_down" />
 
         <EditText
