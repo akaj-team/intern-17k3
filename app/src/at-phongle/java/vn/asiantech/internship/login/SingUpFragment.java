@@ -28,21 +28,28 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_signup, container, false);
-        mChkTermService = v.findViewById(R.id.chkTermServices);
-        mImgNext = v.findViewById(R.id.imgNext);
-        mEdtEmail = v.findViewById(R.id.edtEmail);
-        mEdtFullName = v.findViewById(R.id.edtFullName);
-        mEdtPhone = v.findViewById(R.id.edtPhone);
-        // Handle edit text listener
-        mEdtEmail.addTextChangedListener(this);
-        mEdtPhone.addTextChangedListener(this);
-        mEdtFullName.addTextChangedListener(this);
-        mChkTermService.setOnClickListener(this);
+        initViews(v);
+        initListener();
         // Set text with two color
         TextView tvTermService = v.findViewById(R.id.tvTermService);
         String text = "I have read and agree with the <font color='#00bfff'> <br/> term and conditions</font>. ";
         tvTermService.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
         return v;
+    }
+
+    private void initViews(View v) {
+        mChkTermService = v.findViewById(R.id.chkTermServices);
+        mImgNext = v.findViewById(R.id.imgNext);
+        mEdtEmail = v.findViewById(R.id.edtEmail);
+        mEdtFullName = v.findViewById(R.id.edtFullName);
+        mEdtPhone = v.findViewById(R.id.edtPhone);
+    }
+
+    private void initListener() {
+        mEdtEmail.addTextChangedListener(this);
+        mEdtPhone.addTextChangedListener(this);
+        mEdtFullName.addTextChangedListener(this);
+        mChkTermService.setOnClickListener(this);
     }
 
     @Override
@@ -53,7 +60,9 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
 
     @Override
     public void onClick(View v) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermService));
+        if (v.getId() == R.id.chkTermServices) {
+            mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermService));
+        }
     }
 
     private boolean checkSignUp(TextView tv1, TextView tv2, TextView tv3, CheckBox chk) {
@@ -62,7 +71,6 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermService));
     }
 
     @Override
@@ -72,6 +80,5 @@ public class SingUpFragment extends Fragment implements View.OnClickListener, Te
 
     @Override
     public void afterTextChanged(Editable s) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermService));
     }
 }

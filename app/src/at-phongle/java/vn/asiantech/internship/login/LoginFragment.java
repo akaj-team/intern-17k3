@@ -34,6 +34,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ((LoginActivity) getActivity()).replaceFragment(new SingUpFragment(), true);
+        if(v.getId() == R.id.tvSingUp){
+            ((LoginActivity) getActivity()).replaceFragment(new SingUpFragment(), true);
+        }
     }
 }
