@@ -18,10 +18,7 @@ import android.widget.TextView;
 
 public class IndexFragment extends Fragment {
     public static IndexFragment newInstance() {
-        Bundle args = new Bundle();
-        IndexFragment fragment = new IndexFragment();
-        fragment.setArguments(args);
-        return fragment;
+        return new IndexFragment();
     }
 
     @Nullable
@@ -40,7 +37,9 @@ public class IndexFragment extends Fragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).replaceFragment(new LoginFragment(), true);
+                if (getActivity() instanceof MainActivity){
+                    ((MainActivity) getActivity()).replaceFragment(new LoginFragment(), true);
+                }
             }
 
             @Override

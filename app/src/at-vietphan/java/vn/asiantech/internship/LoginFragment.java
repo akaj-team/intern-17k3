@@ -19,13 +19,10 @@ public class LoginFragment extends Fragment {
     private EditText mEdtPhone;
     private EditText mEdtFullName;
     private EditText mEdtMail;
-    protected CheckBox mChkTermsAccept;
+    private CheckBox mChkTermsAccept;
 
     public static LoginFragment newInstance() {
-        Bundle args = new Bundle();
-        LoginFragment fragment = new LoginFragment();
-        fragment.setArguments(args);
-        return fragment;
+        return new LoginFragment();
     }
 
     @Nullable

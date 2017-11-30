@@ -15,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         replaceFragment(IndexFragment.newInstance(), false);
         mImgBack = findViewById(R.id.imgBack);
         mImgBack.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +39,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setVisibilityBackImageView(int visible) {
-         mImgBack.setVisibility(visible);
+        mImgBack.setVisibility(visible);
     }
 }
