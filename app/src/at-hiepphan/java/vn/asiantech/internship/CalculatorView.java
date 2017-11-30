@@ -126,7 +126,7 @@ public class CalculatorView extends AppCompatActivity implements View.OnClickLis
     }
 
     private void division(BigDecimal firstNumber, BigDecimal secondNumber) {
-        if (secondNumber.compareTo(new BigDecimal(0)) == 0) {
+        if (secondNumber.compareTo(BigDecimal.ZERO) == 0) {
             Toast.makeText(this, this.getString(R.string.toast_text_error_zero), Toast.LENGTH_LONG).show();
             return;
         }
@@ -160,6 +160,4 @@ public class CalculatorView extends AppCompatActivity implements View.OnClickLis
             mBtnDivision.setEnabled(false);
         }
     }
-
-
 }
