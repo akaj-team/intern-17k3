@@ -14,11 +14,11 @@ import vn.asiantech.internship.model.NewFeed;
 
 public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.NewFeedViewHolder> {
     private List<NewFeed> mNewFeedList;
-    private OnButtonClick mOnButtonClick;
+    private OnItemClickListener mOnItemClickListener;
 
-    NewFeedAdapter(List<NewFeed> newFeedList, OnButtonClick onButtonClick) {
+    NewFeedAdapter(List<NewFeed> newFeedList, OnItemClickListener onItemClickListener) {
         mNewFeedList = newFeedList;
-        mOnButtonClick = onButtonClick;
+        mOnItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -86,20 +86,20 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.NewFeedV
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.imgLike:
-                    if (mOnButtonClick != null) {
-                        mOnButtonClick.onClickLike(getAdapterPosition());
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onClickLike(getAdapterPosition());
                     }
                     break;
                 case R.id.imgDisLike:
-                    if (mOnButtonClick != null) {
-                        mOnButtonClick.onClickDisLike(getAdapterPosition());
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onClickDisLike(getAdapterPosition());
                     }
                     break;
             }
         }
     }
 
-    protected interface OnButtonClick {
+    protected interface OnItemClickListener {
         void onClickLike(int position);
 
         void onClickDisLike(int position);

@@ -10,7 +10,7 @@ import java.util.List;
 
 import vn.asiantech.internship.model.NewFeed;
 
-public class RecyclerViewActivity extends AppCompatActivity implements NewFeedAdapter.OnButtonClick {
+public class RecyclerViewActivity extends AppCompatActivity implements NewFeedAdapter.OnItemClickListener {
     private RecyclerView mRecyclerViewNewFeed;
     private List<NewFeed> mNewFeedList = new ArrayList<>();
     private NewFeedAdapter mAdapter;
