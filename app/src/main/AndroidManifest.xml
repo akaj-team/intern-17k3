@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="vn.asiantech.internship">
+    package="vn.asiantech.internship">
 
     <application
         android:allowBackup="true"
@@ -9,8 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="vn.asiantech.internship.TestActivity">
-        </activity>
-    </application>
+        <activity android:name="vn.asiantech.internship.ChoiceExerciseActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".calculator.CalculatorActivity" />
+        <activity android:name=".recyclerview.PersonViewActivity" />
+    </application>
 </manifest>

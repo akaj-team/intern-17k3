@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">hieucap-17k3</string>
     <string name="menu_bai_tap">MENU</string>
-    <string name="bai_tap_1">BT1</string>
-    <string name="bai_tap_2">BT2</string>
+    <string name="bai_tap_1">Login Screen</string>
+    <string name="bai_tap_2">Calculator</string>
     <string name="sum">+</string>
     <string name="sub">-</string>
     <string name="mul">*</string>
     <string name="division">/</string>
+    <string name="bai_tap_3">Rycycler View</string>
 </resources>
