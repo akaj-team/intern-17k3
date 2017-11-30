@@ -34,8 +34,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.imgBack) {
-            onBackPressed();
+        switch (view.getId()) {
+            case R.id.imgBack:
+                onBackPressed();
+                break;
         }
     }
 

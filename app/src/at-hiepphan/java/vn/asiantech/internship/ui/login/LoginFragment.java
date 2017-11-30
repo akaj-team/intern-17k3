@@ -33,7 +33,9 @@ public class LoginFragment extends Fragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                ((LoginActivity) getActivity()).replaceFragment(InfoFragment.getInstance(), true);
+                if (getActivity() instanceof LoginActivity) {
+                    ((LoginActivity) getActivity()).replaceFragment(InfoFragment.getInstance(), true);
+                }
             }
 
             @Override
