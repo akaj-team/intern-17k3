@@ -1,4 +1,4 @@
-package vn.asiantech.internship.recyclerview;
+package vn.asiantech.internship.recyclerView;
 
 import android.content.Context;
 import android.support.v4.app.ActivityCompat;

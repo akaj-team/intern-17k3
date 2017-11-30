@@ -18,6 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:paddingTop="5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -54,6 +55,7 @@
                 android:id="@+id/tvStatus"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:maxLines="2"
                 android:layout_below="@id/lnNamePerson"
                 android:gravity="center_vertical" />
         </RelativeLayout>

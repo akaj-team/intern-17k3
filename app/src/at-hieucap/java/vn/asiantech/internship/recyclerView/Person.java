@@ -1,4 +1,4 @@
-package vn.asiantech.internship.recyclerview;
+package vn.asiantech.internship.recyclerView;
 
 public class Person {
     private String name;

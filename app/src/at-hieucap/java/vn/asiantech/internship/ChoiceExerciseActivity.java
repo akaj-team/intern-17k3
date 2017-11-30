@@ -6,12 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import vn.asiantech.internship.calculator.CalculatorActivity;
-import vn.asiantech.internship.recyclerview.PersonViewActivity;
 
-/**
- * Created by tiboo on 27/11/2017.
- */
+import vn.asiantech.internship.calculator.CalculatorActivity;
+import vn.asiantech.internship.recyclerView.PersonViewActivity;
 
 public class ChoiceExerciseActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,7 +35,7 @@ public class ChoiceExerciseActivity extends AppCompatActivity implements View.On
                 Intent intent_bt2 = new Intent(this, CalculatorActivity.class);
                 this.startActivity(intent_bt2);
                 break;
-            case  R.id.btnBt3:
+            case R.id.btnBt3:
                 Intent intent_bt3 = new Intent(this, PersonViewActivity.class);
                 this.startActivity(intent_bt3);
                 break;
