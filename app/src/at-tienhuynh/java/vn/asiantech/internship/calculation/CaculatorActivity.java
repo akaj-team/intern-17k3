@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.calculation;
 
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import vn.asiantech.internship.R;
 
 public class CaculatorActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtNumberA;

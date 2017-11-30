@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">hiepphan-17k3</string>
+    <string name="title">a bike for everyone, always</string>
+    <string name="info">Enter your details below to get started</string>
+    <string name="edittext_hint_enter_mobile_number">Enter mobile number</string>
+    <string name="edittext_hint_full_name">Full name</string>
+    <string name="edittext_hint_email">Email</string>
+    <string name="textview_text_memo">I have read and agree with the terms and conditions.</string>
+    <string name="textview_text_welcome_to_urbi">Welcome to urbi</string>
+    <string name="textview_text_log_in_with_facebook">LOG IN WITH FACEBOOK</string>
+    <string name="textview_text_log_in_with_phone_number">LOG IN WITH PHONE NUNBER</string>
+    <string name="textview_text_or">or</string>
+    <string name="textview_text_new_to_urbi_sing_up_for_an_account">New to urbi? Sign up for an account</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
