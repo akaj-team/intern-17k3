@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,9 +19,12 @@ import vn.asiantech.internship.models.Status;
 
 public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusViewHolder> {
     private List<Status> mStatusList;
+    private OnItemClickListener mOnItemClickListener;
 
-    public StatusAdapter(List<Status> statusList) {
+    public StatusAdapter(List<Status> statusList, OnItemClickListener onItemClickListener) {
         mStatusList = statusList;
+        mOnItemClickListener = onItemClickListener;
+
     }
 
     @Override
@@ -40,23 +44,48 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
         return mStatusList.size();
     }
 
-    class StatusViewHolder extends RecyclerView.ViewHolder {
+    class StatusViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mTvTitle;
         private TextView mTvDescription;
         private TextView mTvCountLike;
+        private ImageView mImgLike;
+        private ImageView mLImgDisLike;
 
         StatusViewHolder(final View itemView) {
             super(itemView);
             mTvTitle = itemView.findViewById(R.id.tvTitle);
             mTvDescription = itemView.findViewById(R.id.tvDescription);
             mTvCountLike = itemView.findViewById(R.id.tvNumCountLike);
+            mImgLike = itemView.findViewById(R.id.imgLike);
+            mLImgDisLike = itemView.findViewById(R.id.imgDislike);
+            mImgLike.setOnClickListener(this);
+            mLImgDisLike.setOnClickListener(this);
         }
+
         private void onBindData() {
             Status status = mStatusList.get(getAdapterPosition());
             mTvTitle.setText(status.getTitle());
             mTvDescription.setText(status.getDescription());
-            mTvCountLike.setText(""+status.getNumlike());
+            mTvCountLike.setText(String.valueOf(status.getNumlike()));
         }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.imgLike:
+                    mOnItemClickListener.onLikeClick(getAdapterPosition());
+                    break;
+                case R.id.imgDislike:
+                    mOnItemClickListener.onDisLikeClick(getAdapterPosition());
+                    break;
+            }
+        }
+    }
+
+    public interface OnItemClickListener {
+        void onLikeClick(int position);
+
+        void onDisLikeClick(int position);
     }
 }
