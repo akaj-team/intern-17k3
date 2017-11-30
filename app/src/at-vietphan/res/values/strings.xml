@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">vietphan-17k3</string>
     <string name="recyclerview">RecyclerView</string>
+    <string name="a_bike_for_everyone_always">a bike for everyone, always</string>
+    <string name="signup_for_an_account">Signup for an account</string>
+    <string name="new_to_urbi">New to urbi?</string>
+    <string name="login_with_phone_number">LOGIN WITH PHONE NUMBER</string>
+    <string name="or">or</string>
+    <string name="log_in_with_facebook">LOG IN WITH FACEBOOK</string>
+    <string name="welcom_to_urbi">Welcom to urbi</string>
+    <string name="terms_and_conditions">terms and conditions</string>
+    <string name="i_have_read_and_agree_with_the">   I have read and agree with the</string>
+    <string name="email">Email</string>
+    <string name="full_name">Full name</string>
+    <string name="enter_mobile_number">Enter mobile number</string>
+    <string name="enter_your_details_below_to_get_started">Enter your details below to get started</string>
+    <string name="new_to_urbi_signup_for_an_account">New to urbi? Signup for an account</string>
+    <string name="login">login</string>
 </resources>
