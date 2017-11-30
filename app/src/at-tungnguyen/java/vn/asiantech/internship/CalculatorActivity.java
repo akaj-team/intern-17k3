@@ -29,7 +29,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         checkButton();
     }
 
-
     private void initView() {
         medtNumberA = findViewById(R.id.edtNumA);
         medtNumberB = findViewById(R.id.edtNumB);
@@ -69,9 +68,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 result = division(numberA, numberB);
                 mtvResult.setText(String.valueOf(result));
                 break;
-
         }
-
     }
 
     private double plus(double a, double b) {
@@ -104,7 +101,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void afterTextChanged(Editable editable) {
-                checkButton();            }
+                checkButton();
+            }
         });
         medtNumberB.addTextChangedListener(new TextWatcher() {
             @Override

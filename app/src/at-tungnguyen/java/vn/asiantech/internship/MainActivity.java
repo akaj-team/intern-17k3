@@ -8,16 +8,17 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-    Button btnCaculator;
+    private Button mbtnCaculator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnCaculator = findViewById(R.id.btnCaculator);
-        btnCaculator.setOnClickListener(new View.OnClickListener() {
+        mbtnCaculator = findViewById(R.id.btnCaculator);
+        mbtnCaculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(getApplicationContext(),CalculatorActivity.class));
+                startActivity(new Intent(getApplicationContext(), CalculatorActivity.class));
             }
         });
     }
