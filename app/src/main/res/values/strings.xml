@@ -1,9 +1,3 @@
 <resources>
 
-    <string name="inputA">A</string>
-    <string name="plus">+</string>
-    <string name="subtraction">-</string>
-    <string name="Multiplication">*</string>
-    <string name="Division">/</string>
-    <string name="result">Result</string>
 </resources>
