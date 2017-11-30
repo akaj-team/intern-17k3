@@ -58,7 +58,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        float result=0;
+        float result = 0;
         switch (view.getId()) {
             case R.id.btnSummation:
                 mTvCalculator.setText(R.string.summation);
@@ -82,7 +82,15 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 }
                 break;
         }
-        mTvResult.setText(String.valueOf(result));
+        if (view.getId() == R.id.btnDivision) {
+            if (Integer.parseInt(mEdtNumTwo.getText().toString()) == 0) {
+                mTvResult.setText(R.string.division_0);
+            } else {
+                mTvResult.setText(String.valueOf(result));
+            }
+        } else {
+            mTvResult.setText(String.valueOf(result));
+        }
     }
 
     @Override
@@ -97,7 +105,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if (TextUtils.isEmpty(mEdtNumOne.getText().toString()) ||TextUtils.isEmpty(mEdtNumTwo.getText().toString())) {
+        if (TextUtils.isEmpty(mEdtNumOne.getText().toString()) || TextUtils.isEmpty(mEdtNumTwo.getText().toString())) {
             setEnableButton(false);
         } else {
             setEnableButton(true);

@@ -48,32 +48,36 @@
         <Button
             android:id="@+id/btnSummation"
             style="@style/btn_default"
-            android:layout_width="70dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:enabled="false"
             android:text="@string/summation" />
 
         <Button
             android:id="@+id/btnSubtraction"
             style="@style/btn_default"
-            android:layout_width="70dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:enabled="false"
             android:text="@string/subtraction" />
 
         <Button
             android:id="@+id/btnMultiplication"
             style="@style/btn_default"
-            android:layout_width="70dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:enabled="false"
             android:text="@string/multiplication" />
 
         <Button
             android:id="@+id/btnDivision"
             style="@style/btn_default"
-            android:layout_width="70dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:enabled="false"
             android:text="@string/division" />
     </LinearLayout>
