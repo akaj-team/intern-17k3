@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.ui.recyclerview;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
@@ -10,13 +10,14 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Comment;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder> {
     private List<Comment> mComments;
     private OnItemClickListener mOnItemClickListener;
 
-    CommentAdapter(List<Comment> comments, OnItemClickListener onItemClickListener) {
+    public CommentAdapter(List<Comment> comments, OnItemClickListener onItemClickListener) {
         mComments = comments;
         mOnItemClickListener = onItemClickListener;
     }
@@ -62,23 +63,23 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
             mBtnDislike.setOnClickListener(this);
         }
 
-        public void onBindData() {
+        private void onBindData() {
             Comment comment = mComments.get(getAdapterPosition());
             mTvName.setText(comment.getName());
             mTvCommentContent.setText(comment.getContent());
             if (comment.getTotalLike() > 0) {
-                mBtnLike.setPressed(true);
-                mBtnDislike.setPressed(false);
+                mBtnLike.setSelected(true);
+                mBtnDislike.setSelected(false);
                 mTvTotalLike.setTextColor(Color.GREEN);
             }
             if (comment.getTotalLike() < 0) {
-                mBtnLike.setPressed(false);
-                mBtnDislike.setPressed(true);
+                mBtnLike.setSelected(false);
+                mBtnDislike.setSelected(true);
                 mTvTotalLike.setTextColor(Color.RED);
             }
             if (comment.getTotalLike() == 0) {
-                mBtnLike.setPressed(false);
-                mBtnDislike.setPressed(false);
+                mBtnLike.setSelected(false);
+                mBtnDislike.setSelected(false);
                 mTvTotalLike.setTextColor(Color.GRAY);
             }
             mTvTotalLike.setText(String.valueOf(comment.getTotalLike()));
