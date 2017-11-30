@@ -30,7 +30,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements NewFeedAd
     }
 
     private void initData() {
-        mNewFeedList.add(new NewFeed("Hana Hana", "How to complete this issue?hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfff", 0));
+        mNewFeedList.add(new NewFeed("Hana Hana", "How to complete this issue? How to make it so perfect? How to complete this issue? How to make it so perfect? ", 0));
         mNewFeedList.add(new NewFeed("Hana Hana", "How to complete this issue?", 0));
         mNewFeedList.add(new NewFeed("Hana Hana", "How to complete this issue?", 0));
         mNewFeedList.add(new NewFeed("Hana Hana", "How to complete this issue?", 0));
