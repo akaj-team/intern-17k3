@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.ui.login;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+
+import vn.asiantech.internship.R;
 
 public class LoginFragment extends Fragment {
     private Button mBtnSubmit;
