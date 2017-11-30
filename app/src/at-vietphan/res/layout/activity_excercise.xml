@@ -3,7 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.asiantech.internship.MainActivity">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="vn.asiantech.internship.ExerciseActivity">
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login" />
 
     <Button
         android:id="@+id/btnRecyclerView"
