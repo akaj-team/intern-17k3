@@ -3,12 +3,14 @@ package vn.asiantech.internship;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -28,7 +30,7 @@ public class CalculatorView extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_calculator_view);
         initView();
         onClickListener();
-        onEditTextChange();
+        checkInputData();
     }
 
     private void initView() {
@@ -52,15 +54,30 @@ public class CalculatorView extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         if (checkInput()) {
-            Button btnOnClick = findViewById(view.getId());
-            String operator = btnOnClick.getText().toString();
-            calculate(operator);
-        } else {
-            mTvResult.setText("");
+            BigDecimal firstNumber = new BigDecimal(mEdtFirstNumber.getText().toString());
+            BigDecimal secondNumber = new BigDecimal(mEdtSecondNumber.getText().toString());
+            switch (view.getId()) {
+                case R.id.btnAddition:
+                    mTvOperator.setText(this.getString(R.string.textview_text_addition));
+                    addition(firstNumber, secondNumber);
+                    break;
+                case R.id.btnSubtraction:
+                    mTvOperator.setText(this.getString(R.string.textview_text_subtraction));
+                    subtraction(firstNumber, secondNumber);
+                    break;
+                case R.id.btnMultiplication:
+                    mTvOperator.setText(this.getString(R.string.textview_text_multiplication));
+                    multiplication(firstNumber, secondNumber);
+                    break;
+                case R.id.btnDivision:
+                    mTvOperator.setText(this.getString(R.string.textview_text_division));
+                    division(firstNumber, secondNumber);
+                    break;
+            }
         }
     }
 
-    private void onEditTextChange() {
+    private void checkInputData() {
         mEdtFirstNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -69,12 +86,7 @@ public class CalculatorView extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String operator = mTvOperator.getText().toString();
-                if (operator.length() != 0 && mEdtFirstNumber.length() != 0 && mEdtSecondNumber.length() != 0) {
-                    calculate(operator);
-                } else {
-                    mTvResult.setText("");
-                }
+                checkClickButton();
             }
 
             @Override
@@ -91,12 +103,7 @@ public class CalculatorView extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String operator = mTvOperator.getText().toString();
-                if (operator.length() != 0 && mEdtFirstNumber.length() != 0 && mEdtSecondNumber.length() != 0) {
-                    calculate(operator);
-                } else {
-                    mTvResult.setText("");
-                }
+                checkClickButton();
             }
 
             @Override
@@ -106,40 +113,21 @@ public class CalculatorView extends AppCompatActivity implements View.OnClickLis
         });
     }
 
-    private void calculate(String operator) {
-        BigDecimal firstNumber = new BigDecimal(mEdtFirstNumber.getText().toString());
-        BigDecimal secondNumber = new BigDecimal(mEdtSecondNumber.getText().toString());
-        switch (operator) {
-            case "+":
-                mTvOperator.setText("+");
-                addition(firstNumber, secondNumber);
-                break;
-            case "-":
-                mTvOperator.setText("-");
-                subtraction(firstNumber, secondNumber);
-                break;
-            case "*":
-                mTvOperator.setText("*");
-                multiplication(firstNumber, secondNumber);
-                break;
-            case "/":
-                mTvOperator.setText("/");
-                division(firstNumber, secondNumber);
-                break;
-        }
+    private void addition(BigDecimal firstNumber, BigDecimal secondNumber) {
+        mTvResult.setText(String.valueOf(firstNumber.add(secondNumber)));
     }
 
     private void subtraction(BigDecimal firstNumber, BigDecimal secondNumber) {
         mTvResult.setText(String.valueOf(firstNumber.subtract(secondNumber)));
     }
 
-    private void addition(BigDecimal firstNumber, BigDecimal secondNumber) {
-        mTvResult.setText(String.valueOf(firstNumber.add(secondNumber)));
+    private void multiplication(BigDecimal firstNumber, BigDecimal secondNumber) {
+        mTvResult.setText(String.valueOf(firstNumber.multiply(secondNumber)));
     }
 
     private void division(BigDecimal firstNumber, BigDecimal secondNumber) {
         if (secondNumber.compareTo(new BigDecimal(0)) == 0) {
-            Toast.makeText(this, "Error: divided by zero", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, this.getString(R.string.toast_text_error_zero), Toast.LENGTH_LONG).show();
             return;
         }
         BigDecimal resultOne = firstNumber.divide(secondNumber, 0, RoundingMode.DOWN);
@@ -151,15 +139,27 @@ public class CalculatorView extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void multiplication(BigDecimal firstNumber, BigDecimal secondNumber) {
-        mTvResult.setText(String.valueOf(firstNumber.multiply(secondNumber)));
-    }
-
     private boolean checkInput() {
         if (mEdtFirstNumber.length() == 0 || mEdtSecondNumber.length() == 0) {
-            Toast.makeText(this, "Input must not be empty", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, this.getString(R.string.toast_text_notification_empty), Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
     }
+
+    private void checkClickButton() {
+        if (!TextUtils.isEmpty(mEdtFirstNumber.getText().toString()) || !TextUtils.isEmpty(mEdtSecondNumber.getText().toString())) {
+            mBtnAddition.setEnabled(true);
+            mBtnSubtraction.setEnabled(true);
+            mBtnMultiplication.setEnabled(true);
+            mBtnDivision.setEnabled(true);
+        } else {
+            mBtnAddition.setEnabled(false);
+            mBtnSubtraction.setEnabled(false);
+            mBtnMultiplication.setEnabled(false);
+            mBtnDivision.setEnabled(false);
+        }
+    }
+
+
 }

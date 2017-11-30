@@ -4,4 +4,6 @@
     <string name="textview_text_subtraction">-</string>
     <string name="textview_text_multiplication">*</string>
     <string name="textview_text_division">/</string>
+    <string name="toast_text_error_zero">Error: divided by zero</string>
+    <string name="toast_text_notification_empty">Input must not be empty</string>
 </resources>
