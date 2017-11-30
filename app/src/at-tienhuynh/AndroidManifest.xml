@@ -9,15 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BeginActivity">
+        <activity
+            android:name=".BeginActivity"
+            android:label="@string/SelectEx">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".recyclerview.StatusActivity" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:theme="@style/NoActionBarTheme" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".StatusActivity" />
     </application>
-
 </manifest>
+

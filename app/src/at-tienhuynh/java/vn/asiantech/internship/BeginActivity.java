@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import vn.asiantech.internship.login.LoginActivity;
+import vn.asiantech.internship.recyclerview.StatusActivity;
+
 public class BeginActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnIsuses1;
     private Button mBtnIsuses2;
@@ -31,6 +34,7 @@ public class BeginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnIsuses1:
+                startActivity(new Intent(this,LoginActivity.class));
                 break;
             case R.id.btnIsuses2:
                 break;
