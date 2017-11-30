@@ -6,10 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * Created by anh.quach on 11/28/17.
- */
-
 public class IndexActivity extends AppCompatActivity implements View.OnClickListener {
 
 

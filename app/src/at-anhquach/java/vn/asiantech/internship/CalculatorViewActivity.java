@@ -3,24 +3,27 @@ package vn.asiantech.internship;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class CalculatorViewActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtNumberA;
-    private EditText mEdtInputB;
+    private EditText mEdtNumberB;
     private TextView mTvOperator;
     private TextView mTvResult;
     private Button mBtnAdd;
     private Button mBtnSub;
     private Button mBtnMulti;
     private Button mBtnDiv;
-    private float mResult = 0;
-    private String mOper = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,41 +31,39 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_calculator_view);
         initView();
         initListener();
+        checkInputData();
     }
 
     @Override
     public void onClick(View view) {
-
-        if (TextUtils.isEmpty(mEdtNumberA.getText().toString())
-                || TextUtils.isEmpty(mEdtInputB.getText().toString())) {
-            return;
-        }
+        float result;
+        String oper;
         float numA;
         float numB;
         numA = Float.parseFloat(mEdtNumberA.getText().toString());
-        numB = Float.parseFloat(mEdtInputB.getText().toString());
+        numB = Float.parseFloat(mEdtNumberB.getText().toString());
 
         switch (view.getId()) {
             case R.id.btnAdd:
-                mOper = this.getString(R.string.operator_add);
-                mResult = numA + numB;
-                convertFloattoInt(mResult, mOper);
+                oper = this.getString(R.string.operator_add);
+                result = numA + numB;
+                convertFloatToInt(result, oper);
                 break;
             case R.id.btnSub:
-                mOper = this.getString(R.string.operator_sub);
-                mResult = numA - numB;
-                convertFloattoInt(mResult, mOper);
+                oper = this.getString(R.string.operator_sub);
+                result = numA - numB;
+                convertFloatToInt(result, oper);
                 break;
             case R.id.btnMulti:
-                mOper = this.getString(R.string.operator_multi);
-                mResult = numA * numB;
-                convertFloattoInt(mResult, mOper);
+                oper = this.getString(R.string.operator_multi);
+                result = numA * numB;
+                convertFloatToInt(result, oper);
                 break;
             case R.id.btnDiv:
-                mOper = this.getString(R.string.operator_divide);
+                oper = this.getString(R.string.operator_divide);
                 if (numB != 0) {
-                    mResult = numA / numB;
-                    convertFloattoInt(mResult, mOper);
+                    result = numA / numB;
+                    convertFloatToInt(result, oper);
                 } else {
                     Context context = getApplicationContext();
                     CharSequence text = context.getString(R.string.error_divide_zero);
@@ -78,9 +79,46 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
 
     }
 
+    private void checkInputData() {
+        mEdtNumberA.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                checkClickButton();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // No-op
+            }
+        });
+
+        mEdtNumberB.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No-op
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                checkClickButton();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // No-op
+
+            }
+        });
+    }
+
     private void initView() {
         mEdtNumberA = findViewById(R.id.edtInputA);
-        mEdtInputB = findViewById(R.id.edtInputB);
+        mEdtNumberB = findViewById(R.id.edtInputB);
         mTvOperator = findViewById(R.id.tvOperator);
         mTvResult = findViewById(R.id.tvResult);
         mBtnAdd = findViewById(R.id.btnAdd);
@@ -96,13 +134,30 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
         mBtnDiv.setOnClickListener(this);
     }
 
-    private void convertFloattoInt(float result, String oper) {
+    private void convertFloatToInt(float result, String oper) {
         int intResult = (int) result;
         if (result == intResult) {
             mTvResult.setText(String.valueOf(intResult));
         } else {
-            mTvResult.setText(String.valueOf(result));
+            DecimalFormat df = new DecimalFormat("0.000000000");
+            mTvResult.setText(df.format(result));
         }
         mTvOperator.setText(oper);
     }
+
+    private void checkClickButton() {
+        if (!TextUtils.isEmpty(mEdtNumberA.getText().toString()) && !TextUtils.isEmpty(mEdtNumberB.getText().toString())) {
+            mBtnAdd.setEnabled(true);
+            mBtnSub.setEnabled(true);
+            mBtnMulti.setEnabled(true);
+            mBtnDiv.setEnabled(true);
+        } else {
+            mBtnAdd.setEnabled(false);
+            mBtnSub.setEnabled(false);
+            mBtnMulti.setEnabled(false);
+            mBtnDiv.setEnabled(false);
+            mTvOperator.setText("");
+        }
+    }
+
 }
