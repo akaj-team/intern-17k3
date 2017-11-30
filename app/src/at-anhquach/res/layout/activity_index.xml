@@ -10,11 +10,11 @@
         android:id="@+id/btnIssue1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_issue_name1" />
+        android:text="@string/btn_issue1_name" />
 
     <Button
         android:id="@+id/btnIssue2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_issue_name2" />
+        android:text="@string/btn_issue2_name" />
 </LinearLayout>
