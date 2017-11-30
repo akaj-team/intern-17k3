@@ -6,7 +6,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context="vn.asiantech.internship.CalculatorViewActivity">
+    tools:context="vn.asiantech.internship.ui.caculatorview.CalculatorViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

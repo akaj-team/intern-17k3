@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.ui.caculatorview;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+
+import vn.asiantech.internship.R;
 
 public class CalculatorViewActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtNumberA;
