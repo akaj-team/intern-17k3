@@ -39,6 +39,5 @@ public class MainActivity extends AppCompatActivity {
 
     protected ImageView getBack() {
         return mImgBack;
-
     }
 }

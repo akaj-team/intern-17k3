@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:padding="30dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="30dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,7 +53,6 @@
             android:layout_marginTop="20dp"
             android:background="@color/colorView" />
     </LinearLayout>
-
 
     <Button
         android:id="@+id/btnSignUp"

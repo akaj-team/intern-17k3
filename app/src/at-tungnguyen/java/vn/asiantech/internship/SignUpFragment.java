@@ -111,5 +111,4 @@ public class SignUpFragment extends Fragment {
             mImgNext.setSelected(false);
         }
     }
-
 }

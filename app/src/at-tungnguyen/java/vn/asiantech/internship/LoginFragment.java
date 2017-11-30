@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class LoginFragment extends Fragment {
     private TextView mTvSignUp;
-
+    private static final int START_SPAN = 12;
     public static LoginFragment newInstance() {
         return new LoginFragment();
     }
@@ -38,7 +38,7 @@ public class LoginFragment extends Fragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-
+                // No-op
             }
 
             @Override
@@ -50,7 +50,7 @@ public class LoginFragment extends Fragment {
                 ds.setColor(ContextCompat.getColor(getContext(), R.color.colorSignup));
             }
         };
-        spannableString.setSpan(clickableSpan, 12, mTvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan,START_SPAN, mTvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         mTvSignUp.setText(spannableString);
         mTvSignUp.setMovementMethod(LinkMovementMethod.getInstance());
         return view;
