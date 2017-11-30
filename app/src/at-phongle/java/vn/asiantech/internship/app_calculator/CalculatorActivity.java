@@ -57,7 +57,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         Float numB = Float.parseFloat(mEdtNumberB.getText().toString());
         switch (v.getId()) {
             case R.id.btnAdd:
-                mTvOperator.setText("+");
+                mTvOperator.setText(getString(R.string.btn_add));
                 if (Float.isInfinite(operator(numA, numB, '+'))) {
                     mTvResult.setText(R.string.tv_fail);
                 } else {
@@ -65,7 +65,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case R.id.btnSub:
-                mTvOperator.setText("-");
+                mTvOperator.setText(getString(R.string.btn_sub));
                 if (Float.isInfinite(operator(numA, numB, '-'))) {
                     mTvResult.setText(R.string.tv_fail);
                 } else {
@@ -73,7 +73,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case R.id.btnMul:
-                mTvOperator.setText("*");
+                mTvOperator.setText(getString(R.string.btn_mul));
                 if (Float.isInfinite(operator(numA, numB, '*'))) {
                     mTvResult.setText(R.string.tv_fail);
                 } else {
@@ -81,7 +81,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case R.id.btnDiv:
-                mTvOperator.setText("/");
+                mTvOperator.setText(getString(R.string.btn_div));
                 if (Float.isInfinite(operator(numA, numB, '/'))) {
                     mTvResult.setText(R.string.tv_fail);
                 } else {
