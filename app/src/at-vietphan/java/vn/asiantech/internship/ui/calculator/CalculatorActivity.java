@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.ui.calculator;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import vn.asiantech.internship.R;
+
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtNumberA;
     private EditText mEdtNumberB;
@@ -20,6 +22,27 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     private Button mBtnDivision;
     private TextView mTvCalculation;
     private TextView mTvResult;
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            // No-op
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            if (TextUtils.isEmpty(mEdtNumberA.getText()) || TextUtils.isEmpty(mEdtNumberB.getText())) {
+                isEnableBtn(false);
+                Toast.makeText(CalculatorActivity.this, R.string.validate_input_data, Toast.LENGTH_LONG).show();
+            } else {
+                isEnableBtn(true);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            // No-op
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,26 +127,4 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     private double division(double a, double b) {
         return a / b;
     }
-
-    private TextWatcher textWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            // No-op
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            if (TextUtils.isEmpty(mEdtNumberA.getText()) || TextUtils.isEmpty(mEdtNumberB.getText())) {
-                isEnableBtn(false);
-                Toast.makeText(CalculatorActivity.this, R.string.validate_input_data, Toast.LENGTH_LONG).show();
-            } else {
-                isEnableBtn(true);
-            }
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            // No-op
-        }
-    };
 }
