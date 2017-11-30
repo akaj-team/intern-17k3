@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@color/colorPrimary"
     tools:context="vn.asiantech.internship.ExerciseActivity">
 
     <TextView
@@ -26,14 +26,14 @@
         android:text="@string/login" />
 
     <Button
-        android:id="@+id/btnRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/recyclerview" />
-
-    <Button
         android:id="@+id/btnCalculator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calculator_demo" />
+
+    <Button
+        android:id="@+id/btnRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recyclerview" />
 </LinearLayout>

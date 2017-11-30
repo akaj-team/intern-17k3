@@ -30,12 +30,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            if (TextUtils.isEmpty(mEdtNumberA.getText()) || TextUtils.isEmpty(mEdtNumberB.getText())) {
-                isEnableBtn(false);
-                Toast.makeText(CalculatorActivity.this, R.string.validate_input_data, Toast.LENGTH_LONG).show();
-            } else {
-                isEnableBtn(true);
-            }
+                setEnableBtn(!(TextUtils.isEmpty(mEdtNumberA.getText()) || TextUtils.isEmpty(mEdtNumberB.getText())));
         }
 
         @Override
@@ -76,7 +71,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         mEdtNumberB.addTextChangedListener(textWatcher);
     }
 
-    private void isEnableBtn(Boolean isCheck) {
+    private void setEnableBtn(Boolean isCheck) {
         mBtnPlus.setEnabled(isCheck);
         mBtnMinus.setEnabled(isCheck);
         mBtnMultiplication.setEnabled(isCheck);
