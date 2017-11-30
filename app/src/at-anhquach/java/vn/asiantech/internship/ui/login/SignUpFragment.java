@@ -25,10 +25,7 @@ import vn.asiantech.internship.R;
 
 public class SignUpFragment extends Fragment {
     public static SignUpFragment newInstance() {
-        Bundle args = new Bundle();
-        SignUpFragment fragment = new SignUpFragment();
-        fragment.setArguments(args);
-        return fragment;
+        return new SignUpFragment();
     }
 
     private ImageView mImgNext;

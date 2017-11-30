@@ -10,7 +10,6 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +19,7 @@ import vn.asiantech.internship.R;
 
 public class IndexFragment extends Fragment {
     public static IndexFragment newInstance() {
-        Bundle args = new Bundle();
-        IndexFragment fragment = new IndexFragment();
-        fragment.setArguments(args);
-        return fragment;
+        return new IndexFragment();
     }
 
     @Override
