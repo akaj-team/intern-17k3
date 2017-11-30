@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import vn.asiantech.internship.R;
 
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     private EditText mEdtNumOne;
@@ -74,7 +76,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.btnDivision:
                 if (Integer.parseInt(mEdtNumTwo.getText().toString()) == 0) {
-                    mTvResult.setText(R.string.division_0);
+                    mTvResult.setText(R.string.notify_number_two_0);
                     showToastNotifyNumberTwo();
                 } else {
                     mTvCalculator.setText(R.string.division);
@@ -84,7 +86,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         }
         if (view.getId() == R.id.btnDivision) {
             if (Integer.parseInt(mEdtNumTwo.getText().toString()) == 0) {
-                mTvResult.setText(R.string.division_0);
+                mTvResult.setText(R.string.notify_number_two_0);
             } else {
                 mTvResult.setText(String.valueOf(result));
             }
@@ -129,6 +131,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void showToastNotifyNumberTwo() {
-        Toast.makeText(CalculatorActivity.this, R.string.notify_numtwo_0, Toast.LENGTH_SHORT).show();
+        Toast.makeText(CalculatorActivity.this, R.string.notify_number_two_0, Toast.LENGTH_SHORT).show();
     }
 }

@@ -8,6 +8,5 @@
     <string name="numberone">Number One</string>
     <string name="numbertwo">Number Two</string>
     <string name="exercise_calculator">Calculator</string>
-    <string name="notify_numtwo_0">Second number can not 0</string>
-    <string name="division_0">Second number can not 0</string>
+    <string name="notify_number_two_0">Second number can not 0</string>
 </resources>
