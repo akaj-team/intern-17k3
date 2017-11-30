@@ -17,12 +17,7 @@ public class LoginFragment extends Fragment {
     private static final int START_TEXT = 12;
 
     public static LoginFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        LoginFragment fragment = new LoginFragment();
-        fragment.setArguments(args);
-        return fragment;
+        return new LoginFragment();
     }
 
     @Override
@@ -30,22 +25,24 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        TextView tvSignin = view.findViewById(R.id.tvSignin);
+        TextView tvSignIn = view.findViewById(R.id.tvSignIn);
         Button btnLoginFacebook = view.findViewById(R.id.btnLoginFacebook);
         btnLoginFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).replaceFragment(InforFragment.newInstance(), true);
+                if (getActivity() instanceof LoginActivity) {
+                    ((LoginActivity) getActivity()).replaceFragment(InforFragment.newInstance(), true);
+                }
             }
         });
-        clickOnTextView(tvSignin, START_TEXT, tvSignin.getText().length());
+        clickOnTextView(tvSignIn, START_TEXT, tvSignIn.getText().length());
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).setVisibleBackButton(View.GONE);
+        ((LoginActivity) getActivity()).setVisibleBackButton(View.GONE);
     }
 
     private void clickOnTextView(TextView textView, int start, int end) {
@@ -53,14 +50,16 @@ public class LoginFragment extends Fragment {
         mSpannable.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).replaceFragment(new InforFragment(), true);
+                if (getActivity() instanceof LoginActivity) {
+                    ((LoginActivity) getActivity()).replaceFragment(InforFragment.newInstance(), true);
+                }
             }
 
             @Override
             public void updateDrawState(TextPaint ds) {
                 super.updateDrawState(ds);
                 ds.setUnderlineText(false);
-                ds.setColor(getResources().getColor(R.color.color_button_phonenum_and_signup));
+                ds.setColor(getResources().getColor(R.color.color_button_phone));
             }
         }, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.setText(mSpannable);

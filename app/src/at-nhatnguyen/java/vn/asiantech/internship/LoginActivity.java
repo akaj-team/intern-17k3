@@ -1,14 +1,14 @@
 package vn.asiantech.internship;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnBack;
 
     @Override
@@ -17,15 +17,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         mBtnBack = findViewById(R.id.btnBack);
         mBtnBack.setOnClickListener(this);
-        getSupportActionBar().hide();
-        replaceFragment(LoginFragment.newInstance(),false);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+        replaceFragment(LoginFragment.newInstance(), false);
     }
 
     protected void replaceFragment(Fragment fragment, boolean addStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frContent,fragment);
-        if(addStack){
+        fragmentTransaction.replace(R.id.frContent, fragment);
+        if (addStack) {
             fragmentTransaction.addToBackStack(fragment.getClass().getName());
         }
         fragmentTransaction.commit();
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnBack:
                 getSupportFragmentManager().popBackStack();
                 break;
