@@ -36,12 +36,12 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View view) {
-        float result;
+        double result;
         String oper;
-        float numA;
-        float numB;
-        numA = Float.parseFloat(mEdtNumberA.getText().toString());
-        numB = Float.parseFloat(mEdtNumberB.getText().toString());
+        double numA;
+        double numB;
+        numA = Double.parseDouble(mEdtNumberA.getText().toString());
+        numB = Double.parseDouble(mEdtNumberB.getText().toString());
 
         switch (view.getId()) {
             case R.id.btnAdd:
@@ -134,13 +134,12 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
         mBtnDiv.setOnClickListener(this);
     }
 
-    private void convertFloatToInt(float result, String oper) {
+    private void convertFloatToInt(double result, String oper) {
         int intResult = (int) result;
         if (result == intResult) {
             mTvResult.setText(String.valueOf(intResult));
         } else {
-            DecimalFormat df = new DecimalFormat("0.000000000");
-            mTvResult.setText(df.format(result));
+            mTvResult.setText(String.valueOf(result));
         }
         mTvOperator.setText(oper);
     }
@@ -157,6 +156,7 @@ public class CalculatorViewActivity extends AppCompatActivity implements View.On
             mBtnMulti.setEnabled(false);
             mBtnDiv.setEnabled(false);
             mTvOperator.setText("");
+            mTvResult.setText("");
         }
     }
 

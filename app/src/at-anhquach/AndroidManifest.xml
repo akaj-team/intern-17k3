@@ -11,8 +11,8 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".IndexActivity" />
-        <activity android:name=".ui.login.LoginActivity">
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".IndexActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
