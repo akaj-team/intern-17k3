@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">vietphan-17k3</string>
+    <string name="recyclerview">RecyclerView</string>
 </resources>

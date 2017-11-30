@@ -7,4 +7,15 @@
     <string name="error_divide_zero">Cannot divide for 0</string>
     <string name="btn_issue1_name">Issue 1</string>
     <string name="btn_issue2_name">Create Calculator View</string>
+    <string name="textview_or">or</string>
+    <string name="textview_slogan">a bike for everyone, always</string>
+    <string name="btn_login_facebook_title">LOG IN WITH FACEBOOK</string>
+    <string name="btn_login_number_phone">LOG IN WITH PHONE NUMBER</string>
+    <string name="textview_memo_login">New to urbi? Sign up for an account</string>
+    <string name="textview_welcom">Welcome to urbi</string>
+    <string name="textview_memo_info_enter">Enter your details below to get started </string>
+    <string name="textview_memo_term">I have read and agree with the terms and conditions.</string>
+    <string name="edt_hint_enter_number">Enter mobile number</string>
+    <string name="edt_hint_full_name">Full name</string>
+    <string name="edt_hint_email">Email</string>
 </resources>
