@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".ui.calculator.CalculatorActivity" />
         <activity android:name=".ui.recyclerview.CommentActivity" />
-        <activity android:name="vn.asiantech.internship.ui.Login.LoginActivity"/>
+        <activity android:name="vn.asiantech.internship.ui.login.LoginActivity"/>
     </application>
 
 </manifest>

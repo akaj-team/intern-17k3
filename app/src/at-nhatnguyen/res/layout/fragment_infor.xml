@@ -5,7 +5,7 @@
     android:background="@color/color_text_button_facebook"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="vn.asiantech.internship.ui.Login.InforFragment">
+    tools:context="vn.asiantech.internship.ui.login.InforFragment">
 
     <TextView
         android:layout_width="match_parent"
