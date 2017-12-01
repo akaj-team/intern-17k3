@@ -1,11 +1,5 @@
 package vn.asiantech.internship.model;
 
-import android.widget.ImageView;
-
-/**
- * Created by anh.quach on 11/30/17.
- */
-
 public class Issue {
     private int icon;
     private String name;
