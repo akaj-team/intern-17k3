@@ -107,5 +107,4 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="@drawable/selector_next_unnext" />
-
 </LinearLayout>
