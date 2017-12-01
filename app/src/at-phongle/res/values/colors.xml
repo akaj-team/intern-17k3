@@ -3,9 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+<<<<<<< HEAD
     <color name="greenLike">#32CD32</color>
     <color name="redDislike">#ce253c</color>
     <color name="snow">#FAFAFA</color>
     <color name="black">#000000</color>
     <color name="bg_recyclerview">#ece8e8</color>
+=======
+    <color name="blue_facebook">#3B5998</color>
+    <color name="snow">#fafafa</color>
+    <color name="header_color">#041e42</color>
+    <color name="blue_dark">#ff0099cc</color>
+>>>>>>> remotes/origin/master
 </resources>
