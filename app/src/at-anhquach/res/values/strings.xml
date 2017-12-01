@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">anhquach-17k3</string>
+    <string name="operator_add">+</string>
+    <string name="operator_divide">/</string>
+    <string name="operator_multi">*</string>
+    <string name="operator_sub">-</string>
+    <string name="error_divide_zero">Cannot divide for 0</string>
+    <string name="btn_issue1_name">Issue 1</string>
+    <string name="btn_issue2_name">Create Calculator View</string>
     <string name="textview_or">or</string>
     <string name="textview_slogan">a bike for everyone, always</string>
     <string name="btn_login_facebook_title">LOG IN WITH FACEBOOK</string>
