@@ -5,17 +5,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import vn.asiantech.internship.models.Status;
 import vn.asiantech.internship.models.StatusAdapter;
 
 public class MainActivity extends Activity implements StatusAdapter.OnItemClickListener {
-    private RecyclerView mRecyclerViewStatus;
     private List<Status> mStatusList = new ArrayList<>();
     private StatusAdapter mAdapter;
-    private TextView mTvCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +37,7 @@ public class MainActivity extends Activity implements StatusAdapter.OnItemClickL
     }
 
     private void initViews() {
-        mTvCount = findViewById(R.id.tvCount);
-        mRecyclerViewStatus = findViewById(R.id.recyclerViewPerson);
+        RecyclerView mRecyclerViewStatus = findViewById(R.id.recyclerViewPerson);
         mRecyclerViewStatus.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewStatus.setAdapter(mAdapter);
     }

@@ -14,7 +14,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
     private List<Status> mStatusList;
     private OnItemClickListener mOnItemClickListener;
 
-    public StatusAdapter(List<Status> statusList, OnItemClickListener onItemClickListener) {
+    protected StatusAdapter(List<Status> statusList, OnItemClickListener onItemClickListener) {
         mStatusList = statusList;
         mOnItemClickListener = onItemClickListener;
     }

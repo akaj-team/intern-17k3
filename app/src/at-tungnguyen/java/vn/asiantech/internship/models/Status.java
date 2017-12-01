@@ -1,9 +1,5 @@
 package vn.asiantech.internship.models;
 
-/**
- * Created by huong.nguyen on 11/28/17.
- */
-
 public class Status {
 
     private String name;
@@ -24,7 +20,7 @@ public class Status {
         this.name = name;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
