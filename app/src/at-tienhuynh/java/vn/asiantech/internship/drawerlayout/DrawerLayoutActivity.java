@@ -64,4 +64,5 @@ public class DrawerLayoutActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return mActionBarDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
+
 }

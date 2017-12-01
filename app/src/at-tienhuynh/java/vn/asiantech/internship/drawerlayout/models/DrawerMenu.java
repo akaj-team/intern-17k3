@@ -9,15 +9,24 @@ public class DrawerMenu {
 
     public static final int HEADER_TYPE = 0;
     public static final int ITEM_TYPE = 1;
-
     private String EmailHeader;
     private int ImgMenu;
+    private String NameMenuItem;
     private int Type;
 
-    public DrawerMenu(String emailHeader, int imgMenu, int type) {
+    public DrawerMenu(String emailHeader, int imgMenu, String nameMenuItem, int type) {
         EmailHeader = emailHeader;
         ImgMenu = imgMenu;
+        NameMenuItem = nameMenuItem;
         Type = type;
+    }
+
+    public static int getHeaderType() {
+        return HEADER_TYPE;
+    }
+
+    public static int getItemType() {
+        return ITEM_TYPE;
     }
 
     public String getEmailHeader() {
@@ -34,6 +43,14 @@ public class DrawerMenu {
 
     public void setImgMenu(int imgMenu) {
         ImgMenu = imgMenu;
+    }
+
+    public String getNameMenuItem() {
+        return NameMenuItem;
+    }
+
+    public void setNameMenuItem(String nameMenuItem) {
+        NameMenuItem = nameMenuItem;
     }
 
     public int getType() {
