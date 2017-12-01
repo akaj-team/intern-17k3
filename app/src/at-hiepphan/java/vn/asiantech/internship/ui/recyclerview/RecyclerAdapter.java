@@ -13,10 +13,10 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.recyclerview.model.Content;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    private List<Content> mContentList;
+    private List<Content> mContents;
 
     public RecyclerAdapter(List<Content> contentList) {
-        mContentList = contentList;
+        mContents = contentList;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return mContentList.size();
+        return mContents.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -68,10 +68,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
 
         private void onBindData() {
-            Content content = mContentList.get(getAdapterPosition());
+            Content content = mContents.get(getAdapterPosition());
             tvLikeCount.setText(String.valueOf(content.getLikeCount()));
             tvUserName.setText(content.getName());
             tvStatus.setText(content.getStatus());
+            int likeCount = Integer.parseInt(tvLikeCount.getText().toString().trim());
+            checkLike(likeCount);
         }
 
         private void checkLike(int likeCount) {
