@@ -21,7 +21,6 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     private TextView mTvResult;
     private TextView mTvCalculation;
     private Calculation mCalculation;
-    private boolean mIsEmty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,39 +52,30 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         // Onclick Button
-        switch (view.getId()) {
-            case R.id.btnSum:
-                getCalculator(mBtnSum);
-                checkEmpty();
-                if (mIsEmty) {
+        if (checkEmpty()) {
+            switch (view.getId()) {
+                case R.id.btnSum:
+                    getCalculator(mBtnSum);
                     mCalculation.sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
-                }
-                break;
-            case R.id.btnSubtraction:
-                getCalculator(mBtnSubtraction);
-                checkEmpty();
-                if (mIsEmty) {
+                    break;
+                case R.id.btnSubtraction:
+                    getCalculator(mBtnSubtraction);
                     mCalculation.subTraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
-                }
-                break;
-            case R.id.btnMultiplication:
-                getCalculator(mBtnMultiplication);
-                checkEmpty();
-                if (mIsEmty) {
+                    break;
+                case R.id.btnMultiplication:
+                    getCalculator(mBtnMultiplication);
                     mCalculation.mulTiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
-                }
-                break;
-            case R.id.btnDivision:
-                getCalculator(mBtnDivision);
-                checkEmpty();
-                if (mIsEmty) {
+
+                    break;
+                case R.id.btnDivision:
+                    getCalculator(mBtnDivision);
                     mCalculation.diVision(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
                     if (TextUtils.equals(mEdtNumberB.getText().toString(), getString(R.string.number_0))) {
                         showError(getString(R.string.dialog_message_num0));
                         mEdtNumberB.getText().clear();
                     }
                     break;
-                }
+            }
         }
     }
 
@@ -93,11 +83,12 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         mTvCalculation.setText(btnCalculator.getText().toString());
     }
 
-    private void checkEmpty() {
-        mIsEmty = !TextUtils.isEmpty(mEdtNumberA.getText()) && !TextUtils.isEmpty(mEdtNumberB.getText());
-        if (!mIsEmty) {
+    private boolean checkEmpty() {
+        if (TextUtils.isEmpty(mEdtNumberA.getText()) || TextUtils.isEmpty(mEdtNumberB.getText())) {
             showError(getString(R.string.dialog_message));
+            return false;
         }
+        return true;
     }
 
     private void showError(String message) {
