@@ -79,7 +79,6 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         private void onBindDataHeader() {
             mCircleImgAvata.setImageResource(R.drawable.img_avata);
-            mTvEmail.setText("anh.quach@asiantech.vn");
         }
 
     }
