@@ -39,7 +39,7 @@ public class IndexFragment extends Fragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                if (getActivity() instanceof LoginActivity){
+                if (getActivity() instanceof LoginActivity) {
                     ((LoginActivity) getActivity()).replaceFragment(new LoginFragment(), true);
                 }
             }

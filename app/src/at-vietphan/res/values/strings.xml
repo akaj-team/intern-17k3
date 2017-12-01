@@ -19,4 +19,8 @@
     <string name="drawer_layout">Drawer Layout</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="text_view_email">viet.phan@asiantech.vn</string>
+    <string name="calculator">Calculator</string>
+    <string name="viet_phan_asiantech_vn">viet.phan@asiantech.vn</string>
+    <string name="common_in_my_content_app">Common in my Content App</string>
 </resources>

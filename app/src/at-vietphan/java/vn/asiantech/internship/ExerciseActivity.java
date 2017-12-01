@@ -10,10 +10,11 @@ import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
-public class ExerciseActivity extends Activity implements View.OnClickListener{
+public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnLogin;
     private Button mBtnRecyclerView;
     private Button mBtnDrawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,12 +22,14 @@ public class ExerciseActivity extends Activity implements View.OnClickListener{
         initViews();
         initListener();
     }
-    private void initViews(){
+
+    private void initViews() {
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnDrawerLayout = findViewById(R.id.btnDrawerLayout);
     }
-    private void initListener(){
+
+    private void initListener() {
         mBtnLogin.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
         mBtnDrawerLayout.setOnClickListener(this);
@@ -34,7 +37,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnLogin:
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
