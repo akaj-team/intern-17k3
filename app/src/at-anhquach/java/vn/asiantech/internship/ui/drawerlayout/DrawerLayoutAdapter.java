@@ -90,7 +90,7 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         ItemViewHolder(View itemView) {
             super(itemView);
             mImgIcon = itemView.findViewById(R.id.imgIcon);
-            mTvNameIssue = itemView.findViewById(R.id.tvNameIssue);
+            mTvNameIssue = itemView.findViewById(R.id.tvIssueName);
             mTvNameIssue.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
