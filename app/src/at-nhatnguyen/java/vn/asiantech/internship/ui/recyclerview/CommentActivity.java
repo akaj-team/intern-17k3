@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.ui.recyclerview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Comment;
 
 public class CommentActivity extends AppCompatActivity implements CommentAdapter.OnItemClickListener {

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="vn.asiantech.internship.ui.calculator.CalculatorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/edtNumOne"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edittext_number"
+            android:gravity="center"
+            android:hint="@string/numberone"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:id="@+id/tvCalculator"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/edtNumTwo"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edittext_number"
+            android:gravity="center"
+            android:hint="@string/numbertwo"
+            android:inputType="numberDecimal|numberSigned" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btnSummation"
+            style="@style/btn_default"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/summation" />
+
+        <Button
+            android:id="@+id/btnSubtraction"
+            style="@style/btn_default"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/subtraction" />
+
+        <Button
+            android:id="@+id/btnMultiplication"
+            style="@style/btn_default"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/multiplication" />
+
+        <Button
+            android:id="@+id/btnDivision"
+            style="@style/btn_default"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/division" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:textSize="30dp" />
+</LinearLayout>

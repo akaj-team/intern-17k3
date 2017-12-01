@@ -3,12 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.asiantech.internship.MainActivity">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="vn.asiantech.internship.ui.MainActivity">
 
     <Button
-        android:id="@+id/btnExerciseRecyclerview"
-        style="@android:style/Animation"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnLogin"
+        style="@style/btn_default"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/exercise_login" />
+
+    <Button
+        android:id="@+id/btnCalculator"
+        style="@style/btn_default"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/exercise_calculator" />
+
+    <Button
+        android:id="@+id/btnRecyclerView"
+        style="@style/btn_default"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/button_exercise" />
 </LinearLayout>
