@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import vn.asiantech.internship.calculation.CaculatorActivity;
+import vn.asiantech.internship.calculation.CalculatorActivity;
 import vn.asiantech.internship.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
@@ -38,7 +38,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.btnCalculatorScreen:
-                startActivity(new Intent(this, CaculatorActivity.class));
+                startActivity(new Intent(this, CalculatorActivity.class));
                 break;
         }
     }

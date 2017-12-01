@@ -20,7 +20,7 @@
         <activity
             android:name=".login.LoginActivity"
             android:theme="@style/NoActionBarTheme" />
-        <activity android:name=".calculation.CaculatorActivity" />
+        <activity android:name=".calculation.CalculatorActivity" />
     </application>
 
 </manifest>

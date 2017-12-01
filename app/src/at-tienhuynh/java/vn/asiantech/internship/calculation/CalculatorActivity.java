@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
-public class CaculatorActivity extends AppCompatActivity implements View.OnClickListener {
+public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtNumberA;
     private EditText mEdtNumberB;
     private Button mBtnSum;
@@ -20,7 +20,7 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     private Button mBtnDivision;
     private TextView mTvResult;
     private TextView mTvCalculation;
-    private Calculation mCalculation;
+    private float mResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,6 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         mBtnDivision = findViewById(R.id.btnDivision);
         mTvResult = findViewById(R.id.tvResult);
         mTvCalculation = findViewById(R.id.tvCalculation);
-        mCalculation = new Calculation();
     }
 
     private void initListener() {
@@ -52,24 +51,20 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         // Onclick Button
-        if (checkEmpty()) {
+        if (isEmpty()) {
             switch (view.getId()) {
                 case R.id.btnSum:
-                    getCalculator(mBtnSum);
-                    mCalculation.sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                    sum(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()));
                     break;
                 case R.id.btnSubtraction:
-                    getCalculator(mBtnSubtraction);
-                    mCalculation.subTraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                    subtraction(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()));
                     break;
                 case R.id.btnMultiplication:
-                    getCalculator(mBtnMultiplication);
-                    mCalculation.mulTiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                    multiplication(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()));
 
                     break;
                 case R.id.btnDivision:
-                    getCalculator(mBtnDivision);
-                    mCalculation.diVision(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()), mTvResult);
+                    division(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()));
                     if (TextUtils.equals(mEdtNumberB.getText().toString(), getString(R.string.number_0))) {
                         showError(getString(R.string.dialog_message_num0));
                         mEdtNumberB.getText().clear();
@@ -79,11 +74,7 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private void getCalculator(Button btnCalculator) {
-        mTvCalculation.setText(btnCalculator.getText().toString());
-    }
-
-    private boolean checkEmpty() {
+    private boolean isEmpty() {
         if (TextUtils.isEmpty(mEdtNumberA.getText()) || TextUtils.isEmpty(mEdtNumberB.getText())) {
             showError(getString(R.string.dialog_message));
             return false;
@@ -98,5 +89,29 @@ public class CaculatorActivity extends AppCompatActivity implements View.OnClick
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
         mTvResult.setText(R.string.tv_result);
+    }
+
+    void sum(float numA, float numB) {
+        mResult = numA + numB;
+        mTvCalculation.setText(getString(R.string.edt_sum));
+        mTvResult.setText(String.valueOf(mResult));
+    }
+
+    void subtraction(float numA, float numB) {
+        mResult = numA - numB;
+        mTvCalculation.setText(getString(R.string.edt_sub));
+        mTvResult.setText(String.valueOf(mResult));
+    }
+
+    void multiplication(float numA, float numB) {
+        mResult = numA * numB;
+        mTvCalculation.setText(getString(R.string.edt_multi));
+        mTvResult.setText(String.valueOf(mResult));
+    }
+
+    void division(float numA, float numB) {
+        mResult = numA / numB;
+        mTvCalculation.setText(getString(R.string.edt_divi));
+        mTvResult.setText(String.valueOf(mResult));
     }
 }
