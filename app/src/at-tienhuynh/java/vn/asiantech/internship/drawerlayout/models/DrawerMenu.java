@@ -7,57 +7,27 @@ package vn.asiantech.internship.drawerlayout.models;
 
 public class DrawerMenu {
 
-    public static final int HEADER_TYPE = 0;
-    public static final int ITEM_TYPE = 1;
-    private String EmailHeader;
-    private int ImgMenu;
-    private String NameMenuItem;
-    private int Type;
+    private int numberImage;
+    private String nameMenu;
 
-    public DrawerMenu(String emailHeader, int imgMenu, String nameMenuItem, int type) {
-        EmailHeader = emailHeader;
-        ImgMenu = imgMenu;
-        NameMenuItem = nameMenuItem;
-        Type = type;
+    public DrawerMenu(int numberImage, String nameMenu) {
+        this.numberImage = numberImage;
+        this.nameMenu = nameMenu;
     }
 
-    public static int getHeaderType() {
-        return HEADER_TYPE;
+    public int getNumberImage() {
+        return numberImage;
     }
 
-    public static int getItemType() {
-        return ITEM_TYPE;
+    public void setNumberImage(int numberImage) {
+        this.numberImage = numberImage;
     }
 
-    public String getEmailHeader() {
-        return EmailHeader;
+    public String getNameMenu() {
+        return nameMenu;
     }
 
-    public void setEmailHeader(String emailHeader) {
-        EmailHeader = emailHeader;
-    }
-
-    public int getImgMenu() {
-        return ImgMenu;
-    }
-
-    public void setImgMenu(int imgMenu) {
-        ImgMenu = imgMenu;
-    }
-
-    public String getNameMenuItem() {
-        return NameMenuItem;
-    }
-
-    public void setNameMenuItem(String nameMenuItem) {
-        NameMenuItem = nameMenuItem;
-    }
-
-    public int getType() {
-        return Type;
-    }
-
-    public void setType(int type) {
-        Type = type;
+    public void setNameMenu(String nameMenu) {
+        this.nameMenu = nameMenu;
     }
 }
