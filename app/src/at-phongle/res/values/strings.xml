@@ -14,6 +14,7 @@
     <string name="edt_phone"> Enter mobile number</string>
     <string name="tv_banner">a bike for everyone , always</string>
     <string name="tv_term_services"> I have read and agree with the \n term and conditions. </string>
+    <string name="btn_recycler_view_screen">RecyclerView</string>
     <string name="btn_calculator_screen">Calculator</string>
     <string name="btn_login_screen">Log in</string>
     <string name="btn_add">+</string>

@@ -21,12 +21,12 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnIte
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-        initView();
+        initViews();
         initData();
         initAdapter();
     }
 
-    private void initView() {
+    private void initViews() {
         mRecyclerViewPost = findViewById(R.id.recyclerViewPosts);
     }
 

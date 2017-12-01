@@ -17,9 +17,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     private List<Posts> mPostList;
     private OnItemClickListener mOnItemClickListener;
 
-    PostAdapter(List<Posts> mPostList, OnItemClickListener mOnItemClickListener) {
-        this.mPostList = mPostList;
-        this.mOnItemClickListener = mOnItemClickListener;
+    PostAdapter(List<Posts> postList, OnItemClickListener onItemClickListener) {
+        mPostList = postList;
+        mOnItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -69,10 +69,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             mTvSubject.setText(posts.getSubject());
             mTvLikeNumber.setText(String.valueOf(posts.getLikeNumber()));
             mTvDescription.setText(posts.getDescription());
-            setColor(posts.getLikeNumber(), itemView.getContext());
+            displayLikeNumber(posts.getLikeNumber(), itemView.getContext());
         }
 
-        private void setColor(int likeNumber, Context context) {
+        private void displayLikeNumber(int likeNumber, Context context) {
             if (likeNumber > 0) {
                 mTvLikeNumber.setTextColor(context.getResources().getColor(R.color.greenLike));
                 mImgLike.setSelected(true);
