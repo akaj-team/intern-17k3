@@ -27,7 +27,7 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnIte
     }
 
     private void initView() {
-        mRecyclerViewPost = findViewById(R.id.rvPosts);
+        mRecyclerViewPost = findViewById(R.id.recyclerViewPosts);
     }
 
     private void initAdapter() {

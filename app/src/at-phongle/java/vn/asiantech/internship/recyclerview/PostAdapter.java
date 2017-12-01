@@ -30,7 +30,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(PostViewHolder holder, int position) {
-        holder.onBindData(holder.mImgDislike.getContext());
+        holder.onBindData();
     }
 
     @Override
@@ -64,20 +64,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             mImgDislike.setOnClickListener(this);
         }
 
-        private void onBindData(Context context) {
+        private void onBindData() {
             Posts posts = mPostList.get(getAdapterPosition());
             mTvSubject.setText(posts.getSubject());
             mTvLikeNumber.setText(String.valueOf(posts.getLikeNumber()));
             mTvDescription.setText(posts.getDescription());
-            setColor(posts.getLikeNumber(), context);
+            setColor(posts.getLikeNumber(), itemView.getContext());
         }
 
-        private void setColor(int i, Context context) {
-            if (i > 0) {
+        private void setColor(int likeNumber, Context context) {
+            if (likeNumber > 0) {
                 mTvLikeNumber.setTextColor(context.getResources().getColor(R.color.greenLike));
                 mImgLike.setSelected(true);
                 mImgDislike.setSelected(false);
-            } else if (i < 0) {
+            } else if (likeNumber < 0) {
                 mTvLikeNumber.setTextColor(context.getResources().getColor(R.color.redDislike));
                 mImgDislike.setSelected(true);
                 mImgLike.setSelected(false);
