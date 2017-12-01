@@ -18,4 +18,6 @@
     <string name="btn_mul">*</string>
     <string name="btn_div">/</string>
     <string name="tv_fail">Số quá giới hạn cho phép !</string>
+    <string name="btn_recycler_view_screen">RecyclerView</string>
+    <string name="btn_drawer_layout_screen">RecyclerView</string>
 </resources>

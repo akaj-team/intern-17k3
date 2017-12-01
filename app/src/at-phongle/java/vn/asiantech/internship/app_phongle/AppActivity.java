@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.app_calculator.CalculatorActivity;
+import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.login.LoginActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
@@ -47,6 +48,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
 //                break;
             case R.id.btnLoginScreen:
                 intent = new Intent(AppActivity.this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnDrawerLayoutScreen:
+                intent = new Intent(AppActivity.this, DrawerLayoutActivity.class);
                 startActivity(intent);
                 break;
         }
