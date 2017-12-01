@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.app_calculator.CalculatorActivity;
+import vn.asiantech.internship.login.LoginActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
@@ -44,9 +45,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
 //                intent = new Intent(AppActivity.this, RecyclerActivity.class);
 //                startActivity(intent);
 //                break;
-//            case R.id.btn_login_screen:
-//                intent = new Intent(AppActivity.this , LoginActivity.class);
-//                break;
+            case R.id.btnLoginScreen:
+                intent = new Intent(AppActivity.this, LoginActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

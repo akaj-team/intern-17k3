@@ -27,7 +27,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator_activity);
         initViews();
-        setButtonEnable();
         addListener();
     }
 
@@ -94,11 +93,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     private void setButtonEnable() {
         String numA = mEdtNumberA.getText().toString();
         String numB = mEdtNumberB.getText().toString();
-        mBtnAdd.setEnabled(checkInvalidNumber(numA) && checkInvalidNumber(numB));
-        mBtnSub.setEnabled(checkInvalidNumber(numA) && checkInvalidNumber(numB));
-        mBtnMul.setEnabled(checkInvalidNumber(numA) && checkInvalidNumber(numB));
-        mBtnDiv.setEnabled(checkInvalidNumber(numA) && checkInvalidNumber(numB));
-        mBtnDiv.setEnabled(checkZeroNumber(numB));
+        mBtnAdd.setEnabled(!numA.isEmpty() && !numB.isEmpty());
+        mBtnSub.setEnabled(!numA.isEmpty() && !numB.isEmpty());
+        mBtnMul.setEnabled(!numA.isEmpty() && !numB.isEmpty());
+        mBtnDiv.setEnabled(!numA.isEmpty() && !numB.isEmpty() && checkZeroNumber(numB));
     }
 
     private float operator(Float numA, Float numB, char operator) {
@@ -114,15 +112,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             default:
                 return 0;
         }
-    }
-
-    private boolean checkInvalidNumber(String edt) {
-        try {
-            Float.parseFloat(edt);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
     }
 
     private boolean checkZeroNumber(String edt) {
