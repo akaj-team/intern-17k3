@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.login;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+
+import vn.asiantech.internship.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView mImgBack;
