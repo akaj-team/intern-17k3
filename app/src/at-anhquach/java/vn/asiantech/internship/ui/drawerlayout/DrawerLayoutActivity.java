@@ -26,8 +26,8 @@ import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
-    private Button mbtnMenuLeft;
-    private RecyclerView mRecyclerViewMenuLeft;
+    private Button mBtnMenuLeft;
+    private RecyclerView mRecyclerViewLeftMenu;
     private LinearLayout mLlContent;
     private List<Issue> mIssueList = new ArrayList<>();
     private DrawerLayoutAdapter mIssueAdapter;
@@ -36,7 +36,6 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_layout);
-
         initView();
         initDrawer();
         initData();
@@ -45,10 +44,10 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
 
     private void initView() {
         mDrawerLayout = findViewById(R.id.drawerLayout);
-        mbtnMenuLeft = findViewById(R.id.btnMenuLeft);
-        mRecyclerViewMenuLeft = findViewById(R.id.recyclerViewMenuLeft);
+        mBtnMenuLeft = findViewById(R.id.btnLeftMenu);
+        mRecyclerViewLeftMenu = findViewById(R.id.recyclerViewLeftMenu);
         mLlContent = findViewById(R.id.llContent);
-        mbtnMenuLeft.setOnClickListener(this);
+        mBtnMenuLeft.setOnClickListener(this);
     }
 
     private void initData() {
@@ -84,8 +83,8 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
 
     private void initAdapter() {
         mIssueAdapter = new DrawerLayoutAdapter(mIssueList, this);
-        mRecyclerViewMenuLeft.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewMenuLeft.setAdapter(mIssueAdapter);
+        mRecyclerViewLeftMenu.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerViewLeftMenu.setAdapter(mIssueAdapter);
     }
 
     @Override
@@ -96,7 +95,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnMenuLeft:
+            case R.id.btnLeftMenu:
                 mDrawerLayout.openDrawer(Gravity.LEFT);
                 break;
 

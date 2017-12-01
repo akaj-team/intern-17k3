@@ -17,8 +17,8 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<Issue> mIssueList;
     private OnItemClickListener mOnItemClickListener;
 
-    public static final int HEADER = 0;
-    public static final int ITEM = 1;
+    private static final int HEADER = 0;
+    private static final int ITEM = 1;
 
     DrawerLayoutAdapter(List<Issue> issue, OnItemClickListener onItemClickListener) {
         mIssueList = issue;
@@ -30,7 +30,7 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
         switch (viewType) {
             case HEADER:
-                View viewHeader = layoutInflater.inflate(R.layout.header_issue, viewGroup, false);
+                View viewHeader = layoutInflater.inflate(R.layout.item_header_issue, viewGroup, false);
                 return new HeaderViewHolder(viewHeader);
             case ITEM:
                 View viewItem = layoutInflater.inflate(R.layout.item_issue, viewGroup, false);
@@ -71,7 +71,7 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         private CircleImageView mCircleImgAvata;
         private TextView mTvEmail;
 
-        public HeaderViewHolder(View itemView) {
+        HeaderViewHolder(View itemView) {
             super(itemView);
             mCircleImgAvata = itemView.findViewById(R.id.circleImgAvata);
             mTvEmail = itemView.findViewById(R.id.tvEmail);
@@ -83,11 +83,11 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     }
 
-    class ItemViewHolder extends RecyclerView.ViewHolder {
+    private class ItemViewHolder extends RecyclerView.ViewHolder {
         private ImageView mImgIcon;
         private TextView mTvNameIssue;
 
-        public ItemViewHolder(View itemView) {
+        ItemViewHolder(View itemView) {
             super(itemView);
             mImgIcon = itemView.findViewById(R.id.imgIcon);
             mTvNameIssue = itemView.findViewById(R.id.tvNameIssue);

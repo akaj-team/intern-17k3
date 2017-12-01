@@ -4,7 +4,6 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="vn.asiantech.internship.ui.drawerlayout.DrawerLayoutActivity">
 
     <LinearLayout
@@ -19,7 +18,7 @@
             android:background="@color/colorBlack">
 
             <Button
-                android:id="@+id/btnMenuLeft"
+                android:id="@+id/btnLeftMenu"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/ic_menu_white_24dp" />
@@ -28,16 +27,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="This is content" />
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewMenuLeft"
+        android:id="@+id/recyclerViewLeftMenu"
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/colorGrayLightt">
-
-    </android.support.v7.widget.RecyclerView>
+        android:background="@color/colorGrayLightt" />
 </android.support.v4.widget.DrawerLayout>
