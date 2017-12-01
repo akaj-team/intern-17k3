@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +25,10 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnIte
         initData();
         initAdapter();
     }
+
     private void initView() {
         mRecyclerViewPost = findViewById(R.id.rvPosts);
     }
-
 
     private void initAdapter() {
         mPostAdapter = new PostAdapter(mPostList, this);
