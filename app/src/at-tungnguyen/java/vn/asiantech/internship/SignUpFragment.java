@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 public class SignUpFragment extends Fragment {
+
     private EditText mEdtNumber;
     private EditText mEdtEmail;
     private EditText mEdtFullName;
@@ -35,7 +36,7 @@ public class SignUpFragment extends Fragment {
         mEdtFullName = view.findViewById(R.id.edtFullName);
         mImgNext = view.findViewById(R.id.imgSignUp);
         initListener();
-        ((MainActivity) getActivity()).getBack().setVisibility(View.VISIBLE);
+        ((MainActivity) getActivity()).getBack(View.VISIBLE);
         return view;
     }
 
@@ -69,6 +70,7 @@ public class SignUpFragment extends Fragment {
                 updateNextButtonStatus();
             }
         });
+
         mEdtFullName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -86,6 +88,7 @@ public class SignUpFragment extends Fragment {
 
             }
         });
+
         mEdtEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

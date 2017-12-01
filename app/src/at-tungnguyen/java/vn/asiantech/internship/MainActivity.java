@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
+
     private ImageView mImgBack;
 
     @Override
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    protected ImageView getBack() {
-        return mImgBack;
+    public void  getBack(int visibility){
+        mImgBack.setVisibility(visibility);
     }
 }

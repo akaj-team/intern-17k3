@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class LoginFragment extends Fragment {
-    private TextView mTvSignUp;
+
     private static final int START_SPAN = 12;
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -26,8 +26,8 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        mTvSignUp = view.findViewById(R.id.tvSignUp);
-        ((MainActivity) getActivity()).getBack().setVisibility(View.INVISIBLE);
+        TextView mTvSignUp = view.findViewById(R.id.tvSignUp);
+        ((MainActivity) getActivity()).getBack(View.INVISIBLE);
         mTvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
