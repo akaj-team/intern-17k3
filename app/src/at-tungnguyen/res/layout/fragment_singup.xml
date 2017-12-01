@@ -106,5 +106,5 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:background="@drawable/selector_next_unnext" />
+        android:background="@drawable/selector_img_next" />
 </LinearLayout>

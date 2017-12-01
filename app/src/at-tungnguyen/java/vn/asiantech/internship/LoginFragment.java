@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class LoginFragment extends Fragment {
 
     private static final int START_SPAN = 12;
+
     public static LoginFragment newInstance() {
         return new LoginFragment();
     }
@@ -26,15 +27,14 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        TextView mTvSignUp = view.findViewById(R.id.tvSignUp);
-        ((MainActivity) getActivity()).getBack(View.INVISIBLE);
-        mTvSignUp.setOnClickListener(new View.OnClickListener() {
+        TextView tvSignUp = view.findViewById(R.id.tvSignUp);
+        tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).replaceFragment(SignUpFragment.newInstance(), true);
             }
         });
-        SpannableString spannableString = new SpannableString(mTvSignUp.getText());
+        SpannableString spannableString = new SpannableString(tvSignUp.getText());
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
@@ -50,9 +50,15 @@ public class LoginFragment extends Fragment {
                 ds.setColor(ContextCompat.getColor(getContext(), R.color.colorSignup));
             }
         };
-        spannableString.setSpan(clickableSpan,START_SPAN, mTvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        mTvSignUp.setText(spannableString);
-        mTvSignUp.setMovementMethod(LinkMovementMethod.getInstance());
+        spannableString.setSpan(clickableSpan, START_SPAN, tvSignUp.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tvSignUp.setText(spannableString);
+        tvSignUp.setMovementMethod(LinkMovementMethod.getInstance());
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).getBack(View.INVISIBLE);
     }
 }

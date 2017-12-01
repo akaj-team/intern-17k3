@@ -36,7 +36,6 @@ public class SignUpFragment extends Fragment {
         mEdtFullName = view.findViewById(R.id.edtFullName);
         mImgNext = view.findViewById(R.id.imgSignUp);
         initListener();
-        ((MainActivity) getActivity()).getBack(View.VISIBLE);
         return view;
     }
 
@@ -85,7 +84,6 @@ public class SignUpFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 updateNextButtonStatus();
-
             }
         });
 
@@ -113,5 +111,11 @@ public class SignUpFragment extends Fragment {
         } else {
             mImgNext.setSelected(false);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).getBack(View.VISIBLE);
     }
 }
