@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="20dp"
     tools:context="vn.asiantech.internship.CalculatorActivity">
 
     <LinearLayout
@@ -17,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bg_edt_number"
+            android:gravity="center"
             android:hint="@string/NumberA"
             android:inputType="numberDecimal|numberSigned"
             android:padding="8dp" />
@@ -34,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bg_edt_number"
+            android:gravity="center"
             android:hint="@string/NumberB"
             android:inputType="numberDecimal|numberSigned"
             android:padding="8dp" />
@@ -43,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="5dp">
+        android:radius="3dp">
 
         <Button
             android:id="@+id/btnPlus"
@@ -86,7 +89,7 @@
     <TextView
         android:id="@+id/tvResult"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/colorAccent"
         android:gravity="center"
         android:text="@string/result"
