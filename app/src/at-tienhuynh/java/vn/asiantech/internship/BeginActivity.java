@@ -11,9 +11,9 @@ import vn.asiantech.internship.recyclerview.StatusActivity;
 
 public class BeginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mBtnIsuses1;
+    private Button mBtnIssuses1;
     private Button mBtnIsuses2;
-    private Button mBtnIsuses3;
+    private Button mBtnIssuses3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +24,15 @@ public class BeginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initViews() {
-        mBtnIsuses1 = findViewById(R.id.btnIsuses1);
-        mBtnIsuses2 = findViewById(R.id.btnIsuses2);
-        mBtnIsuses3 = findViewById(R.id.btnIsuses3);
+        mBtnIssuses1 = findViewById(R.id.btnIsuses1);
+        mBtnIsuses2 = findViewById(R.id.btnIssuses2);
+        mBtnIssuses3 = findViewById(R.id.btnIssuses3);
     }
 
     private void addListener() {
-        mBtnIsuses1.setOnClickListener(this);
+        mBtnIssuses1.setOnClickListener(this);
         mBtnIsuses2.setOnClickListener(this);
-        mBtnIsuses3.setOnClickListener(this);
+        mBtnIssuses3.setOnClickListener(this);
     }
 
     @Override
@@ -41,9 +41,9 @@ public class BeginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btnIsuses1:
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
-            case R.id.btnIsuses2:
+            case R.id.btnIssuses2:
                 break;
-            case R.id.btnIsuses3:
+            case R.id.btnIssuses3:
                 startActivity(new Intent(this, StatusActivity.class));
                 break;
         }

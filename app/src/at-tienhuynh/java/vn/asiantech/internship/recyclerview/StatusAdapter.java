@@ -23,7 +23,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
     private List<Status> mStatusList;
     private OnItemClickListener mOnItemClickListener;
 
-    public StatusAdapter(List<Status> statusList, OnItemClickListener onItemClickListener) {
+    StatusAdapter(List<Status> statusList, OnItemClickListener onItemClickListener) {
         mStatusList = statusList;
         mOnItemClickListener = onItemClickListener;
     }
@@ -45,7 +45,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
         return mStatusList.size();
     }
 
-    class StatusViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    protected class StatusViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mTvTitle;
         private TextView mTvDescription;

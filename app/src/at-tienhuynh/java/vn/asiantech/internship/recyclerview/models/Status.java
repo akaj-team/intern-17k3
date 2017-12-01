@@ -10,10 +10,10 @@ public class Status {
     private String description;
     private int numLike;
 
-    public Status(String title, String description, int numlike) {
+    public Status(String title, String description, int numLike) {
         this.title = title;
         this.description = description;
-        this.numLike = numlike;
+        this.numLike = numLike;
     }
 
     public String getTitle() {
