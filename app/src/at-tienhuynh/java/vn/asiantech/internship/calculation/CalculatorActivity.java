@@ -12,6 +12,7 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
+
     private EditText mEdtNumberA;
     private EditText mEdtNumberB;
     private Button mBtnSum;
@@ -20,7 +21,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     private Button mBtnDivision;
     private TextView mTvResult;
     private TextView mTvCalculation;
-    private float mResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        // Onclick Button
         if (isEmpty()) {
             switch (view.getId()) {
                 case R.id.btnSum:
@@ -92,26 +91,30 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     void sum(float numA, float numB) {
-        mResult = numA + numB;
+        float result;
+        result = numA + numB;
         mTvCalculation.setText(getString(R.string.edt_sum));
-        mTvResult.setText(String.valueOf(mResult));
+        mTvResult.setText(String.valueOf(result));
     }
 
     void subtraction(float numA, float numB) {
-        mResult = numA - numB;
+        float result;
+        result = numA - numB;
         mTvCalculation.setText(getString(R.string.edt_sub));
-        mTvResult.setText(String.valueOf(mResult));
+        mTvResult.setText(String.valueOf(result));
     }
 
     void multiplication(float numA, float numB) {
-        mResult = numA * numB;
+        float result;
+        result = numA * numB;
         mTvCalculation.setText(getString(R.string.edt_multi));
-        mTvResult.setText(String.valueOf(mResult));
+        mTvResult.setText(String.valueOf(result));
     }
 
     void division(float numA, float numB) {
-        mResult = numA / numB;
+        float result;
+        result = numA / numB;
         mTvCalculation.setText(getString(R.string.edt_divi));
-        mTvResult.setText(String.valueOf(mResult));
+        mTvResult.setText(String.valueOf(result));
     }
 }
