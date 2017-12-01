@@ -4,13 +4,13 @@ package vn.asiantech.internship.models;
  * Created by huong.nguyen on 11/28/17.
  */
 
-public class Person {
+public class Status {
 
     private String name;
     private String description;
-    private String count;
+    private int count;
 
-    public Person(String name, String description, String count) {
+    public Status(String name, String description, int count) {
         this.name = name;
         this.description = description;
         this.count = count;
@@ -32,11 +32,11 @@ public class Person {
         this.description = description;
     }
 
-    public String getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(String count) {
+    public void setCount(int count) {
         this.count = count;
     }
 }
