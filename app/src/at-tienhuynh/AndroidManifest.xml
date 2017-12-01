@@ -21,7 +21,9 @@
         <activity
             android:name=".login.LoginActivity"
             android:theme="@style/NoActionBarTheme" />
-        <activity android:name=".drawerlayout.DrawerLayoutActivity" />
+        <activity
+            android:name=".drawerlayout.DrawerLayoutActivity"
+            android:theme="@style/DrawerLayoutTheme" />
     </application>
 
 </manifest>

@@ -22,4 +22,6 @@
     <string name="text_btn_calculator_screen">Calculation Screen</string>
     <string name="text_btn_recycler_view">Recycler View Screen</string>
     <string name="text_btn_drawer_layout">Drawer Layout Screen</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
