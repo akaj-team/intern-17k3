@@ -14,11 +14,11 @@
         android:layout_marginRight="30dp" />
 
     <TextView
-        android:id="@+id/tvNameIssue"
+        android:id="@+id/tvIssueName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:textSize="15dp"
-        android:textColor="@color/colorGrayDark" />
+        android:textColor="@color/colorGrayDark"
+        android:textSize="15dp" />
 
 </LinearLayout>

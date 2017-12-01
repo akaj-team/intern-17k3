@@ -19,6 +19,6 @@
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
-        android:textColor="@color/colorBlack"
-        android:text="@string/email" />
+        android:text="@string/email"
+        android:textColor="@color/colorBlack" />
 </LinearLayout>
