@@ -1,4 +1,4 @@
-package vn.asiantech.internship.adapters;
+package vn.asiantech.internship.recyclerview.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.models.Status;
+import vn.asiantech.internship.recyclerview.models.Status;
 
 /**
  * Created at 2017

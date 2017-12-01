@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.asiantech.internship.models.Comment;
+import vn.asiantech.internship.recyclerview.models.Comment;
 
 public class CommentActivity extends AppCompatActivity implements CommentAdapter.OnItemClickListener {
     private RecyclerView mRecycleViewComment;

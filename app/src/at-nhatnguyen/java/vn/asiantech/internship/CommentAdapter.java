@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import vn.asiantech.internship.models.Comment;
+import vn.asiantech.internship.recyclerview.models.Comment;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder> {
     private List<Comment> mComments;

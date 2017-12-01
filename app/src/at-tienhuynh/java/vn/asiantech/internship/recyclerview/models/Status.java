@@ -1,4 +1,4 @@
-package vn.asiantech.internship.models;
+package vn.asiantech.internship.recyclerview.models;
 
 /**
  * Created at 2017
