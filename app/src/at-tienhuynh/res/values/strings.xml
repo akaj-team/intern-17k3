@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">tienhuynh-17k3</string>
+    <string name="app_name">intern-17k3</string>
+    <string name="tvSloganLogin">a bike for everyone, always</string>
+    <string name="tvWelcome">Welcome to urbi</string>
+    <string name="btnLoginFb">login with facebook</string>
+    <string name="btnLoginPhone">login with phone number</string>
+    <string name="tvTitleSignup">Enter your details belows to get stared</string>
+    <string name="tv_term_cofilm">I have read and agree with the</string>
+    <string name="tv_term_link">terms and conditions</string>
+    <string name="HeadNumPhoneVN">+84</string>
+    <string name="HeadNumPhoneAus">+64</string>
+    <string name="tvOrFrLogin">or</string>
+    <string name="tvDotSignupFragment">.</string>
+    <string name="tvSignup">New to urbi? Sign up for an account</string>
+    <string name="SelectEx">Select Example</string>
+    <string name="SelectExLogin">Login Screen</string>
+    <string name="SelectExCaculator">Caculator</string>
+    <string name="hintedtPhoneNumber">Enter mobile number</string>
+    <string name="hintFullName">Full name</string>
+    <string name="hintEmail">Email</string>
 </resources>
