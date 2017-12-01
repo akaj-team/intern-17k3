@@ -17,4 +17,5 @@
     <string name="btn_sub">-</string>
     <string name="btn_mul">*</string>
     <string name="btn_div">/</string>
+    <string name="tv_fail">Số quá giới hạn cho phép !</string>
 </resources>

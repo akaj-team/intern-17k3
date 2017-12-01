@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".app_calculator.CalculatorActivity" />
+        <activity android:name=".login.LoginActivity" />
     </application>
 
 </manifest>
