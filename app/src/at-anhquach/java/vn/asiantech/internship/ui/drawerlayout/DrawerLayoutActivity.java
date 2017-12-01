@@ -26,11 +26,9 @@ import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
-    private Button mBtnMenuLeft;
     private RecyclerView mRecyclerViewLeftMenu;
     private LinearLayout mLlContent;
     private List<Issue> mIssueList = new ArrayList<>();
-    private DrawerLayoutAdapter mIssueAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
 
     private void initView() {
         mDrawerLayout = findViewById(R.id.drawerLayout);
-        mBtnMenuLeft = findViewById(R.id.btnLeftMenu);
+        Button mBtnMenuLeft = findViewById(R.id.btnLeftMenu);
         mRecyclerViewLeftMenu = findViewById(R.id.recyclerViewLeftMenu);
         mLlContent = findViewById(R.id.llContent);
         mBtnMenuLeft.setOnClickListener(this);
@@ -82,7 +80,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initAdapter() {
-        mIssueAdapter = new DrawerLayoutAdapter(mIssueList, this);
+        DrawerLayoutAdapter mIssueAdapter = new DrawerLayoutAdapter(mIssueList, this);
         mRecyclerViewLeftMenu.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewLeftMenu.setAdapter(mIssueAdapter);
     }

@@ -69,12 +69,10 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView mCircleImgAvata;
-        private TextView mTvEmail;
 
         HeaderViewHolder(View itemView) {
             super(itemView);
             mCircleImgAvata = itemView.findViewById(R.id.circleImgAvata);
-            mTvEmail = itemView.findViewById(R.id.tvEmail);
         }
 
         private void onBindDataHeader() {

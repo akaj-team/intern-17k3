@@ -46,7 +46,7 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.NewFeedV
         private ImageView mImgLike;
         private ImageView mImgDisLike;
 
-        public NewFeedViewHolder(View itemView) {
+        NewFeedViewHolder(View itemView) {
             super(itemView);
             mTvName = itemView.findViewById(R.id.tvName);
             mTvStatus = itemView.findViewById(R.id.tvStatus);
