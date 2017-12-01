@@ -3,6 +3,7 @@ package vn.asiantech.internship.ui.login;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,7 @@ public class InforFragment extends Fragment implements TextWatcher, CompoundButt
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if (mChkConfirm.isChecked() && !"".equals(mEdtPhone.getText().toString()) && !"".equals(mEdtEmail.getText().toString()) && !"".equals(mEdtFullName.getText().toString())) {
+        if (mChkConfirm.isChecked() && !TextUtils.isEmpty(mEdtPhone.getText().toString()) && !TextUtils.isEmpty(mEdtEmail.getText().toString()) && !TextUtils.isEmpty(mEdtFullName.getText().toString())) {
             mBtnNext.setSelected(true);
         } else {
             mBtnNext.setSelected(false);
@@ -77,7 +78,7 @@ public class InforFragment extends Fragment implements TextWatcher, CompoundButt
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        if (mChkConfirm.isChecked() && !"".equals(mEdtPhone.getText().toString()) && !"".equals(mEdtEmail.getText().toString()) && !"".equals(mEdtFullName.getText().toString())) {
+        if (mChkConfirm.isChecked() && !TextUtils.isEmpty(mEdtPhone.getText().toString()) && !TextUtils.isEmpty(mEdtEmail.getText().toString()) && !TextUtils.isEmpty(mEdtFullName.getText().toString())) {
             mBtnNext.setSelected(true);
         } else {
             mBtnNext.setSelected(false);
