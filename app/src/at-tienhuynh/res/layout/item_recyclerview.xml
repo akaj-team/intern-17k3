@@ -56,7 +56,6 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="5dp"
-                    android:layout_toRightOf="@+id/imgLike"
                     android:background="@drawable/bg_dislike"
                     tools:src="@drawable/ic_unlike_default" />
 
