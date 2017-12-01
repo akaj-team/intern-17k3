@@ -1,12 +1,11 @@
 package vn.asiantech.internship.ui.recyclerview.model;
 
-
-public class DataContent {
+public class Content {
     private String name;
     private String status;
     private int likeCount;
 
-    public DataContent(String name, String status, int likeCount) {
+    public Content(String name, String status, int likeCount) {
         this.name = name;
         this.status = status;
         this.likeCount = likeCount;

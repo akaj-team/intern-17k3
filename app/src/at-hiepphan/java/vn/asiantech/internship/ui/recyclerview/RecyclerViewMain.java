@@ -9,29 +9,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.recyclerview.model.DataContent;
+import vn.asiantech.internship.ui.recyclerview.model.Content;
 
 public class RecyclerViewMain extends AppCompatActivity {
-    private RecyclerView mRecyclerView;
-    private RecyclerAdapter mRecyclerAdapter;
-    private List<DataContent> mDataContent;
+    private RecyclerView mRecyclerViewContent;
+    private RecyclerAdapter mAdapter;
+    private List<Content> mContentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view_main);
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mDataContent = new ArrayList<>();
-        mDataContent.add(new DataContent("AAA", "hoa huong duong", 0));
-        mDataContent.add(new DataContent("BB", "hoa ho ho", 0));
-        mDataContent.add(new DataContent("C", "hoa hom ho", 0));
-        mDataContent.add(new DataContent("D", "hoa hom hoa", 0));
-        mDataContent.add(new DataContent("E", "hoa hoa hoa", 0));
-        mDataContent.add(new DataContent("F", "hoa hong", 0));
-        mRecyclerAdapter = new RecyclerAdapter(mDataContent);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setAdapter(mRecyclerAdapter);
+
+        initView();
+        initData();
+        initAdapter();
+    }
+
+    private void initView() {
+        mRecyclerViewContent = findViewById(R.id.recyclerView);
+    }
+
+    private void initData() {
+        mContentList.add(new Content("AAA", "hoa huong duong", 0));
+        mContentList.add(new Content("BB", "hoa ho ho", 0));
+        mContentList.add(new Content("C", "hoa hom ho", 0));
+        mContentList.add(new Content("D", "hoa hom hoa", 0));
+        mContentList.add(new Content("E", "hoa hoa hoa", 0));
+        mContentList.add(new Content("F", "hoa hong", 0));
+    }
+
+    private void initAdapter() {
+        mAdapter = new RecyclerAdapter(mContentList);
+        mRecyclerViewContent.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerViewContent.setAdapter(mAdapter);
     }
 }

@@ -10,13 +10,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.recyclerview.model.DataContent;
+import vn.asiantech.internship.ui.recyclerview.model.Content;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    private List<DataContent> mListData;
+    private List<Content> mContentList;
 
-    public RecyclerAdapter(List<DataContent> mListData) {
-        this.mListData = mListData;
+    public RecyclerAdapter(List<Content> contentList) {
+        mContentList = contentList;
     }
 
     @Override
@@ -28,14 +28,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvLikeCount.setText(String.valueOf(mListData.get(position).getLikeCount()));
-        holder.tvUserName.setText(mListData.get(position).getName());
-        holder.tvStatus.setText(mListData.get(position).getStatus());
+        holder.onBindData();
     }
 
     @Override
     public int getItemCount() {
-        return mListData.size();
+        return mContentList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -67,6 +65,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     checkLike(++likeCount);
                 }
             });
+        }
+
+        private void onBindData() {
+            Content content = mContentList.get(getAdapterPosition());
+            tvLikeCount.setText(String.valueOf(content.getLikeCount()));
+            tvUserName.setText(content.getName());
+            tvStatus.setText(content.getStatus());
         }
 
         private void checkLike(int likeCount) {
