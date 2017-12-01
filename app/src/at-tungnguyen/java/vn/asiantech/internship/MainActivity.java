@@ -26,8 +26,7 @@ public class MainActivity extends Activity implements StatusAdapter.OnItemClickL
     }
 
     private void initAdapter() {
-        mAdapter = new StatusAdapter(mStatusList, this) {
-        };
+        mAdapter = new StatusAdapter(mStatusList, this) {};
     }
 
     private void initData() {
