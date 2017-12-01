@@ -16,8 +16,8 @@
             android:background="@color/colorPrimary" />
     </RelativeLayout>
     <!--Drawer view layout-->
-    <RelativeLayout
-        android:id="@+id/rlDrawer"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rDrawer"
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
