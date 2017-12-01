@@ -5,7 +5,6 @@
     android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context=".login.LoginActivity">
-    tools:context="vn.asiantech.internship.login.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

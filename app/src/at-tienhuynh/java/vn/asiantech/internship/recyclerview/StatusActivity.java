@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.recyclerview.adapters.StatusAdapter;
 import vn.asiantech.internship.recyclerview.models.Status;
 
 public class StatusActivity extends AppCompatActivity implements StatusAdapter.OnItemClickListener {
+
+    private static final int NUM_LIKE = 1;
     private RecyclerView mRecyclerViewStatus;
     private List<Status> mStatusList = new ArrayList<>();
-    private static final int NUM_LIKE = 1;
     private StatusAdapter mStatusAdapter;
 
     @Override
@@ -39,7 +39,7 @@ public class StatusActivity extends AppCompatActivity implements StatusAdapter.O
     }
 
     private void initAdapter() {
-        mStatusAdapter = new StatusAdapter(mStatusList, this, this);
+        mStatusAdapter = new StatusAdapter(mStatusList, this);
         mRecyclerViewStatus.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewStatus.setAdapter(mStatusAdapter);
     }
