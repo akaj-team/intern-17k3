@@ -16,7 +16,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/bg_number_textview"
+            android:background="@drawable/bg_edt_number"
+            android:hint="@string/NumberA"
             android:inputType="numberDecimal|numberSigned"
             android:padding="8dp" />
 
@@ -25,14 +26,15 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="@string/inputA"
-            tools:text="+" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edtNumB"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/bg_number_textview"
+            android:background="@drawable/bg_edt_number"
+            android:hint="@string/NumberB"
             android:inputType="numberDecimal|numberSigned"
             android:padding="8dp" />
     </LinearLayout>
@@ -41,8 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="10dp"
-        android:weightSum="4">
+        android:padding="5dp">
 
         <Button
             android:id="@+id/btnPlus"

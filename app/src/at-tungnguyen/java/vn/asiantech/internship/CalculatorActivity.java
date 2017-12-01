@@ -85,8 +85,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private double division(double a, double b) {
-      if(b==0){
-          Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+      if(TextUtils.equals(mEdtNumberB.getText().toString(),String.valueOf(0))){
+          Toast.makeText(this, "Number B is not 0 ", Toast.LENGTH_SHORT).show();
       }
         return a / b;
     }
@@ -100,7 +100,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                checkButton();
+                checkEnableButton();
             }
 
             @Override
@@ -116,7 +116,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                 checkButton();
+                checkEnableButton();
             }
 
             @Override
@@ -127,7 +127,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-    private void checkButton() {
+    private void checkEnableButton() {
         if (!TextUtils.isEmpty(mEdtNumberA.getText().toString()) && !TextUtils.isEmpty(mEdtNumberB.getText().toString())) {
             mBtnPlus.setEnabled(true);
             mBtnSub.setEnabled(true);

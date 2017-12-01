@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">tungnguyen-17k3</string>
-    <string name="inputA">A</string>
+    <string name="inputA">+</string>
     <string name="plus">+</string>
     <string name="subtraction">-</string>
     <string name="Multiplication">*</string>
     <string name="Division">/</string>
     <string name="result">Result</string>
+    <string name="calculator">Calculator</string>
+    <string name="NumberA">Number A</string>
+    <string name="NumberB">Number B</string>
 </resources>
