@@ -13,7 +13,7 @@
     <string name="Enter_number">Enter mobile number</string>
     <string name="full_name">Full name</string>
     <string name="email">Email</string>
-    <string name="string_change_color">
-        <font color='black'>I have read and agree with me </font><br/><br/><font color= 'blue'>terms and conditions</font><font color='blacck'>.</font>
-    </string>
+    <string name="text_link_check_color_black">I have read and agree with the</string>
+    <string name="text_link_check_color_blue">terms and conditions</string>
+    <string name="text_the_rest">.</string>
 </resources>

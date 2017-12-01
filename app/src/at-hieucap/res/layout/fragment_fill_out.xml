@@ -90,15 +90,39 @@
             android:scaleX="2"
             android:scaleY="2" />
 
-        <TextView
-            android:id="@+id/tvLinkSp"
-            android:text="@string/string_change_color"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="10dp"
-            android:lineSpacingExtra="8dp"
-            android:textSize="16dp" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp">
+
+            <TextView
+                android:id="@+id/tvLinkCheckColorBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/text_link_check_color_black"
+                android:textColor="@color/colorBlack"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/tvLinkCheckColorBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvLinkCheckColorBlack"
+                android:layout_marginTop="5dp"
+                android:text="@string/text_link_check_color_blue"
+                android:textColor="@color/colorBlue"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:textSize="17dp"
+                android:layout_marginLeft="162dp"
+                android:text="@string/text_the_rest"
+                android:textColor="@color/colorBlack" />
+        </RelativeLayout>
     </LinearLayout>
 
     <ImageView

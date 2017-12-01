@@ -20,31 +20,30 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
     private EditText mEdtFullName;
     private ImageView mImgNext;
     private EditText mEdtPhone;
+    private View v;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_fill_out, container, false);
+        v = inflater.inflate(R.layout.fragment_fill_out, container, false);
 
-        // Item back
-        mImgNext = v.findViewById(R.id.imgNext);
+        initView();
+        addOnClickListener();
+        return v;
+    }
 
-        // Checkbox
-        mChkTermAccept = v.findViewById(R.id.chkSignUp);
-
-        // Email
-        mEdtEmail = v.findViewById(R.id.edtEmail);
-        mEdtEmail.addTextChangedListener(this);
-
-        // Phone
+    private void initView() {
         mEdtPhone = v.findViewById(R.id.edtPhone);
-        mEdtPhone.addTextChangedListener(this);
-
-        // Full Name
+        mImgNext = v.findViewById(R.id.imgNext);
+        mChkTermAccept = v.findViewById(R.id.chkSignUp);
+        mEdtEmail = v.findViewById(R.id.edtEmail);
         mEdtFullName = v.findViewById(R.id.edtFullName);
-        mEdtFullName.addTextChangedListener(this);
+    }
 
-        // Color TextView
+    private void addOnClickListener() {
+        mEdtEmail.addTextChangedListener(this);
+        mEdtPhone.addTextChangedListener(this);
+        mEdtFullName.addTextChangedListener(this);
         mChkTermAccept.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -53,7 +52,6 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
         });
 
         mChkTermAccept.setOnClickListener(this);
-        return v;
     }
 
     private boolean checkSignUp(EditText edtPhone, EditText edtEmail, EditText edtFullName, CheckBox chkCheck) {
