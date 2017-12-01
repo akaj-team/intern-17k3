@@ -59,6 +59,6 @@ public class LoginFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).getBack(View.INVISIBLE);
+        ((MainActivity) getActivity()).setVisibilityImageBack(View.INVISIBLE);
     }
 }

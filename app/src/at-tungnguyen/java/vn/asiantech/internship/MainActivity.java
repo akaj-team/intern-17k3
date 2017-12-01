@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    protected void getBack(int visibility){
+    protected void setVisibilityImageBack(int visibility){
         mImgBack.setVisibility(visibility);
     }
 }

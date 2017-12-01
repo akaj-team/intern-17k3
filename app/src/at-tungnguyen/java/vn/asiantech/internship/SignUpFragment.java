@@ -116,6 +116,6 @@ public class SignUpFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).getBack(View.VISIBLE);
+        ((MainActivity) getActivity()).setVisibilityImageBack(View.VISIBLE);
     }
 }
