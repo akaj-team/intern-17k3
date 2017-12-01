@@ -9,64 +9,65 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText medtNumberA;
-    private EditText medtNumberB;
-    private Button mbtnPlus;
-    private Button mbtnSub;
-    private Button mbtnMul;
-    private Button mbtnDivi;
-    private TextView mtvResult;
+
+    private EditText mEdtNumberA;
+    private EditText mEdtNumberB;
+    private Button mBtnPlus;
+    private Button mBtnSub;
+    private Button mBtnMul;
+    private Button mBtnDivi;
+    private TextView mTvResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-        initView();
+        initViews();
         initListener();
         setTextWatcher();
-        checkButton();
     }
 
-    private void initView() {
-        medtNumberA = findViewById(R.id.edtNumA);
-        medtNumberB = findViewById(R.id.edtNumB);
-        mbtnPlus = findViewById(R.id.btnPlus);
-        mbtnSub = findViewById(R.id.btnSub);
-        mbtnMul = findViewById(R.id.btnMultip);
-        mbtnDivi = findViewById(R.id.btnDivision);
-        mtvResult = findViewById(R.id.tvResult);
+    private void initViews() {
+        mEdtNumberA = findViewById(R.id.edtNumA);
+        mEdtNumberB = findViewById(R.id.edtNumB);
+        mBtnPlus = findViewById(R.id.btnPlus);
+        mBtnSub = findViewById(R.id.btnSub);
+        mBtnMul = findViewById(R.id.btnMultip);
+        mBtnDivi = findViewById(R.id.btnDivision);
+        mTvResult = findViewById(R.id.tvResult);
     }
 
     private void initListener() {
-        mbtnPlus.setOnClickListener(this);
-        mbtnSub.setOnClickListener(this);
-        mbtnMul.setOnClickListener(this);
-        mbtnDivi.setOnClickListener(this);
+        mBtnPlus.setOnClickListener(this);
+        mBtnSub.setOnClickListener(this);
+        mBtnMul.setOnClickListener(this);
+        mBtnDivi.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        double numberA = Double.parseDouble(medtNumberA.getText().toString().trim());
-        double numberB = Double.parseDouble(medtNumberB.getText().toString().trim());
+        double numberA = Double.parseDouble(mEdtNumberA.getText().toString().trim());
+        double numberB = Double.parseDouble(mEdtNumberB.getText().toString().trim());
         double result;
         switch (view.getId()) {
             case R.id.btnPlus:
                 result = plus(numberA, numberB);
-                mtvResult.setText(String.valueOf(result));
+                mTvResult.setText(String.valueOf(result));
                 break;
             case R.id.btnSub:
                 result = minus(numberA, numberB);
-                mtvResult.setText(String.valueOf(result));
+                mTvResult.setText(String.valueOf(result));
                 break;
             case R.id.btnMultip:
                 result = multiplication(numberA, numberB);
-                mtvResult.setText(String.valueOf(result));
+                mTvResult.setText(String.valueOf(result));
                 break;
             case R.id.btnDivision:
                 result = division(numberA, numberB);
-                mtvResult.setText(String.valueOf(result));
+                mTvResult.setText(String.valueOf(result));
                 break;
         }
     }
@@ -84,11 +85,14 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private double division(double a, double b) {
+      if(b==0){
+          Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+      }
         return a / b;
     }
 
     private void setTextWatcher() {
-        medtNumberA.addTextChangedListener(new TextWatcher() {
+        mEdtNumberA.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // No-op
@@ -96,15 +100,15 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // No-op
+                checkButton();
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                checkButton();
+                //No-op
             }
         });
-        medtNumberB.addTextChangedListener(new TextWatcher() {
+        mEdtNumberB.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // No-op
@@ -112,29 +116,29 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // No-op
+                 checkButton();
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                checkButton();
+                // No-op
             }
         });
 
     }
 
     private void checkButton() {
-        if (!TextUtils.isEmpty(medtNumberA.getText().toString()) && !TextUtils.isEmpty(medtNumberB.getText().toString())) {
-            mbtnPlus.setEnabled(true);
-            mbtnSub.setEnabled(true);
-            mbtnMul.setEnabled(true);
-            mbtnDivi.setEnabled(true);
+        if (!TextUtils.isEmpty(mEdtNumberA.getText().toString()) && !TextUtils.isEmpty(mEdtNumberB.getText().toString())) {
+            mBtnPlus.setEnabled(true);
+            mBtnSub.setEnabled(true);
+            mBtnMul.setEnabled(true);
+            mBtnDivi.setEnabled(true);
 
         } else {
-            mbtnPlus.setEnabled(false);
-            mbtnSub.setEnabled(false);
-            mbtnMul.setEnabled(false);
-            mbtnDivi.setEnabled(false);
+            mBtnPlus.setEnabled(false);
+            mBtnSub.setEnabled(false);
+            mBtnMul.setEnabled(false);
+            mBtnDivi.setEnabled(false);
         }
     }
 }

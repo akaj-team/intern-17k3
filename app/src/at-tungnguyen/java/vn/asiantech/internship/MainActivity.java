@@ -8,13 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-    private Button mbtnCaculator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mbtnCaculator = findViewById(R.id.btnCaculator);
+        Button mbtnCaculator = findViewById(R.id.btnCaculator);
         mbtnCaculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -22,5 +21,4 @@ public class MainActivity extends Activity {
             }
         });
     }
-
 }
