@@ -8,11 +8,13 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnRecyclerView;
     private Button mBtnCalculator;
+    private Button mBtnDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void initView() {
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnCalculator = findViewById(R.id.btnCalculator);
+        mBtnDrawerLayout = findViewById(R.id.btnDrawerLayout);
     }
 
     private void initListener() {
         mBtnRecyclerView.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
+        mBtnDrawerLayout.setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +44,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnCalculator:
                 startActivity(new Intent(this, CalculatorActivity.class));
+                break;
+            case R.id.btnDrawerLayout:
+                startActivity(new Intent(this, DrawerActivity.class));
                 break;
         }
     }

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">nhatnguyen-17k3-recyclerview</string>
-    <string name="button_exercise">recyclerview</string>
+    <string name="button_recycler_view">recyclerview</string>
     <string name="summation">+</string>
     <string name="subtraction">-</string>
     <string name="multiplication">*</string>
@@ -9,4 +9,5 @@
     <string name="numbertwo">Number Two</string>
     <string name="exercise_calculator">Calculator</string>
     <string name="notify_number_two_0">Second number can not 0</string>
+    <string name="button_drawer_layout">drawerlayout</string>
 </resources>
