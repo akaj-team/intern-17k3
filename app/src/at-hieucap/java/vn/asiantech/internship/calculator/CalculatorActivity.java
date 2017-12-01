@@ -4,13 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.math.BigDecimal;
+
 import vn.asiantech.internship.R;
 
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
@@ -18,20 +21,20 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     private EditText mEdtSecondTerm;
     private TextView mTvOperation;
     private TextView mTvResult;
+    private Button mBtnSum;
+    private Button mBtnSub;
+    private Button mBtnMul;
+    private Button mBtnDivision;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-        Button mBtnSum = findViewById(R.id.btnSum);
-        Button mBtnSub = findViewById(R.id.btnSub);
-        Button mBtnMul = findViewById(R.id.btnMul);
-        Button mBtnDivision = findViewById(R.id.btnDivision);
-        mEdtFirstTerm = findViewById(R.id.edtFirstTerm);
-        mEdtSecondTerm = findViewById(R.id.edtSecondTerm);
-        mTvOperation = findViewById(R.id.tvOperation);
-        mTvResult = findViewById(R.id.tvResult);
+        initView();
+        addOnClickListener();
+    }
 
+    private void addOnClickListener() {
         mBtnSum.setOnClickListener(this);
         mBtnSub.setOnClickListener(this);
         mBtnMul.setOnClickListener(this);
@@ -40,14 +43,25 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         mEdtSecondTerm.addTextChangedListener(this);
     }
 
+    private void initView() {
+        mBtnSum = findViewById(R.id.btnSum);
+        mBtnSub = findViewById(R.id.btnSub);
+        mBtnMul = findViewById(R.id.btnMul);
+        mBtnDivision = findViewById(R.id.btnDivision);
+        mEdtFirstTerm = findViewById(R.id.edtFirstTerm);
+        mEdtSecondTerm = findViewById(R.id.edtSecondTerm);
+        mTvOperation = findViewById(R.id.tvOperation);
+        mTvResult = findViewById(R.id.tvResult);
+    }
+
     @Override
     public void onClick(View v) {
         if (checkAllTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-            Toast.makeText(getApplicationContext(),R.string.event_two_term_is_empty,Toast.LENGTH_SHORT).show();
-        } else if (checkFirstTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-            Toast.makeText(getApplicationContext(),R.string.event_first_term_is_empty,Toast.LENGTH_SHORT).show();
-        } else if (checkSecondTermIsEmpty(mEdtFirstTerm, mEdtSecondTerm)) {
-            Toast.makeText(getApplicationContext(),R.string.event_second_term_is_empty,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.event_two_term_is_empty, Toast.LENGTH_SHORT).show();
+        } else if (checkFirstTermIsEmpty(mEdtFirstTerm)) {
+            Toast.makeText(getApplicationContext(), R.string.event_first_term_is_empty, Toast.LENGTH_SHORT).show();
+        } else if (checkSecondTermIsEmpty(mEdtSecondTerm)) {
+            Toast.makeText(getApplicationContext(), R.string.event_second_term_is_empty, Toast.LENGTH_SHORT).show();
         } else {
             switch (v.getId()) {
                 case R.id.btnSum:
@@ -71,7 +85,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 case R.id.btnDivision:
                     if (checkSecondTerm(mEdtSecondTerm)) {
                         mTvResult.setText(R.string.text_null);
-                        Toast.makeText(getApplicationContext(),R.string.event_second_term_is_value_0,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.event_second_term_is_value_0, Toast.LENGTH_SHORT).show();
                     } else {
                         mTvOperation.setText(R.string.division);
                         bdFirstTerm = new BigDecimal(mEdtFirstTerm.getText().toString());
@@ -84,15 +98,15 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private boolean checkAllTermIsEmpty(EditText edtFirstTerm, EditText edtSecondTerm) {
-        return ((edtFirstTerm.getText().toString().trim().length() == 0) && (edtSecondTerm.getText().toString().trim().length() == 0));
+        return TextUtils.isEmpty(edtFirstTerm.getText().toString()) && TextUtils.isEmpty(edtSecondTerm.getText().toString());
     }
 
-    private boolean checkFirstTermIsEmpty(EditText edtFirstTerm, EditText edtSecondTerm) {
-        return ((edtFirstTerm.getText().toString().trim().length() == 0) && (edtSecondTerm.getText().toString().trim().length() != 0));
+    private boolean checkFirstTermIsEmpty(EditText edtFirstTerm) {
+        return TextUtils.isEmpty(edtFirstTerm.getText().toString());
     }
 
-    private boolean checkSecondTermIsEmpty(EditText edtFirstTerm, EditText edtSecondTerm) {
-        return ((edtFirstTerm.getText().toString().trim().length() != 0) && (edtSecondTerm.getText().toString().trim().length() == 0));
+    private boolean checkSecondTermIsEmpty(EditText edtSecondTerm) {
+        return TextUtils.isEmpty(edtSecondTerm.getText().toString());
     }
 
     private boolean checkSecondTerm(EditText edtSecondTerm) {
