@@ -15,18 +15,26 @@ import vn.asiantech.internship.models.StatusAdapter;
 public class MainActivity extends Activity implements StatusAdapter.OnItemClickListener {
     private List<Status> mStatusList = new ArrayList<>();
     private StatusAdapter mAdapter;
+    RecyclerView mRecyclerViewStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initViews();
         initAdapter();
         initData();
-        initViews();
+    }
+
+    private void initViews() {
+        mRecyclerViewStatus = findViewById(R.id.recyclerViewPerson);
     }
 
     private void initAdapter() {
-        mAdapter = new StatusAdapter(mStatusList, this) {};
+        mAdapter = new StatusAdapter(mStatusList, this) {
+        };
+        mRecyclerViewStatus.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerViewStatus.setAdapter(mAdapter);
     }
 
     private void initData() {
@@ -38,11 +46,6 @@ public class MainActivity extends Activity implements StatusAdapter.OnItemClickL
         mStatusList.add(new Status("Tung6", "Messi messi messi messi messi messi Messi messi Messi messi Messi messi  messi messi messi messi messi messi Messi messi Messi messi Messi messi Messi messi", 0));
     }
 
-    private void initViews() {
-        RecyclerView mRecyclerViewStatus = findViewById(R.id.recyclerViewPerson);
-        mRecyclerViewStatus.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewStatus.setAdapter(mAdapter);
-    }
 
     @Override
     public void onLikeClick(int position) {

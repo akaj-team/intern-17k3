@@ -21,7 +21,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
 
     @Override
     public StatusAdapter.StatusViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_person, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_status, parent, false);
         return new StatusViewHolder(view);
     }
 
@@ -84,13 +84,13 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
                 case R.id.imgLike:
                     if (mOnItemClickListener != null) {
                         mOnItemClickListener.onLikeClick(getAdapterPosition());
-                        break;
                     }
+                    break;
                 case R.id.imgDislike:
                     if (mOnItemClickListener != null) {
                         mOnItemClickListener.onDisLikeClick(getAdapterPosition());
-                        break;
                     }
+                    break;
             }
         }
     }
