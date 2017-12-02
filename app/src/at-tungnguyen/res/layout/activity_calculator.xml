@@ -83,7 +83,6 @@
             android:layout_weight="1"
             android:enabled="false"
             android:text="@string/Division" />
-
     </LinearLayout>
 
     <TextView

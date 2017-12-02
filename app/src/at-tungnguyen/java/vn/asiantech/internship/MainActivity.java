@@ -13,11 +13,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnCalculator = findViewById(R.id.btnCaculator);
+        Button btnCalculator = findViewById(R.id.btnCalculator);
         btnCalculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), CalculatorActivity.class));
+                startActivity(new Intent(MainActivity.this, CalculatorActivity.class));
             }
         });
     }

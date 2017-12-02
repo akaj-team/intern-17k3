@@ -85,7 +85,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private double division(double a, double b) {
-        if (b==0){
+        if (b == 0) {
             Toast.makeText(this, R.string.Number0, Toast.LENGTH_SHORT).show();
             return 0;
         }
@@ -106,7 +106,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void afterTextChanged(Editable editable) {
-                //No-op
+                // No-op
             }
         });
         mEdtNumberB.addTextChangedListener(new TextWatcher() {
@@ -134,7 +134,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             mBtnSub.setEnabled(true);
             mBtnMul.setEnabled(true);
             mBtnDivi.setEnabled(true);
-
         } else {
             mBtnPlus.setEnabled(false);
             mBtnSub.setEnabled(false);
