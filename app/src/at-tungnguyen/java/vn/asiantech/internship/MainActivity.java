@@ -30,12 +30,12 @@ public class MainActivity extends Activity implements StatusAdapter.OnItemClickL
     }
 
     private void initData() {
-        mStatusList.add(new Status("Tung", "Messi messi", 0));
-        mStatusList.add(new Status("Tung", "messi messi messi", 0));
-        mStatusList.add(new Status("Tung", "messi messi messi messi messi messi", 0));
-        mStatusList.add(new Status("Tung", "Messi messi Messi messi", 0));
-        mStatusList.add(new Status("Tung", "messi messi messi Messi messiMessi messi", 0));
-        mStatusList.add(new Status("Tung", "Messi messi messi messi messi messi Messi messi Messi messi Messi messi  messi messi messi messi messi messi Messi messi Messi messi Messi messi Messi messi", 0));
+        mStatusList.add(new Status("Tung1", "Messi messi", 0));
+        mStatusList.add(new Status("Tung2", "messi messi messi", 0));
+        mStatusList.add(new Status("Tung3", "messi messi messi messi messi messi", 0));
+        mStatusList.add(new Status("Tung4", "Messi messi Messi messi", 0));
+        mStatusList.add(new Status("Tung5", "messi messi messi Messi messiMessi messi", 0));
+        mStatusList.add(new Status("Tung6", "Messi messi messi messi messi messi Messi messi Messi messi Messi messi  messi messi messi messi messi messi Messi messi Messi messi Messi messi Messi messi", 0));
     }
 
     private void initViews() {
