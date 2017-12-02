@@ -14,4 +14,15 @@
     <string name="text_null"> </string>
     <string name="event_second_term_is_value_0">Second term is not value = 0 !</string>
     <string name="value_0">0</string>
+    <string name="person_1">Nguyen Van A</string>
+    <string name="person_2">Nguyen Van B</string>
+    <string name="person_3">Nguyen Van C</string>
+    <string name="person_4">Nguyen Van D</string>
+    <string name="person_5">Nguyen Van E</string>
+    <string name="person_6">Nguyen Van F</string>
+    <string name="person_7">Nguyen Van G</string>
+    <string name="person_8">Nguyen Van H</string>
+    <string name="text_status_standard">This is ...........................</string>
+    <string name="text_status_max_length">This is ...........................................................................................</string>
+    <string name="value_1">1</string>
 </resources>

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.calculator.CalculatorActivity;
-import vn.asiantech.internship.recyclerView.PersonViewActivity;
+import vn.asiantech.internship.recycler.view.PersonViewActivity;
 
 public class ChoiceExerciseActivity extends AppCompatActivity implements View.OnClickListener {
 

@@ -1,4 +1,4 @@
-package vn.asiantech.internship.recyclerView;
+package vn.asiantech.internship.recycler.view;
 
 import android.content.Context;
 import android.support.v4.app.ActivityCompat;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 import vn.asiantech.internship.R;
@@ -71,13 +72,14 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
         @Override
         public void onClick(View v) {
             BigDecimal bdValue = new BigDecimal(mTvValue.getText().toString());
+            Integer integerValue0 = Integer.parseInt(mContext.getString(R.string.value_0));
             switch (v.getId()) {
                 case R.id.imgLike:
                     mImgLike.setSelected(true);
-                    bdValue = bdValue.add(new BigDecimal(1));
-                    if (bdValue.compareTo(new BigDecimal(0)) == 0) {
+                    bdValue = bdValue.add(new BigDecimal(BigInteger.ONE));
+                    if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) == integerValue0) {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlack));
-                    } else if (bdValue.compareTo(new BigDecimal(0)) > 0) {
+                    } else if (bdValue.compareTo(new BigDecimal(BigInteger.ONE)) > integerValue0) {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorRed));
                     } else {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlue));
@@ -86,10 +88,10 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                     break;
                 case R.id.imgDisLike:
                     mImgDisLike.setSelected(true);
-                    bdValue = bdValue.subtract(new BigDecimal(1));
-                    if (bdValue.compareTo(new BigDecimal(0)) == 0) {
+                    bdValue = bdValue.subtract(new BigDecimal(BigInteger.ONE));
+                    if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) == integerValue0) {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlack));
-                    } else if (bdValue.compareTo(new BigDecimal(0)) > 0) {
+                    } else if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) > integerValue0) {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorRed));
                     } else {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlue));
