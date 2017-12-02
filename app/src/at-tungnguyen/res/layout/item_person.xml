@@ -4,72 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:orientation="horizontal"
-    android:padding="5dp"
     android:layout_margin="3dp"
+    android:padding="7dp"
     app:cardCornerRadius="3dp">
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:weightSum="10">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:text="Thanh Tung" />
 
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="0dp"
-                android:layout_weight="1
-"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:textColor="@android:color/black"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                tools:text="Thanh Tung" />
+        <ImageView
+            android:id="@+id/imgLike"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/selector_like_plus" />
 
-            <ImageView
-                android:id="@+id/imgLike"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/selector_like_plus" />
+        <ImageView
+            android:id="@+id/imgDislike"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/selector_dislike_sub" />
 
-            <ImageView
-                android:id="@+id/imgDislike"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/selector_dislike_sub" />
-
-            <TextView
-                android:id="@+id/tvCount"
-                android:layout_width="20dp"
-                android:textSize="15dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:text="@string/result_status" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:text="@string/result_status"
+            android:textSize="15dp" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvDescription"
-        android:ellipsize="end"
-        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="70dp"
+        android:ellipsize="end"
         android:maxLines="2"
         android:textColor="@android:color/black"
         android:textSize="15dp"
         tools:text="Description" />
-
 </android.support.v7.widget.CardView>
