@@ -77,18 +77,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                 case R.id.imgLike:
                     mImgLike.setSelected(true);
                     bdValue = bdValue.add(new BigDecimal(BigInteger.ONE));
-                    if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) == integerValue0) {
-                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlack));
-                    } else if (bdValue.compareTo(new BigDecimal(BigInteger.ONE)) > integerValue0) {
-                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorRed));
-                    } else {
-                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlue));
-                    }
                     mTvValue.setText(String.valueOf(bdValue));
-                    break;
-                case R.id.imgDisLike:
-                    mImgDisLike.setSelected(true);
-                    bdValue = bdValue.subtract(new BigDecimal(BigInteger.ONE));
                     if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) == integerValue0) {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlack));
                     } else if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) > integerValue0) {
@@ -96,7 +85,18 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                     } else {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlue));
                     }
+                    break;
+                case R.id.imgDisLike:
+                    mImgDisLike.setSelected(true);
+                    bdValue = bdValue.subtract(new BigDecimal(BigInteger.ONE));
                     mTvValue.setText(String.valueOf(bdValue));
+                    if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) == integerValue0) {
+                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlack));
+                    } else if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) > integerValue0) {
+                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorRed));
+                    } else {
+                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlue));
+                    }
                     break;
             }
         }
