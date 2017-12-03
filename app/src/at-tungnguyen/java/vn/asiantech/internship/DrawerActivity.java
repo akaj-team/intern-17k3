@@ -6,7 +6,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 
 public class DrawerActivity extends AppCompatActivity {
@@ -48,8 +47,5 @@ public class DrawerActivity extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
         mActionBarDrawerToggle.syncState();
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return mActionBarDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
-    }
+
 }
