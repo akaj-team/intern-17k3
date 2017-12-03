@@ -1,8 +1,8 @@
 <resources>
     <string name="RecyclerView">RecyclerView</string>
-    <string name="btnIsuses1">Isuses 1</string>
-    <string name="btnIsuses2">Isuses 2</string>
-    <string name="btnIsuses3">Isuses 3</string>
+    <string name="btnIsuses1">btnIssuses1</string>
+    <string name="btnIsuses2">btnIssuses2</string>
+    <string name="btnIsuses3">btnIssuses3</string>
     <string name="app_name">intern-17k3</string>
     <string name="tvSloganLogin">a bike for everyone, always</string>
     <string name="tvWelcome">Welcome to urbi</string>
@@ -19,8 +19,8 @@
     <string name="SelectEx">Select Example</string>
     <string name="SelectExLogin">Login Screen</string>
     <string name="SelectExCaculator">Caculator</string>
-    <string name="hint_edt_numa">Number A</string>
-    <string name="hint_edt_numb">Number B</string>
+    <string name="hint_edt_number_a">Number A</string>
+    <string name="hint_edt_number_b">Number B</string>
     <string name="tv_result">Results</string>
     <string name="edt_sum">+</string>
     <string name="edt_sub">-</string>
@@ -28,7 +28,7 @@
     <string name="edt_divi">/</string>
     <string name="dialog_title">Warning</string>
     <string name="dialog_message">Please input number!</string>
-    <string name="dialog_message_num0">Please not divided by 0</string>
+    <string name="dialog_message_num_0">Please not divided by 0</string>
     <string name="number_0">0</string>
     <string name="hintedtPhoneNumber">Enter mobile number</string>
     <string name="hintFullName">Full name</string>

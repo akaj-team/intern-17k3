@@ -12,7 +12,7 @@ import vn.asiantech.internship.recyclerview.StatusActivity;
 public class BeginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button mBtnIssuses1;
-    private Button mBtnIsuses2;
+    private Button mBtnIssuses2;
     private Button mBtnIssuses3;
 
     @Override
@@ -24,21 +24,21 @@ public class BeginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initViews() {
-        mBtnIssuses1 = findViewById(R.id.btnIsuses1);
-        mBtnIsuses2 = findViewById(R.id.btnIssuses2);
+        mBtnIssuses1 = findViewById(R.id.btnIssuses1);
+        mBtnIssuses2 = findViewById(R.id.btnIssuses2);
         mBtnIssuses3 = findViewById(R.id.btnIssuses3);
     }
 
     private void addListener() {
         mBtnIssuses1.setOnClickListener(this);
-        mBtnIsuses2.setOnClickListener(this);
+        mBtnIssuses2.setOnClickListener(this);
         mBtnIssuses3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnIsuses1:
+            case R.id.btnIssuses1:
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.btnIssuses2:

@@ -18,7 +18,7 @@ import vn.asiantech.internship.recyclerview.models.Status;
  * Created by jackty on 29/11/2017.
  */
 
-public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusViewHolder> {
+class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusViewHolder> {
 
     private List<Status> mStatusList;
     private OnItemClickListener mOnItemClickListener;
@@ -49,7 +49,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
 
         private TextView mTvTitle;
         private TextView mTvDescription;
-        private TextView mTvCountLike;
+        private TextView mTvLikeCount;
         private ImageView mImgLike;
         private ImageView mImgDisLike;
 
@@ -57,7 +57,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
             super(itemView);
             mTvTitle = itemView.findViewById(R.id.tvTitle);
             mTvDescription = itemView.findViewById(R.id.tvDescription);
-            mTvCountLike = itemView.findViewById(R.id.tvNumCountLike);
+            mTvLikeCount = itemView.findViewById(R.id.tvNumCountLike);
             mImgLike = itemView.findViewById(R.id.imgLike);
             mImgDisLike = itemView.findViewById(R.id.imgDislike);
             mImgLike.setOnClickListener(this);
@@ -68,19 +68,19 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
             Status status = mStatusList.get(getAdapterPosition());
             mTvTitle.setText(status.getTitle());
             mTvDescription.setText(status.getDescription());
-            mTvCountLike.setText(String.valueOf(status.getNumlike()));
+            mTvLikeCount.setText(String.valueOf(status.getNumlike()));
             if (status.getNumlike() > 0) {
                 mImgLike.setSelected(true);
                 mImgDisLike.setSelected(false);
-                mTvCountLike.setTextColor(Color.GREEN);
+                mTvLikeCount.setTextColor(Color.GREEN);
             } else if (status.getNumlike() < 0) {
                 mImgLike.setSelected(false);
                 mImgDisLike.setSelected(true);
-                mTvCountLike.setTextColor(Color.RED);
+                mTvLikeCount.setTextColor(Color.RED);
             } else {
                 mImgLike.setSelected(false);
                 mImgDisLike.setSelected(false);
-                mTvCountLike.setTextColor(Color.GRAY);
+                mTvLikeCount.setTextColor(Color.GRAY);
             }
         }
 
