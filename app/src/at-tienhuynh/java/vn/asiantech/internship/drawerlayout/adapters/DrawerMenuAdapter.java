@@ -23,9 +23,9 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private static final int HEADER_TYPE = 0;
     private static final int ITEM_TYPE = 1;
     private static List<DrawerMenu> mListDrawerMenu;
-    private static OnItemClickListener mOnItemClickListener;
+    private static onItemClickListener mOnItemClickListener;
 
-    public DrawerMenuAdapter(List<DrawerMenu> ListDrawerMenus, OnItemClickListener onItemClickListener) {
+    public DrawerMenuAdapter(List<DrawerMenu> ListDrawerMenus, onItemClickListener onItemClickListener) {
         mListDrawerMenu = ListDrawerMenus;
         mOnItemClickListener = onItemClickListener;
     }
@@ -69,7 +69,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return ITEM_TYPE;
     }
 
-    public static class HeaderViewHoder extends RecyclerView.ViewHolder {
+    class HeaderViewHoder extends RecyclerView.ViewHolder {
         private CircleImageView mImgHeader;
         private TextView mTvEmail;
 
@@ -86,7 +86,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public static class ItemMenuViewHoder extends RecyclerView.ViewHolder {
+    class ItemMenuViewHoder extends RecyclerView.ViewHolder {
         private ImageView mImgItemMenu;
         private TextView mYvItemMenu;
 
@@ -97,7 +97,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mOnItemClickListener.OnItemClick(view, getAdapterPosition());
+                    mOnItemClickListener.onItemClick(view, getAdapterPosition());
                 }
             });
         }
@@ -109,7 +109,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public interface OnItemClickListener {
-        void OnItemClick(View view, int position);
+    public interface onItemClickListener {
+        void onItemClick(View view, int position);
     }
 }

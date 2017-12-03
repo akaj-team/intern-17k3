@@ -27,7 +27,7 @@ import vn.asiantech.internship.login.LoginActivity;
  * Created by jackty on 30/11/2017.
  */
 
-public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMenuAdapter.OnItemClickListener {
+public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMenuAdapter.onItemClickListener {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
@@ -99,7 +99,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
     }
 
     @Override
-    public void OnItemClick(View view, int position) {
+    public void onItemClick(View view, int position) {
         // Onclick Item Menu
         switch (position) {
             case 1:
