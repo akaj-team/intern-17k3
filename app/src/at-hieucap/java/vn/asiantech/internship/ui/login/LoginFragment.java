@@ -19,14 +19,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_login, container, false);
-        TextView tvSignUp = v.findViewById(R.id.tvSignup);
-        tvSignUp.setOnClickListener(this);
+        TextView mTvSignUp = v.findViewById(R.id.tvSignup);
+        mTvSignUp.setOnClickListener(this);
         return v;
     }
 
     @Override
     public void onClick(View v) {
-        ((LoginActivity) getActivity()).replaceFragment(new FillOutFragment(), true);
-        ((LoginActivity) getActivity()).updateBackButton(true);
+        if (v.getId()== R.id.tvSignup)  {
+            ((LoginActivity) getActivity()).replaceFragment(new FillOutFragment(), true);
+            ((LoginActivity) getActivity()).updateBackButton(true);
+        }
     }
 }

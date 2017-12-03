@@ -27,8 +27,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 replaceFragment(LoginFragment.getInstance(), false);
-                mImgBack.setEnabled(false); // Can't press button back
-                mImgBack.setSelected(false);
+                onBackPressed();
             }
         });
     }

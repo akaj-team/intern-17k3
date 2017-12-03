@@ -20,24 +20,24 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
     private EditText mEdtFullName;
     private ImageView mImgNext;
     private EditText mEdtPhone;
-    private View v;
+    private View mView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_fill_out, container, false);
+        mView = inflater.inflate(R.layout.fragment_fill_out, container, false);
 
         initView();
         addOnClickListener();
-        return v;
+        return mView;
     }
 
     private void initView() {
-        mEdtPhone = v.findViewById(R.id.edtPhone);
-        mImgNext = v.findViewById(R.id.imgNext);
-        mChkTermAccept = v.findViewById(R.id.chkSignUp);
-        mEdtEmail = v.findViewById(R.id.edtEmail);
-        mEdtFullName = v.findViewById(R.id.edtFullName);
+        mEdtPhone = mView.findViewById(R.id.edtPhone);
+        mImgNext = mView.findViewById(R.id.imgNext);
+        mChkTermAccept = mView.findViewById(R.id.chkSignUp);
+        mEdtEmail = mView.findViewById(R.id.edtEmail);
+        mEdtFullName = mView.findViewById(R.id.edtFullName);
     }
 
     private void addOnClickListener() {
@@ -50,7 +50,6 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
                 mChkTermAccept.setSelected(!mChkTermAccept.isSelected());
             }
         });
-
         mChkTermAccept.setOnClickListener(this);
     }
 
@@ -60,7 +59,6 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermAccept));
     }
 
     @Override
@@ -70,11 +68,12 @@ public class FillOutFragment extends Fragment implements TextWatcher, View.OnCli
 
     @Override
     public void afterTextChanged(Editable s) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermAccept));
     }
 
     @Override
     public void onClick(View v) {
-        mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermAccept));
+        if (v.getId() == R.id.chkSignUp) {
+            mImgNext.setSelected(checkSignUp(mEdtPhone, mEdtFullName, mEdtEmail, mChkTermAccept));
+        }
     }
 }
