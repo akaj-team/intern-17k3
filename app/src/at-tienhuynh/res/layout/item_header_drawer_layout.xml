@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorHeaderDrawer"
+    android:background="@drawable/ic_header_drawer_menu"
     android:orientation="vertical">
+
     <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
+        android:id="@+id/imgHeader"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@drawable/ic_user_header"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_user_header" />
+
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        tools:text="tien.huynh3@asiantech.vn"
         android:layout_margin="15dp"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        tools:text="tien.huynh3@asiantech.vn" />
 
 </LinearLayout>

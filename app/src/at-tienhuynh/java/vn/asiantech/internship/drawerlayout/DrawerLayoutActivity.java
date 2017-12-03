@@ -5,11 +5,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.drawerlayout.adapters.DrawerMenuAdapter;
+import vn.asiantech.internship.drawerlayout.models.DrawerMenu;
 
 /**
  * Created at 2017
@@ -17,9 +25,11 @@ import vn.asiantech.internship.R;
  */
 
 public class DrawerLayoutActivity extends AppCompatActivity {
+
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private Toolbar mToolbar;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +42,15 @@ public class DrawerLayoutActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
         callDrawerMenu();
+        addDataMenu();
+    }
+
+    private void addDataMenu() {
+        DrawerMenuAdapter adapter = new DrawerMenuAdapter(getData());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(adapter);
     }
 
     private void callDrawerMenu() {
@@ -58,11 +77,22 @@ public class DrawerLayoutActivity extends AppCompatActivity {
     private void initViews() {
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mToolbar = findViewById(R.id.action_bar);
+        mRecyclerView = findViewById(R.id.recyclerViewDrawer);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return mActionBarDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+    }
+
+    public static List<DrawerMenu> getData() {
+        List<DrawerMenu> listDrawerMenu = new ArrayList<>();
+        listDrawerMenu.add(new DrawerMenu(R.drawable.ic_user_header, "Mail"));
+        listDrawerMenu.add(new DrawerMenu(R.drawable.ic_assignment_late_black, "fuck"));
+        listDrawerMenu.add(new DrawerMenu(R.drawable.ic_assignment_late_black, "fuck"));
+        listDrawerMenu.add(new DrawerMenu(R.drawable.ic_assignment_late_black, "fuck"));
+        listDrawerMenu.add(new DrawerMenu(R.drawable.ic_assignment_late_black, "fuck"));
+        return listDrawerMenu;
     }
 
 }
