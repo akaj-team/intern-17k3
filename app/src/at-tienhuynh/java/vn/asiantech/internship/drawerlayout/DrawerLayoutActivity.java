@@ -33,6 +33,8 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
+    private View mMainContent;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
+                mMainContent.setTranslationX(mRecyclerView.getWidth() * slideOffset);
             }
 
             @Override
@@ -81,6 +84,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mToolbar = findViewById(R.id.action_bar);
         mRecyclerView = findViewById(R.id.recyclerViewDrawer);
+        mMainContent = findViewById(R.id.rlContent);
     }
 
     @Override
