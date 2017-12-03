@@ -22,10 +22,12 @@ import vn.asiantech.internship.drawerlayout.models.DrawerMenu;
 public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int HEADER_TYPE = 0;
     private static final int ITEM_TYPE = 1;
-    public static List<DrawerMenu> mListDrawerMenu;
+    private static List<DrawerMenu> mListDrawerMenu;
+    private static OnItemClickListener mOnItemClickListener;
 
-    public DrawerMenuAdapter(List<DrawerMenu> mListDrawerMenus) {
-        this.mListDrawerMenu = mListDrawerMenus;
+    public DrawerMenuAdapter(List<DrawerMenu> ListDrawerMenus, OnItemClickListener onItemClickListener) {
+        mListDrawerMenu = ListDrawerMenus;
+        mOnItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -54,7 +56,6 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-
     @Override
     public int getItemCount() {
         return mListDrawerMenu.size();
@@ -66,7 +67,6 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             return HEADER_TYPE;
         }
         return ITEM_TYPE;
-
     }
 
     public static class HeaderViewHoder extends RecyclerView.ViewHolder {
@@ -84,7 +84,6 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             mImgHeader.setImageResource(drawerMenu.getNumberImage());
             mTvEmail.setText(drawerMenu.getNameMenu());
         }
-
     }
 
     public static class ItemMenuViewHoder extends RecyclerView.ViewHolder {
@@ -95,6 +94,12 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             super(itemView);
             mImgItemMenu = itemView.findViewById(R.id.imgItemMenu);
             mYvItemMenu = itemView.findViewById(R.id.tvItemMenuDrawer);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.OnItemClick(view, getAdapterPosition());
+                }
+            });
         }
 
         void onBindDataListMenu(int position) {
@@ -102,8 +107,9 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             mImgItemMenu.setImageResource(drawerMenu.getNumberImage());
             mYvItemMenu.setText(drawerMenu.getNameMenu());
         }
-
-
     }
 
+    public interface OnItemClickListener {
+        void OnItemClick(View view, int position);
+    }
 }
