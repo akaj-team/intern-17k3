@@ -140,7 +140,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
     @Override
     public void onImgHeaderClick(View view) {
         // Onclick Img Head
-        if (this != null && isGooglePhotosInstalled(this)) {
+        if (isGooglePhotosInstalled(this)) {
 
             Intent intentToResolve = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             intentToResolve.setPackage(GOOGLE_PHOTOS_PACKAGE_NAME);
@@ -150,8 +150,11 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
                 intent.setAction(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 this.startActivityForResult(intent, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
-
             }
+        } else {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent.setType("video/*, images/*");
+            this.startActivityForResult(intent, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
         }
     }
 
@@ -161,9 +164,6 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
             return packageManager.getPackageInfo(GOOGLE_PHOTOS_PACKAGE_NAME, PackageManager.GET_ACTIVITIES) != null;
         } catch (PackageManager.NameNotFoundException e) {
             Toast.makeText(context, "You not installed Google Photos", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("video/*, images/*");
-            context.startActivity(intent);
             return false;
         }
     }
