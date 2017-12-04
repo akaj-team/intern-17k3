@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CaculatorView.CalculatorActivity"></activity>
-        <activity android:name=".LoginScreen.MainActivity"></activity>
+        <activity android:name=".caculatorview.CalculatorActivity"></activity>
+        <activity android:name=".loginscreen.MainActivity"></activity>
 
     </application>
 

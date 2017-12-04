@@ -1,5 +1,4 @@
-
-package vn.asiantech.internship.LoginScreen;
+package vn.asiantech.internship.loginscreen;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

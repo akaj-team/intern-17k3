@@ -1,4 +1,4 @@
-package vn.asiantech.internship.CaculatorView;
+package vn.asiantech.internship.caculatorview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

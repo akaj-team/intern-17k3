@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import vn.asiantech.internship.CaculatorView.CalculatorActivity;
-import vn.asiantech.internship.LoginScreen.MainActivity;
+import vn.asiantech.internship.caculatorview.CalculatorActivity;
+import vn.asiantech.internship.loginscreen.MainActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mbtnLogin;
