@@ -12,7 +12,7 @@ import java.util.List;
 import vn.asiantech.internship.models.Status;
 import vn.asiantech.internship.models.StatusAdapter;
 
-public class MainActivity extends Activity implements StatusAdapter.OnItemClickListener {
+public class RecyclerViewActivity extends Activity implements StatusAdapter.OnItemClickListener {
     private List<Status> mStatusList = new ArrayList<>();
     private StatusAdapter mAdapter;
     RecyclerView mRecyclerViewStatus;
@@ -20,7 +20,7 @@ public class MainActivity extends Activity implements StatusAdapter.OnItemClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_recyclerview);
         initViews();
         initAdapter();
         initData();
