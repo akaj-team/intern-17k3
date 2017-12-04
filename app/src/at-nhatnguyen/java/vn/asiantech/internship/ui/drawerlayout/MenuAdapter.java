@@ -64,6 +64,8 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface OnItemClickListener {
         void onClickItem(int position);
+
+        void onClickImage(View view);
     }
 
     class OptionHolder extends RecyclerView.ViewHolder {
@@ -113,6 +115,12 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             User user = (User) mObjects.get(getAdapterPosition());
             mImgAvatar.setImageResource(user.getImgAvatar());
             mTvMail.setText(user.getMail());
+            mImgAvatar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.onClickImage(itemView);
+                }
+            });
         }
     }
 }

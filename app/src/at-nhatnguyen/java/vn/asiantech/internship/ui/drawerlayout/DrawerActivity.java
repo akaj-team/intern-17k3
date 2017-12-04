@@ -1,6 +1,9 @@
 package vn.asiantech.internship.ui.drawerlayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -23,6 +27,8 @@ import vn.asiantech.internship.ui.MainActivity;
 
 public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnItemClickListener {
     private static final float NUMBER_MOVE = 2 / 3;
+    private static final int REQUEST_CODE = 2;
+    private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private RecyclerView mRecyclerViewOption;
@@ -30,6 +36,15 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     private List<Object> mObjects;
     private LinearLayout mLlMainContent;
     private Toolbar mToolbar;
+
+    public static boolean isGooglePhotosInstalled(Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            return packageManager.getPackageInfo(GOOGLE_PHOTO, PackageManager.GET_ACTIVITIES) != null;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +114,28 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
             mAdapter.notifyItemChanged(position);
             Toast.makeText(this, ((Option) mObjects.get(position)).getOptionName(), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class));
+        }
+    }
+
+    @Override
+    public void onClickImage(View view) {
+        if (isGooglePhotosInstalled(this)) {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setPackage(GOOGLE_PHOTO);
+            intent.setType("image/*");
+            startActivityForResult(intent, REQUEST_CODE);
+        } else {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, REQUEST_CODE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            ((ImageView) findViewById(R.id.imgAvatar)).setImageURI(Uri.parse(data.getData().toString()));
         }
     }
 }
