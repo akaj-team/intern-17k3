@@ -7,18 +7,22 @@
     android:layout_height="match_parent"
     tools:context="vn.asiantech.internship.DrawerActivity">
 
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <android.support.v7.widget.Toolbar
+           android:id="@+id/appBar"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/abc_action_bar_default_height_material"
+           android:background="#00bbff"/>
+   </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
+        android:layout_gravity="start"
         android:layout_height="match_parent">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </android.support.v7.widget.Toolbar>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </LinearLayout>
+
     </android.support.v7.widget.RecyclerView>
 
 </android.support.v4.widget.DrawerLayout>
