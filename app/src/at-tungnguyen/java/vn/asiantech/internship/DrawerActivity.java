@@ -21,6 +21,7 @@ public class DrawerActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private RecyclerView mRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class DrawerActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         initDrawer();
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -40,6 +42,7 @@ public class DrawerActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(adapter);
     }
+
     public static final class DummyData {
         public static List<DrawerEvent> getData() {
             List<DrawerEvent> list = new ArrayList<>();
@@ -51,7 +54,7 @@ public class DrawerActivity extends AppCompatActivity {
 
     private void initDrawer() {
         mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
-                mDrawerLayout,mToolbar,R.string.open,R.string.close){
+                mDrawerLayout, mToolbar, R.string.open, R.string.close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
