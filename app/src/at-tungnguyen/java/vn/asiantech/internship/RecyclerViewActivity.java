@@ -24,7 +24,7 @@ public class RecyclerViewActivity extends Activity implements StatusAdapter.OnIt
     }
 
     private void initViews() {
-        mRecyclerViewStatus = findViewById(R.id.recyclerViewPerson);
+        mRecyclerViewStatus = findViewById(R.id.recyclerView);
     }
 
     private void initAdapter() {
