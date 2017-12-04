@@ -10,11 +10,13 @@ public class DrawerEvent {
     private String mHeader;
     private String mContent;
     private int mType;
+    private int imageResource;
 
-    public DrawerEvent(String mHeader, String mContent, int mType) {
+    public DrawerEvent(String mHeader, String mContent, int mTypent, int imageResource) {
         this.mHeader = mHeader;
         this.mContent = mContent;
         this.mType = mType;
+        this.imageResource = imageResource;
     }
 
     public static int getEventHeader() {
@@ -47,5 +49,9 @@ public class DrawerEvent {
 
     public void setmType(int mType) {
         this.mType = mType;
+    }
+
+    public int getImageResource(){
+        return imageResource;
     }
 }

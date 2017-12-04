@@ -4,8 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.List;
+
 import static vn.asiantech.internship.DrawerEvent.EVENT_CONTENT;
 import static vn.asiantech.internship.DrawerEvent.EVENT_HEADER;
 
@@ -32,15 +35,16 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        DrawerEvent object = mList.get(position);
+        if (position == 0) {
+            return;
+        }
+        DrawerEvent object = mList.get(position - 1);
         if (object != null) {
-            switch (position) {
-                case 0:
-                    ((HeaderViewHolder) holder).mHeader.setText(object.getmHeader());
-                    break;
-                case 1:
-                    ((ContentViewHolder) holder).mContent.setText(object.getmContent());
-                    break;
+            if (holder instanceof HeaderViewHolder) {
+                ((HeaderViewHolder) holder).mHeader.setText(object.getmHeader());
+            } else if (holder instanceof ContentViewHolder) {
+                ((ContentViewHolder) holder).mContent.setText(object.getmContent());
+                ((ContentViewHolder) holder).mImageView.setImageResource(object.getImageResource());
             }
         }
     }
@@ -49,18 +53,15 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public int getItemCount() {
         if (mList == null)
             return 0;
-        return mList.size();
+        return mList.size() + 1;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (mList != null) {
-            DrawerEvent object = mList.get(position);
-            if (object != null) {
-                return object.getmType();
-            }
+        if (position == 0) {
+            return EVENT_HEADER;
         }
-        return 0;
+        return EVENT_CONTENT;
     }
 
     public static class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -68,16 +69,18 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            mHeader =  itemView.findViewById(R.id.headerText);
+            mHeader = itemView.findViewById(R.id.headerText);
         }
     }
 
     public static class ContentViewHolder extends RecyclerView.ViewHolder {
         private TextView mContent;
+        private ImageView mImageView;
 
         public ContentViewHolder(View itemView) {
             super(itemView);
-            mContent = (TextView) itemView.findViewById(R.id.tvItemMenu);
+            mContent = itemView.findViewById(R.id.tvItemMenu);
+            mImageView = itemView.findViewById(R.id.imgItemMenu);
         }
     }
 }
