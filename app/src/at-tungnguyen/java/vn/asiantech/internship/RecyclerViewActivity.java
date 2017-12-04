@@ -12,7 +12,7 @@ import java.util.List;
 import vn.asiantech.internship.models.Status;
 import vn.asiantech.internship.models.StatusAdapter;
 
-public class .RecyclerViewActivity extends Activity implements StatusAdapter.OnItemClickListener {
+public class RecyclerViewActivity extends Activity implements StatusAdapter.OnItemClickListener {
     private List<Status> mStatusList = new ArrayList<>();
     private StatusAdapter mAdapter;
     RecyclerView mRecyclerViewStatus;
