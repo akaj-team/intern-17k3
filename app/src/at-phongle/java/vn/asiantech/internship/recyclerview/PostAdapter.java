@@ -11,20 +11,20 @@ import android.widget.TextView;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.models.Posts;
+import vn.asiantech.internship.models.Post;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
-    private List<Posts> mPostList;
+    private List<Post> mPostList;
     private OnItemClickListener mOnItemClickListener;
 
-    PostAdapter(List<Posts> postList, OnItemClickListener onItemClickListener) {
+    PostAdapter(List<Post> postList, OnItemClickListener onItemClickListener) {
         mPostList = postList;
         mOnItemClickListener = onItemClickListener;
     }
 
     @Override
     public PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_post, parent, false);
         return new PostViewHolder(view);
     }
 
@@ -65,11 +65,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
 
         private void onBindData() {
-            Posts posts = mPostList.get(getAdapterPosition());
-            mTvSubject.setText(posts.getSubject());
-            mTvLikeNumber.setText(String.valueOf(posts.getLikeNumber()));
-            mTvDescription.setText(posts.getDescription());
-            displayLikeNumber(posts.getLikeNumber(), itemView.getContext());
+            Post post = mPostList.get(getAdapterPosition());
+            mTvSubject.setText(post.getSubject());
+            mTvLikeNumber.setText(String.valueOf(post.getLikeNumber()));
+            mTvDescription.setText(post.getDescription());
+            displayLikeNumber(post.getLikeNumber(), itemView.getContext());
         }
 
         private void displayLikeNumber(int likeNumber, Context context) {

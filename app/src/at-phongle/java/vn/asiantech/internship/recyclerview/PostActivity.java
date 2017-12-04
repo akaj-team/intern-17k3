@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.models.Posts;
+import vn.asiantech.internship.models.Post;
 
 public class PostActivity extends AppCompatActivity implements PostAdapter.OnItemClickListener {
     private RecyclerView mRecyclerViewPost;
     private PostAdapter mPostAdapter;
-    private List<Posts> mPostList = new ArrayList<>();
+    private List<Post> mPostList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,17 +36,17 @@ public class PostActivity extends AppCompatActivity implements PostAdapter.OnIte
         mRecyclerViewPost.setAdapter(mPostAdapter);
     }
 
-    public void initData() {
-        mPostList.add(new Posts("Post 01", "This is PostOne'Description", 2));
-        mPostList.add(new Posts("Post 02", "This is PostTwo'Description", -2));
-        mPostList.add(new Posts("Post 03", "This is PostThree'Description", -4));
-        mPostList.add(new Posts("Post 04", "This is PostFour'Description", 3));
-        mPostList.add(new Posts("Post 05", "This is PostFive'Description", -5));
-        mPostList.add(new Posts("Post 06", "This is PostSix'Description", 100));
-        mPostList.add(new Posts("Post 07", "This is PostSeven'Description", 1));
-        mPostList.add(new Posts("Post 08", "This is PostEight'Description", 0));
-        mPostList.add(new Posts("Post 09", "This is PostNine'Description", 4));
-        mPostList.add(new Posts("Post 10", "This is PostTen'Description", -1));
+    private void initData() {
+        mPostList.add(new Post("Post 01", "This is PostOne'Description", 2));
+        mPostList.add(new Post("Post 02", "This is PostTwo'Description", -2));
+        mPostList.add(new Post("Post 03", "This is PostThree'Description", -4));
+        mPostList.add(new Post("Post 04", "This is PostFour'Description", 3));
+        mPostList.add(new Post("Post 05", "This is PostFive'Description", -5));
+        mPostList.add(new Post("Post 06", "This is PostSix'Description", 100));
+        mPostList.add(new Post("Post 07", "This is PostSeven'Description", 1));
+        mPostList.add(new Post("Post 08", "This is PostEight'Description", 0));
+        mPostList.add(new Post("Post 09", "This is PostNine'Description", 4));
+        mPostList.add(new Post("Post 10", "This is PostTen'Description", -1));
     }
 
     @Override

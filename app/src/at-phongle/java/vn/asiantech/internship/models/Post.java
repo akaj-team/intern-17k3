@@ -1,9 +1,15 @@
 package vn.asiantech.internship.models;
 
-public class Posts {
+public class Post {
     private String subject;
     private String description;
     private int likeNumber;
+
+    public Post(String subject, String description, int likeNumber) {
+        this.subject = subject;
+        this.description = description;
+        this.likeNumber = likeNumber;
+    }
 
     public String getSubject() {
         return subject;
@@ -29,9 +35,5 @@ public class Posts {
         this.likeNumber = likeNumber;
     }
 
-    public Posts(String subject, String description, int likeNumber) {
-        this.subject = subject;
-        this.description = description;
-        this.likeNumber = likeNumber;
-    }
+
 }
