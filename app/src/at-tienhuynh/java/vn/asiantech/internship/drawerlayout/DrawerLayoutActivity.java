@@ -1,7 +1,12 @@
 package vn.asiantech.internship.drawerlayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,8 +15,11 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -29,13 +37,14 @@ import vn.asiantech.internship.login.LoginActivity;
  */
 
 public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMenuAdapter.onItemClickListener {
-
+    private static final int REQUEST_PHOTO_FROM_GOOGLE_PHOTOS = 1;
+    private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
+    private static final float SET_WIDTH = 2 / 3;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
     private View mMainContent;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +73,12 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
+                Display display = getWindowManager().getDefaultDisplay();
+                Point size = new Point();
+                display.getSize(size);
+                ViewGroup.LayoutParams params = mMainContent.getLayoutParams();
+                params.width = (int) (size.x * SET_WIDTH);
+                mMainContent.setLayoutParams(params);
                 mMainContent.setTranslationX(mRecyclerView.getWidth() * slideOffset);
             }
 
@@ -119,6 +134,48 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
             case 4:
                 Toast.makeText(this, "shit4", Toast.LENGTH_SHORT).show();
                 break;
+        }
+    }
+
+    @Override
+    public void onImgHeaderClick(View view) {
+        // Onclick Img Head
+        if (this != null && isGooglePhotosInstalled(this)) {
+
+            Intent intentToResolve = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intentToResolve.setPackage(GOOGLE_PHOTOS_PACKAGE_NAME);
+            ResolveInfo resolveInfo = getPackageManager().resolveActivity(intentToResolve, 0);
+            if (resolveInfo != null) {
+                Intent intent = new Intent(intentToResolve);
+                intent.setAction(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                this.startActivityForResult(intent, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
+
+            }
+        }
+    }
+
+    public static boolean isGooglePhotosInstalled(Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            return packageManager.getPackageInfo(GOOGLE_PHOTOS_PACKAGE_NAME, PackageManager.GET_ACTIVITIES) != null;
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(context, "You not installed Google Photos", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("video/*, images/*");
+            context.startActivity(intent);
+            return false;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_PHOTO_FROM_GOOGLE_PHOTOS && resultCode == RESULT_OK && data != null) {
+            ((ImageView) findViewById(R.id.imgHeader)).setImageURI(data.getData());
+        } else {
+            Toast.makeText(this, "You haven't picked Image",
+                    Toast.LENGTH_LONG).show();
         }
     }
 }

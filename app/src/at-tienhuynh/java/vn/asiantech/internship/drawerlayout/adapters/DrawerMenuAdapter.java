@@ -77,6 +77,12 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             super(itemView);
             mImgHeader = itemView.findViewById(R.id.imgHeader);
             mTvEmail = itemView.findViewById(R.id.tvEmail);
+            mImgHeader.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.onImgHeaderClick(view);
+                }
+            });
         }
 
         void onBindDataHeader(int position) {
@@ -111,5 +117,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public interface onItemClickListener {
         void onItemClick(View view, int position);
+
+        void onImgHeaderClick(View view);
     }
 }
