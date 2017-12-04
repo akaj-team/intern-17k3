@@ -1,5 +1,6 @@
 package vn.asiantech.internship.ui.drawerlayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,6 +19,7 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
+import vn.asiantech.internship.ui.MainActivity;
 
 public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnItemClickListener {
     private static final float NUMBER_MOVE = 2 / 3;
@@ -95,7 +97,8 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     public void onClickItem(int position) {
         if (mObjects.get(position) instanceof Option) {
             mAdapter.notifyItemChanged(position);
-            Toast.makeText(this, ((Option) mObjects.get(position)).getOption(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, ((Option) mObjects.get(position)).getOptionName(), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, MainActivity.class));
         }
     }
 }

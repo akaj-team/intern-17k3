@@ -64,7 +64,6 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface OnItemClickListener {
         void onClickItem(int position);
-
     }
 
     class OptionHolder extends RecyclerView.ViewHolder {
@@ -79,7 +78,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         private void onBindData() {
             Option option = (Option) mObjects.get(getAdapterPosition());
-            mTvOption.setText(option.getOption());
+            mTvOption.setText(option.getOptionName());
             mImgIcon.setImageResource(option.getIcon());
             mTvOption.setTextColor(itemView.getResources().getColor(R.color.black));
             mImgIcon.setPressed(false);

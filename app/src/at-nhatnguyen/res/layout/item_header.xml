@@ -13,23 +13,13 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvMail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
-
-        <TextView
-            android:id="@+id/tvMail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:textColor="@android:color/white"
-            android:textSize="15dp" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ic_arrow_drop_down_white_24dp" />
-    </LinearLayout>
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
+        android:textColor="@android:color/white"
+        android:textSize="15dp" />
 </LinearLayout>

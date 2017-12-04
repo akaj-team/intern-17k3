@@ -23,4 +23,5 @@
     <string name="text_email">Email</string>
     <string name="exercise_login">Login</string>
     <string name="button_drawer_layout">drawerlayout</string>
+    <string name="name">Main Content</string>
 </resources>

@@ -1,11 +1,11 @@
 package vn.asiantech.internship.models;
 
 public class Option {
-    private String option;
+    private String optionName;
     private int icon;
 
     public Option(String option, int icon) {
-        this.option = option;
+        this.optionName = option;
         this.icon = icon;
     }
 
@@ -13,8 +13,8 @@ public class Option {
         return icon;
     }
 
-    public String getOption() {
-        return option;
+    public String getOptionName() {
+        return optionName;
     }
 
 }
