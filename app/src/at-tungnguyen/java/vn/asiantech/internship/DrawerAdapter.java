@@ -5,9 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.util.List;
-
 import static vn.asiantech.internship.DrawerEvent.EVENT_CONTENT;
 import static vn.asiantech.internship.DrawerEvent.EVENT_HEADER;
 
@@ -79,7 +77,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public ContentViewHolder(View itemView) {
             super(itemView);
-            mContent = (TextView) itemView.findViewById(R.id.tvdrawer);
+            mContent = (TextView) itemView.findViewById(R.id.tvItemMenu);
         }
     }
 }

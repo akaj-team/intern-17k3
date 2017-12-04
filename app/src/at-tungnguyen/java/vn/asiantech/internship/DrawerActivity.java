@@ -27,6 +27,7 @@ public class DrawerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
         mToolbar = findViewById(R.id.appBar);
+        mRecyclerView =findViewById(R.id.recyclerview);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         setSupportActionBar(mToolbar);
         initDrawer();
@@ -43,8 +44,8 @@ public class DrawerActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
     }
 
-    public static final class DummyData {
-        public static List<DrawerEvent> getData() {
+    private static final class DummyData {
+        private static List<DrawerEvent> getData() {
             List<DrawerEvent> list = new ArrayList<>();
             list.add(new DrawerEvent("London", null, DrawerEvent.EVENT_HEADER));
             list.add(new DrawerEvent("Droidcon", "Droidcon in London", DrawerEvent.EVENT_CONTENT));
