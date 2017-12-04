@@ -24,5 +24,4 @@
     <string name="tvNumber0">Number B is not 0</string>
     <string name="tvLogin">Create Login Screen</string>
     <string name="tvCaculator">Calculator View </string>
-    <string name="tvRecyclerView">RecyclerView</string>
 </resources>
