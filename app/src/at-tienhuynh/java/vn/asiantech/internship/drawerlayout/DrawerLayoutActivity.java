@@ -30,6 +30,7 @@ import vn.asiantech.internship.calculation.CalculatorActivity;
 import vn.asiantech.internship.drawerlayout.adapters.DrawerMenuAdapter;
 import vn.asiantech.internship.drawerlayout.models.DrawerMenu;
 import vn.asiantech.internship.login.LoginActivity;
+import vn.asiantech.internship.recyclerview.StatusActivity;
 
 /**
  * Created at 2017
@@ -129,10 +130,10 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
                 startActivity(new Intent(this, CalculatorActivity.class));
                 break;
             case 3:
-                Toast.makeText(this, "shit3", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, StatusActivity.class));
                 break;
             case 4:
-                Toast.makeText(this, "shit4", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, DrawerLayoutActivity.class));
                 break;
         }
     }
