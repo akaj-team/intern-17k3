@@ -9,8 +9,8 @@ import vn.asiantech.internship.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.loginscreen.MainActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button mbtnLogin;
-    private Button mbtnCalculator;
+    private Button mBtnLogin;
+    private Button mBtnCalculator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +21,13 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initViews() {
-        mbtnLogin = findViewById(R.id.btnLogin);
-        mbtnCalculator = findViewById(R.id.btnCaculator);
+        mBtnLogin = findViewById(R.id.btnLogin);
+        mBtnCalculator = findViewById(R.id.btnCaculator);
     }
 
     private void initListener() {
-        mbtnLogin.setOnClickListener(this);
-        mbtnCalculator.setOnClickListener(this);
+        mBtnLogin.setOnClickListener(this);
+        mBtnCalculator.setOnClickListener(this);
     }
 
     @Override

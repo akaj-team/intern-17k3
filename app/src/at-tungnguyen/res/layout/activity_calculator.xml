@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_edt_number"
             android:gravity="center"
-            android:hint="@string/NumberA"
+            android:hint="@string/tvNumberA"
             android:inputType="numberDecimal|numberSigned"
             android:padding="8dp" />
 
@@ -27,7 +27,7 @@
             android:layout_width="46dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="@string/inputA"
+            android:hint="@string/tvinputA"
             android:textStyle="bold" />
 
         <EditText
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_edt_number"
             android:gravity="center"
-            android:hint="@string/NumberB"
+            android:hint="@string/tvNumberB"
             android:inputType="numberDecimal|numberSigned"
             android:padding="8dp" />
     </LinearLayout>
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:enabled="false"
-            android:text="@string/plus" />
+            android:text="@string/btnplus" />
 
         <Button
             android:id="@+id/btnSub"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:enabled="false"
-            android:text="@string/subtraction" />
+            android:text="@string/btnsubtraction" />
 
         <Button
             android:id="@+id/btnMultip"
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:enabled="false"
-            android:text="@string/Multiplication" />
+            android:text="@string/btnMultiplication" />
 
         <Button
             android:id="@+id/btnDivision"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:enabled="false"
-            android:text="@string/Division" />
+            android:text="@string/btnDivision" />
     </LinearLayout>
 
     <TextView
@@ -91,7 +91,7 @@
         android:layout_height="45dp"
         android:background="@color/colorAccent"
         android:gravity="center"
-        android:text="@string/result"
+        android:text="@string/tvresult"
         android:textColor="@color/colorwhite"
         android:textSize="15dp"
         android:textStyle="bold" />
