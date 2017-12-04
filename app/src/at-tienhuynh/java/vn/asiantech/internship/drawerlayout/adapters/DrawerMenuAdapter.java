@@ -22,8 +22,8 @@ import vn.asiantech.internship.drawerlayout.models.DrawerMenu;
 public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int HEADER_TYPE = 0;
     private static final int ITEM_TYPE = 1;
-    private static List<DrawerMenu> mListDrawerMenu;
-    private static onItemClickListener mOnItemClickListener;
+    private List<DrawerMenu> mListDrawerMenu;
+    private onItemClickListener mOnItemClickListener;
 
     public DrawerMenuAdapter(List<DrawerMenu> ListDrawerMenus, onItemClickListener onItemClickListener) {
         mListDrawerMenu = ListDrawerMenus;

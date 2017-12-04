@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.calculation.CalculatorActivity;
 import vn.asiantech.internship.drawerlayout.adapters.DrawerMenuAdapter;
 import vn.asiantech.internship.drawerlayout.models.DrawerMenu;
 import vn.asiantech.internship.login.LoginActivity;
@@ -110,7 +111,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case 2:
-                Toast.makeText(this, "shit3", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, CalculatorActivity.class));
                 break;
             case 3:
                 Toast.makeText(this, "shit3", Toast.LENGTH_SHORT).show();
