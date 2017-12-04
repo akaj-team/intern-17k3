@@ -1,5 +1,6 @@
 package vn.asiantech.internship.ui.drawerlayout;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -9,34 +10,33 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Issue;
+import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.login.LoginActivity;
+import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
-public class DrawerActivity extends AppCompatActivity {
-    private DrawerLayout mDrawerLayout;
+public class DrawerActivity extends AppCompatActivity implements IssueAdapter.OnItemClickListener {
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private Toolbar mToolbar;
+    private DrawerLayout mDrawerLayout;
     private RecyclerView mRecyclerViewIssue;
     private List<Issue> mIssueList;
-
+    private IssueAdapter mAdapter;
+    private LinearLayout mLnMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
-        }
-        mToolbar = findViewById(R.id.toolbar);
-        mDrawerLayout = findViewById(R.id.drawerLayout);
+        setSpActionBar();
         initViews();
         initData();
         initAdapter();
@@ -44,20 +44,30 @@ public class DrawerActivity extends AppCompatActivity {
         setWidthDrawerLayout();
     }
 
+    private void setSpActionBar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        }
+    }
 
     private void initViews() {
-        mRecyclerViewIssue = findViewById(R.id.recyclerViewMultipe);
+        mToolbar = findViewById(R.id.toolbar);
+        mDrawerLayout = findViewById(R.id.drawerLayout);
+        mRecyclerViewIssue = findViewById(R.id.recyclerViewMulti);
         mIssueList = new ArrayList<>();
+        mLnMain = findViewById(R.id.lnMain);
     }
 
     private void initData() {
         mIssueList.add(new Issue(R.drawable.ic_login, "Login"));
         mIssueList.add(new Issue(R.drawable.ic_caculator, "Calculator"));
-        mIssueList.add(new Issue(R.drawable.ic_list_24dp, "Recycler View"));
+        mIssueList.add(new Issue(R.drawable.ic_list_grey_900_24dp, "Recycler View"));
+        mIssueList.add(new Issue(R.drawable.ic_exit_to_app_grey_900_24dp, "Exit"));
     }
 
     private void initAdapter() {
-        IssueAdapter mAdapter = new IssueAdapter(mIssueList, this);
+        mAdapter = new IssueAdapter(mIssueList, this);
         mRecyclerViewIssue.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewIssue.setAdapter(mAdapter);
     }
@@ -67,6 +77,9 @@ public class DrawerActivity extends AppCompatActivity {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
+                mLnMain.setTranslationX(slideOffset * drawerView.getWidth());
+                mRecyclerViewIssue.bringChildToFront(drawerView);
+                mRecyclerViewIssue.requestLayout();
             }
 
             @Override
@@ -94,10 +107,26 @@ public class DrawerActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (mActionBarDrawerToggle != null) {
-            return mActionBarDrawerToggle.onOptionsItemSelected(item);
+    public void onClickItemIssue(int position) {
+        switch (position) {
+            case 1:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case 2:
+                startActivity(new Intent(this, CalculatorActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(this, RecyclerViewActivity.class));
+                break;
+            case 4:
+                Intent startMain = new Intent(Intent.ACTION_MAIN);
+                startMain.addCategory(Intent.CATEGORY_HOME);
+                startActivity(startMain);
+                finish();
+                break;
+            default:
+                break;
         }
-        return super.onOptionsItemSelected(item);
+        mAdapter.notifyItemChanged(position);
     }
 }

@@ -43,7 +43,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements StatusAda
     }
 
     private void initAdapter() {
-        mAdapter = new StatusAdapter(mStatusList, this);
+        mAdapter = new StatusAdapter(mStatusList,this);
         mRecyclerViewStatus.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewStatus.setAdapter(mAdapter);
     }
