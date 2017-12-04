@@ -1,5 +1,5 @@
 
-package vn.asiantech.internship.CreateLogin;
+package vn.asiantech.internship.createlogin;
 
 import android.os.Bundle;
 
@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-
 import vn.asiantech.internship.R;
 
 public class MainActivity extends AppCompatActivity {

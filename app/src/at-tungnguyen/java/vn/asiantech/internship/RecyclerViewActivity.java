@@ -1,14 +1,11 @@
-
 package vn.asiantech.internship;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import vn.asiantech.internship.models.Status;
 import vn.asiantech.internship.models.StatusAdapter;
 
@@ -31,8 +28,7 @@ public class RecyclerViewActivity extends Activity implements StatusAdapter.OnIt
     }
 
     private void initAdapter() {
-        mAdapter = new StatusAdapter(mStatusList, this) {
-        };
+        mAdapter = new StatusAdapter(mStatusList, this);
         mRecyclerViewStatus.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewStatus.setAdapter(mAdapter);
     }
@@ -45,7 +41,6 @@ public class RecyclerViewActivity extends Activity implements StatusAdapter.OnIt
         mStatusList.add(new Status("Tung5", "messi messi messi Messi messiMessi messi", 0));
         mStatusList.add(new Status("Tung6", "Messi messi messi messi messi messi Messi messi Messi messi Messi messi  messi messi messi messi messi messi Messi messi Messi messi Messi messi Messi messi", 0));
     }
-
 
     @Override
     public void onLikeClick(int position) {

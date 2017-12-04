@@ -7,14 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.List;
+
 import vn.asiantech.internship.R;
 
 public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusViewHolder> {
     private List<Status> mStatusList;
     private OnItemClickListener mOnItemClickListener;
 
-    protected StatusAdapter(List<Status> statusList, OnItemClickListener onItemClickListener) {
+    public StatusAdapter(List<Status> statusList, OnItemClickListener onItemClickListener) {
         mStatusList = statusList;
         mOnItemClickListener = onItemClickListener;
     }
@@ -34,7 +36,6 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
     public int getItemCount() {
         return mStatusList.size();
     }
-
 
     class StatusViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTvName;

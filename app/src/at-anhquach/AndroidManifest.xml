@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.calculator.CalculatorViewActivity" />
-        <activity android:name=".RecyclerViewActivity" />
+        -
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
 

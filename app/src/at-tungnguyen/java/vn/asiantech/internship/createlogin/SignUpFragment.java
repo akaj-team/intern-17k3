@@ -1,4 +1,4 @@
-package vn.asiantech.internship.CreateLogin;
+package vn.asiantech.internship.createlogin;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +13,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-
 import vn.asiantech.internship.R;
 
 public class SignUpFragment extends Fragment {
