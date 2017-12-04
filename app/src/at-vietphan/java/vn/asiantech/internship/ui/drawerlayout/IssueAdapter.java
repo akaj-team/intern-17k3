@@ -70,6 +70,8 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public interface OnItemClickListener {
         void onClickItemIssue(int position);
+
+        void onClickImgAvatar();
     }
 
     class HeaderHolder extends RecyclerView.ViewHolder {
@@ -79,6 +81,14 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         HeaderHolder(View itemView) {
             super(itemView);
             initViews();
+            circleImgAvatar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onClickImgAvatar();
+                    }
+                }
+            });
         }
 
         private void initViews() {
