@@ -1,10 +1,8 @@
 package vn.asiantech.internship.ui.drawerlayout;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,15 +34,6 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     private LinearLayout mLlMainContent;
     private Toolbar mToolbar;
 
-    public static boolean isGooglePhotosInstalled(Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        try {
-            return packageManager.getPackageInfo(GOOGLE_PHOTO, PackageManager.GET_ACTIVITIES) != null;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +45,12 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     }
 
     private void initView() {
-        mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mToolbar = findViewById(R.id.toolBar);
+        if (getSupportActionBar() != null) {
+            setSupportActionBar(mToolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        }
         mRecyclerViewOption = findViewById(R.id.recycleViewOption);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mLlMainContent = findViewById(R.id.llMainContent);
@@ -81,7 +72,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     }
 
     private void initDrawerLayout() {
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.numberone, R.string.numbertwo) {
+        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,mToolbar, R.string.numberone, R.string.numbertwo) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
@@ -111,22 +102,28 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     @Override
     public void onClickItem(int position) {
         if (mObjects.get(position) instanceof Option) {
-            mAdapter.notifyItemChanged(position);
-            Toast.makeText(this, ((Option) mObjects.get(position)).getOptionName(), Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, MainActivity.class));
+            if (((Option) mObjects.get(position)).getOptionName().equals("Outbox")) {
+                String shareBody = "Here is the share content body";
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.app_name)));
+            } else {
+                mAdapter.notifyItemChanged(position);
+                startActivity(new Intent(this, MainActivity.class));
+            }
         }
     }
 
     @Override
     public void onClickImage(View view) {
-        if (isGooglePhotosInstalled(this)) {
-            Intent intent = new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        if (GoogleUtil.isGooglePhotosInstalled(this)) {
             intent.setPackage(GOOGLE_PHOTO);
-            intent.setType("image/*");
             startActivityForResult(intent, REQUEST_CODE);
         } else {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
             startActivityForResult(intent, REQUEST_CODE);
         }
     }
@@ -135,7 +132,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            ((ImageView) findViewById(R.id.imgAvatar)).setImageURI(Uri.parse(data.getData().toString()));
+            ((ImageView) findViewById(R.id.imgAvatar)).setImageURI(data.getData());
         }
     }
 }

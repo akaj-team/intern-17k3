@@ -39,12 +39,10 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_header, parent, false);
             return new UserHolder(view);
-        } else if (viewType == OPTION) {
+        } else {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_option, parent, false);
             return new OptionHolder(view);
-        } else {
-            return null;
         }
     }
 
@@ -62,6 +60,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return mObjects.size();
     }
 
+    //this method use listen event click in RecyclerView
     public interface OnItemClickListener {
         void onClickItem(int position);
 
