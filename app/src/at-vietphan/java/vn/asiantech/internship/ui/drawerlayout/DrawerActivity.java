@@ -195,9 +195,9 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         try {
-            startActivity(Intent.createChooser(intent, "Share"));
+            startActivity(Intent.createChooser(intent, getString(R.string.share)));
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, "No apps", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.no_apps, Toast.LENGTH_SHORT).show();
         }
     }
 }
