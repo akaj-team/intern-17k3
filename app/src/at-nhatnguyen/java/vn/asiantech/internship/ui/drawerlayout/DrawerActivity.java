@@ -104,10 +104,10 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
         if (mObjects.get(position) instanceof Option) {
             if (((Option) mObjects.get(position)).getOptionName().equals("Outbox")) {
                 String shareBody = "Here is the share content body";
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("image/*");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
                 sharingIntent.putExtra(Intent.EXTRA_STREAM, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.app_name)));
             } else {
