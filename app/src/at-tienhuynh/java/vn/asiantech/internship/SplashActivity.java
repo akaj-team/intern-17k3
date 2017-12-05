@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
-import vn.asiantech.internship.ui.login.LoginActivity;
+import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {

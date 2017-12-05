@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import vn.asiantech.internship.ui.login.LoginActivity;
+import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 
 public class BeginActivity extends AppCompatActivity implements View.OnClickListener {

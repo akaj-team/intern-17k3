@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.login;
+package vn.asiantech.internship.login;
 
 import android.graphics.Color;
 import android.os.Bundle;
