@@ -9,6 +9,6 @@
     <color name="colorBtnlogin">#1f1858</color>
     <color name="colorSlogan">#0288d1</color>
     <color name="colorLlmain">#041e42</color>
-    <color name="colorblack">#000</color>
-    <color name="colorwhite">#FFF</color>
+    <color name="black">#000</color>
+    <color name="white">#FFF</color>
 </resources>

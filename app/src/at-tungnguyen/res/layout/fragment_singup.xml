@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/tvEnterSignup"
+        android:text="@string/tv_entersignup"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:inputType="phone"
-            android:text="@string/telephone" />
+            android:text="@string/tv_telephone" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,7 +50,7 @@
             android:id="@+id/edtFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/edtfullname"
+            android:hint="@string/edt_fullname"
             android:textSize="15dp" />
 
         <EditText
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="@string/edtmail"
+            android:hint="@string/edt_mail"
             android:inputType="textEmailAddress"
             android:textSize="15dp" />
     </LinearLayout>
@@ -90,13 +90,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tvAccept" />
+                android:text="@string/tv_accept" />
 
             <TextView
                 android:id="@+id/tvSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tvTerms"
+                android:text="@string/tv_terms"
                 android:textColor="@color/colorSignup" />
         </LinearLayout>
     </LinearLayout>

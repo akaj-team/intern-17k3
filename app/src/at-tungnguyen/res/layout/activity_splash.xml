@@ -11,12 +11,12 @@
         android:id="@+id/btnLogin"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/tvLogin" />
+        android:text="@string/tv_login" />
 
     <Button
         android:id="@+id/btnCaculator"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/tvCaculator" />
+        android:text="@string/tv_calculator" />
 
 </LinearLayout>

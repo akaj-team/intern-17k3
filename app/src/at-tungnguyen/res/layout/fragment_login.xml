@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="@string/tvTitle"
+        android:text="@string/tv_title"
         android:textSize="15dp"
         android:textStyle="bold" />
 
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_btn_login"
-        android:text="@string/btnLoginFb"
+        android:text="@string/btn_loginFb"
         android:textColor="@color/colorBlack"
         android:textSize="16dp"
         android:textStyle="bold" />
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/tvOr"
+            android:text="@string/tv_or"
             android:textSize="17dp" />
 
         <View
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_btn_signup"
-        android:text="@string/btnSignUp"
+        android:text="@string/btn_signUp"
         android:textAlignment="center"
         android:textColor="@color/colorSignup"
         android:textStyle="bold" />
@@ -70,5 +70,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="@string/tvNewto" />
+        android:text="@string/tv_newto" />
 </LinearLayout>
