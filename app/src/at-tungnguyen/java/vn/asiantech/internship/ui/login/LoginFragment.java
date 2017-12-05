@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.ui.login;
 
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import vn.asiantech.internship.R;
 
 public class LoginFragment extends Fragment {
 
