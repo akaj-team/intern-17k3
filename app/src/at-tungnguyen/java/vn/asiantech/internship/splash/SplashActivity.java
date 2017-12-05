@@ -1,12 +1,14 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import vn.asiantech.internship.caculatorview.CalculatorActivity;
-import vn.asiantech.internship.loginscreen.MainActivity;
+
+import vn.asiantech.internship.R;
+import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
+import vn.asiantech.internship.ui.login.MainActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;

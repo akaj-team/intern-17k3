@@ -1,4 +1,4 @@
-package vn.asiantech.internship.loginscreen;
+package vn.asiantech.internship.ui.login;
 
 import android.graphics.Color;
 import android.support.v4.app.Fragment;

@@ -1,4 +1,4 @@
-package vn.asiantech.internship.login;
+package vn.asiantech.internship.ui.login;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
