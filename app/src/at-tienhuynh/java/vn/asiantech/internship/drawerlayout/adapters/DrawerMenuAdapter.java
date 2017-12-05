@@ -22,8 +22,8 @@ import vn.asiantech.internship.drawerlayout.models.DrawerMenu;
 public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int HEADER_TYPE = 0;
     private static final int ITEM_TYPE = 1;
-    private List<DrawerMenu> mListDrawerMenu;
-    private onItemClickListener mOnItemClickListener;
+    private static List<DrawerMenu> mListDrawerMenu;
+    private static onItemClickListener mOnItemClickListener;
 
     public DrawerMenuAdapter(List<DrawerMenu> ListDrawerMenus, onItemClickListener onItemClickListener) {
         mListDrawerMenu = ListDrawerMenus;
@@ -69,7 +69,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return ITEM_TYPE;
     }
 
-    class HeaderViewHoder extends RecyclerView.ViewHolder {
+    static class HeaderViewHoder extends RecyclerView.ViewHolder {
         private CircleImageView mImgHeader;
         private TextView mTvEmail;
 
@@ -92,7 +92,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    class ItemMenuViewHoder extends RecyclerView.ViewHolder {
+    static class ItemMenuViewHoder extends RecyclerView.ViewHolder {
         private ImageView mImgItemMenu;
         private TextView mYvItemMenu;
 
@@ -115,6 +115,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
+    // Onclick Drawer Menu
     public interface onItemClickListener {
         void onItemClick(View view, int position);
 

@@ -40,4 +40,6 @@
     <string name="btnIsuses2">btnIssuses2</string>
     <string name="btnIsuses3">btnIssuses3</string>
     <string name="text_btn_recycler_screen">RecyclerView Screen</string>
+    <string name="not_installed_google_photos">You not installed Google Photos</string>
+    <string name="not_img_picked">You haven\'t picked Image</string>
 </resources>
