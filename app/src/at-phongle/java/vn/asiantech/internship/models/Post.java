@@ -34,6 +34,4 @@ public class Post {
     public void setLikeNumber(int likeNumber) {
         this.likeNumber = likeNumber;
     }
-
-
 }
