@@ -19,7 +19,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements ObjectLef
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private ObjectLeftbarAdapter mAdapter;
-    private List<Object> mObjectList;
+    private List<Object> mObjectList = new ArrayList<>();
     private RecyclerView mRecyclerViewLeftbar;
 
     @Override
@@ -66,13 +66,11 @@ public class DrawerLayoutActivity extends AppCompatActivity implements ObjectLef
         mRecyclerViewLeftbar.setAdapter(mAdapter);
     }
     private void initData(){
-        mObjectList = new ArrayList<>();
         mObjectList.add(new User(R.drawable.img_avatar, "CristianoRonaldo@gmail.com"));
         mObjectList.add(new Option(R.drawable.ic_inbox, "Inbox"));
         mObjectList.add(new Option(R.drawable.ic_outbox, "Outbox"));
         mObjectList.add(new Option(R.drawable.ic_trash, "Trash"));
         mObjectList.add(new Option(R.drawable.ic_spam, "Spam"));
-
 
     }
 }
