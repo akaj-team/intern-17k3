@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".recyclerview.StatusActivity" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".login.LoginActivity"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".calculation.CalculatorActivity" />
     </application>

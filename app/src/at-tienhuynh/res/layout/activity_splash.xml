@@ -6,6 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context="vn.asiantech.internship.SplashActivity">
+
     <Button
         android:id="@+id/btnLoginScreen"
         android:layout_width="match_parent"
