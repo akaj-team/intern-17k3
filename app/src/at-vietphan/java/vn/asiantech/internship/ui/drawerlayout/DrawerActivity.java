@@ -170,7 +170,6 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     private void takeScreenshot() {
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-
         try {
             String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
             View v1 = getWindow().getDecorView().getRootView();
@@ -184,7 +183,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
             outputStream.flush();
             outputStream.close();
             shareImage(imageFile);
-        } catch (Throwable e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -194,13 +193,11 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("image/*");
-        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
-        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         try {
-            startActivity(Intent.createChooser(intent, "Chia sẻ"));
+            startActivity(Intent.createChooser(intent, "Share"));
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, "Không có ứng dụng nào", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No apps", Toast.LENGTH_SHORT).show();
         }
     }
 }
