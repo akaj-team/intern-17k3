@@ -72,7 +72,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     }
 
     private void initDrawerLayout() {
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,mToolbar, R.string.numberone, R.string.numbertwo) {
+        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.numberone, R.string.numbertwo) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
@@ -105,9 +105,10 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
             if (((Option) mObjects.get(position)).getOptionName().equals("Outbox")) {
                 String shareBody = "Here is the share content body";
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
+                sharingIntent.setType("image/*");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                sharingIntent.putExtra(Intent.EXTRA_STREAM, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.app_name)));
             } else {
                 mAdapter.notifyItemChanged(position);
@@ -117,7 +118,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     }
 
     @Override
-    public void onClickImage(View view) {
+    public void onClickImage() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
         if (GoogleUtil.isGooglePhotosInstalled(this)) {

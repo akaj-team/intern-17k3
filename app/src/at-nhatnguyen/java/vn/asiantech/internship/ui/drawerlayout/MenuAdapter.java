@@ -38,20 +38,42 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (viewType == USER) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_header, parent, false);
+            final UserHolder userHolder = new UserHolder(view);
+            userHolder.mImgAvatar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.onClickImage();
+                }
+            });
             return new UserHolder(view);
         } else {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_option, parent, false);
-            return new OptionHolder(view);
+            final OptionHolder optionHolder = new OptionHolder(view);
+            optionHolder.mTvOption.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    optionHolder.mTvOption.setTextColor(view.getResources().getColor(R.color.blue_500));
+                    optionHolder.mImgIcon.setPressed(true);
+                    mOnItemClickListener.onClickItem(optionHolder.getAdapterPosition());
+                }
+            });
+            optionHolder.mImgIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.onClickItem(optionHolder.getAdapterPosition());
+                }
+            });
+            return optionHolder;
         }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == USER) {
-            ((UserHolder) holder).onBindData();
+            ((UserHolder) holder).onBindData(mObjects.get(position));
         } else if (getItemViewType(position) == OPTION) {
-            ((OptionHolder) holder).onBindData();
+            ((OptionHolder) holder).onBindData(mObjects.get(position));
         }
     }
 
@@ -64,10 +86,10 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public interface OnItemClickListener {
         void onClickItem(int position);
 
-        void onClickImage(View view);
+        void onClickImage();
     }
 
-    class OptionHolder extends RecyclerView.ViewHolder {
+    static class OptionHolder extends RecyclerView.ViewHolder {
         private TextView mTvOption;
         private ImageView mImgIcon;
 
@@ -77,26 +99,12 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mImgIcon = itemView.findViewById(R.id.imgIcon);
         }
 
-        private void onBindData() {
-            Option option = (Option) mObjects.get(getAdapterPosition());
+        private void onBindData(Object object) {
+            Option option = (Option) object;
             mTvOption.setText(option.getOptionName());
             mImgIcon.setImageResource(option.getIcon());
             mTvOption.setTextColor(itemView.getResources().getColor(R.color.black));
             mImgIcon.setPressed(false);
-            mTvOption.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mTvOption.setTextColor(itemView.getResources().getColor(R.color.blue_500));
-                    mImgIcon.setPressed(true);
-                    mOnItemClickListener.onClickItem(getAdapterPosition());
-                }
-            });
-            mImgIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mOnItemClickListener.onClickItem(getAdapterPosition());
-                }
-            });
         }
     }
 
@@ -110,16 +118,10 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mTvMail = itemView.findViewById(R.id.tvMail);
         }
 
-        private void onBindData() {
-            User user = (User) mObjects.get(getAdapterPosition());
+        private void onBindData(Object object) {
+            User user = (User) object;
             mImgAvatar.setImageResource(user.getImgAvatar());
             mTvMail.setText(user.getMail());
-            mImgAvatar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mOnItemClickListener.onClickImage(itemView);
-                }
-            });
         }
     }
 }
