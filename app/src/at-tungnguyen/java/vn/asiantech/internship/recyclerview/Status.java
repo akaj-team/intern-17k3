@@ -1,4 +1,4 @@
-package vn.asiantech.internship.models;
+package vn.asiantech.internship.recyclerview;
 
 public class Status {
 

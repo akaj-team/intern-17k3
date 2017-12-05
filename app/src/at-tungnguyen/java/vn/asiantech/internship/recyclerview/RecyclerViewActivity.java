@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.recyclerview;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,13 +6,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
-import vn.asiantech.internship.models.Status;
-import vn.asiantech.internship.models.StatusAdapter;
+
+import vn.asiantech.internship.R;
 
 public class RecyclerViewActivity extends Activity implements StatusAdapter.OnItemClickListener {
     private List<Status> mStatusList = new ArrayList<>();
     private StatusAdapter mAdapter;
-    RecyclerView mRecyclerViewStatus;
+    private RecyclerView mRecyclerViewStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

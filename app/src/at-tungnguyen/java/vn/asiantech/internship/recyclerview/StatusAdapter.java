@@ -1,4 +1,4 @@
-package vn.asiantech.internship.models;
+package vn.asiantech.internship.recyclerview;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
