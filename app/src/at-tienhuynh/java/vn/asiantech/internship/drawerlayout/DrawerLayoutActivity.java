@@ -54,7 +54,6 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
         if (getSupportActionBar() != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
         callDrawerMenu();
         addMenuData();

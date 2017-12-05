@@ -36,10 +36,24 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         switch (viewType) {
             case HEADER_TYPE:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_header_drawer_layout, parent, false);
-                return new HeaderViewHoder(view);
+                HeaderViewHoder headerViewHoder = new HeaderViewHoder(view);
+                headerViewHoder.mImgHeader.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mOnItemClickListener.onImgHeaderClick(view);
+                    }
+                });
+                return headerViewHoder;
             case ITEM_TYPE:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_menu_drawer, parent, false);
-                return new ItemMenuViewHoder(view);
+                final ItemMenuViewHoder itemMenuViewHoder = new ItemMenuViewHoder(view);
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mOnItemClickListener.onItemClick(view, itemMenuViewHoder.getAdapterPosition());
+                    }
+                });
+                return itemMenuViewHoder;
         }
         return null;
     }
@@ -77,16 +91,10 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             super(itemView);
             mImgHeader = itemView.findViewById(R.id.imgHeader);
             mTvEmail = itemView.findViewById(R.id.tvEmail);
-            mImgHeader.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mOnItemClickListener.onImgHeaderClick(view);
-                }
-            });
         }
 
         void onBindDataHeader(int position) {
-            DrawerMenu drawerMenu = mListDrawerMenu.get(position);
+            DrawerMenu drawerMenu = DrawerMenuAdapter.mListDrawerMenu.get(position);
             mImgHeader.setImageResource(drawerMenu.getNumberImage());
             mTvEmail.setText(drawerMenu.getNameMenu());
         }
@@ -100,12 +108,6 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             super(itemView);
             mImgItemMenu = itemView.findViewById(R.id.imgItemMenu);
             mTvItemMenu = itemView.findViewById(R.id.tvItemMenuDrawer);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mOnItemClickListener.onItemClick(view, getAdapterPosition());
-                }
-            });
         }
 
         void onBindDataListMenu(int position) {
