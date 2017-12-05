@@ -1,11 +1,9 @@
 package vn.asiantech.internship;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,29 +14,24 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.OnItemClickListener {
 
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
-    private ImageView mImageView;
+    private CircleImageView mcircleImageView;
     private RecyclerView mRecyclerView;
     private View mMaincontent;
     private static final int REQUEST_PHOTO_FROM_GOOGLE_PHOTOS = 1;
     private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
-    public static boolean isGooglePhotosInstalled(Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        try {
-            return packageManager.getPackageInfo(GOOGLE_PHOTOS_PACKAGE_NAME, PackageManager.GET_ACTIVITIES) != null;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,17 +39,13 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         mToolbar = findViewById(R.id.appBar);
         mRecyclerView = findViewById(R.id.recyclerview);
         mDrawerLayout = findViewById(R.id.drawerLayout);
-        mImageView = findViewById(R.id.imgCirle);
         mMaincontent = findViewById(R.id.llContent);
+        mcircleImageView = findViewById(R.id.imgCirle);
         setSupportActionBar(mToolbar);
         initDrawer();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        mImageView.setImageURI(data.getData());
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+
 
     @Override
     protected void onStart() {
@@ -71,24 +60,29 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
 
     @Override
     public void onclickHeaderitem(View view, int position) {
-        if (isGooglePhotosInstalled(getApplicationContext())) {
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            List<ResolveInfo> resolveInfoList = this.getPackageManager().queryIntentActivities(intent, 0);
-            for (int i = 0; i < resolveInfoList.size(); i++) {
-                if (resolveInfoList.get(i) != null) {
-                    String packageName = resolveInfoList.get(i).activityInfo.packageName;
-                    if (GOOGLE_PHOTOS_PACKAGE_NAME.equals(packageName)) {
-                        intent.setComponent(new ComponentName(packageName, resolveInfoList.get(i).activityInfo.name));
-                        this.startActivityForResult(intent, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
-                        return;
-                    }
-                }
+        Intent intentToResolve = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        if (GoogleUtil.isGooglePhotosInstalled(this)) {
+            intentToResolve.setPackage(GOOGLE_PHOTOS_PACKAGE_NAME);
+            ResolveInfo resolveInfo = getPackageManager().resolveActivity(intentToResolve, 0);
+            if (resolveInfo != null) {
+                Intent intent = new Intent(intentToResolve);
+                intent.setType("image/*");
+                this.startActivityForResult(intent, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
             }
+        } else {
+            intentToResolve.setType("video/*, images/*");
+            this.startActivityForResult(intentToResolve, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
         }
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_PHOTO_FROM_GOOGLE_PHOTOS && resultCode == RESULT_OK && data != null) {
+            ((CircleImageView) findViewById(R.id.imgCirle)).setImageURI(data.getData());
+        } else {
+            Toast.makeText(this, R.string.have_not_picked_img, Toast.LENGTH_LONG).show();
+        }
+    }
     @Override
     public void onclickMenuitem(View view, int position) {
 
