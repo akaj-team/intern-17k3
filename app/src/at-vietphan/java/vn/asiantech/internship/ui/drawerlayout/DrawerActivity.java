@@ -1,10 +1,13 @@
 package vn.asiantech.internship.ui.drawerlayout;
 
-import android.content.Context;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +20,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -26,25 +32,18 @@ import vn.asiantech.internship.models.Issue;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
+import vn.asiantech.internship.utils.GoogleUtil;
 
 public class DrawerActivity extends AppCompatActivity implements IssueAdapter.OnItemClickListener {
     private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
     private static final int REQUEST_LOAD_IMG = 11;
-    private Toolbar mToolbar;
+    private Toolbar mToolBar;
     private DrawerLayout mDrawerLayout;
     private RecyclerView mRecyclerViewIssue;
     private List<Issue> mIssueList;
     private IssueAdapter mAdapter;
     private LinearLayout mLnMain;
 
-    public static boolean isGooglePhotosInstalled(Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        try {
-            return packageManager.getPackageInfo(GOOGLE_PHOTOS_PACKAGE_NAME, PackageManager.GET_ACTIVITIES) != null;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +65,11 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     }
 
     private void initViews() {
-        mToolbar = findViewById(R.id.toolbar);
+        mToolBar = findViewById(R.id.toolBar);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mRecyclerViewIssue = findViewById(R.id.recyclerViewMulti);
         mIssueList = new ArrayList<>();
-        mLnMain = findViewById(R.id.lnMain);
+        mLnMain = findViewById(R.id.llMain);
 
     }
 
@@ -78,6 +77,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         mIssueList.add(new Issue(R.drawable.ic_login, "Login"));
         mIssueList.add(new Issue(R.drawable.ic_caculator, "Calculator"));
         mIssueList.add(new Issue(R.drawable.ic_list_grey_900_24dp, "Recycler View"));
+        mIssueList.add(new Issue(R.drawable.ic_share_grey_900_24dp, "Share"));
         mIssueList.add(new Issue(R.drawable.ic_exit_to_app_grey_900_24dp, "Exit"));
     }
 
@@ -88,7 +88,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     }
 
     private void initDrawer() {
-        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.open, R.string.close) {
+        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar, R.string.open, R.string.close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
@@ -115,9 +115,9 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int displayViewWidth_ = size.x;
+        int displayViewWidth = size.x;
         ViewGroup.LayoutParams params = mRecyclerViewIssue.getLayoutParams();
-        params.width = displayViewWidth_ * 2 / 3;
+        params.width = displayViewWidth * 2 / 3;
         mRecyclerViewIssue.setLayoutParams(params);
     }
 
@@ -134,10 +134,10 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
                 startActivity(new Intent(this, RecyclerViewActivity.class));
                 break;
             case 4:
-                Intent startMain = new Intent(Intent.ACTION_MAIN);
-                startMain.addCategory(Intent.CATEGORY_HOME);
-                startActivity(startMain);
-                finish();
+                takeScreenshot();
+                break;
+            case 5:
+                ActivityCompat.finishAffinity(this);
                 break;
             default:
                 break;
@@ -149,7 +149,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     public void onClickImgAvatar() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
-        if (isGooglePhotosInstalled(this)) {
+        if (GoogleUtil.isGooglePhotosInstalled(this)) {
             intent.setPackage(GOOGLE_PHOTOS_PACKAGE_NAME);
             startActivityForResult(intent, REQUEST_LOAD_IMG);
         } else {
@@ -160,10 +160,47 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_LOAD_IMG && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_LOAD_IMG && resultCode == RESULT_OK && data != null) {
             ((CircleImageView) findViewById(R.id.circleImgAvater)).setImageURI(data.getData());
         } else {
-            Toast.makeText(this, "You haven't picked Image", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.have_not_picked_img, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void takeScreenshot() {
+        Date now = new Date();
+        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+
+        try {
+            String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
+            View v1 = getWindow().getDecorView().getRootView();
+            v1.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+            v1.setDrawingCacheEnabled(false);
+            File imageFile = new File(mPath);
+            FileOutputStream outputStream = new FileOutputStream(imageFile);
+            int quality = 100;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+            outputStream.flush();
+            outputStream.close();
+            shareImage(imageFile);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void shareImage(File file) {
+        Uri uri = Uri.fromFile(file);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        try {
+            startActivity(Intent.createChooser(intent, "Chia sẻ"));
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, "Không có ứng dụng nào", Toast.LENGTH_SHORT).show();
         }
     }
 }

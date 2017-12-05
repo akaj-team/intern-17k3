@@ -34,4 +34,5 @@
     <string name="validate_input_data">Number A or Number B is Empty !</string>
     <string name="calculator_demo">CALCULATOR DEMO</string>
     <string name="result_null" />
+    <string name="have_not_picked_img">You haven\'t picked Image</string>
 </resources>

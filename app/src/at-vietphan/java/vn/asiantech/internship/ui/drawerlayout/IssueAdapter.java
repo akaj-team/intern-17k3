@@ -39,10 +39,28 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         switch (viewType) {
             case HEADER:
                 View itemView0 = layoutInflater.inflate(R.layout.row_header, parent, false);
-                return new HeaderHolder(itemView0);
+                HeaderHolder headerHolder = new HeaderHolder(itemView0);
+                headerHolder.circleImgAvatar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (mOnItemClickListener != null) {
+                            mOnItemClickListener.onClickImgAvatar();
+                        }
+                    }
+                });
+                return headerHolder;
             case ITEM:
                 View itemView1 = layoutInflater.inflate(R.layout.row_item, parent, false);
-                return new ItemHolder(itemView1);
+                final ItemHolder itemHolder = new ItemHolder(itemView1);
+                itemHolder.tvNameIssue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (mOnItemClickListener != null) {
+                            mOnItemClickListener.onClickItemIssue(itemHolder.getAdapterPosition());
+                        }
+                    }
+                });
+                return itemHolder;
             default:
                 break;
         }
@@ -58,7 +76,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 break;
             case ITEM:
                 ItemHolder itemHolder = (ItemHolder) holder;
-                itemHolder.onBindData(position);
+                itemHolder.onBindData(position, mIssueList);
                 break;
         }
     }
@@ -74,24 +92,12 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         void onClickImgAvatar();
     }
 
-    class HeaderHolder extends RecyclerView.ViewHolder {
+    static class HeaderHolder extends RecyclerView.ViewHolder {
         private CircleImageView circleImgAvatar;
         private TextView tvEmail;
 
         HeaderHolder(View itemView) {
             super(itemView);
-            initViews();
-            circleImgAvatar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onClickImgAvatar();
-                    }
-                }
-            });
-        }
-
-        private void initViews() {
             circleImgAvatar = itemView.findViewById(R.id.circleImgAvater);
             tvEmail = itemView.findViewById(R.id.tvEmail);
         }
@@ -102,29 +108,17 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-    class ItemHolder extends RecyclerView.ViewHolder {
+    static class ItemHolder extends RecyclerView.ViewHolder {
         private ImageView imgIssue;
         private TextView tvNameIssue;
 
         ItemHolder(final View itemView) {
             super(itemView);
-            initViews();
-            tvNameIssue.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onClickItemIssue(getAdapterPosition());
-                    }
-                }
-            });
-        }
-
-        private void initViews() {
             imgIssue = itemView.findViewById(R.id.imgIssue);
             tvNameIssue = itemView.findViewById(R.id.tvNameIssue);
         }
 
-        private void onBindData(int position) {
+        private void onBindData(int position, List<Issue> mIssueList) {
             Issue issue = mIssueList.get(position - 1);
             imgIssue.setImageResource(issue.getIcon());
             tvNameIssue.setText(issue.getName());
