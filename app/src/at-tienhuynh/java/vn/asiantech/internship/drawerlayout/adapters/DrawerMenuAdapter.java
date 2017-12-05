@@ -94,12 +94,12 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     static class ItemMenuViewHoder extends RecyclerView.ViewHolder {
         private ImageView mImgItemMenu;
-        private TextView mYvItemMenu;
+        private TextView mTvItemMenu;
 
         ItemMenuViewHoder(View itemView) {
             super(itemView);
             mImgItemMenu = itemView.findViewById(R.id.imgItemMenu);
-            mYvItemMenu = itemView.findViewById(R.id.tvItemMenuDrawer);
+            mTvItemMenu = itemView.findViewById(R.id.tvItemMenuDrawer);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -111,7 +111,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         void onBindDataListMenu(int position) {
             DrawerMenu drawerMenu = mListDrawerMenu.get(position);
             mImgItemMenu.setImageResource(drawerMenu.getNumberImage());
-            mYvItemMenu.setText(drawerMenu.getNameMenu());
+            mTvItemMenu.setText(drawerMenu.getNameMenu());
         }
     }
 
