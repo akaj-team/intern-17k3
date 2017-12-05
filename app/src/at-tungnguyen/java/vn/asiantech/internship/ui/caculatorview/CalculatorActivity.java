@@ -88,7 +88,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     private double division(double a, double b) {
         if (b == 0) {
-            Toast.makeText(this, R.string.tv_number0, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.tv_number_not_0, Toast.LENGTH_SHORT).show();
             return 0;
         }
         return a / b;

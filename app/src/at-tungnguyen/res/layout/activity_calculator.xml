@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_edt_number"
             android:gravity="center"
-            android:hint="@string/tv_numberA"
+            android:hint="@string/edt_hint_number_a"
             android:inputType="numberDecimal|numberSigned"
             android:padding="8dp" />
 
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_edt_number"
             android:gravity="center"
-            android:hint="@string/tv_numberB"
+            android:hint="@string/edt_hint_number_b"
             android:inputType="numberDecimal|numberSigned"
             android:padding="8dp" />
     </LinearLayout>
