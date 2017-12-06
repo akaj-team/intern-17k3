@@ -1,9 +1,5 @@
 package vn.asiantech.internship;
 
-/**
- * Created by tungnguyen on 06/12/2017.
- */
-
 public class DrawerItem {
     private String name;
     private int type;

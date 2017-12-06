@@ -71,10 +71,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         }
     }
 
-    @Override
-    public void onclickMenuitem(View view, int position) {
 
-    }
 
     private void getData() {
         mData = new ArrayList<>();
