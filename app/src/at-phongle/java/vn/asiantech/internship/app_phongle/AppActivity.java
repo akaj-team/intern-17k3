@@ -10,7 +10,7 @@ import android.widget.Button;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.app_calculator.CalculatorActivity;
 import vn.asiantech.internship.login.LoginActivity;
-import vn.asiantech.internship.recyclerview.PostActivity;
+import vn.asiantech.internship.ui.recyclerview.PostActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;

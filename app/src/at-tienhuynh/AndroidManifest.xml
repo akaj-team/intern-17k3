@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".recyclerview.StatusActivity" />
+        <activity android:name=".ui.recyclerview.StatusActivity" />
         <activity
             android:name=".login.LoginActivity"
             android:theme="@style/NoActionBarTheme" />

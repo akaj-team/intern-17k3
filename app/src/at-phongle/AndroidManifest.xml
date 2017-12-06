@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".app_calculator.CalculatorActivity" />
-        <activity android:name=".recyclerview.PostActivity" />
+        <activity android:name=".ui.recyclerview.PostActivity" />
         <activity android:name=".login.LoginActivity" />
     </application>
 

@@ -1,4 +1,4 @@
-package vn.asiantech.internship.recyclerview;
+package vn.asiantech.internship.ui.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

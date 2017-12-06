@@ -1,4 +1,4 @@
-package vn.asiantech.internship.recyclerview;
+package vn.asiantech.internship.ui.recyclerview;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
