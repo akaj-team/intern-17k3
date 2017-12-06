@@ -13,32 +13,45 @@ import vn.asiantech.internship.models.UserCompany;
 
 /**
  * Created by hoangnhat on 06/12/2017.
+ * Create UserCompanyAdapter
  */
-
-public class UserCompanyAdapter extends RecyclerView.Adapter<UserCompanyAdapter.UserCompanyViewHolder>{
+public class UserCompanyAdapter extends RecyclerView.Adapter<UserCompanyAdapter.UserCompanyViewHolder> {
     private List<UserCompany> mUserCompanies;
+    private OnItemClickListener mOnItemClickListener;
 
-    public UserCompanyAdapter(List<UserCompany> userCompanies){
-        mUserCompanies=userCompanies;
+    UserCompanyAdapter(List<UserCompany> userCompanies,OnItemClickListener onItemClickListener) {
+        mUserCompanies = userCompanies;
+        mOnItemClickListener=onItemClickListener;
     }
 
     @Override
     public UserCompanyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user,parent,false);
-        return new UserCompanyViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
+        final UserCompanyViewHolder userCompanyViewHolder = new UserCompanyViewHolder(view);
+        userCompanyViewHolder.mNameUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOnItemClickListener.onClickItem(1);
+            }
+        });
+        return userCompanyViewHolder;
     }
 
     @Override
     public void onBindViewHolder(UserCompanyViewHolder holder, int position) {
-
+        holder.onBindData(mUserCompanies.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mUserCompanies.size();
     }
 
-    static class UserCompanyViewHolder extends RecyclerView.ViewHolder{
+    public interface OnItemClickListener {
+        void onClickItem(int position);
+    }
+
+    static class UserCompanyViewHolder extends RecyclerView.ViewHolder {
         private TextView mIDUser;
         private TextView mNameUser;
         private TextView mAgeUser;
@@ -50,11 +63,10 @@ public class UserCompanyAdapter extends RecyclerView.Adapter<UserCompanyAdapter.
             mAgeUser = itemView.findViewById(R.id.tvAgeUser);
         }
 
-        private void onBindData(UserCompany userCompany){
-//            UserCompany userCompany = mUserCompanies.get(getAdapterPosition());
-            mIDUser.setText(userCompany.getIDUser());
+        private void onBindData(UserCompany userCompany) {
+            mIDUser.setText(String.valueOf(userCompany.getIDUser()));
             mNameUser.setText(userCompany.getNameUser());
-            mAgeUser.setText(userCompany.getAgeUser());
+            mAgeUser.setText(String.valueOf(userCompany.getAgeUser()));
         }
     }
 }

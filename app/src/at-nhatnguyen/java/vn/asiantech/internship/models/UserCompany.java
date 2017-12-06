@@ -9,6 +9,9 @@ public class UserCompany {
     private String nameUser;
     private int ageUser;
 
+    public UserCompany(){
+    }
+
     public UserCompany(int idUser, String nameUser, int ageUser) {
         this.iDUser = idUser;
         this.nameUser = nameUser;
