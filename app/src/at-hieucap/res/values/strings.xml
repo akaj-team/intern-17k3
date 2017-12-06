@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">hieucap-17k3</string>
+    <string name="text_email">caphieu@gmail.com</string>
+    <string name="contain">DrawerLayout</string>
+    <string name="text_inbox">Inbox</string>
 </resources>

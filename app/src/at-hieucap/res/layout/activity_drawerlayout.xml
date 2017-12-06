@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/frContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/contain"
+            android:textSize="40dp" />
+    </FrameLayout>
+
+    <android.support.design.widget.NavigationView
+        android:layout_width="match_parent"
+        android:id="@+id/navigationRecyclerView"
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>
