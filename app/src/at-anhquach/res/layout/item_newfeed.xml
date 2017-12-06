@@ -27,8 +27,7 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:textSize="15dp"
-                android:textStyle="bold"
-                apps:text="hhhh" />
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imgLike"
@@ -64,8 +63,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:padding="15dp"
-            android:textSize="13dp"
-            apps:text='hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh' />
+            android:textSize="13dp" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
