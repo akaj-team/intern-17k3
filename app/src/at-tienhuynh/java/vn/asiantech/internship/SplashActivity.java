@@ -9,11 +9,13 @@ import android.widget.Button;
 import vn.asiantech.internship.calculation.CalculatorActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
+import vn.asiantech.internship.savedata.SaveDataActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
     private Button mBtnCalculationScreen;
     private Button mBtnRecyclerViewScreen;
+    private Button mBtnSaveDataScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +29,14 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLoginScreen = findViewById(R.id.btnLoginScreen);
         mBtnCalculationScreen = findViewById(R.id.btnCalculatorScreen);
         mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
+        mBtnSaveDataScreen = findViewById(R.id.btnSaveDataScreen);
     }
 
     private void initListener() {
         mBtnLoginScreen.setOnClickListener(this);
         mBtnCalculationScreen.setOnClickListener(this);
         mBtnRecyclerViewScreen.setOnClickListener(this);
+        mBtnSaveDataScreen.setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +50,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnRecyclerViewScreen:
                 startActivity(new Intent(this, StatusActivity.class));
+                break;
+            case R.id.btnSaveDataScreen:
+                startActivity(new Intent(this, SaveDataActivity.class));
                 break;
         }
     }

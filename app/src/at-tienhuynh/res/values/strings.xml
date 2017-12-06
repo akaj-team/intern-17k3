@@ -36,4 +36,9 @@
     <string name="text_btn_login_screen">Login Screen</string>
     <string name="text_btn_calculator_screen">Calculation Screen</string>
     <string name="text_btn_recycler_screen">RecyclerView Screen</string>
+    <string name="text_btn_save_data_screen">Save Data Screen</string>
+    <string name="text_btn_ex1">Exercise1</string>
+    <string name="text_btn_ex2">Exercise2</string>
+    <string name="text_btn_ex3">Exercise3</string>
+    <string name="text_btn_save_value">Save</string>
 </resources>
