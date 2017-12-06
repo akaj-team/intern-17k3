@@ -12,16 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="vn.asiantech.internship.app_phongle.AppActivity">
+        <activity android:name="vn.asiantech.internship.drawerlayout.DrawerLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app_calculator.CalculatorActivity" />
+        <activity android:name=".calculator.CalculatorActivity" />
         <activity android:name=".recyclerview.PostActivity" />
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".drawerlayout.DrawerLayoutActivity" />
+        <activity android:name=".app_phongle.AppActivity" />
     </application>
 
 </manifest>
