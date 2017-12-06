@@ -11,7 +11,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -64,13 +63,12 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_PHOTO_FROM_GOOGLE_PHOTOS && resultCode == RESULT_OK && data != null) {
-            mData.get(0).setImageuri(data.getData()+"");
+            mData.get(0).setImageuri(data.getData() + "");
             mAdapter.notifyDataSetChanged();
         } else {
             Toast.makeText(this, R.string.have_not_picked_img, Toast.LENGTH_LONG).show();
         }
     }
-
 
 
     private void getData() {
@@ -86,19 +84,16 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
-                Log.i("XXX", "onDrawerSlide: ");
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                Log.i("XXX", "onDrawerOpened: ");
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-                Log.i("XXX", "onDrawerClosed: ");
             }
         };
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
