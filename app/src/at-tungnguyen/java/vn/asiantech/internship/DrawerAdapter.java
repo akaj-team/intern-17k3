@@ -63,7 +63,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return mList.get(position).getType();
     }
 
-    private static class HeaderViewHolder extends RecyclerView.ViewHolder {
+    private class HeaderViewHolder extends RecyclerView.ViewHolder {
         private TextView tvHeaderTitle;
         private CircleImageView mImgHeader;
 
@@ -80,7 +80,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public static class ContentViewHolder extends RecyclerView.ViewHolder {
+    private class ContentViewHolder extends RecyclerView.ViewHolder {
         private TextView mContent;
         private ImageView mImageView;
 

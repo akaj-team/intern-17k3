@@ -6,9 +6,7 @@ import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -25,33 +23,26 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     private List<DrawerItem> mData;
     private DrawerAdapter mAdapter;
     private RecyclerView mRecyclerView;
-    private static final float SET_WIDTH = 2 / 3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
-        getData();
+
         mToolbar = findViewById(R.id.appBar);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mRecyclerView = findViewById(R.id.recyclerview);
-        setSupportActionBar(mToolbar);
-        initDrawer();
         if (getSupportActionBar() != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
+        initDrawer();
+        getData();
         mAdapter = new DrawerAdapter(this, mData);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
-        RecyclerView mRecyclerView = findViewById(R.id.recyclerview);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
     }
+
 
     @Override
     public void onclickHeaderitem(View view, int position) {
