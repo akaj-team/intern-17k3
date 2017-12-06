@@ -3,10 +3,6 @@ package vn.asiantech.internship;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
-/**
- * Created by tungnguyen on 05/12/2017.
- */
-
 public class GoogleUtil {
     public static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
 

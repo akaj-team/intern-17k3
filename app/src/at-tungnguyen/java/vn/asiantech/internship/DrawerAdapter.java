@@ -67,7 +67,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         private TextView tvHeaderTitle;
         private CircleImageView mImgHeader;
 
-         HeaderViewHolder(View itemView, final OnItemClickListener onItemClickListener) {
+        HeaderViewHolder(View itemView, final OnItemClickListener onItemClickListener) {
             super(itemView);
             mImgHeader = itemView.findViewById(R.id.imgCirle);
             mImgHeader.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +84,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         private TextView mContent;
         private ImageView mImageView;
 
-         ContentViewHolder(View itemView) {
+        ContentViewHolder(View itemView) {
             super(itemView);
             mContent = itemView.findViewById(R.id.tvItemMenu);
             mImageView = itemView.findViewById(R.id.imgItemMenu);
@@ -92,7 +92,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public interface OnItemClickListener {
-         void onclickHeaderitem(View view, int position);
+        void onclickHeaderitem(View view, int position);
         /**
          This is Javadoc
          **/

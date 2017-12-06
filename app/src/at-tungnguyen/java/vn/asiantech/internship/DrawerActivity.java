@@ -1,6 +1,8 @@
 package vn.asiantech.internship;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
@@ -9,7 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,11 +27,11 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     private List<DrawerItem> mData;
     private DrawerAdapter mAdapter;
     private RecyclerView mRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
-
         mToolbar = findViewById(R.id.appBar);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mRecyclerView = findViewById(R.id.recyclerview);
@@ -39,10 +43,10 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         getData();
         mAdapter = new DrawerAdapter(this, mData);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.getLayoutParams().width = getWidth() * 2 / 3;
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
-
 
     @Override
     public void onclickHeaderitem(View view, int position) {
@@ -67,6 +71,14 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         }
     }
 
+    private int getWidth() {
+        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        assert wm != null;
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.x;
+    }
 
     private void getData() {
         mData = new ArrayList<>();
