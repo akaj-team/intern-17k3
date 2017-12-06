@@ -24,7 +24,8 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     private static final int REQUEST_PHOTO_FROM_GOOGLE_PHOTOS = 1;
     private List<DrawerItem> mData;
     private DrawerAdapter mAdapter;
-
+    private RecyclerView mRecyclerView;
+    private static final float SET_WIDTH = 2 / 3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +33,13 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         getData();
         mToolbar = findViewById(R.id.appBar);
         mDrawerLayout = findViewById(R.id.drawerLayout);
+        mRecyclerView = findViewById(R.id.recyclerview);
         setSupportActionBar(mToolbar);
         initDrawer();
+        if (getSupportActionBar() != null) {
+            setSupportActionBar(mToolbar);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
     }
 
     @Override
