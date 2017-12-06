@@ -10,7 +10,6 @@ import vn.asiantech.internship.R;
  * Created at 2017
  * Created by jackty on 05/12/2017.
  */
-
 public final class GoogleUtil {
     public static boolean isGooglePhotosInstalled(Context context) {
         PackageManager packageManager = context.getPackageManager();

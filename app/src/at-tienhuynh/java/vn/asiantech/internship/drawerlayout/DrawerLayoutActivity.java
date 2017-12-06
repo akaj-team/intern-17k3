@@ -34,7 +34,6 @@ import vn.asiantech.internship.recyclerview.StatusActivity;
  * Created at 2017
  * Created by jackty on 30/11/2017.
  */
-
 public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMenuAdapter.onItemClickListener {
 
     private static final int REQUEST_PHOTO_FROM_GOOGLE_PHOTOS = 1;
@@ -118,9 +117,8 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
     }
 
     /**
-     OnClick Item Hoder
+     * OnClick Item Hoder
      **/
-
     @Override
     public void onItemClick(View view, int position) {
         switch (position) {
@@ -140,9 +138,8 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
     }
 
     /**
-     Onclick Header Hoder
+     * Onclick Header Hoder
      **/
-
     @Override
     public void onImgHeaderClick(View view) {
         Intent intentToResolve = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

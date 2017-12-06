@@ -18,7 +18,6 @@ import vn.asiantech.internship.drawerlayout.models.DrawerMenu;
  * Created at 2017
  * Created by jackty on 01/12/2017.
  */
-
 public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final int HEADER_TYPE = 0;
     private final int ITEM_TYPE = 1;
@@ -86,7 +85,6 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     /**
      * Header Hoder
      **/
-
     static class HeaderHoder extends RecyclerView.ViewHolder {
         private CircleImageView mImgHeader;
         private TextView mTvEmail;
@@ -107,7 +105,6 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     /**
      * Item Hoder
      **/
-
     static class ItemHoder extends RecyclerView.ViewHolder {
         private ImageView mImgItemMenu;
         private TextView mTvItemMenu;
@@ -128,7 +125,6 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     /**
      * OnClick Drawer Menu
      **/
-
     public interface onItemClickListener {
         void onItemClick(View view, int position);
 
