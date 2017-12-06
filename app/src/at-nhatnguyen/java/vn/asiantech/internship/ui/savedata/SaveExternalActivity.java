@@ -9,12 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 import vn.asiantech.internship.R;
 
@@ -30,30 +29,22 @@ public class SaveExternalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_external);
         initView();
+        initFile();
         initListener();
     }
 
     private void initView() {
         mBtnInExternal = findViewById(R.id.btnSaveExternal);
         mEdtExternal = findViewById(R.id.edtExternal);
+        mSDCard = Environment.getExternalStorageDirectory().getAbsolutePath();
+        readData(mSDCard + FOLDER_NAME + TEXT_NAME_FILE);
+    }
+
+    private void initFile() {
         File file = new File(Environment.getExternalStorageDirectory(), FOLDER_NAME);
         if (!file.exists()) {
+            //noinspection ResultOfMethodCallIgnored
             file.mkdirs();
-        }
-        mSDCard = Environment.getExternalStorageDirectory().getAbsolutePath();
-
-        try {
-            FileReader fileReader = new FileReader(mSDCard + FOLDER_NAME + TEXT_NAME_FILE);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            if (bufferedReader.readLine() != null) {
-                mEdtExternal.setText(bufferedReader.readLine());
-            } else {
-                mEdtExternal.setText("abc");
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -61,19 +52,36 @@ public class SaveExternalActivity extends AppCompatActivity {
         mBtnInExternal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                try {
-                    FileWriter fileWriter = new FileWriter(mSDCard + FOLDER_NAME + TEXT_NAME_FILE);
-                    if (!TextUtils.isEmpty(mEdtExternal.getText())) {
-                        fileWriter.write(mEdtExternal.getText().toString());
-                    } else {
-                        Toast.makeText(SaveExternalActivity.this, mSDCard, Toast.LENGTH_SHORT).show();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                writeData(mSDCard + FOLDER_NAME + TEXT_NAME_FILE);
             }
         });
+    }
+
+    private void readData(String string) {
+        try {
+            Scanner scan = new Scanner(new File(string));
+            StringBuilder data = new StringBuilder();
+            while (scan.hasNext()) {
+                data.append(scan.nextLine());
+            }
+            scan.close();
+            mEdtExternal.setText(data.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeData(String string) {
+        try {
+            FileWriter fileWriter = new FileWriter(string);
+            if (!TextUtils.isEmpty(mEdtExternal.getText())) {
+                fileWriter.write(mEdtExternal.getText().toString());
+            } else {
+                Toast.makeText(SaveExternalActivity.this, mSDCard, Toast.LENGTH_SHORT).show();
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -25,6 +25,7 @@
         <activity android:name=".ui.savedata.SaveDataActivity" />
         <activity android:name=".ui.savedata.SharePreferenceActivity" />
         <activity android:name=".ui.savedata.SaveExternalActivity" />
+        <activity android:name=".ui.savedata.SaveDatabaseActivity"></activity>
     </application>
 
 </manifest>
