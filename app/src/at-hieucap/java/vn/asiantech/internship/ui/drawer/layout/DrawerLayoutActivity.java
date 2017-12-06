@@ -13,7 +13,7 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 
-public class DrawerLayoutActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DrawerLayoutActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,EventAdapter.OnItemClickListener {
     private RecyclerView mRecyclerViewDrawerLayout;
     private EventAdapter mAdapter;
     private List<Event> mEventList=new ArrayList<>();
@@ -23,11 +23,15 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Navigatio
         setContentView(R.layout.activity_drawerlayout);
         initView();
         initData();
+        initAdapter();
 
     }
 
+    private void initAdapter() {
+    }
+
     private void initData() {
-        mEventList.add(new Event(getString(R.string.text_inbox), getResources().getDrawable(R.drawable.ic_ibrahimovic)));
+//        mEventList.add(new Event(R.drawable.ic_ibrahimovic),(getString(R.string.text_inbox)));
     }
 
     private void initView() {
@@ -37,5 +41,10 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Navigatio
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
+    }
+
+    public void onOfflineClick(int position) {
+        mEventList.remove(position);
+        mAdapter.notifyItemRemoved(position);
     }
 }

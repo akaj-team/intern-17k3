@@ -1,12 +1,10 @@
 package vn.asiantech.internship.ui.drawer.layout;
 
-import android.widget.ImageView;
-
 public class Event {
-    public ImageView icon;
+    public int icon;
     public String name;
 
-    public Event(ImageView icon, String name) {
+    public Event(int icon, String name) {
         this.icon = icon;
         this.name = name;
     }
@@ -19,11 +17,11 @@ public class Event {
         this.name = name;
     }
 
-    public ImageView getIcon() {
+    public int getIcon() {
         return icon;
     }
 
-    public void setIcon(ImageView icon) {
+    public void setIcon(int icon) {
         this.icon = icon;
     }
 }
