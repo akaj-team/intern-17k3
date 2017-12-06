@@ -107,7 +107,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
         return mActionBarDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
-    public static List<DrawerMenu> getData() {
+    public List<DrawerMenu> getData() {
         List<DrawerMenu> listDrawerMenu = new ArrayList<>();
         listDrawerMenu.add(new DrawerMenu(R.drawable.ic_user_header, "tien.huynh3@asiantech.vn"));
         listDrawerMenu.add(new DrawerMenu(R.drawable.ic_inbox_black, "Issues 1"));
@@ -117,9 +117,12 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
         return listDrawerMenu;
     }
 
+    /**
+     OnClick Item Hoder
+     **/
+
     @Override
     public void onItemClick(View view, int position) {
-        // Onclick Item Menu
         switch (position) {
             case 1:
                 startActivity(new Intent(this, LoginActivity.class));
@@ -136,9 +139,12 @@ public class DrawerLayoutActivity extends AppCompatActivity implements DrawerMen
         }
     }
 
+    /**
+     Onclick Header Hoder
+     **/
+
     @Override
     public void onImgHeaderClick(View view) {
-        // Onclick Img Header
         Intent intentToResolve = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         if (GoogleUtil.isGooglePhotosInstalled(this)) {
             intentToResolve.setPackage(GOOGLE_PHOTOS_PACKAGE_NAME);
