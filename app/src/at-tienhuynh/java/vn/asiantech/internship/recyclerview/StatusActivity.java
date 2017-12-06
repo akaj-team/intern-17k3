@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.recyclerview.models.Status;
+import vn.asiantech.internship.recyclerview.models.Status;
 
 public class StatusActivity extends AppCompatActivity implements StatusAdapter.OnItemClickListener {
 
