@@ -23,17 +23,28 @@ public class UsersDatabase extends SQLiteOpenHelper {
     private static final String KEY_COMPANY_NAME = "name";
     private static final String KEY_COMPANY_SLOGAN = "slogan";
 
-    public UsersDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public UsersDatabase(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        String CREATE_TABLE_USERS = "create table " + TABLE_USER + "(" + KEY_USERS_ID + " integer primary key autoincrement, "
+                + KEY_COMPANY_ID_USER + " integer, " + KEY_USERS_AGE + " integer, " + " foreign key"
+                + KEY_USERS_ID + " references" + TABLE_COMPANY + "(" + KEY_COMPANY_ID_USER + ")" + " )";
+
+        String CREATE_TABLE_COMPANY = "create table " + TABLE_COMPANY + "(" + KEY_COMPANY_ID + " integer primary key autoincrement, "
+                + KEY_USERS_NAME + " text, " + KEY_COMPANY_NAME + " text, " + KEY_COMPANY_SLOGAN + " text" + " )";
+        sqLiteDatabase.execSQL(CREATE_TABLE_COMPANY);
+        sqLiteDatabase.execSQL(CREATE_TABLE_USERS);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_COMPANY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        onCreate(sqLiteDatabase);
 
     }
 }

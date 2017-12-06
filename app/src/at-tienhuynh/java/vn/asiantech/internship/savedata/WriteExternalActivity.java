@@ -3,6 +3,7 @@ package vn.asiantech.internship.savedata;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,8 +49,10 @@ public class WriteExternalActivity extends AppCompatActivity {
             fileInputStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            Log.d("err", "" + e);
         } catch (IOException e) {
             e.printStackTrace();
+            Log.d("err", "" + e);
         }
         return values;
     }
@@ -61,8 +64,10 @@ public class WriteExternalActivity extends AppCompatActivity {
             outputStreamWriter.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            Log.d("err", "" + e);
         } catch (IOException e) {
             e.printStackTrace();
+            Log.d("err", "" + e);
         }
     }
 }
