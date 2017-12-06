@@ -25,6 +25,6 @@
     <string name="tv_email_leftbar">cristiano_ronaldo@gmail.com</string>
     <string name="tv_item_calculator">Calculator</string>
     <string name="tv_item_recyclerview">RecyclerView</string>
-    <string name="tv_main_drawerlayout">This is content main</string>
+    <string name="tv_main_drawerLayout">This is content main</string>
     <string name="tv_option">Option</string>
 </resources>

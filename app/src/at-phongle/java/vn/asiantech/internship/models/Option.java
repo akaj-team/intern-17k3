@@ -4,7 +4,7 @@ public class Option {
     private int icon;
     private String name;
 
-    public Option(int icon, String name) {
+    public Option(int icon, String name, boolean isClicked) {
         this.icon = icon;
         this.name = name;
     }

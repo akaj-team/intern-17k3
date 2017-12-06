@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -14,13 +15,13 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
 
-public class ObjectLeftbarAdapter extends RecyclerView.Adapter<ViewHolder> {
-    public static final int USER = 0;
-    public static final int OPTION = 1;
+public class ObjectLeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
+    private static final int USER = 0;
+    private static final int OPTION = 1;
     private List<Object> mObjects;
     private OnItemClickListener mOnItemClickListener;
 
-    ObjectLeftbarAdapter(List<Object> objects, OnItemClickListener onItemClickListener) {
+    ObjectLeftBarAdapter(List<Object> objects, OnItemClickListener onItemClickListener) {
         mObjects = objects;
         mOnItemClickListener = onItemClickListener;
     }
@@ -57,7 +58,8 @@ public class ObjectLeftbarAdapter extends RecyclerView.Adapter<ViewHolder> {
             ((OptionHolder) holder).onBindData();
         }
     }
-    class UserHolder extends RecyclerView.ViewHolder{
+
+    class UserHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView mImgAvatar;
         private TextView mTvEmail;
 
@@ -65,42 +67,55 @@ public class ObjectLeftbarAdapter extends RecyclerView.Adapter<ViewHolder> {
             super(itemView);
             mImgAvatar = itemView.findViewById(R.id.imgAvatar);
             mTvEmail = itemView.findViewById(R.id.tvEmail);
-
-            mImgAvatar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+            mImgAvatar.setOnClickListener(this);
         }
-        private  void onBindData(){
-            User user = (User)mObjects.get(getAdapterPosition());
-            mImgAvatar.setImageResource(user.getAvatar());
+
+        private void onBindData() {
+            User user = (User) mObjects.get(getAdapterPosition());
+            mImgAvatar.setImageDrawable(user.getAvatar());
             mTvEmail.setText(user.getMail());
         }
+
+        @Override
+        public void onClick(View v) {
+            mOnItemClickListener.onClickChangeAvatar();
+        }
     }
-    class OptionHolder extends RecyclerView.ViewHolder{
-            private ImageView mImgIconOption;
-            private TextView mTvOption;
 
-            OptionHolder(View itemView) {
-                super(itemView);
-                mImgIconOption = itemView.findViewById(R.id.imgIconOption);
-                mTvOption = itemView.findViewById(R.id.tvOption);
+    class OptionHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private LinearLayout mLlItemMenuLeftBar;
+        private ImageView mImgIconOption;
+        private TextView mTvOption;
 
-            }
-        private  void onBindData(){
-            Option option = (Option)mObjects.get(getAdapterPosition());
+        OptionHolder(final View itemView) {
+            super(itemView);
+            mImgIconOption = itemView.findViewById(R.id.imgIconOption);
+            mTvOption = itemView.findViewById(R.id.tvOption);
+            mLlItemMenuLeftBar = itemView.findViewById(R.id.llItemMenuLeftBar);
+            mLlItemMenuLeftBar.setOnClickListener(this);
+        }
+
+        private void onBindData() {
+            Option option = (Option) mObjects.get(getAdapterPosition());
             mImgIconOption.setImageResource(option.getIcon());
             mTvOption.setText(option.getName());
         }
+
+        @Override
+        public void onClick(View v) {
+            mOnItemClickListener.onClickOption(getAdapterPosition());
+        }
     }
+
     @Override
     public int getItemCount() {
         return mObjects.size();
     }
 
     public interface OnItemClickListener {
-//        void onOfflineClick(int position);
+        void onClickChangeAvatar();
+
+        void onClickOption(int position);
     }
+
 }

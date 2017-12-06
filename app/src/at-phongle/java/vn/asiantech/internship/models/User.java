@@ -1,19 +1,21 @@
 package vn.asiantech.internship.models;
 
+import android.graphics.drawable.Drawable;
+
 public class User {
-    private int avatar;
+    private Drawable avatar;
     private String mail;
 
-    public User(int avatar, String mail) {
+    public User(Drawable avatar, String mail) {
         this.avatar = avatar;
         this.mail = mail;
     }
 
-    public int getAvatar() {
+    public Drawable getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(Drawable avatar) {
         this.avatar = avatar;
     }
 
