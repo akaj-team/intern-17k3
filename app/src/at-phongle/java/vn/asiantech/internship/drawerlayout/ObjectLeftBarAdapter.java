@@ -40,11 +40,11 @@ public class ObjectLeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
         if (viewType == USER) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_header_leftbar, parent, false);
-            return new UserHolder(view);
+            return new UserHolder(view, mOnItemClickListener);
         } else if (viewType == OPTION) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_menu_leftbar, parent, false);
-            return new OptionHolder(view);
+            return new OptionHolder(view, mOnItemClickListener);
         } else {
             return null;
         }
@@ -53,25 +53,27 @@ public class ObjectLeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (getItemViewType(position) == USER) {
-            ((UserHolder) holder).onBindData();
+            ((UserHolder) holder).onBindData(mObjects.get(position));
         } else if (getItemViewType(position) == OPTION) {
-            ((OptionHolder) holder).onBindData();
+            ((OptionHolder) holder).onBindData(mObjects.get(position));
         }
     }
 
-    class UserHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class UserHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView mImgAvatar;
         private TextView mTvEmail;
+        private OnItemClickListener mOnItemClickListener;
 
-        UserHolder(View itemView) {
+        UserHolder(View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
             mImgAvatar = itemView.findViewById(R.id.imgAvatar);
             mTvEmail = itemView.findViewById(R.id.tvEmail);
             mImgAvatar.setOnClickListener(this);
+            mOnItemClickListener = onItemClickListener;
         }
 
-        private void onBindData() {
-            User user = (User) mObjects.get(getAdapterPosition());
+        private void onBindData(Object object) {
+            User user = (User) object;
             mImgAvatar.setImageDrawable(user.getAvatar());
             mTvEmail.setText(user.getMail());
         }
@@ -82,21 +84,23 @@ public class ObjectLeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
-    class OptionHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class OptionHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private LinearLayout mLlItemMenuLeftBar;
         private ImageView mImgIconOption;
         private TextView mTvOption;
+        private OnItemClickListener mOnItemClickListener;
 
-        OptionHolder(final View itemView) {
+        OptionHolder(final View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
             mImgIconOption = itemView.findViewById(R.id.imgIconOption);
             mTvOption = itemView.findViewById(R.id.tvOption);
             mLlItemMenuLeftBar = itemView.findViewById(R.id.llItemMenuLeftBar);
             mLlItemMenuLeftBar.setOnClickListener(this);
+            mOnItemClickListener = onItemClickListener;
         }
 
-        private void onBindData() {
-            Option option = (Option) mObjects.get(getAdapterPosition());
+        private void onBindData(Object object) {
+            Option option = (Option) object;
             mImgIconOption.setImageResource(option.getIcon());
             mTvOption.setText(option.getName());
         }

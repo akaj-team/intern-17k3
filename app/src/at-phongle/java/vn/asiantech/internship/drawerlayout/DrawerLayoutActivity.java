@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -119,7 +120,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements ObjectLef
                     ((User) mObjectList.get(0)).setAvatar(d);
                     mAdapter.notifyItemChanged(0);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e("v", "no image");
                 }
             }
         }
