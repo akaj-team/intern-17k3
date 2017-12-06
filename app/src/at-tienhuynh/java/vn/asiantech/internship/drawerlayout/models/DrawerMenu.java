@@ -4,7 +4,6 @@ package vn.asiantech.internship.drawerlayout.models;
  * Created at 2017
  * Created by jackty on 01/12/2017.
  */
-
 public class DrawerMenu {
 
     private int numberImage;
