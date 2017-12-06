@@ -22,4 +22,9 @@
     <string name="text_fullname">Full Name</string>
     <string name="text_email">Email</string>
     <string name="exercise_login">Login</string>
+    <string name="button_savedata">Save Data</string>
+    <string name="share_preference">Share Prefence</string>
+    <string name="save_text">Save in external</string>
+    <string name="save_sqlite">Save in DB</string>
+    <string name="btn_input">Input</string>
 </resources>

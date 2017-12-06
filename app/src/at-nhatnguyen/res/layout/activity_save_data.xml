@@ -5,33 +5,26 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.ui.MainActivity">
+    tools:context="vn.asiantech.internship.ui.savedata.SaveDataActivity">
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSharePreference"
         style="@style/btn_default"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/exercise_login" />
+        android:text="@string/share_preference" />
 
     <Button
-        android:id="@+id/btnCalculator"
+        android:id="@+id/btnInExternal"
         style="@style/btn_default"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/exercise_calculator" />
+        android:text="@string/save_text" />
 
     <Button
-        android:id="@+id/btnRecyclerView"
+        android:id="@+id/btnSQLite"
         style="@style/btn_default"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/button_exercise" />
-
-    <Button
-        android:id="@+id/btnSaveData"
-        style="@style/btn_default"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/button_savedata" />
+        android:text="@string/save_sqlite" />
 </LinearLayout>
