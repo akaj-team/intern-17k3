@@ -45,6 +45,5 @@ public class UsersDatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_COMPANY);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         onCreate(sqLiteDatabase);
-
     }
 }
