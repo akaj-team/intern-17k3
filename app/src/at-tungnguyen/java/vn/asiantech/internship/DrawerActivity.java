@@ -1,7 +1,7 @@
 package vn.asiantech.internship;
 
 import android.content.Intent;
-import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
@@ -53,17 +53,12 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     @Override
     public void onclickHeaderitem(View view, int position) {
         Intent intentToResolve = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intentToResolve.setType("image/*");
         if (GoogleUtil.isGooglePhotosInstalled(this)) {
             intentToResolve.setPackage(GoogleUtil.GOOGLE_PHOTOS_PACKAGE_NAME);
-            ResolveInfo resolveInfo = getPackageManager().resolveActivity(intentToResolve, 0);
-            if (resolveInfo != null) {
-                Intent intent = new Intent(intentToResolve);
-                intent.setType("image/*");
-                this.startActivityForResult(intent, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
-            }
+            startActivityForResult(intentToResolve, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
         } else {
-            intentToResolve.setType("video/*, images/*");
-            this.startActivityForResult(intentToResolve, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
+            startActivityForResult(intentToResolve, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
         }
     }
 
@@ -71,7 +66,8 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_PHOTO_FROM_GOOGLE_PHOTOS && resultCode == RESULT_OK && data != null) {
-            ((CircleImageView) findViewById(R.id.imgCirle)).setImageURI(data.getData());
+            ((CircleImageView) findViewById(R.id.imgCirle)).setImageURI(Uri.parse(data.getData().toString()));
+            Toast.makeText(this, data.getData() + "", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, R.string.have_not_picked_img, Toast.LENGTH_LONG).show();
         }

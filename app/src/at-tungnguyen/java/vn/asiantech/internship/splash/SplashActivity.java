@@ -16,7 +16,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnCalculator;
     private Button mBtnDrawerlayout;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnCalculator = findViewById(R.id.btnCaculator);
         mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
-
     }
 
     private void initListener() {
