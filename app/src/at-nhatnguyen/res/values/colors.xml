@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="background_recyclerview">#DCDCDC</color>
+    <color name="colorMain">#041e42</color>
+    <color name="color_text_slogan">#3366CC</color>
+    <color name="color_text_button_facebook">#FFFFFF</color>
+    <color name="color_button_facebook">#08298A</color>
+    <color name="color_border_button_phone">#3399FF</color>
+    <color name="color_text_subject_login">#000000</color>
+    <color name="color_text_view">#BDBDBD</color>
+    <color name="color_button_phone">#3399FF</color>
+    <color name="color_text_link">#3399FF</color>
 </resources>

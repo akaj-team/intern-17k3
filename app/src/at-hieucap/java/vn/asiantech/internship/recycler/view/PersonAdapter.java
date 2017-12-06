@@ -83,7 +83,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                     } else if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) > integerValue0) {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorRed));
                     } else {
-                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlue));
+                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorGreen));
                     }
                     break;
                 case R.id.imgDisLike:
@@ -95,7 +95,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                     } else if (bdValue.compareTo(new BigDecimal(BigInteger.ZERO)) > integerValue0) {
                         mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorRed));
                     } else {
-                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorBlue));
+                        mTvValue.setTextColor(ActivityCompat.getColor(mContext, R.color.colorGreen));
                     }
                     break;
             }
