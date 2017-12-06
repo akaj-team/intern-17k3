@@ -1,7 +1,6 @@
 package vn.asiantech.internship;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
@@ -19,21 +18,20 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.OnItemClickListener {
 
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
-    private RecyclerView mRecyclerView;
     private static final int REQUEST_PHOTO_FROM_GOOGLE_PHOTOS = 1;
+    private List<DrawerItem> mData;
+    private DrawerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
+        getData();
         mToolbar = findViewById(R.id.appBar);
-        mRecyclerView = findViewById(R.id.recyclerview);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         setSupportActionBar(mToolbar);
         initDrawer();
@@ -42,12 +40,12 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     @Override
     protected void onStart() {
         super.onStart();
-        DrawerAdapter adapter = new DrawerAdapter(DummyData.getData(), this);
+        mAdapter = new DrawerAdapter(this, mData);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
         RecyclerView mRecyclerView = findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -66,8 +64,8 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_PHOTO_FROM_GOOGLE_PHOTOS && resultCode == RESULT_OK && data != null) {
-            ((CircleImageView) findViewById(R.id.imgCirle)).setImageURI(Uri.parse(data.getData().toString()));
-            Toast.makeText(this, data.getData() + "", Toast.LENGTH_SHORT).show();
+            mData.get(0).setImageuri(data.getData()+"");
+            mAdapter.notifyDataSetChanged();
         } else {
             Toast.makeText(this, R.string.have_not_picked_img, Toast.LENGTH_LONG).show();
         }
@@ -78,13 +76,11 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
 
     }
 
-    private static final class DummyData {
-        private static List<DrawerEvent> getData() {
-            List<DrawerEvent> list = new ArrayList<>();
-            list.add(new DrawerEvent("Droidcon", "Issue1", DrawerEvent.EVENT_CONTENT, R.drawable.ic_compare_arrows_black_24dp));
-            list.add(new DrawerEvent("Droidcon", "Issue2", DrawerEvent.EVENT_CONTENT, R.drawable.ic_compare_arrows_black_24dp));
-            return list;
-        }
+    private void getData() {
+        mData = new ArrayList<>();
+        mData.add(new DrawerItem("Header", 1, R.drawable.profile, ""));
+        mData.add(new DrawerItem("Item", 2, R.drawable.ic_compare_arrows_black_24dp, ""));
+        mData.add(new DrawerItem("Item", 2, R.drawable.ic_compare_arrows_black_24dp, ""));
     }
 
     private void initDrawer() {
