@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import vn.asiantech.internship.calculator.CalculatorActivity;
 import vn.asiantech.internship.recycler.view.PersonViewActivity;
 
 public class ChoiceExerciseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,10 +30,10 @@ public class ChoiceExerciseActivity extends AppCompatActivity implements View.On
 //                Intent intent_bt1 =new Intent(this, );
 //                this.startActivity(intent_bt1);
 //                break;
-            case R.id.btnBt2:
-                Intent intent_bt2 = new Intent(this, CalculatorActivity.class);
-                this.startActivity(intent_bt2);
-                break;
+//            case R.id.btnBt2:
+//                Intent intent_bt2 = new Intent(this, CalculatorActivity.class);
+//                this.startActivity(intent_bt2);
+//                break;
             case R.id.btnBt3:
                 Intent intent_bt3 = new Intent(this, PersonViewActivity.class);
                 this.startActivity(intent_bt3);

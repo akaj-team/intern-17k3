@@ -3,16 +3,7 @@
     <string name="menu_bai_tap">MENU</string>
     <string name="bai_tap_1">Login Screen</string>
     <string name="bai_tap_2">Calculator</string>
-    <string name="sum">+</string>
-    <string name="sub">-</string>
-    <string name="mul">*</string>
-    <string name="division">/</string>
     <string name="bai_tap_3">Recycler View</string>
-    <string name="event_first_term_is_empty">First term is not empty !</string>
-    <string name="event_second_term_is_empty">Second term is not empty !</string>
-    <string name="event_two_term_is_empty">First term and second term is not empty !</string>
-    <string name="text_null"> </string>
-    <string name="event_second_term_is_value_0">Second term is not value = 0 !</string>
     <string name="value_0">0</string>
     <string name="person_1">Nguyen Van A</string>
     <string name="person_2">Nguyen Van B</string>
