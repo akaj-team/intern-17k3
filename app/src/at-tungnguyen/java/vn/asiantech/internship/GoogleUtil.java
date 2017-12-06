@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
  */
 
 public class GoogleUtil {
-    private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
+    public static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
 
     public static boolean isGooglePhotosInstalled(Context context) {
         PackageManager packageManager = context.getPackageManager();

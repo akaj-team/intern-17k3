@@ -17,6 +17,12 @@
         android:id="@+id/btnCaculator"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/tv_calculator" />
+        android:text="@string/tv_caculator" />
+
+    <Button
+        android:id="@+id/btnDrawerlayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_drawerlayout" />
 
 </LinearLayout>

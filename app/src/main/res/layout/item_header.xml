@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:layout_marginTop="20dp"
-        android:text="@string/nameEmail"
+        android:text="@string/tv_name_email"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 </LinearLayout>

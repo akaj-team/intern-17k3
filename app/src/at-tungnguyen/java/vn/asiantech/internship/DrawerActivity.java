@@ -25,12 +25,8 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
 
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mActionBarDrawerToggle;
-    private CircleImageView mcircleImageView;
     private RecyclerView mRecyclerView;
-    private View mMaincontent;
     private static final int REQUEST_PHOTO_FROM_GOOGLE_PHOTOS = 1;
-    private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +35,9 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         mToolbar = findViewById(R.id.appBar);
         mRecyclerView = findViewById(R.id.recyclerview);
         mDrawerLayout = findViewById(R.id.drawerLayout);
-        mMaincontent = findViewById(R.id.llContent);
-        mcircleImageView = findViewById(R.id.imgCirle);
         setSupportActionBar(mToolbar);
         initDrawer();
     }
-
-
 
     @Override
     protected void onStart() {
@@ -62,7 +54,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     public void onclickHeaderitem(View view, int position) {
         Intent intentToResolve = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         if (GoogleUtil.isGooglePhotosInstalled(this)) {
-            intentToResolve.setPackage(GOOGLE_PHOTOS_PACKAGE_NAME);
+            intentToResolve.setPackage(GoogleUtil.GOOGLE_PHOTOS_PACKAGE_NAME);
             ResolveInfo resolveInfo = getPackageManager().resolveActivity(intentToResolve, 0);
             if (resolveInfo != null) {
                 Intent intent = new Intent(intentToResolve);
@@ -74,6 +66,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
             this.startActivityForResult(intentToResolve, REQUEST_PHOTO_FROM_GOOGLE_PHOTOS);
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -83,6 +76,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
             Toast.makeText(this, R.string.have_not_picked_img, Toast.LENGTH_LONG).show();
         }
     }
+
     @Override
     public void onclickMenuitem(View view, int position) {
 
@@ -98,7 +92,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     }
 
     private void initDrawer() {
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
+        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout, mToolbar, R.string.open, R.string.close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -121,5 +115,4 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
         mActionBarDrawerToggle.syncState();
     }
-
 }

@@ -18,8 +18,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static OnItemClickListener mOnItemClickListener;
     private List<DrawerEvent> mList;
 
-
-    public DrawerAdapter(List<DrawerEvent> list,OnItemClickListener mOnItemClickListener) {
+    public DrawerAdapter(List<DrawerEvent> list, OnItemClickListener mOnItemClickListener) {
         this.mList = list;
         this.mOnItemClickListener = mOnItemClickListener;
     }
@@ -72,13 +71,14 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public static class HeaderViewHolder extends RecyclerView.ViewHolder {
         private TextView mHeader;
         private CircleImageView mImgHeader;
+
         public HeaderViewHolder(View itemView) {
             super(itemView);
             mImgHeader = itemView.findViewById(R.id.imgCirle);
             mImgHeader.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mOnItemClickListener.onclickHeaderitem(view,getAdapterPosition());
+                    mOnItemClickListener.onclickHeaderitem(view, getAdapterPosition());
                 }
             });
             mHeader = itemView.findViewById(R.id.headerText);
@@ -95,9 +95,10 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mImageView = itemView.findViewById(R.id.imgItemMenu);
         }
     }
-    public interface OnItemClickListener{
-        public void onclickHeaderitem(View view , int position);
 
-        public void onclickMenuitem(View view , int position);
+    public interface OnItemClickListener {
+        public void onclickHeaderitem(View view, int position);
+
+        public void onclickMenuitem(View view, int position);
     }
 }

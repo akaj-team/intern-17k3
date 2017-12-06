@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import vn.asiantech.internship.DrawerActivity;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
@@ -13,6 +14,8 @@ import vn.asiantech.internship.ui.login.MainActivity;
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;
     private Button mBtnCalculator;
+    private Button mBtnDrawerlayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +28,14 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private void initViews() {
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnCalculator = findViewById(R.id.btnCaculator);
+        mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
+
     }
 
     private void initListener() {
         mBtnLogin.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
+        mBtnDrawerlayout.setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +48,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnCaculator:
                 Intent i2 = new Intent(SplashActivity.this, CalculatorActivity.class);
                 startActivity(i2);
+                break;
+            case R.id.btnDrawerlayout:
+                Intent i4 = new Intent(SplashActivity.this, DrawerActivity.class);
+                startActivity(i4);
                 break;
         }
     }

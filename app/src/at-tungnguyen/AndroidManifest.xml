@@ -19,10 +19,7 @@
         </activity>
         <activity android:name=".ui.caculatorview.CalculatorActivity" />
         <activity android:name=".ui.login.MainActivity" />
-        <activity
-            android:name=".DrawerActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
+        <activity android:name=".DrawerActivity" />
     </application>
 
 </manifest>
