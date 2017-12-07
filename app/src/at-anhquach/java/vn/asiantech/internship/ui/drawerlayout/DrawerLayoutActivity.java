@@ -42,10 +42,10 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
 
     private void initView() {
         mDrawerLayout = findViewById(R.id.drawerLayout);
-        Button mBtnLeftMenu = findViewById(R.id.btnLeftMenu);
+        Button btnLeftMenu = findViewById(R.id.btnLeftMenu);
         mRecyclerViewLeftMenu = findViewById(R.id.recyclerViewLeftMenu);
         mLlContent = findViewById(R.id.llContent);
-        mBtnLeftMenu.setOnClickListener(this);
+        btnLeftMenu.setOnClickListener(this);
     }
 
     private void initData() {
@@ -80,9 +80,9 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initAdapter() {
-        DrawerLayoutAdapter mIssueAdapter = new DrawerLayoutAdapter(mIssueList, this);
+        DrawerLayoutAdapter issueAdapter = new DrawerLayoutAdapter(mIssueList, this);
         mRecyclerViewLeftMenu.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewLeftMenu.setAdapter(mIssueAdapter);
+        mRecyclerViewLeftMenu.setAdapter(issueAdapter);
     }
 
     @Override
