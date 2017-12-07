@@ -123,9 +123,8 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
 
     Company getCompanyByIdUser(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        sql = "SELECT * FROM " + TABLE_USER + " INNER JOIN " + TABLE_EMPLOYEE + " ON " + TABLE_USER + "." + ID_USER + " = " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_USER
-                + " INNER JOIN " + TABLE_COMPANY + " ON " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_COMPANY + " = " + TABLE_COMPANY + "." + ID_COMPANY
-                + " WHERE " + TABLE_USER + "." + ID_USER + " = " + id;
+        sql = "SELECT * FROM " + TABLE_EMPLOYEE + " INNER JOIN " + TABLE_COMPANY + " ON " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_COMPANY + " = " + TABLE_COMPANY + "." + ID_COMPANY
+                + " WHERE " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_USER + " = " + id;
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor != null) {
             cursor.moveToFirst();
