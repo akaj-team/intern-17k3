@@ -12,8 +12,9 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
 import vn.asiantech.internship.R;
@@ -63,7 +64,7 @@ public class SaveExternalActivity extends AppCompatActivity {
 
     private void readData(String string) {
         try {
-            Scanner scan = new Scanner(new File(string));
+            Scanner scan = new Scanner(new File(string),"UTF-8");
             StringBuilder data = new StringBuilder();
             while (scan.hasNext()) {
                 data.append(scan.nextLine());
@@ -77,13 +78,13 @@ public class SaveExternalActivity extends AppCompatActivity {
 
     private void writeData(String string) {
         try {
-            FileWriter fileWriter = new FileWriter(string);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(string),"UTF-8");
             if (!TextUtils.isEmpty(mEdtExternal.getText())) {
-                fileWriter.write(mEdtExternal.getText().toString());
+                outputStreamWriter.write(mEdtExternal.getText().toString());
             } else {
                 Toast.makeText(SaveExternalActivity.this, mSDCard, Toast.LENGTH_SHORT).show();
             }
-            fileWriter.close();
+            outputStreamWriter.close();
         } catch (IOException e) {
             Log.d("", e.getMessage());
         }
