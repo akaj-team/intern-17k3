@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
+import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 
@@ -14,6 +15,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnLoginScreen;
     private Button mBtnCalculationScreen;
     private Button mBtnRecyclerViewScreen;
+    private Button mBtnDrawerLayoutScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +28,15 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private void initViews() {
         mBtnLoginScreen = findViewById(R.id.btnLoginScreen);
         mBtnCalculationScreen = findViewById(R.id.btnCalculatorScreen);
-        mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
+        mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerView);
+        mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
     }
 
     private void initListener() {
         mBtnLoginScreen.setOnClickListener(this);
         mBtnCalculationScreen.setOnClickListener(this);
+        mBtnRecyclerViewScreen.setOnClickListener(this);
+        mBtnDrawerLayoutScreen.setOnClickListener(this);
         mBtnRecyclerViewScreen.setOnClickListener(this);
     }
 
@@ -44,8 +49,11 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnCalculatorScreen:
                 startActivity(new Intent(this, CalculatorActivity.class));
                 break;
-            case R.id.btnRecyclerViewScreen:
+            case R.id.btnRecyclerView:
                 startActivity(new Intent(this, StatusActivity.class));
+                break;
+            case R.id.btnDrawerLayout:
+                startActivity(new Intent(this, DrawerLayoutActivity.class));
                 break;
         }
     }

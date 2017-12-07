@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">hieucap-17k3</string>
+    <string name="welcome_caption">Welcome to urbi</string>
+    <string name="login_with_facebook">LOG IN WITH FACEBOOK</string>
+    <string name="or">or</string>
+    <string name="login_with_phone_number">LOG IN WITH PHONE NUMBER</string>
+    <string name="new_to_urbi">New to urbi?</string>
+    <string name="enter_number">Enter mobile number</string>
+    <string name="slogan">a bike for everyone, always</string>
+    <string name="sign_up">Sign up for an account</string>
+    <string name="enter_your">Enter your details below to get started</string>
+    <string name="enter_your_detail_to_get_started">+61</string>
+    <string name="Enter_number">Enter mobile number</string>
+    <string name="full_name">Full name</string>
+    <string name="email">Email</string>
+    <string name="text_link_check_color_black">I have read and agree with the</string>
+    <string name="text_link_check_color_blue">terms and conditions</string>
+    <string name="text_the_rest">.</string>
 </resources>
