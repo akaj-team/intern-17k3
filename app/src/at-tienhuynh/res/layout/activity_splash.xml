@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.SplashActivity">
+    tools:context=".SplashActivity">
 
     <Button
         android:id="@+id/btnLoginScreen"
@@ -22,4 +22,20 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:text="@string/text_btn_calculator_screen" />
+
+    <Button
+        android:id="@+id/btnRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="@string/text_btn_recycler_view" />
+
+    <Button
+        android:id="@+id/btnDrawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="@string/text_btn_drawer_layout" />
 </LinearLayout>

@@ -14,8 +14,8 @@ import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
 
 public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    public static final int USER = 0;
-    public static final int OPTION = 1;
+    private static final int USER = 0;
+    private static final int OPTION = 1;
     private List<Object> mObjects;
     private OnItemClickListener mOnItemClickListener;
 
@@ -35,8 +35,9 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view;
         if (viewType == USER) {
-            View view = LayoutInflater.from(parent.getContext())
+            view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_header, parent, false);
             final UserHolder userHolder = new UserHolder(view);
             userHolder.mImgAvatar.setOnClickListener(new View.OnClickListener() {
@@ -45,9 +46,9 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     mOnItemClickListener.onClickImage();
                 }
             });
-            return new UserHolder(view);
+            return userHolder;
         } else {
-            View view = LayoutInflater.from(parent.getContext())
+            view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_option, parent, false);
             final OptionHolder optionHolder = new OptionHolder(view);
             optionHolder.mTvOption.setOnClickListener(new View.OnClickListener() {
@@ -82,18 +83,23 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return mObjects.size();
     }
 
-    //this method use listen event click in RecyclerView
+    /**
+     * This interface use listen event click in RecyclerView
+     */
     public interface OnItemClickListener {
         void onClickItem(int position);
 
         void onClickImage();
     }
 
+    /**
+     * This class ues to display option of recyclerView
+     */
     static class OptionHolder extends RecyclerView.ViewHolder {
         private TextView mTvOption;
         private ImageView mImgIcon;
 
-        public OptionHolder(View itemView) {
+        private OptionHolder(View itemView) {
             super(itemView);
             mTvOption = itemView.findViewById(R.id.tvOption);
             mImgIcon = itemView.findViewById(R.id.imgIcon);
@@ -108,11 +114,14 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    class UserHolder extends RecyclerView.ViewHolder {
+    /**
+     * This class use to display the header of recyclerView
+     */
+    static class UserHolder extends RecyclerView.ViewHolder {
         private ImageView mImgAvatar;
         private TextView mTvMail;
 
-        public UserHolder(View itemView) {
+        private UserHolder(View itemView) {
             super(itemView);
             mImgAvatar = itemView.findViewById(R.id.imgAvatar);
             mTvMail = itemView.findViewById(R.id.tvMail);

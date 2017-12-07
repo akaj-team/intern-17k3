@@ -22,6 +22,9 @@ import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
 import vn.asiantech.internship.ui.MainActivity;
 
+/**
+ * Activity of screen with drawerlayout
+ */
 public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnItemClickListener {
     private static final float NUMBER_MOVE = 2 / 3;
     private static final int REQUEST_CODE = 2;
@@ -32,7 +35,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     private MenuAdapter mAdapter;
     private List<Object> mObjects;
     private LinearLayout mLlMainContent;
-    private Toolbar mToolbar;
+    private Toolbar mToolBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +48,13 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     }
 
     private void initView() {
-        mToolbar = findViewById(R.id.toolBar);
+        mToolBar = findViewById(R.id.toolBar);
         if (getSupportActionBar() != null) {
-            setSupportActionBar(mToolbar);
+            setSupportActionBar(mToolBar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         }
-        mRecyclerViewOption = findViewById(R.id.recycleViewOption);
+        mRecyclerViewOption = findViewById(R.id.recyclerViewOption);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mLlMainContent = findViewById(R.id.llMainContent);
     }
@@ -72,7 +75,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     }
 
     private void initDrawerLayout() {
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.numberone, R.string.numbertwo) {
+        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar, R.string.numberone, R.string.numbertwo) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);

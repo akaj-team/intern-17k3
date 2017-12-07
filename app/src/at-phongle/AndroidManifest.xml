@@ -12,11 +12,11 @@
         <activity android:name="vn.asiantech.internship.app_phongle.AppActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app_calculator.CalculatorActivity" />
+        <activity android:name=".calculator.CalculatorActivity" />
+        <activity android:name=".recyclerview.PostActivity" />
         <activity android:name=".login.LoginActivity" />
     </application>
 

@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.app_calculator.CalculatorActivity;
+import vn.asiantech.internship.calculator.CalculatorActivity;
 import vn.asiantech.internship.login.LoginActivity;
+import vn.asiantech.internship.recyclerview.PostActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
@@ -41,14 +42,18 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 intent = new Intent(AppActivity.this, CalculatorActivity.class);
                 startActivity(intent);
                 break;
-//            case R.id.btnRecyclerScreen:
-//                intent = new Intent(AppActivity.this, RecyclerActivity.class);
-//                startActivity(intent);
-//                break;
+            case R.id.btnRecyclerViewScreen:
+                intent = new Intent(AppActivity.this, PostActivity.class);
+                startActivity(intent);
+                break;
             case R.id.btnLoginScreen:
                 intent = new Intent(AppActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
+//            case R.id.btnDrawerLayoutScreen:
+//                intent = new Intent(AppActivity.this, LoginActivity.class);
+//                startActivity(intent);
+//                break;
         }
     }
 }

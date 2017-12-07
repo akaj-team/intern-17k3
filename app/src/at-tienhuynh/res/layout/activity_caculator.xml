@@ -24,7 +24,7 @@
             android:layout_weight="5"
             android:background="@drawable/bg_edt_number"
             android:gravity="center"
-            android:hint="@string/hint_edt_numa"
+            android:hint="@string/hint_edt_number_a"
             android:inputType="number"
             android:maxLines="1" />
 
@@ -47,7 +47,7 @@
             android:layout_weight="5"
             android:background="@drawable/bg_edt_number"
             android:gravity="center"
-            android:hint="@string/hint_edt_numb"
+            android:hint="@string/hint_edt_number_b"
             android:inputType="number"
             android:maxLines="1" />
     </LinearLayout>
