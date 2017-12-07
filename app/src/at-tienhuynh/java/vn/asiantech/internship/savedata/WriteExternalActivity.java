@@ -58,7 +58,7 @@ public class WriteExternalActivity extends AppCompatActivity {
             try {
                 String data;
                 FileInputStream fileInputStream = new FileInputStream(fileRead);
-                InputStreamReader reader = new InputStreamReader(fileInputStream);
+                InputStreamReader reader = new InputStreamReader(fileInputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 StringBuilder stringBuilder = new StringBuilder();
                 while ((data = bufferedReader.readLine()) != null) {

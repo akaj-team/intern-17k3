@@ -118,8 +118,6 @@ public class UsersDatabase extends SQLiteOpenHelper {
                 users.setName(cursor.getString(1));
                 users.setAge(cursor.getInt(2));
                 usersList.add(users);
-
-
             } while (cursor.moveToNext());
         }
         cursor.close();
