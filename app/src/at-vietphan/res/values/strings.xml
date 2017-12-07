@@ -28,4 +28,15 @@
     <string name="validate_input_data">Number A or Number B is Empty !</string>
     <string name="calculator_demo">CALCULATOR DEMO</string>
     <string name="result_null" />
+    <string name="share_preference">SHAREPREFERENCE</string>
+    <string name="save">SAVE</string>
+    <string name="preferences_my_key">PREFERENCES_MY_KEY</string>
+    <string name="saved">Saved</string>
+    <string name="external_storage">EXTERNAL STORAGE</string>
+    <string name="sqlite">SQLITE</string>
+    <string name="write_data">WRITE DATA</string>
+    <string name="read_data">READ DATA</string>
+    <string name="name">Name:</string>
+    <string name="age">Age:</string>
+    <string name="save_data">SAVE DATA</string>
 </resources>

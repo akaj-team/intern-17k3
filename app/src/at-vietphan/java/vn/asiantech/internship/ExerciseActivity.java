@@ -9,11 +9,17 @@ import android.widget.Button;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
+import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
+/**
+ * Created by vietphan on 07/12/2017
+ * ExerciseActivity
+ */
 public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnLogin;
     private Button mBtnRecyclerView;
     private Button mBtnCalculator;
+    private Button mBtnSaveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +33,14 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnCalculator = findViewById(R.id.btnCalculator);
+        mBtnSaveData = findViewById(R.id.btnSaveData);
     }
 
     private void initListener() {
         mBtnLogin.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
+        mBtnSaveData.setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +54,9 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnCalculator:
                 startActivity(new Intent(this, CalculatorActivity.class));
+                break;
+            case R.id.btnSaveData:
+                startActivity(new Intent(this, SaveDataActivity.class));
                 break;
         }
     }
