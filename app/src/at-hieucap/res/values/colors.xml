@@ -3,10 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorBlue">#1AA4F4</color>
+    <color name="blue">#1AA4F4</color>
     <color name="colorActivity">#291480</color>
-    <color name="colorBlack">#020202</color>
-    <color name="colorWhite">#ffff</color>
-    <color name="colorBlueFb">#3B5998</color>
-    <color name="colorPink">#FF3DBE</color>
+    <color name="black">#020202</color>
+    <color name="white">#ffff</color>
+    <color name="blueFacebook">#3B5998</color>
+    <color name="pink">#FF3DBE</color>
 </resources>
