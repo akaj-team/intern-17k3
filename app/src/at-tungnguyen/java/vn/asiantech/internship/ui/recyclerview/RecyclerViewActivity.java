@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.model.Status;
 
 public class RecyclerViewActivity extends Activity implements StatusAdapter.OnItemClickListener {
     private List<Status> mStatusList = new ArrayList<>();

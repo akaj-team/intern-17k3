@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.model.Status;
 
 public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusViewHolder> {
     private List<Status> mStatusList;
