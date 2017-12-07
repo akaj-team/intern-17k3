@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.savedata;
+package vn.asiantech.internship.ui.savedata.Ex1;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

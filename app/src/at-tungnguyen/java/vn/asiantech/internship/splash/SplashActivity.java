@@ -9,7 +9,7 @@ import android.widget.Button;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
-import vn.asiantech.internship.ui.savedata.SharedPreferencesActivity;
+import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;
@@ -50,7 +50,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(i2);
                 break;
             case R.id.btnSaveData:
-                Intent i5 = new Intent(SplashActivity.this, SharedPreferencesActivity.class);
+                Intent i5 = new Intent(SplashActivity.this, SaveDataActivity.class);
                 startActivity(i5);
                 break;
         }
