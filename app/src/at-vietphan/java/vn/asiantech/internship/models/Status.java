@@ -1,5 +1,8 @@
 package vn.asiantech.internship.models;
 
+/**
+ * class status
+ */
 public class Status {
     private String name;
     private String content;

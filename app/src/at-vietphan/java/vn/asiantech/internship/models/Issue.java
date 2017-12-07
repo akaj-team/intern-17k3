@@ -1,5 +1,8 @@
 package vn.asiantech.internship.models;
 
+/**
+ * class Issue
+ */
 public class Issue {
     private int icon;
     private String name;

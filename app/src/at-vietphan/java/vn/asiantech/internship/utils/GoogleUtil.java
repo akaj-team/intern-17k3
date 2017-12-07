@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 
 /**
- * GoogleUtil
+ * class GoogleUtil: check have package of google photos
  */
 public final class GoogleUtil {
     private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";

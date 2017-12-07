@@ -31,9 +31,8 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public int getItemViewType(int position) {
         if (position == 0) {
             return HEADER;
-        } else {
-            return ITEM;
         }
+        return ITEM;
     }
 
     @Override
@@ -53,9 +52,9 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     }
                 });
                 return headerHolder;
-            case ITEM:
+            default:
                 final ItemHolder itemHolder = new ItemHolder(viewItem);
-                itemHolder.tvNameIssue.setOnClickListener(new View.OnClickListener() {
+                viewItem.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (mOnItemClickListener != null) {
@@ -64,8 +63,6 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     }
                 });
                 return itemHolder;
-            default:
-                return null;
         }
     }
 
@@ -76,7 +73,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 HeaderHolder headerHolder = (HeaderHolder) holder;
                 headerHolder.onBindData();
                 break;
-            case ITEM:
+            default:
                 ItemHolder itemHolder = (ItemHolder) holder;
                 itemHolder.onBindData(position, mIssueList);
                 break;
@@ -89,7 +86,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     /**
-     * interface OnItemClickListener
+     * interface onItemClickListener handle click change avatar and items issue
      */
     public interface OnItemClickListener {
         void onClickItemIssue(int position);
@@ -98,7 +95,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     /**
-     * class HeaderHolder
+     * holder for header in drawer layout
      */
     static class HeaderHolder extends RecyclerView.ViewHolder {
         private CircleImageView circleImgAvatar;
@@ -117,7 +114,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     /**
-     * class ItemHolder
+     * holder for item in drawer layout
      */
     static class ItemHolder extends RecyclerView.ViewHolder {
         private ImageView imgIssue;

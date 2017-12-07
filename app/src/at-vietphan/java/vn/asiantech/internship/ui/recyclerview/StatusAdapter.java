@@ -13,6 +13,9 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Status;
 
+/**
+ * class StatusAdapter: create adapter for item in list status
+ */
 public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusViewHolder> {
     private List<Status> mStatusList;
     private OnItemClickListener mOnItemClickListener;

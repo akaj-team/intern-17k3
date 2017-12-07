@@ -14,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,15 +34,21 @@ import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.utils.GoogleUtil;
 
+/**
+ * class DrawerActivity
+ */
 public class DrawerActivity extends AppCompatActivity implements IssueAdapter.OnItemClickListener {
     private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
     private static final int REQUEST_LOAD_IMG = 11;
+    private static final int LOGIN = 1;
+    private static final int CALCULATOR = 2;
+    private static final int RECYCLERVIEW = 3;
+    private static final int SHARE = 4;
     private Toolbar mToolBar;
     private DrawerLayout mDrawerLayout;
     private RecyclerView mRecyclerViewIssue;
     private List<Issue> mIssueList;
-    private IssueAdapter mAdapter;
-    private LinearLayout mLlMain;
+    private LinearLayout mLnMain;
 
 
     @Override
@@ -70,7 +75,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mRecyclerViewIssue = findViewById(R.id.recyclerViewMulti);
         mIssueList = new ArrayList<>();
-        mLlMain = findViewById(R.id.llMain);
+        mLnMain = findViewById(R.id.llMain);
 
     }
 
@@ -83,9 +88,9 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     }
 
     private void initAdapter() {
-        mAdapter = new IssueAdapter(mIssueList, this);
+        IssueAdapter adapter = new IssueAdapter(mIssueList, this);
         mRecyclerViewIssue.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewIssue.setAdapter(mAdapter);
+        mRecyclerViewIssue.setAdapter(adapter);
     }
 
     private void initDrawer() {
@@ -93,7 +98,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
-                mLlMain.setTranslationX(slideOffset * drawerView.getWidth());
+                mLnMain.setTranslationX(slideOffset * drawerView.getWidth());
                 mRecyclerViewIssue.bringChildToFront(drawerView);
                 mRecyclerViewIssue.requestLayout();
             }
@@ -125,25 +130,22 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     @Override
     public void onClickItemIssue(int position) {
         switch (position) {
-            case 1:
+            case LOGIN:
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
-            case 2:
+            case CALCULATOR:
                 startActivity(new Intent(this, CalculatorActivity.class));
                 break;
-            case 3:
+            case RECYCLERVIEW:
                 startActivity(new Intent(this, RecyclerViewActivity.class));
                 break;
-            case 4:
+            case SHARE:
                 takeScreenshot();
                 break;
-            case 5:
+            default:
                 ActivityCompat.finishAffinity(this);
                 break;
-            default:
-                break;
         }
-        mAdapter.notifyItemChanged(position);
     }
 
     @Override
@@ -172,12 +174,12 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String path = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
-            View view = getWindow().getDecorView().getRootView();
-            view.setDrawingCacheEnabled(true);
-            Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
-            view.setDrawingCacheEnabled(false);
-            File imageFile = new File(path);
+            String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
+            View v1 = getWindow().getDecorView().getRootView();
+            v1.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+            v1.setDrawingCacheEnabled(false);
+            File imageFile = new File(mPath);
             FileOutputStream outputStream = new FileOutputStream(imageFile);
             int quality = 100;
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
@@ -185,7 +187,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
             outputStream.close();
             shareImage(imageFile);
         } catch (Exception e) {
-            Log.d(getString(R.string.error),e.getMessage());
+            e.printStackTrace();
         }
     }
 

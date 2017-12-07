@@ -16,6 +16,9 @@ import android.widget.EditText;
 
 import vn.asiantech.internship.R;
 
+/**
+ * class LoginFragment: screen when login
+ */
 public class LoginFragment extends Fragment {
     private Button mBtnSubmit;
     private EditText mEdtPhone;
