@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -174,12 +175,12 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
-            View v1 = getWindow().getDecorView().getRootView();
-            v1.setDrawingCacheEnabled(true);
-            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
-            v1.setDrawingCacheEnabled(false);
-            File imageFile = new File(mPath);
+            String path = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
+            View view = getWindow().getDecorView().getRootView();
+            view.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+            view.setDrawingCacheEnabled(false);
+            File imageFile = new File(path);
             FileOutputStream outputStream = new FileOutputStream(imageFile);
             int quality = 100;
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
@@ -187,7 +188,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
             outputStream.close();
             shareImage(imageFile);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d(getString(R.string.error), e.getMessage());
         }
     }
 
