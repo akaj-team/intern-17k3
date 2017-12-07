@@ -18,10 +18,10 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_calculator" />
+
     <Button
         android:id="@+id/btnRecyclerView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/btn_ryclerview" />
-
+        android:text="@string/btn_ryceclerview" />
 </LinearLayout>

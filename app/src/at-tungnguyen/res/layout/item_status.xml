@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
+    android:padding="20dp"
     app:cardCornerRadius="3dp">
 
     <LinearLayout
@@ -35,14 +36,14 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
-                android:background="@drawable/selector_like_plus" />
+                android:background="@drawable/selector_like" />
 
             <ImageView
                 android:id="@+id/imgDislike"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
-                android:background="@drawable/selector_dislike_sub" />
+                android:background="@drawable/selector_dislike" />
 
             <TextView
                 android:id="@+id/tvCount"
