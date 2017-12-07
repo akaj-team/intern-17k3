@@ -65,7 +65,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 case R.id.btnDivision:
                     division(Float.parseFloat(mEdtNumberA.getText().toString()), Float.parseFloat(mEdtNumberB.getText().toString()));
                     if (TextUtils.equals(mEdtNumberB.getText().toString(), getString(R.string.number_0))) {
-                        showError(getString(R.string.dialog_message_num0));
+                        showError(getString(R.string.dialog_message_num_0));
                         mEdtNumberB.getText().clear();
                     }
                     break;
