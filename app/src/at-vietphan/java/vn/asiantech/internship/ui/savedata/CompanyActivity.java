@@ -3,7 +3,6 @@ package vn.asiantech.internship.ui.savedata;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
 import vn.asiantech.internship.R;
@@ -46,6 +45,5 @@ public class CompanyActivity extends AppCompatActivity {
         mTvAge.setText(String.valueOf(user.getAge()));
         mTvCompanyName.setText(company.getName());
         mTvSlogan.setText(company.getSlogan());
-        Log.d("slogan", "initAdapter: "+company.getSlogan());
     }
 }

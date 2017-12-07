@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -35,7 +34,6 @@ public class SQLiteActivity extends AppCompatActivity implements SQLiteAdapter.O
     private void initData() {
         UserSQLiteHelper mUserSQLiteHelper = new UserSQLiteHelper(this);
         mUserList = mUserSQLiteHelper.getListUser();
-        Log.d("list", "list: " + mUserList.get(0).getName());
         mSqLiteAdapter = new SQLiteAdapter(mUserList, this);
 
     }
@@ -47,7 +45,6 @@ public class SQLiteActivity extends AppCompatActivity implements SQLiteAdapter.O
 
     private void initAdapter() {
         mRecyclerViewUser.setAdapter(mSqLiteAdapter);
-        Log.d("ll", "onCreate: " + mRecyclerViewUser.toString());
     }
 
     @Override
