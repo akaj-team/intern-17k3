@@ -14,13 +14,13 @@
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="?attr/actionBarSize"
             android:background="@color/colorBlack">
 
             <Button
                 android:id="@+id/btnLeftMenu"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/ic_menu_white_24dp" />
         </android.support.v7.widget.Toolbar>
 

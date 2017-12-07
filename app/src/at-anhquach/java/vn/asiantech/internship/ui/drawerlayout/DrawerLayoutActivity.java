@@ -34,13 +34,13 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_layout);
-        initView();
+        initViews();
         initDrawer();
         initData();
         initAdapter();
     }
 
-    private void initView() {
+    private void initViews() {
         mDrawerLayout = findViewById(R.id.drawerLayout);
         Button btnLeftMenu = findViewById(R.id.btnLeftMenu);
         mRecyclerViewLeftMenu = findViewById(R.id.recyclerViewLeftMenu);
@@ -49,9 +49,9 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initData() {
-        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Create Login Screen"));
-        mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Create Calculator View"));
-        mIssueList.add(new Issue(R.drawable.ic_sms_failed_black_24dp, "Create Recycler View"));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Create Login Screen", new Intent(this, LoginActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Create Calculator View", new Intent(this, CalculatorViewActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_sms_failed_black_24dp, "Create Recycler View", new Intent(this, RecyclerViewActivity.class)));
     }
 
     private void initDrawer() {
@@ -61,9 +61,6 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
                 mLlContent.setTranslationX(slideOffset * drawerView.getWidth());
-                mDrawerLayout.bringChildToFront(drawerView);
-                mDrawerLayout.requestLayout();
-                mDrawerLayout.setScrimColor(Color.TRANSPARENT);
             }
 
             @Override
@@ -86,11 +83,6 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return mActionBarDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLeftMenu:
@@ -101,17 +93,8 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onNameIssueClick(int position) {
-        switch (position) {
-            case 1:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
-            case 2:
-                startActivity(new Intent(this, CalculatorViewActivity.class));
-                break;
-            case 3:
-                startActivity(new Intent(this, RecyclerViewActivity.class));
-                break;
-        }
+        Intent intent = mIssueList.get(position - 1).getIntent();
+        startActivity(intent);
     }
 
 }
