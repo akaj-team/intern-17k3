@@ -22,9 +22,9 @@ public class SqLiteActivity extends AppCompatActivity implements UsersAdapter.on
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sq_lite);
         initViews();
-//        initDataUsers();
-//        initDataCompany();
-//        initDataEmPloyee();
+        initDataUsers();
+        initDataCompany();
+        initDataEmPloyee();
         initAdapter();
     }
 

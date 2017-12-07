@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 import vn.asiantech.internship.R;
 
@@ -68,9 +68,9 @@ public class WriteExternalActivity extends AppCompatActivity {
                 reader.close();
                 result = stringBuilder.toString();
             } catch (FileNotFoundException e) {
-                Log.d("err", e.getMessage());
+                Log.d("FileNotFoundException", e.getMessage());
             } catch (IOException e) {
-                Log.d("err", e.getMessage());
+                Log.d("IOException", e.getMessage());
             }
         }
         return result;
@@ -90,16 +90,14 @@ public class WriteExternalActivity extends AppCompatActivity {
             folderExternal.mkdir();
             File fileExternal = new File(folderExternal.getPath(), "abc.txt");
             try {
-                FileOutputStream outputStream = new FileOutputStream(fileExternal);
-                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
-                bufferedOutputStream.write(data.getBytes());
-                bufferedOutputStream.flush();
-                bufferedOutputStream.close();
-                outputStream.close();
+
+                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(fileExternal), "UTF-8");
+                writer.write(data);
+                writer.close();
             } catch (FileNotFoundException e) {
-                Log.d("err", e.getMessage());
+                Log.d("FileNotFound", e.getMessage());
             } catch (IOException e) {
-                Log.d("err", e.getMessage());
+                Log.d("IO ", e.getMessage());
             }
         }
     }

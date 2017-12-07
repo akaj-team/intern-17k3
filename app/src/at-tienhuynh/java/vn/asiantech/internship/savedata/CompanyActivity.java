@@ -47,8 +47,8 @@ public class CompanyActivity extends AppCompatActivity {
     private void initData() {
         Company company = mUsersDatabase.getCompany(mIdUser);
         if (company != null) {
-            mTvCompanyName.setText(getString(R.string.company_name) + company.getName());
-            mTvCompanySlogan.setText(getString(R.string.company_slogan) + company.getSlogan());
+            mTvCompanyName.setText(getString(R.string.company_name).concat(company.getName()));
+            mTvCompanySlogan.setText(getString(R.string.company_slogan).concat(company.getSlogan()));
         }
     }
 }
