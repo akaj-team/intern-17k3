@@ -39,5 +39,4 @@ public class CompanyActivity extends AppCompatActivity {
         mTvNameCompany.setText(mCompany.getNameCompany());
         mTvSlogan.setText(mCompany.getSloganCompany());
     }
-
 }
