@@ -81,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/new_to_urbi_signup_for_an_account"
+        android:text="@string/new_to_urbi_sign_up_for_an_account"
         android:textColor="@android:color/black"
         android:textSize="16dp" />
 </LinearLayout>
