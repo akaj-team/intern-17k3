@@ -65,22 +65,20 @@ public class ExternalActivity extends AppCompatActivity {
         if (!isExternalWriteable()) {
             Toast.makeText(this, "Please use memory", Toast.LENGTH_SHORT).show();
         } else {
-            if (isExternalWriteable()) {
-            } else {
-                File folderMemory = new File(Environment.getExternalStorageDirectory().getPath() + "/Tungnguyen");
-                folderMemory.mkdirs();
 
-                File fileMemory = new File(folderMemory.getPath(), "abc.txt");
-                try {
-                    FileOutputStream outputStream = new FileOutputStream(fileMemory);
-                    BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
-                    bufferedOutputStream.write(value.getBytes());
-                    bufferedOutputStream.flush();
-                    bufferedOutputStream.close();
-                    outputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            File folderMemory = new File(Environment.getExternalStorageDirectory().getPath() + "/Tungnguyen");
+            folderMemory.mkdirs();
+            Log.d("VVVV", "WriteFileExternal: " + Environment.getExternalStorageDirectory().getPath());
+            File fileMemory = new File(folderMemory.getPath(), "abc.txt");
+            try {
+                FileOutputStream outputStream = new FileOutputStream(fileMemory);
+                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
+                bufferedOutputStream.write(value.getBytes());
+                bufferedOutputStream.flush();
+                bufferedOutputStream.close();
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -92,7 +90,7 @@ public class ExternalActivity extends AppCompatActivity {
             if (isExternalReadable()) {
             } else {
                 File fileRead = new File(Environment.getExternalStorageDirectory().getPath() + "/Tungnguyen", "abc.txt");
-
+                Log.d("abcc", "path" + Environment.getExternalStorageDirectory().getPath());
                 try {
                     FileInputStream inputStream = new FileInputStream(fileRead);
                     InputStreamReader reader = new InputStreamReader(inputStream);
