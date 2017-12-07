@@ -8,9 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import vn.asiantech.internship.R;
@@ -71,17 +74,23 @@ public class ExternalStorageActivity extends AppCompatActivity {
 
     private void readFileExternal() {
         if (!isExternalReadable()) {
-            String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + "/AnhQuach" + "/abc.txt";
+            File fileRead = new File(Environment
+                    .getExternalStorageDirectory().getPath() + "/AnhQuach", "abc.txt");
             try {
-                Scanner scan = new Scanner(new File(sdcard));
-                StringBuilder data = new StringBuilder();
-                while (scan.hasNext()) {
-                    data.append(scan.nextLine());
+                FileInputStream inputStream = new FileInputStream(fileRead);
+                InputStreamReader reader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(reader);
+                String data;
+                StringBuilder builder = new StringBuilder();
+                while ((data = bufferedReader.readLine()) != null) {
+                    builder.append(data);
                 }
-                scan.close();
-                mEdtSaveData.setText(data);
-            } catch (IOException e) {
-                e.printStackTrace();
+                bufferedReader.close();
+                reader.close();
+                inputStream.close();
+                mEdtSaveData.setText(builder.toString());
+            } catch (IOException readData) {
+                readData.printStackTrace();
             }
         }
     }
