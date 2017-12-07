@@ -97,8 +97,8 @@ public class UsersDatabase extends SQLiteOpenHelper {
     public void addEmployee(Employee employee) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_EMPLOYEEY_ID_USER, employee.getId_user());
-        values.put(KEY_EMPLOYEE_ID_COMPANY, employee.getId_company());
+        values.put(KEY_EMPLOYEEY_ID_USER, employee.getIdUser());
+        values.put(KEY_EMPLOYEE_ID_COMPANY, employee.getIdCompany());
         sqLiteDatabase.insert(TABLE_EMPLOYEE, null, values);
         sqLiteDatabase.close();
     }
@@ -122,6 +122,7 @@ public class UsersDatabase extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return usersList;
     }
 
@@ -139,6 +140,7 @@ public class UsersDatabase extends SQLiteOpenHelper {
             company.setId(cursor.getInt(0));
             company.setName(cursor.getString(1));
             company.setSlogan(cursor.getString(2));
+            cursor.close();
         }
         return company;
     }

@@ -7,12 +7,12 @@ package vn.asiantech.internship.savedata.models;
 
 public class Employee {
     private int id;
-    private int id_user;
-    private int id_company;
+    private int idUser;
+    private int idCompany;
 
-    public Employee(int id_user, int id_company) {
-        this.id_user = id_user;
-        this.id_company = id_company;
+    public Employee(int idUser, int idCompany) {
+        this.idUser = idUser;
+        this.idCompany = idCompany;
     }
 
     public int getId() {
@@ -23,19 +23,19 @@ public class Employee {
         this.id = id;
     }
 
-    public int getId_user() {
-        return id_user;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public int getId_company() {
-        return id_company;
+    public int getIdCompany() {
+        return idCompany;
     }
 
-    public void setId_company(int id_company) {
-        this.id_company = id_company;
+    public void setIdCompany(int idCompany) {
+        this.idCompany = idCompany;
     }
 }

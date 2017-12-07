@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
+import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 import vn.asiantech.internship.savedata.SaveDataActivity;
@@ -16,6 +17,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnCalculationScreen;
     private Button mBtnRecyclerViewScreen;
     private Button mBtnSaveDataScreen;
+    private Button mBtnDrawerLayoutScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnCalculationScreen = findViewById(R.id.btnCalculatorScreen);
         mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
         mBtnSaveDataScreen = findViewById(R.id.btnSaveDataScreen);
+        mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
+        mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
     }
 
     private void initListener() {
@@ -37,6 +41,8 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnCalculationScreen.setOnClickListener(this);
         mBtnRecyclerViewScreen.setOnClickListener(this);
         mBtnSaveDataScreen.setOnClickListener(this);
+        mBtnDrawerLayoutScreen.setOnClickListener(this);
+        mBtnRecyclerViewScreen.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +59,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnSaveDataScreen:
                 startActivity(new Intent(this, SaveDataActivity.class));
+                break;
+            case R.id.btnDrawerLayout:
+                startActivity(new Intent(this, DrawerLayoutActivity.class));
                 break;
         }
     }

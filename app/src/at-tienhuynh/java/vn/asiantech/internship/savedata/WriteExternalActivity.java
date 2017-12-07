@@ -68,11 +68,9 @@ public class WriteExternalActivity extends AppCompatActivity {
                 reader.close();
                 result = stringBuilder.toString();
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                Log.d("err", e.toString());
+                Log.d("err", e.getMessage());
             } catch (IOException e) {
-                e.printStackTrace();
-                Log.d("err", e.toString());
+                Log.d("err", e.getMessage());
             }
         }
         return result;
@@ -99,11 +97,9 @@ public class WriteExternalActivity extends AppCompatActivity {
                 bufferedOutputStream.close();
                 outputStream.close();
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                Log.d("err", e.toString());
+                Log.d("err", e.getMessage());
             } catch (IOException e) {
-                e.printStackTrace();
-                Log.d("err", e.toString());
+                Log.d("err", e.getMessage());
             }
         }
     }

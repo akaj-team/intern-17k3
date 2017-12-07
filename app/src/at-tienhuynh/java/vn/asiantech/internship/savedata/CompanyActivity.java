@@ -1,6 +1,5 @@
 package vn.asiantech.internship.savedata;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -45,7 +44,6 @@ public class CompanyActivity extends AppCompatActivity {
     /**
      * Init Data to EditText
      */
-    @SuppressLint("SetTextI18n")
     private void initData() {
         Company company = mUsersDatabase.getCompany(mIdUser);
         if (company != null) {
