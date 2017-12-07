@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
 import java.util.ArrayList;
 
@@ -31,12 +30,6 @@ public class SQLiteActivity extends AppCompatActivity implements SQLiteAdapter.O
         initData();
         initViews();
         initAdapter();
-        mRecyclerViewUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     private void initData() {
