@@ -108,7 +108,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        mTvResult.setText(R.string.text_null);
+        if (mBtnSum.isEnabled()&&mBtnSub.isEnabled()&&mBtnSum.isEnabled()&&mBtnDivision.isEnabled()) {
+            mTvResult.setText(R.string.text_null);
+        }
     }
 
     @Override
