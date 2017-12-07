@@ -19,6 +19,9 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Issue;
+import vn.asiantech.internship.savedata.ExternalStorageActivity;
+import vn.asiantech.internship.savedata.SharePreferenceActivity;
+import vn.asiantech.internship.savedata.UserSQLiteActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorViewActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
@@ -52,6 +55,9 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Create Login Screen"));
         mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Create Calculator View"));
         mIssueList.add(new Issue(R.drawable.ic_sms_failed_black_24dp, "Create Recycler View"));
+        mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Share Preference"));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "External Storage"));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLite"));
     }
 
     private void initDrawer() {
@@ -110,6 +116,15 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
                 break;
             case 3:
                 startActivity(new Intent(this, RecyclerViewActivity.class));
+                break;
+            case 4:
+                startActivity(new Intent(this, SharePreferenceActivity.class));
+                break;
+            case 5:
+                startActivity(new Intent(this, ExternalStorageActivity.class));
+                break;
+            case 6:
+                startActivity(new Intent(this, UserSQLiteActivity.class));
                 break;
         }
     }
