@@ -19,7 +19,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Object> mObjects;
     private OnItemClickListener mOnItemClickListener;
 
-    public MenuAdapter(List<Object> objects, OnItemClickListener onItemClickListener) {
+    MenuAdapter(List<Object> objects, OnItemClickListener onItemClickListener) {
         mObjects = objects;
         mOnItemClickListener = onItemClickListener;
     }
@@ -95,7 +95,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     /**
      * This class ues to display option of recyclerView
      */
-    static class OptionHolder extends RecyclerView.ViewHolder {
+    private static class OptionHolder extends RecyclerView.ViewHolder {
         private TextView mTvOption;
         private ImageView mImgIcon;
 
@@ -117,7 +117,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     /**
      * This class use to display the header of recyclerView
      */
-    static class UserHolder extends RecyclerView.ViewHolder {
+    private static class UserHolder extends RecyclerView.ViewHolder {
         private ImageView mImgAvatar;
         private TextView mTvMail;
 
