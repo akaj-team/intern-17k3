@@ -67,7 +67,7 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    class HeaderViewHolder extends RecyclerView.ViewHolder {
+    private class HeaderViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView mCircleImgAvata;
 
         HeaderViewHolder(View itemView) {
