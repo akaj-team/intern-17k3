@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,7 +71,7 @@ public class SaveExternalActivity extends AppCompatActivity {
             scan.close();
             mEdtExternal.setText(data.toString());
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Log.d("", e.getMessage());
         }
     }
 
@@ -84,7 +85,7 @@ public class SaveExternalActivity extends AppCompatActivity {
             }
             fileWriter.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.d("", e.getMessage());
         }
     }
 }
