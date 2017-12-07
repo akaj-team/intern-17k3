@@ -20,7 +20,7 @@ public class Status {
         this.name = name;
     }
 
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
