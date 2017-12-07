@@ -11,7 +11,8 @@
         android:id="@+id/edtExternal"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:gravity="center"
+        android:inputType="text" />
 
     <Button
         android:id="@+id/btnSaveExternal"
