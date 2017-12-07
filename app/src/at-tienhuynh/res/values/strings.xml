@@ -1,8 +1,4 @@
 <resources>
-    <string name="RecyclerView">RecyclerView</string>
-    <string name="btnIsuses1">btnIssuses1</string>
-    <string name="btnIsuses2">btnIssuses2</string>
-    <string name="btnIsuses3">btnIssuses3</string>
     <string name="app_name">intern-17k3</string>
     <string name="tvSloganLogin">a bike for everyone, always</string>
     <string name="tvWelcome">Welcome to urbi</string>
@@ -35,5 +31,15 @@
     <string name="hintEmail">Email</string>
     <string name="text_btn_login_screen">Login Screen</string>
     <string name="text_btn_calculator_screen">Calculation Screen</string>
+    <string name="text_btn_recycler_view">Recycler View Screen</string>
+    <string name="text_btn_drawer_layout">Drawer Layout Screen</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="RecyclerView">RecyclerView</string>
+    <string name="btnIsuses1">btnIssuses1</string>
+    <string name="btnIsuses2">btnIssuses2</string>
+    <string name="btnIsuses3">btnIssuses3</string>
     <string name="text_btn_recycler_screen">RecyclerView Screen</string>
+    <string name="not_installed_google_photos">You not installed Google Photos</string>
+    <string name="not_img_picked">You haven\'t picked Image</string>
 </resources>
