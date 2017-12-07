@@ -8,7 +8,10 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 
-public class SaveDataActivity extends AppCompatActivity implements View.OnClickListener{
+/**
+ * Activity option save data
+ */
+public class SaveDataActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnSharePreference;
     private Button mBtnInExternal;
     private Button mBtnDatabase;
@@ -27,7 +30,7 @@ public class SaveDataActivity extends AppCompatActivity implements View.OnClickL
         mBtnDatabase = findViewById(R.id.btnDatabase);
     }
 
-    private void initListener(){
+    private void initListener() {
         mBtnSharePreference.setOnClickListener(this);
         mBtnInExternal.setOnClickListener(this);
         mBtnDatabase.setOnClickListener(this);
@@ -35,7 +38,7 @@ public class SaveDataActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnSharePreference:
                 startActivity(new Intent(this, SharePreferenceActivity.class));
                 break;

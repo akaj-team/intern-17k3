@@ -17,6 +17,9 @@ import java.util.Scanner;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Activity save data in external
+ */
 public class SaveExternalActivity extends AppCompatActivity {
     private static final String FOLDER_NAME = "/nhatnguyen";
     private static final String TEXT_NAME_FILE = "/abc.txt";

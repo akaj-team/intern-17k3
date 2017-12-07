@@ -15,20 +15,19 @@
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/tvIDUser"
+            android:id="@+id/tvIDPeople"
             android:layout_width="50dp"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/tvNameUse"
+            android:id="@+id/tvNamePeople"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/tvAgeUser"
+            android:id="@+id/tvAgePeople"
             android:layout_width="50dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
-

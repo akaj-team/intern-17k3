@@ -3,19 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.ui.savedata.SharePreferenceActivity">
+    tools:context="vn.asiantech.internship.ui.savedata.CompanyActivity">
 
-    <EditText
-        android:id="@+id/edtSharePreference"
-        android:layout_width="200dp"
+    <TextView
+        android:id="@+id/tvNameCompany"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center" />
 
-    <Button
-        android:id="@+id/btnSaveSP"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/tvSlogan"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_input" />
+        android:gravity="center" />
 </LinearLayout>
