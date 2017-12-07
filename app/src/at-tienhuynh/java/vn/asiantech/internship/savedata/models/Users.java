@@ -6,12 +6,14 @@ package vn.asiantech.internship.savedata.models;
  */
 
 public class Users {
-    int id;
-    String name;
-    int age;
+    private int id;
+    private String name;
+    private int age;
 
-    public Users(int id, String name, int age) {
-        this.id = id;
+    public Users() {
+    }
+
+    public Users(String name, int age) {
         this.name = name;
         this.age = age;
     }

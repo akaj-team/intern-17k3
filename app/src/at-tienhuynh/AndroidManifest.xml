@@ -27,7 +27,8 @@
         <activity android:name=".savedata.SaveDataActivity" />
         <activity android:name=".savedata.SharedPreferencesActivity" />
         <activity android:name=".savedata.WriteExternalActivity" />
-        <activity android:name=".savedata.SqLiteActivity"></activity>
+        <activity android:name=".savedata.SqLiteActivity" />
+        <activity android:name=".savedata.CompanyActivity"></activity>
     </application>
 
 </manifest>

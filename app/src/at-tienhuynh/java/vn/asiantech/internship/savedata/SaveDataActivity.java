@@ -38,9 +38,11 @@ public class SaveDataActivity extends AppCompatActivity implements View.OnClickL
         mExercise3.setOnClickListener(this);
     }
 
+    /**
+     * Onclick Button
+     */
     @Override
     public void onClick(View view) {
-        //onClick Button
         switch (view.getId()) {
             case R.id.btnExercise1:
                 startActivity(new Intent(this, SharedPreferencesActivity.class));

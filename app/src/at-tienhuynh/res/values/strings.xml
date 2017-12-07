@@ -41,4 +41,7 @@
     <string name="text_btn_ex2">Exercise2</string>
     <string name="text_btn_ex3">Exercise3</string>
     <string name="text_btn_save_value">Save</string>
+    <string name="title_company">Company Infomation</string>
+    <string name="company_name">Name : </string>
+    <string name="company_slogan">Slogan : </string>
 </resources>
