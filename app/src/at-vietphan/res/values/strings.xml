@@ -39,4 +39,5 @@
     <string name="name">Name:</string>
     <string name="age">Age:</string>
     <string name="save_data">SAVE DATA</string>
+    <string name="err">error:</string>
 </resources>

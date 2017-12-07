@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +25,7 @@ import vn.asiantech.internship.R;
  */
 public class ExternalStorageActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEditText;
-    private String folderName = "/vietphan";
+    private String mFolderName = "/vietphan";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,35 +57,51 @@ public class ExternalStorageActivity extends AppCompatActivity implements View.O
     }
 
     public void writeData() {
-        File f = new File(Environment.getExternalStorageDirectory(), folderName);
+        File f = new File(Environment.getExternalStorageDirectory(), mFolderName);
         if (!f.exists()) {
             //noinspection ResultOfMethodCallIgnored
             f.mkdirs();
         }
-        String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + folderName + "/abc.txt";
-        try {
-            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(sdcard));
-            writer.write(mEditText.getText() + "");
-            writer.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        //noinspection StatementWithEmptyBody
+        if (isExternalWriteable()) {
+            String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + mFolderName + "/abc.txt";
+            try {
+                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(sdcard));
+                writer.write(mEditText.getText() + "");
+                writer.close();
+            } catch (FileNotFoundException e) {
+                Log.d(getString(R.string.err), e.getMessage());
+            } catch (IOException e) {
+                Log.d(getString(R.string.err), e.getMessage());
+            }
         }
     }
 
     public void readData() {
-        String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + folderName + "/abc.txt";
-        try {
-            Scanner scan = new Scanner(new File(sdcard));
-            StringBuilder data = new StringBuilder();
-            while (scan.hasNext()) {
-                data.append(scan.nextLine()).append("\n");
+        //noinspection StatementWithEmptyBody
+        if (!isExternalReadable()) {
+            String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + mFolderName + "/abc.txt";
+            try {
+                Scanner scan = new Scanner(new File(sdcard));
+                StringBuilder data = new StringBuilder();
+                while (scan.hasNext()) {
+                    data.append(scan.nextLine()).append("\n");
+                }
+                scan.close();
+                mEditText.setText(data);
+            } catch (FileNotFoundException e) {
+                Log.d(getString(R.string.err), e.getMessage());
             }
-            scan.close();
-            mEditText.setText(data);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
+    }
+
+    private boolean isExternalReadable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED_READ_ONLY.equals(state);
+    }
+
+    private boolean isExternalWriteable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
     }
 }

@@ -9,12 +9,6 @@ public class Company {
     private String name;
     private String slogan;
 
-    public Company(int id, String name, String slogan) {
-        this.id = id;
-        this.name = name;
-        this.slogan = slogan;
-    }
-
     public Company() {
     }
 

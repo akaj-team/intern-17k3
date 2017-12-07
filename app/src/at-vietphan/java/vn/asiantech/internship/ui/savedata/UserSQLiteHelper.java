@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -46,7 +45,7 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
             + " FOREIGN KEY (" + ID_EMPLOYEE_USER + ") REFERENCES " + TABLE_USER + "(" + ID_USER + "),"
             + " FOREIGN KEY (" + ID_EMPLOYEE_COMPANY + ") REFERENCES " + TABLE_COMPANY + "(" + ID_COMPANY + "))";
 
-    public UserSQLiteHelper(Context context) {
+    UserSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -70,12 +69,11 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         insertTableEmployee(sqLiteDatabase, 3, 3);
     }
 
-    private long insertTableUser(SQLiteDatabase db, String name, int age) {
+    private void insertTableUser(SQLiteDatabase db, String name, int age) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(NAME_USER, name);
         contentValues.put(AGE, age);
-        long result = db.insert(TABLE_USER, null, contentValues);
-        return result;
+        db.insert(TABLE_USER, null, contentValues);
     }
 
     private void insertTableCompany(SQLiteDatabase sqLiteDatabase, String name, String slogan) {
@@ -92,7 +90,7 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TABLE_EMPLOYEE, null, contentValues);
     }
 
-    public ArrayList<User> getListUser() {
+    ArrayList<User> getListUser() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_USER, new String[]{ID_USER, NAME_USER, AGE}, null, null, null, null, null);
         int colID = cursor.getColumnIndex(ID_USER);
@@ -103,11 +101,11 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
             User user = new User(cursor.getInt(colID), cursor.getString(colName), cursor.getInt(colAge));
             userList.add(user);
         }
-        Log.d("db", "getListUser: " + userList);
+        cursor.close();
         return userList;
     }
 
-    public User getUser(int id) {
+    User getUser(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM " + TABLE_USER + " WHERE " + ID_USER + " = " + id;
         Cursor cursor = db.rawQuery(sql, null);
@@ -118,10 +116,11 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         user.setId(cursor.getInt(cursor.getColumnIndex(ID_USER)));
         user.setName(cursor.getString(cursor.getColumnIndex(NAME_USER)));
         user.setAge(cursor.getInt(cursor.getColumnIndex(AGE)));
+        cursor.close();
         return user;
     }
 
-    public Company getCompanyByIdUser(int id) {
+    Company getCompanyByIdUser(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM " + TABLE_USER + " INNER JOIN " + TABLE_EMPLOYEE + " ON " + TABLE_USER + "." + ID_USER + " = " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_USER
                 + " INNER JOIN " + TABLE_COMPANY + " ON " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_COMPANY + " = " + TABLE_COMPANY + "." + ID_COMPANY
@@ -134,6 +133,7 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         company.setId(cursor.getInt(cursor.getColumnIndex(ID_COMPANY)));
         company.setName(cursor.getString(cursor.getColumnIndex(NAME_COMPANY)));
         company.setSlogan(cursor.getString(cursor.getColumnIndex(SLOGAN)));
+        cursor.close();
         return company;
     }
 

@@ -16,7 +16,7 @@ import vn.asiantech.internship.R;
  * SharePreferenceActivity
  */
 public class SharePreferenceActivity extends AppCompatActivity implements View.OnClickListener {
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences mSharedPreferences;
     private EditText mEdtName;
 
     @Override
@@ -24,8 +24,8 @@ public class SharePreferenceActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_preference);
         initViews();
-        sharedPreferences = getSharedPreferences(getString(R.string.preferences_my_key), MODE_PRIVATE);
-        mEdtName.setText(sharedPreferences.getString("NAME_KEY", ""));
+        mSharedPreferences = getSharedPreferences(getString(R.string.preferences_my_key), MODE_PRIVATE);
+        mEdtName.setText(mSharedPreferences.getString("NAME_KEY", ""));
     }
 
     private void initViews() {
@@ -38,8 +38,8 @@ public class SharePreferenceActivity extends AppCompatActivity implements View.O
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnSave:
-                sharedPreferences = getSharedPreferences(getString(R.string.preferences_my_key), MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+                mSharedPreferences = getSharedPreferences(getString(R.string.preferences_my_key), MODE_PRIVATE);
+                SharedPreferences.Editor editor = mSharedPreferences.edit();
                 editor.putString("NAME_KEY", mEdtName.getText().toString());
                 editor.apply();
                 Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show();

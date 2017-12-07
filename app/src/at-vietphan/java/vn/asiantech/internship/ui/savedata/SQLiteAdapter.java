@@ -49,6 +49,9 @@ public class SQLiteAdapter extends RecyclerView.Adapter<SQLiteAdapter.UserViewHo
         return mUserList.size();
     }
 
+    /**
+     * interface OnItemClickListener
+     */
     public interface OnItemClickListener {
         void onItemUserClick(int position);
 
