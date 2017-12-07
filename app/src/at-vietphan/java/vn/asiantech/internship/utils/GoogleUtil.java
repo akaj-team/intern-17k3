@@ -3,6 +3,9 @@ package vn.asiantech.internship.utils;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
+/**
+ * GoogleUtil
+ */
 public final class GoogleUtil {
     private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
 

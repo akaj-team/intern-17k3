@@ -42,7 +42,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     private RecyclerView mRecyclerViewIssue;
     private List<Issue> mIssueList;
     private IssueAdapter mAdapter;
-    private LinearLayout mLnMain;
+    private LinearLayout mLlMain;
 
 
     @Override
@@ -69,7 +69,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mRecyclerViewIssue = findViewById(R.id.recyclerViewMulti);
         mIssueList = new ArrayList<>();
-        mLnMain = findViewById(R.id.llMain);
+        mLlMain = findViewById(R.id.llMain);
 
     }
 
@@ -92,7 +92,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
-                mLnMain.setTranslationX(slideOffset * drawerView.getWidth());
+                mLlMain.setTranslationX(slideOffset * drawerView.getWidth());
                 mRecyclerViewIssue.bringChildToFront(drawerView);
                 mRecyclerViewIssue.requestLayout();
             }
@@ -171,12 +171,12 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
-            View v1 = getWindow().getDecorView().getRootView();
-            v1.setDrawingCacheEnabled(true);
-            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
-            v1.setDrawingCacheEnabled(false);
-            File imageFile = new File(mPath);
+            String path = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
+            View view = getWindow().getDecorView().getRootView();
+            view.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+            view.setDrawingCacheEnabled(false);
+            File imageFile = new File(path);
             FileOutputStream outputStream = new FileOutputStream(imageFile);
             int quality = 100;
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);

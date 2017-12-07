@@ -13,6 +13,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Issue;
 
+/**
+ * class IssueAdapter
+ */
 public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int HEADER = 0;
     private static final int ITEM = 1;
@@ -36,10 +39,11 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View viewHeader = layoutInflater.inflate(R.layout.row_header, parent, false);
+        View viewItem = layoutInflater.inflate(R.layout.row_item, parent, false);
         switch (viewType) {
             case HEADER:
-                View itemView0 = layoutInflater.inflate(R.layout.row_header, parent, false);
-                HeaderHolder headerHolder = new HeaderHolder(itemView0);
+                HeaderHolder headerHolder = new HeaderHolder(viewHeader);
                 headerHolder.circleImgAvatar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -50,8 +54,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 });
                 return headerHolder;
             case ITEM:
-                View itemView1 = layoutInflater.inflate(R.layout.row_item, parent, false);
-                final ItemHolder itemHolder = new ItemHolder(itemView1);
+                final ItemHolder itemHolder = new ItemHolder(viewItem);
                 itemHolder.tvNameIssue.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -62,9 +65,8 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 });
                 return itemHolder;
             default:
-                break;
+                return null;
         }
-        return null;
     }
 
     @Override
@@ -86,12 +88,18 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return mIssueList.size() + 1;
     }
 
+    /**
+     * interface OnItemClickListener
+     */
     public interface OnItemClickListener {
         void onClickItemIssue(int position);
 
         void onClickImgAvatar();
     }
 
+    /**
+     * class HeaderHolder
+     */
     static class HeaderHolder extends RecyclerView.ViewHolder {
         private CircleImageView circleImgAvatar;
         private TextView tvEmail;
@@ -108,6 +116,9 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
+    /**
+     * class ItemHolder
+     */
     static class ItemHolder extends RecyclerView.ViewHolder {
         private ImageView imgIssue;
         private TextView tvNameIssue;
