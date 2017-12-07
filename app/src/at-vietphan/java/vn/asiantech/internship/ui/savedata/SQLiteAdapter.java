@@ -12,7 +12,6 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.User;
 
 /**
- * Created by vietphan on 07/12/2017
  * CompanyAdapter
  */
 public class SQLiteAdapter extends RecyclerView.Adapter<SQLiteAdapter.UserViewHolder> {
@@ -50,7 +49,7 @@ public class SQLiteAdapter extends RecyclerView.Adapter<SQLiteAdapter.UserViewHo
     }
 
     /**
-     * interface OnItemClickListener
+     * interface OnItemClickListener for click item in recyclerview
      */
     public interface OnItemClickListener {
         void onItemUserClick(int position);
