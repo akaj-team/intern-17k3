@@ -2,9 +2,13 @@ package vn.asiantech.internship.savedata;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+
+import vn.asiantech.internship.model.User;
 
 public class UserSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "AnhQuach";
@@ -36,8 +40,9 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
             + ID_EMPLOYEE_COMPANY + " INTEGER,"
             + " FOREIGN KEY (" + ID_EMPLOYEE_USER + ") REFERENCES " + TABLE_USER + "(" + ID_USER + "),"
             + " FOREIGN KEY (" + ID_EMPLOYEE_COMPANY + ") REFERENCES " + TABLE_COMPANY + "(" + ID_COMPANY + "))";
-    UserSQLiteHelper(Context context){
-        super(context,DATABASE_NAME,null,DATABASE_VERSION);
+
+    UserSQLiteHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -56,6 +61,7 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_EMPLOYEE);
         onCreate(sqLiteDatabase);
     }
+
     private void initData(SQLiteDatabase sqLiteDatabase) {
         insertTableUser(sqLiteDatabase, "Ngoc Anh", 21);
         insertTableUser(sqLiteDatabase, "Viet Phan", 22);
@@ -66,6 +72,21 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         insertTableEmployee(sqLiteDatabase, 1, 1);
         insertTableEmployee(sqLiteDatabase, 2, 2);
         insertTableEmployee(sqLiteDatabase, 3, 3);
+    }
+
+    private ArrayList<User> getListUser(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.query(TABLE_USER, new String[]{ID_USER,NAME_USER,AGE},null,null,null,null,null);
+        int colId = cursor.getColumnIndex(ID_USER);
+        int colName = cursor.getColumnIndex(NAME_USER);
+        int colAge = cursor.getColumnIndex(AGE);
+        ArrayList<User> userList = new ArrayList<>();
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
+            User user = new User(cursor.getInt(colId),cursor.getString(colName),cursor.getInt(colAge));
+            userList.add(user);
+        }
+        cursor.close();
+        return userList;
     }
 
     private void insertTableUser(SQLiteDatabase db, String name, int age) {
