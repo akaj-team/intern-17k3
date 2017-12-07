@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -82,12 +81,10 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     private class ItemViewHolder extends RecyclerView.ViewHolder {
-        private ImageView mImgIcon;
         private TextView mTvNameIssue;
 
         ItemViewHolder(View itemView) {
             super(itemView);
-            mImgIcon = itemView.findViewById(R.id.imgIcon);
             mTvNameIssue = itemView.findViewById(R.id.tvIssueName);
             mTvNameIssue.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -101,7 +98,7 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         private void onBindDataItem() {
             Issue issue = mIssueList.get(getAdapterPosition() - 1);
-            mImgIcon.setImageResource(issue.getIcon());
+            mTvNameIssue.setCompoundDrawablesWithIntrinsicBounds(issue.getIcon(), 0, 0, 0);
             mTvNameIssue.setText(issue.getName());
         }
     }
