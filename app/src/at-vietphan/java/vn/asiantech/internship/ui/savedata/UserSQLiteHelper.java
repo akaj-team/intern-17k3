@@ -44,6 +44,7 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
             + ID_EMPLOYEE_COMPANY + " INTEGER,"
             + " FOREIGN KEY (" + ID_EMPLOYEE_USER + ") REFERENCES " + TABLE_USER + "(" + ID_USER + "),"
             + " FOREIGN KEY (" + ID_EMPLOYEE_COMPANY + ") REFERENCES " + TABLE_COMPANY + "(" + ID_COMPANY + "))";
+    private String sql;
 
     UserSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -107,7 +108,7 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
 
     User getUser(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM " + TABLE_USER + " WHERE " + ID_USER + " = " + id;
+        sql = "SELECT * FROM " + TABLE_USER + " WHERE " + ID_USER + " = " + id;
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor != null) {
             cursor.moveToFirst();
@@ -122,7 +123,7 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
 
     Company getCompanyByIdUser(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM " + TABLE_USER + " INNER JOIN " + TABLE_EMPLOYEE + " ON " + TABLE_USER + "." + ID_USER + " = " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_USER
+        sql = "SELECT * FROM " + TABLE_USER + " INNER JOIN " + TABLE_EMPLOYEE + " ON " + TABLE_USER + "." + ID_USER + " = " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_USER
                 + " INNER JOIN " + TABLE_COMPANY + " ON " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_COMPANY + " = " + TABLE_COMPANY + "." + ID_COMPANY
                 + " WHERE " + TABLE_USER + "." + ID_USER + " = " + id;
         Cursor cursor = db.rawQuery(sql, null);

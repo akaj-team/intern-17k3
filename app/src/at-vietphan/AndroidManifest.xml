@@ -26,7 +26,6 @@
         <activity android:name=".ui.savedata.ExternalStorageActivity" />
         <activity android:name=".ui.savedata.SQLiteActivity" />
         <activity android:name=".ui.savedata.CompanyActivity" />
-        <activity android:name=".ui.savedata.CompanyActivity" />
         <activity android:name=".ui.savedata.SaveDataActivity"></activity>
     </application>
 

@@ -66,7 +66,7 @@ public class ExternalStorageActivity extends AppCompatActivity implements View.O
         if (isExternalWriteable()) {
             String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + mFolderName + "/abc.txt";
             try {
-                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(sdcard));
+                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(sdcard),"UTF-8");
                 writer.write(mEditText.getText() + "");
                 writer.close();
             } catch (FileNotFoundException e) {
@@ -82,7 +82,7 @@ public class ExternalStorageActivity extends AppCompatActivity implements View.O
         if (!isExternalReadable()) {
             String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + mFolderName + "/abc.txt";
             try {
-                Scanner scan = new Scanner(new File(sdcard));
+                Scanner scan = new Scanner(new File(sdcard),"UTF-8");
                 StringBuilder data = new StringBuilder();
                 while (scan.hasNext()) {
                     data.append(scan.nextLine()).append("\n");

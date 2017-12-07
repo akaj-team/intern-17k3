@@ -16,12 +16,12 @@ import vn.asiantech.internship.models.User;
  * CompanyAdapter
  */
 public class SQLiteAdapter extends RecyclerView.Adapter<SQLiteAdapter.UserViewHolder> {
-    private static OnItemClickListener mOnItemClickListener;
+    private OnItemClickListener mOnItemClickListener;
     private List<User> mUserList;
 
     SQLiteAdapter(List<User> userList, OnItemClickListener onItemClickListener) {
         this.mUserList = userList;
-        mOnItemClickListener = onItemClickListener;
+        this.mOnItemClickListener = onItemClickListener;
     }
 
     @Override
