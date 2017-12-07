@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -184,7 +185,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
             outputStream.close();
             shareImage(imageFile);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d(getString(R.string.error),e.getMessage());
         }
     }
 
