@@ -66,7 +66,8 @@ public class PeopleSQLite extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        //TO Do
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_EMPLOYEE);
+        onCreate(sqLiteDatabase);
     }
 
     void insertUSER(int id, String name, int age) {
@@ -90,13 +91,15 @@ public class PeopleSQLite extends SQLiteOpenHelper {
     }
 
     void insertEmployee(int idUs, int idCom) {
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(EMPLOYEE_US, idUs);
-        contentValues.put(EMPLOYEE_COM, idCom);
-        sqLiteDatabase.insert(TABLE_NAME_EMPLOYEE, null, contentValues);
-        sqLiteDatabase.close();
-        contentValues.clear();
+        if (!checkExistsEmployee(idUs, idCom)) {
+            SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(EMPLOYEE_US, idUs);
+            contentValues.put(EMPLOYEE_COM, idCom);
+            sqLiteDatabase.insert(TABLE_NAME_EMPLOYEE, null, contentValues);
+            sqLiteDatabase.close();
+            contentValues.clear();
+        }
     }
 
     ArrayList<People> getUserCompany() {
@@ -147,6 +150,18 @@ public class PeopleSQLite extends SQLiteOpenHelper {
         } else {
             cursor.close();
             return 0;
+        }
+    }
+
+    boolean checkExistsEmployee(int idUs, int idCom) {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME_EMPLOYEE
+                + " where " + EMPLOYEE_US + " = '" + idUs + "'"
+                + " and " + EMPLOYEE_COM + " = '" + idCom + "'", null);
+        if (cursor.getCount() == 0) {
+            return false;
+        } else {
+            return true;
         }
     }
 }

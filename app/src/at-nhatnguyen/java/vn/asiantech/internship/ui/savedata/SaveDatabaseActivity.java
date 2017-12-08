@@ -36,24 +36,24 @@ public class SaveDatabaseActivity extends AppCompatActivity implements PeopleAda
     private void initData() {
         mPeoples = new ArrayList<>();
         mPeopleSQLite = new PeopleSQLite(this);
-        mPeopleSQLite.insertUSER(51, "A", 20);
-        mPeopleSQLite.insertUSER(52, "B", 20);
-        mPeopleSQLite.insertUSER(53, "C", 20);
-        mPeopleSQLite.insertUSER(54, "D", 22);
-        mPeopleSQLite.insertUSER(55, "E", 22);
-        mPeopleSQLite.insertUSER(56, "F", 22);
-        mPeopleSQLite.insertUSER(57, "G", 22);
-        mPeopleSQLite.insertCompany(101, "ASIANTECH", "recoding history");
+        mPeopleSQLite.insertUSER(51, "Nguyễn Văn A", 20);
+        mPeopleSQLite.insertUSER(52, "Trần Thị B", 21);
+        mPeopleSQLite.insertUSER(53, "Phan Xuân Việt", 32);
+        mPeopleSQLite.insertUSER(54, "Nguyễn Văn Tám", 20);
+        mPeopleSQLite.insertUSER(55, "Hoàng Mình Tuấn", 18);
+        mPeopleSQLite.insertUSER(56, "Đỗ Quang", 22);
+        mPeopleSQLite.insertUSER(57, "Phạm Thị Lan Phương", 22);
+        mPeopleSQLite.insertCompany(101, "ASIAN TECH", "Recoding History");
         mPeopleSQLite.insertCompany(102, "FPT", "coding");
-        mPeopleSQLite.insertCompany(103, "GAMELOFT", "coding");
+        mPeopleSQLite.insertCompany(103, "GAME LOFT", "coding");
         mPeopleSQLite.insertCompany(104, "AXON", "coding");
         mPeopleSQLite.insertEmployee(51, 101);
         mPeopleSQLite.insertEmployee(52, 101);
-        mPeopleSQLite.insertEmployee(53, 102);
-        mPeopleSQLite.insertEmployee(54, 103);
-        mPeopleSQLite.insertEmployee(55, 102);
-        mPeopleSQLite.insertEmployee(56, 102);
-        mPeopleSQLite.insertEmployee(57, 103);
+        mPeopleSQLite.insertEmployee(53, 101);
+        mPeopleSQLite.insertEmployee(54, 102);
+        mPeopleSQLite.insertEmployee(55, 103);
+        mPeopleSQLite.insertEmployee(56, 104);
+        mPeopleSQLite.insertEmployee(57, 101);
         mPeoples = mPeopleSQLite.getUserCompany();
     }
 
