@@ -12,11 +12,17 @@ import vn.asiantech.internship.calculator.CalculatorActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.PostActivity;
 import vn.asiantech.internship.save_data.ExternalStorageActivity;
+import vn.asiantech.internship.save_data.PersonActivity;
 import vn.asiantech.internship.save_data.SharePreferenceActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
     private Button mBtnCalculatorScreen;
+    private Button mBtnRecyclerViewScreen;
+    private Button mBtnDrawerLayoutScreen;
+    private Button mSharePreferenceScreen;
+    private Button mExternalStorageScreen;
+    private Button mSQLiteScreen;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,11 +35,21 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
     private void initViews() {
         mBtnLoginScreen = findViewById(R.id.btnLoginScreen);
         mBtnCalculatorScreen = findViewById(R.id.btnCalculatorScreen);
+        mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayoutScreen);
+        mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
+        mSharePreferenceScreen = findViewById(R.id.btnSharePreferenceScreen);
+        mExternalStorageScreen = findViewById(R.id.btnExternalStorageScreen);
+        mSQLiteScreen = findViewById(R.id.btnSQLiteScreen);
     }
 
     private void addListener() {
         mBtnLoginScreen.setOnClickListener(this);
         mBtnCalculatorScreen.setOnClickListener(this);
+        mBtnDrawerLayoutScreen.setOnClickListener(this);
+        mBtnRecyclerViewScreen.setOnClickListener(this);
+        mSharePreferenceScreen.setOnClickListener(this);
+        mExternalStorageScreen.setOnClickListener(this);
+        mSQLiteScreen.setOnClickListener(this);
     }
 
     @Override
@@ -65,7 +81,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(intent);
                 break;
             case R.id.btnSQLiteScreen:
-                intent = new Intent(AppActivity.this, PostActivity.class);
+                intent = new Intent(AppActivity.this, PersonActivity.class);
                 startActivity(intent);
                 break;
         }
