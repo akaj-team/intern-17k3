@@ -116,10 +116,10 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
             user.setId(cursor.getInt(cursor.getColumnIndex(ID_USER)));
             user.setName(cursor.getString(cursor.getColumnIndex(NAME_USER)));
             user.setAge(cursor.getInt(cursor.getColumnIndex(AGE)));
-            cursor.close();
         } else {
-            cursor.close();
+            return null;
         }
+        cursor.close();
         return user;
     }
 
@@ -134,11 +134,10 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
             company.setId(cursor.getInt(cursor.getColumnIndex(ID_COMPANY)));
             company.setName(cursor.getString(cursor.getColumnIndex(NAME_COMPANY)));
             company.setSlogan(cursor.getString(cursor.getColumnIndex(SLOGAN)));
-            cursor.close();
         } else {
-            cursor.close();
             return null;
         }
+        cursor.close();
         return company;
     }
 
