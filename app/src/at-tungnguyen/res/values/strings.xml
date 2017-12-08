@@ -21,12 +21,15 @@
     <string name="btn_multiplication">*</string>
     <string name="btn_division">/</string>
     <string name="tv_result">Result</string>
+    <string name="tv_calculator">Calculator</string>
+    <string name="btn_ryceclerview">RecyclerView</string>
     <string name="tv_drawerlayout">Drawerlayout</string>
     <string name="edt_hint_number_a">Number A</string>
     <string name="edt_hint_number_b">Number B</string>
     <string name="tv_number_not_0">Number B is not 0</string>
     <string name="tv_login">Create Login Screen</string>
     <string name="tv_caculator">Calculator View </string>
-    <string name="have_not_picked_img">Not Picked</string>
-    <string name="tv_toolbar">Trang chủ </string>
+    <string name="tv_toolbar">Home</string>
+    <string name="have_not_picked_img">Not picked</string>
+
 </resources>
