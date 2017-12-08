@@ -3,17 +3,16 @@ package vn.asiantech.internship.savedata;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 import vn.asiantech.internship.R;
 
@@ -56,16 +55,16 @@ public class ExternalStorageActivity extends AppCompatActivity {
             //noinspection ResultOfMethodCallIgnored
             fileExternal.mkdirs();
             File abc = new File(fileExternal.getPath(), "abc.txt");
+
             try {
                 FileOutputStream outputStream = new FileOutputStream(abc);
-                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
-                bufferedOutputStream.write(value.getBytes());
-
+                OutputStreamWriter bufferedOutputStream = new OutputStreamWriter(outputStream, "UTF-8");
+                bufferedOutputStream.write(value);
                 bufferedOutputStream.flush();
                 bufferedOutputStream.close();
                 outputStream.close();
             } catch (IOException writeData) {
-                writeData.printStackTrace();
+                Log.d("error", writeData.getMessage());
             }
         }
     }
@@ -75,20 +74,15 @@ public class ExternalStorageActivity extends AppCompatActivity {
             File fileRead = new File(Environment
                     .getExternalStorageDirectory().getPath() + "/AnhQuach", "abc.txt");
             try {
-                FileInputStream inputStream = new FileInputStream(fileRead);
-                InputStreamReader reader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(reader);
-                String data;
+                Scanner scanner = new Scanner(fileRead, "UTF-8");
                 StringBuilder builder = new StringBuilder();
-                while ((data = bufferedReader.readLine()) != null) {
-                    builder.append(data);
+                while (scanner.hasNext()) {
+                    builder.append(scanner.nextLine());
                 }
-                bufferedReader.close();
-                reader.close();
-                inputStream.close();
+                scanner.close();
                 mEdtSaveData.setText(builder.toString());
             } catch (IOException readData) {
-                readData.printStackTrace();
+                Log.d("error", readData.getMessage());
             }
         }
     }

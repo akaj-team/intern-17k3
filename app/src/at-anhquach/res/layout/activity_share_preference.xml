@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_edt_bottom"
         android:hint="@string/edt_hint_input_text"
+        android:inputType="text"
         android:textSize="20dp" />
 
     <Button
