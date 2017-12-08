@@ -14,7 +14,7 @@
         android:layout_marginTop="15dp" />
 
     <TextView
-        android:id="@+id/tvMail"
+        android:id="@+id/tvEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"

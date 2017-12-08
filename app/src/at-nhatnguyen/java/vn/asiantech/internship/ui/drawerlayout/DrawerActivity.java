@@ -11,8 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +61,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
 
     private void initData() {
         mObjects = new ArrayList<>();
-        mObjects.add(new User(R.drawable.ic_avatar, "nhatnguyen@asiantech.vn"));
+        mObjects.add(new User(R.drawable.ic_avatar, "nhatnguyen@asiantech.vn", null));
         mObjects.add(new Option("Inbox", R.drawable.selector_click_inbox));
         mObjects.add(new Option("Outbox", R.drawable.selector_click_outbox));
         mObjects.add(new Option("Trash", R.drawable.selector_click_delete));
@@ -106,7 +106,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     public void onClickItem(int position) {
         if (mObjects.get(position) instanceof Option) {
             if (((Option) mObjects.get(position)).getOptionName().equals("Outbox")) {
-                String shareBody = "Here is the share content body";
+                String shareBody = String.valueOf(R.string.message);
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("image/*");
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
@@ -136,7 +136,14 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            ((ImageView) findViewById(R.id.imgAvatar)).setImageURI(data.getData());
+            for (int i = 0; i < mObjects.size(); i++) {
+                if (mObjects.get(i) instanceof User) {
+                    ((User) mObjects.get(i)).setUri(String.valueOf(data.getData()));
+                    mAdapter.notifyItemChanged(i);
+                }
+            }
+        } else {
+            Toast.makeText(this, R.string.notify_uri, Toast.LENGTH_SHORT).show();
         }
     }
 }

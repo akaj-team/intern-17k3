@@ -5,12 +5,16 @@ import android.content.pm.PackageManager;
 
 /**
  * Created by hoangnhat on 05/12/2017.
+ * This class check app google photos installed
  */
 
-public final class GoogleUtil {
+final class GoogleUtil {
     private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
 
-    public static boolean isGooglePhotosInstalled(Context context) {
+    private GoogleUtil() {
+    }
+
+    static boolean isGooglePhotosInstalled(Context context) {
         PackageManager packageManager = context.getPackageManager();
         try {
             return packageManager.getPackageInfo(GOOGLE_PHOTO, PackageManager.GET_ACTIVITIES) != null;

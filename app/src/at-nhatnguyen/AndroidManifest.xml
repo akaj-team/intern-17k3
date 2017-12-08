@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.asiantech.internship">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +21,7 @@
         <activity android:name=".ui.calculator.CalculatorActivity" />
         <activity android:name=".ui.recyclerview.CommentActivity" />
         <activity android:name="vn.asiantech.internship.ui.login.LoginActivity" />
-        <activity android:name=".ui.drawerlayout.DrawerActivity"/>
+        <activity android:name=".ui.drawerlayout.DrawerActivity" />
     </application>
 
 </manifest>

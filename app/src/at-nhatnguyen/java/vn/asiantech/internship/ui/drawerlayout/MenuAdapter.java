@@ -1,6 +1,8 @@
 package vn.asiantech.internship.ui.drawerlayout;
 
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,9 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
 
+/**
+ * This class is an adapter used for a recyclerView in drawerActivity
+ */
 public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int USER = 0;
     private static final int OPTION = 1;
@@ -62,7 +67,6 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             optionHolder.mImgIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mOnItemClickListener.onClickItem(optionHolder.getAdapterPosition());
                 }
             });
             return optionHolder;
@@ -124,13 +128,18 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private UserHolder(View itemView) {
             super(itemView);
             mImgAvatar = itemView.findViewById(R.id.imgAvatar);
-            mTvMail = itemView.findViewById(R.id.tvMail);
+            mTvMail = itemView.findViewById(R.id.tvEmail);
         }
 
         private void onBindData(Object object) {
             User user = (User) object;
-            mImgAvatar.setImageResource(user.getImgAvatar());
-            mTvMail.setText(user.getMail());
+            if (TextUtils.isEmpty(user.getUri())) {
+                mImgAvatar.setImageResource(user.getImgAvatar());
+            }
+            else {
+                mImgAvatar.setImageURI(Uri.parse(user.getUri()));
+            }
+            mTvMail.setText(user.getEmail());
         }
     }
 }

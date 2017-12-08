@@ -24,4 +24,6 @@
     <string name="exercise_login">Login</string>
     <string name="button_drawer_layout">drawerlayout</string>
     <string name="name">Main Content</string>
+    <string name="notify_uri">That app do not support return uri for image</string>
+    <string name="message">Hello man</string>
 </resources>
