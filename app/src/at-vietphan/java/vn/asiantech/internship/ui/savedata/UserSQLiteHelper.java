@@ -63,8 +63,8 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         insertTableUser(sqLiteDatabase, "Trang Le", 22);
         insertTableUser(sqLiteDatabase, "Lan Nguyen", 20);
         insertTableCompany(sqLiteDatabase, "Asian Tech", "Recoding History");
-        insertTableCompany(sqLiteDatabase, "Huong Viet", "Recoding History");
-        insertTableCompany(sqLiteDatabase, "FPT Software", "No Slogan");
+        insertTableCompany(sqLiteDatabase, "Huong Viet", "No slogan");
+        insertTableCompany(sqLiteDatabase, "FPT Software", "Software Outsourcing");
         insertTableEmployee(sqLiteDatabase, 1, 1);
         insertTableEmployee(sqLiteDatabase, 2, 2);
         insertTableEmployee(sqLiteDatabase, 3, 3);
