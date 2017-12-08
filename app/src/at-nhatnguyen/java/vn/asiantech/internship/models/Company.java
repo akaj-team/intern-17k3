@@ -11,6 +11,7 @@ public class Company {
     private String sloganCompany;
 
     public Company() {
+        //No-op
     }
 
     public int getIdCompany() {

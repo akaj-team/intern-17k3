@@ -11,6 +11,7 @@ public class People {
     private int agePeople;
 
     public People(){
+        // No-op
     }
 
     public int getiDPeople() {
