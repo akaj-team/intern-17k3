@@ -28,4 +28,13 @@
     <string name="edt_read_file_fail">Read file fail !</string>
     <string name="edt_write_file_fail">Write file fail !</string>
     <string name="edt_file_not_exist">file not exist</string>
+    <string name="tv_person_name">PersonName</string>
+    <string name="tv_person_age">20</string>
+    <string name="tv_age">Age : </string>
+    <string name="tv_company_name">AsianTech</string>
+    <string name="tv_company_slogan">Recording History</string>
+    <string name="btn_drawer_layout_screen">drawerlayout</string>
+    <string name="btn_share_preference">SharePreference</string>
+    <string name="btn_external_storage">external storge</string>
+    <string name="btn_sqlite_screen">sqlite</string>
 </resources>
