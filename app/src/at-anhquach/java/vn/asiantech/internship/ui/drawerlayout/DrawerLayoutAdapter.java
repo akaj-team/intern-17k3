@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -14,14 +13,13 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Issue;
 
 public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private static final int TYPE_HEADER = 0;
+    private static final int TYE_ITEM = 1;
     private List<Issue> mIssueList;
     private OnItemClickListener mOnItemClickListener;
 
-    private static final int HEADER = 0;
-    private static final int ITEM = 1;
-
-    DrawerLayoutAdapter(List<Issue> issue, OnItemClickListener onItemClickListener) {
-        mIssueList = issue;
+    DrawerLayoutAdapter(List<Issue> issues, OnItemClickListener onItemClickListener) {
+        mIssueList = issues;
         mOnItemClickListener = onItemClickListener;
     }
 
@@ -29,10 +27,10 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
         switch (viewType) {
-            case HEADER:
+            case TYPE_HEADER:
                 View viewHeader = layoutInflater.inflate(R.layout.item_header_issue, viewGroup, false);
                 return new HeaderViewHolder(viewHeader);
-            case ITEM:
+            case TYE_ITEM:
                 View viewItem = layoutInflater.inflate(R.layout.item_issue, viewGroup, false);
                 return new ItemViewHolder(viewItem);
         }
@@ -42,11 +40,11 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (getItemViewType(position)) {
-            case HEADER:
+            case TYPE_HEADER:
                 HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
                 headerViewHolder.onBindDataHeader();
                 break;
-            case ITEM:
+            case TYE_ITEM:
                 ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
                 itemViewHolder.onBindDataItem();
                 break;
@@ -61,33 +59,31 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
         if (position == 0) {
-            return HEADER;
+            return TYPE_HEADER;
         } else {
-            return ITEM;
+            return TYE_ITEM;
         }
     }
 
-    class HeaderViewHolder extends RecyclerView.ViewHolder {
-        private CircleImageView mCircleImgAvata;
+    private class HeaderViewHolder extends RecyclerView.ViewHolder {
+        private CircleImageView mCircleImgAvatar;
 
         HeaderViewHolder(View itemView) {
             super(itemView);
-            mCircleImgAvata = itemView.findViewById(R.id.circleImgAvata);
+            mCircleImgAvatar = itemView.findViewById(R.id.circleImgAvatar);
         }
 
         private void onBindDataHeader() {
-            mCircleImgAvata.setImageResource(R.drawable.img_avata);
+            mCircleImgAvatar.setImageResource(R.drawable.img_avatar);
         }
 
     }
 
     private class ItemViewHolder extends RecyclerView.ViewHolder {
-        private ImageView mImgIcon;
         private TextView mTvNameIssue;
 
         ItemViewHolder(View itemView) {
             super(itemView);
-            mImgIcon = itemView.findViewById(R.id.imgIcon);
             mTvNameIssue = itemView.findViewById(R.id.tvIssueName);
             mTvNameIssue.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,9 +96,9 @@ public class DrawerLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 
         private void onBindDataItem() {
-            Issue issue = mIssueList.get(getAdapterPosition() - 1);
-            mImgIcon.setImageResource(issue.getIcon());
-            mTvNameIssue.setText(issue.getName());
+            Issue issues = mIssueList.get(getAdapterPosition() - 1);
+            mTvNameIssue.setCompoundDrawablesWithIntrinsicBounds(issues.getIcon(), 0, 0, 0);
+            mTvNameIssue.setText(issues.getName());
         }
     }
 

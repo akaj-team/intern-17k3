@@ -11,6 +11,10 @@ public class Company {
         this.slogan = slogan;
     }
 
+    public Company() {
+
+    }
+
     public int getId() {
         return id;
     }

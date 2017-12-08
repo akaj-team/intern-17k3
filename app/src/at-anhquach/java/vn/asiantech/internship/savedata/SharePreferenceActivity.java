@@ -34,15 +34,15 @@ public class SharePreferenceActivity extends AppCompatActivity {
     }
 
     private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("SAVE_DATA", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(getResources().getString(R.string.key_save_data), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("SAVE_DATA", mEdtSaveData.getText().toString());
+        editor.putString(getResources().getString(R.string.key_save_data), mEdtSaveData.getText().toString());
         editor.apply();
     }
 
     private void displayData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("SAVE_DATA", Context.MODE_PRIVATE);
-        String textDislayed = sharedPreferences.getString("SAVE_DATA", "");
+        SharedPreferences sharedPreferences = getSharedPreferences(getResources().getString(R.string.key_save_data), Context.MODE_PRIVATE);
+        String textDislayed = sharedPreferences.getString(getResources().getString(R.string.key_save_data), "");
         mEdtSaveData.setText(textDislayed);
     }
 }

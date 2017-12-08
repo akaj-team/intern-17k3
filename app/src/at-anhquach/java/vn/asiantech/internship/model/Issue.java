@@ -1,12 +1,24 @@
 package vn.asiantech.internship.model;
 
+import android.content.Intent;
+
 public class Issue {
     private int icon;
     private String name;
+    private Intent intent;
 
-    public Issue(int icon, String name) {
+    public Issue(int icon, String name, Intent intent) {
         this.icon = icon;
         this.name = name;
+        this.intent = intent;
+    }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
     }
 
     public String getName() {
@@ -17,11 +29,11 @@ public class Issue {
         this.name = name;
     }
 
-    public int getIcon() {
-        return icon;
+    public Intent getIntent() {
+        return intent;
     }
 
-    public void setIcon(int icon) {
-        this.icon = icon;
+    public void setIntent(Intent intent) {
+        this.intent = intent;
     }
 }

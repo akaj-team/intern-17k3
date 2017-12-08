@@ -1,7 +1,6 @@
 package vn.asiantech.internship.ui.drawerlayout;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -28,7 +26,6 @@ import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
     private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mActionBarDrawerToggle;
     private RecyclerView mRecyclerViewLeftMenu;
     private LinearLayout mLlContent;
     private List<Issue> mIssueList = new ArrayList<>();
@@ -37,39 +34,36 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_layout);
-        initView();
+        initViews();
         initDrawer();
         initData();
         initAdapter();
     }
 
-    private void initView() {
+    private void initViews() {
         mDrawerLayout = findViewById(R.id.drawerLayout);
-        Button mBtnLeftMenu = findViewById(R.id.btnLeftMenu);
+        Button btnLeftMenu = findViewById(R.id.btnLeftMenu);
         mRecyclerViewLeftMenu = findViewById(R.id.recyclerViewLeftMenu);
         mLlContent = findViewById(R.id.llContent);
-        mBtnLeftMenu.setOnClickListener(this);
+        btnLeftMenu.setOnClickListener(this);
     }
 
     private void initData() {
-        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Create Login Screen"));
-        mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Create Calculator View"));
-        mIssueList.add(new Issue(R.drawable.ic_sms_failed_black_24dp, "Create Recycler View"));
-        mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Share Preference"));
-        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "External Storage"));
-        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLite"));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Create Login Screen", new Intent(this, LoginActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Create Calculator View", new Intent(this, CalculatorViewActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_sms_failed_black_24dp, "Create Recycler View", new Intent(this, RecyclerViewActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Share Preference", new Intent(this, SharePreferenceActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "External Storage", new Intent(this, ExternalStorageActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLite", new Intent(this, UserSQLiteActivity.class)));
     }
 
     private void initDrawer() {
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
+        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout, R.string.open, R.string.close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
                 mLlContent.setTranslationX(slideOffset * drawerView.getWidth());
-                mDrawerLayout.bringChildToFront(drawerView);
-                mDrawerLayout.requestLayout();
-                mDrawerLayout.setScrimColor(Color.TRANSPARENT);
             }
 
             @Override
@@ -86,14 +80,9 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initAdapter() {
-        DrawerLayoutAdapter mIssueAdapter = new DrawerLayoutAdapter(mIssueList, this);
+        DrawerLayoutAdapter issueAdapter = new DrawerLayoutAdapter(mIssueList, this);
         mRecyclerViewLeftMenu.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewLeftMenu.setAdapter(mIssueAdapter);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return mActionBarDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+        mRecyclerViewLeftMenu.setAdapter(issueAdapter);
     }
 
     @Override
@@ -107,26 +96,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onNameIssueClick(int position) {
-        switch (position) {
-            case 1:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
-            case 2:
-                startActivity(new Intent(this, CalculatorViewActivity.class));
-                break;
-            case 3:
-                startActivity(new Intent(this, RecyclerViewActivity.class));
-                break;
-            case 4:
-                startActivity(new Intent(this, SharePreferenceActivity.class));
-                break;
-            case 5:
-                startActivity(new Intent(this, ExternalStorageActivity.class));
-                break;
-            case 6:
-                startActivity(new Intent(this, UserSQLiteActivity.class));
-                break;
-        }
+        Intent intent = mIssueList.get(position - 1).getIntent();
+        startActivity(intent);
     }
-
 }

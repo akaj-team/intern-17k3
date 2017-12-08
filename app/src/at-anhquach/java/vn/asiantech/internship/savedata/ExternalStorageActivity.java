@@ -51,10 +51,9 @@ public class ExternalStorageActivity extends AppCompatActivity {
     }
 
     private void writeFileExternal(String value) {
-        if (!isExternalWriteable()) {
-            // No-opp
-        } else {
+        if (isExternalWriteable()) {
             File fileExternal = new File(Environment.getExternalStorageDirectory().getPath() + "/AnhQuach");
+            //noinspection ResultOfMethodCallIgnored
             fileExternal.mkdirs();
             File abc = new File(fileExternal.getPath(), "abc.txt");
             try {

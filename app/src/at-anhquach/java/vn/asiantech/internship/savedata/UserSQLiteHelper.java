@@ -8,24 +8,25 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import vn.asiantech.internship.model.Company;
 import vn.asiantech.internship.model.User;
 
 public class UserSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "AnhQuach";
-    public static final String TABLE_USER = "users";
-    public static final int DATABASE_VERSION = 1;
-    public static final String TABLE_COMPANY = "company";
-    public static final String TABLE_EMPLOYEE = "employee";
+    private static final String TABLE_USER = "users";
+    private static final int DATABASE_VERSION = 1;
+    private static final String TABLE_COMPANY = "company";
+    private static final String TABLE_EMPLOYEE = "employee";
 
-    public static final String ID_USER = "id";
-    public static final String ID_EMPLOYEE = "id";
-    public static final String ID_COMPANY = "id";
-    public static final String NAME_USER = "name";
-    public static final String NAME_COMPANY = "name";
-    public static final String AGE = "age";
-    public static final String SLOGAN = "sologan";
-    public static final String ID_EMPLOYEE_USER = "id_user";
-    public static final String ID_EMPLOYEE_COMPANY = "id_company";
+    private static final String ID_USER = "id";
+    private static final String ID_EMPLOYEE = "id";
+    private static final String ID_COMPANY = "id";
+    private static final String NAME_USER = "name";
+    private static final String NAME_COMPANY = "name";
+    private static final String AGE = "age";
+    private static final String SLOGAN = "sologan";
+    private static final String ID_EMPLOYEE_USER = "id_user";
+    private static final String ID_EMPLOYEE_COMPANY = "id_company";
     private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER
             + "(" + ID_USER + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + NAME_USER + " TEXT,"
@@ -50,16 +51,11 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_TABLE_USER);
         sqLiteDatabase.execSQL(CREATE_TABLE_COMPANY);
         sqLiteDatabase.execSQL(CREATE_TABLE_EMPLOYEE);
+        initData(sqLiteDatabase);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
-        onCreate(sqLiteDatabase);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_COMPANY);
-        onCreate(sqLiteDatabase);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_EMPLOYEE);
-        onCreate(sqLiteDatabase);
     }
 
     private void initData(SQLiteDatabase sqLiteDatabase) {
@@ -74,16 +70,19 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         insertTableEmployee(sqLiteDatabase, 3, 3);
     }
 
-    private ArrayList<User> getListUser(){
+    ArrayList<User> getListUser() {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.query(TABLE_USER, new String[]{ID_USER,NAME_USER,AGE},null,null,null,null,null);
-        int colId = cursor.getColumnIndex(ID_USER);
-        int colName = cursor.getColumnIndex(NAME_USER);
-        int colAge = cursor.getColumnIndex(AGE);
+        Cursor cursor = sqLiteDatabase.query(TABLE_USER, new String[]{ID_USER, NAME_USER, AGE}, null, null, null, null, null);
+        cursor.moveToFirst();
+        User user;
         ArrayList<User> userList = new ArrayList<>();
-        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
-            User user = new User(cursor.getInt(colId),cursor.getString(colName),cursor.getInt(colAge));
+        while (!cursor.isAfterLast()) {
+            user = new User();
+            user.setId(cursor.getInt(cursor.getColumnIndex(ID_USER)));
+            user.setName(cursor.getString(cursor.getColumnIndex(NAME_USER)));
+            user.setAge(cursor.getInt(cursor.getColumnIndex(AGE)));
             userList.add(user);
+            cursor.moveToNext();
         }
         cursor.close();
         return userList;
@@ -108,5 +107,22 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(ID_EMPLOYEE_USER, idUser);
         contentValues.put(ID_EMPLOYEE_COMPANY, idCompany);
         sqLiteDatabase.insert(TABLE_EMPLOYEE, null, contentValues);
+    }
+
+    Company getCompanyByUserId(int id) {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_COMPANY + " INNER JOIN " + TABLE_EMPLOYEE + " ON " + TABLE_COMPANY + "." + ID_COMPANY +
+                " = " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE + " WHERE " + ID_EMPLOYEE_USER + " = " + id;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        Company company = null;
+        if (cursor != null) {
+            cursor.moveToNext();
+            company = new Company();
+            company.setId(cursor.getInt(cursor.getColumnIndex(ID_COMPANY)));
+            company.setName(cursor.getString(cursor.getColumnIndex(NAME_COMPANY)));
+            company.setSlogan(cursor.getString(cursor.getColumnIndex(SLOGAN)));
+            cursor.close();
+        }
+        return company;
     }
 }

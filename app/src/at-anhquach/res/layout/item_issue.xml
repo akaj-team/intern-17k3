@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:apps="http://schemas.android.com/tools"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvIssueName"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal"
+    android:drawableLeft="@drawable/ic_send_black_24dp"
+    android:drawablePadding="10dp"
+    android:gravity="center_vertical"
     android:padding="10dp"
-    apps:ignore="UseCompoundDrawables">
-
-    <ImageView
-        android:id="@+id/imgIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="30dp" />
-
-    <TextView
-        android:id="@+id/tvIssueName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:textColor="@color/colorGrayDark"
-        android:textSize="15dp" />
-</LinearLayout>
+    android:textColor="@color/colorGrayDark"
+    android:textSize="15dp" />
