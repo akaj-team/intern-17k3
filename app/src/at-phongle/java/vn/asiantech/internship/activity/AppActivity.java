@@ -1,4 +1,4 @@
-package vn.asiantech.internship.appPhongle;
+package vn.asiantech.internship.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
