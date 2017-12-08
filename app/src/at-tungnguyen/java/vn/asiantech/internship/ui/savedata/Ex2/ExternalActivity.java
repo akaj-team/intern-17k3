@@ -65,7 +65,6 @@ public class ExternalActivity extends AppCompatActivity {
         if (!isExternalWriteable()) {
             Toast.makeText(this, "Please use memory", Toast.LENGTH_SHORT).show();
         } else {
-
             File folderMemory = new File(Environment.getExternalStorageDirectory().getPath() + "/Tungnguyen");
             folderMemory.mkdirs();
             Log.d("VVVV", "WriteFileExternal: " + Environment.getExternalStorageDirectory().getPath());
