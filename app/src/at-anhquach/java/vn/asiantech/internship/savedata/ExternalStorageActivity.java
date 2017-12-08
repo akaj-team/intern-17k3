@@ -51,10 +51,10 @@ public class ExternalStorageActivity extends AppCompatActivity {
 
     private void writeFileExternal(String value) {
         if (isExternalWriteable()) {
-            File fileExternal = new File(Environment.getExternalStorageDirectory().getPath() + "/AnhQuach");
+            File fileExternal = new File(Environment.getExternalStorageDirectory().getPath() + getResources().getString(R.string.folder_name_anhquach));
             //noinspection ResultOfMethodCallIgnored
             fileExternal.mkdirs();
-            File abc = new File(fileExternal.getPath(), "abc.txt");
+            File abc = new File(fileExternal.getPath(), getResources().getString(R.string.file_name_txt));
 
             try {
                 FileOutputStream outputStream = new FileOutputStream(abc);
@@ -64,7 +64,7 @@ public class ExternalStorageActivity extends AppCompatActivity {
                 bufferedOutputStream.close();
                 outputStream.close();
             } catch (IOException writeData) {
-                Log.d("error", writeData.getMessage());
+                Log.d(getResources().getString(R.string.tag_error), writeData.getMessage());
             }
         }
     }
@@ -72,7 +72,7 @@ public class ExternalStorageActivity extends AppCompatActivity {
     private void readFileExternal() {
         if (!isExternalReadable()) {
             File fileRead = new File(Environment
-                    .getExternalStorageDirectory().getPath() + "/AnhQuach", "abc.txt");
+                    .getExternalStorageDirectory().getPath() + getResources().getString(R.string.folder_name_anhquach), getResources().getString(R.string.file_name_txt));
             try {
                 Scanner scanner = new Scanner(fileRead, "UTF-8");
                 StringBuilder builder = new StringBuilder();
@@ -82,7 +82,7 @@ public class ExternalStorageActivity extends AppCompatActivity {
                 scanner.close();
                 mEdtSaveData.setText(builder.toString());
             } catch (IOException readData) {
-                Log.d("error", readData.getMessage());
+                Log.d(getResources().getString(R.string.tag_error), readData.getMessage());
             }
         }
     }
