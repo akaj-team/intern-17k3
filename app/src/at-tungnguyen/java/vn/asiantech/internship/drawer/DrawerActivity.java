@@ -1,8 +1,6 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.drawer;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
@@ -11,19 +9,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import vn.asiantech.internship.R;
+
 public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.OnItemClickListener {
 
+    private static final int REQUEST_PHOTO_FROM_GOOGLE_PHOTOS = 1;
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
-    private static final int REQUEST_PHOTO_FROM_GOOGLE_PHOTOS = 1;
     private List<DrawerItem> mData;
     private DrawerAdapter mAdapter;
     private RecyclerView mRecyclerView;
@@ -32,7 +30,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
-        mToolbar = findViewById(R.id.appBar);
+        mToolbar = findViewById(R.id.toolbar);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mRecyclerView = findViewById(R.id.recyclerview);
         if (getSupportActionBar() != null) {
@@ -43,7 +41,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         getData();
         mAdapter = new DrawerAdapter(this, mData);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.getLayoutParams().width = getWidth() * 2 / 3;
+        mRecyclerView.getLayoutParams().width = ScreenUtil.getScreenWidth(getApplicationContext()) * 2 / 3;
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -64,27 +62,19 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_PHOTO_FROM_GOOGLE_PHOTOS && resultCode == RESULT_OK && data != null) {
-            mData.get(0).setImageuri(data.getData() + "");
+            mData.get(0).setImageuri(data.getData().toString());
             mAdapter.notifyDataSetChanged();
         } else {
             Toast.makeText(this, R.string.have_not_picked_img, Toast.LENGTH_LONG).show();
         }
     }
 
-    private int getWidth() {
-        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        assert wm != null;
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        return size.x;
-    }
-
     private void getData() {
         mData = new ArrayList<>();
-        mData.add(new DrawerItem("Header", 1, R.drawable.profile, ""));
-        mData.add(new DrawerItem("Item", 2, R.drawable.ic_compare_arrows_black_24dp, ""));
-        mData.add(new DrawerItem("Item", 2, R.drawable.ic_compare_arrows_black_24dp, ""));
+        mData.add(new DrawerItem("Tung.nguyen2@asiastech.vn", 1, R.drawable.profile, ""));
+        mData.add(new DrawerItem("Outbox", 2, R.drawable.ic_inbox_content, ""));
+        mData.add(new DrawerItem("Trash", 2, R.drawable.ic_outbox_content, ""));
+        mData.add(new DrawerItem("Spam", 2, R.drawable.ic_trash_content, ""));
     }
 
     private void initDrawer() {

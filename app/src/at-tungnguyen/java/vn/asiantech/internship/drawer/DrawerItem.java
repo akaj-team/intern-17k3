@@ -1,16 +1,16 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.drawer;
 
 public class DrawerItem {
     private String name;
     private int type;
-    private int imageresource;
-    private String imageuri;
+    private int imageResource;
+    private String imageUri;
 
-    public DrawerItem(String name, int type, int imageresource, String imageuri) {
+    public DrawerItem(String name, int type, int imageResource, String imageUri) {
         this.name = name;
         this.type = type;
-        this.imageresource = imageresource;
-        this.imageuri = imageuri;
+        this.imageResource = imageResource;
+        this.imageUri = imageUri;
     }
 
     public String getName() {
@@ -30,18 +30,18 @@ public class DrawerItem {
     }
 
     public int getImageresource() {
-        return imageresource;
+        return imageResource;
     }
 
     public void setImageresource(int imageresource) {
-        this.imageresource = imageresource;
+        this.imageResource = imageresource;
     }
 
     public String getImageuri() {
-        return imageuri;
+        return imageUri;
     }
 
     public void setImageuri(String imageuri) {
-        this.imageuri = imageuri;
+        this.imageUri = imageuri;
     }
 }

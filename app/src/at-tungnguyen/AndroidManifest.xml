@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".ui.caculatorview.CalculatorActivity" />
         <activity android:name=".ui.login.MainActivity" />
-        <activity android:name=".DrawerActivity" />
+        <activity android:name=".drawer.DrawerActivity" />
     </application>
 
 </manifest>

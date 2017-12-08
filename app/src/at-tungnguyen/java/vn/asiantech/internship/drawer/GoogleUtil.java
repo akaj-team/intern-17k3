@@ -1,11 +1,25 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.drawer;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
 
-public class GoogleUtil {
+/**
+ * GoogleUtil
+ */
+
+public final class GoogleUtil {
+    private GoogleUtil() {
+        // No-op
+    }
+
     public static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
 
+    /**
+     * isGooglePhotosInstalled
+     *
+     * @param context
+     * @return
+     */
     public static boolean isGooglePhotosInstalled(Context context) {
         PackageManager packageManager = context.getPackageManager();
         try {

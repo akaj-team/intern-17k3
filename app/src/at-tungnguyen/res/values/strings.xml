@@ -28,5 +28,5 @@
     <string name="tv_login">Create Login Screen</string>
     <string name="tv_caculator">Calculator View </string>
     <string name="have_not_picked_img">Not Picked</string>
-
+    <string name="tv_toolbar">Trang chủ </string>
 </resources>

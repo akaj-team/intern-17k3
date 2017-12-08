@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.drawer;
 
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -13,24 +13,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import vn.asiantech.internship.R;
 
 public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private static final int ITEM_HEADER = 1;
+    private static final int ITEM_CONTENT = 2;
     private OnItemClickListener mOnItemClickListener;
-    private List<DrawerItem> mList = new ArrayList<>();
+    private List<DrawerItem> mDrawerItems = new ArrayList<>();
 
-    DrawerAdapter(OnItemClickListener mOnItemClickListener, List<DrawerItem> mList) {
-        this.mOnItemClickListener = mOnItemClickListener;
-        this.mList = mList;
+    DrawerAdapter(OnItemClickListener onItemClickListener, List<DrawerItem> drawerItems) {
+        this.mOnItemClickListener = onItemClickListener;
+        this.mDrawerItems = drawerItems;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         switch (viewType) {
-            case 1:
+            case ITEM_HEADER:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_header, parent, false);
                 return new HeaderViewHolder(view, mOnItemClickListener);
-            case 2:
+            case ITEM_CONTENT:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_content, parent, false);
                 return new ContentViewHolder(view);
         }
@@ -41,34 +44,36 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof HeaderViewHolder) {
             HeaderViewHolder headerViewHolder = ((HeaderViewHolder) holder);
-            headerViewHolder.tvHeaderTitle.setText(mList.get(position).getName());
-            if (TextUtils.isEmpty(mList.get(position).getImageuri())) {
-                headerViewHolder.mImgHeader.setImageResource(mList.get(position).getImageresource());
+            headerViewHolder.mTvHeaderTitle.setText(mDrawerItems.get(position).getName());
+            if (TextUtils.isEmpty(mDrawerItems.get(position).getImageuri())) {
+                headerViewHolder.mImgHeader.setImageResource(mDrawerItems.get(position).getImageresource());
             } else {
-                headerViewHolder.mImgHeader.setImageURI(Uri.parse(mList.get(position).getImageuri()));
+                headerViewHolder.mImgHeader.setImageURI(Uri.parse(mDrawerItems.get(position).getImageuri()));
             }
         } else if (holder instanceof ContentViewHolder) {
-            ((ContentViewHolder) holder).mContent.setText(mList.get(position).getName());
-            ((ContentViewHolder) holder).mImageView.setImageResource(mList.get(position).getImageresource());
+            ContentViewHolder contentViewHolder = ((ContentViewHolder) holder);
+            contentViewHolder.mContent.setText(mDrawerItems.get(position).getName());
+            contentViewHolder.mImageView.setImageResource(mDrawerItems.get(position).getImageresource());
         }
     }
 
     @Override
     public int getItemCount() {
-        return mList.size();
+        return mDrawerItems.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        return mList.get(position).getType();
+        return mDrawerItems.get(position).getType();
     }
 
     private class HeaderViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvHeaderTitle;
+        private TextView mTvHeaderTitle;
         private CircleImageView mImgHeader;
 
         HeaderViewHolder(View itemView, final OnItemClickListener onItemClickListener) {
             super(itemView);
+            mTvHeaderTitle = itemView.findViewById(R.id.tvHeaderTitle);
             mImgHeader = itemView.findViewById(R.id.imgCirle);
             mImgHeader.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -76,7 +81,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     onItemClickListener.onclickHeaderitem(view, getAdapterPosition());
                 }
             });
-            tvHeaderTitle = itemView.findViewById(R.id.headerText);
         }
     }
 
@@ -92,9 +96,9 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public interface OnItemClickListener {
-        void onclickHeaderitem(View view, int position);
         /**
-         This is Javadoc
+         * This is Javadoc
          **/
+        void onclickHeaderitem(View view, int position);
     }
 }
