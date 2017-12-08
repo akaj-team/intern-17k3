@@ -34,6 +34,9 @@ public class PeopleSQLite extends SQLiteOpenHelper {
     private static final String EMPLOYEE_ID = "IdEm";
     private static final String EMPLOYEE_US = "IdUs";
     private static final String EMPLOYEE_COM = "IdCom";
+    //Select data by this field
+    private static final String SELECT_DATA = "Select * From ";
+    private static final String COMPARE = " = '";
 
     private static final String CREATE_TABLE_PEOPLE = "CREATE TABLE " + TABLE_NAME_PEOPLE + "( "
             + PEOPLE_ID + " INTEGER PRIMARY KEY,"
@@ -105,7 +108,7 @@ public class PeopleSQLite extends SQLiteOpenHelper {
     ArrayList<People> getUserCompany() {
         ArrayList<People> userCompanies = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME_PEOPLE, null);
+        Cursor cursor = sqLiteDatabase.rawQuery(SELECT_DATA + TABLE_NAME_PEOPLE, null);
         cursor.moveToFirst();
         People people;
         while (!cursor.isAfterLast()) {
@@ -122,8 +125,8 @@ public class PeopleSQLite extends SQLiteOpenHelper {
 
     Company getCompany(int idCom) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME_COMPANY
-                + " where " + COMPANY_ID + " = '" + idCom + "'", null);
+        Cursor cursor = sqLiteDatabase.rawQuery(SELECT_DATA + TABLE_NAME_COMPANY
+                + " where " + COMPANY_ID + COMPARE + idCom + "'", null);
         cursor.moveToFirst();
         if (cursor.getCount() == 1) {
             Company company = new Company();
@@ -140,8 +143,8 @@ public class PeopleSQLite extends SQLiteOpenHelper {
 
     int getIdCompany(int idPeople) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME_EMPLOYEE
-                + " where " + EMPLOYEE_US + " = '" + idPeople + "'", null);
+        Cursor cursor = sqLiteDatabase.rawQuery(SELECT_DATA + TABLE_NAME_EMPLOYEE
+                + " where " + EMPLOYEE_US + COMPARE + idPeople + "'", null);
         cursor.moveToFirst();
         if (cursor.getCount() == 1) {
             int idCompany = cursor.getInt(cursor.getColumnIndex(EMPLOYEE_COM));
@@ -155,12 +158,14 @@ public class PeopleSQLite extends SQLiteOpenHelper {
 
     boolean checkExistsEmployee(int idUs, int idCom) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME_EMPLOYEE
-                + " where " + EMPLOYEE_US + " = '" + idUs + "'"
-                + " and " + EMPLOYEE_COM + " = '" + idCom + "'", null);
+        Cursor cursor = sqLiteDatabase.rawQuery(SELECT_DATA + TABLE_NAME_EMPLOYEE
+                + " where " + EMPLOYEE_US + COMPARE + idUs + "'"
+                + " and " + EMPLOYEE_COM + COMPARE + idCom + "'", null);
         if (cursor.getCount() == 0) {
+            cursor.close();
             return false;
         } else {
+            cursor.close();
             return true;
         }
     }
