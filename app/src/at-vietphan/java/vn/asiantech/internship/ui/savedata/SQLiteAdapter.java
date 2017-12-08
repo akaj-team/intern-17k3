@@ -53,7 +53,6 @@ public class SQLiteAdapter extends RecyclerView.Adapter<SQLiteAdapter.UserViewHo
      */
     public interface OnItemClickListener {
         void onItemUserClick(int position);
-
     }
 
     /**
@@ -74,7 +73,7 @@ public class SQLiteAdapter extends RecyclerView.Adapter<SQLiteAdapter.UserViewHo
         }
 
         private void onBindData(User user) {
-            if (!user.equals(null)){
+            if (!user.equals(null)) {
                 mTvName.setText(user.getName());
                 mTvAge.setText(String.valueOf(user.getAge()));
             }

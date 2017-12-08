@@ -35,7 +35,6 @@ public class SaveDataActivity extends Activity implements View.OnClickListener {
         mBtnSharePreference.setOnClickListener(this);
         mBtnExternalStorage.setOnClickListener(this);
         mBtnSQLite.setOnClickListener(this);
-
     }
 
     @Override
