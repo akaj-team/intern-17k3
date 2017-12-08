@@ -1,5 +1,10 @@
 package vn.asiantech.internship.savedata;
 
+/*
+ *
+ *
+ */
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +29,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public UserViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_user, viewGroup, false);
-        return new UserViewHolder(view);
+        final UserViewHolder userViewHolder = new UserViewHolder(view);
+        userViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemUserClick(userViewHolder.getAdapterPosition());
+                }
+            }
+        });
+        return userViewHolder;
     }
 
     @Override
@@ -38,7 +52,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
 
-    class UserViewHolder extends RecyclerView.ViewHolder {
+    static class UserViewHolder extends RecyclerView.ViewHolder {
         TextView mTvUserName;
         TextView mTvAge;
 
@@ -46,14 +60,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             super(itemView);
             mTvUserName = itemView.findViewById(R.id.tvUserName);
             mTvAge = itemView.findViewById(R.id.tvUserAge);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onItemUserClick(getAdapterPosition());
-                    }
-                }
-            });
         }
 
         private void onBindData(User user) {
@@ -61,7 +67,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             mTvAge.setText(String.valueOf(user.getAge()));
         }
     }
-    public interface OnItemClickListener{
+
+    public interface OnItemClickListener {
         void onItemUserClick(int position);
     }
 }

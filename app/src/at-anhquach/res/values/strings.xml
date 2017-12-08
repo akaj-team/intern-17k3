@@ -27,5 +27,5 @@
     <string name="key_id_user">idUser</string>
     <string name="tag_error">error</string>
     <string name="folder_name_anhquach">/AnhQuach</string>
-    <string name="file_name_txt">abc</string>
+    <string name="file_name_txt">abc.txt</string>
 </resources>

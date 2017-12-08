@@ -1,5 +1,10 @@
 package vn.asiantech.internship.savedata;
 
+/*
+ *
+ *
+ */
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -111,8 +116,8 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
 
     Company getCompanyByUserId(int id) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String query = "SELECT * FROM " + TABLE_COMPANY + " INNER JOIN " + TABLE_EMPLOYEE + " ON " + TABLE_COMPANY + "." + ID_COMPANY +
-                " = " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE + " WHERE " + ID_EMPLOYEE_USER + " = " + id;
+        String query = "SELECT " + TABLE_COMPANY + "." + ID_COMPANY + "," + NAME_COMPANY + "," + SLOGAN + " FROM " + TABLE_COMPANY + ", " + TABLE_EMPLOYEE
+                + " WHERE " + TABLE_COMPANY + "." + ID_COMPANY + " = " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE + " AND " + ID_EMPLOYEE_USER + " = " + id;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         Company company = null;
         if (cursor != null) {

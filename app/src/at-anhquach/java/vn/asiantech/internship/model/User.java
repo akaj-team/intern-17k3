@@ -1,21 +1,11 @@
 package vn.asiantech.internship.model;
 
-/**
- * Created by anh.quach on 12/7/17.
- */
-
 public class User {
     private int id;
     private String name;
     private int age;
 
     public User() {
-    }
-
-    public User(int id, String name, int age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
     }
 
     public int getId() {
@@ -42,4 +32,3 @@ public class User {
         this.age = age;
     }
 }
-
