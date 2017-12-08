@@ -14,7 +14,7 @@ import android.widget.Toast;
 import vn.asiantech.internship.R;
 
 /**
- * class CalculatorActivity
+ * Class CalculatorActivity
  */
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtNumberA;

@@ -12,7 +12,7 @@ import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
 /**
- * class ExerciseActivity: list exercise start app
+ * Class ExerciseActivity: list exercise start app
  */
 public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnLogin;

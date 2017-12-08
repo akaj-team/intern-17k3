@@ -1,6 +1,8 @@
 package vn.asiantech.internship.ui.drawerlayout;
 
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +14,19 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Issue;
+import vn.asiantech.internship.models.User;
 
 /**
- * class IssueAdapter
+ * Class IssueAdapter
  */
 public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int HEADER = 0;
     private static final int ITEM = 1;
-    private List<Issue> mIssueList;
+    private List<Object> mObjects;
     private OnItemClickListener mOnItemClickListener;
 
-    IssueAdapter(List<Issue> mIssueList, OnItemClickListener onItemClickListener) {
-        this.mIssueList = mIssueList;
+    IssueAdapter(List<Object> objects, OnItemClickListener onItemClickListener) {
+        this.mObjects = objects;
         this.mOnItemClickListener = onItemClickListener;
     }
 
@@ -38,12 +41,12 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View viewHeader = layoutInflater.inflate(R.layout.row_header, parent, false);
-        View viewItem = layoutInflater.inflate(R.layout.row_item, parent, false);
+        View view;
         switch (viewType) {
             case HEADER:
-                HeaderHolder headerHolder = new HeaderHolder(viewHeader);
-                headerHolder.circleImgAvatar.setOnClickListener(new View.OnClickListener() {
+                view = layoutInflater.inflate(R.layout.row_header, parent, false);
+                HeaderHolder headerHolder = new HeaderHolder(view);
+                headerHolder.mCircleImgAvatar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (mOnItemClickListener != null) {
@@ -53,8 +56,9 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 });
                 return headerHolder;
             default:
-                final ItemHolder itemHolder = new ItemHolder(viewItem);
-                viewItem.setOnClickListener(new View.OnClickListener() {
+                view = layoutInflater.inflate(R.layout.row_item, parent, false);
+                final ItemHolder itemHolder = new ItemHolder(view);
+                view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (mOnItemClickListener != null) {
@@ -71,22 +75,22 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         switch (getItemViewType(position)) {
             case HEADER:
                 HeaderHolder headerHolder = (HeaderHolder) holder;
-                headerHolder.onBindData();
+                headerHolder.onBindData(mObjects.get(position));
                 break;
             default:
                 ItemHolder itemHolder = (ItemHolder) holder;
-                itemHolder.onBindData(position, mIssueList);
+                itemHolder.onBindData(mObjects.get(position));
                 break;
         }
     }
 
     @Override
     public int getItemCount() {
-        return mIssueList.size() + 1;
+        return mObjects.size();
     }
 
     /**
-     * interface onItemClickListener handle click change avatar and items issue
+     * Interface onItemClickListener handle click change avatar and items issue
      */
     public interface OnItemClickListener {
         void onClickItemIssue(int position);
@@ -95,41 +99,46 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     /**
-     * holder for header in drawer layout
+     * Holder for header in drawer layout
      */
-    static class HeaderHolder extends RecyclerView.ViewHolder {
-        private CircleImageView circleImgAvatar;
-        private TextView tvEmail;
+    private static class HeaderHolder extends RecyclerView.ViewHolder {
+        private CircleImageView mCircleImgAvatar;
+        private TextView mTvEmail;
 
         HeaderHolder(View itemView) {
             super(itemView);
-            circleImgAvatar = itemView.findViewById(R.id.circleImgAvater);
-            tvEmail = itemView.findViewById(R.id.tvEmail);
+            mCircleImgAvatar = itemView.findViewById(R.id.circleImgAvater);
+            mTvEmail = itemView.findViewById(R.id.tvEmail);
         }
 
-        private void onBindData() {
-            circleImgAvatar.setImageResource(R.drawable.ic_account);
-            tvEmail.setText(R.string.text_view_email);
+        private void onBindData(Object object) {
+            User user = (User) object;
+            if (TextUtils.isEmpty(user.getUri())){
+                mCircleImgAvatar.setImageResource(user.getImg());
+            }else {
+                mCircleImgAvatar.setImageURI(Uri.parse(user.getUri()));
+            }
+            mTvEmail.setText(user.getEmail());
         }
     }
 
     /**
-     * holder for item in drawer layout
+     * Holder for item in drawer layout
      */
-    static class ItemHolder extends RecyclerView.ViewHolder {
-        private ImageView imgIssue;
-        private TextView tvNameIssue;
+    private static class ItemHolder extends RecyclerView.ViewHolder {
+        private ImageView mImgIssue;
+        private TextView mTvNameIssue;
 
         ItemHolder(final View itemView) {
             super(itemView);
-            imgIssue = itemView.findViewById(R.id.imgIssue);
-            tvNameIssue = itemView.findViewById(R.id.tvNameIssue);
+            mImgIssue = itemView.findViewById(R.id.imgIssue);
+            mTvNameIssue = itemView.findViewById(R.id.tvNameIssue);
         }
 
-        private void onBindData(int position, List<Issue> mIssueList) {
-            Issue issue = mIssueList.get(position - 1);
-            imgIssue.setImageResource(issue.getIcon());
-            tvNameIssue.setText(issue.getName());
+        private void onBindData(Object object) {
+            Issue issue = (Issue) object;
+            mImgIssue.setImageResource(issue.getIcon());
+            mTvNameIssue.setText(issue.getName());
         }
     }
 }

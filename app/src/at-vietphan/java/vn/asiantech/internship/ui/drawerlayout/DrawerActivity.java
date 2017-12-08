@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -27,30 +28,26 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Issue;
+import vn.asiantech.internship.models.User;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.utils.GoogleUtil;
 
 /**
- * class DrawerActivity
+ * Class DrawerActivity
  */
 public class DrawerActivity extends AppCompatActivity implements IssueAdapter.OnItemClickListener {
     private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
-    private static final int REQUEST_LOAD_IMG = 11;
-    private static final int LOGIN = 1;
-    private static final int CALCULATOR = 2;
-    private static final int RECYCLERVIEW = 3;
-    private static final int SHARE = 4;
+    private static final int REQUEST_CODE_PICK_IMAGE = 77;
     private Toolbar mToolBar;
     private DrawerLayout mDrawerLayout;
     private RecyclerView mRecyclerViewIssue;
-    private List<Issue> mIssueList;
-    private LinearLayout mLnMain;
-
+    private List<Object> mObjects;
+    private LinearLayout mLlMain;
+    private IssueAdapter mIssueAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +58,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         initData();
         initAdapter();
         initDrawer();
-        setWidthDrawerLayout();
+        getWidthScreen();
     }
 
     private void setSpActionBar() {
@@ -74,24 +71,24 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     private void initViews() {
         mToolBar = findViewById(R.id.toolBar);
         mDrawerLayout = findViewById(R.id.drawerLayout);
-        mRecyclerViewIssue = findViewById(R.id.recyclerViewMulti);
-        mIssueList = new ArrayList<>();
-        mLnMain = findViewById(R.id.llMain);
-
+        mRecyclerViewIssue = findViewById(R.id.recyclerViewMenu);
+        mObjects = new ArrayList<>();
+        mLlMain = findViewById(R.id.llMain);
     }
 
     private void initData() {
-        mIssueList.add(new Issue(R.drawable.ic_login, "Login"));
-        mIssueList.add(new Issue(R.drawable.ic_caculator, "Calculator"));
-        mIssueList.add(new Issue(R.drawable.ic_list_grey_900_24dp, "Recycler View"));
-        mIssueList.add(new Issue(R.drawable.ic_share_grey_900_24dp, "Share"));
-        mIssueList.add(new Issue(R.drawable.ic_exit_to_app_grey_900_24dp, "Exit"));
+        mObjects.add(new User(R.drawable.ic_account, "viet.phan@asiantech.vn", null));
+        mObjects.add(new Issue(R.drawable.ic_login, "Login"));
+        mObjects.add(new Issue(R.drawable.ic_caculator, "Calculator"));
+        mObjects.add(new Issue(R.drawable.ic_list_grey_900_24dp, "Recycler View"));
+        mObjects.add(new Issue(R.drawable.ic_share_grey_900_24dp, "Share"));
+        mObjects.add(new Issue(R.drawable.ic_exit_to_app_grey_900_24dp, "Exit"));
     }
 
     private void initAdapter() {
-        IssueAdapter adapter = new IssueAdapter(mIssueList, this);
+        mIssueAdapter = new IssueAdapter(mObjects, this);
         mRecyclerViewIssue.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewIssue.setAdapter(adapter);
+        mRecyclerViewIssue.setAdapter(mIssueAdapter);
     }
 
     private void initDrawer() {
@@ -99,7 +96,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
-                mLnMain.setTranslationX(slideOffset * drawerView.getWidth());
+                mLlMain.setTranslationX(slideOffset * drawerView.getWidth());
                 mRecyclerViewIssue.bringChildToFront(drawerView);
                 mRecyclerViewIssue.requestLayout();
             }
@@ -118,7 +115,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         mActionBarDrawerToggle.syncState();
     }
 
-    private void setWidthDrawerLayout() {
+    private void getWidthScreen() {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -130,7 +127,8 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
 
     @Override
     public void onClickItemIssue(int position) {
-        switch (position) {
+        IssueType issueType = IssueType.values()[position - 1];
+        switch (issueType) {
             case LOGIN:
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
@@ -155,17 +153,22 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         intent.setType("image/*");
         if (GoogleUtil.isGooglePhotosInstalled(this)) {
             intent.setPackage(GOOGLE_PHOTOS_PACKAGE_NAME);
-            startActivityForResult(intent, REQUEST_LOAD_IMG);
+            startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
         } else {
-            startActivityForResult(intent, REQUEST_LOAD_IMG);
+            startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_LOAD_IMG && resultCode == RESULT_OK && data != null) {
-            ((CircleImageView) findViewById(R.id.circleImgAvater)).setImageURI(data.getData());
+        if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == RESULT_OK && data != null) {
+            for (int i = 0; i < mObjects.size(); i++) {
+                if (mObjects.get(i) instanceof User) {
+                    ((User) mObjects.get(i)).setUri(String.valueOf(data.getData()));
+                    mIssueAdapter.notifyItemChanged(i);
+                }
+            }
         } else {
             Toast.makeText(this, R.string.have_not_picked_img, Toast.LENGTH_LONG).show();
         }
@@ -173,7 +176,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
 
     private void takeScreenshot() {
         Date now = new Date();
-        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+        DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
             String path = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
             View view = getWindow().getDecorView().getRootView();
@@ -203,5 +206,9 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         } catch (ActivityNotFoundException e) {
             Toast.makeText(this, R.string.no_apps, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private enum IssueType {
+        LOGIN, CALCULATOR, RECYCLERVIEW, SHARE
     }
 }

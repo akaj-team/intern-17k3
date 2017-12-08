@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import vn.asiantech.internship.R;
 
 /**
- * class LoginActivity
+ * Class LoginActivity
  */
 public class LoginActivity extends AppCompatActivity {
     private ImageView mImgBack;

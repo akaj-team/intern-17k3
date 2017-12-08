@@ -12,7 +12,7 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Status;
 
 /**
- * class RecyclerViewActivity
+ * Class RecyclerViewActivity
  */
 public class RecyclerViewActivity extends AppCompatActivity implements StatusAdapter.OnItemClickListener {
     private RecyclerView mRecyclerViewStatus;
