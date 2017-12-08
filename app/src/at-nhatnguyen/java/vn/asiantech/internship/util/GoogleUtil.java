@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.drawerlayout;
+package vn.asiantech.internship.util;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -8,13 +8,14 @@ import android.content.pm.PackageManager;
  * This class check app google photos installed
  */
 
-final class GoogleUtil {
+public final class GoogleUtil {
     private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
 
     private GoogleUtil() {
+        // No-op
     }
 
-    static boolean isGooglePhotosInstalled(Context context) {
+    public static boolean isGooglePhotosInstalled(Context context) {
         PackageManager packageManager = context.getPackageManager();
         try {
             return packageManager.getPackageInfo(GOOGLE_PHOTO, PackageManager.GET_ACTIVITIES) != null;

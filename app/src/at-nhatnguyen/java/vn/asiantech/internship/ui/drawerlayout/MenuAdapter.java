@@ -135,8 +135,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             User user = (User) object;
             if (TextUtils.isEmpty(user.getUri())) {
                 mImgAvatar.setImageResource(user.getImgAvatar());
-            }
-            else {
+            } else {
                 mImgAvatar.setImageURI(Uri.parse(user.getUri()));
             }
             mTvMail.setText(user.getEmail());

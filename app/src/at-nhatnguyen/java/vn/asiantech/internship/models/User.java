@@ -5,7 +5,7 @@ public class User {
     private String email;
     private String uri;
 
-    public User(int imgAvatar, String email,String uri) {
+    public User(int imgAvatar, String email, String uri) {
         this.imgAvatar = imgAvatar;
         this.email = email;
         this.uri = uri;

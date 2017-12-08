@@ -21,6 +21,7 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
 import vn.asiantech.internship.ui.MainActivity;
+import vn.asiantech.internship.util.GoogleUtil;
 
 /**
  * Activity of screen with drawerlayout
@@ -140,6 +141,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
                 if (mObjects.get(i) instanceof User) {
                     ((User) mObjects.get(i)).setUri(String.valueOf(data.getData()));
                     mAdapter.notifyItemChanged(i);
+                    return;
                 }
             }
         } else {
