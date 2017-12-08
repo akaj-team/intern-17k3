@@ -3,18 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.DrawerLayoutActivity">
+    tools:context="vn.asiantech.internship.splash.SplashActivity">
 
     <Button
-        android:id="@+id/btnIssue1"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnLogin"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/btn_issue1_name" />
+        android:text="@string/tv_login" />
 
     <Button
-        android:id="@+id/btnIssue2"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnCaculator"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/btn_issue2_name" />
+        android:text="@string/tv_calculator" />
+
 </LinearLayout>
