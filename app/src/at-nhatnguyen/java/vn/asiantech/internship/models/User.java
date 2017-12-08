@@ -1,18 +1,18 @@
 package vn.asiantech.internship.models;
 
 public class User {
-    private int imgAvatar;
+    private int avatar;
     private String email;
     private String uri;
 
-    public User(int imgAvatar, String email, String uri) {
-        this.imgAvatar = imgAvatar;
+    public User(int avatar, String email, String uri) {
+        this.avatar = avatar;
         this.email = email;
         this.uri = uri;
     }
 
-    public int getImgAvatar() {
-        return imgAvatar;
+    public int getAvatar() {
+        return avatar;
     }
 
     public String getEmail() {

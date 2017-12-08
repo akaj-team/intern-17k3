@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -20,16 +19,22 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
-import vn.asiantech.internship.ui.MainActivity;
+import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.login.LoginActivity;
+import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.util.GoogleUtil;
 
 /**
- * Activity of screen with drawerlayout
+ * Activity of screen with drawerLayout
  */
 public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnItemClickListener {
-    private static final float NUMBER_MOVE = 2 / 3;
     private static final int REQUEST_CODE = 2;
     private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
+    private static final String CALCULATOR = "Calculator";
+    private static final String DRAWER_LAYOUT = "DrawerLayout";
+    private static final String LOGIN = "Login";
+    private static final String RECYCLER_VIEW = "RecyclerView";
+    private static final String OUTBOX = "Outbox";
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private RecyclerView mRecyclerViewOption;
@@ -42,13 +47,13 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
-        initView();
+        initViews();
         initData();
         initAdapter();
         initDrawerLayout();
     }
 
-    private void initView() {
+    private void initViews() {
         mToolBar = findViewById(R.id.toolBar);
         if (getSupportActionBar() != null) {
             setSupportActionBar(mToolBar);
@@ -63,10 +68,11 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     private void initData() {
         mObjects = new ArrayList<>();
         mObjects.add(new User(R.drawable.ic_avatar, "nhatnguyen@asiantech.vn", null));
-        mObjects.add(new Option("Inbox", R.drawable.selector_click_inbox));
-        mObjects.add(new Option("Outbox", R.drawable.selector_click_outbox));
-        mObjects.add(new Option("Trash", R.drawable.selector_click_delete));
-        mObjects.add(new Option("Spam", R.drawable.selector_click_spam));
+        mObjects.add(new Option(CALCULATOR, R.drawable.selector_click_inbox));
+        mObjects.add(new Option(DRAWER_LAYOUT, R.drawable.selector_click_delete));
+        mObjects.add(new Option(LOGIN, R.drawable.selector_click_spam));
+        mObjects.add(new Option(RECYCLER_VIEW, R.drawable.selector_click_inbox));
+        mObjects.add(new Option(OUTBOX, R.drawable.selector_click_outbox));
     }
 
     private void initAdapter() {
@@ -80,7 +86,6 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
-                mRecyclerViewOption.setTranslationX(mRecyclerViewOption.getWidth() * (1 - slideOffset) * NUMBER_MOVE);
                 mLlMainContent.setTranslationX(mRecyclerViewOption.getWidth() * slideOffset);
             }
 
@@ -99,24 +104,35 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return mActionBarDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onClickItem(int position) {
         if (mObjects.get(position) instanceof Option) {
-            if (((Option) mObjects.get(position)).getOptionName().equals("Outbox")) {
-                String shareBody = String.valueOf(R.string.message);
-                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("image/*");
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                sharingIntent.putExtra(Intent.EXTRA_STREAM, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.app_name)));
-            } else {
-                mAdapter.notifyItemChanged(position);
-                startActivity(new Intent(this, MainActivity.class));
+            String nameActivity = ((Option) mObjects.get(position)).getOptionName();
+            switch (nameActivity) {
+                case CALCULATOR:
+                    mAdapter.notifyItemChanged(position);
+                    startActivity(new Intent(this, CalculatorActivity.class));
+                    break;
+                case DRAWER_LAYOUT:
+                    mAdapter.notifyItemChanged(position);
+                    startActivity(new Intent(this, DrawerActivity.class));
+                    break;
+                case LOGIN:
+                    mAdapter.notifyItemChanged(position);
+                    startActivity(new Intent(this, LoginActivity.class));
+                    break;
+                case RECYCLER_VIEW:
+                    mAdapter.notifyItemChanged(position);
+                    startActivity(new Intent(this, CommentActivity.class));
+                    break;
+                case OUTBOX:
+                    String shareBody = String.valueOf(R.string.message);
+                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                    sharingIntent.setType("image/*");
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                    sharingIntent.putExtra(Intent.EXTRA_STREAM, shareBody);
+                    startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.app_name)));
+                    break;
             }
         }
     }
