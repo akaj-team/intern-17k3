@@ -44,13 +44,11 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (viewType == USER) {
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_header, parent, false);
-            UserHolder userHolder = new UserHolder(view, mOnItemClickListener);
-            return userHolder;
+            return new UserHolder(view, mOnItemClickListener);
         } else {
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_option, parent, false);
-            OptionHolder optionHolder = new OptionHolder(view, mOnItemClickListener);
-            return optionHolder;
+            return new OptionHolder(view, mOnItemClickListener);
         }
     }
 
