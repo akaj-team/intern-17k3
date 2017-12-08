@@ -16,6 +16,7 @@ import vn.asiantech.internship.models.People;
  * Activity display list people
  */
 public class SaveDatabaseActivity extends AppCompatActivity implements PeopleAdapter.OnItemClickListener {
+    static final String KEY_INTENT_ID_COMPANY = "id_company_send";
     private RecyclerView mRecyclerViewUser;
     private List<People> mPeoples;
     private PeopleSQLite mPeopleSQLite;
@@ -67,7 +68,7 @@ public class SaveDatabaseActivity extends AppCompatActivity implements PeopleAda
     @Override
     public void onClickItem(int position) {
         Intent intent = new Intent(this, CompanyActivity.class);
-        intent.putExtra("idCompany", mPeopleSQLite.getIdCompany(mPeoples.get(position).getiDPeople()));
+        intent.putExtra(KEY_INTENT_ID_COMPANY, mPeopleSQLite.getIdCompany(mPeoples.get(position).getiDPeople()));
         startActivity(intent);
     }
 }

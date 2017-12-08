@@ -27,4 +27,6 @@
     <string name="save_text">Save in external</string>
     <string name="save_sqlite">Save in DB</string>
     <string name="btn_input">Input</string>
+    <string name="have_not_company">have not company</string>
+    <string name="have_not_slogan">have not slogan</string>
 </resources>

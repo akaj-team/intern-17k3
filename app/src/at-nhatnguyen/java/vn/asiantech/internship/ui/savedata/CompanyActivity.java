@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Company;
@@ -33,10 +32,19 @@ public class CompanyActivity extends AppCompatActivity {
 
     private void initData() {
         Intent intent = getIntent();
-        int idCompany = intent.getIntExtra("idCompany", 0);
-        Toast.makeText(this, "" + idCompany, Toast.LENGTH_SHORT).show();
-        Company mCompany = mPeopleSQLite.getCompany(idCompany);
-        mTvNameCompany.setText(mCompany.getNameCompany());
-        mTvSlogan.setText(mCompany.getSloganCompany());
+        int idCompany = intent.getIntExtra(SaveDatabaseActivity.KEY_INTENT_ID_COMPANY, 0);
+        if (idCompany != 0) {
+            Company company = mPeopleSQLite.getCompany(idCompany);
+            if (company != null) {
+                mTvNameCompany.setText(company.getNameCompany());
+                mTvSlogan.setText(company.getSloganCompany());
+            } else {
+                mTvNameCompany.setText(R.string.have_not_company);
+                mTvSlogan.setText(R.string.have_not_slogan);
+            }
+        } else {
+            mTvNameCompany.setText(R.string.have_not_company);
+            mTvSlogan.setText(R.string.have_not_slogan);
+        }
     }
 }

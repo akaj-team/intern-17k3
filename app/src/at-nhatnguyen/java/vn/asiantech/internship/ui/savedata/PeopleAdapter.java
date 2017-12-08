@@ -39,7 +39,9 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
 
     @Override
     public void onBindViewHolder(PeopleViewHolder holder, int position) {
-        holder.onBindData(mPeoples.get(position));
+        if (mPeoples.get(position) instanceof People) {
+            holder.onBindData(mPeoples.get(position));
+        }
     }
 
     @Override
@@ -47,24 +49,30 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         return mPeoples.size();
     }
 
+    /**
+     * This interface use to get position when click item
+     */
     public interface OnItemClickListener {
         void onClickItem(int position);
     }
 
+    /**
+     * This class is used for PeopleAdapter
+     */
     static class PeopleViewHolder extends RecyclerView.ViewHolder {
-        private TextView mIDPeople;
+        private TextView mIdPeople;
         private TextView mNamePeople;
         private TextView mAgePeople;
 
         PeopleViewHolder(View itemView) {
             super(itemView);
-            mIDPeople = itemView.findViewById(R.id.tvIDPeople);
+            mIdPeople = itemView.findViewById(R.id.tvIDPeople);
             mNamePeople = itemView.findViewById(R.id.tvNamePeople);
             mAgePeople = itemView.findViewById(R.id.tvAgePeople);
         }
 
         private void onBindData(People people) {
-            mIDPeople.setText(String.valueOf(people.getiDPeople()));
+            mIdPeople.setText(String.valueOf(people.getiDPeople()));
             mNamePeople.setText(people.getNamePeople());
             mAgePeople.setText(String.valueOf(people.getAgePeople()));
         }
