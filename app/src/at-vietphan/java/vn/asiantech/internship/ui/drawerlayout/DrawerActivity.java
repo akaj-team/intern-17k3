@@ -119,7 +119,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
 
     @Override
     public void onClickItemIssue(int position) {
-        IssueType issueType = IssueType.values()[position - 1];
+        issueType issueType = DrawerActivity.issueType.values()[position - 1];
         switch (issueType) {
             case LOGIN:
                 startActivity(new Intent(this, LoginActivity.class));
@@ -201,7 +201,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         }
     }
 
-    private enum IssueType {
+    private enum issueType {
         LOGIN,
         CALCULATOR,
         RECYCLERVIEW,
