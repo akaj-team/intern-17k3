@@ -3,7 +3,6 @@ package vn.asiantech.internship.ui.drawerlayout;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,7 +15,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -35,6 +33,7 @@ import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.utils.GoogleUtil;
+import vn.asiantech.internship.utils.ScreenUtil;
 
 /**
  * Class DrawerActivity
@@ -58,7 +57,6 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         initData();
         initAdapter();
         initDrawer();
-        getWidthScreen();
     }
 
     private void setSpActionBar() {
@@ -72,11 +70,15 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         mToolBar = findViewById(R.id.toolBar);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mRecyclerViewIssue = findViewById(R.id.recyclerViewMenu);
-        mObjects = new ArrayList<>();
         mLlMain = findViewById(R.id.llMain);
+        ViewGroup.LayoutParams params = mRecyclerViewIssue.getLayoutParams();
+        params.width = ScreenUtil.getWidthScreen(this) * 2 / 3;
+        mRecyclerViewIssue.setLayoutParams(params);
+
     }
 
     private void initData() {
+        mObjects = new ArrayList<>();
         mObjects.add(new User(R.drawable.ic_account, "viet.phan@asiantech.vn", null));
         mObjects.add(new Issue(R.drawable.ic_login, "Login"));
         mObjects.add(new Issue(R.drawable.ic_caculator, "Calculator"));
@@ -113,16 +115,6 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         };
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
         mActionBarDrawerToggle.syncState();
-    }
-
-    private void getWidthScreen() {
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int displayViewWidth = size.x;
-        ViewGroup.LayoutParams params = mRecyclerViewIssue.getLayoutParams();
-        params.width = displayViewWidth * 2 / 3;
-        mRecyclerViewIssue.setLayoutParams(params);
     }
 
     @Override
@@ -167,6 +159,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
                 if (mObjects.get(i) instanceof User) {
                     ((User) mObjects.get(i)).setUri(String.valueOf(data.getData()));
                     mIssueAdapter.notifyItemChanged(i);
+                    return;
                 }
             }
         } else {
@@ -209,6 +202,9 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     }
 
     private enum IssueType {
-        LOGIN, CALCULATOR, RECYCLERVIEW, SHARE
+        LOGIN,
+        CALCULATOR,
+        RECYCLERVIEW,
+        SHARE
     }
 }

@@ -45,28 +45,10 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         switch (viewType) {
             case HEADER:
                 view = layoutInflater.inflate(R.layout.row_header, parent, false);
-                HeaderHolder headerHolder = new HeaderHolder(view);
-                headerHolder.mCircleImgAvatar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (mOnItemClickListener != null) {
-                            mOnItemClickListener.onClickImgAvatar();
-                        }
-                    }
-                });
-                return headerHolder;
+                return new HeaderHolder(view, mOnItemClickListener);
             default:
                 view = layoutInflater.inflate(R.layout.row_item, parent, false);
-                final ItemHolder itemHolder = new ItemHolder(view);
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (mOnItemClickListener != null) {
-                            mOnItemClickListener.onClickItemIssue(itemHolder.getAdapterPosition());
-                        }
-                    }
-                });
-                return itemHolder;
+                return new ItemHolder(view, mOnItemClickListener);
         }
     }
 
@@ -104,18 +86,28 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private static class HeaderHolder extends RecyclerView.ViewHolder {
         private CircleImageView mCircleImgAvatar;
         private TextView mTvEmail;
+        private OnItemClickListener mOnItemClickListener;
 
-        HeaderHolder(View itemView) {
+        HeaderHolder(View itemView, final OnItemClickListener onItemClickListener) {
             super(itemView);
             mCircleImgAvatar = itemView.findViewById(R.id.circleImgAvater);
             mTvEmail = itemView.findViewById(R.id.tvEmail);
+            mOnItemClickListener = onItemClickListener;
+            mCircleImgAvatar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onClickImgAvatar();
+                    }
+                }
+            });
         }
 
         private void onBindData(Object object) {
             User user = (User) object;
-            if (TextUtils.isEmpty(user.getUri())){
+            if (TextUtils.isEmpty(user.getUri())) {
                 mCircleImgAvatar.setImageResource(user.getImg());
-            }else {
+            } else {
                 mCircleImgAvatar.setImageURI(Uri.parse(user.getUri()));
             }
             mTvEmail.setText(user.getEmail());
@@ -128,11 +120,21 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private static class ItemHolder extends RecyclerView.ViewHolder {
         private ImageView mImgIssue;
         private TextView mTvNameIssue;
+        private OnItemClickListener mOnItemClickListener;
 
-        ItemHolder(final View itemView) {
+        ItemHolder(final View itemView, final OnItemClickListener onItemClickListener) {
             super(itemView);
             mImgIssue = itemView.findViewById(R.id.imgIssue);
             mTvNameIssue = itemView.findViewById(R.id.tvNameIssue);
+            mOnItemClickListener = onItemClickListener;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onClickItemIssue(getAdapterPosition());
+                    }
+                }
+            });
         }
 
         private void onBindData(Object object) {
