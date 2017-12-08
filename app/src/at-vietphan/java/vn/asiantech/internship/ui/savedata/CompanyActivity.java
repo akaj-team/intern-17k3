@@ -14,6 +14,7 @@ import vn.asiantech.internship.models.User;
  * CompanyActivity
  */
 public class CompanyActivity extends AppCompatActivity {
+    private static final String ID_USER = "idUser";
     private TextView mTvName;
     private TextView mTvAge;
     private TextView mTvCompanyName;
@@ -25,7 +26,7 @@ public class CompanyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company);
         Intent intent = getIntent();
-        mIdUser = intent.getIntExtra("idUser", 0);
+        mIdUser = intent.getIntExtra(ID_USER, 0);
         initViews();
         initAdapter();
     }
@@ -41,9 +42,11 @@ public class CompanyActivity extends AppCompatActivity {
         UserSQLiteHelper userSQLiteHelper = new UserSQLiteHelper(this);
         Company company = userSQLiteHelper.getCompanyByIdUser(mIdUser);
         User user = userSQLiteHelper.getUser(mIdUser);
-        mTvName.setText(user.getName());
-        mTvAge.setText(String.valueOf(user.getAge()));
-        mTvCompanyName.setText(company.getName());
-        mTvSlogan.setText(company.getSlogan());
+        if (!user.equals(null)){
+            mTvName.setText(user.getName());
+            mTvAge.setText(String.valueOf(user.getAge()));
+            mTvCompanyName.setText(company.getName());
+            mTvSlogan.setText(company.getSlogan());
+        }
     }
 }

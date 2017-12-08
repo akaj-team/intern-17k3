@@ -17,6 +17,7 @@ import vn.asiantech.internship.models.User;
  * SQLiteActivity
  */
 public class SQLiteActivity extends AppCompatActivity implements SQLiteAdapter.OnItemClickListener {
+    private static final String ID_USER = "idUser";
     private SQLiteAdapter mSqLiteAdapter;
     private ArrayList<User> mUserList;
     private RecyclerView mRecyclerViewUser;
@@ -25,7 +26,6 @@ public class SQLiteActivity extends AppCompatActivity implements SQLiteAdapter.O
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sqlite);
-        setTitle("SQLite");
         initData();
         initViews();
         initAdapter();
@@ -50,7 +50,7 @@ public class SQLiteActivity extends AppCompatActivity implements SQLiteAdapter.O
     @Override
     public void onItemUserClick(int position) {
         Intent intent = new Intent(SQLiteActivity.this, CompanyActivity.class);
-        intent.putExtra("idUser", mUserList.get(position).getId());
+        intent.putExtra(ID_USER, mUserList.get(position).getId());
         startActivity(intent);
     }
 }

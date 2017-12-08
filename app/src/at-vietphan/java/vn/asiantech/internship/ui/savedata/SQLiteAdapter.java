@@ -56,6 +56,9 @@ public class SQLiteAdapter extends RecyclerView.Adapter<SQLiteAdapter.UserViewHo
 
     }
 
+    /**
+     * Class UserViewHolder: holder for item in recyclerview
+     */
     static class UserViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvName;
         private TextView mTvAge;
@@ -71,8 +74,10 @@ public class SQLiteAdapter extends RecyclerView.Adapter<SQLiteAdapter.UserViewHo
         }
 
         private void onBindData(User user) {
-            mTvName.setText(user.getName());
-            mTvAge.setText(String.valueOf(user.getAge()));
+            if (!user.equals(null)){
+                mTvName.setText(user.getName());
+                mTvAge.setText(String.valueOf(user.getAge()));
+            }
         }
     }
 }

@@ -110,14 +110,16 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         sql = "SELECT * FROM " + TABLE_USER + " WHERE " + ID_USER + " = " + id;
         Cursor cursor = db.rawQuery(sql, null);
+        User user = new User();
         if (cursor != null) {
             cursor.moveToFirst();
+            user.setId(cursor.getInt(cursor.getColumnIndex(ID_USER)));
+            user.setName(cursor.getString(cursor.getColumnIndex(NAME_USER)));
+            user.setAge(cursor.getInt(cursor.getColumnIndex(AGE)));
+            cursor.close();
+        } else {
+            cursor.close();
         }
-        User user = new User();
-        user.setId(cursor.getInt(cursor.getColumnIndex(ID_USER)));
-        user.setName(cursor.getString(cursor.getColumnIndex(NAME_USER)));
-        user.setAge(cursor.getInt(cursor.getColumnIndex(AGE)));
-        cursor.close();
         return user;
     }
 
@@ -126,14 +128,17 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         sql = "SELECT * FROM " + TABLE_EMPLOYEE + " INNER JOIN " + TABLE_COMPANY + " ON " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_COMPANY + " = " + TABLE_COMPANY + "." + ID_COMPANY
                 + " WHERE " + TABLE_EMPLOYEE + "." + ID_EMPLOYEE_USER + " = " + id;
         Cursor cursor = db.rawQuery(sql, null);
+        Company company = new Company();
         if (cursor != null) {
             cursor.moveToFirst();
+            company.setId(cursor.getInt(cursor.getColumnIndex(ID_COMPANY)));
+            company.setName(cursor.getString(cursor.getColumnIndex(NAME_COMPANY)));
+            company.setSlogan(cursor.getString(cursor.getColumnIndex(SLOGAN)));
+            cursor.close();
+        } else {
+            cursor.close();
+            return null;
         }
-        Company company = new Company();
-        company.setId(cursor.getInt(cursor.getColumnIndex(ID_COMPANY)));
-        company.setName(cursor.getString(cursor.getColumnIndex(NAME_COMPANY)));
-        company.setSlogan(cursor.getString(cursor.getColumnIndex(SLOGAN)));
-        cursor.close();
         return company;
     }
 
