@@ -51,7 +51,7 @@ public class ExternalStorageActivity extends AppCompatActivity implements View.O
     private void writeData() {
         String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + getResources().getString(R.string.file_name);
         try {
-            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(sdcard));
+            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(sdcard), "UTF-8");
             writer.write(mEdtInputExternalStorage.getText() + "");
             writer.close();
         } catch (FileNotFoundException e) {
@@ -64,7 +64,7 @@ public class ExternalStorageActivity extends AppCompatActivity implements View.O
     private void readData() {
         String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + getResources().getString(R.string.file_name);
         try {
-            InputStreamReader reader = new InputStreamReader(new FileInputStream(sdcard));
+            InputStreamReader reader = new InputStreamReader(new FileInputStream(sdcard),"UTF-8");
             BufferedReader bufferedreader = new BufferedReader(reader);
             StringBuilder stringBuilder = new StringBuilder();
             String line;
