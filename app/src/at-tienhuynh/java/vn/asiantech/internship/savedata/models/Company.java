@@ -4,7 +4,6 @@ package vn.asiantech.internship.savedata.models;
  * Created at 2017
  * Created by jackty on 07/12/2017.
  */
-
 public class Company {
     private int id;
     private String name;

@@ -15,7 +15,6 @@ import vn.asiantech.internship.savedata.models.Users;
  * Created at 2017
  * Created by jackty on 06/12/2017.
  */
-
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersHoder> {
     private List<Users> mUsersList;
     private onItemClick mOnItemClick;
@@ -48,6 +47,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersHoder> 
         return mUsersList.size();
     }
 
+    /**
+     * Class UsersHoder
+     */
     static class UsersHoder extends RecyclerView.ViewHolder {
         private TextView mTvIdUser;
         private TextView mTvNameUser;
@@ -63,9 +65,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersHoder> 
 
         void onBindData(List<Users> usersList) {
             Users users = usersList.get(getAdapterPosition());
-            mTvIdUser.setText(String.valueOf(users.getId()));
-            mTvNameUser.setText(users.getName());
-            mTvAgeUser.setText(String.valueOf(users.getAge()));
+            if (users != null) {
+                mTvIdUser.setText(String.valueOf(users.getId()));
+                mTvNameUser.setText(users.getName());
+                mTvAgeUser.setText(String.valueOf(users.getAge()));
+            }
         }
     }
 

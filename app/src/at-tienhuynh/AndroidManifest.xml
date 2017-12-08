@@ -25,11 +25,11 @@
             android:name=".login.LoginActivity"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".calculation.CalculatorActivity" />
-        <activity android:name=".savedata.SaveDataActivity" />
+        <activity android:name=".savedata.ExerciseManagementActivity" />
         <activity android:name=".savedata.SharedPreferencesActivity" />
         <activity android:name=".savedata.WriteExternalActivity" />
         <activity android:name=".savedata.SqLiteActivity" />
-        <activity android:name=".savedata.CompanyActivity"></activity>
+        <activity android:name=".savedata.CompanyActivity" />
         <activity
             android:name=".drawerlayout.DrawerLayoutActivity"
             android:theme="@style/DrawerLayoutTheme" />

@@ -8,7 +8,12 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.savedata.models.Company;
 import vn.asiantech.internship.savedata.sqlite.UsersDatabase;
 
+/**
+ * Created at 2017
+ * Created by jackty on 05/12/2017.
+ */
 public class CompanyActivity extends AppCompatActivity {
+    private static final String KEY_ID_USER = "id_user";
     private int mIdUser;
     private UsersDatabase mUsersDatabase = new UsersDatabase(this);
     private TextView mTvCompanyName;
@@ -29,7 +34,7 @@ public class CompanyActivity extends AppCompatActivity {
     private void getIdUser() {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            mIdUser = bundle.getInt("id_user");
+            mIdUser = bundle.getInt(KEY_ID_USER);
         }
     }
 

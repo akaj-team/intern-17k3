@@ -36,7 +36,7 @@ public class WriteExternalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 writeTxtFile(mEdtValues.getText().toString());
-                startActivity(new Intent(WriteExternalActivity.this, SaveDataActivity.class));
+                startActivity(new Intent(WriteExternalActivity.this, ExerciseManagementActivity.class));
             }
         });
     }

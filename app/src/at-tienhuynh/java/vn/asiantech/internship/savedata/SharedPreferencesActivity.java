@@ -29,7 +29,7 @@ public class SharedPreferencesActivity extends AppCompatActivity {
                 mSharedPreferencesEditor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
                 mSharedPreferencesEditor.putString(KEY_PREFS, mEdtValue.getText().toString());
                 mSharedPreferencesEditor.apply();
-                startActivity(new Intent(SharedPreferencesActivity.this, SaveDataActivity.class));
+                startActivity(new Intent(SharedPreferencesActivity.this, ExerciseManagementActivity.class));
             }
         });
     }

@@ -13,7 +13,12 @@ import vn.asiantech.internship.savedata.models.Employee;
 import vn.asiantech.internship.savedata.models.Users;
 import vn.asiantech.internship.savedata.sqlite.UsersDatabase;
 
+/**
+ * Created at 2017
+ * Created by jackty on 06/12/2017.
+ */
 public class SqLiteActivity extends AppCompatActivity implements UsersAdapter.onItemClick {
+    private static final String KEY_ID_USER = "id_user";
     private RecyclerView mRecyclerViewUsers;
     private UsersDatabase mUersDatabase = new UsersDatabase(this);
 
@@ -78,7 +83,7 @@ public class SqLiteActivity extends AppCompatActivity implements UsersAdapter.on
     @Override
     public void onItemClickListener(int potion) {
         Intent intent = new Intent(this, CompanyActivity.class);
-        intent.putExtra("id_user", mUersDatabase.getAllUsers().get(potion).getId());
+        intent.putExtra(KEY_ID_USER, mUersDatabase.getAllUsers().get(potion).getId());
         startActivity(intent);
     }
 }

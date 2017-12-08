@@ -127,9 +127,9 @@ public class UsersDatabase extends SQLiteOpenHelper {
     /**
      * Get Single Company
      */
-    public Company getCompany(int id_user) {
+    public Company getCompany(int idUser) {
         String selectCompany = "select * from " + TABLE_COMPANY + " where " + KEY_COMPANY_ID +
-                " in (select " + KEY_EMPLOYEE_ID_COMPANY + " from employee where id_user =" + id_user + ")";
+                " in (select " + KEY_EMPLOYEE_ID_COMPANY + " from employee where id_user =" + idUser + ")";
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(selectCompany, null);
         Company company = new Company();

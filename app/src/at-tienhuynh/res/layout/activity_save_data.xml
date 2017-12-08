@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.savedata.SaveDataActivity">
+    tools:context="vn.asiantech.internship.savedata.ExerciseManagementActivity">
 
     <Button
         android:id="@+id/btnExercise1"

@@ -10,7 +10,7 @@ import vn.asiantech.internship.calculation.CalculatorActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
-import vn.asiantech.internship.savedata.SaveDataActivity;
+import vn.asiantech.internship.savedata.ExerciseManagementActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
@@ -58,7 +58,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(this, StatusActivity.class));
                 break;
             case R.id.btnSaveDataScreen:
-                startActivity(new Intent(this, SaveDataActivity.class));
+                startActivity(new Intent(this, ExerciseManagementActivity.class));
                 break;
             case R.id.btnDrawerLayout:
                 startActivity(new Intent(this, DrawerLayoutActivity.class));
