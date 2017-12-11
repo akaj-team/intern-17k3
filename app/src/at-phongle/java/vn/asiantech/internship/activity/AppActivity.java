@@ -11,10 +11,18 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.calculator.CalculatorActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.PostActivity;
+import vn.asiantech.internship.savedata.ExternalStorageActivity;
+import vn.asiantech.internship.savedata.PersonActivity;
+import vn.asiantech.internship.savedata.SharePreferenceActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
     private Button mBtnCalculatorScreen;
+    private Button mBtnRecyclerViewScreen;
+    private Button mBtnDrawerLayoutScreen;
+    private Button mSharePreferenceScreen;
+    private Button mExternalStorageScreen;
+    private Button mSQLiteScreen;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,11 +35,21 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
     private void initViews() {
         mBtnLoginScreen = findViewById(R.id.btnLoginScreen);
         mBtnCalculatorScreen = findViewById(R.id.btnCalculatorScreen);
+        mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayoutScreen);
+        mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
+        mSharePreferenceScreen = findViewById(R.id.btnSharePreferenceScreen);
+        mExternalStorageScreen = findViewById(R.id.btnExternalStorageScreen);
+        mSQLiteScreen = findViewById(R.id.btnSQLiteScreen);
     }
 
     private void addListener() {
         mBtnLoginScreen.setOnClickListener(this);
         mBtnCalculatorScreen.setOnClickListener(this);
+        mBtnDrawerLayoutScreen.setOnClickListener(this);
+        mBtnRecyclerViewScreen.setOnClickListener(this);
+        mSharePreferenceScreen.setOnClickListener(this);
+        mExternalStorageScreen.setOnClickListener(this);
+        mSQLiteScreen.setOnClickListener(this);
     }
 
     @Override
@@ -54,6 +72,18 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
 //                intent = new Intent(AppActivity.this, DrawerLayoutActivity.class);
 //                startActivity(intent);
 //                break;
+            case R.id.btnSharePreferenceScreen:
+                intent = new Intent(AppActivity.this, SharePreferenceActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnExternalStorageScreen:
+                intent = new Intent(AppActivity.this, ExternalStorageActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnSQLiteScreen:
+                intent = new Intent(AppActivity.this, PersonActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }
