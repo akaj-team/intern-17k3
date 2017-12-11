@@ -25,6 +25,10 @@ import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
 
+/**
+ * Created by phongle on 11/12/2560.
+ * DrawerLayoutActivity
+ */
 public class DrawerLayoutActivity extends AppCompatActivity implements LeftBarAdapter.OnItemClickListener {
     public static final int REQUEST_CODE = 1;
     private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";

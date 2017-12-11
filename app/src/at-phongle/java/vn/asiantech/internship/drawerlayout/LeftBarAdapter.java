@@ -15,6 +15,10 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
 
+/**
+ * Created by phongle on 11/12/2560.
+ * LeftBarAdapter
+ */
 public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
     private static final int USER = 0;
     private static final int OPTION = 1;
@@ -40,10 +44,24 @@ public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         if (viewType == USER) {
             View view = layoutInflater.inflate(R.layout.item_header_leftbar, parent, false);
-            return new UserHolder(view, mOnItemClickListener);
+            UserHolder userHolder = new UserHolder(view);
+            userHolder.mImgAvatar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onClickChangeAvatar();
+                }
+            });
+            return new UserHolder(view);
         } else if (viewType == OPTION) {
             View view = layoutInflater.inflate(R.layout.item_menu_leftbar, parent, false);
-            return new OptionHolder(view, mOnItemClickListener);
+            final OptionHolder optionHolder = new OptionHolder(view);
+            optionHolder.mLlItemMenuLeftBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onClickOption(optionHolder.getAdapterPosition());
+                }
+            });
+            return new OptionHolder(view);
         } else {
             return null;
         }
@@ -58,17 +76,14 @@ public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
-    static class UserHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class UserHolder extends RecyclerView.ViewHolder {
         private ImageView mImgAvatar;
         private TextView mTvEmail;
-        private OnItemClickListener mOnItemClickListener;
 
-        UserHolder(View itemView, OnItemClickListener onItemClickListener) {
+        UserHolder(View itemView) {
             super(itemView);
             mImgAvatar = itemView.findViewById(R.id.imgAvatar);
             mTvEmail = itemView.findViewById(R.id.tvEmail);
-            mImgAvatar.setOnClickListener(this);
-            mOnItemClickListener = onItemClickListener;
         }
 
         private void onBindData(Object object) {
@@ -76,37 +91,24 @@ public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
             mImgAvatar.setImageDrawable(user.getAvatar());
             mTvEmail.setText(user.getMail());
         }
-
-        @Override
-        public void onClick(View v) {
-            mOnItemClickListener.onClickChangeAvatar();
-        }
     }
 
-    static class OptionHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class OptionHolder extends RecyclerView.ViewHolder {
         private LinearLayout mLlItemMenuLeftBar;
         private ImageView mImgIconOption;
         private TextView mTvOption;
-        private OnItemClickListener mOnItemClickListener;
 
-        OptionHolder(final View itemView, OnItemClickListener onItemClickListener) {
+        OptionHolder(final View itemView) {
             super(itemView);
             mImgIconOption = itemView.findViewById(R.id.imgIconOption);
             mTvOption = itemView.findViewById(R.id.tvOption);
             mLlItemMenuLeftBar = itemView.findViewById(R.id.llItemMenuLeftBar);
-            mLlItemMenuLeftBar.setOnClickListener(this);
-            mOnItemClickListener = onItemClickListener;
         }
 
         private void onBindData(Object object) {
             Option option = (Option) object;
             mImgIconOption.setImageResource(option.getIcon());
             mTvOption.setText(option.getName());
-        }
-
-        @Override
-        public void onClick(View v) {
-            mOnItemClickListener.onClickOption(getAdapterPosition());
         }
     }
 
@@ -115,10 +117,10 @@ public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
         return mObjects.size();
     }
 
+    // Interface declare listener for item.
     public interface OnItemClickListener {
         void onClickChangeAvatar();
 
         void onClickOption(int position);
     }
-
 }
