@@ -41,6 +41,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
         return mPersonList.size();
     }
 
+    // Define Person ViewHolder and Bind Data
     static class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private RelativeLayout mRlItemPerson;
         private TextView mTvPersonName;
@@ -79,7 +80,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
             }
         }
     }
-
+    // Interface declare listener for item view holder
     public interface OnItemClickListener {
         void onItemClick(int position);
     }

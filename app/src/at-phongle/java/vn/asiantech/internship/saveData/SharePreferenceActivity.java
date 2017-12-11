@@ -17,6 +17,7 @@ import vn.asiantech.internship.R;
 public class SharePreferenceActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtInputSharePrefer;
     private Button mBtnClickSharePrefer;
+    private static String SHARE_PREFERENCE = "SharePrefer";
     private static String SHARE_PREFERENCE_KEY = "input";
 
     @Override
@@ -43,7 +44,7 @@ public class SharePreferenceActivity extends AppCompatActivity implements View.O
     }
 
     private void savePreference() {
-        SharedPreferences sharedPreferences = getSharedPreferences("SharePrefer", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARE_PREFERENCE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         String text = mEdtInputSharePrefer.getText().toString();
         editor.putString(SHARE_PREFERENCE_KEY, text);
@@ -51,7 +52,7 @@ public class SharePreferenceActivity extends AppCompatActivity implements View.O
     }
 
     private void readPreference() {
-        SharedPreferences sharedPreferences = getSharedPreferences("SharePrefer", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARE_PREFERENCE, MODE_PRIVATE);
         mEdtInputSharePrefer.setText(sharedPreferences.getString(SHARE_PREFERENCE_KEY, "not input text"));
     }
 }
