@@ -4,18 +4,18 @@ package vn.asiantech.internship.models;
  * Class Person
  */
 public class Person {
-    private int img;
+    private int image;
     private String email;
     private String uri;
 
-    public Person(int img, String email, String uri) {
-        this.img = img;
+    public Person(int image, String email, String uri) {
+        this.image = image;
         this.email = email;
         this.uri = uri;
     }
 
-    public int getImg() {
-        return img;
+    public int getImage() {
+        return image;
     }
 
     public String getEmail() {

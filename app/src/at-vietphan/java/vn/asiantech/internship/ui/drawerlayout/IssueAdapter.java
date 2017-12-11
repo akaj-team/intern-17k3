@@ -98,7 +98,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         HeaderHolder(View itemView, final OnItemClickListener onItemClickListener) {
             super(itemView);
-            mCircleImgAvatar = itemView.findViewById(R.id.circleImgAvater);
+            mCircleImgAvatar = itemView.findViewById(R.id.circleImgAvatar);
             mTvEmail = itemView.findViewById(R.id.tvEmail);
             mOnItemClickListener = onItemClickListener;
             mCircleImgAvatar.setOnClickListener(this);
@@ -107,7 +107,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         private void onBindData(Object object) {
             Person person = (Person) object;
             if (TextUtils.isEmpty(person.getUri())) {
-                mCircleImgAvatar.setImageResource(person.getImg());
+                mCircleImgAvatar.setImageResource(person.getImage());
             } else {
                 mCircleImgAvatar.setImageURI(Uri.parse(person.getUri()));
             }
