@@ -17,8 +17,8 @@ import vn.asiantech.internship.R;
 public class SharePreferenceActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtInputSharePrefer;
     private Button mBtnClickSharePrefer;
-    private static String SHARE_PREFER_KEY = "SharePrefer";
-    private static String SHARE_PREFER_INPUT = "input";
+    private static final String SHARE_PREFER_KEY = "SharePrefer";
+    private static final String SHARE_PREFER_INPUT = "input";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
