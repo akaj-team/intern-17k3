@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +25,12 @@ import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
 
-public class DrawerLayoutActivity extends AppCompatActivity implements ObjectLeftBarAdapter.OnItemClickListener {
+public class DrawerLayoutActivity extends AppCompatActivity implements LeftBarAdapter.OnItemClickListener {
     public static final int REQUEST_CODE = 1;
     private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
-    private ObjectLeftBarAdapter mAdapter;
+    private LeftBarAdapter mAdapter;
     private List<Object> mObjectList = new ArrayList<>();
     private RecyclerView mRecyclerViewLeftBar;
 
@@ -75,7 +76,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements ObjectLef
     }
 
     private void initAdapter() {
-        mAdapter = new ObjectLeftBarAdapter(mObjectList, this);
+        mAdapter = new LeftBarAdapter(mObjectList, this);
         mRecyclerViewLeftBar.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewLeftBar.setAdapter(mAdapter);
     }
@@ -117,9 +118,11 @@ public class DrawerLayoutActivity extends AppCompatActivity implements ObjectLef
                     Uri chosenImageUri = data.getData();
                     Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), chosenImageUri);
                     Drawable d = new BitmapDrawable(getResources(), bm);
-                    ((User) mObjectList.get(0)).setAvatar(d);
+                    if (mObjectList.get(0) instanceof User) {
+                        ((User) mObjectList.get(0)).setAvatar(d);
+                    }
                     mAdapter.notifyItemChanged(0);
-                } catch (Exception e) {
+                } catch (IOException e) {
                     Log.e("v", "no image");
                 }
             }

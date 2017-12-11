@@ -15,13 +15,13 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Option;
 import vn.asiantech.internship.models.User;
 
-public class ObjectLeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
     private static final int USER = 0;
     private static final int OPTION = 1;
     private List<Object> mObjects;
     private OnItemClickListener mOnItemClickListener;
 
-    ObjectLeftBarAdapter(List<Object> objects, OnItemClickListener onItemClickListener) {
+    LeftBarAdapter(List<Object> objects, OnItemClickListener onItemClickListener) {
         mObjects = objects;
         mOnItemClickListener = onItemClickListener;
     }
@@ -37,13 +37,12 @@ public class ObjectLeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         if (viewType == USER) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_header_leftbar, parent, false);
+            View view = layoutInflater.inflate(R.layout.item_header_leftbar, parent, false);
             return new UserHolder(view, mOnItemClickListener);
         } else if (viewType == OPTION) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_menu_leftbar, parent, false);
+            View view = layoutInflater.inflate(R.layout.item_menu_leftbar, parent, false);
             return new OptionHolder(view, mOnItemClickListener);
         } else {
             return null;
