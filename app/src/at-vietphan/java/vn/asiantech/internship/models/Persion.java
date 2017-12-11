@@ -1,7 +1,7 @@
 package vn.asiantech.internship.models;
 
 /**
- * Class user
+ * Class Persion
  */
 public class Persion {
     private int img;
