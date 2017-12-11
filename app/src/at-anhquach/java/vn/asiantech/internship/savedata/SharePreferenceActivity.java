@@ -26,7 +26,10 @@ public class SharePreferenceActivity extends AppCompatActivity {
         mBtnSaveData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
+                SharedPreferences sharedPreferences = getSharedPreferences(getResources().getString(R.string.key_save_data), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(getResources().getString(R.string.key_save_data), mEdtSaveData.getText().toString());
+                editor.apply();
             }
         });
     }
@@ -34,13 +37,6 @@ public class SharePreferenceActivity extends AppCompatActivity {
     private void initView() {
         mEdtSaveData = findViewById(R.id.edtSaveData);
         mBtnSaveData = findViewById(R.id.btnSaveData);
-    }
-
-    private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences(getResources().getString(R.string.key_save_data), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(getResources().getString(R.string.key_save_data), mEdtSaveData.getText().toString());
-        editor.apply();
     }
 
     private void displayData() {
