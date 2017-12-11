@@ -49,7 +49,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         return mUserList.size();
     }
 
-
+    // View Holder make view and bind data
     static class UserViewHolder extends RecyclerView.ViewHolder {
         TextView mTvUserName;
         TextView mTvAge;
@@ -66,6 +66,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         }
     }
 
+    // interface to set up event to click on item
     public interface OnItemClickListener {
         void onItemUserClick(int position);
     }
