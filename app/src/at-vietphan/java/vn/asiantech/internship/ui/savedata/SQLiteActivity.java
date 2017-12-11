@@ -35,7 +35,6 @@ public class SQLiteActivity extends AppCompatActivity implements SQLiteAdapter.O
         UserSQLiteHelper mUserSQLiteHelper = new UserSQLiteHelper(this);
         mUserList = mUserSQLiteHelper.getListUser();
         mSqLiteAdapter = new SQLiteAdapter(mUserList, this);
-
     }
 
     private void initViews() {

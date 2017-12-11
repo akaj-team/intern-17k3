@@ -42,7 +42,7 @@ public class CompanyActivity extends AppCompatActivity {
         UserSQLiteHelper userSQLiteHelper = new UserSQLiteHelper(this);
         Company company = userSQLiteHelper.getCompanyByIdUser(mIdUser);
         User user = userSQLiteHelper.getUser(mIdUser);
-        if (!user.equals(null)){
+        if (!user.equals(null)) {
             mTvName.setText(user.getName());
             mTvAge.setText(String.valueOf(user.getAge()));
             mTvCompanyName.setText(company.getName());
