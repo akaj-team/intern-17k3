@@ -4,7 +4,6 @@ package vn.asiantech.internship.models;
  * Created by hoangnhat on 06/12/2017.
  * create Company models
  */
-
 public class Company {
     private int idCompany;
     private String nameCompany;

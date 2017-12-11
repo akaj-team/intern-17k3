@@ -13,7 +13,7 @@ import vn.asiantech.internship.R;
  * Activity save data by SharePreference
  */
 public class SharePreferenceActivity extends AppCompatActivity {
-    private Button mBtnSaveSP;
+    private Button mBtnSave;
     private EditText mEdtSharePreference;
     private SharedPreferences mSharedPreferences;
 
@@ -26,14 +26,14 @@ public class SharePreferenceActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mBtnSaveSP = findViewById(R.id.btnSaveSP);
+        mBtnSave = findViewById(R.id.btnSaveSP);
         mEdtSharePreference = findViewById(R.id.edtSharePreference);
         mSharedPreferences = getSharedPreferences("Data_SharePre", MODE_PRIVATE);
         mEdtSharePreference.setHint(mSharedPreferences.getString("text", "Input"));
     }
 
     private void initListener() {
-        mBtnSaveSP.setOnClickListener(new View.OnClickListener() {
+        mBtnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editorEdit = mSharedPreferences.edit();

@@ -4,7 +4,6 @@ package vn.asiantech.internship.models;
  * Created by hoangnhat on 06/12/2017.
  * Create people models
  */
-
 public class People {
     private int iDPeople;
     private String namePeople;

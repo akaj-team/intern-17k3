@@ -64,7 +64,7 @@ public class SaveExternalActivity extends AppCompatActivity {
 
     private void readData(String string) {
         try {
-            Scanner scan = new Scanner(new File(string),"UTF-8");
+            Scanner scan = new Scanner(new File(string), "UTF-8");
             StringBuilder data = new StringBuilder();
             while (scan.hasNext()) {
                 data.append(scan.nextLine());
@@ -78,7 +78,7 @@ public class SaveExternalActivity extends AppCompatActivity {
 
     private void writeData(String string) {
         try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(string),"UTF-8");
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(string), "UTF-8");
             if (!TextUtils.isEmpty(mEdtExternal.getText())) {
                 outputStreamWriter.write(mEdtExternal.getText().toString());
             } else {

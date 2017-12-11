@@ -15,7 +15,6 @@ import vn.asiantech.internship.models.People;
  * Created by hoangnhat on 06/12/2017.
  * Create database
  */
-
 public class PeopleSQLite extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "company";
     //Table name
