@@ -21,7 +21,7 @@
         <activity android:name=".calculator.CalculatorActivity" />
         <activity android:name=".recyclerview.PostActivity" />
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".app_phongle.AppActivity" />
+        <activity android:name=".activity.AppActivity" />
     </application>
 
 </manifest>
