@@ -24,12 +24,12 @@
         android:text="@string/text_btn_calculator_screen" />
 
     <Button
-        android:id="@+id/btnRecyclerView"
+        android:id="@+id/btnRecyclerViewScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="@string/text_btn_recycler_view" />
+        android:text="@string/text_btn_recycler_screen" />
 
     <Button
         android:id="@+id/btnDrawerLayout"
@@ -38,4 +38,13 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:text="@string/text_btn_drawer_layout" />
+
+    <Button
+        android:id="@+id/btnSaveDataScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="@string/text_btn_save_data_screen" />
+
 </LinearLayout>
