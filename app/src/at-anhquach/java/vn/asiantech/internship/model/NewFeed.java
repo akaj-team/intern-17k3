@@ -1,9 +1,5 @@
 package vn.asiantech.internship.model;
 
-/**
- * Created by anh.quach on 11/28/17.
- */
-
 public class NewFeed {
     private String name;
     private String status;

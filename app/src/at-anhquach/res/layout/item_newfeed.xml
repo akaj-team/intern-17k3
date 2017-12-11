@@ -26,8 +26,8 @@
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:textStyle="bold"
-                apps:text="hhhh" />
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imgLike"
@@ -45,13 +45,13 @@
 
             <TextView
                 android:id="@+id/tvSumReact"
-                android:layout_width="30dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:gravity="end"
-                android:textSize="12dp"
+                android:textSize="15dp"
                 apps:text='12' />
         </LinearLayout>
 
@@ -63,7 +63,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:padding="15dp"
-            apps:text='hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh' />
+            android:textSize="13dp" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
