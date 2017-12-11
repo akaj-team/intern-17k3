@@ -74,7 +74,6 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         ViewGroup.LayoutParams params = mRecyclerViewIssue.getLayoutParams();
         params.width = ScreenUtil.getWidthScreen(this) * 2 / 3;
         mRecyclerViewIssue.setLayoutParams(params);
-
     }
 
     private void initData() {
