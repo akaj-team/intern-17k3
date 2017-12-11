@@ -1,4 +1,4 @@
-package vn.asiantech.internship.saveData;
+package vn.asiantech.internship.savedata;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

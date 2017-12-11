@@ -1,4 +1,4 @@
-package vn.asiantech.internship.saveData;
+package vn.asiantech.internship.savedata;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,8 +17,8 @@ import vn.asiantech.internship.R;
 public class SharePreferenceActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtInputSharePrefer;
     private Button mBtnClickSharePrefer;
-    private static String SHARE_PREFERENCE = "SharePrefer";
-    private static String SHARE_PREFERENCE_KEY = "input";
+    private static String SHARE_PREFER_KEY = "SharePrefer";
+    private static String SHARE_PREFER_INPUT = "input";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,15 +44,15 @@ public class SharePreferenceActivity extends AppCompatActivity implements View.O
     }
 
     private void savePreference() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARE_PREFERENCE, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARE_PREFER_KEY, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         String text = mEdtInputSharePrefer.getText().toString();
-        editor.putString(SHARE_PREFERENCE_KEY, text);
+        editor.putString(SHARE_PREFER_INPUT, text);
         editor.apply();
     }
 
     private void readPreference() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARE_PREFERENCE, MODE_PRIVATE);
-        mEdtInputSharePrefer.setText(sharedPreferences.getString(SHARE_PREFERENCE_KEY, "not input text"));
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARE_PREFER_KEY, MODE_PRIVATE);
+        mEdtInputSharePrefer.setText(sharedPreferences.getString(SHARE_PREFER_INPUT, "not input text"));
     }
 }
