@@ -59,6 +59,20 @@ public class SaveExternalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 writeData(mSDCard + FOLDER_NAME + TEXT_NAME_FILE);
             }
+
+            private void writeData(String string) {
+                try {
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(string), "UTF-8");
+                    if (!TextUtils.isEmpty(mEdtExternal.getText())) {
+                        outputStreamWriter.write(mEdtExternal.getText().toString());
+                    } else {
+                        Toast.makeText(SaveExternalActivity.this, mSDCard, Toast.LENGTH_SHORT).show();
+                    }
+                    outputStreamWriter.close();
+                } catch (IOException e) {
+                    Log.d("", e.getMessage());
+                }
+            }
         });
     }
 
@@ -72,20 +86,6 @@ public class SaveExternalActivity extends AppCompatActivity {
             scan.close();
             mEdtExternal.setText(data.toString());
         } catch (FileNotFoundException e) {
-            Log.d("", e.getMessage());
-        }
-    }
-
-    private void writeData(String string) {
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(string), "UTF-8");
-            if (!TextUtils.isEmpty(mEdtExternal.getText())) {
-                outputStreamWriter.write(mEdtExternal.getText().toString());
-            } else {
-                Toast.makeText(SaveExternalActivity.this, mSDCard, Toast.LENGTH_SHORT).show();
-            }
-            outputStreamWriter.close();
-        } catch (IOException e) {
             Log.d("", e.getMessage());
         }
     }
