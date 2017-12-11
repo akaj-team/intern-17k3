@@ -3,6 +3,7 @@
     package="vn.asiantech.internship">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
@@ -23,5 +24,10 @@
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".ui.calculator.CalculatorActivity" />
         <activity android:name=".ui.drawerlayout.DrawerActivity" />
+        <activity android:name=".ui.savedata.SharePreferenceActivity" />
+        <activity android:name=".ui.savedata.ExternalStorageActivity" />
+        <activity android:name=".ui.savedata.SQLiteActivity" />
+        <activity android:name=".ui.savedata.CompanyActivity" />
+        <activity android:name=".ui.savedata.SaveDataActivity" />
     </application>
 </manifest>

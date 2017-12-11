@@ -38,4 +38,16 @@
     <string name="no_apps">No apps</string>
     <string name="share">Share</string>
     <string name="error">error:</string>
+    <string name="share_preference">SHAREPREFERENCE</string>
+    <string name="save">SAVE</string>
+    <string name="preferences_my_key">PREFERENCES_MY_KEY</string>
+    <string name="saved">Saved</string>
+    <string name="external_storage">EXTERNAL STORAGE</string>
+    <string name="sqlite">SQLITE</string>
+    <string name="write_data">WRITE DATA</string>
+    <string name="read_data">READ DATA</string>
+    <string name="name">Name:</string>
+    <string name="age">Age:</string>
+    <string name="save_data">SAVE DATA</string>
+    <string name="err">error:</string>
 </resources>
