@@ -1,6 +1,6 @@
 package vn.asiantech.internship.model;
 
-/*
+/**
  * Define class User
  */
 public class User {

@@ -8,7 +8,7 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Company;
 
-/*
+/**
  * Handle data involve class Company
  */
 public class CompanyActivity extends AppCompatActivity {

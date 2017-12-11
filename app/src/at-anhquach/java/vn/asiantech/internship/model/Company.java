@@ -1,6 +1,6 @@
 package vn.asiantech.internship.model;
 
-/*
+/**
  * Define class Comany
  */
 public class Company {

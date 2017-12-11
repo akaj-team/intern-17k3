@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import vn.asiantech.internship.R;
 
-/*
+/**
  * Class save and display data by share Preference
  */
 public class SharePreferenceActivity extends AppCompatActivity {

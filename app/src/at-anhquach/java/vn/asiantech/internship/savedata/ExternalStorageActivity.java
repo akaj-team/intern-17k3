@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 import vn.asiantech.internship.R;
 
-/*
+/**
  * Class read and write file on external storage
  */
 public class ExternalStorageActivity extends AppCompatActivity {
@@ -32,7 +32,23 @@ public class ExternalStorageActivity extends AppCompatActivity {
         mBtnSaveData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                writeFileExternal(mEdtSaveData.getText().toString());
+                if (isExternalWriteable()) {
+                    File fileExternal = new File(Environment.getExternalStorageDirectory().getPath() + getResources().getString(R.string.folder_name_anhquach));
+                    //noinspection ResultOfMethodCallIgnored
+                    fileExternal.mkdirs();
+                    File abc = new File(fileExternal.getPath(), getResources().getString(R.string.file_name_txt));
+
+                    try {
+                        FileOutputStream outputStream = new FileOutputStream(abc);
+                        OutputStreamWriter bufferedOutputStream = new OutputStreamWriter(outputStream, "UTF-8");
+                        bufferedOutputStream.write(mEdtSaveData.getText().toString());
+                        bufferedOutputStream.flush();
+                        bufferedOutputStream.close();
+                        outputStream.close();
+                    } catch (IOException writeData) {
+                        Log.d(getResources().getString(R.string.tag_error), writeData.getMessage());
+                    }
+                }
             }
         });
     }
@@ -50,26 +66,6 @@ public class ExternalStorageActivity extends AppCompatActivity {
     private boolean isExternalWriteable() {
         String state = Environment.getExternalStorageState();
         return Environment.MEDIA_MOUNTED.equals(state);
-    }
-
-    private void writeFileExternal(String value) {
-        if (isExternalWriteable()) {
-            File fileExternal = new File(Environment.getExternalStorageDirectory().getPath() + getResources().getString(R.string.folder_name_anhquach));
-            //noinspection ResultOfMethodCallIgnored
-            fileExternal.mkdirs();
-            File abc = new File(fileExternal.getPath(), getResources().getString(R.string.file_name_txt));
-
-            try {
-                FileOutputStream outputStream = new FileOutputStream(abc);
-                OutputStreamWriter bufferedOutputStream = new OutputStreamWriter(outputStream, "UTF-8");
-                bufferedOutputStream.write(value);
-                bufferedOutputStream.flush();
-                bufferedOutputStream.close();
-                outputStream.close();
-            } catch (IOException writeData) {
-                Log.d(getResources().getString(R.string.tag_error), writeData.getMessage());
-            }
-        }
     }
 
     private void readFileExternal() {

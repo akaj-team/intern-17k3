@@ -11,7 +11,7 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.User;
 
-/*
+/**
  * Adapter to put data into recyclerView
  */
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
