@@ -1,4 +1,4 @@
-package vn.asiantech.internship.save_data;
+package vn.asiantech.internship.saveData;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +12,10 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Person;
 
+/**
+ * Created by phongle on 11/12/2560.
+ * PersonAdapter
+ */
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
     private List<Person> mPersonList;
     private OnItemClickListener mOnItemClickListener;
@@ -60,10 +64,12 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
             mRlItemPerson.setOnClickListener(this);
         }
 
-        private void onBindData(List<Person> personList, int postion) {
-            Person person = personList.get(postion);
-            mTvPersonName.setText(person.getName());
-            mTvAge.setText(String.valueOf(person.getAge()));
+        private void onBindData(List<Person> personList, int position) {
+            Person person = personList.get(position);
+            if (person != null) {
+                mTvPersonName.setText(person.getName());
+                mTvAge.setText(String.valueOf(person.getAge()));
+            }
         }
 
         @Override

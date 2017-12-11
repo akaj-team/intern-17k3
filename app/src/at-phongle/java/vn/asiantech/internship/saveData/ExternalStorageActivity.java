@@ -1,4 +1,4 @@
-package vn.asiantech.internship.save_data;
+package vn.asiantech.internship.saveData;
 
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,7 +19,10 @@ import java.io.OutputStreamWriter;
 
 import vn.asiantech.internship.R;
 
-
+/**
+ * Created by phongle on 11/12/2560.
+ * ExternalStorageActivity
+ */
 public class ExternalStorageActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtInputExternalStorage;
     private Button mBtnClickExternalStorage;
@@ -64,7 +67,7 @@ public class ExternalStorageActivity extends AppCompatActivity implements View.O
     private void readData() {
         String sdcard = Environment.getExternalStorageDirectory().getAbsolutePath() + getResources().getString(R.string.file_name);
         try {
-            InputStreamReader reader = new InputStreamReader(new FileInputStream(sdcard),"UTF-8");
+            InputStreamReader reader = new InputStreamReader(new FileInputStream(sdcard), "UTF-8");
             BufferedReader bufferedreader = new BufferedReader(reader);
             StringBuilder stringBuilder = new StringBuilder();
             String line;

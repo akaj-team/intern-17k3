@@ -21,10 +21,10 @@
         <activity android:name=".calculator.CalculatorActivity" />
         <activity android:name=".recyclerview.PostActivity" />
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".save_data.SharePreferenceActivity" />
-        <activity android:name=".save_data.ExternalStorageActivity" />
-        <activity android:name=".save_data.PersonActivity" />
-        <activity android:name=".save_data.DetailCompanyActivity" />
+        <activity android:name=".saveData.SharePreferenceActivity" />
+        <activity android:name=".saveData.ExternalStorageActivity" />
+        <activity android:name=".saveData.PersonActivity" />
+        <activity android:name=".saveData.DetailCompanyActivity" />
     </application>
 
 </manifest>

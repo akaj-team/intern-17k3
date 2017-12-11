@@ -111,24 +111,11 @@ public class DBManager extends SQLiteOpenHelper {
         return companyList;
     }
 
-    public Company getCompanyById(int id) {
-        Company company = new Company();
-        SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM " + TABLE_COMPANY + " WHERE " + COLUMN_COMPANY_ID + " =?";
-        Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(id)});
-        if (cursor != null) {
-            cursor.moveToFirst();
-            company = new Company(id, cursor.getString(1), cursor.getString(2));
-            cursor.close();
-        }
-        return company;
-    }
-
     public List<Company> getCompanyByPersonId(int id) {
         List<Company> companyList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT c." + COLUMN_COMPANY_NAME + ", c." + COLUMN_COMPANY_SLOGAN + " FROM " +TABLE_COMPANY
-                + " AS c INNER JOIN " + TABLE_EMPLOYEE + " AS e ON e." + COLUMN_EMPLOYEE_ID_COMPANY + " = c." + COLUMN_COMPANY_ID
+        String sql = "SELECT c." + COLUMN_COMPANY_NAME + ", c." + COLUMN_COMPANY_SLOGAN + " FROM " + TABLE_COMPANY
+                + " c , " + TABLE_EMPLOYEE + " e "
                 + " WHERE e." + COLUMN_EMPLOYEE_ID_PERSON + " =?";
         Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(id)});
         if (cursor.moveToFirst()) {

@@ -11,9 +11,9 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.calculator.CalculatorActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.PostActivity;
-import vn.asiantech.internship.save_data.ExternalStorageActivity;
-import vn.asiantech.internship.save_data.PersonActivity;
-import vn.asiantech.internship.save_data.SharePreferenceActivity;
+import vn.asiantech.internship.saveData.ExternalStorageActivity;
+import vn.asiantech.internship.saveData.PersonActivity;
+import vn.asiantech.internship.saveData.SharePreferenceActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;

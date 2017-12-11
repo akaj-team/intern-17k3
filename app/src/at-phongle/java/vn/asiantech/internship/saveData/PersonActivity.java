@@ -1,4 +1,4 @@
-package vn.asiantech.internship.save_data;
+package vn.asiantech.internship.saveData;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,12 @@ import vn.asiantech.internship.data.DBManager;
 import vn.asiantech.internship.models.Company;
 import vn.asiantech.internship.models.Person;
 
+/**
+ * Created by phongle on 11/12/2560.
+ * PersonActivity
+ */
 public class PersonActivity extends AppCompatActivity implements PersonAdapter.OnItemClickListener {
+    private static final String PERSON_ID_KEY = "id";
     private RecyclerView mRecyclerViewPerson;
     private List<Person> mPersonList = new ArrayList<>();
     private List<Company> mCompanyList = new ArrayList<>();
@@ -32,13 +36,12 @@ public class PersonActivity extends AppCompatActivity implements PersonAdapter.O
 
     private void initViews() {
         mRecyclerViewPerson = findViewById(R.id.recyclerViewPerson);
-
     }
 
     private void initAdapter() {
-        PersonAdapter mPersonAdapter = new PersonAdapter(mPersonList, this);
+        PersonAdapter personAdapter = new PersonAdapter(mPersonList, this);
         mRecyclerViewPerson.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewPerson.setAdapter(mPersonAdapter);
+        mRecyclerViewPerson.setAdapter(personAdapter);
     }
 
     private void initData() {
@@ -71,8 +74,7 @@ public class PersonActivity extends AppCompatActivity implements PersonAdapter.O
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(this, DetailCompanyActivity.class);
-        Log.d("xx", String.valueOf(position));
-        intent.putExtra("id", mPersonList.get(position).getId());
+        intent.putExtra(PERSON_ID_KEY, mPersonList.get(position).getId());
         startActivity(intent);
     }
 }
