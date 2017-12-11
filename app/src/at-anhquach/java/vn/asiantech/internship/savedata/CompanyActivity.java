@@ -1,9 +1,5 @@
 package vn.asiantech.internship.savedata;
 
-/*
- *
- */
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +8,9 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Company;
 
+/*
+ * Handle data involve class Company
+ */
 public class CompanyActivity extends AppCompatActivity {
     private TextView mTvNameCompany;
     private TextView mTvSlogan;

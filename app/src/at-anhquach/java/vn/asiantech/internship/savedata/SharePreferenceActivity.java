@@ -1,9 +1,5 @@
 package vn.asiantech.internship.savedata;
 
-/*
- *
- */
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +10,9 @@ import android.widget.EditText;
 
 import vn.asiantech.internship.R;
 
+/*
+ * Class save and display data by share Preference
+ */
 public class SharePreferenceActivity extends AppCompatActivity {
     EditText mEdtSaveData;
     Button mBtnSaveData;

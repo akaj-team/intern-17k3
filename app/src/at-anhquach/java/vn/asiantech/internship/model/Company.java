@@ -1,9 +1,8 @@
 package vn.asiantech.internship.model;
 
-/**
- *
+/*
+ * Define class Comany
  */
-
 public class Company {
     private int id;
     private String name;

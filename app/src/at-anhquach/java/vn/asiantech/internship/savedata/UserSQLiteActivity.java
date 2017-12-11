@@ -1,10 +1,5 @@
 package vn.asiantech.internship.savedata;
 
-/*
- *
- *
- */
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +12,9 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.User;
 
+/**
+ * User SQLite Activity
+ */
 public class UserSQLiteActivity extends AppCompatActivity implements UserAdapter.OnItemClickListener {
     private RecyclerView mRecyclerViewUser;
     private List<User> mUserList = new ArrayList<>();

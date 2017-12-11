@@ -1,5 +1,8 @@
 package vn.asiantech.internship.model;
 
+/*
+ * Define class User
+ */
 public class User {
     private int id;
     private String name;

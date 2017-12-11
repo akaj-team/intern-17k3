@@ -1,9 +1,5 @@
 package vn.asiantech.internship.savedata;
 
-/*
- *
- */
-
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +16,9 @@ import java.util.Scanner;
 
 import vn.asiantech.internship.R;
 
+/*
+ * Class read and write file on external storage
+ */
 public class ExternalStorageActivity extends AppCompatActivity {
     private EditText mEdtSaveData;
     private Button mBtnSaveData;

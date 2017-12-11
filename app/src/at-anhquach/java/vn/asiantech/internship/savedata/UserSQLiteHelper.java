@@ -1,10 +1,5 @@
 package vn.asiantech.internship.savedata;
 
-/*
- *
- *
- */
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -16,6 +11,9 @@ import java.util.ArrayList;
 import vn.asiantech.internship.model.Company;
 import vn.asiantech.internship.model.User;
 
+/**
+ * Class create and handle database
+ */
 public class UserSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "AnhQuach";
     private static final String TABLE_USER = "users";

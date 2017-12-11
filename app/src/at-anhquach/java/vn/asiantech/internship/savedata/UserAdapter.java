@@ -1,10 +1,5 @@
 package vn.asiantech.internship.savedata;
 
-/*
- *
- *
- */
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +11,9 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.User;
 
+/*
+ *Adapter to put data into recyclerView
+ */
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
     private List<User> mUserList;
     private OnItemClickListener mOnItemClickListener;
