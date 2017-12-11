@@ -1,14 +1,14 @@
 package vn.asiantech.internship.models;
 
 /**
- * Class Persion
+ * Class Person
  */
-public class Persion {
+public class Person {
     private int img;
     private String email;
     private String uri;
 
-    public Persion(int img, String email, String uri) {
+    public Person(int img, String email, String uri) {
         this.img = img;
         this.email = email;
         this.uri = uri;

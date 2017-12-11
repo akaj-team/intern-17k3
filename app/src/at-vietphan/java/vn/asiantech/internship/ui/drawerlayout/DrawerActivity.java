@@ -28,7 +28,7 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Issue;
-import vn.asiantech.internship.models.Persion;
+import vn.asiantech.internship.models.Person;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
@@ -78,7 +78,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
 
     private void initData() {
         mObjects = new ArrayList<>();
-        mObjects.add(new Persion(R.drawable.ic_account, "viet.phan@asiantech.vn", null));
+        mObjects.add(new Person(R.drawable.ic_account, "viet.phan@asiantech.vn", null));
         mObjects.add(new Issue(R.drawable.ic_login, "Login"));
         mObjects.add(new Issue(R.drawable.ic_caculator, "Calculator"));
         mObjects.add(new Issue(R.drawable.ic_list_grey_900_24dp, "Recycler View"));
@@ -93,7 +93,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     }
 
     private void initDrawer() {
-        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar, R.string.open, R.string.close) {
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar, R.string.open, R.string.close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
@@ -112,13 +112,13 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
                 super.onDrawerClosed(drawerView);
             }
         };
-        mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
-        mActionBarDrawerToggle.syncState();
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
     }
 
     @Override
     public void onClickItemIssue(int position) {
-        issueType issueType = DrawerActivity.issueType.values()[position - 1];
+        IssueType issueType = DrawerActivity.IssueType.values()[position - 1];
         switch (issueType) {
             case LOGIN:
                 startActivity(new Intent(this, LoginActivity.class));
@@ -126,7 +126,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
             case CALCULATOR:
                 startActivity(new Intent(this, CalculatorActivity.class));
                 break;
-            case RECYCLERVIEW:
+            case RECYCLER_VIEW:
                 startActivity(new Intent(this, RecyclerViewActivity.class));
                 break;
             case SHARE:
@@ -155,8 +155,8 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == RESULT_OK && data != null) {
             for (int i = 0; i < mObjects.size(); i++) {
-                if (mObjects.get(i) instanceof Persion) {
-                    ((Persion) mObjects.get(i)).setUri(String.valueOf(data.getData()));
+                if (mObjects.get(i) instanceof Person) {
+                    ((Person) mObjects.get(i)).setUri(String.valueOf(data.getData()));
                     mIssueAdapter.notifyItemChanged(i);
                     return;
                 }
@@ -200,10 +200,10 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         }
     }
 
-    private enum issueType {
+    private enum IssueType {
         LOGIN,
         CALCULATOR,
-        RECYCLERVIEW,
+        RECYCLER_VIEW,
         SHARE
     }
 }
