@@ -3,12 +3,12 @@ package vn.asiantech.internship.models;
 /**
  * Class user
  */
-public class User {
+public class Persion {
     private int img;
     private String email;
     private String uri;
 
-    public User(int img, String email, String uri) {
+    public Persion(int img, String email, String uri) {
         this.img = img;
         this.email = email;
         this.uri = uri;

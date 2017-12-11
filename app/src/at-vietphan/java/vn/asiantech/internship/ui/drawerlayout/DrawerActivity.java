@@ -28,7 +28,7 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Issue;
-import vn.asiantech.internship.models.User;
+import vn.asiantech.internship.models.Persion;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
@@ -78,7 +78,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
 
     private void initData() {
         mObjects = new ArrayList<>();
-        mObjects.add(new User(R.drawable.ic_account, "viet.phan@asiantech.vn", null));
+        mObjects.add(new Persion(R.drawable.ic_account, "viet.phan@asiantech.vn", null));
         mObjects.add(new Issue(R.drawable.ic_login, "Login"));
         mObjects.add(new Issue(R.drawable.ic_caculator, "Calculator"));
         mObjects.add(new Issue(R.drawable.ic_list_grey_900_24dp, "Recycler View"));
@@ -155,8 +155,8 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == RESULT_OK && data != null) {
             for (int i = 0; i < mObjects.size(); i++) {
-                if (mObjects.get(i) instanceof User) {
-                    ((User) mObjects.get(i)).setUri(String.valueOf(data.getData()));
+                if (mObjects.get(i) instanceof Persion) {
+                    ((Persion) mObjects.get(i)).setUri(String.valueOf(data.getData()));
                     mIssueAdapter.notifyItemChanged(i);
                     return;
                 }

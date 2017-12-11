@@ -17,7 +17,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Issue;
-import vn.asiantech.internship.models.User;
+import vn.asiantech.internship.models.Persion;
 
 /**
  * Class IssueAdapter
@@ -105,13 +105,13 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
         private void onBindData(Object object) {
-            User user = (User) object;
-            if (TextUtils.isEmpty(user.getUri())) {
-                mCircleImgAvatar.setImageResource(user.getImg());
+            Persion persion = (Persion) object;
+            if (TextUtils.isEmpty(persion.getUri())) {
+                mCircleImgAvatar.setImageResource(persion.getImg());
             } else {
-                mCircleImgAvatar.setImageURI(Uri.parse(user.getUri()));
+                mCircleImgAvatar.setImageURI(Uri.parse(persion.getUri()));
             }
-            mTvEmail.setText(user.getEmail());
+            mTvEmail.setText(persion.getEmail());
         }
 
         @Override
