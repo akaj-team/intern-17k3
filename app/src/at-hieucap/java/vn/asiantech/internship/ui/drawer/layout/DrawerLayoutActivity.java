@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -133,9 +134,9 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Informati
                     ((User) mInformationList.get(0)).setAvatar(d);
                     mAdapter.notifyItemChanged(0);
                 } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+                    Log.e("v", "stack trace");
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.e("v", "stack trace");
                 }
             }
         }

@@ -3,20 +3,20 @@ package vn.asiantech.internship.ui.drawer.layout;
 public class Option {
     public int icon;
     public String name;
-    private boolean isClicked;
+    private boolean Clicked;
 
     Option(int icon, String name, boolean isClicked) {
         this.icon = icon;
         this.name = name;
-        this.isClicked = isClicked;
+        this.Clicked = isClicked;
     }
 
     boolean isClicked() {
-        return isClicked;
+        return Clicked;
     }
 
     void setClicked() {
-        isClicked = !isClicked;
+        Clicked = !Clicked;
     }
 
     public String getName() {
