@@ -1,5 +1,8 @@
 package vn.asiantech.internship.models;
 
+/**
+ * This class used for user object
+ */
 public class User {
     private int avatar;
     private String email;

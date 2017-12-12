@@ -1,5 +1,8 @@
 package vn.asiantech.internship.models;
 
+/**
+ * This class used for option object
+ */
 public class Option {
     private String name;
     private int icon;
