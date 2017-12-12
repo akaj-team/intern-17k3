@@ -24,6 +24,7 @@ import vn.asiantech.internship.ui.calculator.CalculatorViewActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
+
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
     private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
     private static final int REQUEST_CODE_PICK_IMAGE = 77;
@@ -101,4 +102,5 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         Intent intent = mIssueList.get(position - 1).getIntent();
         startActivity(intent);
     }
+
 }
