@@ -125,9 +125,10 @@ public class SQLite extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_COMPANY + " INNER JOIN " + TABLE_EMPLOYEE + " ON " + TABLE_COMPANY + "." + COMPANY_ID + " = " + TABLE_EMPLOYEE + "." + EMPLOYEE_ID_COMPANY
                 + " WHERE " + EMPLOYEE_ID_USER + " = " + idUser;
         Cursor cursor = db.rawQuery(query, null);
-        if (cursor != null)
+        if (cursor != null) {
             cursor.moveToFirst();
-
+        }
+        cursor.close();
         Company company = new Company(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2));
         return company;

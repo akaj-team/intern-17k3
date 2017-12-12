@@ -80,7 +80,6 @@ public class ExternalActivity extends AppCompatActivity {
                 w.flush();
                 w.close();
             } catch (IOException e) {
-                e.printStackTrace();
                 Log.d("Exception",e.getMessage());
             }
         }
@@ -108,7 +107,7 @@ public class ExternalActivity extends AppCompatActivity {
                     inputStream.close();
                     Log.d("DATA", builder.toString());
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.d("abc",e.getMessage());
                 }
             }
         }

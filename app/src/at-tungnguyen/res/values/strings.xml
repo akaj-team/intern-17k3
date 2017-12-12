@@ -37,4 +37,5 @@
     <string name="ID_User">ID</string>
     <string name="name_user">Name</string>
     <string name="age_user">Age</string>
+    <string name="input">input</string>
 </resources>
