@@ -1,12 +1,22 @@
 package vn.asiantech.internship.ui.drawer.layout;
 
-public class Event {
+public class Option {
     public int icon;
     public String name;
+    private boolean isClicked;
 
-    public Event(int icon, String name) {
+    Option(int icon, String name, boolean isClicked) {
         this.icon = icon;
         this.name = name;
+        this.isClicked = isClicked;
+    }
+
+    boolean isClicked() {
+        return isClicked;
+    }
+
+    void setClicked() {
+        isClicked = !isClicked;
     }
 
     public String getName() {

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">hieucap-17k3</string>
     <string name="text_email">caphieu@gmail.com</string>
-    <string name="contain">DrawerLayout</string>
+    <string name="contain">Activity Contain</string>
     <string name="text_inbox">Inbox</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="address_google_photo">com.google.android.apps.photos</string>
 </resources>
