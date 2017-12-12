@@ -11,7 +11,6 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 
-
 public class PersonViewActivity extends AppCompatActivity {
     protected PersonAdapter mAdapter;
     private RecyclerView mRecyclerViewPerson;
@@ -28,7 +27,7 @@ public class PersonViewActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        mAdapter = new PersonAdapter(this, mPersonList);
+        mAdapter = new PersonAdapter(mPersonList);
         mRecyclerViewPerson.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewPerson.setAdapter(mAdapter);
     }
@@ -39,10 +38,10 @@ public class PersonViewActivity extends AppCompatActivity {
         mPersonList.add(new Person(getString(R.string.person_4), (getString(R.string.value_0)), (getString(R.string.text_status_standard))));
         mPersonList.add(new Person(getString(R.string.person_5), (getString(R.string.value_0)), (getString(R.string.text_status_standard))));
         mPersonList.add(new Person(getString(R.string.person_6), (getString(R.string.value_0)), (getString(R.string.text_status_max_length))));
-        mPersonList.add(new Person(getString(R.string.person_7),(getString(R.string.value_0)), (getString(R.string.text_status_standard))));
-        mPersonList.add(new Person(getString(R.string.person_8),(getString(R.string.value_0)), (getString(R.string.text_status_max_length))));
-        mPersonList.add(new Person(getString(R.string.person_1),(getString(R.string.value_0)), (getString(R.string.text_status_max_length))));
-        mPersonList.add(new Person(getString(R.string.person_2),(getString(R.string.value_0)), (getString(R.string.text_status_standard))));
+        mPersonList.add(new Person(getString(R.string.person_7), (getString(R.string.value_0)), (getString(R.string.text_status_standard))));
+        mPersonList.add(new Person(getString(R.string.person_8), (getString(R.string.value_0)), (getString(R.string.text_status_max_length))));
+        mPersonList.add(new Person(getString(R.string.person_1), (getString(R.string.value_0)), (getString(R.string.text_status_max_length))));
+        mPersonList.add(new Person(getString(R.string.person_2), (getString(R.string.value_0)), (getString(R.string.text_status_standard))));
 
     }
 
