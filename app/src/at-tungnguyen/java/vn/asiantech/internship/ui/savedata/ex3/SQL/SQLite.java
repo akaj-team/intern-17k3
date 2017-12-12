@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,8 +95,8 @@ public class SQLite extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EMPLOYEE_ID, employee.getId());
-        values.put(EMPLOYEE_ID_USER, employee.getId_user());
-        values.put(EMPLOYEE_ID_COMPANY, employee.getId_company());
+        values.put(EMPLOYEE_ID_USER, employee.getIDUser());
+        values.put(EMPLOYEE_ID_COMPANY, employee.getIDCompany());
         db.insert(TABLE_EMPLOYEE, null, values);
         db.close();
     }
@@ -125,7 +124,6 @@ public class SQLite extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_COMPANY + " INNER JOIN " + TABLE_EMPLOYEE + " ON " + TABLE_COMPANY + "." + COMPANY_ID + " = " + TABLE_EMPLOYEE + "." + EMPLOYEE_ID_COMPANY
                 + " WHERE " + EMPLOYEE_ID_USER + " = " + idUser;
-        Log.d("aaa",query);
         Cursor cursor = db.rawQuery(query,null);
         if (cursor != null)
             cursor.moveToFirst();

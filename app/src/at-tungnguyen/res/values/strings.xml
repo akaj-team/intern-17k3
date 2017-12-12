@@ -19,6 +19,7 @@
     <string name="btn_division">/</string>
     <string name="tv_result">Result</string>
     <string name="tv_calculator">Calculator</string>
+    <string name="btn_ryceclerview">RecyclerView</string>
     <string name="btn_savadata">Save Data</string>
     <string name="edt_hint_number_a">Number A</string>
     <string name="edt_hint_number_b">Number B</string>
@@ -30,5 +31,10 @@
     <string name="ex_one">Exercise1</string>
     <string name="ex_two">Exercise2</string>
     <string name="ex_three">Exercise3</string>
-
+    <string name="ID_Company">ID</string>
+    <string name="tv_sologan">Sologan</string>
+    <string name="tv_namecompany">Company</string>
+    <string name="ID_User">ID</string>
+    <string name="name_user">Name</string>
+    <string name="age_user">Age</string>
 </resources>

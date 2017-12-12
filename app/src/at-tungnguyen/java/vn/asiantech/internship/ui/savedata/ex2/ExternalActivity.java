@@ -9,13 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 import vn.asiantech.internship.R;
 
@@ -70,12 +72,13 @@ public class ExternalActivity extends AppCompatActivity {
             Log.d("VVVV", "WriteFileExternal: " + Environment.getExternalStorageDirectory().getPath());
             File fileMemory = new File(folderMemory.getPath(), "abc.txt");
             try {
-                FileOutputStream outputStream = new FileOutputStream(fileMemory);
-                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
-                bufferedOutputStream.write(value.getBytes());
-                bufferedOutputStream.flush();
-                bufferedOutputStream.close();
-                outputStream.close();
+                FileOutputStream fos = new FileOutputStream(fileMemory);
+                Writer w = new BufferedWriter(new OutputStreamWriter(fos,"UTF-8"));
+
+                w.write(value);
+
+                w.flush();
+                w.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -92,7 +95,7 @@ public class ExternalActivity extends AppCompatActivity {
                 Log.d("abcc", "path" + Environment.getExternalStorageDirectory().getPath());
                 try {
                     FileInputStream inputStream = new FileInputStream(fileRead);
-                    InputStreamReader reader = new InputStreamReader(inputStream);
+                    InputStreamReader reader = new InputStreamReader(inputStream,"UTF-8");
                     BufferedReader bufferedReader = new BufferedReader(reader);
                     String data;
                     StringBuilder builder = new StringBuilder();

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.splash.SplashActivity">
+    tools:context="vn.asiantech.internship.ui.splash.SplashActivity">
 
     <Button
         android:id="@+id/btnLogin"
@@ -20,9 +20,13 @@
         android:text="@string/tv_calculator" />
 
     <Button
+        android:id="@+id/btnRecyclerView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_ryceclerview" />
+    <Button
         android:id="@+id/btnSaveData"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_savadata" />
-
 </LinearLayout>

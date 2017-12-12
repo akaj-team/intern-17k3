@@ -27,19 +27,19 @@ public class Employee {
         this.id = id;
     }
 
-    public int getId_user() {
+    public int getIDUser() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setIDUser(int id_user) {
         this.id_user = id_user;
     }
 
-    public int getId_company() {
+    public int getIDCompany() {
         return id_company;
     }
 
-    public void setId_company(int id_company) {
+    public void setIDCompany(int id_company) {
         this.id_company = id_company;
     }
 }

@@ -18,4 +18,14 @@
     <string name="edt_hint_enter_number">Enter mobile number</string>
     <string name="edt_hint_full_name">Full name</string>
     <string name="edt_hint_email">Email</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="email">anh.quach@asiantech.vn</string>
+    <string name="btn_save_data">Save</string>
+    <string name="edt_hint_input_text">Input Text</string>
+    <string name="key_save_data">SAVE_DATA</string>
+    <string name="key_id_user">idUser</string>
+    <string name="tag_error">error</string>
+    <string name="folder_name_anhquach">/AnhQuach</string>
+    <string name="file_name_txt">abc.txt</string>
 </resources>
