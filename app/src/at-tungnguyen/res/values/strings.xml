@@ -29,4 +29,6 @@
     <string name="btn_result">Result</string>
     <string name="ex_one">Exercise1</string>
     <string name="ex_two">Exercise2</string>
+    <string name="ex_three">Exercise3</string>
+
 </resources>

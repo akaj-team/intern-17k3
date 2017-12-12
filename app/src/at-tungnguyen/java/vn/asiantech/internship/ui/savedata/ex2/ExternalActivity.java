@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.savedata.Ex2;
+package vn.asiantech.internship.ui.savedata.ex2;
 
 import android.os.Bundle;
 import android.os.Environment;

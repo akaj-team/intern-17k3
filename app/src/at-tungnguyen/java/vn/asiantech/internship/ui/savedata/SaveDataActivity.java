@@ -7,12 +7,14 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.savedata.Ex1.SharedPreferencesActivity;
-import vn.asiantech.internship.ui.savedata.Ex2.ExternalActivity;
+import vn.asiantech.internship.ui.savedata.ex1.SharedPreferencesActivity;
+import vn.asiantech.internship.ui.savedata.ex2.ExternalActivity;
+import vn.asiantech.internship.ui.savedata.ex3.UserActivity;
 
 public class SaveDataActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnEx1;
     private Button mBtnEx2;
+    private Button mBtnEx3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,15 @@ public class SaveDataActivity extends AppCompatActivity implements View.OnClickL
     private void initListener() {
         mBtnEx1.setOnClickListener(this);
         mBtnEx2.setOnClickListener(this);
+        mBtnEx3.setOnClickListener(this);
+
     }
 
     private void initViews() {
         mBtnEx1 = findViewById(R.id.btnex1);
         mBtnEx2 = findViewById(R.id.btnex2);
+        mBtnEx3 = findViewById(R.id.btnex3);
+
     }
 
     @Override
@@ -42,6 +48,10 @@ public class SaveDataActivity extends AppCompatActivity implements View.OnClickL
           case R.id.btnex2:
               Intent intent2 = new Intent(this, ExternalActivity.class);
               startActivity(intent2);
+              break;
+          case R.id.btnex3:
+              Intent intent3 = new Intent(this, UserActivity.class);
+              startActivity(intent3);
               break;
       }
     }
