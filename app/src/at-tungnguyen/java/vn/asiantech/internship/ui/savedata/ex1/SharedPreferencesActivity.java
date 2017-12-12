@@ -22,7 +22,7 @@ public class SharedPreferencesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shared_preferences);
         initViews();
         initEvent();
-        Display();
+        display();
     }
 
     private void initViews() {
@@ -34,18 +34,18 @@ public class SharedPreferencesActivity extends AppCompatActivity {
         mBtnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SaveData();
+                saveData();
             }
         });
     }
 
-    private void Display() {
+    private void display() {
         SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
         String getData = sharedPreferences.getString("Save", null);
         mEdtName.setText(getData);
     }
 
-    private void SaveData() {
+    private void saveData() {
         SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
         editor.putString("Save", mEdtName.getText().toString());
         editor.apply();

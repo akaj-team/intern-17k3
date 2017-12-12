@@ -42,7 +42,7 @@ public class ExternalActivity extends AppCompatActivity {
         mBtnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WriteFileExternal(mEdtName.getText().toString());
+                writeFileExternal(mEdtName.getText().toString());
             }
         });
     }
@@ -63,7 +63,7 @@ public class ExternalActivity extends AppCompatActivity {
         return false;
     }
 
-    private void WriteFileExternal(String value) {
+    private void writeFileExternal(String value) {
         if (!isExternalWriteable()) {
             Toast.makeText(this, "Please use memory", Toast.LENGTH_SHORT).show();
         } else {
@@ -81,11 +81,12 @@ public class ExternalActivity extends AppCompatActivity {
                 w.close();
             } catch (IOException e) {
                 e.printStackTrace();
+                Log.d("Exception",e.getMessage());
             }
         }
     }
 
-    private void ReadFileExternal() {
+    private void readFileExternal() {
         if (!isExternalWriteable()) {
             Toast.makeText(this, "Please use memory", Toast.LENGTH_SHORT).show();
         } else {

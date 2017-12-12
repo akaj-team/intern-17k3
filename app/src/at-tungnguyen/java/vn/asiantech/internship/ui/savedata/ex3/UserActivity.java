@@ -9,8 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.savedata.ex3.Adapter.UserAdapter;
-import vn.asiantech.internship.ui.savedata.ex3.SQL.SQLite;
+import vn.asiantech.internship.ui.savedata.ex3.adapter.UserAdapter;
+import vn.asiantech.internship.ui.savedata.ex3.sql.SQLite;
 import vn.asiantech.internship.ui.savedata.ex3.model.Company;
 import vn.asiantech.internship.ui.savedata.ex3.model.Employee;
 import vn.asiantech.internship.ui.savedata.ex3.model.User;
@@ -29,7 +29,6 @@ public class UserActivity extends AppCompatActivity implements UserAdapter.OnIte
         initDataUser();
         initDataCompany();
         initDataEmployee();
-
     }
 
     private void initView() {

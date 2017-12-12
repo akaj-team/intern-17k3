@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.savedata.ex3.SQL;
+package vn.asiantech.internship.ui.savedata.ex3.sql;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -34,17 +34,17 @@ public class SQLite extends SQLiteOpenHelper {
     private static final String EMPLOYEE_ID_COMPANY = "id_company";
 
     private static final int DATABASE_VERSION = 1;
-    String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER + "( "
+    static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER + "( "
             + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + USER_NAME + " TEXT NOT NULL,"
             + USER_AGE + " INTEGER NOT NULL);";
 
-    String CREATE_TABLE_COMPANY = "CREATE TABLE " + TABLE_COMPANY + "( "
+    static final String CREATE_TABLE_COMPANY = "CREATE TABLE " + TABLE_COMPANY + "( "
             + COMPANY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COMPANY_NAME + " TEXT ,"
             + COMPANY_SLOGAN + " TEXT );";
 
-    String CREATE_TABLE_EMPLOYEE = "CREATE TABLE " + TABLE_EMPLOYEE + "( "
+    static final String CREATE_TABLE_EMPLOYEE = "CREATE TABLE " + TABLE_EMPLOYEE + "( "
             + EMPLOYEE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + EMPLOYEE_ID_USER + " INTEGER,"
             + EMPLOYEE_ID_COMPANY + " INTEGER );"
@@ -124,7 +124,7 @@ public class SQLite extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_COMPANY + " INNER JOIN " + TABLE_EMPLOYEE + " ON " + TABLE_COMPANY + "." + COMPANY_ID + " = " + TABLE_EMPLOYEE + "." + EMPLOYEE_ID_COMPANY
                 + " WHERE " + EMPLOYEE_ID_USER + " = " + idUser;
-        Cursor cursor = db.rawQuery(query,null);
+        Cursor cursor = db.rawQuery(query, null);
         if (cursor != null)
             cursor.moveToFirst();
 

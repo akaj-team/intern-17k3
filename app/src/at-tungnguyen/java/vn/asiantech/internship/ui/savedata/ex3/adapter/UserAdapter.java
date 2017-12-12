@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.savedata.ex3.Adapter;
+package vn.asiantech.internship.ui.savedata.ex3.adapter;
 
 
 import android.content.Context;

@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.savedata.ex3.SQL.SQLite;
+import vn.asiantech.internship.ui.savedata.ex3.sql.SQLite;
 import vn.asiantech.internship.ui.savedata.ex3.model.Company;
 
 public class CompanyActivity extends AppCompatActivity {
