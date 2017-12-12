@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="@string/tv_enter_detail"
+        android:textColor="@android:color/black"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_australia" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_drop_down" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cursor_edt_sing_up"
+            android:hint="@string/edt_phone"
+            android:inputType="phone"
+            android:textCursorDrawable="@drawable/cursor_edt_sing_up" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/cursor_edt_sing_up"
+        android:hint="@string/edt_full_name"
+        android:textCursorDrawable="@drawable/cursor_edt_sing_up" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/cursor_edt_sing_up"
+        android:hint="@string/edt_email"
+        android:inputType="textEmailAddress"
+        android:textCursorDrawable="@drawable/cursor_edt_sing_up" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <CheckBox
+            android:id="@+id/chkTermServices"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="5dp"
+            android:button="@drawable/selector_chk_term_service"
+            android:scaleX="2"
+            android:scaleY="2" />
+
+        <TextView
+            android:id="@+id/tvTermService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgNext"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/selector_img_next" />
+
+</LinearLayout>

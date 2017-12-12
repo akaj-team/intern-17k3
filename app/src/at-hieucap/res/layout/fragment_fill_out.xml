@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:padding="30dp">
+
+    <TextView
+        android:id="@+id/tvEnter"
+        style="@style/boldText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/enter_your"
+        android:textSize="17dp" />
+
+    <LinearLayout
+        android:id="@+id/lnPhone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tvEnter"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_australia" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="13dp"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/ic_drop_down" />
+
+        <EditText
+            android:id="@+id/edtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_gray_bottom_line"
+            android:hint="@string/enter_number"
+            android:inputType="phone"
+            android:textCursorDrawable="@drawable/bg_gray_cursor"
+            android:textSize="17dp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lnPhone"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_gray_bottom_line"
+        android:gravity="center_vertical"
+        android:hint="@string/full_name"
+        android:textCursorDrawable="@drawable/bg_gray_cursor"
+        android:textSize="17dp" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtFullName"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_gray_bottom_line"
+        android:gravity="center_vertical"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textCursorDrawable="@drawable/bg_gray_cursor"
+        android:textSize="17dp" />
+
+    <LinearLayout
+        android:id="@+id/lnCheck"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/edtEmail"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/chkSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:button="@drawable/selector_chk_term_service"
+            android:scaleX="2"
+            android:scaleY="2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp">
+
+            <TextView
+                android:id="@+id/tvLinkCheckColorBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/text_link_check_color_black"
+                android:textColor="@color/colorBlack"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/tvLinkCheckColorBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvLinkCheckColorBlack"
+                android:layout_marginTop="5dp"
+                android:text="@string/text_link_check_color_blue"
+                android:textColor="@color/colorBlue"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:textSize="17dp"
+                android:layout_marginLeft="162dp"
+                android:text="@string/text_the_rest"
+                android:textColor="@color/colorBlack" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgNext"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/lnCheck"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_event_next" />
+</RelativeLayout>

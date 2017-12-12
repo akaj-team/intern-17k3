@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="30dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/welcom_to_urbi"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_btn_login"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/log_in_with_facebook"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_btn"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@color/colorBgTv" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="@string/or"
+            android:textColor="@android:color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@color/colorBgTv" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_btn_login_phone"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/login_with_phone_number"
+        android:textColor="@color/colorTextLoginPhone"
+        android:textSize="@dimen/text_size_btn"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvMemoLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/new_to_urbi_signup_for_an_account"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+</LinearLayout>

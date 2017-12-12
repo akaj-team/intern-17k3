@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvIssueName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:drawableLeft="@drawable/ic_send_black_24dp"
+    android:drawablePadding="10dp"
+    android:gravity="center_vertical"
+    android:padding="10dp"
+    android:textColor="@color/colorGrayDark"
+    android:textSize="15dp" />
