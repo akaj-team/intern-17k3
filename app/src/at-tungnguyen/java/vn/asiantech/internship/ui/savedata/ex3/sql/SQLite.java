@@ -128,9 +128,10 @@ public class SQLite extends SQLiteOpenHelper {
         if (cursor != null) {
             cursor.moveToFirst();
         }
-        cursor.close();
         Company company = new Company(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2));
+        cursor.close();
+
         return company;
     }
 
