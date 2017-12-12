@@ -14,6 +14,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.model.DrawerItem;
 
 public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int ITEM_HEADER = 1;
@@ -45,15 +46,15 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (holder instanceof HeaderViewHolder) {
             HeaderViewHolder headerViewHolder = ((HeaderViewHolder) holder);
             headerViewHolder.mTvHeaderTitle.setText(mDrawerItems.get(position).getName());
-            if (TextUtils.isEmpty(mDrawerItems.get(position).getImageuri())) {
-                headerViewHolder.mImgHeader.setImageResource(mDrawerItems.get(position).getImageresource());
+            if (TextUtils.isEmpty(mDrawerItems.get(position).getImageUri())) {
+                headerViewHolder.mImgHeader.setImageResource(mDrawerItems.get(position).getImageResource());
             } else {
-                headerViewHolder.mImgHeader.setImageURI(Uri.parse(mDrawerItems.get(position).getImageuri()));
+                headerViewHolder.mImgHeader.setImageURI(Uri.parse(mDrawerItems.get(position).getImageUri()));
             }
         } else if (holder instanceof ContentViewHolder) {
             ContentViewHolder contentViewHolder = ((ContentViewHolder) holder);
             contentViewHolder.mContent.setText(mDrawerItems.get(position).getName());
-            contentViewHolder.mImageView.setImageResource(mDrawerItems.get(position).getImageresource());
+            contentViewHolder.mImageView.setImageResource(mDrawerItems.get(position).getImageResource());
         }
     }
 
@@ -92,6 +93,12 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             mContent = itemView.findViewById(R.id.tvItemMenu);
             mImageView = itemView.findViewById(R.id.imgItemMenu);
+            mContent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.onclickContentitem(view, getAdapterPosition());
+                }
+            });
         }
     }
 
@@ -100,5 +107,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
          * This is Javadoc
          **/
         void onclickHeaderitem(View view, int position);
+
+        void onclickContentitem(View view, int position);
     }
 }

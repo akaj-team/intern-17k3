@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.model.DrawerItem;
+import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
+import vn.asiantech.internship.ui.login.MainActivity;
+import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
 public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.OnItemClickListener {
 
@@ -38,12 +42,8 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         initDrawer();
-        getData();
-        mAdapter = new DrawerAdapter(this, mData);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.getLayoutParams().width = ScreenUtil.getScreenWidth(getApplicationContext()) * 2 / 3;
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        initData();
+        initAdapter();
     }
 
     @Override
@@ -59,22 +59,27 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     }
 
     @Override
+    public void onclickContentitem(View view, int position) {
+        Intent intent = mData.get(position).getIntent();
+        startActivity(intent);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_PHOTO_FROM_GOOGLE_PHOTOS && resultCode == RESULT_OK && data != null) {
-            mData.get(0).setImageuri(data.getData().toString());
-            mAdapter.notifyDataSetChanged();
+            mData.get(0).setImageUri(data.getData().toString());
         } else {
             Toast.makeText(this, R.string.have_not_picked_img, Toast.LENGTH_LONG).show();
         }
     }
 
-    private void getData() {
+    private void initData() {
         mData = new ArrayList<>();
-        mData.add(new DrawerItem("Tung.nguyen2@asiastech.vn", 1, R.drawable.profile, ""));
-        mData.add(new DrawerItem("Outbox", 2, R.drawable.ic_inbox_content, ""));
-        mData.add(new DrawerItem("Trash", 2, R.drawable.ic_outbox_content, ""));
-        mData.add(new DrawerItem("Spam", 2, R.drawable.ic_trash_content, ""));
+        mData.add(new DrawerItem("Tung.nguyen2@asiastech.vn", 1, R.drawable.profile, "", null));
+        mData.add(new DrawerItem("Login", 2, R.drawable.ic_inbox_content, "", new Intent(this, MainActivity.class)));
+        mData.add(new DrawerItem("Calculator", 2, R.drawable.ic_outbox_content, "", new Intent(this, CalculatorActivity.class)));
+        mData.add(new DrawerItem("RecyclerView", 2, R.drawable.ic_trash_content, "", new Intent(this, RecyclerViewActivity.class)));
     }
 
     private void initDrawer() {
@@ -97,5 +102,13 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         };
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
         mActionBarDrawerToggle.syncState();
+    }
+
+    private void initAdapter() {
+        mAdapter = new DrawerAdapter(this, mData);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.getLayoutParams().width = ScreenUtil.getScreenWidth(getApplicationContext()) * 2 / 3;
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
     }
 }
