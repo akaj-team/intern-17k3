@@ -21,6 +21,12 @@ public class CompanyActivity extends AppCompatActivity {
         initData();
     }
 
+    private void initView() {
+        mTvID = findViewById(R.id.tvIDCompany);
+        mTvNameCompany = findViewById(R.id.tvNameCompany);
+        mTvSologan = findViewById(R.id.tvSologanCompany);
+    }
+
     private void initData() {
         int idCompany = getIntent().getIntExtra("id", -1);
         SQLite sqLite = new SQLite(this);
@@ -28,13 +34,5 @@ public class CompanyActivity extends AppCompatActivity {
         mTvID.setText(String.valueOf(company.getId()));
         mTvNameCompany.setText(company.getName());
         mTvSologan.setText(company.getSlogan());
-
     }
-
-    private void initView() {
-        mTvID = findViewById(R.id.tvIDCompany);
-        mTvNameCompany = findViewById(R.id.tvNameCompany);
-        mTvSologan = findViewById(R.id.tvSologanCompany);
-    }
-
 }

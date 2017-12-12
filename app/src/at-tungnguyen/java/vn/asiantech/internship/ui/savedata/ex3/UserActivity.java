@@ -26,8 +26,8 @@ public class UserActivity extends AppCompatActivity implements UserAdapter.OnIte
         setContentView(R.layout.activity_user);
         initView();
         initAdapterUser();
-        initDataUser();
         initDataCompany();
+        initDataUser();
         initDataEmployee();
     }
 
