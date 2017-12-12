@@ -28,7 +28,7 @@ public class ExternalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shared_preferences);
-        ReadFileExternal();
+        readFileExternal();
         initViews();
         initEvent();
     }

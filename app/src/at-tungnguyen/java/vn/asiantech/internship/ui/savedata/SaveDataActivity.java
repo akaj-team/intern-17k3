@@ -28,31 +28,29 @@ public class SaveDataActivity extends AppCompatActivity implements View.OnClickL
         mBtnEx1.setOnClickListener(this);
         mBtnEx2.setOnClickListener(this);
         mBtnEx3.setOnClickListener(this);
-
     }
 
     private void initViews() {
         mBtnEx1 = findViewById(R.id.btnex1);
         mBtnEx2 = findViewById(R.id.btnex2);
         mBtnEx3 = findViewById(R.id.btnex3);
-
     }
 
     @Override
     public void onClick(View view) {
-      switch (view.getId()){
-          case R.id.btnex1:
-              Intent intent1 = new Intent(this, SharedPreferencesActivity.class);
-              startActivity(intent1);
-              break;
-          case R.id.btnex2:
-              Intent intent2 = new Intent(this, ExternalActivity.class);
-              startActivity(intent2);
-              break;
-          case R.id.btnex3:
-              Intent intent3 = new Intent(this, UserActivity.class);
-              startActivity(intent3);
-              break;
-      }
+        switch (view.getId()) {
+            case R.id.btnex1:
+                Intent intent1 = new Intent(this, SharedPreferencesActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.btnex2:
+                Intent intent2 = new Intent(this, ExternalActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.btnex3:
+                Intent intent3 = new Intent(this, UserActivity.class);
+                startActivity(intent3);
+                break;
+        }
     }
 }
