@@ -9,7 +9,7 @@ import android.content.pm.PackageManager;
  */
 
 public final class GoogleUtil {
-    private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
+    public static final String GOOGLE_PHOTO_PACKAGE = "com.google.android.apps.photos";
 
     private GoogleUtil() {
         // No-op
@@ -18,7 +18,7 @@ public final class GoogleUtil {
     public static boolean isGooglePhotosInstalled(Context context) {
         PackageManager packageManager = context.getPackageManager();
         try {
-            return packageManager.getPackageInfo(GOOGLE_PHOTO, PackageManager.GET_ACTIVITIES) != null;
+            return packageManager.getPackageInfo(GOOGLE_PHOTO_PACKAGE, PackageManager.GET_ACTIVITIES) != null;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }

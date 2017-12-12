@@ -94,7 +94,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         private void onBindData(Object object) {
             Option option = (Option) object;
-            mTvOption.setText(option.getOptionName());
+            mTvOption.setText(option.getName());
             mImgIcon.setImageResource(option.getIcon());
             mTvOption.setTextColor(itemView.getResources().getColor(R.color.black));
             mImgIcon.setPressed(false);

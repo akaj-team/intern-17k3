@@ -28,15 +28,13 @@ import vn.asiantech.internship.util.GoogleUtil;
  * Activity of screen with drawerLayout
  */
 public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnItemClickListener {
-    private static final int REQUEST_CODE = 2;
-    private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
+    private static final int REQUEST_CODE_PICK_IMAGE = 2;
     private static final String CALCULATOR = "Calculator";
     private static final String DRAWER_LAYOUT = "DrawerLayout";
     private static final String LOGIN = "Login";
     private static final String RECYCLER_VIEW = "RecyclerView";
     private static final String OUTBOX = "Outbox";
     private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mActionBarDrawerToggle;
     private RecyclerView mRecyclerViewOption;
     private MenuAdapter mAdapter;
     private List<Object> mObjects;
@@ -82,7 +80,7 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     }
 
     private void initDrawerLayout() {
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar, R.string.numberone, R.string.numbertwo) {
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar, R.string.numberone, R.string.numbertwo) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
@@ -99,14 +97,14 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
                 super.onDrawerClosed(drawerView);
             }
         };
-        mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
-        mActionBarDrawerToggle.syncState();
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
     }
 
     @Override
     public void onClickItem(int position) {
         if (mObjects.get(position) instanceof Option) {
-            String nameActivity = ((Option) mObjects.get(position)).getOptionName();
+            String nameActivity = ((Option) mObjects.get(position)).getName();
             switch (nameActivity) {
                 case CALCULATOR:
                     mAdapter.notifyItemChanged(position);
@@ -142,17 +140,17 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
         if (GoogleUtil.isGooglePhotosInstalled(this)) {
-            intent.setPackage(GOOGLE_PHOTO);
-            startActivityForResult(intent, REQUEST_CODE);
+            intent.setPackage(GoogleUtil.GOOGLE_PHOTO_PACKAGE);
+            startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
         } else {
-            startActivityForResult(intent, REQUEST_CODE);
+            startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+        if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == RESULT_OK && data != null) {
             for (int i = 0; i < mObjects.size(); i++) {
                 if (mObjects.get(i) instanceof User) {
                     ((User) mObjects.get(i)).setUri(String.valueOf(data.getData()));
