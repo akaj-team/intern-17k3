@@ -39,7 +39,7 @@
                 android:background="@drawable/selector_event_dislike" />
 
             <TextView
-                android:id="@+id/tvValue"
+                android:id="@+id/tvCountLike"
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -53,6 +53,7 @@
             android:layout_height="50dp"
             android:layout_below="@id/lnNamePerson"
             android:gravity="center_vertical"
+            android:ellipsize="end"
             android:maxLines="2" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

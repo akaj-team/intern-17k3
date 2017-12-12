@@ -14,7 +14,7 @@
     <string name="person_7">Nguyen Van G</string>
     <string name="person_8">Nguyen Van H</string>
     <string name="text_status_standard">This is ...........................</string>
-    <string name="text_status_max_length">This is ...........................................................................................</string>
+    <string name="text_status_max_length">This is ................aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
     <string name="value_1">1</string>
     <string name="welcome_caption">Welcome to urbi</string>
     <string name="login_with_facebook">LOG IN WITH FACEBOOK</string>

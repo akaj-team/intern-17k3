@@ -2,34 +2,32 @@ package vn.asiantech.internship.models;
 
 public class Person {
     private String name;
-    private String value;
+    private int countLike;
     private String status;
-    private int countLine;
 
-    Person(String name, String value, String status) {
+    public Person(String name, int countLike, String status) {
         this.name = name;
-        this.value = value;
         this.status = status;
+        this.countLike = countLike;
     }
 
     public String getName() {
-
         return name;
     }
 
     public void setName(String name) {
-
         this.name = name;
     }
 
-    String getValue() {
-
-        return value;
+    public int getCountLike() {
+        return countLike;
     }
 
-    String getStatus() {
+    public void setCountLike(int countLike) {
+        this.countLike = countLike;
+    }
 
+    public String getStatus() {
         return status;
     }
-
 }
