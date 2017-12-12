@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.loadimage.LoadImageActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
@@ -20,6 +21,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnRecyclerView;
     private Button mBtnCalculator;
     private Button mBtnSaveData;
+    private Button mBtnLoadImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnCalculator = findViewById(R.id.btnCalculator);
         mBtnSaveData = findViewById(R.id.btnSaveData);
+        mBtnLoadImage = findViewById(R.id.btnLoadImage);
     }
 
     private void initListener() {
@@ -41,6 +44,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnRecyclerView.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
+        mBtnLoadImage.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +61,9 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnSaveData:
                 startActivity(new Intent(this, SaveDataActivity.class));
+                break;
+            case R.id.btnLoadImage:
+                startActivity(new Intent(this, LoadImageActivity.class));
                 break;
         }
     }

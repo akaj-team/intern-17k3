@@ -40,4 +40,9 @@
     <string name="age">Age:</string>
     <string name="save_data">SAVE DATA</string>
     <string name="err">error:</string>
+    <string name="load_image">LOAD IMAGE</string>
+    <string name="internet">INTERNET</string>
+    <string name="storage">STORAGE</string>
+    <string name="assets">ASSESTS</string>
+    <string name="drawable">DRAWABLE</string>
 </resources>
