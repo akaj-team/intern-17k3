@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -79,11 +78,10 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
     private void initData() {
         mObjects = new ArrayList<>();
         mObjects.add(new Person(R.drawable.ic_account, "viet.phan@asiantech.vn", null));
-        mObjects.add(new Issue(R.drawable.ic_login, "Login"));
-        mObjects.add(new Issue(R.drawable.ic_caculator, "Calculator"));
-        mObjects.add(new Issue(R.drawable.ic_list_grey_900_24dp, "Recycler View"));
-        mObjects.add(new Issue(R.drawable.ic_share_grey_900_24dp, "Share"));
-        mObjects.add(new Issue(R.drawable.ic_exit_to_app_grey_900_24dp, "Exit"));
+        mObjects.add(new Issue(R.drawable.ic_login, "Login", new Intent(this, LoginActivity.class)));
+        mObjects.add(new Issue(R.drawable.ic_caculator, "Calculator", new Intent(this, CalculatorActivity.class)));
+        mObjects.add(new Issue(R.drawable.ic_list_grey_900_24dp, "Recycler View", new Intent(this, RecyclerViewActivity.class)));
+        mObjects.add(new Issue(R.drawable.ic_share_grey_900_24dp, "Share", new Intent()));
     }
 
     private void initAdapter() {
@@ -118,23 +116,20 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
 
     @Override
     public void onClickItemIssue(int position) {
-        IssueType issueType = DrawerActivity.IssueType.values()[position - 1];
-        switch (issueType) {
-            case LOGIN:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
-            case CALCULATOR:
-                startActivity(new Intent(this, CalculatorActivity.class));
-                break;
-            case RECYCLER_VIEW:
-                startActivity(new Intent(this, RecyclerViewActivity.class));
-                break;
-            case SHARE:
-                takeScreenshot();
-                break;
-            default:
-                ActivityCompat.finishAffinity(this);
-                break;
+        Issue issue = (Issue) mObjects.get(position);
+        Intent intent = issue.getIntent();
+        if (position == mObjects.size() - 1) {
+            Uri uri = Uri.fromFile(getScreenShot());
+            intent.setAction(Intent.ACTION_SEND);
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            try {
+                startActivity(Intent.createChooser(intent, getString(R.string.share)));
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(this, R.string.no_apps, Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            startActivity(intent);
         }
     }
 
@@ -166,44 +161,25 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         }
     }
 
-    private void takeScreenshot() {
+    private File getScreenShot() {
         Date now = new Date();
         DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+        File imageFile = null;
         try {
             String path = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
             View view = getWindow().getDecorView().getRootView();
             view.setDrawingCacheEnabled(true);
             Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
             view.setDrawingCacheEnabled(false);
-            File imageFile = new File(path);
+            imageFile = new File(path);
             FileOutputStream outputStream = new FileOutputStream(imageFile);
             int quality = 100;
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
             outputStream.flush();
             outputStream.close();
-            shareImage(imageFile);
         } catch (Exception e) {
             Log.d(getString(R.string.error), e.getMessage());
         }
-    }
-
-    private void shareImage(File file) {
-        Uri uri = Uri.fromFile(file);
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
-        try {
-            startActivity(Intent.createChooser(intent, getString(R.string.share)));
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, R.string.no_apps, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private enum IssueType {
-        LOGIN,
-        CALCULATOR,
-        RECYCLER_VIEW,
-        SHARE
+        return imageFile;
     }
 }
