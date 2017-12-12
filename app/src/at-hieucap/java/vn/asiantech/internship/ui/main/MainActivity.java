@@ -1,4 +1,4 @@
-package vn.asiantech.internship;
+package vn.asiantech.internship.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,11 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import vn.asiantech.internship.calculator.ui.CalculatorActivity;
-import vn.asiantech.internship.recycler.view.PersonViewActivity;
+import vn.asiantech.internship.R;
+import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.recyclerview.PersonViewActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 
-public class ChoiceExerciseActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

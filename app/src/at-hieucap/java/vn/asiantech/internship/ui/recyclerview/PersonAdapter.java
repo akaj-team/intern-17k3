@@ -1,4 +1,4 @@
-package vn.asiantech.internship.recycler.view;
+package vn.asiantech.internship.ui.recyclerview;
 
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -14,6 +14,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.models.Person;
 
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
     private List<Person> mPersonList;

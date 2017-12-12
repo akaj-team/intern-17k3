@@ -1,4 +1,4 @@
-package vn.asiantech.internship.recycler.view;
+package vn.asiantech.internship.ui.recyclerview;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.models.Person;
 
 public class PersonViewActivity extends AppCompatActivity {
     protected PersonAdapter mAdapter;
