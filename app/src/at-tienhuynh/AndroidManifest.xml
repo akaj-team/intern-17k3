@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.asiantech.internship">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -22,6 +25,14 @@
             android:name=".login.LoginActivity"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".calculation.CalculatorActivity" />
+        <activity android:name=".savedata.ExerciseManagementActivity" />
+        <activity android:name=".savedata.SharedPreferencesActivity" />
+        <activity android:name=".savedata.WriteExternalActivity" />
+        <activity android:name=".savedata.SqLiteActivity" />
+        <activity android:name=".savedata.CompanyActivity" />
+        <activity
+            android:name=".drawerlayout.DrawerLayoutActivity"
+            android:theme="@style/DrawerLayoutTheme" />
     </application>
 </manifest>
 

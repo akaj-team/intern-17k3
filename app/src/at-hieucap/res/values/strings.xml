@@ -32,4 +32,13 @@
     <string name="text_link_check_color_black">I have read and agree with the</string>
     <string name="text_link_check_color_blue">terms and conditions</string>
     <string name="text_the_rest">.</string>
+    <string name="division">/</string>
+    <string name="mul">*</string>
+    <string name="sub">-</string>
+    <string name="sum">+</string>
+    <string name="event_first_term_is_empty">First term is not empty !</string>
+    <string name="event_second_term_is_empty">Second term is not empty !</string>
+    <string name="event_two_term_is_empty">First term and second term is not empty !</string>
+    <string name="text_null"> </string>
+    <string name="event_second_term_is_value_0">Second term is not value = 0 !</string>
 </resources>

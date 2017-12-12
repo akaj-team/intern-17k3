@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import vn.asiantech.internship.calculator.ui.CalculatorActivity;
 import vn.asiantech.internship.recycler.view.PersonViewActivity;
+import vn.asiantech.internship.ui.login.LoginActivity;
 
 public class ChoiceExerciseActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,14 +28,14 @@ public class ChoiceExerciseActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.btnBt1:
-//                Intent intent_bt1 =new Intent(this, );
-//                this.startActivity(intent_bt1);
-//                break;
-//            case R.id.btnBt2:
-//                Intent intent_bt2 = new Intent(this, CalculatorActivity.class);
-//                this.startActivity(intent_bt2);
-//                break;
+            case R.id.btnBt1:
+                Intent intent_bt1 =new Intent(this, LoginActivity.class);
+                this.startActivity(intent_bt1);
+                break;
+            case R.id.btnBt2:
+                Intent intent_bt2 = new Intent(this, CalculatorActivity.class);
+                this.startActivity(intent_bt2);
+                break;
             case R.id.btnBt3:
                 Intent intent_bt3 = new Intent(this, PersonViewActivity.class);
                 this.startActivity(intent_bt3);
