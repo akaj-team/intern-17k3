@@ -11,5 +11,6 @@
         android:id="@+id/edtNinePath"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="text"
         android:background="@drawable/ic_bubble"/>
 </LinearLayout>
