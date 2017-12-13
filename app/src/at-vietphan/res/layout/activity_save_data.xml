@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/btnSharePreference"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/share_preference" />
+
+    <Button
+        android:id="@+id/btnExternalStorage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/external_storage" />
+
+    <Button
+        android:id="@+id/btnSQLlite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sqlite" />
+</LinearLayout>

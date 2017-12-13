@@ -26,4 +26,11 @@
     <string name="name">Main Content</string>
     <string name="notify_uri">That app do not support return uri for image</string>
     <string name="message">Hello man</string>
+    <string name="button_savedata">Save Data</string>
+    <string name="share_preference">Share Prefence</string>
+    <string name="save_text">Save in external</string>
+    <string name="save_sqlite">Save in DB</string>
+    <string name="btn_input">Input</string>
+    <string name="have_not_company">have not company</string>
+    <string name="have_not_slogan">have not slogan</string>
 </resources>
