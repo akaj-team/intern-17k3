@@ -50,4 +50,16 @@
     <string name="company_slogan">Slogan : </string>
     <string name="not_installed_google_photos">You not installed Google Photos</string>
     <string name="not_img_picked">You haven\'t picked Image</string>
+    <string name="text_btn_view_pager_screen">View Pager Screen</string>
+    <string name="tv_name_skip">SKIP</string>
+    <string name="tv_step_1">STEP 1</string>
+    <string name="tv_step_2">STEP 2</string>
+    <string name="tv_step_3">STEP 3</string>
+    <string name="dialog_skip_title">NOTICE</string>
+    <string name="dialog_skip_message">Do you want skip this?</string>
+    <string name="dialog_skip_yes">Yes</string>
+    <string name="dialog_skip_no">No</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

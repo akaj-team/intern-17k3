@@ -11,6 +11,7 @@ import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 import vn.asiantech.internship.savedata.ExerciseManagementActivity;
+import vn.asiantech.internship.viewpagerandtablelayout.ui.SlideActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
@@ -18,6 +19,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnRecyclerViewScreen;
     private Button mBtnSaveDataScreen;
     private Button mBtnDrawerLayoutScreen;
+    private Button mBtnViewPagerScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnSaveDataScreen = findViewById(R.id.btnSaveDataScreen);
         mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
         mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
+        mBtnViewPagerScreen = findViewById(R.id.btnViewPager);
     }
 
     private void initListener() {
@@ -43,6 +46,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnSaveDataScreen.setOnClickListener(this);
         mBtnDrawerLayoutScreen.setOnClickListener(this);
         mBtnRecyclerViewScreen.setOnClickListener(this);
+        mBtnViewPagerScreen.setOnClickListener(this);
     }
 
     @Override
@@ -62,6 +66,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnDrawerLayout:
                 startActivity(new Intent(this, DrawerLayoutActivity.class));
+                break;
+            case R.id.btnViewPager:
+                startActivity(new Intent(this, SlideActivity.class));
                 break;
         }
     }

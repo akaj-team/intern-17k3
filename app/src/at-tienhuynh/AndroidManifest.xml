@@ -33,6 +33,11 @@
         <activity
             android:name=".drawerlayout.DrawerLayoutActivity"
             android:theme="@style/DrawerLayoutTheme" />
+        <activity android:name=".viewpagerandtablelayout.ui.SlideActivity"
+            android:theme="@style/NoActionBarTheme"/>
+        <activity
+            android:name=".viewpagerandtablelayout.ui.TabLayoutActivity"
+            android:theme="@style/NoActionBarTheme" />
     </application>
-</manifest>
 
+</manifest>
