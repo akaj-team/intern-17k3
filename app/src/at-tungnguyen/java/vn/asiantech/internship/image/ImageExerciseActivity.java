@@ -9,7 +9,7 @@ import android.widget.Button;
 import vn.asiantech.internship.R;
 
 /**
- *
+ * Select type image
  */
 public class ImageExerciseActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoadImage;
