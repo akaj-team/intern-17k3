@@ -1,4 +1,4 @@
-package vn.asiantech.internship.loadImage;
+package vn.asiantech.internship.loadimage;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 import vn.asiantech.internship.R;
 
 public class LoadImageActivity extends AppCompatActivity implements View.OnClickListener {
-    private static int RESULT_LOAD_IMAGE = 1;
+    private static final int RESULT_LOAD_IMAGE = 1;
     private ImageView mImgContainImage;
     private Button mBtnChoiceDrawable;
     private Button mBtnChoiceAssets;
