@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.splash.SplashActivity">
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/tv_login" />
-
-    <Button
-        android:id="@+id/btnCaculator"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/tv_calculator" />
-
-    <Button
-        android:id="@+id/btnRecyclerView"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_ryceclerview" />
+    tools:context="vn.asiantech.internship.image.ImageExerciseActivity">
 
     <Button
         android:id="@+id/btnLoadImage"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/btn_loadimage" />
+        android:text="@string/tv_loadimage" />
 
+    <Button
+        android:id="@+id/btnLoadNinePath"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_ninepath" />
+
+    <Button
+        android:id="@+id/btnLoadVector"
+        android:layout_width="300dp"
+        android:text="@string/btn_vector"
+        android:layout_height="wrap_content" />
 </LinearLayout>

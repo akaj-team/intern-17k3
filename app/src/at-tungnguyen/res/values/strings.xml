@@ -28,6 +28,12 @@
     <string name="btn_loadDrawable">Drawable</string>
     <string name="btn_loadAsset">Asset</string>
     <string name="btn_loadStorage">Storage</string>
-    <string name="btn_loadInternet" >Internet</string>
+    <string name="btn_loadInternet">Internet</string>
     <string name="btn_loadimage">Load Image</string>
+    <string name="btn_loadimage_ninepath">Load Image NinePath</string>
+    <string name="btn_loadimage_vector">Load Image Vector</string>
+    <string name="tv_loadimage">LoadImage</string>
+    <string name="btn_ninepath">Nine Path</string>
+    <string name="btn_vector">Vector</string>
+
 </resources>

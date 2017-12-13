@@ -14,11 +14,16 @@ import java.io.File;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Load image with Picasso library
+ */
 public class LoadImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoadDrawable;
     private Button mBtnLoadAsset;
     private Button mBtnLoadInternet;
-    private Button mBtnStorage;
+    private Button mBtnStorage;;
+    private Button mBtnLoadVector;
+    private Button mBtnLoadNinePath;
     private ImageView mImgLoadImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,8 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
         mBtnLoadDrawable = findViewById(R.id.btnLoadDrawable);
         mBtnLoadInternet = findViewById(R.id.btnLoadInternet);
         mBtnStorage = findViewById(R.id.btnLoadStorage);
+        mBtnLoadVector = findViewById(R.id.btnLoadVector);
+        mBtnLoadNinePath = findViewById(R.id.btnLoadNinePath);
         mImgLoadImage = findViewById(R.id.imgLoad);
     }
 

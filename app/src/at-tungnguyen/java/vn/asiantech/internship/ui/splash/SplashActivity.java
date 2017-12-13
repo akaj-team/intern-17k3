@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.image.LoadImageActivity;
-import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
+import vn.asiantech.internship.image.ImageExerciseActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
+import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;
@@ -58,9 +58,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(i3);
                 break;
             case R.id.btnLoadImage:
-                Intent i5 = new Intent(SplashActivity.this, LoadImageActivity.class);
+                Intent i5 = new Intent(SplashActivity.this, ImageExerciseActivity.class);
                 startActivity(i5);
                 break;
+
         }
     }
 }
