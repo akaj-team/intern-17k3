@@ -11,6 +11,9 @@ import java.io.File;
 
 import vn.asiantech.internship.R;
 
+/**
+ * This class is used for load image with picasso library
+ */
 public class LoadImageActivity extends AppCompatActivity {
     private static final String FOLDER_PICTURE = "/picture";
     private static final String IMAGE_NAME = "/ic_btn_next_pressed.png";

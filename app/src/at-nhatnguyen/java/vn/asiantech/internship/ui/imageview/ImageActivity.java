@@ -8,6 +8,9 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 
+/**
+ * This class use for controller activity
+ */
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoadImage;
     private Button mBtnScaleEditText;
