@@ -25,4 +25,9 @@
     <string name="tv_number_not_0">Number B is not 0</string>
     <string name="tv_login">Create Login Screen</string>
     <string name="tv_caculator">Calculator View </string>
+    <string name="btn_loadDrawable">Drawable</string>
+    <string name="btn_loadAsset">Asset</string>
+    <string name="btn_loadStorage">Storage</string>
+    <string name="btn_loadInternet" >Internet</string>
+    <string name="btn_loadimage">Load Image</string>
 </resources>

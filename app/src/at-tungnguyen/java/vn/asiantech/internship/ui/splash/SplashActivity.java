@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.image.LoadImageActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
@@ -15,6 +16,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnLogin;
     private Button mBtnCalculator;
     private Button mBtnRecyclerView;
+    private Button mBtnLoadImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnCalculator = findViewById(R.id.btnCaculator);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
+        mBtnLoadImage = findViewById(R.id.btnLoadImage);
 
     }
 
@@ -35,6 +38,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLogin.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
+        mBtnLoadImage.setOnClickListener(this);
 
     }
 
@@ -52,6 +56,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnRecyclerView:
                 Intent i3 = new Intent(SplashActivity.this, RecyclerViewActivity.class);
                 startActivity(i3);
+                break;
+            case R.id.btnLoadImage:
+                Intent i5 = new Intent(SplashActivity.this, LoadImageActivity.class);
+                startActivity(i5);
                 break;
         }
     }
