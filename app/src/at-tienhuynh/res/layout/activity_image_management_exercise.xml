@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/name_btn_nine_path" />
+
     <Button
         android:id="@+id/btnDrawVector"
         android:layout_width="match_parent"

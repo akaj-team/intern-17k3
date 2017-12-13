@@ -11,6 +11,7 @@ import vn.asiantech.internship.R;
 public class ImageManagementExerciseActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoadImage;
     private Button mBtnNinePath;
+    private Button mBtnDrawVector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class ImageManagementExerciseActivity extends AppCompatActivity implement
     private void initViews() {
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnNinePath = findViewById(R.id.btnNinePath);
+        mBtnDrawVector = findViewById(R.id.btnDrawVector);
     }
 
     /**
@@ -34,6 +36,7 @@ public class ImageManagementExerciseActivity extends AppCompatActivity implement
     private void initListeners() {
         mBtnLoadImage.setOnClickListener(this);
         mBtnNinePath.setOnClickListener(this);
+        mBtnDrawVector.setOnClickListener(this);
     }
 
     /**
