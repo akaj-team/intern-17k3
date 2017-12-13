@@ -1,7 +1,7 @@
 package vn.asiantech.internship.loadImage;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +11,10 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
-
 import vn.asiantech.internship.R;
 
 public class LoadImageActivity extends AppCompatActivity implements View.OnClickListener {
+    private static int RESULT_LOAD_IMAGE = 1;
     private ImageView mImgContainImage;
     private Button mBtnChoiceDrawable;
     private Button mBtnChoiceAssets;
@@ -55,15 +54,23 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
                 Picasso.with(view.getContext()).load("file:///android_asset/img_ibrahimovich.jpg").into(mImgContainImage);
                 break;
             case R.id.btnStorage:
-                File imgFile = new  File("/sdcard/Pictures/Messenger/Ahihi.jpeg");
-//                Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath() + "/sdcard/Pictures/Messenger/Ahihi.jpeg", "ic_image_storage.png"));
-//                Picasso.with(view.getContext()).load(uri).into(mImgContainImage);
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                mImgContainImage.setImageBitmap(myBitmap);
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
                 break;
             case R.id.btnInternet:
                 Picasso.with(view.getContext()).load("https://i2-prod.manchestereveningnews.co.uk/incoming/article1736623.ece/ALTERNATES/s1227b/Paul%20Scholes.jpg").into(mImgContainImage);
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImageURI = data.getData();
+            Picasso.with(LoadImageActivity.this).load(selectedImageURI).noPlaceholder().centerCrop().fit().into(mImgContainImage);
         }
     }
 }
