@@ -28,11 +28,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/internet" />
+
     <Button
         android:id="@+id/btnNinePath"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/nine_path" />
+
+    <Button
+        android:id="@+id/btnImageVector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/image_vector" />
 
     <ImageView
         android:id="@+id/imgPicasso"

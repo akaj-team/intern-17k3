@@ -27,6 +27,7 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
     private Button mBtnStorage;
     private Button mBtnInternet;
     private Button mBtnNinePath;
+    private Button mBtnImageVector;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
         mBtnStorage = findViewById(R.id.btnStorage);
         mBtnInternet = findViewById(R.id.btnInternet);
         mBtnNinePath = findViewById(R.id.btnNinePath);
+        mBtnImageVector = findViewById(R.id.btnImageVector);
     }
 
     private void initListener() {
@@ -51,6 +53,7 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
         mBtnStorage.setOnClickListener(this);
         mBtnInternet.setOnClickListener(this);
         mBtnNinePath.setOnClickListener(this);
+        mBtnImageVector.setOnClickListener(this);
     }
 
     @Override
@@ -69,10 +72,9 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
                         .into(mImgPicasso);
                 break;
             case R.id.btnStorage:
-                Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath() + "/Pictures/"));
-                String imageName = "apple_mac_os_x_el_capitan.jpg";
+                Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath() + "/Pictures/apple_mac_os_x_el_capitan.jpg"));
                 Picasso.with(LoadImageActivity.this)
-                        .load(uri + imageName)
+                        .load(uri)
                         .placeholder(R.mipmap.ic_launcher)
                         .into(mImgPicasso);
                 break;
@@ -84,6 +86,9 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btnNinePath:
                 startActivity(new Intent(this, NinePathActivity.class));
+                break;
+            case R.id.btnImageVector:
+                startActivity(new Intent(this, ImageVectorActivity.class));
                 break;
         }
     }

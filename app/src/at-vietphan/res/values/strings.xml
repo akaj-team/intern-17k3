@@ -46,4 +46,5 @@
     <string name="assets">ASSESTS</string>
     <string name="drawable">DRAWABLE</string>
     <string name="nine_path">NINE PATH</string>
+    <string name="image_vector">IMAGE VECTOR</string>
 </resources>
