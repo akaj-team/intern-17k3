@@ -9,25 +9,25 @@
         android:id="@+id/btnLoadInDrawble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Load in drawable" />
+        android:text="@string/btn_load_in_drawable" />
 
     <Button
         android:id="@+id/btnLoadInAsset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Load in Asset" />
+        android:text="@string/btn_load_in_asset" />
 
     <Button
         android:id="@+id/btnLoadInInternet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Load in Internet" />
+        android:text="@string/btn_load_in_internet" />
 
     <Button
         android:id="@+id/btnLoadInStorage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Load in Storage" />
+        android:text="@string/btn_load_in_storage" />
 
     <ImageView
         android:id="@+id/imgLoad"
