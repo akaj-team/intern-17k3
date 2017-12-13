@@ -49,4 +49,9 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_sqlite_screen" />
 
+    <Button
+        android:id="@+id/btnImageNinepathVector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_image_ninepath_vector" />
 </LinearLayout>
