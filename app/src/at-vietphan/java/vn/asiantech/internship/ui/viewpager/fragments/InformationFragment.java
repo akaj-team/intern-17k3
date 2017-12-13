@@ -12,15 +12,15 @@ import vn.asiantech.internship.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StepTwoFragment extends Fragment {
+public class InformationFragment extends Fragment {
 
-    public StepTwoFragment() {
+    public InformationFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_step_two, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 }
