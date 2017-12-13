@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
+import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btnDrawerLayout:
                 startActivity(new Intent(this, DrawerActivity.class));
                 break;
-                case R.id.btnSaveData:
+            case R.id.btnSaveData:
                 startActivity(new Intent(this, SaveDataActivity.class));
                 break;
         }
