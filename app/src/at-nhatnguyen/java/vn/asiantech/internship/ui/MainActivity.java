@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.ui.imageview.LoadImageActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
@@ -17,6 +18,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnCalculator;
     private Button mBtnLogin;
     private Button mBtnSaveData;
+    private Button mBtnLoadImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnCalculator = findViewById(R.id.btnCalculator);
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnSaveData = findViewById(R.id.btnSaveData);
+        mBtnLoadImage = findViewById(R.id.btnLoadImage);
     }
 
     private void initListener() {
@@ -38,6 +41,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnCalculator.setOnClickListener(this);
         mBtnLogin.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
+        mBtnLoadImage.setOnClickListener(this);
     }
 
     @Override
@@ -52,8 +56,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btnCalculator:
                 startActivity(new Intent(this, CalculatorActivity.class));
                 break;
-                case R.id.btnSaveData:
+            case R.id.btnSaveData:
                 startActivity(new Intent(this, SaveDataActivity.class));
+                break;
+            case R.id.btnLoadImage:
+                startActivity(new Intent(this, LoadImageActivity.class));
                 break;
         }
     }

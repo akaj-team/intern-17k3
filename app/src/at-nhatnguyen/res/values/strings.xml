@@ -29,4 +29,9 @@
     <string name="btn_input">Input</string>
     <string name="have_not_company">have not company</string>
     <string name="have_not_slogan">have not slogan</string>
+    <string name="button_load_image">Load Image</string>
+    <string name="text_internet">From internet</string>
+    <string name="text_drawable">From drawable</string>
+    <string name="text_assets">From assets</string>
+    <string name="text_storage">From storage</string>
 </resources>
