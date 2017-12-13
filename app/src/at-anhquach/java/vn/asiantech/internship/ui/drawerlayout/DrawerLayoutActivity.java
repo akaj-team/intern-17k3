@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.image.LoadImageActivity;
+import vn.asiantech.internship.image.NinePathImageActivity;
+import vn.asiantech.internship.image.VectorImageActivity;
 import vn.asiantech.internship.model.Issue;
 import vn.asiantech.internship.savedata.ExternalStorageActivity;
 import vn.asiantech.internship.savedata.SharePreferenceActivity;
@@ -58,6 +61,9 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Share Preference", new Intent(this, SharePreferenceActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "External Storage", new Intent(this, ExternalStorageActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLite", new Intent(this, UserSQLiteActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Load Image", new Intent(this, LoadImageActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Nine path image", new Intent(this, NinePathImageActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Vector image", new Intent(this, VectorImageActivity.class)));
     }
 
     private void initDrawer() {
