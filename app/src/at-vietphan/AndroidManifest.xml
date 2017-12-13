@@ -29,5 +29,6 @@
         <activity android:name=".ui.savedata.CompanyActivity" />
         <activity android:name=".ui.savedata.SaveDataActivity" />
         <activity android:name=".ui.loadimage.LoadImageActivity" />
+        <activity android:name=".ui.loadimage.NinePathActivity" />
     </application>
 </manifest>

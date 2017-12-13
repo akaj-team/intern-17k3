@@ -1,6 +1,9 @@
 package vn.asiantech.internship.ui.loadimage;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 import vn.asiantech.internship.R;
 
@@ -21,6 +26,7 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
     private Button mBtnAssets;
     private Button mBtnStorage;
     private Button mBtnInternet;
+    private Button mBtnNinePath;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
         mBtnAssets = findViewById(R.id.btnAssets);
         mBtnStorage = findViewById(R.id.btnStorage);
         mBtnInternet = findViewById(R.id.btnInternet);
+        mBtnNinePath = findViewById(R.id.btnNinePath);
     }
 
     private void initListener() {
@@ -43,6 +50,7 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
         mBtnAssets.setOnClickListener(this);
         mBtnStorage.setOnClickListener(this);
         mBtnInternet.setOnClickListener(this);
+        mBtnNinePath.setOnClickListener(this);
     }
 
     @Override
@@ -55,15 +63,16 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
                         .into(mImgPicasso);
                 break;
             case R.id.btnAssets:
-                    Picasso.with(this)
-                            .load("file:///android_asset/bg_desktop.png")
-                            .placeholder(R.mipmap.ic_launcher)
-                            .into(mImgPicasso);
+                Picasso.with(this)
+                        .load("file:///android_asset/bg_desktop.png")
+                        .placeholder(R.mipmap.ic_launcher)
+                        .into(mImgPicasso);
                 break;
             case R.id.btnStorage:
-//                Uri uriImage = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath()+"/Pictures/apple_mac_os_x_el_capitan.jpg"));
+                Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath() + "/Pictures/"));
+                String imageName = "apple_mac_os_x_el_capitan.jpg";
                 Picasso.with(LoadImageActivity.this)
-                        .load("file:///mnt/sdcard/Pictures/apple_mac_os_x_el_capitan.jpg")
+                        .load(uri + imageName)
                         .placeholder(R.mipmap.ic_launcher)
                         .into(mImgPicasso);
                 break;
@@ -72,6 +81,9 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
                         .load("https://goo.gl/u9wuW9")
                         .placeholder(R.mipmap.ic_launcher)
                         .into(mImgPicasso);
+                break;
+            case R.id.btnNinePath:
+                startActivity(new Intent(this, NinePathActivity.class));
                 break;
         }
     }
