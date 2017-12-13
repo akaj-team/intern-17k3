@@ -22,18 +22,19 @@ public class SaveDataActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_save_data);
         initViews();
         initListener();
-    }
 
-    private void initListener() {
-        mBtnEx1.setOnClickListener(this);
-        mBtnEx2.setOnClickListener(this);
-        mBtnEx3.setOnClickListener(this);
     }
 
     private void initViews() {
         mBtnEx1 = findViewById(R.id.btnex1);
         mBtnEx2 = findViewById(R.id.btnex2);
         mBtnEx3 = findViewById(R.id.btnex3);
+    }
+
+    private void initListener() {
+        mBtnEx1.setOnClickListener(this);
+        mBtnEx2.setOnClickListener(this);
+        mBtnEx3.setOnClickListener(this);
     }
 
     @Override
