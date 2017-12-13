@@ -34,4 +34,7 @@
     <string name="text_drawable">From drawable</string>
     <string name="text_assets">From assets</string>
     <string name="text_storage">From storage</string>
+    <string name="image_picasso">Load image picasso</string>
+    <string name="scale_edit_text">Scale edit_text</string>
+    <string name="vector_image">Image by vector</string>
 </resources>

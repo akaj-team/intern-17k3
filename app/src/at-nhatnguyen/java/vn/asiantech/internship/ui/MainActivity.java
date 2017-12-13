@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.imageview.LoadImageActivity;
-import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.imageview.ImageActivity;
+import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
@@ -60,7 +60,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this, SaveDataActivity.class));
                 break;
             case R.id.btnLoadImage:
-                startActivity(new Intent(this, LoadImageActivity.class));
+                startActivity(new Intent(this, ImageActivity.class));
                 break;
         }
     }

@@ -29,6 +29,9 @@
         <activity android:name=".ui.savedata.SaveDatabaseActivity" />
         <activity android:name=".ui.savedata.CompanyActivity" />
         <activity android:name=".ui.imageview.LoadImageActivity" />
+        <activity android:name=".ui.imageview.ImageActivity" />
+        <activity android:name=".ui.imageview.ScaleImageActivity" />
+        <activity android:name=".ui.imageview.VectorImageActivity" />
     </application>
 
 </manifest>

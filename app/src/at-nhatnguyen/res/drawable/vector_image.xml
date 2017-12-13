@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="50px"
+    android:height="50px"
+    android:viewportHeight="500"
+    android:viewportWidth="500">
+    <path
+        android:name="square"
+        android:fillColor="#1900ff "
+        android:pathData="M100,100 L400,100 L400,400 L100,400 z" />
+    <path
+        android:name="circle"
+        android:fillColor="#ff002f "
+        android:pathData="M100,100m+140,300a150,150 0,1 1,20 0a0,10 0,1 1,-20 0" />
+</vector>
