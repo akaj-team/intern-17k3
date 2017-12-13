@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
+    android:orientation="vertical"
     android:gravity="center"
-    tools:context="vn.asiantech.internship.image.NinePathActivity">
-
-    <EditText
-        android:id="@+id/edtNinePath"
+    tools:context="vn.asiantech.internship.image.DrawVectorActivity">
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/ic_edt"
-        android:gravity="center"
-        android:inputType="text" />
+        android:src="@drawable/ic_square_vector"/>
+    <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_circle_vector"/>
+
 </LinearLayout>

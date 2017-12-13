@@ -51,6 +51,9 @@ public class ImageManagementExerciseActivity extends AppCompatActivity implement
             case R.id.btnNinePath:
                 startActivity(new Intent(ImageManagementExerciseActivity.this, NinePathActivity.class));
                 break;
+            case R.id.btnDrawVector:
+                startActivity(new Intent(ImageManagementExerciseActivity.this, DrawVectorActivity.class));
+                break;
         }
 
     }
