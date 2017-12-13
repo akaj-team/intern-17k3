@@ -4,7 +4,6 @@ package vn.asiantech.internship.ui.savedata.ex3.model;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 08/12/2017.
  */
-
 public class Company {
     private int id;
     private String name;

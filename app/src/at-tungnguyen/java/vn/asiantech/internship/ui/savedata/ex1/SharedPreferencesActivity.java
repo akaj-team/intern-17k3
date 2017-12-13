@@ -9,9 +9,12 @@ import android.widget.EditText;
 
 import vn.asiantech.internship.R;
 
+/**
+ * This is javadoc, Save data to internal memory
+ */
 public class SharedPreferencesActivity extends AppCompatActivity {
     public static final String MY_PREFS = "MyPrefsFile";
-    public static final String KEY_PREFS = "values";
+    public static final String KEY_SAVE_DATA = "save";
     private EditText mEdtName;
     private Button mBtnResult;
     public String maxDead;
@@ -34,21 +37,16 @@ public class SharedPreferencesActivity extends AppCompatActivity {
         mBtnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
+                editor.putString(KEY_SAVE_DATA, mEdtName.getText().toString());
+                editor.apply();
             }
         });
     }
 
     private void display() {
         SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
-        String getData = sharedPreferences.getString("Save", null);
+        String getData = sharedPreferences.getString(KEY_SAVE_DATA, null);
         mEdtName.setText(getData);
-    }
-
-    private void saveData() {
-        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
-        editor.putString("Save", mEdtName.getText().toString());
-        editor.apply();
-
     }
 }

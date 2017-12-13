@@ -38,4 +38,5 @@
     <string name="name_user">Name</string>
     <string name="age_user">Age</string>
     <string name="input">input</string>
+    <string name="use_memory">Please use memory</string>
 </resources>

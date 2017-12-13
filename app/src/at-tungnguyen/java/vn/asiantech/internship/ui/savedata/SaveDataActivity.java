@@ -11,6 +11,9 @@ import vn.asiantech.internship.ui.savedata.ex1.SharedPreferencesActivity;
 import vn.asiantech.internship.ui.savedata.ex2.ExternalActivity;
 import vn.asiantech.internship.ui.savedata.ex3.UserActivity;
 
+/**
+ * This is Javadoc, UI SavedataActivity
+ */
 public class SaveDataActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnEx1;
     private Button mBtnEx2;
@@ -22,7 +25,6 @@ public class SaveDataActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_save_data);
         initViews();
         initListener();
-
     }
 
     private void initViews() {

@@ -14,7 +14,10 @@ import vn.asiantech.internship.ui.savedata.ex3.sql.SQLite;
 import vn.asiantech.internship.ui.savedata.ex3.model.Company;
 import vn.asiantech.internship.ui.savedata.ex3.model.Employee;
 import vn.asiantech.internship.ui.savedata.ex3.model.User;
-
+/**
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 08/12/2017.
+ */
 public class UserActivity extends AppCompatActivity implements UserAdapter.OnItemClickListener {
     private RecyclerView mRecyclerView;
     SQLite sqLite = new SQLite(this);

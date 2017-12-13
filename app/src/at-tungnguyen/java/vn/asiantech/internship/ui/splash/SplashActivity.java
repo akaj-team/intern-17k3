@@ -12,6 +12,9 @@ import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
+/**
+ * This is Javadoc
+ */
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;
     private Button mBtnCalculator;
@@ -46,20 +49,20 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLogin:
-                Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(i);
+                Intent intentLogin = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intentLogin);
                 break;
             case R.id.btnCaculator:
-                Intent i2 = new Intent(SplashActivity.this, CalculatorActivity.class);
-                startActivity(i2);
+                Intent intentCalculator = new Intent(SplashActivity.this, CalculatorActivity.class);
+                startActivity(intentCalculator);
                 break;
             case R.id.btnRecyclerView:
-                Intent i3 = new Intent(SplashActivity.this, RecyclerViewActivity.class);
-                startActivity(i3);
+                Intent intentRecyclerView = new Intent(SplashActivity.this, RecyclerViewActivity.class);
+                startActivity(intentRecyclerView);
                 break;
             case R.id.btnSaveData:
-                Intent i5 = new Intent(SplashActivity.this, SaveDataActivity.class);
-                startActivity(i5);
+                Intent intentSaveData = new Intent(SplashActivity.this, SaveDataActivity.class);
+                startActivity(intentSaveData);
                 break;
         }
     }

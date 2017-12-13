@@ -8,10 +8,14 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.savedata.ex3.sql.SQLite;
 import vn.asiantech.internship.ui.savedata.ex3.model.Company;
 
+/**
+ * This is Javadoc, Display Company of User
+ */
 public class CompanyActivity extends AppCompatActivity {
     private TextView mTvNameCompany;
     private TextView mTvSologan;
     private TextView mTvID;
+    private static final String KEY_ID_USER = "id_user";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +32,13 @@ public class CompanyActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        int idCompany = getIntent().getIntExtra("id", -1);
+        int idCompany = getIntent().getIntExtra(KEY_ID_USER, -1);
         SQLite sqLite = new SQLite(this);
         Company company = sqLite.getCompany(idCompany);
-        mTvID.setText(String.valueOf(company.getId()));
-        mTvNameCompany.setText(company.getName());
-        mTvSologan.setText(company.getSlogan());
+        if(company != null) {
+            mTvID.setText(String.valueOf(company.getId()));
+            mTvNameCompany.setText(company.getName());
+            mTvSologan.setText(company.getSlogan());
+        }
     }
 }

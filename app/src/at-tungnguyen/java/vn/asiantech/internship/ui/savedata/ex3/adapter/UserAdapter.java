@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +18,15 @@ import vn.asiantech.internship.ui.savedata.ex3.model.User;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 08/12/2017.
  */
-
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private ArrayList<User> mUserArrayLists;
-    Context context;
+    Context mContext;
     private OnItemClickListener mOnItemClickListener;
 
     public UserAdapter(ArrayList<User> UserArrayLists, Context context, OnItemClickListener OnItemClick) {
         this.mUserArrayLists = UserArrayLists;
-        this.context = context;
+        this.mContext = context;
         mOnItemClickListener = OnItemClick;
     }
 
@@ -56,7 +54,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return mUserArrayLists.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvName;
         private TextView mTvAge;
         private TextView mTvID;
@@ -75,13 +73,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 mTvID.setText(String.valueOf(users.getId()));
                 mTvName.setText(users.getName());
                 mTvAge.setText(String.valueOf(users.getAge()));
-                Toast.makeText(context, users.getId()+"", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     /**
-     * interface onItemClick
+     * This is Javadoc, interface OnItemClickListener
      */
     public interface OnItemClickListener {
         void onItemClickListener(int potion);

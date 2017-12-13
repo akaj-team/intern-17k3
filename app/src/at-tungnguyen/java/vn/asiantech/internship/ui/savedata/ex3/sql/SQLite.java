@@ -14,8 +14,7 @@ import vn.asiantech.internship.ui.savedata.ex3.model.Employee;
 import vn.asiantech.internship.ui.savedata.ex3.model.User;
 
 /**
- * Author Asian Tech Inc.
- * Created by tungnguyen on 08/12/2017.
+ * This is Javadoc, SQLite of User,Company
  */
 
 public class SQLite extends SQLiteOpenHelper {
@@ -117,7 +116,7 @@ public class SQLite extends SQLiteOpenHelper {
         }
         cursor.close();
         db.close();
-        return (ArrayList<User>) userList;
+        return getUser();
     }
 
     public Company getCompany(int idUser) {
@@ -131,7 +130,6 @@ public class SQLite extends SQLiteOpenHelper {
         Company company = new Company(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2));
         cursor.close();
-
         return company;
     }
 
