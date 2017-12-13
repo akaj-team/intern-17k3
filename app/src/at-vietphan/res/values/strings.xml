@@ -40,4 +40,11 @@
     <string name="age">Age:</string>
     <string name="save_data">SAVE DATA</string>
     <string name="err">error:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="view_pager">VIEW PAGER</string>
+    <string name="fragment_step_3">Fragment step 3</string>
+    <string name="fragment_step_2">Fragment step 2</string>
+    <string name="fragment_step_1">Fragment step 1</string>
+    <string name="skip">Skip</string>
 </resources>
