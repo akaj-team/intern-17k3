@@ -61,19 +61,17 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         });
     }
 
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        mIsFinishSlide = mLast == mViewPagerAdapter.getCount() - 1;
-        mLast = position;
-    }
-
     /**
      * Override OnPageChangeListener
      *
      * @param position
      */
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        mIsFinishSlide = mLast == mViewPagerAdapter.getCount() - 1;
+        mLast = position;
+    }
 
     @Override
     public void onPageSelected(int position) {
