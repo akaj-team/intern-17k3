@@ -10,11 +10,13 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
+import vn.asiantech.internship.viewpager.ui.ViewPagerActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;
     private Button mBtnCalculator;
     private Button mBtnRecyclerView;
+    private Button mBtnViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,8 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnCalculator = findViewById(R.id.btnCaculator);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
+
 
     }
 
@@ -35,6 +39,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLogin.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
+        mBtnViewPager.setOnClickListener(this);
 
     }
 
@@ -52,6 +57,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnRecyclerView:
                 Intent i3 = new Intent(SplashActivity.this, RecyclerViewActivity.class);
                 startActivity(i3);
+                break;
+            case R.id.btnViewPager:
+                Intent i4 = new Intent(SplashActivity.this, ViewPagerActivity.class);
+                startActivity(i4);
                 break;
         }
     }
