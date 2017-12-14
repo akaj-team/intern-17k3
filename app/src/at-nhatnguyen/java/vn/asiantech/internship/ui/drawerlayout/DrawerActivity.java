@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -66,11 +67,11 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     private void initData() {
         mObjects = new ArrayList<>();
         mObjects.add(new User(R.drawable.ic_avatar, "nhatnguyen@asiantech.vn", null));
-        mObjects.add(new Option(CALCULATOR, R.drawable.selector_click_inbox));
-        mObjects.add(new Option(DRAWER_LAYOUT, R.drawable.selector_click_delete));
-        mObjects.add(new Option(LOGIN, R.drawable.selector_click_spam));
-        mObjects.add(new Option(RECYCLER_VIEW, R.drawable.selector_click_inbox));
-        mObjects.add(new Option(OUTBOX, R.drawable.selector_click_outbox));
+        mObjects.add(new Option(CALCULATOR, R.drawable.selector_click_inbox, new Intent(this, CalculatorActivity.class)));
+        mObjects.add(new Option(DRAWER_LAYOUT, R.drawable.selector_click_delete, new Intent(this, DrawerActivity.class)));
+        mObjects.add(new Option(LOGIN, R.drawable.selector_click_spam, new Intent(this, LoginActivity.class)));
+        mObjects.add(new Option(RECYCLER_VIEW, R.drawable.selector_click_inbox, new Intent(this, CommentActivity.class)));
+        mObjects.add(new Option(OUTBOX, R.drawable.selector_click_outbox, new Intent()));
     }
 
     private void initAdapter() {
@@ -104,33 +105,18 @@ public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnI
     @Override
     public void onClickItem(int position) {
         if (mObjects.get(position) instanceof Option) {
-            String nameActivity = ((Option) mObjects.get(position)).getName();
-            switch (nameActivity) {
-                case CALCULATOR:
-                    mAdapter.notifyItemChanged(position);
-                    startActivity(new Intent(this, CalculatorActivity.class));
-                    break;
-                case DRAWER_LAYOUT:
-                    mAdapter.notifyItemChanged(position);
-                    startActivity(new Intent(this, DrawerActivity.class));
-                    break;
-                case LOGIN:
-                    mAdapter.notifyItemChanged(position);
-                    startActivity(new Intent(this, LoginActivity.class));
-                    break;
-                case RECYCLER_VIEW:
-                    mAdapter.notifyItemChanged(position);
-                    startActivity(new Intent(this, CommentActivity.class));
-                    break;
-                case OUTBOX:
-                    String shareBody = String.valueOf(R.string.message);
-                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                    sharingIntent.setType("image/*");
-                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
-                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                    sharingIntent.putExtra(Intent.EXTRA_STREAM, shareBody);
-                    startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.app_name)));
-                    break;
+            if (TextUtils.equals(((Option) mObjects.get(position)).getName(), OUTBOX)) {
+                String shareBody = String.valueOf(R.string.message);
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("image/*");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                sharingIntent.putExtra(Intent.EXTRA_STREAM, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.app_name)));
+
+            } else {
+                Intent intent = ((Option) mObjects.get(position)).getIntent();
+                startActivity(intent);
             }
         }
     }
