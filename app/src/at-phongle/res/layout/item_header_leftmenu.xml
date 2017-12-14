@@ -10,7 +10,7 @@
         android:id="@+id/imgAvatar"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/img_avatar" />
+        android:src="@drawable/bg_avatar" />
 
     <TextView
         android:id="@+id/tvEmail"

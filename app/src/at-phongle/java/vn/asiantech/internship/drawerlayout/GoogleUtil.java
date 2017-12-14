@@ -10,6 +10,9 @@ import android.content.pm.PackageManager;
 public final class GoogleUtil {
     public static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
 
+    private GoogleUtil() {
+    }
+
     public static boolean isPackageInstalled(Context context) {
         PackageManager packageManager = context.getPackageManager();
         try {

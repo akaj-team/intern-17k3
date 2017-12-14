@@ -30,7 +30,7 @@ import vn.asiantech.internship.models.User;
  * DrawerLayoutActivity
  */
 public class DrawerLayoutActivity extends AppCompatActivity implements LeftMenuAdapter.OnItemClickListener {
-    public static final int REQUEST_CODE = 1;
+    private static final int REQUEST_CODE_PICK_IMAGE = 1;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private LeftMenuAdapter mAdapter;
@@ -85,7 +85,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements LeftMenuA
     }
 
     private void initData() {
-        mObjectList.add(new User(getResources().getDrawable(R.drawable.img_avatar), "CristianoRonaldo@gmail.com"));
+        mObjectList.add(new User(getResources().getDrawable(R.drawable.bg_avatar), "CristianoRonaldo@gmail.com"));
         mObjectList.add(new Option(R.drawable.ic_inbox, "Inbox"));
         mObjectList.add(new Option(R.drawable.ic_outbox, "Outbox"));
         mObjectList.add(new Option(R.drawable.ic_trash, "Trash"));
@@ -99,9 +99,9 @@ public class DrawerLayoutActivity extends AppCompatActivity implements LeftMenuA
         intent.setType("image/*");
         if (GoogleUtil.isPackageInstalled(this)) {
             intent.setPackage(GoogleUtil.GOOGLE_PHOTO);
-            startActivityForResult(intent, REQUEST_CODE);
+            startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
         } else {
-            startActivityForResult(intent, REQUEST_CODE);
+            startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
         }
     }
 
@@ -114,7 +114,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements LeftMenuA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == REQUEST_CODE_PICK_IMAGE) {
             if (data != null) {
                 try {
                     Uri chosenImageUri = data.getData();
