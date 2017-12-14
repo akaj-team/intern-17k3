@@ -27,6 +27,8 @@
         <activity android:name=".ui.savedata.SaveExternalActivity" />
         <activity android:name=".ui.savedata.SaveDatabaseActivity" />
         <activity android:name=".ui.savedata.CompanyActivity" />
+        <activity android:name=".ui.viewpager.ViewpagerActivity" />
+        <activity android:name=".ui.viewpager.ViewPagerMainActivity" />
     </application>
 
 </manifest>
