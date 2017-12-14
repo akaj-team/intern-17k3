@@ -25,6 +25,9 @@ public class SlideActivity extends AppCompatActivity implements ViewPager.OnPage
     private List<String> mListStringSlide = new ArrayList<>();
     private ViewPager mViewPager;
     private TextView mTvSkipSlide;
+    private SlideAdapter mSlideAdapter;
+    private boolean mIsFinishSlideStep;
+    private int mLastStep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,8 @@ public class SlideActivity extends AppCompatActivity implements ViewPager.OnPage
      * Init Adapter
      */
     private void initAdapter() {
-        mViewPager.setAdapter(new SlideAdapter(SlideActivity.this, mListStringSlide));
+        mSlideAdapter = new SlideAdapter(SlideActivity.this, mListStringSlide);
+        mViewPager.setAdapter(mSlideAdapter);
         CircleIndicator indicator = findViewById(R.id.circleIndicator);
         indicator.setViewPager(mViewPager);
         mViewPager.setCurrentItem(CURRENT_PAGE);
@@ -73,7 +77,7 @@ public class SlideActivity extends AppCompatActivity implements ViewPager.OnPage
                 showDialog();
             }
         });
-        mViewPager.setOnPageChangeListener(this);
+        mViewPager.addOnPageChangeListener(this);
     }
 
     /**
@@ -105,23 +109,26 @@ public class SlideActivity extends AppCompatActivity implements ViewPager.OnPage
         alertShowDialog.show();
     }
 
-
     /**
      * On Page Change Listener
      */
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+        mIsFinishSlideStep = mLastStep == mSlideAdapter.getCount() - 1;
+        mLastStep = position;
     }
 
     @Override
     public void onPageSelected(int position) {
-        if (position == 2) {
-            showDialog();
-        }
+        //No-op
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
+        if (mIsFinishSlideStep) {
+            Intent intent = new Intent(SlideActivity.this, TabLayoutActivity.class);
+            startActivity(intent);
+            mIsFinishSlideStep = false;
+        }
     }
 }

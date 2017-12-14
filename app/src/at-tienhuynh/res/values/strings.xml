@@ -59,7 +59,18 @@
     <string name="dialog_skip_message">Do you want skip this?</string>
     <string name="dialog_skip_yes">Yes</string>
     <string name="dialog_skip_no">No</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_info_fragment_title">INFOMATION</string>
+    <string name="btn_name_update">Update</string>
+    <string name="tv_name_info">Your Name</string>
+    <string name="tv_team_info">Your Team</string>
+    <string name="tv_location_info">Your Address</string>
+    <string name="tv_update_info_title">UPDATE INFO</string>
+    <string name="edt_name_info_hint">Input your name</string>
+    <string name="edt_team_info_hint">Input your team</string>
+    <string name="edt_location_info_hint">input your address</string>
+    <string name="btn_name_confirm_update">OK</string>
+    <string name="btn_name_cancel_update">Cancel</string>
+    <string name="edt_null">please input values</string>
 </resources>

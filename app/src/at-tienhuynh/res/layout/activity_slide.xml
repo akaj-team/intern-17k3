@@ -13,9 +13,11 @@
 
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/circleIndicator"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="16dp" />
 
     <TextView
         android:id="@+id/tvSkipSlide"
@@ -23,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:text="@string/tv_name_skip"
         android:textColor="@android:color/white"
         android:textSize="20dp"
