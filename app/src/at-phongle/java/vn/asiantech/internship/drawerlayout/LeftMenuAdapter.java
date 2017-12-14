@@ -19,13 +19,13 @@ import vn.asiantech.internship.models.User;
  * Created by phongle on 11/12/2560.
  * LeftBarAdapter
  */
-public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class LeftMenuAdapter extends RecyclerView.Adapter<ViewHolder> {
     private static final int USER = 0;
     private static final int OPTION = 1;
     private List<Object> mObjects;
     private OnItemClickListener mOnItemClickListener;
 
-    LeftBarAdapter(List<Object> objects, OnItemClickListener onItemClickListener) {
+    LeftMenuAdapter(List<Object> objects, OnItemClickListener onItemClickListener) {
         mObjects = objects;
         mOnItemClickListener = onItemClickListener;
     }
@@ -43,7 +43,7 @@ public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         if (viewType == USER) {
-            View view = layoutInflater.inflate(R.layout.item_header_leftbar, parent, false);
+            View view = layoutInflater.inflate(R.layout.item_header_leftmenu, parent, false);
             UserHolder userHolder = new UserHolder(view);
             userHolder.mImgAvatar.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -53,7 +53,7 @@ public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
             });
             return new UserHolder(view);
         } else if (viewType == OPTION) {
-            View view = layoutInflater.inflate(R.layout.item_menu_leftbar, parent, false);
+            View view = layoutInflater.inflate(R.layout.item_option_leftmenu, parent, false);
             final OptionHolder optionHolder = new OptionHolder(view);
             optionHolder.mLlItemMenuLeftBar.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -76,7 +76,7 @@ public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
-    static class UserHolder extends RecyclerView.ViewHolder {
+    private static class UserHolder extends RecyclerView.ViewHolder {
         private ImageView mImgAvatar;
         private TextView mTvEmail;
 
@@ -93,7 +93,7 @@ public class LeftBarAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
-    static class OptionHolder extends RecyclerView.ViewHolder {
+    private static class OptionHolder extends RecyclerView.ViewHolder {
         private LinearLayout mLlItemMenuLeftBar;
         private ImageView mImgIconOption;
         private TextView mTvOption;

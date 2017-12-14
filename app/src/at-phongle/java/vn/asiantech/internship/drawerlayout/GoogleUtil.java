@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
  * Google Util Class
  */
 public final class GoogleUtil {
-    private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
+    public static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
 
     public static boolean isPackageInstalled(Context context) {
         PackageManager packageManager = context.getPackageManager();

@@ -29,14 +29,13 @@ import vn.asiantech.internship.models.User;
  * Created by phongle on 11/12/2560.
  * DrawerLayoutActivity
  */
-public class DrawerLayoutActivity extends AppCompatActivity implements LeftBarAdapter.OnItemClickListener {
+public class DrawerLayoutActivity extends AppCompatActivity implements LeftMenuAdapter.OnItemClickListener {
     public static final int REQUEST_CODE = 1;
-    private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
-    private LeftBarAdapter mAdapter;
+    private LeftMenuAdapter mAdapter;
     private List<Object> mObjectList = new ArrayList<>();
-    private RecyclerView mRecyclerViewLeftBar;
+    private RecyclerView mRecyclerViewLeftMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +71,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements LeftBarAd
 
     private void initViews() {
         mDrawerLayout = findViewById(R.id.drawerLayout);
-        mRecyclerViewLeftBar = findViewById(R.id.recyclerViewMenu);
+        mRecyclerViewLeftMenu = findViewById(R.id.recyclerViewMenu);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -80,18 +79,17 @@ public class DrawerLayoutActivity extends AppCompatActivity implements LeftBarAd
     }
 
     private void initAdapter() {
-        mAdapter = new LeftBarAdapter(mObjectList, this);
-        mRecyclerViewLeftBar.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewLeftBar.setAdapter(mAdapter);
+        mAdapter = new LeftMenuAdapter(mObjectList, this);
+        mRecyclerViewLeftMenu.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerViewLeftMenu.setAdapter(mAdapter);
     }
 
     private void initData() {
         mObjectList.add(new User(getResources().getDrawable(R.drawable.img_avatar), "CristianoRonaldo@gmail.com"));
-        mObjectList.add(new Option(R.drawable.ic_inbox, "Inbox", false));
-        mObjectList.add(new Option(R.drawable.ic_outbox, "Outbox", false));
-        mObjectList.add(new Option(R.drawable.ic_trash, "Trash", false));
-        mObjectList.add(new Option(R.drawable.ic_spam, "Spam", false));
-
+        mObjectList.add(new Option(R.drawable.ic_inbox, "Inbox"));
+        mObjectList.add(new Option(R.drawable.ic_outbox, "Outbox"));
+        mObjectList.add(new Option(R.drawable.ic_trash, "Trash"));
+        mObjectList.add(new Option(R.drawable.ic_spam, "Spam"));
     }
 
     @Override
@@ -100,7 +98,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements LeftBarAd
         intent.setAction(Intent.ACTION_PICK);
         intent.setType("image/*");
         if (GoogleUtil.isPackageInstalled(this)) {
-            intent.setPackage(GOOGLE_PHOTO);
+            intent.setPackage(GoogleUtil.GOOGLE_PHOTO);
             startActivityForResult(intent, REQUEST_CODE);
         } else {
             startActivityForResult(intent, REQUEST_CODE);
