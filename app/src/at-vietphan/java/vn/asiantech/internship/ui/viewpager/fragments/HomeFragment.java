@@ -1,7 +1,6 @@
 package vn.asiantech.internship.ui.viewpager.fragments;
 
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -53,11 +52,9 @@ public class HomeFragment extends Fragment {
         mVocabularies.add(new Vocabulary("Goat", R.drawable.goat, "Dê"));
         mVocabularies.add(new Vocabulary("Hippo", R.drawable.hippo, "Tê giác"));
         mViewPagerVocabulary.setAdapter(mVocabularyAdapter);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            mViewPagerVocabulary.setPageTransformer(true, new RotationPageTransformer(150));
-            mViewPagerVocabulary.setOffscreenPageLimit(mVocabularyAdapter.getCount());
-            mViewPagerVocabulary.setPageMargin(-10);
-            mViewPagerVocabulary.setClipChildren(false);
-        }
+        mViewPagerVocabulary.setPageTransformer(true, new RotationPageTransformer(150));
+        mViewPagerVocabulary.setOffscreenPageLimit(mVocabularyAdapter.getCount());
+        mViewPagerVocabulary.setPageMargin(-10);
+        mViewPagerVocabulary.setClipChildren(false);
     }
 }
