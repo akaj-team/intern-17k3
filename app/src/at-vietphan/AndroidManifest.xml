@@ -27,7 +27,7 @@
         <activity android:name=".ui.savedata.SQLiteActivity" />
         <activity android:name=".ui.savedata.CompanyActivity" />
         <activity android:name=".ui.savedata.SaveDataActivity" />
-        <activity android:name=".ui.viewpager.ViewPagerActivity" />
-        <activity android:name=".ui.viewpager.DictionaryActivity" />
+        <activity android:name=".ui.viewpager.SliderActivity" />
+        <activity android:name=".ui.viewpager.TabLayoutActivity" />
     </application>
 </manifest>

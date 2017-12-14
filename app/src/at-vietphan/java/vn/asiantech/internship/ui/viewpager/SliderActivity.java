@@ -9,35 +9,44 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
+
+import com.rd.PageIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Step;
+import vn.asiantech.internship.ui.viewpager.adapter.SliderStepAdapter;
 
 /**
  * Created by vietphan on 13/12/2017.
- * Class ViewPagerActivity
+ * Class SliderActivity
  */
-public class ViewPagerActivity extends AppCompatActivity implements PageAdapter.OnItemClickListener {
+public class SliderActivity extends AppCompatActivity implements View.OnClickListener {
     private PagerAdapter mPagerAdapter;
     private ViewPager mViewPager;
     private List<Step> mSteps;
     private int selectedPageIndex = 0;
     private boolean pageEnd;
+    private TextView mTvSkip;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_pager);
+        setContentView(R.layout.activity_slider);
         initViews();
         initData();
         initAdapter();
+        PageIndicatorView pageIndicatorView = findViewById(R.id.pageIndicatorView);
+        pageIndicatorView.setViewPager(mViewPager);
     }
 
     private void initViews() {
         mViewPager = findViewById(R.id.viewPager);
+        mTvSkip = findViewById(R.id.btnSkip);
         mSteps = new ArrayList<>();
     }
 
@@ -48,16 +57,13 @@ public class ViewPagerActivity extends AppCompatActivity implements PageAdapter.
     }
 
     private void initAdapter() {
-        mPagerAdapter = new PageAdapter(mSteps, this);
+        mPagerAdapter = new SliderStepAdapter(mSteps);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 if (pageEnd && position == selectedPageIndex) {
-                    pageEnd = false;
-                    startActivity(new Intent(ViewPagerActivity.this, DictionaryActivity.class));
-                } else {
-                    pageEnd = false;
+                    startActivity(new Intent(SliderActivity.this, TabLayoutActivity.class));
                 }
             }
 
@@ -75,21 +81,22 @@ public class ViewPagerActivity extends AppCompatActivity implements PageAdapter.
                 }
             }
         });
+        mTvSkip.setOnClickListener(this);
     }
 
     @Override
-    public void onSkipClick() {
+    public void onClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Skip step");
-        builder.setMessage("Do you want to skip this step?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.skip_all_step);
+        builder.setMessage(R.string.do_you_want_to_skip);
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(ViewPagerActivity.this, DictionaryActivity.class);
+                Intent intent = new Intent(SliderActivity.this, TabLayoutActivity.class);
                 startActivity(intent);
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // No-op

@@ -10,7 +10,7 @@ import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
-import vn.asiantech.internship.ui.viewpager.ViewPagerActivity;
+import vn.asiantech.internship.ui.viewpager.SliderActivity;
 
 /**
  * Created by vietphan on 07/12/2017
@@ -63,7 +63,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this, SaveDataActivity.class));
                 break;
             case R.id.btnViewPager:
-                startActivity(new Intent(this, ViewPagerActivity.class));
+                startActivity(new Intent(this, SliderActivity.class));
                 break;
         }
     }

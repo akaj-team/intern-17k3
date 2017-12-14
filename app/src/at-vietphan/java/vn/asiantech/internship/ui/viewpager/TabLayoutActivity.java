@@ -6,32 +6,36 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.viewpager.fragments.HomeFragment;
-import vn.asiantech.internship.ui.viewpager.fragments.InformationFragment;
+import vn.asiantech.internship.ui.viewpager.adapter.TabLayoutAdapter;
 
 /**
  * Created by vietphan on 13/12/2017.
- * Class DictionaryActivity
+ * Class TabLayoutActivity
  */
-public class DictionaryActivity extends AppCompatActivity{
+public class TabLayoutActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    private DictionaryAdapter mDictionaryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
-        mViewPager = findViewById(R.id.viewPagerDictionary);
-        setupViewPager(mViewPager);
+        initViews();
+        initData();
+    }
+
+    private void initViews() {
+        mViewPager = findViewById(R.id.viewPagerTabLayout);
         mTabLayout = findViewById(R.id.tabLayoutDictionary);
-//        mTabLayout.setupWithViewPager(mViewPager);
+    }
+
+    private void initData() {
+        setupViewPager(mViewPager);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        mDictionaryAdapter = new DictionaryAdapter(getSupportFragmentManager());
-        mDictionaryAdapter.addFragment(new HomeFragment(), "HOME");
-        mDictionaryAdapter.addFragment(new InformationFragment(), "INFO");
+        TabLayoutAdapter mDictionaryAdapter = new TabLayoutAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mDictionaryAdapter);
     }
 }
