@@ -64,7 +64,7 @@
         android:layout_below="@id/rlOr"
         android:background="@drawable/bg_cornice_log_in_pn"
         android:text="@string/login_with_phone_number"
-        android:textColor="@color/colorBlue"
+        android:textColor="@color/blue"
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -85,14 +85,14 @@
             android:textSize="17dp" />
 
         <TextView
-            android:id="@+id/tvSignup"
+            android:id="@+id/tvSignUp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_weight="2"
             android:gravity="center_vertical"
             android:text="@string/sign_up"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/blue"
             android:textSize="16dp"
             android:textStyle="bold" />
     </LinearLayout>

@@ -17,13 +17,17 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Issue;
+import vn.asiantech.internship.savedata.ExternalStorageActivity;
+import vn.asiantech.internship.savedata.SharePreferenceActivity;
+import vn.asiantech.internship.savedata.UserSQLiteActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorViewActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
+    private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
+    private static final int REQUEST_CODE_PICK_IMAGE = 77;
     private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mActionBarDrawerToggle;
     private RecyclerView mRecyclerViewLeftMenu;
     private LinearLayout mLlContent;
     private List<Issue> mIssueList = new ArrayList<>();
@@ -50,10 +54,13 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Create Login Screen", new Intent(this, LoginActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Create Calculator View", new Intent(this, CalculatorViewActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_sms_failed_black_24dp, "Create Recycler View", new Intent(this, RecyclerViewActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Share Preference", new Intent(this, SharePreferenceActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "External Storage", new Intent(this, ExternalStorageActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLite", new Intent(this, UserSQLiteActivity.class)));
     }
 
     private void initDrawer() {
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
+        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout, R.string.open, R.string.close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -94,5 +101,4 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         Intent intent = mIssueList.get(position - 1).getIntent();
         startActivity(intent);
     }
-
 }
