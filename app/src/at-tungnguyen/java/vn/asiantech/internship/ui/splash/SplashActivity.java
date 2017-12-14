@@ -13,7 +13,8 @@ import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
 /**
- * This is Javadoc
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 08/12/2017.
  */
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;

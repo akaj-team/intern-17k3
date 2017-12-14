@@ -14,6 +14,7 @@ import vn.asiantech.internship.ui.savedata.ex3.sql.SQLite;
 import vn.asiantech.internship.ui.savedata.ex3.model.Company;
 import vn.asiantech.internship.ui.savedata.ex3.model.Employee;
 import vn.asiantech.internship.ui.savedata.ex3.model.User;
+
 /**
  * Author Asian Tech Inc.
  * Created by tungnguyen on 08/12/2017.
@@ -21,7 +22,9 @@ import vn.asiantech.internship.ui.savedata.ex3.model.User;
 public class UserActivity extends AppCompatActivity implements UserAdapter.OnItemClickListener {
     private RecyclerView mRecyclerView;
     SQLite sqLite = new SQLite(this);
-    ArrayList<User> sqLiteUser;
+    private ArrayList<User> sqLiteUser;
+    private static final String KEY_ID_USER = "id_user";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,9 @@ public class UserActivity extends AppCompatActivity implements UserAdapter.OnIte
         mRecyclerView = findViewById(R.id.recyclerviewUser);
     }
 
+    /**
+     * Set Adapter to RecyclerView
+     */
     private void initAdapterUser() {
         sqLiteUser = sqLite.getUser();
         UserAdapter userAdapter = new UserAdapter(sqLiteUser, this, this);
@@ -45,28 +51,40 @@ public class UserActivity extends AppCompatActivity implements UserAdapter.OnIte
         mRecyclerView.setAdapter(userAdapter);
     }
 
+    /**
+     * Add data for Table Company
+     */
     private void initDataCompany() {
         sqLite.addCompany(new Company(1, "Asian Tes", "Recording Historys"));
         sqLite.addCompany(new Company(2, "Asian Tech", "Recording History1"));
         sqLite.addCompany(new Company(3, "Asian Tech1", "Recording Historya"));
     }
 
+    /**
+     * Add data for Table User
+     */
     private void initDataUser() {
         sqLite.addUser(new User(1, "Tung", 20));
         sqLite.addUser(new User(2, "Tien", 20));
         sqLite.addUser(new User(3, "Tiep", 20));
     }
 
+    /**
+     * Add data for Table Employee
+     */
     private void initDataEmployee() {
         for (int i = 0; i < 5; i++) {
             sqLite.addEmployee(new Employee(i + 1, i + 1, i + 1));
         }
     }
 
+    /**
+     * Onclick item RecyclerView
+     */
     @Override
     public void onItemClickListener(int potion) {
         Intent i = new Intent(this, CompanyActivity.class);
-        i.putExtra("id", sqLiteUser.get(potion).getId());
+        i.putExtra(KEY_ID_USER, sqLiteUser.get(potion).getId());
         startActivity(i);
     }
 }

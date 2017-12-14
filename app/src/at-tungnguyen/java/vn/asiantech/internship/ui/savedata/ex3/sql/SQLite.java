@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import vn.asiantech.internship.ui.savedata.ex3.model.Company;
 import vn.asiantech.internship.ui.savedata.ex3.model.Employee;
@@ -101,9 +100,9 @@ public class SQLite extends SQLiteOpenHelper {
     }
 
     public ArrayList<User> getUser() {
-        List<User> userList = new ArrayList<User>();
-        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<User> userList = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + TABLE_USER;
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
@@ -115,8 +114,7 @@ public class SQLite extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         cursor.close();
-        db.close();
-        return getUser();
+        return userList;
     }
 
     public Company getCompany(int idUser) {

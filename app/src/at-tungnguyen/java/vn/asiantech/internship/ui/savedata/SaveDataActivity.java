@@ -12,7 +12,8 @@ import vn.asiantech.internship.ui.savedata.ex2.ExternalActivity;
 import vn.asiantech.internship.ui.savedata.ex3.UserActivity;
 
 /**
- * This is Javadoc, UI SavedataActivity
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 08/12/2017.
  */
 public class SaveDataActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnEx1;
