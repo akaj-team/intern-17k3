@@ -11,6 +11,7 @@ public final class GoogleUtil {
     public static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
 
     private GoogleUtil() {
+        // No-op
     }
 
     public static boolean isPackageInstalled(Context context) {
