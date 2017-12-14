@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpagerandtablelayout.Utils;
+package vn.asiantech.internship.viewpagerandtablelayout.utils;
 
 import android.annotation.TargetApi;
 import android.os.Build;

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +70,7 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
      * Validate EditText Name
      */
     private boolean validateEditName() {
-        if (mEdtName.getText().toString().trim().isEmpty()) {
+        if (TextUtils.isEmpty(mEdtName.getText().toString())) {
             mInputLayoutName.setError(getResources().getString(R.string.edt_null));
             requestFocus(mEdtName);
             return false;
@@ -83,7 +84,7 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
      * Validate EditText Name
      */
     private boolean validateEditTeam() {
-        if (mEdtTeam.getText().toString().trim().isEmpty()) {
+        if (TextUtils.isEmpty(mEdtTeam.getText().toString())) {
             mInputLayouTeam.setError(getResources().getString(R.string.edt_null));
             requestFocus(mEdtTeam);
             return false;
@@ -97,7 +98,7 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
      * Validate EditText Name
      */
     private boolean validateEditLocation() {
-        if (mEdtLocation.getText().toString().trim().isEmpty()) {
+        if (TextUtils.isEmpty(mEdtLocation.getText().toString())) {
             mInputLayoutLocation.setError(getResources().getString(R.string.edt_null));
             requestFocus(mEdtLocation);
             return false;

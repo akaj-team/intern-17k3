@@ -62,21 +62,21 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnConfirmUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/colorAccent"
-            android:text="@string/btn_name_confirm_update"
-            tools:ignore="ButtonStyle" />
-
-        <Button
             android:id="@+id/btnCancelUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/colorAccent"
             android:text="@string/btn_name_cancel_update"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btnConfirmUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorAccent"
+            android:text="@string/btn_name_confirm_update"
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>

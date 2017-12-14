@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.viewpagerandtablelayout.Utils.InitData;
-import vn.asiantech.internship.viewpagerandtablelayout.Utils.RotationPageTransformer;
+import vn.asiantech.internship.viewpagerandtablelayout.utils.InitData;
+import vn.asiantech.internship.viewpagerandtablelayout.utils.RotationPageTransformer;
 import vn.asiantech.internship.viewpagerandtablelayout.adapters.HomeSlideAdapter;
 
 /**
