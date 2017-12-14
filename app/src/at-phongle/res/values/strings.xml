@@ -37,4 +37,5 @@
     <string name="btn_share_preference">SharePreference</string>
     <string name="btn_external_storage">external storge</string>
     <string name="btn_sqlite_screen">sqlite</string>
+    <string name="tv_step_for_use">Step 1</string>
 </resources>
