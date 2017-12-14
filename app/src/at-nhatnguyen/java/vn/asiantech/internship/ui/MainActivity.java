@@ -10,11 +10,13 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
+import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnRecyclerView;
     private Button mBtnCalculator;
     private Button mBtnLogin;
+    private Button mBtnSaveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +30,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnCalculator = findViewById(R.id.btnCalculator);
         mBtnLogin = findViewById(R.id.btnLogin);
+        mBtnSaveData = findViewById(R.id.btnSaveData);
     }
 
     private void initListener() {
         mBtnRecyclerView.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
         mBtnLogin.setOnClickListener(this);
+        mBtnSaveData.setOnClickListener(this);
     }
 
     @Override
@@ -47,6 +51,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnCalculator:
                 startActivity(new Intent(this, CalculatorActivity.class));
+                break;
+                case R.id.btnSaveData:
+                startActivity(new Intent(this, SaveDataActivity.class));
                 break;
         }
     }
