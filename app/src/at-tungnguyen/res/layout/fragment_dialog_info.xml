@@ -6,16 +6,15 @@
     tools:context="vn.asiantech.internship.viewpager.ui.DialogInfoFragment">
 
     <TextView
+        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
         android:text="@string/tv_information"
         android:textSize="30dp" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -59,19 +58,20 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnDialogConfirm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:text="@string/btn_confirm" />
-
-                <Button
                     android:id="@+id/btnDialogCancle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
                     android:text="@string/btn_cancel" />
+
+                <Button
+                    android:id="@+id/btnDialogConfirm"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/btn_confirm" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

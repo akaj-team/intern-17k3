@@ -24,7 +24,6 @@
         <TextView
             android:id="@+id/tvSkip"
             android:layout_width="wrap_content"
-            android:layout_alignParentRight="true"
             android:text="@string/tv_skip"
             android:textSize="15dp"
             android:layout_height="wrap_content" />

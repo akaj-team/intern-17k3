@@ -28,7 +28,7 @@
                 android:id="@+id/tvEnglish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Beer"
+                android:text="@string/tv_beer"
                 android:textSize="20dp" />
 
             <ImageView
@@ -42,7 +42,7 @@
                 android:id="@+id/tvVietnamese"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gau gau"
+                android:text="@string/tv_beer_vietnam"
                 android:textSize="20dp" />
 
             <ImageView

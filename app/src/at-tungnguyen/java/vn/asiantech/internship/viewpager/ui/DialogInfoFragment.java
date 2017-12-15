@@ -1,13 +1,16 @@
 package vn.asiantech.internship.viewpager.ui;
 
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
@@ -20,7 +23,6 @@ public class DialogInfoFragment extends DialogFragment implements View.OnClickLi
 
     private TextInputEditText mEdtNameInfo;
     private TextInputEditText mEdtAddressInfo;
-
     private Button mBtnCancel;
     private Button mBtnConfirm;
     private View mView;
@@ -33,16 +35,28 @@ public class DialogInfoFragment extends DialogFragment implements View.OnClickLi
         return fragment;
     }
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        Window window = dialog.getWindow();
+        window.requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fragment_dialog_info);
+        if (window != null) {
+//            window.setBackgroundDrawableResource(android.R.color.transparent);
+            window.setLayout((int) (ScreenUtil.getWidthScreen(getActivity()) * 0.9), (int) (ScreenUtil.getHeightScreen(getActivity()) * 0.9));
+        }
+        return dialog;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         mView = inflater.inflate(R.layout.fragment_dialog_info, container, false);
         initViews();
         initListener();
         return mView;
     }
-
 
     /**
      * initView Dialog
@@ -58,8 +72,8 @@ public class DialogInfoFragment extends DialogFragment implements View.OnClickLi
         mBtnConfirm.setOnClickListener(this);
         mBtnCancel.setOnClickListener(this);
     }
+
     /**
-     *
      * Override onClick Button
      */
     @Override
@@ -71,9 +85,9 @@ public class DialogInfoFragment extends DialogFragment implements View.OnClickLi
             case R.id.btnDialogCancle:
                 getDialog().dismiss();
                 break;
-
         }
     }
+
     /**
      * Send data
      */
@@ -82,7 +96,6 @@ public class DialogInfoFragment extends DialogFragment implements View.OnClickLi
         listener.onFinishEditDialog(mEdtNameInfo.getText().toString().trim(), mEdtAddressInfo.getText().toString().trim());
         dismiss();
     }
-
 
     public interface DialogFragment {
         void onFinishEditDialog(String edtName, String edtAddress);

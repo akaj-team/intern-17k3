@@ -30,12 +30,12 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         mViewPager = view.findViewById(R.id.viewPagerHome);
+        mAnimalArrayList = new ArrayList<>();
         initData();
         return view;
     }
 
     public void initData() {
-        mAnimalArrayList = new ArrayList<>();
         SlideHomeAdapter slideHomeAdapter = new SlideHomeAdapter(getFragmentManager(), mAnimalArrayList);
         mAnimalArrayList.add(new Animal("Monkey", R.drawable.monkey, "Con khỉ"));
         mAnimalArrayList.add(new Animal("Panda", R.drawable.panda, "Gấu trúc"));

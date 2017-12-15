@@ -47,4 +47,8 @@
     <string name="btn_confirm">Confirm</string>
     <string name="btn_cancel">Cancel</string>
     <string name="tv_information">Infomation</string>
+    <string name="tv_abc">abc</string>
+    <string name="tv_beer">Beer</string>
+    <string name="tv_beer_vietnam">Con gau</string>
+
 </resources>
