@@ -15,7 +15,6 @@ import vn.asiantech.internship.R;
  * Created at 2017
  * Created by jackty on 13/12/2017.
  */
-
 public class SlideAdapter extends PagerAdapter {
 
     private List<String> mListStep;

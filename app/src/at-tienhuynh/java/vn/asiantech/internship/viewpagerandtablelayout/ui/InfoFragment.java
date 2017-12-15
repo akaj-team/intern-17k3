@@ -22,11 +22,9 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Upda
     private Button mBtnUpdateInfo;
     private View mView;
 
-
     public InfoFragment() {
         //No-op
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,5 +84,4 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Upda
         mTvTeamInfo.setText(team);
         mTvLocationInfo.setText(address);
     }
-
 }

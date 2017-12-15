@@ -25,7 +25,6 @@ import vn.asiantech.internship.R;
  * Created at 2017
  * Created by jackty on 14/12/2017.
  */
-
 public class UpdateInfoDialogFragment extends DialogFragment implements View.OnClickListener {
     private static final float SIZE_DIALOG = 0.9f;
     private EditText mEdtName;
@@ -196,7 +195,6 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
         dismiss();
 
     }
-
 
     /**
      * TextWatcher For Editext

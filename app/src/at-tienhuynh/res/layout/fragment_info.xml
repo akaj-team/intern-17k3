@@ -52,6 +52,4 @@
         android:layout_margin="10dp"
         android:background="@color/colorLink"
         android:text="@string/btn_name_update" />
-
-
 </LinearLayout>

@@ -4,7 +4,6 @@ package vn.asiantech.internship.viewpagerandtablelayout.models;
  * Created at 2017
  * Created by jackty on 14/12/2017.
  */
-
 public class SlideHomeFragment {
     private String englishText;
     private String vietnamText;

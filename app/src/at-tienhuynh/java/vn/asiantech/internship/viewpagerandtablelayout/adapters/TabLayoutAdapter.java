@@ -11,7 +11,6 @@ import vn.asiantech.internship.viewpagerandtablelayout.ui.InfoFragment;
  * Created at 2017
  * Created by jackty on 13/12/2017.
  */
-
 public class TabLayoutAdapter extends FragmentPagerAdapter {
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_INFO = 1;

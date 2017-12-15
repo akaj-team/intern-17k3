@@ -25,7 +25,6 @@ public class HomeSlideAdapter extends FragmentStatePagerAdapter {
         mHomeSlideList = homeSlideList;
     }
 
-
     @Override
     public Fragment getItem(int position) {
         positionItem = position;
