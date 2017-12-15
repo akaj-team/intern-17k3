@@ -36,8 +36,8 @@ public class DialogUpdateFragment extends DialogFragment {
         mBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogUpdateListener dialogUpdateListener = (DialogUpdateListener) getTargetFragment();
-                dialogUpdateListener.DialogUpdateData(mEdtName.getText().toString(), mEdtPhone.getText().toString(), mEdtEmail.getText().toString());
+                onDialogUpdateListener onDialogUpdateListener = (onDialogUpdateListener) getTargetFragment();
+                onDialogUpdateListener.onDialogUpdateData(mEdtName.getText().toString(), mEdtPhone.getText().toString(), mEdtEmail.getText().toString());
                 dismiss();
 
             }
@@ -73,7 +73,7 @@ public class DialogUpdateFragment extends DialogFragment {
         mBtnCancel = view.findViewById(R.id.btnCancelDialog);
     }
 
-    public interface DialogUpdateListener {
-        void DialogUpdateData(String name, String email, String phone);
+    public interface onDialogUpdateListener {
+        void onDialogUpdateData(String name, String email, String phone);
     }
 }

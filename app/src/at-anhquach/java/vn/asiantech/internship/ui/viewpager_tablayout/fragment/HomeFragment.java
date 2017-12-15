@@ -15,7 +15,7 @@ import vn.asiantech.internship.model.Card;
 import vn.asiantech.internship.ui.viewpager_tablayout.RotationPageTransformer;
 import vn.asiantech.internship.ui.viewpager_tablayout.adapter.CardAdapter;
 
-public class HomeFragment extends Fragment {
+public final class HomeFragment extends Fragment {
     public static List<Card> mCardList = new ArrayList<>();
     ViewPager viewPager;
 

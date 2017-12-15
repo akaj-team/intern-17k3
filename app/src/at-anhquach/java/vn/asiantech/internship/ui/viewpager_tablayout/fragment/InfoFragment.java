@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
-public class InfoFragment extends Fragment implements DialogUpdateFragment.DialogUpdateListener {
+public class InfoFragment extends Fragment implements DialogUpdateFragment.onDialogUpdateListener {
     private TextView mTvName;
     private TextView mTvPhone;
     private TextView mTvEmail;
@@ -47,7 +47,7 @@ public class InfoFragment extends Fragment implements DialogUpdateFragment.Dialo
     }
 
     @Override
-    public void DialogUpdateData(String name, String email, String phone) {
+    public void onDialogUpdateData(String name, String email, String phone) {
         mTvName.setText(name);
         mTvPhone.setText(phone);
         mTvEmail.setText(email);

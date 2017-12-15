@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/colorWhite"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="10dp">
 
     <android.support.design.widget.TextInputLayout
@@ -56,8 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/btn_update"
-            tools:ignore="ButtonStyle" />
+            android:text="@string/btn_update" />
 
         <Button
             android:id="@+id/btnCancelDialog"
