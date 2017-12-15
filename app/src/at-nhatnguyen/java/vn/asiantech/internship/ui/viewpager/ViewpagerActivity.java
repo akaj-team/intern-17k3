@@ -49,6 +49,7 @@ public class ViewpagerActivity extends AppCompatActivity {
                 builder.setMessage(R.string.message_dialog)
                         .setPositiveButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                //No-op
                             }
                         })
                         .setNegativeButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
