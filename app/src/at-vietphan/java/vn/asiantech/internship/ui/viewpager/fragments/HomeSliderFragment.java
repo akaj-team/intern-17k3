@@ -26,9 +26,9 @@ public class HomeSliderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.item_vocabulary, container, false);
-        TextView tvEnglish=view.findViewById(R.id.tvCountryFirst);
-        TextView tvVietnamese=view.findViewById(R.id.tvCountrySecond);
-        ImageView imgAnimal=view.findViewById(R.id.imgAnimal);
+        TextView tvEnglish = view.findViewById(R.id.tvCountryFirst);
+        TextView tvVietnamese = view.findViewById(R.id.tvCountrySecond);
+        ImageView imgAnimal = view.findViewById(R.id.imgAnimal);
 
 //        String[] firstLanguages = getResources().getStringArray(R.array.name_en);
 //        String[] secondLanguages = getResources().getStringArray(R.array.name_en);
@@ -38,13 +38,13 @@ public class HomeSliderFragment extends Fragment {
 //            tvVietnamese.setText(secondLanguages[i]);
 //            imgAnimal.setImageResource(imageAnimals.getResourceId(i,-1));
 //        }
-
         tvEnglish.setText(mVocabulary.getFirstLanguage());
         tvVietnamese.setText(mVocabulary.getSecondLanguage());
         imgAnimal.setImageResource(mVocabulary.getImageAnimal());
         return view;
     }
-    public void setVocabulary(Vocabulary vocabulary){
-        mVocabulary=vocabulary;
+
+    public void setVocabulary(Vocabulary vocabulary) {
+        mVocabulary = vocabulary;
     }
 }
