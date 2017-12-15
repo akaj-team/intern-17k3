@@ -69,7 +69,6 @@ public class HomeFragment extends Fragment {
 //        mVocabularies.add(new Vocabulary("Weasel", R.drawable.weasel, "Chuột túi"));
 //        mVocabularies.add(new Vocabulary("yak", R.drawable.yak, "Linh dương đầu bò"));
 //        mVocabularies.add(new Vocabulary("Zebra", R.drawable.zebra, "Ngựa vằn"));
-
         String[] firstLanguages = getResources().getStringArray(R.array.name_en);
         String[] secondLanguages = getResources().getStringArray(R.array.name_vi);
         @SuppressLint("Recycle") TypedArray imageAnimals = getResources().obtainTypedArray(R.array.image_animal);
