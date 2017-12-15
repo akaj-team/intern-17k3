@@ -1,6 +1,7 @@
 package vn.asiantech.internship.ui.viewpager.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,7 +25,6 @@ import vn.asiantech.internship.utils.RotationPageTransformer;
 public class HomeFragment extends Fragment {
     private ViewPager mViewPagerVocabulary;
     private List<Vocabulary> mVocabularies;
-    private VocabularyAdapter mVocabularyAdapter;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initData() {
-        mVocabularyAdapter = new VocabularyAdapter(getFragmentManager(), mVocabularies);
+        VocabularyAdapter mVocabularyAdapter = new VocabularyAdapter(getFragmentManager(), mVocabularies);
 //        mVocabularies.add(new Vocabulary("Bear", R.drawable.bear, "Gấu"));
 //        mVocabularies.add(new Vocabulary("Bee", R.drawable.bee, "Ong"));
 //        mVocabularies.add(new Vocabulary("Elk", R.drawable.elk, "Nai"));
@@ -72,15 +72,15 @@ public class HomeFragment extends Fragment {
 
         String[] firstLanguages = getResources().getStringArray(R.array.name_en);
         String[] secondLanguages = getResources().getStringArray(R.array.name_vi);
-        TypedArray imageAnimals = getResources().obtainTypedArray(R.array.image_animal);
+        @SuppressLint("Recycle") TypedArray imageAnimals = getResources().obtainTypedArray(R.array.image_animal);
         for (int i = 0; i < imageAnimals.length() - 1; i++) {
             mVocabularies.add(new Vocabulary(firstLanguages[i], imageAnimals.getResourceId(i, -1), secondLanguages[i]));
         }
 
         mViewPagerVocabulary.setAdapter(mVocabularyAdapter);
         mViewPagerVocabulary.setPageTransformer(true, new RotationPageTransformer(160));
-        mViewPagerVocabulary.setOffscreenPageLimit(mVocabularyAdapter.getCount());
-        mViewPagerVocabulary.setPageMargin(-50);
+        mViewPagerVocabulary.setOffscreenPageLimit(3);
+        mViewPagerVocabulary.setPageMargin((int) getResources().getDimension(R.dimen.margin_view_pager));
         mViewPagerVocabulary.setClipChildren(false);
     }
 }
