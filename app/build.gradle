@@ -86,6 +86,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'me.relex:circleindicator:1.2.2@aar'
     implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
 }
 
 //apply from: "https://raw.githubusercontent.com/tientun/gradle-android-ci-check/master/ci.gradle"

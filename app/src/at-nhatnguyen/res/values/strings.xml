@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">nhatnguyen-17k3-recyclerview</string>
-    <string name="button_exercise">recyclerview</string>
+    <string name="button_recycler_view">recyclerview</string>
     <string name="summation">+</string>
     <string name="subtraction">-</string>
     <string name="multiplication">*</string>
@@ -18,8 +18,19 @@
     <string name="text_checkbox_confirm">I have read and agree with the</string>
     <string name="text_link">terms and conditions</string>
     <string name="text_inputPhone">Enter mobie phone number</string>
-    <string name="text_or">or</string>
+    <string name="text_or"> or </string>
     <string name="text_fullname">Full Name</string>
     <string name="text_email">Email</string>
     <string name="exercise_login">Login</string>
+    <string name="button_drawer_layout">drawerlayout</string>
+    <string name="name">Main Content</string>
+    <string name="notify_uri">That app do not support return uri for image</string>
+    <string name="message">Hello man</string>
+    <string name="button_savedata">Save Data</string>
+    <string name="share_preference">Share Prefence</string>
+    <string name="save_text">Save in external</string>
+    <string name="save_sqlite">Save in DB</string>
+    <string name="btn_input">Input</string>
+    <string name="have_not_company">have not company</string>
+    <string name="have_not_slogan">have not slogan</string>
 </resources>
