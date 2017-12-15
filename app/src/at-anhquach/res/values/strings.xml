@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">anhquach-17k3</string>
     <string name="operator_add">+</string>
     <string name="operator_divide">/</string>
@@ -28,4 +28,15 @@
     <string name="tag_error">error</string>
     <string name="folder_name_anhquach">/AnhQuach</string>
     <string name="file_name_txt">abc.txt</string>
+    <string name="textview_skip">Skip</string>
+    <string name="edt_input_your_name">Input your name</string>
+    <string name="edt_input_your_phone_number">Input your phone number</string>
+    <string name="edt_input_your_email_user">Input your email user</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_update">Update</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_btn_cancel" tools:ignore="ButtonCase">cancel</string>
+    <string name="dialog_btn_ok">OK</string>
+    <string name="dialog_message_skip_step">Do you sure skip all step?</string>
+    <string name="dialog_title_skip_step">Skip all step</string>
 </resources>

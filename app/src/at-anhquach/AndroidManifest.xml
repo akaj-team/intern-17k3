@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".ui.drawerlayout.DrawerLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +27,8 @@
         <activity android:name=".savedata.SharePreferenceActivity" />
         <activity android:name=".savedata.UserSQLiteActivity" />
         <activity android:name=".savedata.CompanyActivity" />
+        <activity android:name=".ui.viewpager_tablayout.StepActivity" />
+        <activity android:name=".ui.viewpager_tablayout.TabLayoutActivity" />
     </application>
 
 </manifest>

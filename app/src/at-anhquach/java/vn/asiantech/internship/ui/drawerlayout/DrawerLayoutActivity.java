@@ -23,10 +23,9 @@ import vn.asiantech.internship.savedata.UserSQLiteActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorViewActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
+import vn.asiantech.internship.ui.viewpager_tablayout.StepActivity;
 
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
-    private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
-    private static final int REQUEST_CODE_PICK_IMAGE = 77;
     private DrawerLayout mDrawerLayout;
     private RecyclerView mRecyclerViewLeftMenu;
     private LinearLayout mLlContent;
@@ -57,6 +56,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Share Preference", new Intent(this, SharePreferenceActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "External Storage", new Intent(this, ExternalStorageActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLite", new Intent(this, UserSQLiteActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "View Pager and Tab Layout", new Intent(this, StepActivity.class)));
     }
 
     private void initDrawer() {
