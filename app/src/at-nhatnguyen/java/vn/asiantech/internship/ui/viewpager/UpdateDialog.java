@@ -57,9 +57,9 @@ public class UpdateDialog extends DialogFragment {
         if (getDialog() == null) {
             return;
         }
-        int dialogWidth = getActivity().getWindow().getWindowManager().getDefaultDisplay().getWidth() - 16;
-        int dialogHeight = getActivity().getWindow().getWindowManager().getDefaultDisplay().getHeight() - 16 * 2;
-        getDialog().getWindow().setLayout(dialogWidth, dialogHeight);
+        float dialogWidth = (float) (getActivity().getWindowManager().getDefaultDisplay().getWidth() * 0.9);
+        float dialogHeight = (float) (getActivity().getWindowManager().getDefaultDisplay().getHeight() * 0.9);
+        getDialog().getWindow().setLayout((int)dialogWidth, (int)dialogHeight);
     }
 
     public void sendBackResult() {
