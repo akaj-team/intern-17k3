@@ -69,7 +69,13 @@ public class HomeFragment extends Fragment {
         mVocabularies.add(new Vocabulary("yak", R.drawable.yak, "Linh dương đầu bò"));
         mVocabularies.add(new Vocabulary("Zebra", R.drawable.zebra, "Ngựa vằn"));
 
-        String[] firstLanguage;
+//        String[] firstLanguages = getResources().getStringArray(R.array.name_en);
+//        String[] secondLanguages = getResources().getStringArray(R.array.name_en);
+//        TypedArray imageAnimals = getResources().obtainTypedArray(R.array.name_en);
+//        for (int i =0; i<imageAnimals.length();i++){
+//            mVocabularies.add(new Vocabulary(firstLanguages[i], imageAnimals.getResourceId(i,-1), secondLanguages[i]));
+//        }
+
         mViewPagerVocabulary.setAdapter(mVocabularyAdapter);
         mViewPagerVocabulary.setPageTransformer(true, new RotationPageTransformer(160));
         mViewPagerVocabulary.setOffscreenPageLimit(mVocabularyAdapter.getCount());
