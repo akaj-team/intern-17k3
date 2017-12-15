@@ -1,6 +1,7 @@
 package vn.asiantech.internship.viewpagerandtablelayout.ui;
 
 
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -8,9 +9,12 @@ import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +27,7 @@ import vn.asiantech.internship.R;
  */
 
 public class UpdateInfoDialogFragment extends DialogFragment implements View.OnClickListener {
+    private static final float SIZE_DIALOG = 0.9f;
     private EditText mEdtName;
     private EditText mEdtTeam;
     private EditText mEdtLocation;
@@ -134,6 +139,9 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
             case R.id.btnConfirmUpdate:
                 submitForm();
                 break;
+            case R.id.btnCancelUpdate:
+                super.dismiss();
+                break;
         }
     }
 
@@ -153,6 +161,22 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
         if (validateEditName() && validateEditTeam() && validateEditLocation()) {
             sendBackResult();
         }
+    }
+
+    /**
+     * OnResume to set Size dialog
+     */
+    @Override
+    public void onResume() {
+        Window window = getDialog().getWindow();
+        Point point = new Point();
+        if (window != null) {
+            Display display = window.getWindowManager().getDefaultDisplay();
+            display.getSize(point);
+            window.setLayout((int) (point.x * SIZE_DIALOG), WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setGravity(Gravity.CENTER);
+        }
+        super.onResume();
     }
 
     /**

@@ -9,14 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.viewpagerandtablelayout.adapters.HomeSlideAdapter;
 import vn.asiantech.internship.viewpagerandtablelayout.utils.InitData;
 import vn.asiantech.internship.viewpagerandtablelayout.utils.RotationPageTransformer;
-import vn.asiantech.internship.viewpagerandtablelayout.adapters.HomeSlideAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
+    private static final int ROTATION_TRANFORMER = 160;
+    private static final int SET_PAGE_MARGIN = -1;
+    private static final int SCREEN_PAGE_LIMIT = 3;
     private View mView;
     private ViewPager mViewPagerHomeFragment;
 
@@ -46,7 +49,10 @@ public class HomeFragment extends Fragment {
     private void initAdapters() {
         HomeSlideAdapter homeSlideAdapter = new HomeSlideAdapter(getFragmentManager(), InitData.listDictionary());
         mViewPagerHomeFragment.setAdapter(homeSlideAdapter);
-        mViewPagerHomeFragment.setPageTransformer(true, new RotationPageTransformer(135));
+        mViewPagerHomeFragment.setPageTransformer(true, new RotationPageTransformer(ROTATION_TRANFORMER));
+        mViewPagerHomeFragment.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.margin_card) * SET_PAGE_MARGIN);
+        mViewPagerHomeFragment.setOffscreenPageLimit(SCREEN_PAGE_LIMIT);
+        mViewPagerHomeFragment.setClipChildren(false);
     }
 
 }

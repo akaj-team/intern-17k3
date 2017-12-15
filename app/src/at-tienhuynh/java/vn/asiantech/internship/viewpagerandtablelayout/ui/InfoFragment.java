@@ -71,9 +71,10 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Upda
      */
     private void showUpdateDialog() {
         FragmentManager fm = getFragmentManager();
-        UpdateInfoDialogFragment editNameDialogFragment = UpdateInfoDialogFragment.newInstance(null);
-        editNameDialogFragment.setTargetFragment(InfoFragment.this, 300);
-        editNameDialogFragment.show(fm, null);
+        UpdateInfoDialogFragment updateDialogFragment = UpdateInfoDialogFragment.newInstance(null);
+        updateDialogFragment.setTargetFragment(InfoFragment.this, 300);
+        updateDialogFragment.setCancelable(false);
+        updateDialogFragment.show(fm, null);
     }
 
     /**
@@ -85,4 +86,5 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Upda
         mTvTeamInfo.setText(team);
         mTvLocationInfo.setText(address);
     }
+
 }
