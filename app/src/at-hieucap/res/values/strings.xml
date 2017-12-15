@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">hieucap-17k3</string>
+    <string name="menu_bai_tap">MENU</string>
+    <string name="bai_tap_1">Login Screen</string>
+    <string name="bai_tap_2">Calculator</string>
+    <string name="bai_tap_3">Recycler View</string>
+    <string name="value_0">0</string>
+    <string name="person_1">Nguyen Van A</string>
+    <string name="person_2">Nguyen Van B</string>
+    <string name="person_3">Nguyen Van C</string>
+    <string name="person_4">Nguyen Van D</string>
+    <string name="person_5">Nguyen Van E</string>
+    <string name="person_6">Nguyen Van F</string>
+    <string name="person_7">Nguyen Van G</string>
+    <string name="person_8">Nguyen Van H</string>
+    <string name="text_status_standard">This is ...........................</string>
+    <string name="text_status_max_length">This is ................aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
+    <string name="value_1">1</string>
     <string name="welcome_caption">Welcome to urbi</string>
     <string name="login_with_facebook">LOG IN WITH FACEBOOK</string>
     <string name="or">or</string>
@@ -31,5 +47,5 @@
     <string name="event_two_term_is_empty">First term and second term is not empty !</string>
     <string name="text_null"> </string>
     <string name="event_second_term_is_value_0">Second term is not value = 0 !</string>
-    <string name="value_0">0</string>
+    <string name="bai_tap_4">Drawer Layout</string>
 </resources>

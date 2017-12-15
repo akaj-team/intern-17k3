@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.PostActivity;
 import vn.asiantech.internship.savedata.ExternalStorageActivity;
@@ -69,7 +69,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(intent);
                 break;
 //            case R.id.btnDrawerLayoutScreen:
-//                intent = new Intent(AppActivity.this, LoginActivity.class);
+//                intent = new Intent(AppActivity.this, DrawerLayoutActivity.class);
 //                startActivity(intent);
 //                break;
             case R.id.btnSharePreferenceScreen:

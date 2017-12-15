@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="vn.asiantech.internship">
 
     <application
@@ -9,13 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="vn.asiantech.internship.ui.drawer.layout.DrawerLayoutActivity">
+        <activity android:name="vn.asiantech.internship.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="vn.asiantech.internship.ui.login.LoginActivity" />
+        <activity android:name=".ui.calculator.CalculatorActivity" />
+        <activity android:name=".ui.recyclerview.PersonViewActivity" />
+        <activity
+            android:name=".ui.drawerlayout.DrawerLayoutActivity"
+            tools:ignore="GoogleAppIndexingWarning">
+        </activity>
     </application>
 </manifest>
