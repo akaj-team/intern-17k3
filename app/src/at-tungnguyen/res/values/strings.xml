@@ -28,7 +28,7 @@
     <string name="edt_hint_number_b">Number B</string>
     <string name="tv_number_not_0">Number B is not 0</string>
     <string name="tv_login">Create Login Screen</string>
-    <string name="tv_caculator">Calculator View </string>
+    <string name="tv_calculator_view">Calculator View </string>
     <string name="tv_toolbar">Home</string>
     <string name="have_not_picked_img">Not picked</string>
 

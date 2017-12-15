@@ -6,13 +6,12 @@ import android.content.pm.PackageManager;
 /**
  * GoogleUtil
  */
-
 public final class GoogleUtil {
+    public static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
+
     private GoogleUtil() {
         // No-op
     }
-
-    public static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
 
     /**
      * isGooglePhotosInstalled

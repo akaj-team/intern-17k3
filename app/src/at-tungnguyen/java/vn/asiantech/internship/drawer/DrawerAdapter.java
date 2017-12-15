@@ -101,11 +101,11 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             });
         }
     }
-
+    /**
+     * interface OnItemClickListener
+     **/
     public interface OnItemClickListener {
-        /**
-         * This is Javadoc
-         **/
+
         void onclickHeaderitem(View view, int position);
 
         void onclickContentitem(View view, int position);
