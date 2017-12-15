@@ -26,7 +26,14 @@
         style="@style/btn_default"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/button_exercise" />
+        android:text="@string/button_recycler_view" />
+
+    <Button
+        android:id="@+id/btnDrawerLayout"
+        style="@style/btn_default"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_drawer_layout" />
 
     <Button
         android:id="@+id/btnSaveData"
