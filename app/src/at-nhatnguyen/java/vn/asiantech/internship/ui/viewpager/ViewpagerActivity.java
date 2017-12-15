@@ -1,9 +1,11 @@
 package vn.asiantech.internship.ui.viewpager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -40,7 +42,19 @@ public class ViewpagerActivity extends AppCompatActivity {
         mTvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewpagerActivity.this, ViewPagerMainActivity.class));
+                AlertDialog.Builder builder = new AlertDialog.Builder(ViewpagerActivity.this);
+                builder.setMessage(R.string.message_dialog)
+                        .setPositiveButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        })
+                        .setNegativeButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                startActivity(new Intent(ViewpagerActivity.this, ViewPagerMainActivity.class));
+                            }
+                        });
+                builder.create();
+                builder.show();
             }
         });
     }

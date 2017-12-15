@@ -3,6 +3,7 @@ package vn.asiantech.internship.ui.viewpager.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class InforFragment extends Fragment implements UpdateDialog.EditNameDial
                 UpdateDialog updateDialog = UpdateDialog.newInstance();
                 updateDialog.setRetainInstance(true);
                 updateDialog.setTargetFragment(InforFragment.this, 300);
-                updateDialog.show(getFragmentManager(), "abd");
+                updateDialog.show(getFragmentManager(), "");
             }
         });
         return view;
@@ -51,6 +52,15 @@ public class InforFragment extends Fragment implements UpdateDialog.EditNameDial
 
     @Override
     public void onFinishEditDialog(String inputName, String inputOld, String inputAdress) {
+        if(TextUtils.isEmpty(inputName)){
+            inputName = getContext().getString(R.string.no_name);
+        }
+        if (TextUtils.isEmpty(inputOld)){
+            inputOld = getContext().getString(R.string.no_old);
+        }
+        if (TextUtils.isEmpty(inputAdress)){
+            inputAdress = getContext().getString(R.string.no_house);
+        }
         mTvNameUpdate.setText(inputName);
         mTvOldUpdate.setText(inputOld);
         mTvAdressUpdate.setText(inputAdress);

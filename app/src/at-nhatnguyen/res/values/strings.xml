@@ -30,8 +30,6 @@
     <string name="have_not_company">have not company</string>
     <string name="have_not_slogan">have not slogan</string>
     <string name="button_viewpager">ViewPager</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="skip">skip</string>
     <string name="update">Update</string>
@@ -40,4 +38,7 @@
     <string name="no_name">chua co ten</string>
     <string name="no_old">chua co tuoi</string>
     <string name="no_house">chua co nha</string>
+    <string name="message_dialog">Do you want to skip ?</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_ok">ok</string>
 </resources>
