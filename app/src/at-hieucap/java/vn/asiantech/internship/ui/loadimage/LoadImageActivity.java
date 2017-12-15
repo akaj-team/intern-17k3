@@ -1,4 +1,4 @@
-package vn.asiantech.internship.loadimage;
+package vn.asiantech.internship.ui.loadimage;
 
 import android.content.Intent;
 import android.net.Uri;

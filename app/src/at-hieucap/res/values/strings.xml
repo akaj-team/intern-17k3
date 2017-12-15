@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">hieucap-17k3</string>
+    <string name="menu_bai_tap">MENU</string>
+    <string name="bai_tap_1">Login Screen</string>
+    <string name="bai_tap_2">Calculator</string>
+    <string name="bai_tap_3">Recycler View</string>
+    <string name="person_1">Nguyen Van A</string>
+    <string name="person_2">Nguyen Van B</string>
+    <string name="person_3">Nguyen Van C</string>
+    <string name="person_4">Nguyen Van D</string>
+    <string name="person_5">Nguyen Van E</string>
+    <string name="person_6">Nguyen Van F</string>
+    <string name="person_7">Nguyen Van G</string>
+    <string name="person_8">Nguyen Van H</string>
+    <string name="text_status_standard">This is ...........................</string>
+    <string name="text_status_max_length">This is ................aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
+    <string name="value_1">1</string>
     <string name="welcome_caption">Welcome to urbi</string>
     <string name="login_with_facebook">LOG IN WITH FACEBOOK</string>
     <string name="or">or</string>
@@ -31,4 +46,8 @@
     <string name="from_asset">Asset</string>
     <string name="from_storage">Storage</string>
     <string name="from_internet">Internet</string>
+    <string name="text_load_image">Load Image</string>
+    <string name="text_image_vector">Image Vector</string>
+    <string name="text_nine_path">Nine Path</string>
+    <string name="bai_tap_4">Load Image</string>
 </resources>
