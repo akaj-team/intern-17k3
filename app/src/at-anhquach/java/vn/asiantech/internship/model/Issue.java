@@ -2,6 +2,9 @@ package vn.asiantech.internship.model;
 
 import android.content.Intent;
 
+/**
+ * Define class Issue
+ */
 public class Issue {
     private int icon;
     private String name;

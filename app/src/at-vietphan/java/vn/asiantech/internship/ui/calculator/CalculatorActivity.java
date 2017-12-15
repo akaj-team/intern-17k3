@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Class CalculatorActivity
+ */
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtNumberA;
     private EditText mEdtNumberB;
