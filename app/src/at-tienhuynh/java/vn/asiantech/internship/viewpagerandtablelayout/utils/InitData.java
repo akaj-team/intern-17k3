@@ -20,5 +20,4 @@ public final class InitData {
         slideHomeFragmentLists.add(new SlideHomeFragment("Kangaroo", "Chuột túi", R.drawable.ic_kangaroo));
         return slideHomeFragmentLists;
     }
-
 }
