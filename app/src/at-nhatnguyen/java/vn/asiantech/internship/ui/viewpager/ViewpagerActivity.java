@@ -19,6 +19,9 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Screen;
 
+/**
+ * Activity use for intro
+ */
 public class ViewpagerActivity extends AppCompatActivity {
     private List<Screen> mScreens;
     private ScreenPagerAdapter mScreenPagerAdapter;

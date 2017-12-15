@@ -1,6 +1,5 @@
 package vn.asiantech.internship.ui.viewpager.fragment;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -21,11 +20,9 @@ public class HomeFragment extends Fragment {
     private List<Vocabulary> mVocabularies;
     private ViewPager mViewPagerHome;
 
-
     public HomeFragment() {
         //No-op
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,5 +55,4 @@ public class HomeFragment extends Fragment {
         mVocabularies.add(new Vocabulary("Hippo", R.drawable.ic_hippo, "Ha ma"));
         mVocabularies.add(new Vocabulary("Launcher", R.drawable.ic_launcher, "Chim"));
     }
-
 }

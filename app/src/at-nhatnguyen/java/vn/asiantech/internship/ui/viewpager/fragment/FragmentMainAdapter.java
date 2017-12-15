@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
  * Created by hoangnhat on 14/12/2017.
  * Adapter for ViewPagerMainActivity
  */
-
 public class FragmentMainAdapter extends FragmentPagerAdapter {
 
     public FragmentMainAdapter(FragmentManager fm) {

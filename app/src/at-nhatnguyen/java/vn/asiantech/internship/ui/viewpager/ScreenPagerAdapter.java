@@ -17,7 +17,6 @@ import vn.asiantech.internship.models.Screen;
  * Created by hoangnhat on 14/12/2017.
  * Class Adapter for viewpagerActivity
  */
-
 public class ScreenPagerAdapter extends PagerAdapter {
     private List<Screen> mScreens;
     private Context mContext;

@@ -12,7 +12,6 @@ import vn.asiantech.internship.models.Vocabulary;
  * Created by hoangnhat on 14/12/2017.
  * Adapter for HomeFrament
  */
-
 public class VocabularyAdapter extends FragmentStatePagerAdapter {
     private List<Vocabulary> mVocabularies;
 

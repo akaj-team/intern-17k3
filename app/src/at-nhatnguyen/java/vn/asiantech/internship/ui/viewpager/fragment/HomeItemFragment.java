@@ -1,6 +1,5 @@
 package vn.asiantech.internship.ui.viewpager.fragment;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,7 +18,7 @@ public class HomeItemFragment extends Fragment {
     private Vocabulary mVocabulary;
 
     public HomeItemFragment() {
-        // Required empty public constructor
+        //No-op
     }
 
     public static HomeItemFragment newInstance() {

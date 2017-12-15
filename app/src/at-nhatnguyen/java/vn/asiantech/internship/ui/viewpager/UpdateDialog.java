@@ -13,14 +13,12 @@ import vn.asiantech.internship.R;
 
 /**
  * Created by hoangnhat on 14/12/2017.
+ * Dialog update information
  */
-
 public class UpdateDialog extends DialogFragment {
     private EditText mEdtNameUpdate;
     private EditText mEdtOldUpdate;
     private EditText mEdtAdressUpdate;
-    private Button mBtnOk;
-    private Button mBtnCancel;
 
     public static UpdateDialog newInstance() {
         Bundle args = new Bundle();
@@ -36,15 +34,15 @@ public class UpdateDialog extends DialogFragment {
         mEdtNameUpdate = view.findViewById(R.id.etdNameUpdate);
         mEdtOldUpdate = view.findViewById(R.id.edtOldUpdate);
         mEdtAdressUpdate = view.findViewById(R.id.edtAdressUpdate);
-        mBtnOk = view.findViewById(R.id.btnOk);
-        mBtnCancel = view.findViewById(R.id.btnCancel);
-        mBtnOk.setOnClickListener(new View.OnClickListener() {
+        Button btnOk = view.findViewById(R.id.btnOk);
+        Button btnCancel = view.findViewById(R.id.btnCancel);
+        btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendBackResult();
             }
         });
-        mBtnCancel.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
@@ -72,7 +70,6 @@ public class UpdateDialog extends DialogFragment {
         dismiss();
     }
 
-
     /**
      * This interface use for send data
      */
@@ -80,5 +77,4 @@ public class UpdateDialog extends DialogFragment {
 
         void onFinishEditDialog(String inputName, String inputOld, String inputAdress);
     }
-
 }
