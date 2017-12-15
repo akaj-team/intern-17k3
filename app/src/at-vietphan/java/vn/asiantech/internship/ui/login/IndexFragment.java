@@ -19,6 +19,9 @@ import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Class IndexFragment: screen index login
+ */
 public class IndexFragment extends Fragment {
     public static IndexFragment newInstance() {
         return new IndexFragment();

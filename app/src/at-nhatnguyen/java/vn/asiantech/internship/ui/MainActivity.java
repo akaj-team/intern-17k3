@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
+import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
@@ -16,6 +17,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnRecyclerView;
     private Button mBtnCalculator;
     private Button mBtnLogin;
+    private Button mBtnDrawerLayout;
     private Button mBtnSaveData;
 
     @Override
@@ -30,6 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnCalculator = findViewById(R.id.btnCalculator);
         mBtnLogin = findViewById(R.id.btnLogin);
+        mBtnDrawerLayout = findViewById(R.id.btnDrawerLayout);
         mBtnSaveData = findViewById(R.id.btnSaveData);
     }
 
@@ -37,6 +40,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnRecyclerView.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
         mBtnLogin.setOnClickListener(this);
+        mBtnDrawerLayout.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
     }
 
@@ -52,7 +56,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btnCalculator:
                 startActivity(new Intent(this, CalculatorActivity.class));
                 break;
-                case R.id.btnSaveData:
+            case R.id.btnDrawerLayout:
+                startActivity(new Intent(this, DrawerActivity.class));
+                break;
+            case R.id.btnSaveData:
                 startActivity(new Intent(this, SaveDataActivity.class));
                 break;
         }
