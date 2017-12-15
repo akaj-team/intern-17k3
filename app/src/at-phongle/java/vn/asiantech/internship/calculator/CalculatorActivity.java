@@ -1,4 +1,4 @@
-package vn.asiantech.internship.calculator;
+package vn.asiantech.internship.ui.calculator;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,7 +25,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculator_activity);
+        setContentView(R.layout.activity_calculator);
         initViews();
         addListener();
     }
