@@ -22,4 +22,26 @@
     <string name="btn_mul">*</string>
     <string name="btn_div">/</string>
     <string name="tv_fail">Số quá giới hạn cho phép !</string>
+    <string name="btn_drawer_layout_screen">DrawerLayout</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="tv_email_leftbar">cristiano_ronaldo@gmail.com</string>
+    <string name="tv_item_calculator">Calculator</string>
+    <string name="tv_item_recyclerview">RecyclerView</string>
+    <string name="tv_main_drawerLayout">This is content main</string>
+    <string name="tv_option">Option</string>
+    <string name="bt_click">Click</string>
+    <string name="edt_input">input</string>
+    <string name="file_name">/phongle.txt</string>
+    <string name="edt_read_file_fail">Read file fail !</string>
+    <string name="edt_write_file_fail">Write file fail !</string>
+    <string name="edt_file_not_exist">file not exist</string>
+    <string name="tv_person_name">PersonName</string>
+    <string name="tv_person_age">20</string>
+    <string name="tv_age">Age : </string>
+    <string name="tv_company_name">AsianTech</string>
+    <string name="tv_company_slogan">Recording History</string>
+    <string name="btn_share_preference">SharePreference</string>
+    <string name="btn_external_storage">external storge</string>
+    <string name="btn_sqlite_screen">sqlite</string>
 </resources>

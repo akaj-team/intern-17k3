@@ -23,4 +23,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_recycler_view_screen" />
+
+    <Button
+        android:id="@+id/btnDrawerLayoutScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_drawer_layout_screen" />
+
+    <Button
+        android:id="@+id/btnSharePreferenceScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_share_preference" />
+
+    <Button
+        android:id="@+id/btnExternalStorageScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_external_storage" />
+
+    <Button
+        android:id="@+id/btnSQLiteScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_sqlite_screen" />
+
 </LinearLayout>
