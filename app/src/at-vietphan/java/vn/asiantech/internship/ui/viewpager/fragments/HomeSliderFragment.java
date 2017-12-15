@@ -29,15 +29,6 @@ public class HomeSliderFragment extends Fragment {
         TextView tvEnglish = view.findViewById(R.id.tvCountryFirst);
         TextView tvVietnamese = view.findViewById(R.id.tvCountrySecond);
         ImageView imgAnimal = view.findViewById(R.id.imgAnimal);
-
-//        String[] firstLanguages = getResources().getStringArray(R.array.name_en);
-//        String[] secondLanguages = getResources().getStringArray(R.array.name_en);
-//        TypedArray imageAnimals = getResources().obtainTypedArray(R.array.name_en);
-//        for (int i =0; i<imageAnimals.length();i++){
-//            tvEnglish.setText(firstLanguages[i]);
-//            tvVietnamese.setText(secondLanguages[i]);
-//            imgAnimal.setImageResource(imageAnimals.getResourceId(i,-1));
-//        }
         tvEnglish.setText(mVocabulary.getFirstLanguage());
         tvVietnamese.setText(mVocabulary.getSecondLanguage());
         imgAnimal.setImageResource(mVocabulary.getImageAnimal());

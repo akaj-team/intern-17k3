@@ -51,6 +51,7 @@ public class InformationFragment extends DialogFragment implements View.OnClickL
         InformationDialogFragment dialogFragment = new InformationDialogFragment();
         dialogFragment.setTargetFragment(this, 0);
         dialogFragment.show(fm, getString(R.string.dialog_fragment));
+        dialogFragment.setCancelable(false);
     }
 
     @Override

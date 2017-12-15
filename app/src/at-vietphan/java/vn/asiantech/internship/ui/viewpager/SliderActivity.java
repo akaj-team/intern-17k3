@@ -103,6 +103,7 @@ public class SliderActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
         AlertDialog dialog = builder.create();
+        dialog.setCancelable(false);
         dialog.show();
     }
 }

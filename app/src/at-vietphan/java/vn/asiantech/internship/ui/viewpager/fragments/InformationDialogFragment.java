@@ -1,12 +1,11 @@
 package vn.asiantech.internship.ui.viewpager.fragments;
 
 
-import android.graphics.Point;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.utils.ScreenUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,10 +31,23 @@ public class InformationDialogFragment extends DialogFragment implements View.On
         return new InformationDialogFragment();
     }
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fragment_information_dialog);
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout((int) (ScreenUtil.getWidthScreen(getActivity()) * 0.9), (int) (ScreenUtil.getHeightScreen(getActivity()) * 0.9));
+            window.setGravity(Gravity.CENTER);
+        }
+        return dialog;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_information_dialog, container, false);
-        getDialog().setTitle(R.string.your_info);
         initViews(view);
         initListener();
         return view;
@@ -63,19 +76,6 @@ public class InformationDialogFragment extends DialogFragment implements View.On
                 dismiss();
                 break;
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Window window = getDialog().getWindow();
-        Point size = new Point();
-        Display display = window.getWindowManager().getDefaultDisplay();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-        window.setLayout(width * 9 / 10, height * 9 / 10);
-        window.setGravity(Gravity.CENTER);
     }
 
     public void sendBackResult() {
