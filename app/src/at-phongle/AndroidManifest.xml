@@ -25,6 +25,7 @@
         <activity android:name=".savedata.ExternalStorageActivity" />
         <activity android:name=".savedata.PersonActivity" />
         <activity android:name=".savedata.DetailCompanyActivity" />
+        <activity android:name=".drawerlayout.DrawerLayoutActivity" />
     </application>
 
 </manifest>
