@@ -39,5 +39,12 @@
     <string name="dialog_title_skip">Please check yes or no</string>
     <string name="dialog_yes_skip">Yes</string>
     <string name="dialog_skip_no">No</string>
-
+    <string name="btn_update_info">Update Info</string>
+    <string name="edt_info_name">Name</string>
+    <string name="edt_info_address">Address</string>
+    <string name="tv_address_info">Address</string>
+    <string name="tv_name_info">Name</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="tv_information">Infomation</string>
 </resources>

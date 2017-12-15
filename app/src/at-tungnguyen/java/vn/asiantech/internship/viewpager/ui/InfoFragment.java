@@ -3,9 +3,12 @@ package vn.asiantech.internship.viewpager.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
@@ -13,19 +16,49 @@ import vn.asiantech.internship.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InfoFragment extends Fragment {
-
+public class InfoFragment extends Fragment implements DialogInfoFragment.DialogFragment {
+    private Button mBtnUpdate;
+    private TextView mTvNameInfo;
+    private TextView mTvAddressInfo;
+    private View mView;
 
     public InfoFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info, container, false);
+        mView = inflater.inflate(R.layout.fragment_info, container, false);
+
+        initView();
+        mBtnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                showDialog();
+            }
+        });
+        return mView;
     }
 
+    private void initView() {
+        mTvNameInfo = mView.findViewById(R.id.tvNameInfo);
+        mTvAddressInfo = mView.findViewById(R.id.tvAddressInfo);
+        mBtnUpdate = mView.findViewById(R.id.btnUpdate);
+    }
+
+    public void showDialog() {
+        FragmentManager fm = getFragmentManager();
+        DialogInfoFragment dialogInfoFragment = new DialogInfoFragment();
+        dialogInfoFragment.setTargetFragment(InfoFragment.this, 300);
+        dialogInfoFragment.show(fm, null);
+
+    }
+
+    @Override
+    public void onFinishEditDialog(String edtName, String edtAddress) {
+        mTvAddressInfo.setText(edtAddress);
+        mTvNameInfo.setText(edtName);
+    }
 }
