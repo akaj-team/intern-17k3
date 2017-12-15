@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
         VocabularyAdapter mVocabularyAdapter = new VocabularyAdapter(getFragmentManager(), mVocabularies);
         mViewPagerHome.setAdapter(mVocabularyAdapter);
         mViewPagerHome.setPageTransformer(true, new RotationPageTransformer(150));
-        mViewPagerHome.setPageMargin(-250);
+        mViewPagerHome.setPageMargin(-100);
         mViewPagerHome.setOffscreenPageLimit(3);
         mViewPagerHome.setClipChildren(false);
     }
