@@ -38,7 +38,6 @@ import vn.asiantech.internship.utils.ScreenUtil;
  * Class DrawerActivity
  */
 public class DrawerActivity extends AppCompatActivity implements IssueAdapter.OnItemClickListener {
-    private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
     private static final int REQUEST_CODE_PICK_IMAGE = 77;
     private Toolbar mToolBar;
     private DrawerLayout mDrawerLayout;
@@ -138,7 +137,7 @@ public class DrawerActivity extends AppCompatActivity implements IssueAdapter.On
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         if (GoogleUtil.isGooglePhotosInstalled(this)) {
-            intent.setPackage(GOOGLE_PHOTOS_PACKAGE_NAME);
+            intent.setPackage(GoogleUtil.GOOGLE_PHOTOS_PACKAGE_NAME);
             startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
         } else {
             startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
