@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name="vn.asiantech.internship.TestActivity">
         </activity>
+        <activity android:name=".viewpager.home.HomeActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:attrs="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:text="@string/tv_skip"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        attrs:ignore="RelativeOverlap" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagerContain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--<com.rd.PageIndicatorView-->
+        <!--android:id="@+id/pageIndicatorView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--attrs:piv_viewPager="@+id/viewPager"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--/>-->
+
+</RelativeLayout>
