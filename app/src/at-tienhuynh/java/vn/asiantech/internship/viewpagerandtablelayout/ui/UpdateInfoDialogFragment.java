@@ -1,9 +1,11 @@
 package vn.asiantech.internship.viewpagerandtablelayout.ui;
 
 
+import android.app.Dialog;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.DialogFragment;
@@ -50,8 +52,6 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_update_info, container, false);
-        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         initViews();
         addTextChanged();
         initListeners();
@@ -165,19 +165,25 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
     }
 
     /**
-     * OnResume to set Size dialog
+     * OnCreate Dialog
      */
+    @NonNull
     @Override
-    public void onResume() {
-        Window window = getDialog().getWindow();
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
         Point point = new Point();
+        Window window = dialog.getWindow();
+        window.requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fragment_update_info);
         if (window != null) {
             Display display = window.getWindowManager().getDefaultDisplay();
             display.getSize(point);
             window.setLayout((int) (point.x * SIZE_DIALOG), WindowManager.LayoutParams.WRAP_CONTENT);
             window.setGravity(Gravity.CENTER);
+            window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
-        super.onResume();
+
+        return dialog;
     }
 
     /**
