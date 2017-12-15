@@ -19,7 +19,7 @@ public final class HomeFragment extends Fragment {
     public static List<Card> mCardList = new ArrayList<>();
     ViewPager viewPager;
 
-    public static HomeFragment newInstance() {
+    public static final HomeFragment newInstance() {
         return new HomeFragment();
     }
 
