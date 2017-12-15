@@ -43,7 +43,6 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
         UpdateInfoDialogFragment fragment = new UpdateInfoDialogFragment();
         args.putString("title", title);
         fragment.setArguments(args);
-        fragment.setArguments(args);
         return fragment;
     }
 

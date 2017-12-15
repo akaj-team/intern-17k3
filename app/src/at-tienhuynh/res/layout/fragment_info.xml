@@ -11,7 +11,7 @@
         android:layout_margin="20dp"
         android:gravity="center"
         android:text="@string/tv_info_fragment_title"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorLink"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -50,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:background="@color/colorLink"
         android:text="@string/btn_name_update" />
 
 
