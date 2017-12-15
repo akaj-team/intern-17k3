@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".calculator.CalculatorActivity" />
+        <activity android:name=".ui.calculator.CalculatorActivity" />
         <activity android:name=".recyclerview.PostActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".savedata.SharePreferenceActivity" />
