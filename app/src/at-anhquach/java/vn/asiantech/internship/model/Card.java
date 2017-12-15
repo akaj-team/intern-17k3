@@ -4,12 +4,12 @@ package vn.asiantech.internship.model;
  * Created by anh.quach on 12/14/17.
  */
 
-public class Dictionary {
+public class Card {
     String englishWord;
     String vietnamWord;
     int image;
 
-    public Dictionary(String englishWord, String vietnamWord, int image) {
+    public Card(String englishWord, String vietnamWord, int image) {
         this.englishWord = englishWord;
         this.vietnamWord = vietnamWord;
         this.image = image;

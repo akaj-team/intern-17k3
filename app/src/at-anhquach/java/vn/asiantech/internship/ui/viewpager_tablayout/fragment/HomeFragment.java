@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.model.Dictionary;
+import vn.asiantech.internship.model.Card;
 import vn.asiantech.internship.ui.viewpager_tablayout.RotationPageTransformer;
-import vn.asiantech.internship.ui.viewpager_tablayout.adapter.DictionaryAdapter;
+import vn.asiantech.internship.ui.viewpager_tablayout.adapter.CardAdapter;
 
 public class HomeFragment extends Fragment {
-    public static List<Dictionary> mDictionaryList = new ArrayList<>();
+    public static List<Card> mCardList = new ArrayList<>();
     ViewPager viewPager;
 
     public static HomeFragment newInstance() {
@@ -46,12 +46,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void initData() {
-        mDictionaryList.add(new Dictionary("Bear", "Gấu", R.drawable.img_dictionary_bear));
-        mDictionaryList.add(new Dictionary("Bee", "Ong", R.drawable.img_dictionary_bee));
-        mDictionaryList.add(new Dictionary("Elk", "Nai", R.drawable.img_dictionary_elk));
+        mCardList.add(new Card("Bear", "Gấu", R.drawable.img_dictionary_bear));
+        mCardList.add(new Card("Bee", "Ong", R.drawable.img_dictionary_bee));
+        mCardList.add(new Card("Elk", "Nai", R.drawable.img_dictionary_elk));
     }
 
     private void initAdapter() {
-        viewPager.setAdapter(new DictionaryAdapter(getFragmentManager(), mDictionaryList));
+        viewPager.setAdapter(new CardAdapter(getFragmentManager(), mCardList));
     }
 }
