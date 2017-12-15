@@ -68,10 +68,12 @@ public class HomeFragment extends Fragment {
         mVocabularies.add(new Vocabulary("Weasel", R.drawable.weasel, "Chuột túi"));
         mVocabularies.add(new Vocabulary("yak", R.drawable.yak, "Linh dương đầu bò"));
         mVocabularies.add(new Vocabulary("Zebra", R.drawable.zebra, "Ngựa vằn"));
+
+        String[] firstLanguage;
         mViewPagerVocabulary.setAdapter(mVocabularyAdapter);
-        mViewPagerVocabulary.setPageTransformer(true, new RotationPageTransformer(150));
+        mViewPagerVocabulary.setPageTransformer(true, new RotationPageTransformer(160));
         mViewPagerVocabulary.setOffscreenPageLimit(mVocabularyAdapter.getCount());
-        mViewPagerVocabulary.setPageMargin(-10);
+        mViewPagerVocabulary.setPageMargin(-50);
         mViewPagerVocabulary.setClipChildren(false);
     }
 }
