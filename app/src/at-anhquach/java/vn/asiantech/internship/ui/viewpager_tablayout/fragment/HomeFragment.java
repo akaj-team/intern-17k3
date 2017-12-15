@@ -15,11 +15,11 @@ import vn.asiantech.internship.model.Card;
 import vn.asiantech.internship.ui.viewpager_tablayout.RotationPageTransformer;
 import vn.asiantech.internship.ui.viewpager_tablayout.adapter.CardAdapter;
 
-public final class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment {
     public static List<Card> mCardList = new ArrayList<>();
     ViewPager viewPager;
 
-    public static final HomeFragment newInstance() {
+    public static HomeFragment newInstance() {
         return new HomeFragment();
     }
 
