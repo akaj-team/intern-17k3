@@ -59,6 +59,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         private TextView mTvAge;
         private TextView mTvID;
 
+        /**
+         *
+         * Class ViewHolder of RecyclerView
+         */
         public ViewHolder(View itemView) {
             super(itemView);
             mTvID = itemView.findViewById(R.id.tvID);

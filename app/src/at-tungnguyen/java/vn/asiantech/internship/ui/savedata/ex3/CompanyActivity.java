@@ -14,7 +14,7 @@ import vn.asiantech.internship.ui.savedata.ex3.model.Company;
 public class CompanyActivity extends AppCompatActivity {
     private TextView mTvNameCompany;
     private TextView mTvSologan;
-    private TextView mTvID;
+    private TextView mTvId;
     private static final String KEY_ID_USER = "id_user";
     SQLite sqLite = new SQLite(this);
 
@@ -27,16 +27,16 @@ public class CompanyActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mTvID = findViewById(R.id.tvIDCompany);
-        mTvNameCompany = findViewById(R.id.tvNameCompany);
-        mTvSologan = findViewById(R.id.tvSologanCompany);
+        mTvId = findViewById(R.id.tvCompanyId);
+        mTvNameCompany = findViewById(R.id.tvCompanyName);
+        mTvSologan = findViewById(R.id.tvCompanySlogan);
     }
 
     private void initData() {
         int idCompany = getIntent().getIntExtra(KEY_ID_USER, -1);
         Company company = sqLite.getCompany(idCompany);
         if (company != null) {
-            mTvID.setText(String.valueOf(company.getId()));
+            mTvId.setText(String.valueOf(company.getId()));
             mTvNameCompany.setText(company.getName());
             mTvSologan.setText(company.getSlogan());
         }

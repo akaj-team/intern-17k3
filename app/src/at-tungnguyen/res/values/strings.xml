@@ -34,9 +34,9 @@
     <string name="ID_Company">ID</string>
     <string name="tv_sologan">Sologan</string>
     <string name="tv_namecompany">Company</string>
-    <string name="ID_User">ID</string>
-    <string name="name_user">Name</string>
-    <string name="age_user">Age</string>
+    <string name="text_id_user">ID</string>
+    <string name="text_id_name">Name</string>
+    <string name="text_id_age">Age</string>
     <string name="input">input</string>
     <string name="use_memory">Please use memory</string>
 </resources>

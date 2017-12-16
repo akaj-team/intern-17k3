@@ -26,7 +26,7 @@
         <activity android:name=".ui.savedata.ex2.ExternalActivity" />
         <activity android:name=".ui.savedata.SaveDataActivity" />
         <activity android:name=".ui.savedata.ex3.UserActivity" />
-        <activity android:name=".ui.savedata.ex3.CompanyActivity"></activity>
+        <activity android:name=".ui.savedata.ex3.CompanyActivity"/>
     </application>
 
 </manifest>

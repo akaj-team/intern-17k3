@@ -58,7 +58,6 @@ public class SQLite extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_TABLE_USER);
         sqLiteDatabase.execSQL(CREATE_TABLE_COMPANY);
         sqLiteDatabase.execSQL(CREATE_TABLE_EMPLOYEE);
-
     }
 
     @Override

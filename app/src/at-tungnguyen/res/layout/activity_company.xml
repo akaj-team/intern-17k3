@@ -6,21 +6,21 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tvIDCompany"
+        android:id="@+id/tvCompanyId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ID_Company"
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/tvNameCompany"
+        android:id="@+id/tvCompanyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_namecompany"
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/tvSologanCompany"
+        android:id="@+id/tvCompanySlogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_sologan"
