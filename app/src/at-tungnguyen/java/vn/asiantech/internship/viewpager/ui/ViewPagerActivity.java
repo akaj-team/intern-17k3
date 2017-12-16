@@ -16,6 +16,10 @@ import me.relex.circleindicator.CircleIndicator;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.viewpager.adapter.ViewPagerAdapter;
 
+/**
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 14/12/2017.
+ */
 public class ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
     private ViewPager mViewPager;
     private List<String> mStringList;
@@ -34,7 +38,9 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         initListener();
     }
 
-
+    /**
+     * init Data ViewPager
+     */
     private void initData() {
         mStringList = new ArrayList<>();
         mStringList.add(getResources().getString(R.string.tv_view1));
@@ -42,6 +48,9 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         mStringList.add(getResources().getString(R.string.tv_view3));
     }
 
+    /**
+     * initView ViewPager
+     */
     private void initView() {
         mTvSkipSlide = findViewById(R.id.tvSkip);
         mViewPager = findViewById(R.id.viewPager);
@@ -63,10 +72,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
 
     /**
      * Override OnPageChangeListener
-     *
-     * @param position
      */
-
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         mIsFinishSlide = mLast == mViewPagerAdapter.getCount() - 1;

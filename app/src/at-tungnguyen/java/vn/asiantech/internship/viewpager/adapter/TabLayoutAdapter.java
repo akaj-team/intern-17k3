@@ -12,7 +12,6 @@ import vn.asiantech.internship.viewpager.ui.InfoFragment;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 14/12/2017.
  */
-
 public class TabLayoutAdapter extends FragmentPagerAdapter {
     private String fragments[] = {"Home", "Info"};
 

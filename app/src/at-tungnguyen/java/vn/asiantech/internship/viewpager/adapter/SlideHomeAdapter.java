@@ -13,9 +13,8 @@ import vn.asiantech.internship.viewpager.ui.SlideHomeFragment;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 14/12/2017.
  */
-
 public class SlideHomeAdapter extends FragmentStatePagerAdapter {
-    private ArrayList<Animal> mAnimals ;
+    private ArrayList<Animal> mAnimals;
 
     public SlideHomeAdapter(FragmentManager fm, ArrayList<Animal> animals) {
         super(fm);

@@ -8,9 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.viewpager.adapter.TabLayoutAdapter;
 
+/**
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 14/12/2017.
+ */
 public class TabLayoutActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +45,7 @@ public class TabLayoutActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        mViewPager.setAdapter(new TabLayoutAdapter(getSupportFragmentManager(),getApplicationContext()));
+        mViewPager.setAdapter(new TabLayoutAdapter(getSupportFragmentManager(), getApplicationContext()));
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
