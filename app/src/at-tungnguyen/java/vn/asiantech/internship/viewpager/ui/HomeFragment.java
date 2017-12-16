@@ -20,7 +20,7 @@ import vn.asiantech.internship.viewpager.model.Animal;
  */
 public class HomeFragment extends Fragment {
     private ViewPager mViewPager;
-    public static ArrayList<Animal> mAnimalArrayList;
+    public static ArrayList<Animal> mAnimalArrayList = new ArrayList<>();
 
     public HomeFragment() {
     }
@@ -30,7 +30,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         mViewPager = view.findViewById(R.id.viewPagerHome);
-        mAnimalArrayList = new ArrayList<>();
         initData();
         return view;
     }
