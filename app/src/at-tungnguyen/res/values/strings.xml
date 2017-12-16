@@ -19,13 +19,13 @@
     <string name="btn_division">/</string>
     <string name="tv_result">Result</string>
     <string name="tv_calculator">Calculator</string>
-    <string name="btn_ryceclerview">RecyclerView</string>
-    <string name="btn_savadata">Save Data</string>
+    <string name="btn_recyclerview">RecyclerView</string>
+    <string name="btn_save_data">Save Data</string>
     <string name="edt_hint_number_a">Number A</string>
     <string name="edt_hint_number_b">Number B</string>
     <string name="tv_number_not_0">Number B is not 0</string>
     <string name="tv_login">Create Login Screen</string>
-    <string name="tv_caculator">Calculator View </string>
+    <string name="tv_calculator_view">Calculator View </string>
     <string name="title_activity_shared_preferences">SharedPreferencesActivity</string>
     <string name="btn_result">Result</string>
     <string name="ex_one">Exercise1</string>

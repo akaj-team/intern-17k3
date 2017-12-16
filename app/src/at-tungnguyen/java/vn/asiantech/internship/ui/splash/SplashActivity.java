@@ -35,7 +35,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnCalculator = findViewById(R.id.btnCaculator);
         mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
-
     }
 
     private void initListener() {
@@ -43,7 +42,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnCalculator.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
-
     }
 
     @Override

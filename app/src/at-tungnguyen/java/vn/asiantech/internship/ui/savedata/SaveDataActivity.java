@@ -16,9 +16,9 @@ import vn.asiantech.internship.ui.savedata.ex3.UserActivity;
  * Created by tungnguyen on 08/12/2017.
  */
 public class SaveDataActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button mBtnEx1;
-    private Button mBtnEx2;
-    private Button mBtnEx3;
+    private Button mBtnExercise1;
+    private Button mBtnExercise2;
+    private Button mBtnExercise3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,29 +29,29 @@ public class SaveDataActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initViews() {
-        mBtnEx1 = findViewById(R.id.btnex1);
-        mBtnEx2 = findViewById(R.id.btnex2);
-        mBtnEx3 = findViewById(R.id.btnex3);
+        mBtnExercise1 = findViewById(R.id.btnExercise1);
+        mBtnExercise2 = findViewById(R.id.btnExercise2);
+        mBtnExercise3 = findViewById(R.id.btnExercise3);
     }
 
     private void initListener() {
-        mBtnEx1.setOnClickListener(this);
-        mBtnEx2.setOnClickListener(this);
-        mBtnEx3.setOnClickListener(this);
+        mBtnExercise1.setOnClickListener(this);
+        mBtnExercise2.setOnClickListener(this);
+        mBtnExercise3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnex1:
+            case R.id.btnExercise1:
                 Intent intent1 = new Intent(this, SharedPreferencesActivity.class);
                 startActivity(intent1);
                 break;
-            case R.id.btnex2:
+            case R.id.btnExercise2:
                 Intent intent2 = new Intent(this, ExternalActivity.class);
                 startActivity(intent2);
                 break;
-            case R.id.btnex3:
+            case R.id.btnExercise3:
                 Intent intent3 = new Intent(this, UserActivity.class);
                 startActivity(intent3);
                 break;

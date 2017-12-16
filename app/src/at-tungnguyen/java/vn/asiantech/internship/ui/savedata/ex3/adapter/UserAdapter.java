@@ -65,10 +65,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
          */
         public ViewHolder(View itemView) {
             super(itemView);
-            mTvID = itemView.findViewById(R.id.tvID);
+            mTvID = itemView.findViewById(R.id.tvId);
             mTvName = itemView.findViewById(R.id.tvName);
             mTvAge = itemView.findViewById(R.id.tvAge);
-
         }
 
         private void onBindData(List<User> userList) {

@@ -30,7 +30,6 @@ public class SQLite extends SQLiteOpenHelper {
     private static final String EMPLOYEE_ID = "id";
     private static final String EMPLOYEE_ID_USER = "id_user";
     private static final String EMPLOYEE_ID_COMPANY = "id_company";
-
     private static final int DATABASE_VERSION = 1;
     static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER + "( "
             + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"

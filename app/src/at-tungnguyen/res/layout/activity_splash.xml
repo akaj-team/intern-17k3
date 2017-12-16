@@ -14,7 +14,7 @@
         android:text="@string/tv_login" />
 
     <Button
-        android:id="@+id/btnCaculator"
+        android:id="@+id/btnCalculator"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_calculator" />
@@ -23,11 +23,11 @@
         android:id="@+id/btnRecyclerView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/btn_ryceclerview" />
+        android:text="@string/btn_recyclerview" />
 
     <Button
         android:id="@+id/btnSaveData"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/btn_savadata" />
+        android:text="@string/btn_save_data" />
 </LinearLayout>

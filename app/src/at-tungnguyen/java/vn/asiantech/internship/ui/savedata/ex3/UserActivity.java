@@ -37,8 +37,11 @@ public class UserActivity extends AppCompatActivity implements UserAdapter.OnIte
         initDataEmployee();
     }
 
+    /**
+     * initView RecyclerView
+     */
     private void initView() {
-        mRecyclerView = findViewById(R.id.recyclerviewUser);
+        mRecyclerView = findViewById(R.id.recyclerViewUser);
     }
 
     /**

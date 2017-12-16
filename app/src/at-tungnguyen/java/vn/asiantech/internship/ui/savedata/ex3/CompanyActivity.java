@@ -26,12 +26,18 @@ public class CompanyActivity extends AppCompatActivity {
         initData();
     }
 
+    /**
+     * initView Company
+     */
     private void initView() {
         mTvId = findViewById(R.id.tvCompanyId);
         mTvNameCompany = findViewById(R.id.tvCompanyName);
         mTvSologan = findViewById(R.id.tvCompanySlogan);
     }
 
+    /**
+     * setText Company
+     */
     private void initData() {
         int idCompany = getIntent().getIntExtra(KEY_ID_USER, -1);
         Company company = sqLite.getCompany(idCompany);
