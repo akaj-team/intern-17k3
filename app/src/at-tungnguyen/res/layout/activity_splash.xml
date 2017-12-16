@@ -14,7 +14,7 @@
         android:text="@string/tv_login" />
 
     <Button
-        android:id="@+id/btnCalculator"
+        android:id="@+id/btnCaculator"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_calculator" />
