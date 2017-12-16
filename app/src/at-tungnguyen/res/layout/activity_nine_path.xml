@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context="vn.asiantech.internship.image.NinePathActivity">
-    <EditText
 
+    <EditText
         android:id="@+id/edtNinePath"
+        android:inputType="text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:background="@drawable/ic_bubble"/>
+        android:background="@drawable/ic_bubble" />
 </LinearLayout>
