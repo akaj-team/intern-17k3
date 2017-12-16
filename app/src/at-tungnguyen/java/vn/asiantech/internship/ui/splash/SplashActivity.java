@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
     private void initViews() {
         mBtnLogin = findViewById(R.id.btnLogin);
-        mBtnCalculator = findViewById(R.id.btnCaculator);
+        mBtnCalculator = findViewById(R.id.btnCalculator);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
 
@@ -49,7 +49,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 Intent i = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(i);
                 break;
-            case R.id.btnCaculator:
+            case R.id.btnCalculator:
                 Intent i2 = new Intent(SplashActivity.this, CalculatorActivity.class);
                 startActivity(i2);
                 break;
