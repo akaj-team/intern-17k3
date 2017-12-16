@@ -17,7 +17,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
     private List<Comment> mComments;
     private OnItemClickListener mOnItemClickListener;
 
-    public CommentAdapter(List<Comment> comments, OnItemClickListener onItemClickListener) {
+    CommentAdapter(List<Comment> comments, OnItemClickListener onItemClickListener) {
         mComments = comments;
         mOnItemClickListener = onItemClickListener;
     }
