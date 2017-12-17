@@ -13,8 +13,8 @@ import vn.asiantech.internship.ui.savedata.ex3.model.Company;
  */
 public class CompanyActivity extends AppCompatActivity {
     private TextView mTvNameCompany;
-    private TextView mTvSologan;
-    private TextView mTvId;
+    private TextView mTvSloganCompany;
+    private TextView mTvIdCompany;
     private static final String KEY_ID_USER = "id_user";
     SQLite sqLite = new SQLite(this);
 
@@ -30,9 +30,9 @@ public class CompanyActivity extends AppCompatActivity {
      * initView Company
      */
     private void initView() {
-        mTvId = findViewById(R.id.tvCompanyId);
+        mTvIdCompany = findViewById(R.id.tvCompanyId);
         mTvNameCompany = findViewById(R.id.tvCompanyName);
-        mTvSologan = findViewById(R.id.tvCompanySlogan);
+        mTvSloganCompany = findViewById(R.id.tvCompanySlogan);
     }
 
     /**
@@ -42,9 +42,9 @@ public class CompanyActivity extends AppCompatActivity {
         int idCompany = getIntent().getIntExtra(KEY_ID_USER, -1);
         Company company = sqLite.getCompany(idCompany);
         if (company != null) {
-            mTvId.setText(String.valueOf(company.getId()));
+            mTvIdCompany.setText(String.valueOf(company.getId()));
             mTvNameCompany.setText(company.getName());
-            mTvSologan.setText(company.getSlogan());
+            mTvSloganCompany.setText(company.getSlogan());
         }
     }
 }
