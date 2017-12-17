@@ -18,4 +18,7 @@
     <string name="text_the_rest">.</string>
     <string name="click">Click here</string>
     <string name="text_save">ahihi</string>
+    <string name="file_name">abc.txt</string>
+    <string name="text_error">Error</string>
+    <string name="folder_name">/Hieu/</string>
 </resources>
