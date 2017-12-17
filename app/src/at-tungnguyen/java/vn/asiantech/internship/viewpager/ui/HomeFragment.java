@@ -20,7 +20,7 @@ import vn.asiantech.internship.viewpager.model.Animal;
  */
 public class HomeFragment extends Fragment {
     private ViewPager mViewPager;
-    public static ArrayList<Animal> mAnimalArrayList = new ArrayList<>();
+    private ArrayList<Animal> mAnimalArrayList = new ArrayList<>();
 
     public HomeFragment() {
     }
