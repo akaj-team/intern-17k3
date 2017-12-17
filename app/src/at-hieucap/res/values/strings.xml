@@ -35,4 +35,7 @@
     <string name="information">Information</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
+    <string name="message">Do you want to skip ?</string>
+    <string name="event_cancel">Cancel</string>
+    <string name="event_submit">Ok</string>
 </resources>

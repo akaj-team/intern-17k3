@@ -2,6 +2,7 @@ package vn.asiantech.internship.viewpager.home;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +33,11 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup view, int position) {
-        View myImageLayout = mLayoutInflater.inflate(R.layout.fragment_item, view, false);
-        TextView tvContext = myImageLayout.findViewById(R.id.tvText);
+        View myTextLayout = mLayoutInflater.inflate(R.layout.fragment_item, view, false);
+        TextView tvContext = myTextLayout.findViewById(R.id.tvText);
         tvContext.setText(mListFragment.get(position));
-        view.addView(myImageLayout, 0);
-        return myImageLayout;
+        view.addView(myTextLayout, 0);
+        return myTextLayout;
     }
 
     @Override
