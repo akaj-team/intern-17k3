@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".viewpager.information.InformationActivity"/>
+        <activity android:name=".ui.calculator.CalculatorActivity"/>
+        <activity android:name=".ui.recyclerview.PersonViewActivity"/>
+        <activity android:name=".ui.login.LoginActivity"/>
     </application>
-
 </manifest>

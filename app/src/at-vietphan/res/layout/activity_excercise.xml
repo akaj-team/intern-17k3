@@ -35,7 +35,13 @@
         android:id="@+id/btnRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/recyclerview" />
+        android:text="@string/recycler_view" />
+
+    <Button
+        android:id="@+id/btnDrawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_layout" />
 
     <Button
         android:id="@+id/btnSaveData"
