@@ -3,6 +3,7 @@
     android:height="500px"
     android:viewportHeight="500"
     android:viewportWidth="500">
+
     <path
         android:name="square"
         android:fillColor="#1900ff"
