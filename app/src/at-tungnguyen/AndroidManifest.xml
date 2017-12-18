@@ -20,7 +20,8 @@
         <activity android:name=".ui.login.MainActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".viewpager.ui.ViewPagerActivity" />
-        <activity android:name=".viewpager.ui.TabLayoutActivity"></activity>
+        <activity android:name=".viewpager.ui.TabLayoutActivity"/>
+        <activity android:name=".ui.drawer.DrawerActivity"/>
     </application>
 
 </manifest>

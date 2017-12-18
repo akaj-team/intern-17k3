@@ -7,15 +7,17 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
+import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
+import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.viewpager.ui.ViewPagerActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;
     private Button mBtnCalculator;
     private Button mBtnRecyclerView;
+    private Button mBtnDrawerlayout;
     private Button mBtnViewPager;
 
     @Override
@@ -30,6 +32,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnCalculator = findViewById(R.id.btnCaculator);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
+        mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
         mBtnViewPager = findViewById(R.id.btnViewPager);
 
 
@@ -39,6 +42,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLogin.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
+        mBtnDrawerlayout.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
 
     }
@@ -58,9 +62,13 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 Intent i3 = new Intent(SplashActivity.this, RecyclerViewActivity.class);
                 startActivity(i3);
                 break;
-            case R.id.btnViewPager:
-                Intent i4 = new Intent(SplashActivity.this, ViewPagerActivity.class);
+            case R.id.btnDrawerlayout:
+                Intent i4 = new Intent(SplashActivity.this, DrawerActivity.class);
                 startActivity(i4);
+                break;
+            case R.id.btnViewPager:
+                Intent i5 = new Intent(SplashActivity.this, ViewPagerActivity.class);
+                startActivity(i5);
                 break;
         }
     }

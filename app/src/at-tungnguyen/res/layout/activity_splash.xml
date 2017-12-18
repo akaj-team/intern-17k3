@@ -17,13 +17,20 @@
         android:id="@+id/btnCaculator"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/tv_calculator" />
+        android:text="@string/tv_calculator_view" />
 
     <Button
         android:id="@+id/btnRecyclerView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_ryceclerview" />
+
+    <Button
+        android:id="@+id/btnDrawerlayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_drawerlayout" />
+
 
     <Button
         android:id="@+id/btnViewPager"
