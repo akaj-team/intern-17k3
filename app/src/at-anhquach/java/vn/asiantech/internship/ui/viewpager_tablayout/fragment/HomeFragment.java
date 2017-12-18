@@ -39,16 +39,22 @@ public class HomeFragment extends Fragment {
     }
 
     private void setAnimation() {
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(3);
         viewPager.setPageTransformer(false, new RotationPageTransformer(160));
         viewPager.setPageMargin(-getResources().getDimensionPixelOffset(R.dimen.sile_padding) * 2);
         viewPager.setClipChildren(false);
     }
 
     private void initData() {
-        mCardList.add(new Card("Bear", "Gấu", R.drawable.img_dictionary_bear));
-        mCardList.add(new Card("Bee", "Ong", R.drawable.img_dictionary_bee));
-        mCardList.add(new Card("Elk", "Nai", R.drawable.img_dictionary_elk));
+        mCardList.add(new Card("Bear", "Gấu", R.drawable.img_card_bear));
+        mCardList.add(new Card("Bee", "Ong", R.drawable.img_card_bee));
+        mCardList.add(new Card("Elk", "Nai", R.drawable.img_card_elk));
+        mCardList.add(new Card("Frog", "", R.drawable.img_card_frog));
+        mCardList.add(new Card("Girafe", "Hươu cao ", R.drawable.img_card_girafe));
+        mCardList.add(new Card("Goat", "Dê", R.drawable.img_card_goat));
+        mCardList.add(new Card("Hippo", "Hà ma", R.drawable.img_card_hippo));
+        mCardList.add(new Card("Kangaroo", "Chuột ", R.drawable.img_card_kangaroo));
+        mCardList.add(new Card("Leopard", "Sư tu", R.drawable.img_card_leopard));
     }
 
     private void initAdapter() {
