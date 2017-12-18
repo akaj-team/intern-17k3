@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -29,6 +30,9 @@
         <activity android:name=".ui.savedata.SQLiteActivity" />
         <activity android:name=".ui.savedata.CompanyActivity" />
         <activity android:name=".ui.savedata.SaveDataActivity" />
+        <activity android:name=".ui.loadimage.ImageLoaderActivity" />
+        <activity android:name=".ui.loadimage.NinePathActivity" />
+        <activity android:name=".ui.loadimage.ImageVectorActivity" />
         <activity android:name=".ui.viewpager.SliderActivity" />
         <activity android:name=".ui.viewpager.TabLayoutActivity" />
     </application>
