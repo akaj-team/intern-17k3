@@ -9,6 +9,7 @@ import android.widget.Button;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.image.ImageExerciseActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
+import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
@@ -17,6 +18,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnCalculator;
     private Button mBtnRecyclerView;
     private Button mBtnLoadImage;
+    private Button mBtnDrawerlayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnCalculator = findViewById(R.id.btnCalculator);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
+        mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
     }
 
@@ -37,6 +40,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLogin.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
+        mBtnDrawerlayout.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
     }
 
@@ -44,22 +48,25 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLogin:
-                Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(i);
+                Intent intentLogin = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intentLogin);
                 break;
             case R.id.btnCalculator:
-                Intent i2 = new Intent(SplashActivity.this, CalculatorActivity.class);
-                startActivity(i2);
+                Intent intentCalculator = new Intent(SplashActivity.this, CalculatorActivity.class);
+                startActivity(intentCalculator);
                 break;
             case R.id.btnRecyclerView:
-                Intent i3 = new Intent(SplashActivity.this, RecyclerViewActivity.class);
-                startActivity(i3);
+                Intent intentRecyclerView = new Intent(SplashActivity.this, RecyclerViewActivity.class);
+                startActivity(intentRecyclerView);
+                break;
+            case R.id.btnDrawerlayout:
+                Intent intentDrawer = new Intent(SplashActivity.this, DrawerActivity.class);
+                startActivity(intentDrawer);
                 break;
             case R.id.btnLoadImage:
-                Intent i5 = new Intent(SplashActivity.this, ImageExerciseActivity.class);
-                startActivity(i5);
+                Intent intentLoadImage = new Intent(SplashActivity.this, ImageExerciseActivity.class);
+                startActivity(intentLoadImage);
                 break;
-
         }
     }
 }

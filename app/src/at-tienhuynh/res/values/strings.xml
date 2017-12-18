@@ -50,4 +50,12 @@
     <string name="company_slogan">Slogan : </string>
     <string name="not_installed_google_photos">You not installed Google Photos</string>
     <string name="not_img_picked">You haven\'t picked Image</string>
+    <string name="text_btn_image_screen">Image Screen</string>
+    <string name="name_btn_load_image">Load Image</string>
+    <string name="name_btn_load_from_drawable">From Drawable</string>
+    <string name="name_btn_load_from_asset">From Asset</string>
+    <string name="name_btn_load_from_storage">From Storage</string>
+    <string name="name_btn_load_from_internet">From Internet</string>
+    <string name="name_btn_nine_path">Nine Path</string>
+    <string name="name_btn_draw_vector">Draw Vector</string>
 </resources>

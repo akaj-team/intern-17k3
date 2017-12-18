@@ -44,4 +44,10 @@
     <string name="btn_share_preference">SharePreference</string>
     <string name="btn_external_storage">external storge</string>
     <string name="btn_sqlite_screen">sqlite</string>
+    <string name="tv_information_image">Information Image</string>
+    <string name="edt_ninepath">ninepath</string>
+    <string name="btn_load_image">Load image</string>
+    <string name="btn_ninepath">NinePath</string>
+    <string name="btn_vector">Vector</string>
+    <string name="btn_image_ninepath_vector">Image-Ninepath-Vector</string>
 </resources>
