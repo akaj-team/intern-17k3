@@ -19,7 +19,7 @@ import vn.asiantech.internship.models.Dictionary;
  * Fragment Home
  */
 public class HomeFragment extends Fragment {
-    public static List<Dictionary> mDictionaryList = new ArrayList<>();
+    public static final List<Dictionary> mDictionaryList = new ArrayList<>();
     private ViewPager mViewPagerHome;
 
     public HomeFragment() {
