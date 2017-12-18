@@ -4,9 +4,11 @@
     android:height="300dp"
     android:viewportHeight="100"
     android:viewportWidth="100">
+
     <path
         android:fillColor="#000"
         android:pathData="M 0,0 L0,100 150,100 150,0" />
+
     <path
         android:fillColor="#FFF"
         android:pathData="M 0,50 a 50,50 0 0,0 100,0a 50,50 0 0,0 -100,0" />
