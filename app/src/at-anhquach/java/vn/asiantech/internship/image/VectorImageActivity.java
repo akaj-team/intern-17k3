@@ -8,6 +8,7 @@ import vn.asiantech.internship.R;
 /**
  * Drawable vector image have circler in rectangle
  */
+
 public class VectorImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
