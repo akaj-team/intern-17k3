@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.imageview.ImageActivity;
+import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
@@ -21,6 +23,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnLogin;
     private Button mBtnDrawerLayout;
     private Button mBtnSaveData;
+    private Button mBtnLoadImage;
     private Button mBtnViewPager;
 
     @Override
@@ -37,6 +40,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnDrawerLayout = findViewById(R.id.btnDrawerLayout);
         mBtnSaveData = findViewById(R.id.btnSaveData);
+        mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
     }
 
@@ -46,6 +50,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnLogin.setOnClickListener(this);
         mBtnDrawerLayout.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
+        mBtnLoadImage.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
     }
 
@@ -66,6 +71,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnSaveData:
                 startActivity(new Intent(this, SaveDataActivity.class));
+                break;
+            case R.id.btnLoadImage:
+                startActivity(new Intent(this, ImageActivity.class));
                 break;
             case R.id.btnViewPager:
                 startActivity(new Intent(this, ViewpagerActivity.class));

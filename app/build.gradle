@@ -88,6 +88,7 @@ dependencies {
     implementation 'com.eftimoff:android-viewpager-transformers:1.0.1@aar'
     implementation 'com.romandanylyk:pageindicatorview:0.2.0'
     implementation 'com.android.support:design:26.1.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }
 
 //apply from: "https://raw.githubusercontent.com/tientun/gradle-android-ci-check/master/ci.gradle"
