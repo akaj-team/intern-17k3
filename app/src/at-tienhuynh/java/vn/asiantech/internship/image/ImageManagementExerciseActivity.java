@@ -8,6 +8,10 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Created at 2017
+ * Created by jackty on 30/11/2017.
+ */
 public class ImageManagementExerciseActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoadImage;
     private Button mBtnNinePath;

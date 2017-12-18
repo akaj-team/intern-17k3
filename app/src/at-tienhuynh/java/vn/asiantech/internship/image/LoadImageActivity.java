@@ -14,6 +14,10 @@ import java.io.File;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Created at 2017
+ * Created by jackty on 30/11/2017.
+ */
 public class LoadImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoadFromDrawable;
     private Button mBtnLoadFromAsset;

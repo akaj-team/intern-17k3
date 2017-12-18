@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Created at 2017
+ * Created by jackty on 30/11/2017.
+ */
 public class NinePathActivity extends AppCompatActivity {
 
     @Override
