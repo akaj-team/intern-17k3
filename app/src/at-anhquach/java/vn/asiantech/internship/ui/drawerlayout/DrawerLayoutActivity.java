@@ -27,7 +27,9 @@ import vn.asiantech.internship.ui.calculator.CalculatorViewActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
-
+/**
+ * Create Drawer Layout
+ */
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
     private DrawerLayout mDrawerLayout;
     private RecyclerView mRecyclerViewLeftMenu;
