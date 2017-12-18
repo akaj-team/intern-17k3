@@ -52,7 +52,7 @@ public class ImageManagementExerciseActivity extends AppCompatActivity implement
                 startActivity(new Intent(ImageManagementExerciseActivity.this, NinePathActivity.class));
                 break;
             case R.id.btnDrawVector:
-                startActivity(new Intent(ImageManagementExerciseActivity.this, DrawVectorActivity.class));
+                startActivity(new Intent(ImageManagementExerciseActivity.this, VectorDrawerActivity.class));
                 break;
         }
 

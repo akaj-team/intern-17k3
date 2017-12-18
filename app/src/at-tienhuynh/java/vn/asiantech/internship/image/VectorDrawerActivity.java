@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import vn.asiantech.internship.R;
 
-public class DrawVectorActivity extends AppCompatActivity {
+public class VectorDrawerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_draw_vector);
+        setContentView(R.layout.activity_vector_draw);
     }
 }

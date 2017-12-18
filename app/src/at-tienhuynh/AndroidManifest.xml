@@ -38,7 +38,7 @@
         <activity android:name=".image.ImageManagementExerciseActivity" />
         <activity android:name=".image.LoadImageActivity" />
         <activity android:name=".image.NinePathActivity" />
-        <activity android:name=".image.DrawVectorActivity"></activity>
+        <activity android:name=".image.VectorDrawerActivity" />
     </application>
 
 </manifest>
