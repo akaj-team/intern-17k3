@@ -1,4 +1,4 @@
-package vn.asiantech.internship.drawer;
+package vn.asiantech.internship.ui.drawer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,30 +22,37 @@ import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 
 public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.OnItemClickListener {
-
+    private static final int HEADER = 1;
+    private static final int ITEM = 2;
     private static final int REQUEST_PHOTO_FROM_GOOGLE_PHOTOS = 1;
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private List<DrawerItem> mData;
     private DrawerAdapter mAdapter;
     private RecyclerView mRecyclerView;
-    private static  final int HEADER = 1;
-    private static  final int ITEM = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
-        mToolbar = findViewById(R.id.toolbar);
-        mDrawerLayout = findViewById(R.id.drawerLayout);
-        mRecyclerView = findViewById(R.id.recyclerview);
+        initHeader();
+        initView();
+        initDrawer();
+        initData();
+        initAdapter();
+    }
+
+    private void initHeader() {
         if (getSupportActionBar() != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-        initDrawer();
-        initData();
-        initAdapter();
+    }
+
+    private void initView() {
+        mToolbar = findViewById(R.id.toolbar);
+        mDrawerLayout = findViewById(R.id.drawerLayout);
+        mRecyclerView = findViewById(R.id.recyclerview);
     }
 
     @Override
@@ -81,7 +88,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         mData.add(new DrawerItem("Tung.nguyen2@asiastech.vn", HEADER, R.drawable.profile, "", null));
         mData.add(new DrawerItem("Login", ITEM, R.drawable.ic_inbox_content, "", new Intent(this, MainActivity.class)));
         mData.add(new DrawerItem("Calculator", ITEM, R.drawable.ic_outbox_content, "", new Intent(this, CalculatorActivity.class)));
-        mData.add(new DrawerItem("RecyclerView", ITEM   , R.drawable.ic_trash_content, "", new Intent(this, RecyclerViewActivity.class)));
+        mData.add(new DrawerItem("RecyclerView", ITEM, R.drawable.ic_trash_content, "", new Intent(this, RecyclerViewActivity.class)));
     }
 
     private void initDrawer() {

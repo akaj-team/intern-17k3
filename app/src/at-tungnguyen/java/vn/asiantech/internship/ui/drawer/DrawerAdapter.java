@@ -1,8 +1,6 @@
-package vn.asiantech.internship.drawer;
+package vn.asiantech.internship.ui.drawer;
 
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,17 +42,9 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof HeaderViewHolder) {
-            HeaderViewHolder headerViewHolder = ((HeaderViewHolder) holder);
-            headerViewHolder.mTvHeaderTitle.setText(mDrawerItems.get(position).getName());
-            if (TextUtils.isEmpty(mDrawerItems.get(position).getImageUri())) {
-                headerViewHolder.mImgHeader.setImageResource(mDrawerItems.get(position).getImageResource());
-            } else {
-                headerViewHolder.mImgHeader.setImageURI(Uri.parse(mDrawerItems.get(position).getImageUri()));
-            }
+            ((HeaderViewHolder) holder).onBindDataHeader(position, mDrawerItems);
         } else if (holder instanceof ContentViewHolder) {
-            ContentViewHolder contentViewHolder = ((ContentViewHolder) holder);
-            contentViewHolder.mContent.setText(mDrawerItems.get(position).getName());
-            contentViewHolder.mImageView.setImageResource(mDrawerItems.get(position).getImageResource());
+            ((ContentViewHolder) holder).onBindDataContent(position, mDrawerItems);
         }
     }
 
@@ -83,6 +73,12 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 }
             });
         }
+
+        void onBindDataHeader(int position, List<DrawerItem> drawerItems) {
+            DrawerItem drawerItem = drawerItems.get(position);
+            mTvHeaderTitle.setText(drawerItem.getName());
+            mImgHeader.setImageResource(drawerItem.getImageResource());
+        }
     }
 
     private class ContentViewHolder extends RecyclerView.ViewHolder {
@@ -100,7 +96,14 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 }
             });
         }
+
+        void onBindDataContent(int position, List<DrawerItem> drawerItems) {
+            DrawerItem drawerItem = drawerItems.get(position);
+            mContent.setText(drawerItem.getName());
+            mImageView.setImageResource(drawerItem.getImageResource());
+        }
     }
+
     /**
      * interface OnItemClickListener
      **/

@@ -1,4 +1,4 @@
-package vn.asiantech.internship.drawer;
+package vn.asiantech.internship.ui.drawer;
 
 import android.content.Context;
 import android.graphics.Point;
