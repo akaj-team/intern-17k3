@@ -12,7 +12,6 @@ import vn.asiantech.internship.R;
  * Created by phongle on 14/12/2560.
  * Activity view pager main
  */
-
 public class ViewPagerMainActivity extends AppCompatActivity {
     private ViewPager mViewPagerMain;
     private TabLayout mTabLayoutMain;

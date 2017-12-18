@@ -14,7 +14,6 @@ import vn.asiantech.internship.R;
  * Created by phongle on 14/12/2560.
  * Adapter view pager How o use
  */
-
 public class GuideAdapter extends PagerAdapter {
     private Context mContext;
     private String mListStep[];

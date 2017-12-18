@@ -16,7 +16,6 @@ import vn.asiantech.internship.models.Dictionary;
  * Created by phongle on 14/12/2560.
  * cardDictionaryFragment
  */
-
 public class ItemDictionaryFragment extends Fragment {
     private static final String KEY_POSITION = "position";
     private int fragmentPosition;

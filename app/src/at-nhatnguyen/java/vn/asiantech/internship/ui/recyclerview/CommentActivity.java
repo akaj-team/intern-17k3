@@ -57,6 +57,5 @@ public class CommentActivity extends AppCompatActivity implements CommentAdapter
     public void onClickDislike(int position) {
         mComments.get(position).clickDislike();
         mAdapter.notifyItemChanged(position);
-
     }
 }

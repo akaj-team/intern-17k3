@@ -18,7 +18,6 @@ import vn.asiantech.internship.R;
  * Created by phongle on 15/12/2560.
  * DialogFragment edit information
  */
-
 public class EditInfoDialogFragment extends DialogFragment {
     private EditText mEdtName;
     private EditText mEdtPhone;

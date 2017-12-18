@@ -73,7 +73,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(intent);
                 break;
 //            case R.id.btnDrawerLayoutScreen:
-//                intent = new Intent(AppActivity.this, LoginActivity.class);
+//                intent = new Intent(AppActivity.this, DrawerLayoutActivity.class);
 //                startActivity(intent);
 //                break;
             case R.id.btnSharePreferenceScreen:

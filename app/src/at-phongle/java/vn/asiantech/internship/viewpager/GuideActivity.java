@@ -18,7 +18,6 @@ import vn.asiantech.internship.R;
  * Created by phongle on 14/12/2560.
  * Activity How to Used
  */
-
 public class GuideActivity extends AppCompatActivity {
     final Context mContext = this;
     private ViewPager mViewPager;

@@ -16,7 +16,6 @@ import vn.asiantech.internship.R;
  * Created by phongle on 14/12/2560.
  * Fragment information
  */
-
 public class InformationFragment extends Fragment implements EditInfoDialogFragment.DialogEditInfoListener {
     private TextView mTvName;
     private TextView mTvPhone;

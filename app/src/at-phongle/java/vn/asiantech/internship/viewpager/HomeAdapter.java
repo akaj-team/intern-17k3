@@ -12,7 +12,6 @@ import vn.asiantech.internship.models.Dictionary;
  * Created by phongle on 14/12/2560.
  * HomeAdapter
  */
-
 public class HomeAdapter extends FragmentStatePagerAdapter {
     private List<Dictionary> mDictionaryList;
 

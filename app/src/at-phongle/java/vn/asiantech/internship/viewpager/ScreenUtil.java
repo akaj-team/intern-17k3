@@ -7,7 +7,6 @@ import android.view.WindowManager;
 /**
  * Created by phongle on 15/12/2560.
  */
-
 public final class ScreenUtil {
     private ScreenUtil() {
         // No-opp

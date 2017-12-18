@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
  * Created by phongle on 14/12/2560.
  * MainAdapter
  */
-
 public class MainAdapter extends FragmentPagerAdapter {
     private static final int NUM_ITEMS = 2;
 
