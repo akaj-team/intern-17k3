@@ -54,18 +54,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return mUserArrayLists.size();
     }
 
+    /**
+     * ViewHolder of RecyclerView
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvName;
         private TextView mTvAge;
-        private TextView mTvID;
+        private TextView mTvId;
 
-        /**
-         *
-         * Class ViewHolder of RecyclerView
-         */
         public ViewHolder(View itemView) {
             super(itemView);
-            mTvID = itemView.findViewById(R.id.tvId);
+            mTvId = itemView.findViewById(R.id.tvId);
             mTvName = itemView.findViewById(R.id.tvName);
             mTvAge = itemView.findViewById(R.id.tvAge);
         }
@@ -73,7 +72,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         private void onBindData(List<User> userList) {
             User users = userList.get(getAdapterPosition());
             if (users != null) {
-                mTvID.setText(String.valueOf(users.getId()));
+                mTvId.setText(String.valueOf(users.getId()));
                 mTvName.setText(users.getName());
                 mTvAge.setText(String.valueOf(users.getAge()));
             }
@@ -81,7 +80,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     /**
-     * This is Javadoc, interface OnItemClickListener
+     * interface OnItemClickListener
      */
     public interface OnItemClickListener {
         void onItemClickListener(int potion);

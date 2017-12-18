@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.savedata.ex3.adapter.UserAdapter;
-import vn.asiantech.internship.ui.savedata.ex3.sql.SQLite;
+import vn.asiantech.internship.ui.savedata.ex3.sql.SQLiteActivity;
 import vn.asiantech.internship.ui.savedata.ex3.model.Company;
 import vn.asiantech.internship.ui.savedata.ex3.model.Employee;
 import vn.asiantech.internship.ui.savedata.ex3.model.User;
@@ -21,8 +21,8 @@ import vn.asiantech.internship.ui.savedata.ex3.model.User;
  */
 public class UserActivity extends AppCompatActivity implements UserAdapter.OnItemClickListener {
     private RecyclerView mRecyclerView;
-    SQLite sqLite = new SQLite(this);
-    private ArrayList<User> sqLiteUser;
+    SQLiteActivity sqLite = new SQLiteActivity(this);
+    private ArrayList<User> mSqLiteUser;
     private static final String KEY_ID_USER = "id_user";
 
 
@@ -48,8 +48,8 @@ public class UserActivity extends AppCompatActivity implements UserAdapter.OnIte
      * Set Adapter to RecyclerView
      */
     private void initAdapterUser() {
-        sqLiteUser = sqLite.getUser();
-        UserAdapter userAdapter = new UserAdapter(sqLiteUser, this, this);
+        mSqLiteUser = sqLite.getUser();
+        UserAdapter userAdapter = new UserAdapter(mSqLiteUser, this, this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(userAdapter);
     }
@@ -87,7 +87,7 @@ public class UserActivity extends AppCompatActivity implements UserAdapter.OnIte
     @Override
     public void onItemClickListener(int position) {
         Intent i = new Intent(this, CompanyActivity.class);
-        i.putExtra(KEY_ID_USER, sqLiteUser.get(position).getId());
+        i.putExtra(KEY_ID_USER, mSqLiteUser.get(position).getId());
         startActivity(i);
     }
 }

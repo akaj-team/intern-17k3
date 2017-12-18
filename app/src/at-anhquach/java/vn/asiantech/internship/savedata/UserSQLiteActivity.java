@@ -13,7 +13,7 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.User;
 
 /**
- * User SQLite Activity
+ * User SQLiteActivity Activity
  */
 public class UserSQLiteActivity extends AppCompatActivity implements UserAdapter.OnItemClickListener {
     private RecyclerView mRecyclerViewUser;

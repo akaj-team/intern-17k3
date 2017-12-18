@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.savedata.ex3.sql.SQLite;
+import vn.asiantech.internship.ui.savedata.ex3.sql.SQLiteActivity;
 import vn.asiantech.internship.ui.savedata.ex3.model.Company;
 
 /**
@@ -16,7 +16,7 @@ public class CompanyActivity extends AppCompatActivity {
     private TextView mTvSloganCompany;
     private TextView mTvIdCompany;
     private static final String KEY_ID_USER = "id_user";
-    SQLite sqLite = new SQLite(this);
+    SQLiteActivity sqLite = new SQLiteActivity(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

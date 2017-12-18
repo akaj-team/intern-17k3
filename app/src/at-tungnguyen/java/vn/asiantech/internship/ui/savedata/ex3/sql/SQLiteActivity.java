@@ -16,7 +16,7 @@ import vn.asiantech.internship.ui.savedata.ex3.model.User;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 08/12/2017.
  */
-public class SQLite extends SQLiteOpenHelper {
+public class SQLiteActivity extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "User.db";
     private static final String TABLE_USER = "User";
     private static final String TABLE_COMPANY = "Company";
@@ -48,7 +48,7 @@ public class SQLite extends SQLiteOpenHelper {
             + " FOREIGN KEY (" + EMPLOYEE_ID_USER + ") REFERENCES " + CREATE_TABLE_USER + "(" + USER_ID + "));"
             + " FOREIGN KEY (" + EMPLOYEE_ID_COMPANY + ") REFERENCES " + CREATE_TABLE_COMPANY + "(" + COMPANY_ID + "));";
 
-    public SQLite(Context context) {
+    public SQLiteActivity(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
