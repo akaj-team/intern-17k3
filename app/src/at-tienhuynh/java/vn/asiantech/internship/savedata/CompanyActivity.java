@@ -29,7 +29,7 @@ public class CompanyActivity extends AppCompatActivity {
     }
 
     /**
-     * Get id_user from SQLiteActivity Activity
+     * Get id_user from SQLite Activity
      */
     private void getIdUser() {
         Bundle bundle = getIntent().getExtras();

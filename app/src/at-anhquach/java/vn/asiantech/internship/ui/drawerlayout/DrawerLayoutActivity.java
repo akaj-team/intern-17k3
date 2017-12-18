@@ -56,7 +56,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         mIssueList.add(new Issue(R.drawable.ic_sms_failed_black_24dp, "Create Recycler View", new Intent(this, RecyclerViewActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Share Preference", new Intent(this, SharePreferenceActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "External Storage", new Intent(this, ExternalStorageActivity.class)));
-        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLiteActivity", new Intent(this, UserSQLiteActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLite", new Intent(this, UserSQLiteActivity.class)));
     }
 
     private void initDrawer() {
