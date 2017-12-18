@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentPagerAdapter;
  * Adapter for ViewPagerMainActivity
  */
 public class FragmentMainAdapter extends FragmentPagerAdapter {
+    private static final int POSITION_HOME = 0;
+    private static final int POSITION_INFORMATION = 1;
 
     public FragmentMainAdapter(FragmentManager fm) {
         super(fm);
@@ -18,10 +20,10 @@ public class FragmentMainAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         Fragment fragment = null;
         switch (position) {
-            case 0:
+            case POSITION_HOME:
                 fragment = new HomeFragment();
                 break;
-            case 1:
+            case POSITION_INFORMATION:
                 fragment = new InforFragment();
                 break;
         }
@@ -37,10 +39,10 @@ public class FragmentMainAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         String title = "";
         switch (position) {
-            case 0:
+            case POSITION_HOME:
                 title = "Home";
                 break;
-            case 1:
+            case POSITION_INFORMATION:
                 title = "Infor";
                 break;
         }

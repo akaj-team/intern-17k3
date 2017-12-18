@@ -1,6 +1,8 @@
 package vn.asiantech.internship.ui.viewpager;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -51,15 +53,17 @@ public class UpdateDialog extends DialogFragment {
         return view;
     }
 
+    @NonNull
     @Override
-    public void onStart() {
-        super.onStart();
-        if (getDialog() == null) {
-            return;
-        }
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.setContentView(R.layout.update_dialog);
         float dialogWidth = (float) (getActivity().getWindowManager().getDefaultDisplay().getWidth() * 0.9);
         float dialogHeight = (float) (getActivity().getWindowManager().getDefaultDisplay().getHeight() * 0.9);
-        getDialog().getWindow().setLayout((int)dialogWidth, (int)dialogHeight);
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setLayout((int) dialogWidth, (int) dialogHeight);
+        }
+        return dialog;
     }
 
     public void sendBackResult() {

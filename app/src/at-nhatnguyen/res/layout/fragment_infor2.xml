@@ -43,6 +43,7 @@
         style="@style/Base.TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/selector_click_button_dialog"
         android:text="@string/update"
         android:textSize="20dp" />
 </LinearLayout>

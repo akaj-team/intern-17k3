@@ -39,9 +39,9 @@
     <string name="update">Update</string>
     <string name="ok">ok</string>
     <string name="cancel">cancel</string>
-    <string name="no_name">chua co ten</string>
-    <string name="no_old">chua co tuoi</string>
-    <string name="no_house">chua co nha</string>
+    <string name="no_name">Chưa có tên</string>
+    <string name="no_old">Chưa có tuổi</string>
+    <string name="no_house">Chưa có nhà</string>
     <string name="message_dialog">Do you want to skip ?</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_ok">ok</string>
