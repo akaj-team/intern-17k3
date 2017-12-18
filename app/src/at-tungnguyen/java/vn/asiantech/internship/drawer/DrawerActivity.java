@@ -29,6 +29,8 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     private List<DrawerItem> mData;
     private DrawerAdapter mAdapter;
     private RecyclerView mRecyclerView;
+    private static  final int HEADER = 1;
+    private static  final int ITEM = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,14 +78,14 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
 
     private void initData() {
         mData = new ArrayList<>();
-        mData.add(new DrawerItem("Tung.nguyen2@asiastech.vn", 1, R.drawable.profile, "", null));
-        mData.add(new DrawerItem("Login", 2, R.drawable.ic_inbox_content, "", new Intent(this, MainActivity.class)));
-        mData.add(new DrawerItem("Calculator", 2, R.drawable.ic_outbox_content, "", new Intent(this, CalculatorActivity.class)));
-        mData.add(new DrawerItem("RecyclerView", 2, R.drawable.ic_trash_content, "", new Intent(this, RecyclerViewActivity.class)));
+        mData.add(new DrawerItem("Tung.nguyen2@asiastech.vn", HEADER, R.drawable.profile, "", null));
+        mData.add(new DrawerItem("Login", ITEM, R.drawable.ic_inbox_content, "", new Intent(this, MainActivity.class)));
+        mData.add(new DrawerItem("Calculator", ITEM, R.drawable.ic_outbox_content, "", new Intent(this, CalculatorActivity.class)));
+        mData.add(new DrawerItem("RecyclerView", ITEM   , R.drawable.ic_trash_content, "", new Intent(this, RecyclerViewActivity.class)));
     }
 
     private void initDrawer() {
-        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout, mToolbar, R.string.open, R.string.close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -100,8 +102,8 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
                 super.onDrawerClosed(drawerView);
             }
         };
-        mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
-        mActionBarDrawerToggle.syncState();
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
     }
 
     private void initAdapter() {
