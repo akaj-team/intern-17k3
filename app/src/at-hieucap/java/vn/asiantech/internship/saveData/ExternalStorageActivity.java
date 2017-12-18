@@ -34,8 +34,6 @@ public class ExternalStorageActivity extends AppCompatActivity {
                     // Make directory
                     fileExternal.mkdirs();
                     File abc = new File(fileExternal.getPath(), getResources().getString(R.string.file_name));
-                    Log.d("vv", "onClick: " + abc.getPath());
-
                     try {
                         FileOutputStream outputStream = new FileOutputStream(abc);
                         OutputStreamWriter bufferedOutputStream = new OutputStreamWriter(outputStream, "UTF-8");

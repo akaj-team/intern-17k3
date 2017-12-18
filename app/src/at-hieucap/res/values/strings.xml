@@ -21,4 +21,10 @@
     <string name="file_name">abc.txt</string>
     <string name="text_error">Error</string>
     <string name="folder_name">/Hieu/</string>
+    <string name="exercises_save_data">Exercises save data</string>
+    <string name="btnSharePreference">Share Preference</string>
+    <string name="database">Database</string>
+    <string name="slogan_is_empty">Slogan is empty</string>
+    <string name="in_external">In External</string>
+    <string name="event_company_is_empty">Company is empty</string>
 </resources>

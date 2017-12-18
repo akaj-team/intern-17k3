@@ -11,13 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="vn.asiantech.internship.saveData.ExternalStorageActivity">
+        <activity android:name="vn.asiantech.internship.saveData.SaveDataActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".saveData.SharePreferenceActivity" />
+        <activity android:name=".saveData.ExternalStorageActivity" />
+        <activity android:name=".saveData.SaveDatabaseActivity" />
+        <activity android:name=".saveData.CompanyActivity"/>
     </application>
-
 </manifest>
