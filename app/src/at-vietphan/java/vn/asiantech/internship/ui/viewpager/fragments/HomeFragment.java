@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
         }
 
         mViewPagerVocabulary.setAdapter(mVocabularyAdapter);
-        mViewPagerVocabulary.setPageTransformer(true, new RotationPageTransformer(160));
+        mViewPagerVocabulary.setPageTransformer(true, new RotationPageTransformer(165));
         mViewPagerVocabulary.setOffscreenPageLimit(3);
         mViewPagerVocabulary.setPageMargin((int) getResources().getDimension(R.dimen.margin_view_pager));
         mViewPagerVocabulary.setClipChildren(false);
