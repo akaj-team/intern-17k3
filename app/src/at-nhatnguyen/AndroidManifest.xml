@@ -6,6 +6,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -31,6 +32,10 @@
         <activity android:name=".ui.savedata.SaveExternalActivity" />
         <activity android:name=".ui.savedata.SaveDatabaseActivity" />
         <activity android:name=".ui.savedata.CompanyActivity" />
+        <activity android:name=".ui.imageview.LoadImageActivity" />
+        <activity android:name=".ui.imageview.ImageActivity" />
+        <activity android:name=".ui.imageview.ScaleImageActivity" />
+        <activity android:name=".ui.imageview.VectorImageActivity" />
     </application>
 
 </manifest>
