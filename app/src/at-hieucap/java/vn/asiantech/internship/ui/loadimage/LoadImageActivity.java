@@ -16,10 +16,10 @@ import vn.asiantech.internship.R;
 public class LoadImageActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int RESULT_LOAD_IMAGE = 1;
     private ImageView mImgContainImage;
-    private Button mBtnChoiceDrawable;
-    private Button mBtnChoiceAssets;
-    private Button mBtnChoiceStorage;
-    private Button mBtnChoiceInternet;
+    private Button mBtnDrawableChoice;
+    private Button mBtnAssetsChoice;
+    private Button mBtnStorageChoice;
+    private Button mBtnInternetChoice;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,17 +31,17 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
 
     private void initViews() {
         mImgContainImage = findViewById(R.id.imgContainImage);
-        mBtnChoiceDrawable = findViewById(R.id.btnDrawable);
-        mBtnChoiceAssets = findViewById(R.id.btnAsset);
-        mBtnChoiceStorage = findViewById(R.id.btnStorage);
-        mBtnChoiceInternet = findViewById(R.id.btnInternet);
+        mBtnDrawableChoice = findViewById(R.id.btnDrawable);
+        mBtnAssetsChoice = findViewById(R.id.btnAsset);
+        mBtnStorageChoice = findViewById(R.id.btnStorage);
+        mBtnInternetChoice = findViewById(R.id.btnInternet);
     }
 
     private void addListener() {
-        mBtnChoiceDrawable.setOnClickListener(this);
-        mBtnChoiceAssets.setOnClickListener(this);
-        mBtnChoiceStorage.setOnClickListener(this);
-        mBtnChoiceInternet.setOnClickListener(this);
+        mBtnDrawableChoice.setOnClickListener(this);
+        mBtnAssetsChoice.setOnClickListener(this);
+        mBtnStorageChoice.setOnClickListener(this);
+        mBtnInternetChoice.setOnClickListener(this);
     }
 
     @Override
