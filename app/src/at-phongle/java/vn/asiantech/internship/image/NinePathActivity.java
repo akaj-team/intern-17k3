@@ -10,7 +10,6 @@ import vn.asiantech.internship.R;
  * Created by phongle on 12/12/2560.
  * Ninepath activity
  */
-
 public class NinePathActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

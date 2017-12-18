@@ -4,7 +4,6 @@ package vn.asiantech.internship.models;
  * Created by phongle on 12/12/2560.
  * model Image
  */
-
 public class Image {
     private String imageUrl;
     private int imageDrawerble;

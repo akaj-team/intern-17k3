@@ -13,7 +13,6 @@ import vn.asiantech.internship.R;
  * Created by phongle on 13/12/2560.
  * Image-Ninepath-Vector activity
  */
-
 public class ImageNinepathVectorActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoadImage;
     private Button mBtnNinepath;

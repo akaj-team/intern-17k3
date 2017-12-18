@@ -19,7 +19,6 @@ import vn.asiantech.internship.models.Image;
  * Created by phongle on 12/12/2560.
  * Adapter RecyclerView Image
  */
-
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
     private List<Image> mImageList;
     private Context mContext;
