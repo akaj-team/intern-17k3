@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.calculator;
+package vn.asiantech.internship.calculator;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

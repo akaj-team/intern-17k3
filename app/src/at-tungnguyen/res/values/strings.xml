@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">tungnguyen-17k3</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="tv_name_email">Tung.nguyen2@asiantech.vn</string>
     <string name="tv_title">Welcome to urbi</string>
     <string name="btn_login_fb">Log in with facebook</string>
     <string name="btn_sign_up">Log in with phone number</string>
@@ -20,9 +23,13 @@
     <string name="tv_result">Result</string>
     <string name="tv_calculator">Calculator</string>
     <string name="btn_ryceclerview">RecyclerView</string>
+    <string name="tv_drawerlayout">Drawerlayout</string>
     <string name="edt_hint_number_a">Number A</string>
     <string name="edt_hint_number_b">Number B</string>
     <string name="tv_number_not_0">Number B is not 0</string>
     <string name="tv_login">Create Login Screen</string>
-    <string name="tv_caculator">Calculator View </string>
+    <string name="tv_calculator_view">Calculator View </string>
+    <string name="tv_toolbar">Home</string>
+    <string name="have_not_picked_img">Not picked</string>
+
 </resources>

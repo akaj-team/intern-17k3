@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
+import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 import vn.asiantech.internship.savedata.ExerciseManagementActivity;
@@ -20,6 +21,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnSaveDataScreen;
     private Button mBtnDrawerLayoutScreen;
     private Button mBtnViewPagerScreen;
+    private Button mBtnImageScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
         mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
         mBtnViewPagerScreen = findViewById(R.id.btnViewPager);
+        mBtnImageScreen = findViewById(R.id.btnImageScreen);
     }
 
     private void initListener() {
@@ -47,6 +50,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnDrawerLayoutScreen.setOnClickListener(this);
         mBtnRecyclerViewScreen.setOnClickListener(this);
         mBtnViewPagerScreen.setOnClickListener(this);
+        mBtnImageScreen.setOnClickListener(this);
     }
 
     @Override
@@ -66,6 +70,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnDrawerLayout:
                 startActivity(new Intent(this, DrawerLayoutActivity.class));
+                break;
+            case R.id.btnImageScreen:
+                startActivity(new Intent(this, ImageManagementExerciseActivity.class));
                 break;
             case R.id.btnViewPager:
                 startActivity(new Intent(this, SlideActivity.class));

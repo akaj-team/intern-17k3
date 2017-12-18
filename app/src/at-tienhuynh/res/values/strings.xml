@@ -72,4 +72,12 @@
     <string name="btn_name_confirm_update">OK</string>
     <string name="btn_name_cancel_update">Cancel</string>
     <string name="edt_null">please input values</string>
+    <string name="text_btn_image_screen">Image Screen</string>
+    <string name="name_btn_load_image">Load Image</string>
+    <string name="name_btn_load_from_drawable">From Drawable</string>
+    <string name="name_btn_load_from_asset">From Asset</string>
+    <string name="name_btn_load_from_storage">From Storage</string>
+    <string name="name_btn_load_from_internet">From Internet</string>
+    <string name="name_btn_nine_path">Nine Path</string>
+    <string name="name_btn_draw_vector">Draw Vector</string>
 </resources>
