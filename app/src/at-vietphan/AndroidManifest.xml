@@ -30,7 +30,7 @@
         <activity android:name=".ui.savedata.SQLiteActivity" />
         <activity android:name=".ui.savedata.CompanyActivity" />
         <activity android:name=".ui.savedata.SaveDataActivity" />
-        <activity android:name=".ui.loadimage.LoadImageActivity" />
+        <activity android:name=".ui.loadimage.ImageLoaderActivity" />
         <activity android:name=".ui.loadimage.NinePathActivity" />
         <activity android:name=".ui.loadimage.ImageVectorActivity" />
     </application>

@@ -11,6 +11,7 @@ import vn.asiantech.internship.R;
  * NicePathActivity: load image nine path in edittext
  */
 public class NinePathActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

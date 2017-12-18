@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
-import vn.asiantech.internship.ui.loadimage.LoadImageActivity;
+import vn.asiantech.internship.ui.loadimage.ImageLoaderActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
@@ -70,7 +70,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this, SaveDataActivity.class));
                 break;
             case R.id.btnLoadImage:
-                startActivity(new Intent(this, LoadImageActivity.class));
+                startActivity(new Intent(this, ImageLoaderActivity.class));
                 break;
         }
     }

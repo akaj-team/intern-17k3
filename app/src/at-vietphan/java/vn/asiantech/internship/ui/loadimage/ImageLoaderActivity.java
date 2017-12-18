@@ -18,9 +18,9 @@ import vn.asiantech.internship.R;
 
 /**
  * Created by vietphan on 12/12/2017.
- * LoadImageActivity: load image use picasso
+ * ImageLoaderActivity: load image use picasso
  */
-public class LoadImageActivity extends AppCompatActivity implements View.OnClickListener {
+public class ImageLoaderActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView mImgPicasso;
     private Button mBtnDrawable;
     private Button mBtnAssets;
@@ -73,13 +73,13 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btnStorage:
                 Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath() + "/Pictures/apple_mac_os_x_el_capitan.jpg"));
-                Picasso.with(LoadImageActivity.this)
+                Picasso.with(ImageLoaderActivity.this)
                         .load(uri)
                         .placeholder(R.mipmap.ic_launcher)
                         .into(mImgPicasso);
                 break;
             case R.id.btnInternet:
-                Picasso.with(LoadImageActivity.this)
+                Picasso.with(ImageLoaderActivity.this)
                         .load("https://goo.gl/u9wuW9")
                         .placeholder(R.mipmap.ic_launcher)
                         .into(mImgPicasso);
