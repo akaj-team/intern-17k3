@@ -56,7 +56,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     }
 
     @Override
-    public void onclickHeaderitem(View view, int position) {
+    public void onClickHeaderitem(View view, int position) {
         Intent intentToResolve = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intentToResolve.setType("image/*");
         if (GoogleUtil.isGooglePhotosInstalled(this)) {
@@ -68,7 +68,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
     }
 
     @Override
-    public void onclickContentitem(View view, int position) {
+    public void onClickContentitem(View view, int position) {
         Intent intent = mData.get(position).getIntent();
         startActivity(intent);
     }

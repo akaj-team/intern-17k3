@@ -69,7 +69,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mImgHeader.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onItemClickListener.onclickHeaderitem(view, getAdapterPosition());
+                    onItemClickListener.onClickHeaderitem(view, getAdapterPosition());
                 }
             });
         }
@@ -92,7 +92,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mContent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mOnItemClickListener.onclickContentitem(view, getAdapterPosition());
+                    mOnItemClickListener.onClickContentitem(view, getAdapterPosition());
                 }
             });
         }
@@ -109,8 +109,8 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
      **/
     public interface OnItemClickListener {
 
-        void onclickHeaderitem(View view, int position);
+        void onClickHeaderitem(View view, int position);
 
-        void onclickContentitem(View view, int position);
+        void onClickContentitem(View view, int position);
     }
 }
