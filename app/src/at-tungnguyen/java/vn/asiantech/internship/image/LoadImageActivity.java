@@ -21,10 +21,9 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
     private Button mBtnLoadDrawable;
     private Button mBtnLoadAsset;
     private Button mBtnLoadInternet;
-    private Button mBtnStorage;;
-    private Button mBtnLoadVector;
-    private Button mBtnLoadNinePath;
+    private Button mBtnStorage;
     private ImageView mImgLoadImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +37,6 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
         mBtnLoadDrawable = findViewById(R.id.btnLoadDrawable);
         mBtnLoadInternet = findViewById(R.id.btnLoadInternet);
         mBtnStorage = findViewById(R.id.btnLoadStorage);
-        mBtnLoadVector = findViewById(R.id.btnLoadVector);
-        mBtnLoadNinePath = findViewById(R.id.btnLoadNinePath);
         mImgLoadImage = findViewById(R.id.imgLoad);
     }
 
@@ -53,7 +50,7 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnLoadAsset:
                 String imageAsset = "file:///android_asset/ic_messi.jpg";
                 Picasso.with(this).load(imageAsset).into(mImgLoadImage);

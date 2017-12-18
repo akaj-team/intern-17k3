@@ -48,7 +48,7 @@ public class ImageExerciseActivity extends AppCompatActivity implements View.OnC
                 startActivity(intentNinePath);
                 break;
             case R.id.btnLoadVector:
-                Intent intentVector = new Intent(this, ImageExerciseActivity.class);
+                Intent intentVector = new Intent(this, VectorActivity.class);
                 startActivity(intentVector);
                 break;
         }

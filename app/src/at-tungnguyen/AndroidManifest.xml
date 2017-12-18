@@ -25,7 +25,7 @@
         <activity android:name=".image.LoadImageActivity" />
         <activity android:name=".image.ImageExerciseActivity" />
         <activity android:name=".image.NinePathActivity" />
-        <activity android:name=".image.VectorActivity"></activity>
+        <activity android:name=".image.VectorActivity"/>
     </application>
 
 </manifest>

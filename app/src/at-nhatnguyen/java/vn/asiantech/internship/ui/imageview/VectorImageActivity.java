@@ -1,4 +1,4 @@
-package vn.asiantech.internship.image;
+package vn.asiantech.internship.ui.imageview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,12 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import vn.asiantech.internship.R;
 
 /**
- * Drawable NinePath with EditText
+ * This class use for load vector image
  */
-public class NinePathActivity extends AppCompatActivity {
+public class VectorImageActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nine_path);
+        setContentView(R.layout.activity_vector_image);
     }
 }
