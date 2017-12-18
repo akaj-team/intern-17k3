@@ -14,6 +14,7 @@ import vn.asiantech.internship.recyclerview.PostActivity;
 import vn.asiantech.internship.savedata.ExternalStorageActivity;
 import vn.asiantech.internship.savedata.PersonActivity;
 import vn.asiantech.internship.savedata.SharePreferenceActivity;
+import vn.asiantech.internship.viewpager.GuideActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
@@ -23,6 +24,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
     private Button mSharePreferenceScreen;
     private Button mExternalStorageScreen;
     private Button mSQLiteScreen;
+    private Button mBtnViewPager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mSharePreferenceScreen = findViewById(R.id.btnSharePreferenceScreen);
         mExternalStorageScreen = findViewById(R.id.btnExternalStorageScreen);
         mSQLiteScreen = findViewById(R.id.btnSQLiteScreen);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
     }
 
     private void addListener() {
@@ -50,6 +53,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mSharePreferenceScreen.setOnClickListener(this);
         mExternalStorageScreen.setOnClickListener(this);
         mSQLiteScreen.setOnClickListener(this);
+        mBtnViewPager.setOnClickListener(this);
     }
 
     @Override
@@ -82,6 +86,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btnSQLiteScreen:
                 intent = new Intent(AppActivity.this, PersonActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnViewPager:
+                intent = new Intent(AppActivity.this, GuideActivity.class);
                 startActivity(intent);
                 break;
         }

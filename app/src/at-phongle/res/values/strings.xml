@@ -38,4 +38,13 @@
     <string name="btn_external_storage">external storge</string>
     <string name="btn_sqlite_screen">sqlite</string>
     <string name="tv_step_for_use">Step 1</string>
+    <string name="tv_skip">Skip</string>
+    <string name="alert_skip_title">Skip all step</string>
+    <string name="alert_skip_message">Do you want to skip guide?</string>
+    <string name="btn_update_info">Update</string>
+    <string name="edt_edit_name">Name</string>
+    <string name="edt_edit_phone">Phone number</string>
+    <string name="edt_edit_hometown">Hometown</string>
+    <string name="btn_cancel">cancel</string>
+    <string name="btn_viewpager">ViewPager</string>
 </resources>
