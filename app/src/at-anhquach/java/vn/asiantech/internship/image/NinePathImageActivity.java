@@ -8,7 +8,6 @@ import vn.asiantech.internship.R;
 /**
  * Make a nine path image to converation edit text
  */
-
 public class NinePathImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
