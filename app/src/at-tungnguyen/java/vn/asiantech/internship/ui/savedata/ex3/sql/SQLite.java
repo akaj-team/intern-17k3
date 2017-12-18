@@ -13,9 +13,9 @@ import vn.asiantech.internship.ui.savedata.ex3.model.Employee;
 import vn.asiantech.internship.ui.savedata.ex3.model.User;
 
 /**
- * This is Javadoc, SQLite of User,Company
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 08/12/2017.
  */
-
 public class SQLite extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "User.db";
     private static final String TABLE_USER = "User";

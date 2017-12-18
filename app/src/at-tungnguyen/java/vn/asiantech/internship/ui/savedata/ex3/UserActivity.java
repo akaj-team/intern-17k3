@@ -85,9 +85,9 @@ public class UserActivity extends AppCompatActivity implements UserAdapter.OnIte
      * Onclick item RecyclerView
      */
     @Override
-    public void onItemClickListener(int potion) {
+    public void onItemClickListener(int position) {
         Intent i = new Intent(this, CompanyActivity.class);
-        i.putExtra(KEY_ID_USER, sqLiteUser.get(potion).getId());
+        i.putExtra(KEY_ID_USER, sqLiteUser.get(position).getId());
         startActivity(i);
     }
 }
