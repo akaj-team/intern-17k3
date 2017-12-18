@@ -25,6 +25,11 @@
         <activity android:name=".savedata.ExternalStorageActivity" />
         <activity android:name=".savedata.PersonActivity" />
         <activity android:name=".savedata.DetailCompanyActivity" />
+        <activity android:name=".drawerlayout.DrawerLayoutActivity" />
+        <activity android:name=".image.ImageNinepathVectorActivity" />
+        <activity android:name=".image.ImageActivity" />
+        <activity android:name=".image.NinePathActivity" />
+        <activity android:name=".image.VectorActivity" />
         <activity android:name=".viewpager.GuideActivity" />
         <activity android:name=".viewpager.ViewPagerMainActivity" />
     </application>

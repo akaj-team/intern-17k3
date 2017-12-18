@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         mDictionaryList.add(new Dictionary("Sư tử", "Lion", R.drawable.bg_lion));
         mDictionaryList.add(new Dictionary("Gấu", "Bear", R.drawable.bg_bear));
         mDictionaryList.add(new Dictionary("Báo", "Leopard", R.drawable.bg_leopard));
-        mDictionaryList.add(new Dictionary("Ong", "Beo", R.drawable.bg_bee));
+        mDictionaryList.add(new Dictionary("Ong", "Bee", R.drawable.bg_bee));
         mDictionaryList.add(new Dictionary("Ếch", "Frog", R.drawable.bg_frog));
         mDictionaryList.add(new Dictionary("Nai", "Elk", R.drawable.bg_elk));
     }
@@ -48,8 +48,9 @@ public class HomeFragment extends Fragment {
     private void initAdapter() {
         HomeAdapter homeAdapter = new HomeAdapter(getFragmentManager(), mDictionaryList);
         mViewPagerHome.setAdapter(homeAdapter);
-        mViewPagerHome.setPageTransformer(true, new RotationPageTransformer(150, 1));
-        mViewPagerHome.setPageMargin(-(getResources().getDimensionPixelOffset(R.dimen.card_padding)) * 2);
         mViewPagerHome.setOffscreenPageLimit(3);
+        mViewPagerHome.setPageTransformer(true, new RotationPageTransformer(160));
+        mViewPagerHome.setPageMargin(-(getResources().getDimensionPixelOffset(R.dimen.card_padding)) * 2);
+        mViewPagerHome.setClipChildren(false);
     }
 }

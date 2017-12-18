@@ -54,4 +54,10 @@
     <string name="edt_edit_hometown">Hometown</string>
     <string name="btn_cancel">cancel</string>
     <string name="btn_viewpager">ViewPager</string>
+    <string name="tv_information_image">Information Image</string>
+    <string name="edt_ninepath">ninepath</string>
+    <string name="btn_load_image">Load image</string>
+    <string name="btn_ninepath">NinePath</string>
+    <string name="btn_vector">Vector</string>
+    <string name="btn_image_ninepath_vector">Image-Ninepath-Vector</string>
 </resources>
