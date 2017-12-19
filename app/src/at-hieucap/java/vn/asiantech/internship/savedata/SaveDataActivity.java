@@ -9,6 +9,9 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Create Activity Save Data
+ */
 public class SaveDataActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnSharePreference;
     private Button mBtnInExternal;

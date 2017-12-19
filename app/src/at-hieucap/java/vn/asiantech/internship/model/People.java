@@ -1,19 +1,22 @@
 package vn.asiantech.internship.model;
 
+/**
+ * Create item list : People
+ */
 public class People {
-    private int iDPeople;
+    private int idPeople;
     private String namePeople;
     private int agePeople;
 
     public People() {
     }
 
-    public int getIDPeople() {
-        return iDPeople;
+    public int getIdPeople() {
+        return idPeople;
     }
 
-    public void setIDPeople(int iDPeople) {
-        this.iDPeople = iDPeople;
+    public void setIdPeople(int idPeople) {
+        this.idPeople = idPeople;
     }
 
     public String getNamePeople() {

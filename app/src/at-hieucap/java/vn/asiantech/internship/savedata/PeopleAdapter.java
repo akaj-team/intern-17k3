@@ -11,6 +11,9 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.People;
 
+/**
+ * Create People Adapter
+ */
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder> {
     private List<People> mPeoples;
     private OnItemClickListener mOnItemClickListener;
@@ -27,7 +30,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         peopleViewHolder.mTvNamePeople.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mOnItemClickListener.onClickItem((peopleViewHolder.getAdapterPosition()));
+                mOnItemClickListener.onClickItem(peopleViewHolder.getAdapterPosition());
             }
         });
         return peopleViewHolder;
@@ -45,10 +48,16 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         return mPeoples.size();
     }
 
+    /**
+     * Create interface On Item Click Listener
+     */
     public interface OnItemClickListener {
         void onClickItem(int position);
     }
 
+    /**
+     * Create People View Holder
+     */
     static class PeopleViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvIdPeople;
         private TextView mTvNamePeople;
@@ -62,7 +71,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         }
 
         private void onBindData(People people) {
-            mTvIdPeople.setText(String.valueOf(people.getIDPeople()));
+            mTvIdPeople.setText(String.valueOf(people.getIdPeople()));
             mTvNamePeople.setText(people.getNamePeople());
             mTvSlogan.setText(String.valueOf(people.getAgePeople()));
         }

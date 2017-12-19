@@ -16,6 +16,9 @@ import java.util.Scanner;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Create external storage activity
+ */
 public class ExternalStorageActivity extends AppCompatActivity {
     private EditText mEdtSaveData;
     private Button mBtnSaveData;

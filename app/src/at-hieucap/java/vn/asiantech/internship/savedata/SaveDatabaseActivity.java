@@ -12,6 +12,9 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.People;
 
+/**
+ * Create Activity Save Database
+ */
 public class SaveDatabaseActivity extends AppCompatActivity implements PeopleAdapter.OnItemClickListener {
     static final String KEY_ID_COMPANY = "id_company";
     private RecyclerView mRecyclerViewUser;
@@ -34,15 +37,15 @@ public class SaveDatabaseActivity extends AppCompatActivity implements PeopleAda
     private void initData() {
         mPeoples = new ArrayList<>();
         mPeopleSQLite = new PeopleSQLite(this);
-        mPeopleSQLite.insertUSER(1, "Anh A", 20);
-        mPeopleSQLite.insertUSER(2, "Anh B", 21);
-        mPeopleSQLite.insertUSER(3, "Anh C", 20);
-        mPeopleSQLite.insertUSER(4, "Anh D", 18);
-        mPeopleSQLite.insertUSER(5, "Anh E", 18);
-        mPeopleSQLite.insertUSER(6, "Anh F", 22);
-        mPeopleSQLite.insertUSER(8, "Anh G", 25);
-        mPeopleSQLite.insertUSER(9, "Anh H", 20);
-        mPeopleSQLite.insertUSER(10, "Anh I", 23);
+        mPeopleSQLite.insertUser(1, "Anh A", 20);
+        mPeopleSQLite.insertUser(2, "Anh B", 21);
+        mPeopleSQLite.insertUser(3, "Anh C", 20);
+        mPeopleSQLite.insertUser(4, "Anh D", 18);
+        mPeopleSQLite.insertUser(5, "Anh E", 18);
+        mPeopleSQLite.insertUser(6, "Anh F", 22);
+        mPeopleSQLite.insertUser(8, "Anh G", 25);
+        mPeopleSQLite.insertUser(9, "Anh H", 20);
+        mPeopleSQLite.insertUser(10, "Anh I", 23);
         mPeopleSQLite.insertCompany(11, "Company A", "CEO");
         mPeopleSQLite.insertCompany(12, "Company B", "CFO");
         mPeopleSQLite.insertCompany(13, "Company C", "CPO");
@@ -69,7 +72,7 @@ public class SaveDatabaseActivity extends AppCompatActivity implements PeopleAda
     @Override
     public void onClickItem(int position) {
         Intent intent = new Intent(this, CompanyActivity.class);
-        intent.putExtra(KEY_ID_COMPANY, mPeopleSQLite.getIdCompany(mPeoples.get(position).getIDPeople()));
+        intent.putExtra(KEY_ID_COMPANY, mPeopleSQLite.getIdCompany(mPeoples.get(position).getIdPeople()));
         startActivity(intent);
     }
 }

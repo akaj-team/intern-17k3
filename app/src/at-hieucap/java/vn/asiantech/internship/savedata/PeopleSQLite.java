@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import vn.asiantech.internship.model.Company;
 import vn.asiantech.internship.model.People;
 
+/**
+ * Create People SQLite
+ */
 public class PeopleSQLite extends SQLiteOpenHelper {
     private static final String DATABASE = "company";
     // Table name
@@ -72,7 +75,7 @@ public class PeopleSQLite extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    void insertUSER(int id, String name, int age) {
+    void insertUser(int id, String name, int age) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(PEOPLE_ID, id);
@@ -112,7 +115,7 @@ public class PeopleSQLite extends SQLiteOpenHelper {
         People people;
         while (!cursor.isAfterLast()) {
             people = new People();
-            people.setIDPeople(cursor.getInt(cursor.getColumnIndex(PEOPLE_ID)));
+            people.setIdPeople(cursor.getInt(cursor.getColumnIndex(PEOPLE_ID)));
             people.setNamePeople(cursor.getString(cursor.getColumnIndex(PEOPLE_NAME)));
             people.setAgePeople(cursor.getInt(cursor.getColumnIndex(PEOPLE_AGE)));
             userCompanies.add(people);

@@ -8,6 +8,9 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Company;
 
+/**
+ * Create company activity
+ */
 public class CompanyActivity extends AppCompatActivity {
     private TextView mTvNameCompany;
     private TextView mTvSlogan;

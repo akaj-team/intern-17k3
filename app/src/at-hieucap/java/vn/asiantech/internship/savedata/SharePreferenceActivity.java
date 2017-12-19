@@ -11,6 +11,9 @@ import android.widget.EditText;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Create Share Preference Activity
+ */
 public class SharePreferenceActivity extends AppCompatActivity {
     private EditText mEdtTextSave;
     private Button mBtnClick;

@@ -1,5 +1,8 @@
 package vn.asiantech.internship.model;
 
+/**
+ * Create item list : Company
+ */
 public class Company {
     private int idCompany;
     private String nameCompany;
