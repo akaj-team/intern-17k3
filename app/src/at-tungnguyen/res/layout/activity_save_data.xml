@@ -6,23 +6,23 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.image.ImageExerciseActivity">
+    tools:context="vn.asiantech.internship.ui.savedata.SaveDataActivity">
 
     <Button
-        android:id="@+id/btnLoadImage"
-        android:layout_width="300dp"
+        android:id="@+id/btnExercise1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_loadimage" />
+        android:text="@string/ex_one" />
 
     <Button
-        android:id="@+id/btnLoadNinePath"
-        android:layout_width="300dp"
+        android:id="@+id/btnExercise2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_ninepath" />
+        android:text="@string/ex_two" />
 
     <Button
-        android:id="@+id/btnLoadVector"
-        android:layout_width="300dp"
-        android:text="@string/btn_vector"
-        android:layout_height="wrap_content" />
+        android:id="@+id/btnExercise3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ex_three" />
 </LinearLayout>

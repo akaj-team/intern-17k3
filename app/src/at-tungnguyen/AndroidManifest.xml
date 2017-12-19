@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.asiantech.internship">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -26,7 +28,12 @@
         <activity android:name=".image.ImageExerciseActivity" />
         <activity android:name=".image.NinePathActivity" />
         <activity android:name=".image.VectorActivity" />
-        <activity android:name=".ui.drawer.DrawerActivity"/>
+        <activity android:name=".ui.drawer.DrawerActivity" />
+        <activity android:name=".ui.savedata.ex1.SharedPreferencesActivity" />
+        <activity android:name=".ui.savedata.ex2.ExternalActivity" />
+        <activity android:name=".ui.savedata.SaveDataActivity" />
+        <activity android:name=".ui.savedata.ex3.UserActivity" />
+        <activity android:name=".ui.savedata.ex3.CompanyActivity" />
     </application>
 
 </manifest>

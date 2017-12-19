@@ -12,13 +12,19 @@ import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
+import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
+/**
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 08/12/2017.
+ */
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;
     private Button mBtnCalculator;
     private Button mBtnRecyclerView;
     private Button mBtnLoadImage;
     private Button mBtnDrawerlayout;
+    private Button mBtnSaveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,22 +34,34 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         initListener();
     }
 
+    /**
+     * initView SplashActivity
+     */
     private void initViews() {
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnCalculator = findViewById(R.id.btnCalculator);
+        mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
     }
 
+    /**
+     * initListener SplashActivity
+     */
     private void initListener() {
         mBtnLogin.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
         mBtnDrawerlayout.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
+        mBtnSaveData.setOnClickListener(this);
     }
 
+    /**
+     *
+     * Onclick between Activity
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -58,6 +76,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnRecyclerView:
                 Intent intentRecyclerView = new Intent(SplashActivity.this, RecyclerViewActivity.class);
                 startActivity(intentRecyclerView);
+                break;
+            case R.id.btnSaveData:
+                Intent intentSaveData = new Intent(SplashActivity.this, SaveDataActivity.class);
+                startActivity(intentSaveData);
                 break;
             case R.id.btnDrawerlayout:
                 Intent intentDrawer = new Intent(SplashActivity.this, DrawerActivity.class);
