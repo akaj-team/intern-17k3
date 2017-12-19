@@ -47,7 +47,6 @@ public class LoadImageActivity extends AppCompatActivity implements View.OnClick
         mBtnStorage.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
