@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.ui;
+package vn.asiantech.internship.ui.viewpager.ui;
 
 
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.viewpager.model.Animal;
+import vn.asiantech.internship.ui.viewpager.model.Animal;
 
 
 /**
@@ -24,6 +24,7 @@ public class SlideHomeFragment extends Fragment {
     private View mView;
 
     public SlideHomeFragment() {
+        //No-opp
     }
 
     @Override

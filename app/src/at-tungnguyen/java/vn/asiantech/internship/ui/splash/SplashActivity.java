@@ -11,14 +11,20 @@ import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
-import vn.asiantech.internship.viewpager.ui.ViewPagerActivity;
+import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.viewpager.ui.ViewPagerActivity;
 
+/**
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 08/12/2017.
+ */
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLogin;
     private Button mBtnCalculator;
     private Button mBtnRecyclerView;
     private Button mBtnDrawerlayout;
     private Button mBtnViewPager;
+    private Button mBtnSaveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,45 +36,48 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
     private void initViews() {
         mBtnLogin = findViewById(R.id.btnLogin);
-        mBtnCalculator = findViewById(R.id.btnCaculator);
+        mBtnCalculator = findViewById(R.id.btnCalculator);
+        mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
         mBtnViewPager = findViewById(R.id.btnViewPager);
-
-
     }
 
     private void initListener() {
         mBtnLogin.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
+        mBtnSaveData.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
         mBtnDrawerlayout.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLogin:
-                Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(i);
+                Intent intentLogin = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intentLogin);
                 break;
-            case R.id.btnCaculator:
-                Intent i2 = new Intent(SplashActivity.this, CalculatorActivity.class);
-                startActivity(i2);
+            case R.id.btnCalculator:
+                Intent intentCalculator = new Intent(SplashActivity.this, CalculatorActivity.class);
+                startActivity(intentCalculator);
                 break;
             case R.id.btnRecyclerView:
-                Intent i3 = new Intent(SplashActivity.this, RecyclerViewActivity.class);
-                startActivity(i3);
+                Intent intentRecyclerView = new Intent(SplashActivity.this, RecyclerViewActivity.class);
+                startActivity(intentRecyclerView);
+                break;
+            case R.id.btnSaveData:
+                Intent intentSaveData = new Intent(SplashActivity.this, SaveDataActivity.class);
+                startActivity(intentSaveData);
                 break;
             case R.id.btnDrawerlayout:
-                Intent i4 = new Intent(SplashActivity.this, DrawerActivity.class);
-                startActivity(i4);
+                Intent intentDrawerLayout = new Intent(SplashActivity.this, DrawerActivity.class);
+                startActivity(intentDrawerLayout);
                 break;
             case R.id.btnViewPager:
-                Intent i5 = new Intent(SplashActivity.this, ViewPagerActivity.class);
-                startActivity(i5);
+                Intent intentViewPager = new Intent(SplashActivity.this, ViewPagerActivity.class);
+                startActivity(intentViewPager);
                 break;
         }
     }

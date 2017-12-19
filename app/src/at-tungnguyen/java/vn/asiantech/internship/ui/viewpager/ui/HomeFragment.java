@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.ui;
+package vn.asiantech.internship.ui.viewpager.ui;
 
 
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.viewpager.adapter.SlideHomeAdapter;
-import vn.asiantech.internship.viewpager.model.Animal;
+import vn.asiantech.internship.ui.viewpager.adapter.SlideHomeAdapter;
+import vn.asiantech.internship.ui.viewpager.model.Animal;
 
 
 /**
@@ -23,7 +23,9 @@ public class HomeFragment extends Fragment {
     private ArrayList<Animal> mAnimalArrayList = new ArrayList<>();
 
     public HomeFragment() {
+        //No-opp
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="vn.asiantech.internship.viewpager.ui.DialogInfoFragment">
+    tools:context=".ui.viewpager.ui.DialogInfoFragment">
 
     <TextView
         style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"

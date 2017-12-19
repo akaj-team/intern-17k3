@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.ui;
+package vn.asiantech.internship.ui.viewpager.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator;
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.viewpager.adapter.ViewPagerAdapter;
+import vn.asiantech.internship.ui.viewpager.adapter.ViewPagerAdapter;
 
 /**
  * Author Asian Tech Inc.

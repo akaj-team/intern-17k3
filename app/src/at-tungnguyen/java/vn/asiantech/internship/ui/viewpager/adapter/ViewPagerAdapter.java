@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.adapter;
+package vn.asiantech.internship.ui.viewpager.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -32,7 +32,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view.equals(object);
+        return view == object;
     }
 
     @Override

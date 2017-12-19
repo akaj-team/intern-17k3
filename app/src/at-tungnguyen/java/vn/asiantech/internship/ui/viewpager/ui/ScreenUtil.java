@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.ui;
+package vn.asiantech.internship.ui.viewpager.ui;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

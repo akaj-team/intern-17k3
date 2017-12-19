@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.model;
+package vn.asiantech.internship.ui.viewpager.model;
 
 /**
  * Author Asian Tech Inc.

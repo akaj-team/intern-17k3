@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.ui;
+package vn.asiantech.internship.ui.viewpager.ui;
 
 
 import android.app.Dialog;
@@ -43,7 +43,6 @@ public class DialogInfoFragment extends DialogFragment implements View.OnClickLi
         window.requestFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.fragment_dialog_info);
         if (window != null) {
-//            window.setBackgroundDrawableResource(android.R.color.transparent);
             window.setLayout((int) (ScreenUtil.getWidthScreen(getActivity()) * 0.9), (int) (ScreenUtil.getHeightScreen(getActivity()) * 0.9));
         }
         return dialog;
@@ -84,7 +83,6 @@ public class DialogInfoFragment extends DialogFragment implements View.OnClickLi
                 break;
             case R.id.btnDialogCancle:
                 getDialog().dismiss();
-                break;
         }
     }
 
@@ -100,5 +98,4 @@ public class DialogInfoFragment extends DialogFragment implements View.OnClickLi
     public interface DialogFragment {
         void onFinishEditDialog(String edtName, String edtAddress);
     }
-
 }

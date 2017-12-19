@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.adapter;
+package vn.asiantech.internship.ui.viewpager.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 
-import vn.asiantech.internship.viewpager.model.Animal;
-import vn.asiantech.internship.viewpager.ui.SlideHomeFragment;
+import vn.asiantech.internship.ui.viewpager.model.Animal;
+import vn.asiantech.internship.ui.viewpager.ui.SlideHomeFragment;
 
 /**
  * Author Asian Tech Inc.

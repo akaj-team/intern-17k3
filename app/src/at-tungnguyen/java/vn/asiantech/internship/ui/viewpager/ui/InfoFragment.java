@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.ui;
+package vn.asiantech.internship.ui.viewpager.ui;
 
 
 import android.os.Bundle;
@@ -23,19 +23,18 @@ public class InfoFragment extends Fragment implements DialogInfoFragment.DialogF
     private View mView;
 
     public InfoFragment() {
+        //No-opp
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_info, container, false);
-
         initView();
+
         mBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 showDialog();
             }
         });
@@ -53,7 +52,6 @@ public class InfoFragment extends Fragment implements DialogInfoFragment.DialogF
         DialogInfoFragment dialogInfoFragment = new DialogInfoFragment();
         dialogInfoFragment.setTargetFragment(InfoFragment.this, 300);
         dialogInfoFragment.show(fm, null);
-
     }
 
     @Override

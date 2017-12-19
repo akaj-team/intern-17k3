@@ -1,12 +1,12 @@
-package vn.asiantech.internship.viewpager.adapter;
+package vn.asiantech.internship.ui.viewpager.adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import vn.asiantech.internship.viewpager.ui.HomeFragment;
-import vn.asiantech.internship.viewpager.ui.InfoFragment;
+import vn.asiantech.internship.ui.viewpager.ui.HomeFragment;
+import vn.asiantech.internship.ui.viewpager.ui.InfoFragment;
 
 /**
  * Author Asian Tech Inc.
