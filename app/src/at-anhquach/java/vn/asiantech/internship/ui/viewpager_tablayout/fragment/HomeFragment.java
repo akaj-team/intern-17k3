@@ -16,7 +16,7 @@ import vn.asiantech.internship.ui.viewpager_tablayout.RotationPageTransformer;
 import vn.asiantech.internship.ui.viewpager_tablayout.adapter.CardAdapter;
 
 public class HomeFragment extends Fragment {
-    public List<Card> mCardList = new ArrayList<>();
+    public static List<Card> mCardList = new ArrayList<>();
     private ViewPager viewPager;
 
     public HomeFragment newInstance() {
@@ -46,15 +46,15 @@ public class HomeFragment extends Fragment {
     }
 
     private void initData() {
-        mCardList.add(new Card(1, "Bear", "Gau", R.drawable.img_card_bear));
-        mCardList.add(new Card(2, "Bee", "Ong", R.drawable.img_card_bee));
-        mCardList.add(new Card(3, "Elk", "Nai", R.drawable.img_card_elk));
-        mCardList.add(new Card(4, "Frog", "", R.drawable.img_card_frog));
-        mCardList.add(new Card(5, "Girafe", "Hươu cao ", R.drawable.img_card_girafe));
-        mCardList.add(new Card(6, "Goat", "Dê", R.drawable.img_card_goat));
-        mCardList.add(new Card(7, "Hippo", "Hà ma", R.drawable.img_card_hippo));
-        mCardList.add(new Card(8, "Kangaroo", "Chuột ", R.drawable.img_card_kangaroo));
-        mCardList.add(new Card(9, "Leopard", "Sư tu", R.drawable.img_card_leopard));
+        mCardList.add(new Card(1,"Bear","Gau", R.drawable.img_card_bear));
+        mCardList.add(new Card(2,"Bee", "Ong", R.drawable.img_card_bee));
+        mCardList.add(new Card(3,"Elk", "Nai", R.drawable.img_card_elk));
+        mCardList.add(new Card(4,"Frog", "", R.drawable.img_card_frog));
+        mCardList.add(new Card(5,"Girafe", "Hươu cao ", R.drawable.img_card_girafe));
+        mCardList.add(new Card(6,"Goat", "Dê", R.drawable.img_card_goat));
+        mCardList.add(new Card(7,"Hippo", "Hà ma", R.drawable.img_card_hippo));
+        mCardList.add(new Card(8,"Kangaroo", "Chuột ", R.drawable.img_card_kangaroo));
+        mCardList.add(new Card(9,"Leopard", "Sư tu", R.drawable.img_card_leopard));
     }
 
     private void initAdapter() {
