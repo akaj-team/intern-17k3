@@ -74,7 +74,6 @@ public class InformationDialogFragment extends DialogFragment implements View.On
                 break;
             case R.id.tvCancel:
                 dismiss();
-                break;
         }
     }
 

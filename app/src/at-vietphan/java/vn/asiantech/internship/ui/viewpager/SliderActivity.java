@@ -25,7 +25,7 @@ import vn.asiantech.internship.ui.viewpager.adapter.SliderStepAdapter;
  * Created by vietphan on 13/12/2017.
  * Class SliderActivity
  */
-public class SliderActivity extends AppCompatActivity implements View.OnClickListener {
+public class SliderActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
     private PagerAdapter mPagerAdapter;
     private ViewPager mViewPager;
     private List<Step> mSteps;
@@ -59,28 +59,7 @@ public class SliderActivity extends AppCompatActivity implements View.OnClickLis
     private void initAdapter() {
         mPagerAdapter = new SliderStepAdapter(mSteps);
         mViewPager.setAdapter(mPagerAdapter);
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (pageEnd && position == selectedPageIndex) {
-                    startActivity(new Intent(SliderActivity.this, TabLayoutActivity.class));
-                }
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                selectedPageIndex = position;
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                if (state == ViewPager.SCROLL_STATE_DRAGGING) {
-                    if (selectedPageIndex == mPagerAdapter.getCount() - 1) {
-                        pageEnd = true;
-                    }
-                }
-            }
-        });
+        mViewPager.addOnPageChangeListener(this);
         mTvSkip.setOnClickListener(this);
     }
 
@@ -105,5 +84,26 @@ public class SliderActivity extends AppCompatActivity implements View.OnClickLis
         AlertDialog dialog = builder.create();
         dialog.setCancelable(false);
         dialog.show();
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        if (pageEnd && position == selectedPageIndex) {
+            startActivity(new Intent(SliderActivity.this, TabLayoutActivity.class));
+        }
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        selectedPageIndex = position;
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        if (state == ViewPager.SCROLL_STATE_DRAGGING) {
+            if (selectedPageIndex == mPagerAdapter.getCount() - 1) {
+                pageEnd = true;
+            }
+        }
     }
 }
