@@ -46,5 +46,6 @@
     <string name="use_memory">Please use memory</string>
     <string name="tv_toolbar">Home</string>
     <string name="have_not_picked_img">Not picked</string>
+    <string name="btn_thread">Thread-Handler</string>
 
 </resources>

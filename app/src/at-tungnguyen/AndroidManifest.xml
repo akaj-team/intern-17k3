@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.asiantech.internship">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -25,8 +26,9 @@
         <activity android:name=".ui.savedata.ex2.ExternalActivity" />
         <activity android:name=".ui.savedata.SaveDataActivity" />
         <activity android:name=".ui.savedata.ex3.UserActivity" />
-        <activity android:name=".ui.savedata.ex3.CompanyActivity"/>
-        <activity android:name=".ui.drawer.DrawerActivity"/>
+        <activity android:name=".ui.savedata.ex3.CompanyActivity" />
+        <activity android:name=".ui.drawer.DrawerActivity" />
+        <activity android:name=".ui.Thread.ThreadActivity"></activity>
     </application>
 
 </manifest>
