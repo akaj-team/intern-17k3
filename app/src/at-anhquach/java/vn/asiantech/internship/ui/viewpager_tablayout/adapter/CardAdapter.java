@@ -20,7 +20,7 @@ public class CardAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position < mCards.size()) {
-            return CardFragment.newInstance(position);
+            return CardFragment.newInstance(mCards.get(position));
         }
         return null;
     }

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.model.Card;
 
 public class CardFragment extends Fragment {
 
@@ -18,11 +19,12 @@ public class CardFragment extends Fragment {
     private TextView mTvEnglish;
     private TextView mTvVietNamese;
     private ImageView mImgImage;
+    private Card mCard;
 
-    public static CardFragment newInstance(int id) {
+    public static CardFragment newInstance(Card card) {
         CardFragment cardFragment = new CardFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_ID, id);
+        args.putParcelable(ARG_ID, card);
         cardFragment.setArguments(args);
         return cardFragment;
     }
@@ -32,7 +34,7 @@ public class CardFragment extends Fragment {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
         if (args != null) {
-            this.mAnimailId = args.getInt(ARG_ID,-1);
+            this.mCard = args.getParcelable(ARG_ID);
         }
     }
 
@@ -41,7 +43,7 @@ public class CardFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_card, container, false);
         initViews(view);
-        setData(mAnimailId);
+        setData();
         return view;
     }
 
@@ -51,9 +53,9 @@ public class CardFragment extends Fragment {
         mImgImage = view.findViewById(R.id.imgImage);
     }
 
-    private void setData(int mAnimailId) {
-        mTvEnglish.setText(HomeFragment.mCardList.get(mAnimailId).getEnglishWord());
-        mTvVietNamese.setText(HomeFragment.mCardList.get(mAnimailId).getVietnamWord());
-        mImgImage.setImageResource(HomeFragment.mCardList.get(mAnimailId).getImage());
+    private void setData() {
+        mTvEnglish.setText(mCard.getEnglishWord());
+        mTvVietNamese.setText(mCard.getVietnamWord());
+        mImgImage.setImageResource(mCard.getImage());
     }
 }
