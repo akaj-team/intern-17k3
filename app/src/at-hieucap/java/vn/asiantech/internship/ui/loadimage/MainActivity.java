@@ -9,6 +9,9 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Create Main Activity
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoadImage;
     private Button mBtnImageVector;

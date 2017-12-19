@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Create Nine Path Activity
+ */
 public class NinePathActivity extends AppCompatActivity {
 
     @Override
