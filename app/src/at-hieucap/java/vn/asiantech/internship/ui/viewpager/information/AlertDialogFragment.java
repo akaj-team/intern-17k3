@@ -50,8 +50,11 @@ public class AlertDialogFragment extends DialogFragment implements View.OnClickL
         Bundle bundle = getArguments();
         if (bundle != null) {
             mEdtName.setText(bundle.getString("name"));
+            mEdtName.setSelection(mEdtName.getText().length());
             mEdtPhone.setText(bundle.getString("number"));
+            mEdtPhone.setSelection(mEdtPhone.getText().length());
             mEdtStatus.setText(bundle.getString("status"));
+            mEdtStatus.setSelection(mEdtStatus.getText().length());
         }
         btnSubmit.setOnClickListener(this);
         btnCancel.setOnClickListener(this);

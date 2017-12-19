@@ -97,13 +97,13 @@ public class InitialActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(InitialActivity.this);
                 builder.setMessage(R.string.message)
-                        .setPositiveButton(R.string.event_cancel, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                            }
-                        })
-                        .setNegativeButton(R.string.event_submit, new DialogInterface.OnClickListener() {
+                        .setPositiveButton(R.string.event_submit, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 startActivity();
+                            }
+                        })
+                        .setNegativeButton(R.string.event_cancel, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
                             }
                         });
                 builder.create();
@@ -111,9 +111,4 @@ public class InitialActivity extends AppCompatActivity {
             }
         });
     }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//    }
 }

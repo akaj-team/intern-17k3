@@ -15,7 +15,6 @@ import vn.asiantech.internship.R;
  */
 public class HomeActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
-    private Button mBtnBack;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
