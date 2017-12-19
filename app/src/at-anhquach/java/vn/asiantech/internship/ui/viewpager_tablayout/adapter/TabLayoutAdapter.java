@@ -7,23 +7,23 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 public class TabLayoutAdapter extends FragmentPagerAdapter {
-    private List<Fragment> mFragmentList;
+    private List<Fragment> mFragments;
     private List<String> mFragmentTittles;
 
     public TabLayoutAdapter(FragmentManager fm, List<Fragment> fragmentList, List<String> fragmentTittles) {
         super(fm);
-        this.mFragmentList = fragmentList;
+        this.mFragments = fragmentList;
         this.mFragmentTittles = fragmentTittles;
     }
 
 
     @Override
     public Fragment getItem(int position) {
-        return mFragmentList.get(position);
+        return mFragments.get(position);
     }
 
     public void addFrag(Fragment fragment, String title) {
-        mFragmentList.add(fragment);
+        mFragments.add(fragment);
         mFragmentTittles.add(title);
     }
 
@@ -34,6 +34,6 @@ public class TabLayoutAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return mFragmentList.size();
+        return mFragments.size();
     }
 }

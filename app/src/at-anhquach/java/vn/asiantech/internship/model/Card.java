@@ -2,14 +2,16 @@ package vn.asiantech.internship.model;
 
 /**
  * Created by anh.quach on 12/14/17.
+ * Class model Card
  */
-
 public class Card {
-    String englishWord;
-    String vietnamWord;
-    int image;
+    private int idCard;
+    private String englishWord;
+    private String vietnamWord;
+    private int image;
 
-    public Card(String englishWord, String vietnamWord, int image) {
+    public Card(int idCard, String englishWord, String vietnamWord, int image) {
+        this.idCard = idCard;
         this.englishWord = englishWord;
         this.vietnamWord = vietnamWord;
         this.image = image;
@@ -19,16 +21,8 @@ public class Card {
         return englishWord;
     }
 
-    public void setEnglishWord(String englishWord) {
-        this.englishWord = englishWord;
-    }
-
     public String getVietnamWord() {
         return vietnamWord;
-    }
-
-    public void setVietnamWord(String vietnamWord) {
-        this.vietnamWord = vietnamWord;
     }
 
     public int getImage() {
@@ -37,5 +31,13 @@ public class Card {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public int getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(int idCard) {
+        this.idCard = idCard;
     }
 }

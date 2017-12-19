@@ -10,16 +10,16 @@ import vn.asiantech.internship.model.Card;
 import vn.asiantech.internship.ui.viewpager_tablayout.fragment.CardFragment;
 
 public class CardAdapter extends FragmentStatePagerAdapter {
-    private List<Card> mCardList;
+    private List<Card> mCards;
 
-    public CardAdapter(FragmentManager fm, List<Card> dictionaries) {
+    public CardAdapter(FragmentManager fm, List<Card> cards) {
         super(fm);
-        this.mCardList = dictionaries;
+        this.mCards = cards;
     }
 
     @Override
     public Fragment getItem(int position) {
-        if (position < mCardList.size()) {
+        if (position < mCards.size()) {
             return CardFragment.newInstance(position);
         }
         return null;
@@ -32,6 +32,6 @@ public class CardAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return mCardList.size();
+        return mCards.size();
     }
 }

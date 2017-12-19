@@ -20,7 +20,7 @@ public class StepActivity extends AppCompatActivity {
     private TextView mTvSkip;
     private boolean mIsLastStep;
     private int mLaststep;
-    private StepAdapter mViewPagerAdapter;
+    private StepAdapter mStepAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +47,14 @@ public class StepActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-        mViewPagerAdapter = new StepAdapter(StepActivity.this, mStrs, mColors);
-        mViewPager.setAdapter(mViewPagerAdapter);
+        mStepAdapter = new StepAdapter(StepActivity.this, mStrs, mColors);
+        mViewPager.setAdapter(mStepAdapter);
         CircleIndicator indicator = findViewById(R.id.circleIndicator);
         indicator.setViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                mIsLastStep = (mLaststep == (mViewPagerAdapter.getCount() - 1));
+                mIsLastStep = (mLaststep == (mStepAdapter.getCount() - 1));
                 mLaststep = position;
             }
 

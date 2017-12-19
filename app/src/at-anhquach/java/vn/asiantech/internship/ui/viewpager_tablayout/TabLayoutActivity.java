@@ -17,9 +17,9 @@ import vn.asiantech.internship.ui.viewpager_tablayout.fragment.InfoFragment;
 
 public class TabLayoutActivity extends AppCompatActivity {
     private ViewPager mViewPagerMain;
-    private List<Fragment> mFragmentList = new ArrayList<>();
+    private List<Fragment> mFragments = new ArrayList<>();
     private TabLayout mTabLayoutMain;
-    private List<String> mFragmentTittle = new ArrayList<>();
+    private List<String> mFragmentTittles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class TabLayoutActivity extends AppCompatActivity {
 
     private void initAdapterViewPager() {
         FragmentManager manager = getSupportFragmentManager();
-        TabLayoutAdapter mTabLayoutAdapter = new TabLayoutAdapter(manager, mFragmentList, mFragmentTittle);
+        TabLayoutAdapter mTabLayoutAdapter = new TabLayoutAdapter(manager, mFragments, mFragmentTittles);
         mTabLayoutAdapter.addFrag(new HomeFragment(), getString(R.string.title_tablayout_home));
         mTabLayoutAdapter.addFrag(new InfoFragment(), getString(R.string.title_tablayout_info));
         mViewPagerMain.setAdapter(mTabLayoutAdapter);
