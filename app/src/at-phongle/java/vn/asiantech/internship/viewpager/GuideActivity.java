@@ -1,6 +1,5 @@
 package vn.asiantech.internship.viewpager;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import vn.asiantech.internship.R;
  * Activity How to Used
  */
 public class GuideActivity extends AppCompatActivity {
-    final Context mContext = this;
     private ViewPager mViewPager;
     private GuideAdapter mHowToUsedAdapter;
     private int mListColor[] = {R.drawable.bg_step1, R.drawable.bg_step2, R.drawable.bg_step3};
@@ -78,7 +76,7 @@ public class GuideActivity extends AppCompatActivity {
         mTvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GuideActivity.this);
                 alertDialogBuilder.setTitle(getResources().getString(R.string.alert_skip_title));
                 alertDialogBuilder
                         .setMessage(getResources().getString(R.string.alert_skip_message))

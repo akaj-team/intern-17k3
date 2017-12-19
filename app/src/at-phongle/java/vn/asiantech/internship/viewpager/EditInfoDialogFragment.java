@@ -55,10 +55,12 @@ public class EditInfoDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         Window window = dialog.getWindow();
-        window.requestFeature(Window.FEATURE_NO_TITLE);
+        if (window != null) {
+            window.requestFeature(Window.FEATURE_NO_TITLE);
+            window.setBackgroundDrawableResource(android.R.color.transparent);
+            window.setLayout((int) (ScreenUtil.getWidthScreen(getActivity()) * 0.8), (int) (ScreenUtil.getHeightScreen(getActivity()) * 0.6));
+        }
         dialog.setContentView(R.layout.fragment_edit_info_dialog);
-        window.setBackgroundDrawableResource(android.R.color.transparent);
-        window.setLayout((int) (ScreenUtil.getWidthScreen(getActivity()) * 0.8), (int) (ScreenUtil.getHeightScreen(getActivity()) * 0.6));
         return dialog;
     }
 

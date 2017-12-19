@@ -22,7 +22,7 @@ public class HomeAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return ItemDictionaryFragment.init(position);
+        return ItemDictionaryFragment.newInstance(position);
     }
 
     @Override

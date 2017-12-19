@@ -20,12 +20,11 @@ public class ItemDictionaryFragment extends Fragment {
     private static final String KEY_POSITION = "position";
     private int fragmentPosition;
 
-
-    static ItemDictionaryFragment init(int position) {
+    public static ItemDictionaryFragment newInstance(int position) {
+        Bundle agrs = new Bundle();
+        agrs.putInt(KEY_POSITION, position);
         ItemDictionaryFragment itemDictionaryFragment = new ItemDictionaryFragment();
-        Bundle args = new Bundle();
-        args.putInt(KEY_POSITION, position);
-        itemDictionaryFragment.setArguments(args);
+        itemDictionaryFragment.setArguments(agrs);
         return itemDictionaryFragment;
     }
 
@@ -33,7 +32,7 @@ public class ItemDictionaryFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            fragmentPosition = getArguments().getInt(KEY_POSITION);
+            fragmentPosition = getArguments().getInt(KEY_POSITION, -1);
         } else {
             fragmentPosition = 1;
         }

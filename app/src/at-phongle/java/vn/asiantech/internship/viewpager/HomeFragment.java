@@ -23,6 +23,7 @@ public class HomeFragment extends Fragment {
     private ViewPager mViewPagerHome;
 
     public HomeFragment() {
+        // No - oop
     }
 
     @Nullable
