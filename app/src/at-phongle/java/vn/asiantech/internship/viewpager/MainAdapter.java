@@ -4,6 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import vn.asiantech.internship.viewpager.home.HomeFragment;
+import vn.asiantech.internship.viewpager.info.InformationFragment;
+
 /**
  * Created by phongle on 14/12/2560.
  * MainAdapter

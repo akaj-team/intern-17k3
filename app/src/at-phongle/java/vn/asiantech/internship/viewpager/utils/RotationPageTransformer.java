@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager;
+package vn.asiantech.internship.viewpager.utils;
 
 import android.annotation.TargetApi;
 import android.os.Build;

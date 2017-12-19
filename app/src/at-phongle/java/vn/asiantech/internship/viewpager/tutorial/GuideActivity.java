@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager;
+package vn.asiantech.internship.viewpager.tutorial;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import me.relex.circleindicator.CircleIndicator;
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.viewpager.ViewPagerMainActivity;
 
 /**
  * Created by phongle on 14/12/2560.

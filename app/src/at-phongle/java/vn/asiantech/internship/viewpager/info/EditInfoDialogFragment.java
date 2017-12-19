@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager;
+package vn.asiantech.internship.viewpager.info;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.viewpager.utils.ScreenUtil;
 
 /**
  * Created by phongle on 15/12/2560.

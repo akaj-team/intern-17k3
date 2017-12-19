@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager;
+package vn.asiantech.internship.viewpager.info;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

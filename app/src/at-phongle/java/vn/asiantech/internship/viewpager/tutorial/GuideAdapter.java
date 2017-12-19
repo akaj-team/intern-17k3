@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager;
+package vn.asiantech.internship.viewpager.tutorial;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

@@ -16,7 +16,7 @@ import vn.asiantech.internship.recyclerview.PostActivity;
 import vn.asiantech.internship.savedata.ExternalStorageActivity;
 import vn.asiantech.internship.savedata.PersonActivity;
 import vn.asiantech.internship.savedata.SharePreferenceActivity;
-import vn.asiantech.internship.viewpager.GuideActivity;
+import vn.asiantech.internship.viewpager.tutorial.GuideActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;

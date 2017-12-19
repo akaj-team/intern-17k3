@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager;
+package vn.asiantech.internship.viewpager.home.card;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,21 +11,22 @@ import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Dictionary;
+import vn.asiantech.internship.viewpager.home.HomeFragment;
 
 /**
  * Created by phongle on 14/12/2560.
  * cardDictionaryFragment
  */
-public class ItemDictionaryFragment extends Fragment {
+public class ItemCardFragment extends Fragment {
     private static final String KEY_POSITION = "position";
     private int fragmentPosition;
 
-    public static ItemDictionaryFragment newInstance(int position) {
+    public static ItemCardFragment newInstance(int position) {
         Bundle agrs = new Bundle();
         agrs.putInt(KEY_POSITION, position);
-        ItemDictionaryFragment itemDictionaryFragment = new ItemDictionaryFragment();
-        itemDictionaryFragment.setArguments(agrs);
-        return itemDictionaryFragment;
+        ItemCardFragment itemCardFragment = new ItemCardFragment();
+        itemCardFragment.setArguments(agrs);
+        return itemCardFragment;
     }
 
     @Override

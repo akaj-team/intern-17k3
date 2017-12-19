@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager;
+package vn.asiantech.internship.viewpager.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +13,8 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Dictionary;
+import vn.asiantech.internship.viewpager.home.card.ItemCardAdapter;
+import vn.asiantech.internship.viewpager.utils.RotationPageTransformer;
 
 /**
  * Created by phongle on 14/12/2560.
@@ -47,8 +49,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void initAdapter() {
-        HomeAdapter homeAdapter = new HomeAdapter(getFragmentManager(), mDictionaryList);
-        mViewPagerHome.setAdapter(homeAdapter);
+        ItemCardAdapter ItemCardAdapter = new ItemCardAdapter(getFragmentManager(), mDictionaryList);
+        mViewPagerHome.setAdapter(ItemCardAdapter);
         mViewPagerHome.setOffscreenPageLimit(3);
         mViewPagerHome.setPageTransformer(true, new RotationPageTransformer(160));
         mViewPagerHome.setPageMargin(-(getResources().getDimensionPixelOffset(R.dimen.card_padding)) * 2);
