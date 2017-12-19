@@ -2,7 +2,6 @@ package vn.asiantech.internship.viewpagerandtablelayout.ui;
 
 
 import android.app.Dialog;
-import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,7 +11,6 @@ import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.viewpagerandtablelayout.utils.ScreenUtil;
 
 /**
  * Created at 2017
@@ -34,7 +33,7 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
     private EditText mEdtTeam;
     private EditText mEdtLocation;
     private TextInputLayout mInputLayoutName;
-    private TextInputLayout mInputLayouTeam;
+    private TextInputLayout mInputLayoutTeam;
     private TextInputLayout mInputLayoutLocation;
     private Button mBtnConfirm;
     private Button mBtnCancel;
@@ -66,7 +65,7 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
         mEdtTeam = mView.findViewById(R.id.edtTeamInfo);
         mEdtLocation = mView.findViewById(R.id.edtLocationInfo);
         mInputLayoutName = mView.findViewById(R.id.inputLayoutName);
-        mInputLayouTeam = mView.findViewById(R.id.inputLayoutTeam);
+        mInputLayoutTeam = mView.findViewById(R.id.inputLayoutTeam);
         mInputLayoutLocation = mView.findViewById(R.id.inputLayoutLocation);
         mBtnConfirm = mView.findViewById(R.id.btnConfirmUpdate);
         mBtnCancel = mView.findViewById(R.id.btnCancelUpdate);
@@ -91,11 +90,11 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
      */
     private boolean validateEditTeam() {
         if (TextUtils.isEmpty(mEdtTeam.getText().toString())) {
-            mInputLayouTeam.setError(getResources().getString(R.string.edt_null));
+            mInputLayoutTeam.setError(getResources().getString(R.string.edt_null));
             requestFocus(mEdtTeam);
             return false;
         } else {
-            mInputLayouTeam.setErrorEnabled(false);
+            mInputLayoutTeam.setErrorEnabled(false);
         }
         return true;
     }
@@ -171,14 +170,11 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
-        Point point = new Point();
         Window window = dialog.getWindow();
         window.requestFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.fragment_update_info);
         if (window != null) {
-            Display display = window.getWindowManager().getDefaultDisplay();
-            display.getSize(point);
-            window.setLayout((int) (point.x * SIZE_DIALOG), WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setLayout((int) (ScreenUtil.getWidthScreen(getContext()) * SIZE_DIALOG), WindowManager.LayoutParams.WRAP_CONTENT);
             window.setGravity(Gravity.CENTER);
             window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
@@ -217,12 +213,12 @@ public class UpdateInfoDialogFragment extends DialogFragment implements View.OnC
 
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            //no-opp
         }
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            //no-opp
         }
 
         @Override

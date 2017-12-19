@@ -17,11 +17,11 @@ import vn.asiantech.internship.R;
  */
 public class SlideAdapter extends PagerAdapter {
 
-    private List<String> mListStep;
+    private List<String> mListSteps;
     private LayoutInflater mLayoutInflater;
 
     public SlideAdapter(Context context, List<String> steps) {
-        mListStep = steps;
+        mListSteps = steps;
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -32,7 +32,7 @@ public class SlideAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mListStep.size();
+        return mListSteps.size();
     }
 
     @Override
@@ -40,13 +40,13 @@ public class SlideAdapter extends PagerAdapter {
         View myImageLayout = mLayoutInflater.inflate(R.layout.item_slide_layout, view, false);
         TextView tvStepSlide = myImageLayout
                 .findViewById(R.id.tvStepSlide);
-        tvStepSlide.setText(mListStep.get(position));
+        tvStepSlide.setText(mListSteps.get(position));
         view.addView(myImageLayout, 0);
         return myImageLayout;
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view.equals(object);
+        return view == object;
     }
 }

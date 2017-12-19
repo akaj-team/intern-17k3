@@ -3,12 +3,11 @@ package vn.asiantech.internship.viewpagerandtablelayout.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.asiantech.internship.viewpagerandtablelayout.models.SlideHomeFragment;
+import vn.asiantech.internship.viewpagerandtablelayout.models.SlideHome;
 import vn.asiantech.internship.viewpagerandtablelayout.ui.HomeSlideFragment;
 
 /**
@@ -17,29 +16,20 @@ import vn.asiantech.internship.viewpagerandtablelayout.ui.HomeSlideFragment;
  */
 
 public class HomeSlideAdapter extends FragmentStatePagerAdapter {
-    private List<SlideHomeFragment> mHomeSlideList = new ArrayList<>();
-    public static int positionItem;
+    private List<SlideHome> mHomeSlideLists = new ArrayList<>();
 
-    public HomeSlideAdapter(FragmentManager fm, List<SlideHomeFragment> homeSlideList) {
+    public HomeSlideAdapter(FragmentManager fm, List<SlideHome> homeSlideList) {
         super(fm);
-        mHomeSlideList = homeSlideList;
+        mHomeSlideLists = homeSlideList;
     }
 
     @Override
     public Fragment getItem(int position) {
-        positionItem = position;
-        return new HomeSlideFragment();
-
-
+        return HomeSlideFragment.newInstance(position);
     }
 
     @Override
     public int getCount() {
-        return mHomeSlideList.size();
-    }
-
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return object != null && ((Fragment) object).getView() == view;
+        return mHomeSlideLists.size();
     }
 }

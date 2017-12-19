@@ -76,7 +76,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnViewPager:
                 startActivity(new Intent(this, SlideActivity.class));
-                break;
         }
     }
 }

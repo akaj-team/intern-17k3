@@ -22,7 +22,7 @@ import vn.asiantech.internship.viewpagerandtablelayout.adapters.SlideAdapter;
  */
 public class SlideActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
     private static final int CURRENT_PAGE = 0;
-    private List<String> mListStringSlide = new ArrayList<>();
+    private List<String> mListStringSlides = new ArrayList<>();
     private ViewPager mViewPager;
     private TextView mTvSkipSlide;
     private SlideAdapter mSlideAdapter;
@@ -43,9 +43,9 @@ public class SlideActivity extends AppCompatActivity implements ViewPager.OnPage
      * Init Data to List Images
      */
     private void initData() {
-        mListStringSlide.add(getResources().getString(R.string.tv_step_1));
-        mListStringSlide.add(getResources().getString(R.string.tv_step_2));
-        mListStringSlide.add(getResources().getString(R.string.tv_step_3));
+        mListStringSlides.add(getResources().getString(R.string.tv_step_1));
+        mListStringSlides.add(getResources().getString(R.string.tv_step_2));
+        mListStringSlides.add(getResources().getString(R.string.tv_step_3));
     }
 
     /**
@@ -60,7 +60,7 @@ public class SlideActivity extends AppCompatActivity implements ViewPager.OnPage
      * Init Adapter
      */
     private void initAdapter() {
-        mSlideAdapter = new SlideAdapter(SlideActivity.this, mListStringSlide);
+        mSlideAdapter = new SlideAdapter(SlideActivity.this, mListStringSlides);
         mViewPager.setAdapter(mSlideAdapter);
         CircleIndicator indicator = findViewById(R.id.circleIndicator);
         indicator.setViewPager(mViewPager);

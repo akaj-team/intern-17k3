@@ -4,12 +4,12 @@ package vn.asiantech.internship.viewpagerandtablelayout.models;
  * Created at 2017
  * Created by jackty on 14/12/2017.
  */
-public class SlideHomeFragment {
+public class SlideHome {
     private String englishText;
     private String vietnamText;
     private int image;
 
-    public SlideHomeFragment(String englishText, String vietnamText, int image) {
+    public SlideHome(String englishText, String vietnamText, int image) {
         this.englishText = englishText;
         this.vietnamText = vietnamText;
         this.image = image;

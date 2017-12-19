@@ -10,29 +10,37 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.viewpagerandtablelayout.adapters.HomeSlideAdapter;
 import vn.asiantech.internship.viewpagerandtablelayout.utils.InitData;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeSlideFragment extends Fragment {
+    private static final String ARG_ID = "args_resource";
     private View mView;
     private TextView mTvVietNamtext;
     private TextView mTvEngLishtext;
     private ImageView mImgAnimals;
-    private int mPositionItem = HomeSlideAdapter.positionItem;
 
     public HomeSlideFragment() {
         //No-op
     }
 
+    public static HomeSlideFragment newInstance(int id) {
+        HomeSlideFragment homeSlideFragment = new HomeSlideFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_ID, id);
+        homeSlideFragment.setArguments(args);
+        return homeSlideFragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        int idFragment = getArguments().getInt(ARG_ID);
         mView = inflater.inflate(R.layout.fragment_home_slide, container, false);
         initViews();
-        initDataToItem();
+        initDataToItem(idFragment);
         return mView;
     }
 
@@ -48,9 +56,9 @@ public class HomeSlideFragment extends Fragment {
     /**
      * Init Data To Fragment Item
      */
-    private void initDataToItem() {
-        mTvEngLishtext.setText(InitData.listDictionary().get(mPositionItem).getEnglishText());
-        mTvVietNamtext.setText(InitData.listDictionary().get(mPositionItem).getVietnamText());
-        mImgAnimals.setImageResource(InitData.listDictionary().get(mPositionItem).getImage());
+    private void initDataToItem(int positionItem) {
+        mTvEngLishtext.setText(InitData.listDictionary().get(positionItem).getEnglishText());
+        mTvVietNamtext.setText(InitData.listDictionary().get(positionItem).getVietnamText());
+        mImgAnimals.setImageResource(InitData.listDictionary().get(positionItem).getImage());
     }
 }
