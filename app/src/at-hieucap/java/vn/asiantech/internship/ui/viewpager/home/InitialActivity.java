@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.home;
+package vn.asiantech.internship.ui.viewpager.home;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,14 +15,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.viewpager.information.InformationActivity;
+import vn.asiantech.internship.ui.viewpager.information.HomeActivity;
 
-public class HomeActivity extends AppCompatActivity {
+/**
+ * Create Initial Activity
+ */
+public class InitialActivity extends AppCompatActivity {
     private static final int CURRENT_PAGE = 0;
     private List<String> mListFragment = new ArrayList<>();
     private ViewPager mViewPager;
     private TextView mTvSkip;
-    private ViewPagerAdapter mAdapter;
+    private InitialAdapter mAdapter;
     private PageIndicatorView mPageIndicatorView;
     private int mPositionPager;
     private boolean lastPager = false;
@@ -30,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity);
+        setContentView(R.layout.activity_initial);
         initData();
         initAdapter();
         initViews();
@@ -69,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void startActivity() {
-        startActivity(new Intent(this, InformationActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
     private void initData() {
@@ -85,14 +88,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        mAdapter = new ViewPagerAdapter(HomeActivity.this, mListFragment);
+        mAdapter = new InitialAdapter(InitialActivity.this, mListFragment);
     }
 
     private void initListeners() {
         mTvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(InitialActivity.this);
                 builder.setMessage(R.string.message)
                         .setPositiveButton(R.string.event_cancel, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -108,9 +111,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 }

@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.home;
+package vn.asiantech.internship.ui.viewpager.home;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -11,11 +11,14 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 
-public class ViewPagerAdapter extends PagerAdapter {
+/**
+ * Create Initial Activity
+ */
+public class InitialAdapter extends PagerAdapter {
     private List<String> mListFragment;
     private LayoutInflater mLayoutInflater;
 
-    ViewPagerAdapter(Context context, List<String> fragment) {
+    InitialAdapter(Context context, List<String> fragment) {
         mListFragment = fragment;
         mLayoutInflater = LayoutInflater.from(context);
     }
@@ -32,7 +35,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup view, int position) {
-        View myTextLayout = mLayoutInflater.inflate(R.layout.fragment_item, view, false);
+        View myTextLayout = mLayoutInflater.inflate(R.layout.item_fragment_initial, view, false);
         TextView tvContext = myTextLayout.findViewById(R.id.tvText);
         tvContext.setText(mListFragment.get(position));
         view.addView(myTextLayout, 0);

@@ -1,4 +1,4 @@
-package vn.asiantech.internship.viewpager.information;
+package vn.asiantech.internship.ui.viewpager.information;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import android.widget.EditText;
 import vn.asiantech.internship.R;
 
 
+/**
+ * Create Alert Dialog Fragment
+ */
 public class AlertDialogFragment extends DialogFragment implements View.OnClickListener {
     private EditText mEdtName;
     private EditText mEdtPhone;
@@ -31,13 +34,12 @@ public class AlertDialogFragment extends DialogFragment implements View.OnClickL
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_dialog, container,
+        View rootView = inflater.inflate(R.layout.fragment_dialog_information, container,
                 false);
         getDialog().setTitle("Information");
         Button btnSubmit = rootView.findViewById(R.id.btnSubmit);
@@ -45,7 +47,6 @@ public class AlertDialogFragment extends DialogFragment implements View.OnClickL
         mEdtName = rootView.findViewById(R.id.edtName);
         mEdtPhone = rootView.findViewById(R.id.edtPhoneNumber);
         mEdtStatus = rootView.findViewById(R.id.edtStatus);
-
         Bundle bundle = getArguments();
         if (bundle != null) {
             mEdtName.setText(bundle.getString("name"));
@@ -54,7 +55,6 @@ public class AlertDialogFragment extends DialogFragment implements View.OnClickL
         }
         btnSubmit.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
-
         return rootView;
     }
 
@@ -75,7 +75,6 @@ public class AlertDialogFragment extends DialogFragment implements View.OnClickL
             case R.id.btnCancel:
                 dismiss();
                 break;
-
         }
     }
 }

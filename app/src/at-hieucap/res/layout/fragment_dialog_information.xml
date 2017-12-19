@@ -51,6 +51,4 @@
             android:text="@string/submit"
             tools:ignore="ButtonStyle" />
     </LinearLayout>
-
-
 </RelativeLayout>

@@ -1,9 +1,8 @@
-package vn.asiantech.internship.viewpager.information;
+package vn.asiantech.internship.ui.viewpager.information;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,11 @@ import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Create Information Fragment
+ */
 public class InformationFragment extends Fragment {
     public static final int REQUEST_CODE = 1;
-    FragmentManager fm = getFragmentManager();
-    private Button mBtnUpdate;
     private TextView mTvName;
     private TextView mTvPhone;
     private TextView mTvStatus;
@@ -26,18 +26,17 @@ public class InformationFragment extends Fragment {
         View view = LayoutInflater
                 .from(container.getContext())
                 .inflate(R.layout.fragment_information, container, false);
-        mBtnUpdate = view.findViewById(R.id.btnUpdate);
+        Button btnUpdate = view.findViewById(R.id.btnUpdate);
         mTvName = view.findViewById(R.id.tvName);
         mTvPhone = view.findViewById(R.id.tvPhoneNumber);
         mTvStatus = view.findViewById(R.id.tvStatus);
-        mBtnUpdate.setOnClickListener(new View.OnClickListener() {
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog();
             }
         });
         return view;
-
     }
 
     @Override

@@ -53,4 +53,6 @@
     <string name="message">Do you want to skip ?</string>
     <string name="event_cancel">Cancel</string>
     <string name="event_submit">OK</string>
+    <string name="text_english">ENGLISH</string>
+    <string name="text_vietnamese">VIET NAM</string>
 </resources>
