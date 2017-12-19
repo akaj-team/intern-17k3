@@ -1,5 +1,8 @@
 package vn.asiantech.internship.models;
 
+/**
+ * Create item view : Person
+ */
 public class Person {
     private String name;
     private int countLike;

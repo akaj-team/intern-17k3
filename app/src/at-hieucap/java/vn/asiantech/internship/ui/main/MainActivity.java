@@ -12,6 +12,9 @@ import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.PersonViewActivity;
 
+/**
+ * Create Main Activity
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnBt1;
     private Button mBtnBt2;
