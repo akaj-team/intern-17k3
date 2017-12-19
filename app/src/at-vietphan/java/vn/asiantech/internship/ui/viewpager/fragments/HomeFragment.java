@@ -1,6 +1,5 @@
 package vn.asiantech.internship.ui.viewpager.fragments;
 
-
 import android.annotation.SuppressLint;
 import android.content.res.TypedArray;
 import android.os.Bundle;

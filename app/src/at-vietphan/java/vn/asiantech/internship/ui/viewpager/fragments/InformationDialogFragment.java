@@ -1,6 +1,5 @@
 package vn.asiantech.internship.ui.viewpager.fragments;
 
-
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
