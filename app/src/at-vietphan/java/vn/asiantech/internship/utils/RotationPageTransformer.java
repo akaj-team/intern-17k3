@@ -67,7 +67,6 @@ public class RotationPageTransformer implements ViewPager.PageTransformer {
         } else if (position <= 1) { //[-1,1]
             view.setTranslationX((-position) * pageWidth);
             view.setRotation(position * (180 - degrees));
-
             // Fade the page relative to its distance from the center
             view.setAlpha(Math.max(minAlpha, 1 - Math.abs(position) / 3));
         } else { //(1, +infinity]

@@ -9,6 +9,7 @@ import android.view.Display;
  * Class ScreenUtil
  */
 public final class ScreenUtil {
+
     private ScreenUtil() {
         // No-op
     }
@@ -19,6 +20,7 @@ public final class ScreenUtil {
         display.getSize(size);
         return size.x;
     }
+
     public static int getHeightScreen(Context context) {
         Display display = ((Activity) context).getWindowManager().getDefaultDisplay();
         Point size = new Point();

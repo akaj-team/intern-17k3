@@ -75,7 +75,6 @@ public class HomeFragment extends Fragment {
         for (int i = 0; i < imageAnimals.length() - 1; i++) {
             mVocabularies.add(new Vocabulary(firstLanguages[i], imageAnimals.getResourceId(i, -1), secondLanguages[i]));
         }
-
         mViewPagerVocabulary.setAdapter(mVocabularyAdapter);
         mViewPagerVocabulary.setPageTransformer(true, new RotationPageTransformer(165));
         mViewPagerVocabulary.setOffscreenPageLimit(3);
