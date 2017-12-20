@@ -13,6 +13,9 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.recyclerview.Person;
 
+/**
+ * Create Person Adapter
+ */
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
     private List<Person> mPersonList;
     private OnItemClickListener mOnItemClickListener;

@@ -12,6 +12,9 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.recyclerview.Person;
 
+/**
+ * Create Person View Activity
+ */
 public class PersonViewActivity extends AppCompatActivity implements PersonAdapter.OnItemClickListener {
     protected PersonAdapter mAdapter;
     private RecyclerView mRecyclerViewPerson;

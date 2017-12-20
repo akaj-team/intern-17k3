@@ -9,15 +9,18 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
-import vn.asiantech.internship.ui.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.PersonViewActivity;
 
+/**
+ * Create Main Activity
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnBt1;
     private Button mBtnBt2;
     private Button mBtnBt3;
     private Button mBtnBt4;
+    private Button mBtnBt6;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,18 +30,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addListener();
     }
 
-    private void addListener() {
-        mBtnBt1.setOnClickListener(this);
-        mBtnBt2.setOnClickListener(this);
-        mBtnBt3.setOnClickListener(this);
-        mBtnBt4.setOnClickListener(this);
-    }
-
     private void initViews() {
         mBtnBt1 = findViewById(R.id.btnBt1);
         mBtnBt2 = findViewById(R.id.btnBt2);
         mBtnBt3 = findViewById(R.id.btnBt3);
         mBtnBt4 = findViewById(R.id.btnBt4);
+        mBtnBt6 = findViewById(R.id.btnBt6);
+    }
+
+    private void addListener() {
+        mBtnBt1.setOnClickListener(this);
+        mBtnBt2.setOnClickListener(this);
+        mBtnBt3.setOnClickListener(this);
+        mBtnBt4.setOnClickListener(this);
+        mBtnBt6.setOnClickListener(this);
     }
 
     @Override
@@ -57,8 +62,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.startActivity(intent_bt3);
                 break;
             case R.id.btnBt4:
-                Intent intent_bt4 = new Intent(this, DrawerLayoutActivity.class);
+                Intent intent_bt4 = new Intent(this, vn.asiantech.internship.ui.loadimage.MainActivity.class);
                 this.startActivity(intent_bt4);
+                break;
+            case R.id.btnBt6:
+                Intent intent_bt6 = new Intent(this, vn.asiantech.internship.ui.drawerlayout.DrawerLayoutActivity.class);
+                this.startActivity(intent_bt6);
                 break;
         }
     }

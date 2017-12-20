@@ -14,6 +14,9 @@ import android.widget.ImageView;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Create Fill Out Fragment
+ */
 public class FillOutFragment extends Fragment implements TextWatcher, View.OnClickListener {
     private CheckBox mChkTermAccept;
     private EditText mEdtEmail;

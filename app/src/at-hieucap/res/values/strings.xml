@@ -4,7 +4,6 @@
     <string name="bai_tap_1">Login Screen</string>
     <string name="bai_tap_2">Calculator</string>
     <string name="bai_tap_3">Recycler View</string>
-    <string name="value_0">0</string>
     <string name="person_1">Nguyen Van A</string>
     <string name="person_2">Nguyen Van B</string>
     <string name="person_3">Nguyen Van C</string>
@@ -47,5 +46,15 @@
     <string name="event_two_term_is_empty">First term and second term is not empty !</string>
     <string name="text_null"> </string>
     <string name="event_second_term_is_value_0">Second term is not value = 0 !</string>
-    <string name="bai_tap_4">Drawer Layout</string>
+    <string name="bai_tap_6">Drawer Layout</string>
+    <string name="value_0">0</string>
+    <string name="click">Click here</string>
+    <string name="from_drawable">Drawable</string>
+    <string name="from_asset">Asset</string>
+    <string name="from_storage">Storage</string>
+    <string name="from_internet">Internet</string>
+    <string name="text_load_image">Load Image</string>
+    <string name="text_image_vector">Image Vector</string>
+    <string name="text_nine_path">Nine Path</string>
+    <string name="bai_tap_4">Load Image</string>
 </resources>

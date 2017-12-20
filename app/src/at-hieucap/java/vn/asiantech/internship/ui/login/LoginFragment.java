@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Create Login Fragment
+ */
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
     public static Fragment getInstance() {

@@ -16,6 +16,9 @@ import java.math.BigDecimal;
 
 import vn.asiantech.internship.R;
 
+/**
+ * Create Calculator Activity
+ */
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
 
     private EditText mEdtFirstTerm;
