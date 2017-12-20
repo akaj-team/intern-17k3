@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
+import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
-import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
+import vn.asiantech.internship.ui.thread_handler.SplashThreadActivity;
 
 /**
  * Author Asian Tech Inc.
@@ -24,6 +24,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnRecyclerView;
     private Button mBtnDrawerlayout;
     private Button mBtnSaveData;
+    private Button mBtnThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
+        mBtnThread = findViewById(R.id.btnThread);
     }
 
     private void initListener() {
@@ -47,6 +49,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnSaveData.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
         mBtnDrawerlayout.setOnClickListener(this);
+        mBtnThread.setOnClickListener(this);
     }
 
     @Override
@@ -69,8 +72,12 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(intentSaveData);
                 break;
             case R.id.btnDrawerlayout:
-                Intent i4 = new Intent(SplashActivity.this, DrawerActivity.class);
-                startActivity(i4);
+                Intent intentDrawer = new Intent(SplashActivity.this, DrawerActivity.class);
+                startActivity(intentDrawer);
+                break;
+            case R.id.btnThread:
+                Intent intentThread = new Intent(SplashActivity.this, SplashThreadActivity.class);
+                startActivity(intentThread);
                 break;
         }
     }

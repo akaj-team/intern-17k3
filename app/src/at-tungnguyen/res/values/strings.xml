@@ -48,4 +48,10 @@
     <string name="have_not_picked_img">Not picked</string>
     <string name="btn_thread">Thread-Handler</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_start">Start</string>
+    <string name="tv_countdown">Tungkute</string>
+    <string name="btn_thread_ex1">Exercise1</string>
+    <string name="btn_thread_ex2">Exercise2</string>
 </resources>
