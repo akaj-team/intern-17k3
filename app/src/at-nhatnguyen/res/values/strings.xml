@@ -41,4 +41,5 @@
     <string name="image_picasso">Load image picasso</string>
     <string name="scale_edit_text">Scale edit_text</string>
     <string name="vector_image">Image by vector</string>
+    <string name="button_thread">Thread</string>
 </resources>

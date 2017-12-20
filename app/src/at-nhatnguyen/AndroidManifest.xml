@@ -3,7 +3,6 @@
     package="vn.asiantech.internship">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,7 +23,6 @@
         </activity>
         <activity android:name=".ui.calculator.CalculatorActivity" />
         <activity android:name=".ui.recyclerview.CommentActivity" />
-        <!--<activity android:name="vn.asiantech.internship.ui.login.LoginActivity" />-->
         <activity android:name=".ui.drawerlayout.DrawerActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.savedata.SaveDataActivity" />
@@ -36,6 +34,7 @@
         <activity android:name=".ui.imageview.ImageActivity" />
         <activity android:name=".ui.imageview.ScaleImageActivity" />
         <activity android:name=".ui.imageview.VectorImageActivity" />
+        <activity android:name=".ui.thread.ThreadActivity" />
     </application>
 
 </manifest>
