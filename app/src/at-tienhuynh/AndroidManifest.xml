@@ -43,7 +43,7 @@
             android:name=".threadandhandler.dowloadimage.ui.TabManagementActivity"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".threadandhandler.SplashThreadAndHandlerActivity" />
-        <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity"></activity>
+        <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity"/>
     </application>
 
 </manifest>
