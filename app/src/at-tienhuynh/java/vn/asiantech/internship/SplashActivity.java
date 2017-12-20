@@ -12,7 +12,12 @@ import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 import vn.asiantech.internship.savedata.ExerciseManagementActivity;
+import vn.asiantech.internship.threadandhandler.SplashThreadAndHandlerActivity;
 
+/**
+ * Created at 2017
+ * Created by jackty on 19/12/2017.
+ */
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
     private Button mBtnCalculationScreen;
@@ -20,6 +25,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnSaveDataScreen;
     private Button mBtnDrawerLayoutScreen;
     private Button mBtnImageScreen;
+    private Button mBtnThreadAndHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         initListener();
     }
 
+    /**
+     * Init Views
+     */
     private void initViews() {
         mBtnLoginScreen = findViewById(R.id.btnLoginScreen);
         mBtnCalculationScreen = findViewById(R.id.btnCalculatorScreen);
@@ -37,8 +46,12 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
         mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
         mBtnImageScreen = findViewById(R.id.btnImageScreen);
+        mBtnThreadAndHandler = findViewById(R.id.btnThreadAndHandleScreen);
     }
 
+    /**
+     * Init Listener
+     */
     private void initListener() {
         mBtnLoginScreen.setOnClickListener(this);
         mBtnCalculationScreen.setOnClickListener(this);
@@ -47,8 +60,12 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnDrawerLayoutScreen.setOnClickListener(this);
         mBtnRecyclerViewScreen.setOnClickListener(this);
         mBtnImageScreen.setOnClickListener(this);
+        mBtnThreadAndHandler.setOnClickListener(this);
     }
 
+    /**
+     * Onclick Button
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -69,6 +86,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnImageScreen:
                 startActivity(new Intent(this, ImageManagementExerciseActivity.class));
+                break;
+            case R.id.btnThreadAndHandleScreen:
+                startActivity(new Intent(this, SplashThreadAndHandlerActivity.class));
                 break;
         }
     }
