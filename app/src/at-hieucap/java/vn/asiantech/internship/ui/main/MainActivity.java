@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBtnBt2;
     private Button mBtnBt3;
     private Button mBtnBt5;
+    private Button mBtnBt4;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBt1 = findViewById(R.id.btnBt1);
         mBtnBt2 = findViewById(R.id.btnBt2);
         mBtnBt3 = findViewById(R.id.btnBt3);
+        mBtnBt4 = findViewById(R.id.btnBt4);
         mBtnBt5 = findViewById(R.id.btnBt5);
     }
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBt1.setOnClickListener(this);
         mBtnBt2.setOnClickListener(this);
         mBtnBt3.setOnClickListener(this);
+        mBtnBt4.setOnClickListener(this);
         mBtnBt5.setOnClickListener(this);
     }
 
@@ -58,6 +61,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnBt3:
                 Intent intent_bt3 = new Intent(this, PersonViewActivity.class);
                 this.startActivity(intent_bt3);
+                break;
+            case R.id.btnBt4:
+                Intent intent_bt4 = new Intent(this, vn.asiantech.internship.ui.loadimage.MainActivity.class);
+                this.startActivity(intent_bt4);
                 break;
             case R.id.btnBt5:
                 Intent intent_bt5 = new Intent(this, SaveDataActivity.class);
