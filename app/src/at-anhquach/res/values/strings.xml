@@ -30,5 +30,5 @@
     <string name="file_name_txt">abc.txt</string>
     <string name="title_tablayout_thread1">Fragment 1</string>
     <string name="title_tablayout_thread2">Fragment 2</string>
-    <string name="btn_click">Click!</string>
+    <string name="btn_click">Download!</string>
 </resources>

@@ -2,10 +2,11 @@ package vn.asiantech.internship.asynchronous;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -30,7 +30,7 @@ import vn.asiantech.internship.R;
 public class Thread1Fragment extends Fragment {
     private Button mBtnClick;
     private int mTotalSize;
-    int downloadedSize = 0;
+    private int mDownloadedSize = 0;
     private TextView mTvResutlDownLoad;
     private ProgressBar mProgressBarDownLoadImg;
 
@@ -45,67 +45,57 @@ public class Thread1Fragment extends Fragment {
         mBtnClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showProgress();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        downLoadPhoto();
+                        downloadPhoto();
                     }
                 }).start();
-
             }
         });
         return view;
     }
 
     private void initViews(View view) {
-        mBtnClick = view.findViewById(R.id.btnClick);
+        mBtnClick = view.findViewById(R.id.btnDownLoadImg);
         mProgressBarDownLoadImg = view.findViewById(R.id.progressBarDownLoadImg);
+        mTvResutlDownLoad = view.findViewById(R.id.tvDownLoadImg);
     }
 
-    private Bitmap downLoadPhoto() {
+    private void downloadPhoto() {
         try {
-            URL url = new URL("https://images3.alphacoders.com/112/112347.jpg");
-            HttpURLConnection urlConnection = (HttpURLConnection)
-                    url.openConnection();
-            urlConnection.setRequestMethod("GET");
-            urlConnection.setDoOutput(true);
-            urlConnection.connect();
-
-            File SDCardRoot = Environment.getExternalStorageDirectory();
-
-            File file = new File(SDCardRoot, "downloaded_file.png");
-
-            FileOutputStream fileOutput = new FileOutputStream(file);
-
-            InputStream inputStream = urlConnection.getInputStream();
-
-            mTotalSize = urlConnection.getContentLength();
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mProgressBarDownLoadImg.setMax(mTotalSize);
-                }
-            });
+            URL url = new URL("https://i.pinimg.com/736x/7d/3f/14/7d3f14a28d2f7f0640fa4aa5b8da5bb3--wallpaper-for-phone-background-hd-wallpaper.jpg");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            mTotalSize = connection.getContentLength();
             byte[] buffer = new byte[1024];
-            int bufferLength = 0;
-            while ((bufferLength = inputStream.read(buffer)) > 0) {
-                fileOutput.write(buffer, 0, bufferLength);
-                downloadedSize += bufferLength;
-                // update the progressbar //
+            int bufferLength;
+            while (0 < (bufferLength = input.read(buffer))) {
+                output.write(buffer, 0, bufferLength);
+                Bitmap myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
+                Log.d("hh", "myBitmap: " + myBitmap);
+                mDownloadedSize += bufferLength;
                 getActivity().runOnUiThread(new Runnable() {
                     @SuppressLint("SetTextI18n")
+                    @Override
                     public void run() {
-                        mProgressBarDownLoadImg.setProgress(downloadedSize);
-                        float per = ((float) downloadedSize / mTotalSize) *
-                                100;
-                        mTvResutlDownLoad.setText("Downloaded " + downloadedSize + "KB / " + mTotalSize + "KB (" + (int) per + "%)");
+                        mProgressBarDownLoadImg.setProgress(mDownloadedSize);
+                        float per = ((float) mDownloadedSize / mTotalSize) * 100;
+                        mTvResutlDownLoad.setText("DownLoad " + mDownloadedSize + "KB/" + mTotalSize + "KB (" + (int) per + "%)");
                     }
                 });
             }
-
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+    }
+
+    void showProgress() {
+        mProgressBarDownLoadImg.setMax(100);
+        mProgressBarDownLoadImg.setProgress(0);
     }
 }
