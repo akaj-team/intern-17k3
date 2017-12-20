@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,16 +25,16 @@ import vn.asiantech.internship.R;
  * Created by anh.quach on 12/19/17.
  * Render 1 button, 1 ProgressBar
  */
-
-public class Thread1Fragment extends Fragment {
+public class DownLoadImgFragment extends Fragment {
     private Button mBtnClick;
     private int mTotalSize;
     private int mDownloadedSize = 0;
     private TextView mTvResutlDownLoad;
     private ProgressBar mProgressBarDownLoadImg;
+    private Bitmap myBitmap;
 
-    public Thread1Fragment newInstance() {
-        return new Thread1Fragment();
+    public DownLoadImgFragment newInstance() {
+        return new DownLoadImgFragment();
     }
 
     @Override
@@ -45,13 +44,14 @@ public class Thread1Fragment extends Fragment {
         mBtnClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showProgress();
+                mProgressBarDownLoadImg.setProgress(0);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         downloadPhoto();
                     }
                 }).start();
+                mBtnClick.setEnabled(false);
             }
         });
         return view;
@@ -65,19 +65,24 @@ public class Thread1Fragment extends Fragment {
 
     private void downloadPhoto() {
         try {
-            URL url = new URL("https://i.pinimg.com/736x/7d/3f/14/7d3f14a28d2f7f0640fa4aa5b8da5bb3--wallpaper-for-phone-background-hd-wallpaper.jpg");
+            URL url = new URL("https://wallpaperbrowse.com/media/images/dd170f37d84b3b21635f2ece8d416afa_large.jpeg");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoInput(true);
             connection.connect();
             InputStream input = connection.getInputStream();
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             mTotalSize = connection.getContentLength();
+            getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    mProgressBarDownLoadImg.setMax(mTotalSize);
+                }
+            });
+
             byte[] buffer = new byte[1024];
             int bufferLength;
             while (0 < (bufferLength = input.read(buffer))) {
                 output.write(buffer, 0, bufferLength);
-                Bitmap myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
-                Log.d("hh", "myBitmap: " + myBitmap);
+                myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                 mDownloadedSize += bufferLength;
                 getActivity().runOnUiThread(new Runnable() {
                     @SuppressLint("SetTextI18n")
@@ -89,13 +94,14 @@ public class Thread1Fragment extends Fragment {
                     }
                 });
             }
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ((ViewImgFragment) ((ThreadActivity) getActivity()).mTabLayoutAdapter.getItem(1)).showPhoto(myBitmap);
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    void showProgress() {
-        mProgressBarDownLoadImg.setMax(100);
-        mProgressBarDownLoadImg.setProgress(0);
     }
 }
