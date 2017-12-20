@@ -130,7 +130,7 @@ public class DownLoadImageFragment extends Fragment {
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        Log.d("error: ", e.getMessage());
                     }
                     // use handler to update percent download
                     mProgressBarDownLoad.post(new Runnable() {
