@@ -82,7 +82,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
     };
 
     /**
-     * This method to add item after 3 second
+     * This method to add 2 item after 10 second
      */
     CountDownTimer addItem = new CountDownTimer(10000, 1000) {
         @Override
@@ -94,6 +94,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
         public void onFinish() {
             if (mCountTime > 0) {
                 mItemList.add(new Item(getResources().getString(R.string.item_countdown_list)));
+                mItemList.add(new Item(getResources().getString(R.string.item_countdown_list)));
                 mListCountDownTimerAdapter.notifyDataSetChanged();
                 addItem.start();
             }
@@ -101,7 +102,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
     }.start();
 
     /**
-     * This method is used to delete item after 2 seconds
+     * This method is used to delete middle item after 15 seconds
      */
     CountDownTimer deleteItem = new CountDownTimer(15000, 1000) {
         @Override

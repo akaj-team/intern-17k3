@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -35,6 +34,12 @@
         <activity
             android:name=".drawerlayout.DrawerLayoutActivity"
             android:theme="@style/DrawerLayoutTheme" />
+        <activity
+            android:name=".viewpagerandtablelayout.ui.SlideActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".viewpagerandtablelayout.ui.TabLayoutActivity"
+            android:theme="@style/NoActionBarTheme" />
         <activity android:name=".image.ImageManagementExerciseActivity" />
         <activity android:name=".image.LoadImageActivity" />
         <activity android:name=".image.NinePathActivity" />
@@ -43,7 +48,7 @@
             android:name=".threadandhandler.dowloadimage.ui.TabManagementActivity"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".threadandhandler.SplashThreadAndHandlerActivity" />
-        <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity"/>
+        <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity" />
     </application>
 
 </manifest>

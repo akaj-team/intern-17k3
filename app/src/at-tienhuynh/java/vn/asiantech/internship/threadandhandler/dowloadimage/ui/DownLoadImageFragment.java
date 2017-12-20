@@ -27,6 +27,7 @@ import vn.asiantech.internship.R;
  */
 public class DownLoadImageFragment extends Fragment {
 
+    private static final String LINK_IMAGE = "https://s-media-cache-ak0.pinimg.com/originals/96/bb/17/96bb17f887be41927c834479fd7590b2.jpg";
     private static final int START_PROGRESS = 0;
     private static final int FINISH_PROGRESS = 100;
     private int mStatus = 0;
@@ -76,7 +77,7 @@ public class DownLoadImageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 initProgressBar();
-                DownloadImageFromPath("https://s-media-cache-ak0.pinimg.com/originals/96/bb/17/96bb17f887be41927c834479fd7590b2.jpg");
+                DownloadImageFromPath(LINK_IMAGE);
             }
         });
     }

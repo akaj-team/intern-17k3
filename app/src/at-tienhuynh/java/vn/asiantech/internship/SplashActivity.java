@@ -13,6 +13,7 @@ import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 import vn.asiantech.internship.savedata.ExerciseManagementActivity;
 import vn.asiantech.internship.threadandhandler.SplashThreadAndHandlerActivity;
+import vn.asiantech.internship.viewpagerandtablelayout.ui.SlideActivity;
 
 /**
  * Created at 2017
@@ -25,6 +26,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnSaveDataScreen;
     private Button mBtnDrawerLayoutScreen;
     private Button mBtnImageScreen;
+    private Button mBtnViewPager;
     private Button mBtnThreadAndHandler;
 
     @Override
@@ -47,6 +49,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
         mBtnImageScreen = findViewById(R.id.btnImageScreen);
         mBtnThreadAndHandler = findViewById(R.id.btnThreadAndHandleScreen);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
     }
 
     /**
@@ -61,6 +64,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnRecyclerViewScreen.setOnClickListener(this);
         mBtnImageScreen.setOnClickListener(this);
         mBtnThreadAndHandler.setOnClickListener(this);
+        mBtnViewPager.setOnClickListener(this);
     }
 
     /**
@@ -90,6 +94,8 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnThreadAndHandleScreen:
                 startActivity(new Intent(this, SplashThreadAndHandlerActivity.class));
                 break;
+            case R.id.btnViewPager:
+                startActivity(new Intent(this, SlideActivity.class));
         }
     }
 }
