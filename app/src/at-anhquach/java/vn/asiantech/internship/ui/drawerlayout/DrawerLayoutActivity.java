@@ -20,6 +20,7 @@ import vn.asiantech.internship.model.Issue;
 import vn.asiantech.internship.savedata.ExternalStorageActivity;
 import vn.asiantech.internship.savedata.SharePreferenceActivity;
 import vn.asiantech.internship.savedata.UserSQLiteActivity;
+import vn.asiantech.internship.asynchronous.ThreadActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorViewActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
@@ -57,6 +58,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Share Preference", new Intent(this, SharePreferenceActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "External Storage", new Intent(this, ExternalStorageActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLite", new Intent(this, UserSQLiteActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Thread Handel Countdowntimer", new Intent(this, ThreadActivity.class)));
     }
 
     private void initDrawer() {
