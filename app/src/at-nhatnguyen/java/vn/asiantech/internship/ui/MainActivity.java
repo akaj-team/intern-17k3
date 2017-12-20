@@ -8,10 +8,8 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
-import vn.asiantech.internship.ui.imageview.ImageActivity;
-import vn.asiantech.internship.ui.login.LoginActivity;
-import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
+import vn.asiantech.internship.ui.imageview.ImageActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
