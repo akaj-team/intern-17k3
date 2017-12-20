@@ -37,12 +37,12 @@ public class HomeItemFragment extends Fragment {
         TextView tvEnglich = view.findViewById(R.id.tvEnglish);
         TextView tvVietNam = view.findViewById(R.id.tvVietNam);
         ImageView imgAnimal = view.findViewById(R.id.imgAnimal);
-        tvEnglich.setText(mVocabulary.getEnglish());
-        tvVietNam.setText(mVocabulary.getVietNam());
+        tvEnglich.setText(mVocabulary.getEnglishLanguage());
+        tvVietNam.setText(mVocabulary.getVietnamese());
         imgAnimal.setImageResource(mVocabulary.getImage());
     }
 
-    public void setmVocabulary(Vocabulary vocabulary) {
+    public void setMVocabulary(Vocabulary vocabulary) {
         mVocabulary = vocabulary;
     }
 }

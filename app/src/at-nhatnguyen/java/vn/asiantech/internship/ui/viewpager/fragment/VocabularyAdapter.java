@@ -23,7 +23,7 @@ public class VocabularyAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         HomeItemFragment homeItemFragment = new HomeItemFragment();
-        homeItemFragment.setmVocabulary(mVocabularies.get(position));
+        homeItemFragment.setMVocabulary(mVocabularies.get(position));
         return homeItemFragment;
     }
 

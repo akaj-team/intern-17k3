@@ -27,7 +27,7 @@ public class ViewpagerActivity extends AppCompatActivity {
     private ScreenPagerAdapter mScreenPagerAdapter;
     private ViewPager mViewPager;
     private int mPositionPager;
-    private boolean lastPager;
+    private boolean mIsLastPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,13 +80,13 @@ public class ViewpagerActivity extends AppCompatActivity {
 
     private void listenViewPager() {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            int mLastPos;
+            boolean isFinish = false;
+
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (lastPager && position == mScreenPagerAdapter.getCount() - 1) {
-                    startActivity(new Intent(ViewpagerActivity.this, ViewPagerMainActivity.class));
-                }
-                mPositionPager = position;
-                lastPager = false;
+                isFinish = mLastPos == mScreenPagerAdapter.getCount() - 1;
+                mLastPos = position;
             }
 
             @Override
@@ -96,10 +96,10 @@ public class ViewpagerActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                if (state == ViewPager.SCROLL_STATE_DRAGGING) {
-                    if (mPositionPager == mScreenPagerAdapter.getCount() - 1) {
-                        lastPager = true;
-                    }
+                if (isFinish) {
+                    Intent intent = new Intent(ViewpagerActivity.this, ViewPagerMainActivity.class);
+                    startActivity(intent);
+                    isFinish = false;
                 }
             }
         });

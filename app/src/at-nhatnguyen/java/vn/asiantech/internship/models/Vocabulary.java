@@ -5,25 +5,25 @@ package vn.asiantech.internship.models;
  * Class use for viewpager of homeFragment
  */
 public class Vocabulary {
-    private String english;
+    private String englishLanguage;
     private int image;
-    private String vietNam;
+    private String vietnamese;
 
-    public Vocabulary(String english, int image, String vietNam) {
-        this.english = english;
+    public Vocabulary(String englishLanguage, int image, String vietnamese) {
+        this.englishLanguage = englishLanguage;
         this.image = image;
-        this.vietNam = vietNam;
+        this.vietnamese = vietnamese;
     }
 
-    public String getEnglish() {
-        return english;
+    public String getEnglishLanguage() {
+        return englishLanguage;
     }
 
     public int getImage() {
         return image;
     }
 
-    public String getVietNam() {
-        return vietNam;
+    public String getVietnamese() {
+        return vietnamese;
     }
 }
