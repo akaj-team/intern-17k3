@@ -20,17 +20,17 @@ public class TabLayoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
-        initData();
         initView();
-    }
-
-    private void initData() {
-        mViewPager.setAdapter(new TabLayoutAdapter(getSupportFragmentManager(), getApplicationContext()));
-        mTabLayout.setupWithViewPager(mViewPager);
+        initData();
     }
 
     private void initView() {
         mTabLayout = findViewById(R.id.tabLayout);
         mViewPager = findViewById(R.id.viewPager);
+    }
+
+    private void initData() {
+        mViewPager.setAdapter(new TabLayoutAdapter(getSupportFragmentManager(), getApplicationContext()));
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 }

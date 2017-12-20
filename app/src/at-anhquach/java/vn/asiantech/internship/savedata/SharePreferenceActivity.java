@@ -11,7 +11,7 @@ import android.widget.EditText;
 import vn.asiantech.internship.R;
 
 /**
- * Class save and display data by share Preference
+ * Class save and display data by share preference
  */
 public class SharePreferenceActivity extends AppCompatActivity {
     EditText mEdtSaveData;

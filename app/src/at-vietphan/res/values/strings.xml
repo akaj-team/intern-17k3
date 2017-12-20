@@ -57,4 +57,23 @@
     <string name="drawable">DRAWABLE</string>
     <string name="nine_path">NINE PATH</string>
     <string name="image_vector">IMAGE VECTOR</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="view_pager">VIEW PAGER</string>
+    <string name="fragment_step_3">Fragment step 3</string>
+    <string name="fragment_step_2">Fragment step 2</string>
+    <string name="fragment_step_1">Fragment step 1</string>
+    <string name="skip">SKIP</string>
+    <string name="birthday">Birthday:</string>
+    <string name="email_2">Email:</string>
+    <string name="cancel">CANCEL</string>
+    <string name="update">UPDATE</string>
+    <string name="phan_xuan_viet">Phan Xuan Viet</string>
+    <string name="birth_day">02/04/1996</string>
+    <string name="skip_all_step">Skip all step</string>
+    <string name="do_you_want_to_skip">Do you want to skip this step?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dialog_fragment">Dialog Fagment</string>
+    <string name="your_info">Your information</string>
 </resources>
