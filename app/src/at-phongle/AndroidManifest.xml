@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.calculator.CalculatorActivity" />
+        <activity android:name=".calculator.CalculatorActivity" />
         <activity android:name=".recyclerview.PostActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".savedata.SharePreferenceActivity" />
@@ -26,6 +27,10 @@
         <activity android:name=".savedata.PersonActivity" />
         <activity android:name=".savedata.DetailCompanyActivity" />
         <activity android:name=".drawerlayout.DrawerLayoutActivity" />
+        <activity android:name=".image.ImageNinepathVectorActivity" />
+        <activity android:name=".image.ImageActivity" />
+        <activity android:name=".image.NinePathActivity" />
+        <activity android:name=".image.VectorActivity" />
     </application>
 
 </manifest>
