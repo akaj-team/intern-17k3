@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="name_en">
+        <item>bear</item>
+        <item>bee</item>
+        <item>elk</item>
+        <item>frog</item>
+        <item>giraffe</item>
+        <item>goat</item>
+        <item>hippo</item>
+        <item>kangaroo</item>
+        <item>leopard</item>
+        <item>lion</item>
+        <item>llama</item>
+        <item>monkey</item>
+        <item>moose</item>
+        <item>ostrich</item>
+        <item>owl</item>
+        <item>panda</item>
+        <item>peacock</item>
+        <item>penguin</item>
+        <item>rhino</item>
+        <item>squirrel</item>
+        <item>walrus</item>
+        <item>weasel</item>
+        <item>yak</item>
+        <item>zebra</item>
+    </string-array>
+    <integer-array name="image_animal">
+        <item>@drawable/bear</item>
+        <item>@drawable/bee</item>
+        <item>@drawable/elk</item>
+        <item>@drawable/frog</item>
+        <item>@drawable/giraffe</item>
+        <item>@drawable/goat</item>
+        <item>@drawable/hippo</item>
+        <item>@drawable/kangaroo</item>
+        <item>@drawable/leopard</item>
+        <item>@drawable/lion</item>
+        <item>@drawable/llama</item>
+        <item>@drawable/monkey</item>
+        <item>@drawable/moose</item>
+        <item>@drawable/ostrich</item>
+        <item>@drawable/owl</item>
+        <item>@drawable/panda</item>
+        <item>@drawable/peacock</item>
+        <item>@drawable/penguin</item>
+        <item>@drawable/rhino</item>
+        <item>@drawable/squirrel</item>
+        <item>@drawable/walrus</item>
+        <item>@drawable/weasel</item>
+        <item>@drawable/yak</item>
+        <item>@drawable/zebra</item>
+    </integer-array>
+    <string-array name="name_vi">
+        <item>Gấu</item>
+        <item>Ong</item>
+        <item>Nai</item>
+        <item>Ếch</item>
+        <item>Hưu cao cổ</item>
+        <item>Dê</item>
+        <item>Tê giác</item>
+        <item>Kangaroo</item>
+        <item>Báo</item>
+        <item>Sư tử</item>
+        <item>....</item>
+        <item>Khỉ</item>
+        <item>Chuột</item>
+        <item>....</item>
+        <item>Cú mèo</item>
+        <item>Gấu trúc</item>
+        <item>Công</item>
+        <item>Chim cánh cụt</item>
+        <item>....</item>
+        <item>Sóc</item>
+        <item>Hà mã</item>
+        <item>Chuột túi</item>
+        <item>Linh dương đầu bò</item>
+        <item>Ngựa vằn</item>
+    </string-array>
+</resources>
