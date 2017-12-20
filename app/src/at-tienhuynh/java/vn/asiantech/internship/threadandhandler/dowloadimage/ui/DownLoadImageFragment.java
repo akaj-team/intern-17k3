@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,7 +106,7 @@ public class DownLoadImageFragment extends Fragment {
                         mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.toByteArray().length);
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.d("error", e.getMessage());
                 }
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -144,7 +145,7 @@ public class DownLoadImageFragment extends Fragment {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        Log.d("error :", e.getMessage());
                     }
                     // set mStatus = 0 for the next download
                     mStatus = START_PROGRESS;

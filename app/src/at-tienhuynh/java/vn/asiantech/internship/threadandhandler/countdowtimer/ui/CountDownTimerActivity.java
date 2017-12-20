@@ -34,11 +34,6 @@ public class CountDownTimerActivity extends AppCompatActivity {
      * Init Data
      */
     private void initData() {
-        mItemList.add(new Item("aaaaa"));
-        mItemList.add(new Item("aaaaa"));
-        mItemList.add(new Item("aaaaa"));
-        mItemList.add(new Item("aaaaa"));
-        mItemList.add(new Item("aaaaa"));
     }
 
     /**

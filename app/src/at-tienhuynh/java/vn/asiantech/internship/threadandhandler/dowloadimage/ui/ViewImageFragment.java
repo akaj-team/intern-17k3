@@ -16,7 +16,7 @@ import vn.asiantech.internship.R;
  */
 public class ViewImageFragment extends Fragment {
 
-    public static ImageView mImgDownLoaded;
+    private ImageView mImgDownLoaded;
     private View mView;
 
     public ViewImageFragment() {
