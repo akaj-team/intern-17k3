@@ -59,10 +59,9 @@
     <string name="name_btn_nine_path">Nine Path</string>
     <string name="name_btn_draw_vector">Draw Vector</string>
     <string name="name_btn_thread">Thread And Handler</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name_btn_start_download">Download</string>
     <string name="name_btn_exercise_1_thread">Exercise 1</string>
     <string name="name_btn_exercise_2_thread">Exercise 2</string>
+    <string name="item_countdown_list">item :  </string>
 </resources>

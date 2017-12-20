@@ -55,7 +55,7 @@ public class ListCountDownTimerAdapter extends RecyclerView.Adapter<ListCountDow
         private void onBindData(int position) {
             Item item = mItemLists.get(position);
             if (item != null) {
-                mTvItem.setText(item.getNameItem());
+                mTvItem.setText(item.getNameItem().concat(String.valueOf(position)));
             }
         }
     }

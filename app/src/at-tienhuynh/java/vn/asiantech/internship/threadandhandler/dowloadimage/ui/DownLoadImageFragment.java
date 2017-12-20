@@ -4,6 +4,7 @@ package vn.asiantech.internship.threadandhandler.dowloadimage.ui;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class DownLoadImageFragment extends Fragment {
     private int mStatus = 0;
     private View mView;
     private ProgressBar mProgressBarDownLoad;
+    private Handler mProgressBarHandler = new Handler();
     private TextView mTvPercentDownLoad;
     private Button mBtnStartDownLoad;
     private static Bitmap mBitmap;
@@ -133,7 +135,7 @@ public class DownLoadImageFragment extends Fragment {
                         Log.d("error: ", e.getMessage());
                     }
                     // use handler to update percent download
-                    mProgressBarDownLoad.post(new Runnable() {
+                    mProgressBarHandler.post(new Runnable() {
                         @Override
                         public void run() {
                             mProgressBarDownLoad.setProgress(mStatus);

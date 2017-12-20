@@ -19,6 +19,8 @@ public class CountDownTimerActivity extends AppCompatActivity {
     private RecyclerView mRecyclerViewCountDownTimer;
     private List<Item> mItemList = new ArrayList<>();
     private TextView mTvCountDown;
+    private ListCountDownTimerAdapter mListCountDownTimerAdapter;
+    private int mCountTime;
 
     @Override
 
@@ -28,12 +30,18 @@ public class CountDownTimerActivity extends AppCompatActivity {
         initData();
         initViews();
         initAdapters();
+        // start count down
+        countDownTimer.start();
     }
 
     /**
      * Init Data
      */
     private void initData() {
+        mItemList.add(new Item(getResources().getString(R.string.item_countdown_list)));
+        mItemList.add(new Item(getResources().getString(R.string.item_countdown_list)));
+        mItemList.add(new Item(getResources().getString(R.string.item_countdown_list)));
+        mItemList.add(new Item(getResources().getString(R.string.item_countdown_list)));
     }
 
     /**
@@ -48,9 +56,9 @@ public class CountDownTimerActivity extends AppCompatActivity {
      * Init Adapter
      */
     private void initAdapters() {
-        ListCountDownTimerAdapter listCountDownTimerAdapter = new ListCountDownTimerAdapter(mItemList);
+        mListCountDownTimerAdapter = new ListCountDownTimerAdapter(mItemList);
         mRecyclerViewCountDownTimer.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewCountDownTimer.setAdapter(listCountDownTimerAdapter);
+        mRecyclerViewCountDownTimer.setAdapter(mListCountDownTimerAdapter);
     }
 
     /**
@@ -59,11 +67,51 @@ public class CountDownTimerActivity extends AppCompatActivity {
     CountDownTimer countDownTimer = new CountDownTimer(18000, 1000) {
         @Override
         public void onTick(long l) {
+            mCountTime = (int) (l / 1000);
+            mTvCountDown.setText(String.valueOf(mCountTime));
         }
 
         @Override
         public void onFinish() {
+            mTvCountDown.setText(getResources().getString(R.string.number_0));
+        }
+    };
 
+    /**
+     * This method to add item after 3 second
+     */
+    CountDownTimer addItem = new CountDownTimer(3000, 1000) {
+        @Override
+        public void onTick(long l) {
+            // No-opp
+        }
+
+        @Override
+        public void onFinish() {
+            if (mCountTime > 0) {
+                mItemList.add(new Item(getResources().getString(R.string.item_countdown_list)));
+                mListCountDownTimerAdapter.notifyDataSetChanged();
+                addItem.start();
+            }
+        }
+    }.start();
+
+    /**
+     * This method is used to delete item after 2 seconds
+     */
+    CountDownTimer deleteItem = new CountDownTimer(5000, 1000) {
+        @Override
+        public void onTick(long l) {
+            // no-opp
+        }
+
+        @Override
+        public void onFinish() {
+            if (mCountTime > 0) {
+                mItemList.remove(mItemList.size() / 2);
+                mListCountDownTimerAdapter.notifyDataSetChanged();
+                deleteItem.start();
+            }
         }
     }.start();
 }
