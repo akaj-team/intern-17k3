@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.thread_handler_countdowntmer;
+package vn.asiantech.internship.ui.thread_handler_countdowntmer.thread_handler;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,7 @@ import vn.asiantech.internship.R;
 
 /**
  * Created by tiboo on 20/12/2017.
+ * Create activity download.
  */
 
 public class DownloadActivity extends AppCompatActivity {

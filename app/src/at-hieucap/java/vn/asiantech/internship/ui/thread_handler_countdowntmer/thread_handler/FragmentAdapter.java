@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.thread_handler_countdowntmer;
+package vn.asiantech.internship.ui.thread_handler_countdowntmer.thread_handler;
 
 
 import android.support.v4.app.Fragment;

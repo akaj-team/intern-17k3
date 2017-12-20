@@ -41,6 +41,6 @@
     <string name="event_two_term_is_empty">First term and second term is not empty !</string>
     <string name="text_null"> </string>
     <string name="event_second_term_is_value_0">Second term is not value = 0 !</string>
-    <string name="click_here">Clieck here</string>
-    <string name="percent_0">0%</string>
+    <string name="start">Start</string>
+    <string name="percent_start">0%</string>
 </resources>
