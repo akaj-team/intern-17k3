@@ -14,6 +14,10 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.threadandhandler.countdowtimer.adapters.ListCountDownTimerAdapter;
 import vn.asiantech.internship.threadandhandler.countdowtimer.models.Item;
 
+/**
+ * Created at 2017
+ * Created by jackty on 20/12/2017.
+ */
 public class CountDownTimerActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerViewCountDownTimer;
@@ -64,7 +68,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
     /**
      * This is count down timer
      */
-    CountDownTimer countDownTimer = new CountDownTimer(18000, 1000) {
+    CountDownTimer countDownTimer = new CountDownTimer(180000, 1000) {
         @Override
         public void onTick(long l) {
             mCountTime = (int) (l / 1000);
@@ -80,7 +84,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
     /**
      * This method to add item after 3 second
      */
-    CountDownTimer addItem = new CountDownTimer(3000, 1000) {
+    CountDownTimer addItem = new CountDownTimer(10000, 1000) {
         @Override
         public void onTick(long l) {
             // No-opp
@@ -99,7 +103,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
     /**
      * This method is used to delete item after 2 seconds
      */
-    CountDownTimer deleteItem = new CountDownTimer(5000, 1000) {
+    CountDownTimer deleteItem = new CountDownTimer(15000, 1000) {
         @Override
         public void onTick(long l) {
             // no-opp
