@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.splash.SplashActivity">
+    tools:context="vn.asiantech.internship.ui.splash.SplashActivity">
 
     <Button
         android:id="@+id/btnLogin"
@@ -14,7 +14,7 @@
         android:text="@string/tv_login" />
 
     <Button
-        android:id="@+id/btnCaculator"
+        android:id="@+id/btnCalculator"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_calculator_view" />
@@ -23,6 +23,13 @@
         android:id="@+id/btnRecyclerView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:text="@string/btn_recyclerview" />
+
+    <Button
+        android:id="@+id/btnSaveData"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_save_data" />
         android:text="@string/btn_ryceclerview" />
 
     <Button
@@ -30,5 +37,11 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_drawerlayout" />
+
+    <Button
+        android:id="@+id/btnLoadImage"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_loadImage" />
 
 </LinearLayout>
