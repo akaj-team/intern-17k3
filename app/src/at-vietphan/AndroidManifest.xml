@@ -33,5 +33,7 @@
         <activity android:name=".ui.loadimage.ImageLoaderActivity" />
         <activity android:name=".ui.loadimage.NinePathActivity" />
         <activity android:name=".ui.loadimage.ImageVectorActivity" />
+        <activity android:name=".ui.viewpager.SliderActivity" />
+        <activity android:name=".ui.viewpager.TabLayoutActivity" />
     </application>
 </manifest>

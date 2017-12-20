@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.models.recyclerview.Person;
+import vn.asiantech.internship.models.Person;
 
 /**
  * Create Person View Activity

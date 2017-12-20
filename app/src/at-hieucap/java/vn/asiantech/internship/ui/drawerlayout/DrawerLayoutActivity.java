@@ -23,11 +23,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.models.drawerlayout.Option;
-import vn.asiantech.internship.models.drawerlayout.User;
+import vn.asiantech.internship.models.Option;
+import vn.asiantech.internship.models.User;
+import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.loadimage.LoadImageActivity;
+import vn.asiantech.internship.ui.login.LoginActivity;
+import vn.asiantech.internship.ui.recyclerview.PersonViewActivity;
+import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
 public class DrawerLayoutActivity extends AppCompatActivity implements InformationAdapter.OnItemClickListener {
     public static final int REQUEST_CODE = 1;
+    private static final String CALCULATOR = "Calculator";
+    private static final String LOGIN_SCREEN = "Login Screen";
+    private static final String RECYCLER_VIEW = "Recycler View";
+    private static final String SAVE_DATA = "Save Data";
+    private static final String LOAD_IMAGE = "Load Image";
     private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
@@ -88,10 +98,11 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Informati
 
     private void initData() {
         mInformationList.add(new User(getResources().getDrawable(R.drawable.ic_ibrahimovic), getString(R.string.text_email)));
-        mInformationList.add(new Option(R.drawable.ic_download, "Inbox", false));
-        mInformationList.add(new Option(R.drawable.ic_outbox, "Outbox", false));
-        mInformationList.add(new Option(R.drawable.ic_trash, "Trash", false));
-        mInformationList.add(new Option(R.drawable.ic_spam, "Spam", false));
+        mInformationList.add(new Option(R.drawable.ic_download, LOGIN_SCREEN, false, new Intent(this, LoginActivity.class)));
+        mInformationList.add(new Option(R.drawable.ic_outbox, CALCULATOR, false, new Intent(this, CalculatorActivity.class)));
+        mInformationList.add(new Option(R.drawable.ic_trash, RECYCLER_VIEW, false, new Intent(this, PersonViewActivity.class)));
+        mInformationList.add(new Option(R.drawable.ic_spam, LOAD_IMAGE, false, new Intent(this, LoadImageActivity.class)));
+        mInformationList.add(new Option(R.drawable.ic_spam, SAVE_DATA, false, new Intent(this, SaveDataActivity.class)));
     }
 
     @Override
@@ -109,6 +120,8 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Informati
 
     @Override
     public void onClickOption(int position) {
+        Intent intent = ((Option) mInformationList.get(position)).getIntent();
+        startActivity(intent);
         if (position != mOldPosition) {
             if (mInformationList.get(position) instanceof Option) {
                 ((Option) mInformationList.get(position)).setClicked();

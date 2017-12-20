@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.models.drawerlayout.Option;
-import vn.asiantech.internship.models.drawerlayout.User;
+import vn.asiantech.internship.models.Option;
+import vn.asiantech.internship.models.User;
 
 public class InformationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int USER = 0;
@@ -110,7 +110,7 @@ public class InformationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             Option option = (Option) information;
             mImgIconOption.setImageResource(option.getIcon());
             mTvOption.setText(option.getName());
-            if (option.isClicked()) {
+            if (option.isClick()) {
                 mTvOption.setTextColor(Color.BLUE);
             } else {
                 mTvOption.setTextColor(Color.BLACK);

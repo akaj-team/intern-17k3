@@ -1,7 +1,6 @@
-package vn.asiantech.internship.models.drawerlayout;
+package vn.asiantech.internship.models;
 
 import android.graphics.drawable.Drawable;
-
 
 public class User {
     private Drawable avatar;

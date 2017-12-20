@@ -1,4 +1,4 @@
-package vn.asiantech.internship.models.recyclerview;
+package vn.asiantech.internship.models;
 
 /**
  * Create item view : Person
