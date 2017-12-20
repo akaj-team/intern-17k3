@@ -8,17 +8,19 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.savedata.SaveDataActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.PersonViewActivity;
 
 /**
- * Create Main Activity
+ * Create Main activity
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnBt1;
     private Button mBtnBt2;
     private Button mBtnBt3;
+    private Button mBtnBt5;
     private Button mBtnBt4;
 
     @Override
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBt2 = findViewById(R.id.btnBt2);
         mBtnBt3 = findViewById(R.id.btnBt3);
         mBtnBt4 = findViewById(R.id.btnBt4);
+        mBtnBt5 = findViewById(R.id.btnBt5);
     }
 
     private void addListener() {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBt2.setOnClickListener(this);
         mBtnBt3.setOnClickListener(this);
         mBtnBt4.setOnClickListener(this);
+        mBtnBt5.setOnClickListener(this);
     }
 
     @Override
@@ -61,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnBt4:
                 Intent intent_bt4 = new Intent(this, vn.asiantech.internship.ui.loadimage.MainActivity.class);
                 this.startActivity(intent_bt4);
+                break;
+            case R.id.btnBt5:
+                Intent intent_bt5 = new Intent(this, SaveDataActivity.class);
+                this.startActivity(intent_bt5);
                 break;
         }
     }
