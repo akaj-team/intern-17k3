@@ -30,6 +30,16 @@
     <string name="edt_hint_number_b">Number B</string>
     <string name="tv_number_not_0">Number B is not 0</string>
     <string name="tv_login">Create Login Screen</string>
+    <string name="tv_caculator">Calculator View </string>
+    <string name="btn_loadDrawable">Drawable</string>
+    <string name="btn_loadAsset">Asset</string>
+    <string name="btn_loadStorage">Storage</string>
+    <string name="btn_loadInternet">Internet</string>
+    <string name="btn_loadImage">Load Image</string>
+    <string name="btn_loadImage_ninepath">Load Image NinePath</string>
+    <string name="btn_loadImage_vector">Load Image Vector</string>
+    <string name="btn_ninepath">Nine Path</string>
+    <string name="btn_vector">Vector</string>
     <string name="tv_calculator_view">Calculator View </string>
     <string name="title_activity_shared_preferences">SharedPreferencesActivity</string>
     <string name="btn_result">Result</string>
@@ -45,6 +55,5 @@
     <string name="input">input</string>
     <string name="use_memory">Please use memory</string>
     <string name="tv_toolbar">Home</string>
-    <string name="have_not_picked_img">Not picked</string>
-
+    <string name="have_not_picked_img">Not picked</string>g
 </resources>
