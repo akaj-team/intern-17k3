@@ -26,13 +26,14 @@ public class RecyclerViewCountDownTimerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_count_down_timer);
         initViews();
         mStrs.add("0");
+        mStrs.add("1");
         initAdapter();
         new CountDownTimer(180000, 10000) {
 
             @Override
             public void onTick(long longMilisecond) {
-                mStrs.add("1");
                 mStrs.add("2");
+                mStrs.add("3");
                 mRecyclerViewAdapter.notifyDataSetChanged();
             }
 
@@ -45,8 +46,7 @@ public class RecyclerViewCountDownTimerActivity extends AppCompatActivity {
 
             @Override
             public void onTick(long longMilisecond) {
-                mStrs.remove(mStrs.get(0));
-                mStrs.remove(mStrs.get(1));
+                mStrs.remove(mStrs.get(mStrs.size() / 2));
                 mRecyclerViewAdapter.notifyDataSetChanged();
             }
 
