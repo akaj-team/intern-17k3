@@ -12,7 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -37,8 +37,9 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Informati
     private static final String SAVE_DATA = "Save Data";
     private static final String LOAD_IMAGE = "Load Image";
     private static final String GOOGLE_PHOTO = "com.google.android.apps.photos";
+    private static final String MSG = "Stack trace";
+    private final String TAG = DrawerLayoutActivity.this.getClass().getSimpleName();
     private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mActionBarDrawerToggle;
     private InformationAdapter mAdapter;
     private List<Object> mInformationList = new ArrayList<>();
     private RecyclerView mRecyclerViewLeftBar;
@@ -56,7 +57,7 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Informati
     }
 
     private void initDrawer() {
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
+        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout, R.string.open, R.string.close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -140,23 +141,17 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Informati
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE) {
             if (data != null) {
-
                 try {
                     Uri chosenImageUri = data.getData();
                     Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), chosenImageUri);
                     Drawable d = new BitmapDrawable(getResources(), bm);
                     ((User) mInformationList.get(0)).setAvatar(d);
                     mAdapter.notifyItemChanged(0);
-
                 } catch (IOException e) {
+                    Log.e(TAG, MSG);
                     e.printStackTrace();
                 }
             }
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return mActionBarDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 }
