@@ -3,7 +3,6 @@ package vn.asiantech.internship.ui.viewpager.information;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -30,10 +29,5 @@ public class HomeActivity extends AppCompatActivity {
         adapter.addFragment(new InformationFragment(), "Information");
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
-    }
-
-    @Override
-    public void onBackPressed() {
-        ActivityCompat.finishAffinity(this);
     }
 }

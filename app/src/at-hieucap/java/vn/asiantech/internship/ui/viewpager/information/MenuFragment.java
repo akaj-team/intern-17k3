@@ -24,6 +24,7 @@ public class MenuFragment extends Fragment {
     private HomeAdapter mAdapterHome;
 
     public MenuFragment() {
+        // No-oop
     }
 
     @Override

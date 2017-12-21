@@ -21,14 +21,13 @@ import vn.asiantech.internship.ui.viewpager.information.HomeActivity;
  * Create Initial Activity
  */
 public class InitialActivity extends AppCompatActivity {
-    private static final int CURRENT_PAGE = 0;
     private List<String> mListFragment = new ArrayList<>();
     private ViewPager mViewPager;
     private TextView mTvSkip;
     private InitialAdapter mAdapter;
     private PageIndicatorView mPageIndicatorView;
     private int mPositionPager;
-    private boolean lastPager = false;
+    private boolean mIsLastPager = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +37,16 @@ public class InitialActivity extends AppCompatActivity {
         initAdapter();
         initViews();
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setCurrentItem(CURRENT_PAGE);
         mPageIndicatorView.setViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (lastPager && position == mAdapter.getCount() - 1) {
+                if (mIsLastPager && position == mAdapter.getCount() - 1) {
                     startActivity();
+                    finish();
                 }
                 mPositionPager = position;
-                lastPager = false;
+                mIsLastPager = false;
             }
 
             @Override
@@ -63,7 +62,7 @@ public class InitialActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
                 if (state == ViewPager.SCROLL_STATE_DRAGGING) {
                     if (mPositionPager == mAdapter.getCount() - 1) {
-                        lastPager = true;
+                        mIsLastPager = true;
                     }
                 }
             }
@@ -100,6 +99,7 @@ public class InitialActivity extends AppCompatActivity {
                         .setPositiveButton(R.string.event_submit, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 startActivity();
+                                finish();
                             }
                         })
                         .setNegativeButton(R.string.event_cancel, new DialogInterface.OnClickListener() {

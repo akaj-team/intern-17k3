@@ -77,7 +77,6 @@ public class AlertDialogFragment extends DialogFragment implements View.OnClickL
                 break;
             case R.id.btnCancel:
                 dismiss();
-                break;
         }
     }
 }
