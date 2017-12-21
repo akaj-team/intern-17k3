@@ -34,6 +34,8 @@
         <activity android:name=".ui.savedata.SaveDataActivity" />
         <activity android:name=".ui.savedata.ex3.UserActivity" />
         <activity android:name=".ui.savedata.ex3.CompanyActivity" />
+        <activity android:name=".ui.viewpager.ui.ViewPagerActivity" />
+        <activity android:name=".ui.viewpager.ui.TabLayoutActivity" />
     </application>
 
 </manifest>

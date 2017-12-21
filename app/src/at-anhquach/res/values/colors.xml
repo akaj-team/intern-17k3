@@ -15,4 +15,7 @@
     <color name="colorGray">#DCDCDC</color>
     <color name="colorGrayLight2">#EEEEEE</color>
     <color name="colorGrayDark">#757575</color>
+    <color name="colorPink100">#F8BBD0</color>
+    <color name="colorIndigo300">#7986CB</color>
+    <color name="colorCyan300">#4DD0E1</color>
 </resources>
