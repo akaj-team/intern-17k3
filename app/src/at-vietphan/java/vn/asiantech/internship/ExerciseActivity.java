@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import vn.asiantech.internship.ui.asynchronous.activitys.AsynchronousActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.loadimage.ImageLoaderActivity;
@@ -24,6 +25,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnDrawerLayout;
     private Button mBtnSaveData;
     private Button mBtnLoadImage;
+    private Button mBtnAsynchronous;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnDrawerLayout = findViewById(R.id.btnDrawerLayout);
         mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
+        mBtnAsynchronous = findViewById(R.id.btnAsynchronous);
     }
 
     private void initListener() {
@@ -49,6 +52,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnDrawerLayout.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
+        mBtnAsynchronous.setOnClickListener(this);
     }
 
     @Override
@@ -72,6 +76,8 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
             case R.id.btnLoadImage:
                 startActivity(new Intent(this, ImageLoaderActivity.class));
                 break;
+            case R.id.btnAsynchronous:
+                startActivity(new Intent(this, AsynchronousActivity.class));
         }
     }
 }

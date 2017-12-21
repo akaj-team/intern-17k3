@@ -57,4 +57,9 @@
     <string name="drawable">DRAWABLE</string>
     <string name="nine_path">NINE PATH</string>
     <string name="image_vector">IMAGE VECTOR</string>
+    <string name="asynchronous">ASYNCHRONOUS</string>
+    <string name="click_me">CLICK ME</string>
+    <string name="thread_handle">Thread - Handle</string>
+    <string name="countdown_timer">CountDown Timer</string>
+    <string name="found_fragment">found fragment</string>
 </resources>
