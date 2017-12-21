@@ -14,7 +14,7 @@ import vn.asiantech.internship.R;
 /**
  * Created by vietphan on 20/12/2017.
  * Class TwoFragment
- */g
+ */
 public class TwoFragment extends Fragment {
     private ImageView mImgInternet;
 

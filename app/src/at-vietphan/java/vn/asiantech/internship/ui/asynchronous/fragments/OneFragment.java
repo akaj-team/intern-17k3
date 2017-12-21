@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
@@ -21,7 +22,6 @@ import java.net.URL;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.asynchronous.activitys.ThreadHandleActivity;
-import vn.asiantech.internship.ui.asynchronous.adapters.ThreadHandleAdapter;
 
 /**
  * Created by vietphan on 20/12/2017.
@@ -35,7 +35,7 @@ public class OneFragment extends Fragment implements View.OnClickListener {
     private int mProgressBarStatus = 0;
     private TextView mTvStatus;
     private Handler mHandler = new Handler();
-    private ThreadHandleAdapter mAdapter;
+    private int percent;
 
     @Nullable
     @Override
@@ -64,7 +64,6 @@ public class OneFragment extends Fragment implements View.OnClickListener {
             public void run() {
                 downloadPhoto();
             }
-
         }).start();
     }
 
@@ -86,12 +85,14 @@ public class OneFragment extends Fragment implements View.OnClickListener {
             int count;
             while ((count = inputStream.read(data)) != -1) {
                 total += count;
-                final int percent = (int) ((total * 100) / imgLength);
+                percent = (int) ((total * 100) / imgLength);
                 mHandler.post(new Runnable() {
                     public void run() {
                         mProgressBar.setProgress(percent);
                         mTvStatus.setText(percent + "/" + mProgressBar.getMax());
-
+                        if (percent == 100) {
+                            Toast.makeText(getContext(), "Downloaded", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 try {
@@ -100,7 +101,6 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                     e.printStackTrace();
                 }
             }
-
         } catch (Throwable e) {
             e.printStackTrace();
         } finally {
@@ -117,7 +117,6 @@ public class OneFragment extends Fragment implements View.OnClickListener {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    mAdapter = new ThreadHandleAdapter(getFragmentManager());
                     ((ThreadHandleActivity) getActivity()).sendMessageToB(mBitmap);
                 }
             });
