@@ -20,8 +20,8 @@ import vn.asiantech.internship.models.FootballTeam;
 public class FootballTeamAdapter extends RecyclerView.Adapter<FootballTeamAdapter.FootballTeamHolder> {
     private List<FootballTeam> mFootballTeamList;
 
-    FootballTeamAdapter(List<FootballTeam> footbalTeamList) {
-        mFootballTeamList = footbalTeamList;
+    FootballTeamAdapter(List<FootballTeam> footballTeamList) {
+        mFootballTeamList = footballTeamList;
     }
 
     @Override

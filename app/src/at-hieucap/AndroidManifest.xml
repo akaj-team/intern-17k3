@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="vn.asiantech.internship.ui.thread_handler_countdowntmer.thread_handler.DownloadActivity">
+        <activity android:name="vn.asiantech.internship.ui.thread_handler_countdowntmer.count_down_timer.FootballTeamActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
