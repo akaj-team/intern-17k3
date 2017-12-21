@@ -1,4 +1,4 @@
-package vn.asiantech.internship.savedata;
+package vn.asiantech.internship.ui.savedata;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,8 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
-import vn.asiantech.internship.model.Company;
-import vn.asiantech.internship.model.People;
+import vn.asiantech.internship.models.Company;
+import vn.asiantech.internship.models.People;
 
 /**
  * Create People SQLite

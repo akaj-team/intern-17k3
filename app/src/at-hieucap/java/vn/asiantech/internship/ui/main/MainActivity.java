@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.savedata.SaveDataActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.PersonViewActivity;
+import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 
 /**
  * Create Main activity
@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBtnBt1;
     private Button mBtnBt2;
     private Button mBtnBt3;
-    private Button mBtnBt5;
     private Button mBtnBt4;
+    private Button mBtnBt5;
+    private Button mBtnBt6;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBt3 = findViewById(R.id.btnBt3);
         mBtnBt4 = findViewById(R.id.btnBt4);
         mBtnBt5 = findViewById(R.id.btnBt5);
+        mBtnBt6 = findViewById(R.id.btnBt6);
     }
 
     private void addListener() {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBt3.setOnClickListener(this);
         mBtnBt4.setOnClickListener(this);
         mBtnBt5.setOnClickListener(this);
+        mBtnBt6.setOnClickListener(this);
     }
 
     @Override
@@ -70,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent_bt5 = new Intent(this, SaveDataActivity.class);
                 this.startActivity(intent_bt5);
                 break;
+            case R.id.btnBt6:
+                Intent intent_bt6 = new Intent(this, vn.asiantech.internship.ui.drawerlayout.DrawerLayoutActivity.class);
+                this.startActivity(intent_bt6);
         }
     }
 }
