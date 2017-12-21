@@ -1,6 +1,5 @@
 package vn.asiantech.internship.ui.asynchronous.fragments;
 
-import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -15,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -73,26 +72,26 @@ public class OneFragment extends Fragment implements View.OnClickListener {
             connection.setDoInput(true);
             connection.connect();
             is = connection.getInputStream();
-            mBitmap = BitmapFactory.decodeStream(is);
-            URL url = new URL(imageUrl);
-            long total = 0;
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             int imgLength = connection.getContentLength();
-            InputStream inputStream = new BufferedInputStream(url.openStream());
-            byte[] data = new byte[4096];
+            long total = 0;
+            final byte[] data = new byte[1024];
             int count;
-            while ((count = inputStream.read(data)) != -1) {
+            while ((count = is.read(data)) != -1) {
                 total += count;
                 percent = (int) ((total * 100) / imgLength);
+                outputStream.write(data, 0, count);
+
                 mHandler.post(new Runnable() {
-                    @SuppressLint("SetTextI18n")
                     public void run() {
                         mProgressBar.setProgress(percent);
-                        mTvStatus.setText(percent + "/" + mProgressBar.getMax());
+                        mTvStatus.setText(percent + getString(R.string.tren) + mProgressBar.getMax());
                         if (percent == 100) {
-                            Toast.makeText(getContext(), "Downloaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), R.string.downloaded, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+                mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
                 try {
                     Thread.sleep(20);
                 } catch (InterruptedException e) {

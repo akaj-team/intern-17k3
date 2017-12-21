@@ -39,7 +39,7 @@ public class AsynchronousActivity extends AppCompatActivity implements View.OnCl
             case R.id.btnThread:
                 startActivity(new Intent(this, ThreadHandleActivity.class));
                 break;
-            case R.id.btnAsynchronous:
+            case R.id.btnCountDownTimer:
                 startActivity(new Intent(this, CountDownTimerActivity.class));
         }
     }

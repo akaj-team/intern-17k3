@@ -81,4 +81,8 @@
     <string name="thread_handle">Thread - Handle</string>
     <string name="countdown_timer">CountDown Timer</string>
     <string name="found_fragment">found fragment</string>
+    <string name="done">done!</string>
+    <string name="seconds_remaining">seconds remaining:</string>
+    <string name="downloaded">Downloaded</string>
+    <string name="tren">/</string>
 </resources>
