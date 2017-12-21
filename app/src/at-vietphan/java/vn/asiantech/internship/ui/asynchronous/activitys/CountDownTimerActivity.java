@@ -24,6 +24,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
     private CountDownTimerAdapter mCountDownTimerAdapter;
     private List<CountDownTimerItem> mCountDownTimers = new ArrayList<>();
     private TextView mTextView;
+    private int mNumberItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class CountDownTimerActivity extends AppCompatActivity {
             public void onFinish() {
                 mTextView.setText(R.string.done);
             }
-
         }.start();
 
         /*
@@ -57,9 +57,10 @@ public class CountDownTimerActivity extends AppCompatActivity {
         new CountDownTimer(180000, 10000) {
             @Override
             public void onTick(long l) {
-                mCountDownTimers.add(new CountDownTimerItem("item 1"));
-                mCountDownTimers.add(new CountDownTimerItem("item 2"));
+                mCountDownTimers.add(new CountDownTimerItem("item " + (mNumberItem + 1)));
+                mCountDownTimers.add(new CountDownTimerItem("item " + (mNumberItem + 2)));
                 mCountDownTimerAdapter.notifyDataSetChanged();
+                mNumberItem = mNumberItem + 2;
                 Log.d("l", "list: " + mCountDownTimers.size());
             }
 
@@ -75,9 +76,9 @@ public class CountDownTimerActivity extends AppCompatActivity {
         new CountDownTimer(180000, 15000) {
             @Override
             public void onTick(long l) {
-                mCountDownTimers.remove(mCountDownTimers.get(mCountDownTimers.size() / 2 + 1));
+                mCountDownTimers.remove(mCountDownTimers.get(mCountDownTimers.size() / 2));
                 mCountDownTimerAdapter.notifyDataSetChanged();
-                Log.d("l", "removed item: " + (mCountDownTimers.size() / 2 + 1));
+                Log.d("l", "removed item: " + (mCountDownTimers.size() / 2));
                 Log.d("l", "list 2: " + mCountDownTimers.size());
             }
 
@@ -97,6 +98,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
         mCountDownTimers.add(new CountDownTimerItem("item 1"));
         mCountDownTimers.add(new CountDownTimerItem("item 2"));
         mCountDownTimers.add(new CountDownTimerItem("item 3"));
+        mNumberItem = mCountDownTimers.size() - 1;
     }
 
     private void initAdapter() {
