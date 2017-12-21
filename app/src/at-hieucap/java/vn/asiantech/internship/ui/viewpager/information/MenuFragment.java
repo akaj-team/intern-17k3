@@ -23,10 +23,6 @@ public class MenuFragment extends Fragment {
     private ViewPager mViewPager;
     private HomeAdapter mAdapterHome;
 
-    public MenuFragment() {
-        // No-oop
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
