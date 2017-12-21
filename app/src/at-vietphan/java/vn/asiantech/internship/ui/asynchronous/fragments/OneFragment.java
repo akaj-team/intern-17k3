@@ -95,11 +95,11 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                 try {
                     Thread.sleep(20);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    e.getMessage();
                 }
             }
         } catch (Throwable e) {
-            e.printStackTrace();
+            e.getMessage();
         } finally {
             try {
                 if (connection != null)
@@ -107,7 +107,7 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                 if (is != null)
                     is.close();
             } catch (Exception e) {
-                e.printStackTrace();
+                e.getMessage();
             }
         }
         if (mBitmap != null) {
