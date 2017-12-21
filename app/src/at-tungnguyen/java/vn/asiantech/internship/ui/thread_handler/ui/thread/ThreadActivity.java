@@ -13,6 +13,7 @@ public class ThreadActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private TabThreadAdapter mTabThreadAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,19 +22,30 @@ public class ThreadActivity extends AppCompatActivity {
         initData();
     }
 
-    private void initData() {
-        mTabThreadAdapter = new TabThreadAdapter(getSupportFragmentManager(),getApplicationContext());
-        mViewPager.setAdapter(mTabThreadAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
-    }
-
+    /**
+     * initView
+     */
     private void initView() {
         mTabLayout = findViewById(R.id.tabLayout);
         mViewPager = findViewById(R.id.viewPager);
     }
-    public void setBitMap(Bitmap bitMap){
+
+    /**
+     * initData for Tablayout
+     */
+    private void initData() {
+        mTabThreadAdapter = new TabThreadAdapter(getSupportFragmentManager(), getApplicationContext());
+        mViewPager.setAdapter(mTabThreadAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+    }
+
+    /**
+     * Set Bitmap
+     * @param bitMap
+     */
+    public void setBitMap(Bitmap bitMap) {
         ViewFragment viewFragment = (ViewFragment) mTabThreadAdapter.getItem(1);
-        if(viewFragment != null){
+        if (viewFragment != null) {
             viewFragment.setImageBitmapp(bitMap);
         }
     }

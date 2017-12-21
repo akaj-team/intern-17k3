@@ -51,17 +51,26 @@ public class DownloadFragment extends Fragment {
         return mView;
     }
 
+    /**
+     * initView
+     */
     private void initView() {
         tvPercent = mView.findViewById(R.id.tvPercentage);
         mProgressBar = mView.findViewById(R.id.progressBar);
         mBtnStart = mView.findViewById(R.id.btnStart);
     }
 
+    /**
+     * initData for ProgressBar
+     */
     private void initData() {
         mProgressBar.setProgress(0);
         mProgressBar.setMax(100);
     }
 
+    /**
+     * initListener for Button
+     */
     private void initListener() {
         mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +81,9 @@ public class DownloadFragment extends Fragment {
         });
     }
 
+    /**
+     * initDownloadImage and get percent progressBar
+     */
     private void initDownloadImage() {
         new Thread(new Runnable() {
             @Override
@@ -80,8 +92,7 @@ public class DownloadFragment extends Fragment {
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
-                        Log.d("e1",e.getMessage());
+                        Log.d("e1", e.getMessage());
                     }
                     mProgressBarHandler.post(new Runnable() {
                         @Override
@@ -95,8 +106,7 @@ public class DownloadFragment extends Fragment {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
-                        Log.d("e",e.getMessage());
+                        Log.d("e", e.getMessage());
                     }
                     mStatus = 0;
                 }
@@ -104,6 +114,9 @@ public class DownloadFragment extends Fragment {
         }).start();
     }
 
+    /**
+     * get Bitmap from URL
+     */
     public void getBitmapFromURL(final String imageUrl) {
         new Thread(new Runnable() {
             @Override
@@ -126,8 +139,7 @@ public class DownloadFragment extends Fragment {
                         mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.d("Bigmap",e.getMessage());
+                    Log.d("e", e.getMessage());
                 }
                 if (mBitmap != null) {
                     getActivity().runOnUiThread(new Runnable() {

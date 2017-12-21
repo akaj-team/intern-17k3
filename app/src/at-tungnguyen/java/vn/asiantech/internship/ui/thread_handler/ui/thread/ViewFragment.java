@@ -36,13 +36,19 @@ public class ViewFragment extends Fragment {
         return mView;
     }
 
-    public void setImageBitmapp(Bitmap bitmap) {
-        mImgLoadImage.setImageBitmap(bitmap);
-    }
-
+    /**
+     * initView for imageView
+     */
     private void initView() {
         mImgLoadImage = mView.findViewById(R.id.imgBitmapView);
     }
 
-
+    /**
+     * Set bitmap for imageView
+     *
+     * @param bitmap
+     */
+    public void setImageBitmapp(Bitmap bitmap) {
+        mImgLoadImage.setImageBitmap(bitmap);
+    }
 }

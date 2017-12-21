@@ -14,6 +14,10 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.CountDownItem;
 import vn.asiantech.internship.ui.thread_handler.adapter.CountDownAdapter;
 
+/**
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 08/12/2017.
+ */
 public class CountDownActivity extends AppCompatActivity {
     private List<CountDownItem> mCountDownTimers = new ArrayList<>();
     private RecyclerView mRecyclerView;
@@ -33,23 +37,35 @@ public class CountDownActivity extends AppCompatActivity {
         deleteItem();
     }
 
+    /**
+     * initView
+     */
     private void initView() {
         mRecyclerView = findViewById(R.id.recyclerViewCountDown);
         mTvCountDown = findViewById(R.id.tvCountDownTimer);
     }
 
+    /**
+     * initAdapter
+     */
     private void initAdapter() {
         mCountDownAdapter = new CountDownAdapter(mCountDownTimers);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mCountDownAdapter);
     }
 
+    /**
+     * initData for list mCountDownTimers
+     */
     private void initData() {
         mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
         mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
         mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
     }
 
+    /**
+     * initCountDown
+     */
     private void initCountDown() {
         new CountDownTimer(180000, 1000) {
             @Override
@@ -66,6 +82,9 @@ public class CountDownActivity extends AppCompatActivity {
         }.start();
     }
 
+    /**
+     * addItem for RecyclerView
+     */
     private void addItem() {
         new CountDownTimer(10000, 1000) {
             @Override
@@ -85,6 +104,9 @@ public class CountDownActivity extends AppCompatActivity {
         }.start();
     }
 
+    /**
+     * DeleteItem RecyclerView
+     */
     private void deleteItem() {
         new CountDownTimer(15000, 1000) {
             @Override
@@ -95,7 +117,7 @@ public class CountDownActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 if (mCount > 0) {
-                    mCountDownTimers.remove(mCountDownTimers.size()/ 2);
+                    mCountDownTimers.remove(mCountDownTimers.size() / 2);
                     mCountDownAdapter.notifyDataSetChanged();
                     deleteItem();
                 }
