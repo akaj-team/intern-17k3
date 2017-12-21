@@ -18,15 +18,20 @@ import vn.asiantech.internship.R;
 
 public class CountdownTimerAdapter extends RecyclerView.Adapter<CountdownTimerAdapter.ItemViewHolder> {
     private List<String> mItemList = new ArrayList<>();
+
+    CountdownTimerAdapter(List<String> itemList) {
+        mItemList = itemList;
+    }
+
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_countdown,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_countdown, parent, false);
         return new ItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        holder.onBindData(mItemList,position);
+        holder.onBindData(mItemList, position);
     }
 
     @Override
@@ -37,13 +42,14 @@ public class CountdownTimerAdapter extends RecyclerView.Adapter<CountdownTimerAd
     static class ItemViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvItemCountdown;
 
-        public ItemViewHolder(View itemView) {
+        ItemViewHolder(View itemView) {
             super(itemView);
-            mTvItemCountdown =itemView.findViewById(R.id.tvItemCountdown);
+            mTvItemCountdown = itemView.findViewById(R.id.tvItemCountdown);
         }
-        private void onBindData(List<String> listItem, int position){
+
+        private void onBindData(List<String> listItem, int position) {
             String text = listItem.get(position);
-            if (text !=null){
+            if (text != null) {
                 mTvItemCountdown.setText(text);
             }
         }
