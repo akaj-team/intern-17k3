@@ -52,4 +52,5 @@
     <string name="btn_image_ninepath_vector">Image-Ninepath-Vector</string>
     <string name="btn_click_thread">click</string>
     <string name="tv_percen">%</string>
+    <string name="tv_item_list_countdown">item countdown 1</string>
 </resources>
