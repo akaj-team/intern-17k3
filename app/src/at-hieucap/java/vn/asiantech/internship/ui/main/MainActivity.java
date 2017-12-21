@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBtnBt4;
     private Button mBtnBt5;
     private Button mBtnBt6;
+    private Button mBtnBt7;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBt4 = findViewById(R.id.btnBt4);
         mBtnBt5 = findViewById(R.id.btnBt5);
         mBtnBt6 = findViewById(R.id.btnBt6);
+        mBtnBt7 = findViewById(R.id.btnBt7);
     }
 
     private void addListener() {
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBt4.setOnClickListener(this);
         mBtnBt5.setOnClickListener(this);
         mBtnBt6.setOnClickListener(this);
+        mBtnBt7.setOnClickListener(this);
     }
 
     @Override
@@ -76,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnBt6:
                 Intent intent_bt6 = new Intent(this, vn.asiantech.internship.ui.drawerlayout.DrawerLayoutActivity.class);
                 this.startActivity(intent_bt6);
+                break;
+            case R.id.btnBt7:
+                Intent intent_bt7 = new Intent(this, vn.asiantech.internship.ui.viewpager.home.InitialActivity.class);
+                this.startActivity(intent_bt7);
         }
     }
 }

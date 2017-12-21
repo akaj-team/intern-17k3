@@ -59,4 +59,12 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tvMenuBt"
         android:text="@string/bai_tap_6" />
+
+    <Button
+        android:id="@+id/btnBt7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btnBt6"
+        android:text="@string/bai_tap_7" />
 </RelativeLayout>
