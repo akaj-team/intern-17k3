@@ -29,7 +29,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId()== R.id.tvSignUp)  {
+        if (v.getId() == R.id.tvSignUp) {
             ((LoginActivity) getActivity()).replaceFragment(new FillOutFragment(), true);
             ((LoginActivity) getActivity()).updateBackButton(true);
         }
