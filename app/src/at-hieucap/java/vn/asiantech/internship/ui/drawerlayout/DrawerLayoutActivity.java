@@ -149,7 +149,6 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Informati
                     mAdapter.notifyItemChanged(0);
                 } catch (IOException e) {
                     Log.e(TAG, MSG);
-                    e.printStackTrace();
                 }
             }
         }
