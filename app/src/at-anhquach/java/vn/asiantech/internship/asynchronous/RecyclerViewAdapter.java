@@ -23,7 +23,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_recyclerview, parent, false);
+                .inflate(R.layout.item_countdowntimer, parent, false);
         return new RecyclerViewViewHolder(view) {
         };
     }

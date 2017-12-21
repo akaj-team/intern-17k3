@@ -22,14 +22,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.calculator.CalculatorViewActivity" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".savedata.ExternalStorageActivity" />
         <activity android:name=".savedata.SharePreferenceActivity" />
         <activity android:name=".savedata.UserSQLiteActivity" />
         <activity android:name=".savedata.CompanyActivity" />
-        <activity android:name=".asynchronous.ThreadActivity" />
+        <activity android:name=".asynchronous.RecyclerViewCountDownTimerActivity" />
     </application>
 
 </manifest>
