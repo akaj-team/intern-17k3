@@ -125,17 +125,15 @@ public class DownloadFragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                if(mBitmap!=null){
+                if (mBitmap != null) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            ((ThreadActivity)getActivity()).setBitMap(mBitmap);
+                            ((ThreadActivity) getActivity()).setBitMap(mBitmap);
                         }
                     });
                 }
-
             }
         }).start();
     }
-
 }

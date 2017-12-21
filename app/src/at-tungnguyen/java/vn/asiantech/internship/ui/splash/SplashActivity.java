@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.image.ImageExerciseActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.viewpager.ui.ViewPagerActivity;
 import vn.asiantech.internship.ui.thread_handler.SplashThreadActivity;
 
 /**
@@ -22,7 +24,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnLogin;
     private Button mBtnCalculator;
     private Button mBtnRecyclerView;
+    private Button mBtnLoadImage;
     private Button mBtnDrawerlayout;
+    private Button mBtnViewPager;
     private Button mBtnSaveData;
     private Button mBtnThread;
 
@@ -34,24 +38,38 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         initListener();
     }
 
+    /**
+     * initView SplashActivity
+     */
     private void initViews() {
         mBtnLogin = findViewById(R.id.btnLogin);
         mBtnCalculator = findViewById(R.id.btnCalculator);
         mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnRecyclerView = findViewById(R.id.btnRecyclerView);
         mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
+        mBtnLoadImage = findViewById(R.id.btnLoadImage);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnThread = findViewById(R.id.btnThread);
     }
 
+    /**
+     * initListener SplashActivity
+     */
     private void initListener() {
         mBtnLogin.setOnClickListener(this);
         mBtnCalculator.setOnClickListener(this);
-        mBtnSaveData.setOnClickListener(this);
         mBtnRecyclerView.setOnClickListener(this);
         mBtnDrawerlayout.setOnClickListener(this);
+        mBtnViewPager.setOnClickListener(this);
+        mBtnLoadImage.setOnClickListener(this);
+        mBtnSaveData.setOnClickListener(this);
         mBtnThread.setOnClickListener(this);
     }
 
+    /**
+     *
+     * Onclick between Activity
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -74,6 +92,16 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnDrawerlayout:
                 Intent intentDrawer = new Intent(SplashActivity.this, DrawerActivity.class);
                 startActivity(intentDrawer);
+                break;
+            case R.id.btnLoadImage:
+                Intent intentLoadImage = new Intent(SplashActivity.this, ImageExerciseActivity.class);
+                startActivity(intentLoadImage);
+                Intent intentDrawerLayout = new Intent(SplashActivity.this, DrawerActivity.class);
+                startActivity(intentDrawerLayout);
+                break;
+            case R.id.btnViewPager:
+                Intent intentViewPager = new Intent(SplashActivity.this, ViewPagerActivity.class);
+                startActivity(intentViewPager);
                 break;
             case R.id.btnThread:
                 Intent intentThread = new Intent(SplashActivity.this, SplashThreadActivity.class);

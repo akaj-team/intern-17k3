@@ -42,4 +42,16 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_thread" />
+    <Button
+        android:id="@+id/btnLoadImage"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_loadImage" />
+
+
+    <Button
+        android:id="@+id/btnViewPager"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_viewpager" />
 </LinearLayout>
