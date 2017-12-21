@@ -22,11 +22,11 @@ public class TwoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_two, container, false);
-        initviews(view);
+        initViews(view);
         return view;
     }
 
-    private void initviews(View view) {
+    private void initViews(View view) {
         mImgInternet = view.findViewById(R.id.imgInternet);
     }
 
