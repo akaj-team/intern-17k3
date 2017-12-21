@@ -110,7 +110,7 @@ public class InformationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             Option option = (Option) information;
             mImgIconOption.setImageResource(option.getIcon());
             mTvOption.setText(option.getName());
-            if (option.isClick()) {
+            if (option.isSelected()) {
                 mTvOption.setTextColor(Color.BLUE);
             } else {
                 mTvOption.setTextColor(Color.BLACK);

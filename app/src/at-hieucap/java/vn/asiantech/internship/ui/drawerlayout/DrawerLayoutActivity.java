@@ -12,12 +12,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,12 +122,12 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Informati
         startActivity(intent);
         if (position != mOldPosition) {
             if (mInformationList.get(position) instanceof Option) {
-                ((Option) mInformationList.get(position)).setClicked();
+                ((Option) mInformationList.get(position)).setSelected();
                 mAdapter.notifyItemChanged(position);
             }
             if (mOldPosition != -1) {
                 if (mInformationList.get(mOldPosition) instanceof Option) {
-                    ((Option) mInformationList.get(mOldPosition)).setClicked();
+                    ((Option) mInformationList.get(mOldPosition)).setSelected();
                     mAdapter.notifyItemChanged(mOldPosition);
                 }
             }
@@ -142,16 +140,16 @@ public class DrawerLayoutActivity extends AppCompatActivity implements Informati
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE) {
             if (data != null) {
+
                 try {
                     Uri chosenImageUri = data.getData();
                     Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), chosenImageUri);
                     Drawable d = new BitmapDrawable(getResources(), bm);
                     ((User) mInformationList.get(0)).setAvatar(d);
                     mAdapter.notifyItemChanged(0);
-                } catch (FileNotFoundException e) {
-                    Log.e("v", "stack trace");
+
                 } catch (IOException e) {
-                    Log.e("v", "stack trace");
+                    e.printStackTrace();
                 }
             }
         }

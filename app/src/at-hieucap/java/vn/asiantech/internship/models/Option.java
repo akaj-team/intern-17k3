@@ -5,13 +5,13 @@ import android.content.Intent;
 public class Option {
     public int icon;
     public String name;
-    private boolean isClick;
+    private boolean isSelected;
     private Intent intent;
 
-    public Option(int icon, String name, boolean isClick, Intent intent) {
+    public Option(int icon, String name, boolean isSelected, Intent intent) {
         this.icon = icon;
         this.name = name;
-        this.isClick = isClick;
+        this.isSelected = isSelected;
         this.intent = intent;
     }
 
@@ -23,12 +23,12 @@ public class Option {
         this.intent = intent;
     }
 
-    public boolean isClick() {
-        return isClick;
+    public boolean isSelected() {
+        return isSelected;
     }
 
-    public void setClicked() {
-        isClick = !isClick;
+    public void setSelected() {
+        isSelected = !isSelected;
     }
 
     public String getName() {
