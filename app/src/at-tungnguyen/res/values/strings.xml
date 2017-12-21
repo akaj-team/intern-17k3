@@ -54,4 +54,5 @@
     <string name="tv_countdown">Tungkute</string>
     <string name="btn_thread_ex1">Exercise1</string>
     <string name="btn_thread_ex2">Exercise2</string>
+    <string name="tv_count">0</string>
 </resources>

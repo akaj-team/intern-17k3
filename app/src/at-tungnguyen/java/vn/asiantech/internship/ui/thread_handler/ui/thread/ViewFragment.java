@@ -1,6 +1,7 @@
 package vn.asiantech.internship.ui.thread_handler.ui.thread;
 
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -32,11 +33,11 @@ public class ViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_view, container, false);
         initView();
-        setImageBitmapp();
         return mView;
     }
 
-    private void setImageBitmapp() {
+    public void setImageBitmapp(Bitmap bitmap) {
+        mImgLoadImage.setImageBitmap(bitmap);
     }
 
     private void initView() {

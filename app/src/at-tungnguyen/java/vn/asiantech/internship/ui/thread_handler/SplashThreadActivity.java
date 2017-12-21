@@ -25,7 +25,6 @@ public class SplashThreadActivity extends AppCompatActivity implements View.OnCl
     private void initView() {
         mBtnExercise1 = findViewById(R.id.btnExThread1);
         mBtnExercise2 = findViewById(R.id.btnExThread2);
-
     }
 
     private void initListener() {
@@ -39,10 +38,10 @@ public class SplashThreadActivity extends AppCompatActivity implements View.OnCl
             case R.id.btnExThread1:
                 Intent intentThread = new Intent(this, ThreadActivity.class);
                 startActivity(intentThread);
+                break;
             case R.id.btnExThread2:
                 Intent intentCountDown = new Intent(this, CountDownActivity.class);
                 startActivity(intentCountDown);
         }
     }
-
 }

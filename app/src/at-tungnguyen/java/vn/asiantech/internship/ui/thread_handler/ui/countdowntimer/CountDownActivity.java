@@ -1,9 +1,11 @@
 package vn.asiantech.internship.ui.thread_handler.ui.countdowntimer;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,8 @@ public class CountDownActivity extends AppCompatActivity {
     private List<CountDownItem> mCountDownTimers = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private CountDownAdapter mCountDownAdapter;
+    private TextView mTvCountDown;
+    private int mCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +28,14 @@ public class CountDownActivity extends AppCompatActivity {
         initView();
         initAdapter();
         initData();
+        initCountDown();
+        addItem();
+        deleteItem();
     }
 
     private void initView() {
         mRecyclerView = findViewById(R.id.recyclerViewCountDown);
+        mTvCountDown = findViewById(R.id.tvCountDownTimer);
     }
 
     private void initAdapter() {
@@ -38,9 +46,59 @@ public class CountDownActivity extends AppCompatActivity {
 
     private void initData() {
         mCountDownTimers.add(new CountDownItem("TungKute"));
-        mCountDownTimers.add(new CountDownItem("TungKute2"));
-        mCountDownTimers.add(new CountDownItem("TungKute3"));
-        mCountDownTimers.add(new CountDownItem("TungKute4"));
         mCountDownTimers.add(new CountDownItem("TungKute"));
+        mCountDownTimers.add(new CountDownItem("TungKute"));
+    }
+
+    private void initCountDown() {
+        new CountDownTimer(180000, 1000) {
+            @Override
+            public void onTick(long l) {
+                mCount = (int) (l / 1000);
+                mTvCountDown.setText(String.valueOf(l / 1000));
+            }
+
+            @Override
+            public void onFinish() {
+                mCount = 0;
+                mTvCountDown.setText(String.valueOf(mCount));
+            }
+        }.start();
+    }
+
+    private void addItem() {
+        new CountDownTimer(5000, 1000) {
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                if (mCount > 0) {
+                    mCountDownTimers.add(new CountDownItem("TungKute"));
+                    mCountDownAdapter.notifyDataSetChanged();
+                    addItem();
+                }
+            }
+        }.start();
+    }
+
+    private void deleteItem() {
+        new CountDownTimer(15000, 1000) {
+            @Override
+            public void onTick(long l) {
+                //No-opp
+            }
+
+            @Override
+            public void onFinish() {
+                if (mCount > 0) {
+                    mCountDownTimers.remove(mCountDownTimers.size() / 2);
+                    mCountDownAdapter.notifyDataSetChanged();
+                    deleteItem();
+                }
+            }
+        }.start();
     }
 }

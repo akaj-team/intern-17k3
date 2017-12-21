@@ -17,6 +17,8 @@ public class TabThreadAdapter extends FragmentPagerAdapter {
     private String fragments[] = {"DownLoad", "View"};
     private static final int DOWNLOAD = 0;
     private static final int VIEW = 1;
+    private ViewFragment mViewFragment = new ViewFragment();
+    private DownloadFragment mDownloadFragment = new DownloadFragment();
 
     public TabThreadAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -26,9 +28,9 @@ public class TabThreadAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case DOWNLOAD:
-                return new DownloadFragment();
+                return mDownloadFragment;
             case VIEW:
-                return new ViewFragment();
+                return mViewFragment;
             default:
                 return null;
         }

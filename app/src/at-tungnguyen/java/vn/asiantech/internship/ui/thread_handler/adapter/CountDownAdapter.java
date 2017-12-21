@@ -23,7 +23,6 @@ public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.View
         this.mCountDownItems = mCountDownItems;
     }
 
-
     @Override
     public CountDownAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_countdown, parent, false);
@@ -50,7 +49,7 @@ public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.View
 
         public void onBindData() {
             CountDownItem countDownItem = mCountDownItems.get(getAdapterPosition());
-            mTvName.setText(countDownItem.getName());
+            mTvName.setText(countDownItem.getName().concat(String.valueOf(getAdapterPosition())));
         }
     }
 }

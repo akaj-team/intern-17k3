@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +51,7 @@ public class DownloadFragment extends Fragment {
         initDownloadImage();
         return mView;
     }
+
     private void initView() {
         mImgBitmap = mView.findViewById(R.id.imgBitmap);
         tvPercent = mView.findViewById(R.id.tvPercentage);
@@ -124,19 +124,20 @@ public class DownloadFragment extends Fragment {
                         total += count;
                         output.write(data, 0, count);
                         mStatus = (int) (total * 100 / fileLength);
-                        Log.d("abcc", (int) (total * 100 / fileLength) + "");
-                        mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(),0,output.size());
-                        Log.d("abc", mBitmap.toString());
+                        mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
+                if(mBitmap!=null){
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((ThreadActivity)getActivity()).setBitMap(mBitmap);
+                        }
+                    });
+                }
 
-                    }
-                });
             }
         }).start();
     }
