@@ -21,7 +21,7 @@ import vn.asiantech.internship.viewpager.utils.RotationPageTransformer;
  * Fragment Home
  */
 public class HomeFragment extends Fragment {
-    public static final List<Dictionary> mDictionaryList = new ArrayList<>();
+    public static List<Dictionary> mDictionaryList = new ArrayList<>();
     private ViewPager mViewPagerHome;
 
     public HomeFragment() {
