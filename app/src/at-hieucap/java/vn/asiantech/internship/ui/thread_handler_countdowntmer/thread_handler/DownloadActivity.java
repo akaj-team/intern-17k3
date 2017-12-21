@@ -3,8 +3,13 @@ package vn.asiantech.internship.ui.thread_handler_countdowntmer.thread_handler;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import vn.asiantech.internship.R;
 
@@ -15,6 +20,9 @@ import vn.asiantech.internship.R;
 
 public class DownloadActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
+    FragmentAdapter mFragmentAdapter;
+    private List<Fragment> mFragments = new ArrayList<>();
+    private List<String> mFragmentTittles = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,10 +34,12 @@ public class DownloadActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
-        fragmentAdapter.addFragment(new FirstFragment(), "Send");
-        fragmentAdapter.addFragment(new SecondFragment(), "Result");
-        viewPager.setAdapter(fragmentAdapter);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        mFragmentAdapter = new FragmentAdapter(fragmentManager, mFragments, mFragmentTittles);
+        mFragmentAdapter.addFragment(new FirstFragment(), "Send");
+        mFragmentAdapter.addFragment(new SecondFragment(), "Result");
+        viewPager.setAdapter(mFragmentAdapter);
         mTabLayout.setupWithViewPager(viewPager);
     }
 }

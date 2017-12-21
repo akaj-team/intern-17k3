@@ -15,6 +15,7 @@ import vn.asiantech.internship.models.FootballTeam;
 
 /**
  * Created by tiboo on 20/12/2017.
+ * Create FootballTeamActivity
  */
 
 public class FootballTeamActivity extends AppCompatActivity {
@@ -28,45 +29,44 @@ public class FootballTeamActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private FootballTeamAdapter mAdapter;
     private List<FootballTeam> mFootballTeamList = new ArrayList<>();
-    private int mCountTime;
-    CountDownTimer countDownTimer = new CountDownTimer(180000, 1000) {
+    private int mTime;
+    CountDownTimer countTimer = new CountDownTimer(180000, 1000) {
         @Override
         public void onTick(long l) {
-            mCountTime = (int) (l / 1000);
+            mTime = (int) (l / 1000);
         }
 
         @Override
         public void onFinish() {
+            mTime = 0;
         }
     };
-
-    CountDownTimer addItem = new CountDownTimer(10000, 1000) {
+    CountDownTimer add = new CountDownTimer(10000, 1000) {
         @Override
         public void onTick(long l) {
         }
 
         @Override
         public void onFinish() {
-            if (mCountTime > 0) {
+            if (mTime > 0) {
                 mFootballTeamList.add(new FootballTeam(R.drawable.ic_manchester_united, MANCHESTER_UNITED, PREMIER_LEAGUE));
                 mFootballTeamList.add(new FootballTeam(R.drawable.ic_real_madrid, REAL_MADRID, LA_LIGA));
                 mAdapter.notifyDataSetChanged();
-                addItem.start();
+                add.start();
             }
         }
     }.start();
-
-    CountDownTimer deleteItem = new CountDownTimer(15000, 1000) {
+    CountDownTimer delete = new CountDownTimer(15000, 1000) {
         @Override
         public void onTick(long l) {
         }
 
         @Override
         public void onFinish() {
-            if (mCountTime > 0) {
+            if (mTime > 0) {
                 mFootballTeamList.remove(mFootballTeamList.size() / 2);
                 mAdapter.notifyDataSetChanged();
-                deleteItem.start();
+                delete.start();
             }
         }
     }.start();
@@ -78,7 +78,7 @@ public class FootballTeamActivity extends AppCompatActivity {
         initViews();
         initData();
         initAdapter();
-        countDownTimer.start();
+        countTimer.start();
     }
 
     private void initAdapter() {
@@ -98,5 +98,4 @@ public class FootballTeamActivity extends AppCompatActivity {
     private void initViews() {
         mRecyclerView = findViewById(R.id.recyclerViewFootballTeam);
     }
-
 }

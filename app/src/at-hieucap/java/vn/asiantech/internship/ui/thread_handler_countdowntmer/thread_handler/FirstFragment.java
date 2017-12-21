@@ -3,8 +3,6 @@ package vn.asiantech.internship.ui.thread_handler_countdowntmer.thread_handler;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -36,8 +35,12 @@ public class FirstFragment extends Fragment {
     private ProgressBar mProgressBar;
     private Button mBtnStart;
     private TextView mTvPercentage;
-    private Handler handler;
+    private Bitmap myBitmap;
     private String urlImage = "http://www.hdwallpaper.nu/wp-content/uploads/2016/01/zlatan_ibrahimovic_wallpaper_93603.jpg";
+
+    public FirstFragment newInstance() {
+        return new FirstFragment();
+    }
 
     @Nullable
     @Override
@@ -65,54 +68,28 @@ public class FirstFragment extends Fragment {
         mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handler = new Handler(Looper.getMainLooper()) {
-                    @Override
-                    public void handleMessage(Message msg) {
-//                        FirstFragment firstFragment = new FirstFragment();
-//                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//                        final Bitmap bitmap = BitmapFactory.decodeStream((InputStream) msg.obj);
-////
-////                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-////                        byte[] byteArray = stream.toByteArray();
-////                        Bundle bundle = new Bundle();
-////                        bundle.putByteArray("image", byteArray);
-////                        firstFragment.setArguments(bundle);
-//                        getActivity().runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                mImg.setImageBitmap(bitmap);
-//                            }
-//                        });
-                    }
-                };
-
                 Thread thread = new Thread(new Runnable() {
                     public void run() {
-                        downloadFile();
+                        downloadImage();
                     }
                 });
                 thread.start();
+                mBtnStart.setEnabled(false);
             }
         });
     }
 
-    void downloadFile() {
+    void downloadImage() {
 
         try {
             URL url = new URL(urlImage);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setDoOutput(true);
-            //connect
             urlConnection.connect();
-            //Stream used for reading the data from the internet
             final InputStream inputStream = urlConnection.getInputStream();
-//            BitmapFactory.Options options = new BitmapFactory.Options();
-//            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
             final Message message = new Message();
             message.obj = inputStream;
-//            handler.sendMessage(message);
-
-            //this is the total size of the file which we are downloading
             totalSize = urlConnection.getContentLength();
 
             getActivity().runOnUiThread(new Runnable() {
@@ -121,32 +98,29 @@ public class FirstFragment extends Fragment {
                 }
             });
 
-            //create a buffer...
             final byte[] buffer = new byte[1024];
             int bufferLength;
 
             while ((bufferLength = inputStream.read(buffer)) > 0) {
-//                fileOutput.write(buffer, 0, bufferLength);
+                output.write(buffer, 0, bufferLength);
+                myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                 downloadedSize += bufferLength;
-                // update the progressbar //
                 getActivity().runOnUiThread(new Runnable() {
+                    @Override
                     public void run() {
                         mProgressBar.setProgress(downloadedSize);
                         float per = ((float) downloadedSize / totalSize) * 100;
                         mTvPercentage.setText("Downloaded " + downloadedSize + "KB / " + totalSize + "KB (" + (int) per + "%)");
                     }
                 });
-                if (downloadedSize == totalSize) {
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                            mImg.setImageBitmap(bitmap);
-                        }
-                    });
-                    mBtnStart.setEnabled(false);
-                }
             }
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ((SecondFragment) ((DownloadActivity) getActivity()).mFragmentAdapter.getItem(1)).showPhoto(myBitmap);
+
+                }
+            });
 
         } catch (final MalformedURLException e) {
             showError("Error : MalformedURLException ");

@@ -14,11 +14,13 @@ import java.util.List;
  */
 
 public class FragmentAdapter extends FragmentPagerAdapter {
-    private final List<Fragment> mFragmentList = new ArrayList<>();
-    private final List<String> mFragmentTitleList = new ArrayList<>();
+    private List<Fragment> mFragmentList = new ArrayList<>();
+    private List<String> mFragmentTitleList = new ArrayList<>();
 
-    FragmentAdapter(FragmentManager fm) {
+    FragmentAdapter(FragmentManager fm, List<Fragment> fragmentList, List<String> fragmentTittles) {
         super(fm);
+        this.mFragmentList = fragmentList;
+        this.mFragmentTitleList = fragmentTittles;
     }
 
     @Override

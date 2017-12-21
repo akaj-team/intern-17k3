@@ -45,7 +45,7 @@ public class FootballTeamAdapter extends RecyclerView.Adapter<FootballTeamAdapte
         private TextView mTvName;
         private TextView mTvNation;
 
-        public FootballTeamHolder(View itemView) {
+        FootballTeamHolder(View itemView) {
             super(itemView);
             initViews();
         }
