@@ -1,5 +1,6 @@
 package vn.asiantech.internship.ui.asynchronous.fragments;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,10 +29,8 @@ import vn.asiantech.internship.ui.asynchronous.activitys.ThreadHandleActivity;
  */
 public class OneFragment extends Fragment implements View.OnClickListener {
     private Button mBtnClick;
-    private ImageView mImgTest;
     private Bitmap mBitmap;
     private ProgressBar mProgressBar;
-    private int mProgressBarStatus = 0;
     private TextView mTvStatus;
     private Handler mHandler = new Handler();
     private int percent;
@@ -48,7 +46,6 @@ public class OneFragment extends Fragment implements View.OnClickListener {
 
     private void initViews(View view) {
         mBtnClick = view.findViewById(R.id.btnClick);
-        mImgTest = view.findViewById(R.id.imgTest);
         mProgressBar = view.findViewById(R.id.progressBar);
         mTvStatus = view.findViewById(R.id.tvStatus);
     }
@@ -87,6 +84,7 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                 total += count;
                 percent = (int) ((total * 100) / imgLength);
                 mHandler.post(new Runnable() {
+                    @SuppressLint("SetTextI18n")
                     public void run() {
                         mProgressBar.setProgress(percent);
                         mTvStatus.setText(percent + "/" + mProgressBar.getMax());
