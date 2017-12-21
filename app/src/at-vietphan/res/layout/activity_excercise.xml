@@ -54,6 +54,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/load_image" />
+
+    <Button
+        android:id="@+id/btnViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_pager" />
     <Button
         android:id="@+id/btnAsynchronous"
         android:layout_width="match_parent"
