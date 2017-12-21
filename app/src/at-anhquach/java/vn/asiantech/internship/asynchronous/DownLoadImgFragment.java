@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,8 +101,8 @@ public class DownLoadImgFragment extends Fragment {
                     ((ViewImgFragment) ((ThreadActivity) getActivity()).mTabLayoutAdapter.getItem(1)).showPhoto(myBitmap);
                 }
             });
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException downloadImg) {
+            Log.d(getResources().getString(R.string.tag_error), downloadImg.getMessage());
         }
     }
 }
