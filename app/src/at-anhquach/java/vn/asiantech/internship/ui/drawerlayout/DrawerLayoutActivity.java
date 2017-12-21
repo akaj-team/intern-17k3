@@ -17,15 +17,22 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.asynchronous.RecyclerViewCountDownTimerActivity;
+import vn.asiantech.internship.asynchronous.ThreadActivity;
+import vn.asiantech.internship.image.LoadImageActivity;
+import vn.asiantech.internship.image.NinePathImageActivity;
+import vn.asiantech.internship.image.VectorImageActivity;
 import vn.asiantech.internship.model.Issue;
 import vn.asiantech.internship.savedata.ExternalStorageActivity;
 import vn.asiantech.internship.savedata.SharePreferenceActivity;
 import vn.asiantech.internship.savedata.UserSQLiteActivity;
-import vn.asiantech.internship.asynchronous.ThreadActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorViewActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
+import vn.asiantech.internship.ui.viewpager_tablayout.StepActivity;
 
+/**
+ * Create Drawer Layout
+ */
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
     private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
     private static final int REQUEST_CODE_PICK_IMAGE = 77;
@@ -59,8 +66,12 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         mIssueList.add(new Issue(R.drawable.ic_send_black_24dp, "Share Preference", new Intent(this, SharePreferenceActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "External Storage", new Intent(this, ExternalStorageActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "User SQLite", new Intent(this, UserSQLiteActivity.class)));
-        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Thread Handel", new Intent(this, ThreadActivity.class)));
-        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Count down Timer", new Intent(this, RecyclerViewCountDownTimerActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Load Image", new Intent(this, LoadImageActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Nine Path Image", new Intent(this, NinePathImageActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Vector Image", new Intent(this, VectorImageActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Card learn English", new Intent(this, StepActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Thread", new Intent(this, ThreadActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Count Down Timer", new Intent(this, RecyclerViewCountDownTimerActivity.class)));
     }
 
     private void initDrawer() {

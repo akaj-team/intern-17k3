@@ -39,7 +39,7 @@ public class DownLoadImgFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_1thread, container, false);
+        View view = inflater.inflate(R.layout.fragment_download_image, container, false);
         initViews(view);
         mBtnClick.setOnClickListener(new View.OnClickListener() {
             @Override

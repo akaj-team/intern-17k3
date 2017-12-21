@@ -26,10 +26,46 @@
     <string name="tv_drawerlayout">Drawerlayout</string>
     <string name="btn_recyclerview">RecyclerView</string>
     <string name="btn_save_data">Save Data</string>
+    <string name="btn_viewpager">ViewPager</string>
     <string name="edt_hint_number_a">Number A</string>
     <string name="edt_hint_number_b">Number B</string>
     <string name="tv_number_not_0">Number B is not 0</string>
     <string name="tv_login">Create Login Screen</string>
+    <string name="tv_caculator">Calculator View </string>
+    <string name="btn_loadDrawable">Drawable</string>
+    <string name="btn_loadAsset">Asset</string>
+    <string name="btn_loadStorage">Storage</string>
+    <string name="btn_loadInternet">Internet</string>
+    <string name="btn_loadImage">Load Image</string>
+    <string name="btn_loadImage_ninepath">Load Image NinePath</string>
+    <string name="btn_loadImage_vector">Load Image Vector</string>
+    <string name="btn_ninepath">Nine Path</string>
+    <string name="btn_vector">Vector</string>
+    <string name="tv_view1">Tab1</string>
+    <string name="tv_view2">Tab2</string>
+    <string name="tv_view3">Tab3</string>
+    <string name="tv_slide">Slide</string>
+    <string name="tv_skip">Skip</string>
+    <string name="dialog_messanger_skip">Yes or no</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_title_skip">Please check yes or no</string>
+    <string name="dialog_yes_skip">Yes</string>
+    <string name="dialog_skip_no">No</string>
+    <string name="btn_update_info">Update Info</string>
+    <string name="edt_info_name">Name</string>
+    <string name="edt_info_address">Address</string>
+    <string name="tv_address_info">Address</string>
+    <string name="tv_name_info">Name</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="tv_information">Infomation</string>
+    <string name="tv_abc">abc</string>
+    <string name="tv_beer">Beer</string>
+    <string name="tv_beer_vietnam">Con gau</string>
+
     <string name="tv_calculator_view">Calculator View </string>
     <string name="title_activity_shared_preferences">SharedPreferencesActivity</string>
     <string name="btn_result">Result</string>
@@ -45,6 +81,5 @@
     <string name="input">input</string>
     <string name="use_memory">Please use memory</string>
     <string name="tv_toolbar">Home</string>
-    <string name="have_not_picked_img">Not picked</string>
-
+    <string name="have_not_picked_img">Not picked</string>g
 </resources>

@@ -12,6 +12,7 @@ import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 import vn.asiantech.internship.savedata.ExerciseManagementActivity;
+import vn.asiantech.internship.viewpagerandtablelayout.ui.SlideActivity;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
@@ -19,6 +20,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnRecyclerViewScreen;
     private Button mBtnSaveDataScreen;
     private Button mBtnDrawerLayoutScreen;
+    private Button mBtnViewPagerScreen;
     private Button mBtnImageScreen;
 
     @Override
@@ -36,6 +38,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnSaveDataScreen = findViewById(R.id.btnSaveDataScreen);
         mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
         mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
+        mBtnViewPagerScreen = findViewById(R.id.btnViewPager);
         mBtnImageScreen = findViewById(R.id.btnImageScreen);
     }
 
@@ -46,6 +49,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnSaveDataScreen.setOnClickListener(this);
         mBtnDrawerLayoutScreen.setOnClickListener(this);
         mBtnRecyclerViewScreen.setOnClickListener(this);
+        mBtnViewPagerScreen.setOnClickListener(this);
         mBtnImageScreen.setOnClickListener(this);
     }
 
@@ -70,6 +74,8 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnImageScreen:
                 startActivity(new Intent(this, ImageManagementExerciseActivity.class));
                 break;
+            case R.id.btnViewPager:
+                startActivity(new Intent(this, SlideActivity.class));
         }
     }
 }

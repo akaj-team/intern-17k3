@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.calculator.CalculatorViewActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".savedata.ExternalStorageActivity" />
@@ -29,6 +30,12 @@
         <activity android:name=".savedata.UserSQLiteActivity" />
         <activity android:name=".savedata.CompanyActivity" />
         <activity android:name=".asynchronous.RecyclerViewCountDownTimerActivity" />
+        <activity android:name=".ui.viewpager_tablayout.StepActivity" />
+        <activity android:name=".ui.viewpager_tablayout.TabLayoutActivity" />
+        <activity android:name=".image.LoadImageActivity" />
+        <activity android:name=".image.NinePathImageActivity" />
+        <activity android:name=".image.VectorImageActivity" />
+        <activity android:name=".asynchronous.ThreadActivity" />
     </application>
 
 </manifest>

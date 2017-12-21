@@ -10,12 +10,11 @@ import java.util.List;
  * Created by anh.quach on 12/19/17.
  * adapter tab layout
  */
-
 public class TabThreadAdapter extends FragmentPagerAdapter {
     private List<Fragment> mFragments;
     private List<String> mFragmentTittles;
 
-    public TabThreadAdapter(FragmentManager fm, List<Fragment> fragmentList, List<String> fragmentTittles) {
+    TabThreadAdapter(FragmentManager fm, List<Fragment> fragmentList, List<String> fragmentTittles) {
         super(fm);
         this.mFragments = fragmentList;
         this.mFragmentTittles = fragmentTittles;
@@ -26,7 +25,7 @@ public class TabThreadAdapter extends FragmentPagerAdapter {
         return mFragments.get(position);
     }
 
-    public void addFrag(Fragment fragment, String title) {
+    void addFrag(Fragment fragment, String title) {
         mFragments.add(fragment);
         mFragmentTittles.add(title);
     }

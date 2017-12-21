@@ -17,9 +17,10 @@ import vn.asiantech.internship.R;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewViewHolder> {
     private List<String> mStrs;
 
-    RecyclerViewAdapter(List<String> strs){
+    RecyclerViewAdapter(List<String> strs) {
         mStrs = strs;
     }
+
     @Override
     public RecyclerViewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -37,14 +38,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return mStrs.size();
     }
-    class RecyclerViewViewHolder extends RecyclerView.ViewHolder{
+
+    class RecyclerViewViewHolder extends RecyclerView.ViewHolder {
         private Button mBtnItem;
 
         RecyclerViewViewHolder(View itemView) {
             super(itemView);
             mBtnItem = itemView.findViewById(R.id.btnItem);
         }
-        private void onBindData(){
+
+        private void onBindData() {
             mBtnItem.setText(mStrs.get(getAdapterPosition()));
         }
     }

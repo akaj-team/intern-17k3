@@ -15,7 +15,6 @@ import vn.asiantech.internship.R;
  * Created by anh.quach on 12/19/17.
  * Render 1 button, 1 ProgressBar
  */
-
 public class ViewImgFragment extends Fragment {
     private ImageView mImgDownLoadedImg;
 
@@ -25,7 +24,7 @@ public class ViewImgFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_2thread, container, false);
+        View view = inflater.inflate(R.layout.fragment_view_image, container, false);
         mImgDownLoadedImg = view.findViewById(R.id.imgDownLoaded);
         return view;
     }
