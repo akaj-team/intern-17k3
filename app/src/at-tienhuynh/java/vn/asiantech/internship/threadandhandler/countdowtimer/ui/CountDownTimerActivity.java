@@ -78,6 +78,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
         @Override
         public void onFinish() {
             mTvCountDown.setText(getResources().getString(R.string.number_0));
+            mCountTime = 0;
         }
     };
 
