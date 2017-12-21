@@ -27,27 +27,23 @@ public class RecyclerViewCountDownTimerActivity extends AppCompatActivity {
         initViews();
         mStrs.add("0");
         mStrs.add("1");
+        mStrs.add("2");
         initAdapter();
-        new CountDownTimer(180000, 10000) {
+        new CountDownTimer(180000, 5000) {
+            int count = 0;
 
             @Override
             public void onTick(long longMilisecond) {
-                mStrs.add("2");
-                mStrs.add("3");
-                mRecyclerViewAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        }.start();
-        new CountDownTimer(180000, 15000) {
-
-            @Override
-            public void onTick(long longMilisecond) {
-                mStrs.remove(mStrs.get(mStrs.size() / 2));
-                mRecyclerViewAdapter.notifyDataSetChanged();
+                ++count;
+                if (count % 2 == 0) {
+                    mStrs.add("3");
+                    mStrs.add("4");
+                    mRecyclerViewAdapter.notifyDataSetChanged();
+                }
+                if (count % 3 == 0) {
+                    mStrs.remove(mStrs.size() / 2);
+                    mRecyclerViewAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
