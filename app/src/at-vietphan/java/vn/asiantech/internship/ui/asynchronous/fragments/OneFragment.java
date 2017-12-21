@@ -1,5 +1,6 @@
 package vn.asiantech.internship.ui.asynchronous.fragments;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -83,6 +84,7 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                 outputStream.write(data, 0, count);
 
                 mHandler.post(new Runnable() {
+                    @SuppressLint("SetTextI18n")
                     public void run() {
                         mProgressBar.setProgress(percent);
                         mTvStatus.setText(percent + getString(R.string.tren) + mProgressBar.getMax());
@@ -102,10 +104,12 @@ public class OneFragment extends Fragment implements View.OnClickListener {
             e.getMessage();
         } finally {
             try {
-                if (connection != null)
+                if (connection != null) {
                     connection.disconnect();
-                if (is != null)
+                }
+                if (is != null) {
                     is.close();
+                }
             } catch (Exception e) {
                 e.getMessage();
             }
