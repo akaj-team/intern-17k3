@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,7 @@ public class DownloadFragment extends Fragment {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        Log.d("e1",e.getMessage());
                     }
                     mProgressBarHandler.post(new Runnable() {
                         @Override
@@ -94,6 +96,7 @@ public class DownloadFragment extends Fragment {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        Log.d("e",e.getMessage());
                     }
                     mStatus = 0;
                 }
@@ -124,6 +127,7 @@ public class DownloadFragment extends Fragment {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                    Log.d("Bigmap",e.getMessage());
                 }
                 if (mBitmap != null) {
                     getActivity().runOnUiThread(new Runnable() {

@@ -88,6 +88,7 @@
     <string name="btn_thread_ex1">Exercise1</string>
     <string name="btn_thread_ex2">Exercise2</string>
     <string name="tv_count">0</string>
-    <string name="tv_percent">%</string>
-    <string name="have_not_picked_img">Not picked</string>g
+    <string name="tv_percent">0%</string>
+    <string name="have_not_picked_img">Not picked</string>
+    <string name="tv_countdown_timer">Tungkute</string>g
 </resources>

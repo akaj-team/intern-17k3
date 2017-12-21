@@ -45,9 +45,9 @@ public class CountDownActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        mCountDownTimers.add(new CountDownItem("TungKute"));
-        mCountDownTimers.add(new CountDownItem("TungKute"));
-        mCountDownTimers.add(new CountDownItem("TungKute"));
+        mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
+        mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
+        mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
     }
 
     private void initCountDown() {
@@ -67,16 +67,17 @@ public class CountDownActivity extends AppCompatActivity {
     }
 
     private void addItem() {
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long l) {
-
+                //No-opp
             }
 
             @Override
             public void onFinish() {
                 if (mCount > 0) {
-                    mCountDownTimers.add(new CountDownItem("TungKute"));
+                    mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
+                    mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
                     mCountDownAdapter.notifyDataSetChanged();
                     addItem();
                 }
