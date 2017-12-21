@@ -13,6 +13,7 @@ import vn.asiantech.internship.ui.imageview.ImageActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.thread.LoadImageActivity;
 import vn.asiantech.internship.ui.thread.ThreadActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
