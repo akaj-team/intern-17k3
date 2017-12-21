@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -32,7 +31,6 @@ public class DownloadFragment extends Fragment {
     private Button mBtnStart;
     private View mView;
     private int mStatus = 0;
-    private ImageView mImgBitmap;
     public Bitmap mBitmap;
     private Handler mProgressBarHandler = new Handler();
     private String mImageUrl = "https://i.ytimg.com/vi/Orh592OBoKY/maxresdefault.jpg";
@@ -53,7 +51,6 @@ public class DownloadFragment extends Fragment {
     }
 
     private void initView() {
-        mImgBitmap = mView.findViewById(R.id.imgBitmap);
         tvPercent = mView.findViewById(R.id.tvPercentage);
         mProgressBar = mView.findViewById(R.id.progressBar);
         mBtnStart = mView.findViewById(R.id.btnStart);
@@ -87,9 +84,8 @@ public class DownloadFragment extends Fragment {
                     mProgressBarHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            mImgBitmap.setImageBitmap(mBitmap);
                             mProgressBar.setProgress(mStatus);
-                            tvPercent.setText(mStatus + "%");
+                            tvPercent.setText(String.valueOf(mStatus).concat("%"));
                         }
                     });
                 }

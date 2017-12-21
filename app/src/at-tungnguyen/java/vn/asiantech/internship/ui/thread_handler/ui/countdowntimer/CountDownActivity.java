@@ -94,7 +94,7 @@ public class CountDownActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 if (mCount > 0) {
-                    mCountDownTimers.remove(mCountDownTimers.size() / 2);
+                    mCountDownTimers.remove(mCountDownTimers.size()/ 2);
                     mCountDownAdapter.notifyDataSetChanged();
                     deleteItem();
                 }
