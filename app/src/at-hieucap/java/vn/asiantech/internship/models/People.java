@@ -1,4 +1,4 @@
-package vn.asiantech.internship.model;
+package vn.asiantech.internship.models;
 
 /**
  * Create item list : People

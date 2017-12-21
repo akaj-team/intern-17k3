@@ -1,4 +1,4 @@
-package vn.asiantech.internship.savedata;
+package vn.asiantech.internship.ui.savedata;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.model.People;
+import vn.asiantech.internship.models.People;
 
 /**
  * Create People Adapter

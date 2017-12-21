@@ -1,4 +1,4 @@
-package vn.asiantech.internship.savedata;
+package vn.asiantech.internship.ui.savedata;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.model.People;
+import vn.asiantech.internship.models.People;
 
 /**
  * Create Activity Save Database
