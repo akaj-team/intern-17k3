@@ -1,10 +1,13 @@
 package vn.asiantech.internship.asynchronous;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 import vn.asiantech.internship.R;
 
@@ -18,6 +21,14 @@ public class HandlerThreadActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handler_thread);
+        Button btnCountdownTimer = findViewById(R.id.btnCountdownTimer);
+        btnCountdownTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HandlerThreadActivity.this, CountdownTimerActivity.class);
+                startActivity(intent);
+            }
+        });
         replaceFragment(ProgressBarFragment.getInstance());
     }
 

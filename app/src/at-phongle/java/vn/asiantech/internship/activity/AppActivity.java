@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.asynchronous.HandlerThreadActivity;
 import vn.asiantech.internship.calculator.CalculatorActivity;
+import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageNinepathVectorActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.PostActivity;
@@ -25,6 +27,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
     private Button mBtnExternalStorageScreen;
     private Button mBtnSQLiteScreen;
     private Button mBtnImageNinepathVector;
+    private Button mBtnThreadHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mBtnExternalStorageScreen = findViewById(R.id.btnExternalStorageScreen);
         mBtnSQLiteScreen = findViewById(R.id.btnSQLiteScreen);
         mBtnImageNinepathVector = findViewById(R.id.btnImageNinepathVector);
+        mBtnThreadHandler = findViewById(R.id.btnThreadHandler);
     }
 
     private void addListener() {
@@ -54,6 +58,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mBtnExternalStorageScreen.setOnClickListener(this);
         mBtnSQLiteScreen.setOnClickListener(this);
         mBtnImageNinepathVector.setOnClickListener(this);
+        mBtnThreadHandler.setOnClickListener(this);
     }
 
     @Override
@@ -72,10 +77,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 intent = new Intent(AppActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
-//            case R.id.btnDrawerLayoutScreen:
-//                intent = new Intent(AppActivity.this, DrawerLayoutActivity.class);
-//                startActivity(intent);
-//                break;
+            case R.id.btnDrawerLayoutScreen:
+                intent = new Intent(AppActivity.this, DrawerLayoutActivity.class);
+                startActivity(intent);
+                break;
             case R.id.btnSharePreferenceScreen:
                 intent = new Intent(AppActivity.this, SharePreferenceActivity.class);
                 startActivity(intent);
@@ -90,6 +95,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btnImageNinepathVector:
                 intent = new Intent(AppActivity.this, ImageNinepathVectorActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnThreadHandler:
+                intent = new Intent(AppActivity.this, HandlerThreadActivity.class);
                 startActivity(intent);
                 break;
         }

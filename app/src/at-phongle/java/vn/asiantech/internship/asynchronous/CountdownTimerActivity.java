@@ -1,6 +1,7 @@
 package vn.asiantech.internship.asynchronous;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +18,9 @@ import vn.asiantech.internship.R;
  */
 public class CountdownTimerActivity extends AppCompatActivity {
     private RecyclerView mRecyclerViewCountdown;
+    private CountdownTimerAdapter mCountdownTimerAdapter;
     private List<String> mListItem = new ArrayList<>();
+    private int mCount;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,13 +29,33 @@ public class CountdownTimerActivity extends AppCompatActivity {
         mRecyclerViewCountdown = findViewById(R.id.recyclerViewCountdown);
         initData();
         initAdapter();
+        new CountDownTimer(180000, 5000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                ++mCount;
+                if (mCount % 2 == 0) {
+                    mListItem.add("Item " + String.valueOf(mListItem.size() + 1));
+                    mListItem.add("Item " + String.valueOf(mListItem.size() + 1));
+                }
+                if (mCount % 3 == 0) {
+                    mListItem.remove(mListItem.size() / 2);
+                }
+                mCountdownTimerAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFinish() {
+            }
+        }.start();
     }
-    private void initAdapter(){
-        CountdownTimerAdapter countdownTimerAdapter = new CountdownTimerAdapter(mListItem);
+
+    private void initAdapter() {
+        mCountdownTimerAdapter = new CountdownTimerAdapter(mListItem);
         mRecyclerViewCountdown.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewCountdown.setAdapter(countdownTimerAdapter);
+        mRecyclerViewCountdown.setAdapter(mCountdownTimerAdapter);
     }
-    private void initData(){
+
+    private void initData() {
         mListItem.add("Item 1");
         mListItem.add("Item 2");
         mListItem.add("Item 3");
