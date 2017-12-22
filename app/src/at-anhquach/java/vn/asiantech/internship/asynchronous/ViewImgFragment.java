@@ -32,4 +32,5 @@ public class ViewImgFragment extends Fragment {
     public void showPhoto(Bitmap bitmap) {
         mImgDownLoadedImg.setImageBitmap(bitmap);
     }
+
 }
