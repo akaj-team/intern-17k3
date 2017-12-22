@@ -94,7 +94,7 @@ public class DownloadImageFragment extends Fragment {
                 output.write(data, 0, count);
             }
         } catch (Throwable e) {
-            e.printStackTrace();
+            Log.d("e", "Download fail!");
         } finally {
             try {
                 if (connection != null) {
