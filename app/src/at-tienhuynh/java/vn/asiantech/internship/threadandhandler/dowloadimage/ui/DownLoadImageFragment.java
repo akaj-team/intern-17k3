@@ -89,13 +89,16 @@ public class DownLoadImageFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                HttpURLConnection connection;
+                InputStream input;
+                ByteArrayOutputStream output;
                 try {
                     URL url = new URL(path);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection = (HttpURLConnection) url.openConnection();
                     connection.setDoInput(true);
                     connection.connect();
-                    InputStream input = connection.getInputStream();
-                    ByteArrayOutputStream output = new ByteArrayOutputStream();
+                    input = connection.getInputStream();
+                    output = new ByteArrayOutputStream();
                     int fileLength = connection.getContentLength();
                     byte data[] = new byte[1024];
                     long total = START_PROGRESS;
