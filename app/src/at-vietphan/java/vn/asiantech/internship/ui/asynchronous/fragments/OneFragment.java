@@ -82,7 +82,6 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                 total += count;
                 percent = (int) ((total * 100) / imgLength);
                 outputStream.write(data, 0, count);
-
                 mHandler.post(new Runnable() {
                     @SuppressLint("SetTextI18n")
                     public void run() {
@@ -118,7 +117,7 @@ public class OneFragment extends Fragment implements View.OnClickListener {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    ((ThreadHandleActivity) getActivity()).sendMessageToB(mBitmap);
+                    ((ThreadHandleActivity) getActivity()).sendMessageToTwoFragment(mBitmap);
                 }
             });
         }

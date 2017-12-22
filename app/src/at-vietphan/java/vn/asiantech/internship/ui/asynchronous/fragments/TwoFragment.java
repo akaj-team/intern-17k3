@@ -30,7 +30,7 @@ public class TwoFragment extends Fragment {
         mImgInternet = view.findViewById(R.id.imgInternet);
     }
 
-    public void receiveMessage(Bitmap bitmap) {
+    public void receiveMessageFromOneFragment(Bitmap bitmap) {
         mImgInternet.setImageBitmap(bitmap);
     }
 }

@@ -57,8 +57,8 @@ public class CountDownTimerActivity extends AppCompatActivity {
         new CountDownTimer(180000, 10000) {
             @Override
             public void onTick(long l) {
+                mCountDownTimers.add(new CountDownTimerItem("item " + mNumberItem));
                 mCountDownTimers.add(new CountDownTimerItem("item " + (mNumberItem + 1)));
-                mCountDownTimers.add(new CountDownTimerItem("item " + (mNumberItem + 2)));
                 mCountDownTimerAdapter.notifyDataSetChanged();
                 mNumberItem = mNumberItem + 2;
                 Log.d("l", "list: " + mCountDownTimers.size());
@@ -98,7 +98,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
         mCountDownTimers.add(new CountDownTimerItem("item 1"));
         mCountDownTimers.add(new CountDownTimerItem("item 2"));
         mCountDownTimers.add(new CountDownTimerItem("item 3"));
-        mNumberItem = mCountDownTimers.size() - 1;
+        mNumberItem = mCountDownTimers.size();
     }
 
     private void initAdapter() {

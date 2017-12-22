@@ -40,10 +40,10 @@ public class ThreadHandleActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
-    public void sendMessageToB(Bitmap bitmap) {
+    public void sendMessageToTwoFragment(Bitmap bitmap) {
         TwoFragment twoFragment = (TwoFragment) mAdapter.getItem(1);
         if (twoFragment != null) {
-            twoFragment.receiveMessage(bitmap);
+            twoFragment.receiveMessageFromOneFragment(bitmap);
         } else {
             Toast.makeText(this, R.string.found_fragment, Toast.LENGTH_SHORT).show();
         }
