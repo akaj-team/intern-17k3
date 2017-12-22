@@ -34,8 +34,8 @@ public class CountdownTimerActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 ++mCount;
                 if (mCount % 2 == 0) {
-                    mListItem.add("Item " + String.valueOf(mListItem.size() + 1));
-                    mListItem.add("Item " + String.valueOf(mListItem.size() + 1));
+                    mListItem.add("Item " + (mListItem.size() + 1));
+                    mListItem.add("Item " + (mListItem.size() + 1));
                 }
                 if (mCount % 3 == 0) {
                     mListItem.remove(mListItem.size() / 2);

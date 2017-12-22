@@ -31,6 +31,8 @@
         <activity android:name=".image.ImageActivity" />
         <activity android:name=".image.NinePathActivity" />
         <activity android:name=".image.VectorActivity" />
+        <activity android:name=".viewpager.tutorial.GuideActivity" />
+        <activity android:name=".viewpager.ViewPagerMainActivity" />
         <activity android:name=".asynchronous.HandlerThreadActivity" />
         <activity android:name=".asynchronous.CountdownTimerActivity" />
     </application>

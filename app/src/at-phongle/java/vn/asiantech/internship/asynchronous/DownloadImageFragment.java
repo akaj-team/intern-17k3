@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,12 +97,14 @@ public class DownloadImageFragment extends Fragment {
             e.printStackTrace();
         } finally {
             try {
-                if (connection != null)
+                if (connection != null) {
                     connection.disconnect();
-                if (is != null)
+                }
+                if (is != null) {
                     is.close();
+                }
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.d("vv", "Download Fail!");
             }
         }
         ((HandlerThreadActivity) getActivity()).setmBitmap(mBitmap);
@@ -109,7 +112,7 @@ public class DownloadImageFragment extends Fragment {
 
     private void updateProgress(int percent) {
         mProgressBarDownload.setProgress(percent);
-        String text = String.valueOf(percent) + getResources().getString(R.string.tv_percen);
+        String text = percent + getResources().getString(R.string.tv_percen);
         mTvProgressBar.setText(text);
     }
 }

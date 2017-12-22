@@ -12,6 +12,7 @@ import vn.asiantech.internship.ui.loadimage.ImageLoaderActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.viewpager.SliderActivity;
 
 /**
  * Created by vietphan on 07/12/2017
@@ -24,6 +25,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnDrawerLayout;
     private Button mBtnSaveData;
     private Button mBtnLoadImage;
+    private Button mBtnViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnDrawerLayout = findViewById(R.id.btnDrawerLayout);
         mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
     }
 
     private void initListener() {
@@ -49,6 +52,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnDrawerLayout.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
+        mBtnViewPager.setOnClickListener(this);
     }
 
     @Override
@@ -71,6 +75,9 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnLoadImage:
                 startActivity(new Intent(this, ImageLoaderActivity.class));
+                break;
+            case R.id.btnViewPager:
+                startActivity(new Intent(this, SliderActivity.class));
                 break;
         }
     }

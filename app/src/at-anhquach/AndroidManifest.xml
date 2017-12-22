@@ -28,6 +28,11 @@
         <activity android:name=".savedata.SharePreferenceActivity" />
         <activity android:name=".savedata.UserSQLiteActivity" />
         <activity android:name=".savedata.CompanyActivity" />
+        <activity android:name=".ui.viewpager_tablayout.StepActivity" />
+        <activity android:name=".ui.viewpager_tablayout.TabLayoutActivity" />
+        <activity android:name=".image.LoadImageActivity" />
+        <activity android:name=".image.NinePathImageActivity" />
+        <activity android:name=".image.VectorImageActivity" />
     </application>
 
 </manifest>

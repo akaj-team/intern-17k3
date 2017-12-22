@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="vn.asiantech.internship.image.LoadImageActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnLoadDrawable"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_loadDrawable" />
+
+        <Button
+            android:id="@+id/btnLoadAsset"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_loadAsset" />
+
+        <Button
+            android:id="@+id/btnLoadStorage"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_loadStorage" />
+
+        <Button
+            android:id="@+id/btnLoadInternet"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_loadInternet" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgLoad"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
+</LinearLayout>
