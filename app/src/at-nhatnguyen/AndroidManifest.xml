@@ -34,6 +34,8 @@
         <activity android:name=".ui.imageview.ImageActivity" />
         <activity android:name=".ui.imageview.ScaleImageActivity" />
         <activity android:name=".ui.imageview.VectorImageActivity" />
+        <activity android:name=".ui.viewpager.ViewpagerActivity" />
+        <activity android:name=".ui.viewpager.ViewPagerMainActivity" />
         <activity android:name=".ui.thread.LoadImageActivity" />
         <activity android:name=".ui.thread.ThreadActivity" />
         <activity android:name=".ui.thread.CountDownActivity" />

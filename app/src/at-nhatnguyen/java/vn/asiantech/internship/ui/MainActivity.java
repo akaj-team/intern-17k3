@@ -13,8 +13,8 @@ import vn.asiantech.internship.ui.imageview.ImageActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
-import vn.asiantech.internship.ui.thread.LoadImageActivity;
 import vn.asiantech.internship.ui.thread.ThreadActivity;
+import vn.asiantech.internship.ui.viewpager.ViewpagerActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnRecyclerView;
@@ -23,6 +23,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnDrawerLayout;
     private Button mBtnSaveData;
     private Button mBtnLoadImage;
+    private Button mBtnViewPager;
     private Button mBtnThread;
 
     @Override
@@ -40,6 +41,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnDrawerLayout = findViewById(R.id.btnDrawerLayout);
         mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnThread = findViewById(R.id.btnThread);
     }
 
@@ -50,6 +52,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnDrawerLayout.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
+        mBtnViewPager.setOnClickListener(this);
         mBtnThread.setOnClickListener(this);
     }
 
@@ -73,6 +76,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnLoadImage:
                 startActivity(new Intent(this, ImageActivity.class));
+                break;
+            case R.id.btnViewPager:
+                startActivity(new Intent(this, ViewpagerActivity.class));
                 break;
             case R.id.btnThread:
                 startActivity(new Intent(this, ThreadActivity.class));

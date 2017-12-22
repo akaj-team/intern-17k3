@@ -55,4 +55,11 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/button_thread" />
+
+    <Button
+        android:id="@+id/btnViewPager"
+        style="@style/btn_default"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_viewpager" />
 </LinearLayout>

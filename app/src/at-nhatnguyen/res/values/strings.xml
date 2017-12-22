@@ -41,9 +41,21 @@
     <string name="image_picasso">Load image picasso</string>
     <string name="scale_edit_text">Scale edit_text</string>
     <string name="vector_image">Image by vector</string>
+    <string name="button_viewpager">ViewPager</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">skip</string>
+    <string name="update">Update</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+    <string name="no_name">Chưa có tên</string>
+    <string name="no_old">Chưa có tuổi</string>
+    <string name="no_house">Chưa có nhà</string>
+    <string name="message_dialog">Do you want to skip ?</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_ok">ok</string>
+    <string name="update_information">Update Information</string>
     <string name="button_thread">Thread</string>
     <string name="btn_download">DownLoad</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="exercise_thread">Thread</string>
     <string name="exercise_count_down">CountTimer</string>
 </resources>

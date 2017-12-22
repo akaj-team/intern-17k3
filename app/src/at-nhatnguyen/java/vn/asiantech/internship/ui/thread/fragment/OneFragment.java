@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,17 +87,19 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                         mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.d("", e.getMessage());
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    Log.d("", e.getMessage());
                 } finally {
                     try {
-                        if (connection != null)
+                        if (connection != null) {
                             connection.disconnect();
-                        if (inputStream != null)
+                        }
+                        if (inputStream != null) {
                             inputStream.close();
+                        }
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        Log.d("", e.getMessage());
                     }
                 }
                 getActivity().runOnUiThread(new Runnable() {
