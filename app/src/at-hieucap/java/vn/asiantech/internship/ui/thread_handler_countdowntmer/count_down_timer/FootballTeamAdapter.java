@@ -16,7 +16,6 @@ import vn.asiantech.internship.models.FootballTeam;
  * Created by tiboo on 20/12/2017.
  * Create adapter
  */
-
 public class FootballTeamAdapter extends RecyclerView.Adapter<FootballTeamAdapter.FootballTeamHolder> {
     private List<FootballTeam> mFootballTeamList;
 

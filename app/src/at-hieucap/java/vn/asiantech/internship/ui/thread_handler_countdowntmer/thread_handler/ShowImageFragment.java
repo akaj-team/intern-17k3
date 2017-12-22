@@ -15,13 +15,13 @@ import vn.asiantech.internship.R;
  * Created by tiboo on 20/12/2017.
  * Create second fragment
  */
-public class SecondFragment extends Fragment {
+public class ShowImageFragment extends Fragment {
     private ImageView mImgResult;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_second_w5, container, false);
+        View view = inflater.inflate(R.layout.fragment_show_image, container, false);
         mImgResult = view.findViewById(R.id.imgResult);
         return view;
     }

@@ -6,20 +6,18 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import vn.asiantech.internship.R;
@@ -28,24 +26,23 @@ import vn.asiantech.internship.R;
  * Created by tiboo on 20/12/2017.
  * Create first fragment
  */
-public class FirstFragment extends Fragment {
+public class DownLoadImageFragment extends Fragment {
+    private final String TAG = DownLoadImageFragment.this.getClass().getSimpleName();
     int downloadedSize = 0;
     int totalSize = 0;
-    ImageView mImg;
     private ProgressBar mProgressBar;
     private Button mBtnStart;
     private TextView mTvPercentage;
     private Bitmap myBitmap;
-    private String urlImage = "http://www.hdwallpaper.nu/wp-content/uploads/2016/01/zlatan_ibrahimovic_wallpaper_93603.jpg";
 
-    public FirstFragment newInstance() {
-        return new FirstFragment();
+    public DownLoadImageFragment newInstance() {
+        return new DownLoadImageFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_first_w5, container, false);
+        View view = inflater.inflate(R.layout.fragment_down_load_image, container, false);
         initViews(view);
         initData();
         addListener();
@@ -56,7 +53,6 @@ public class FirstFragment extends Fragment {
         mProgressBar = view.findViewById(R.id.progressBar);
         mTvPercentage = view.findViewById(R.id.tvPercentage);
         mBtnStart = view.findViewById(R.id.btnStart);
-        mImg = view.findViewById(R.id.img);
     }
 
     private void initData() {
@@ -79,9 +75,12 @@ public class FirstFragment extends Fragment {
         });
     }
 
+    /**
+     * Create down load image from internet
+     */
     void downloadImage() {
-
         try {
+            String urlImage = "http://www.hdwallpaper.nu/wp-content/uploads/2016/01/zlatan_ibrahimovic_wallpaper_93603.jpg";
             URL url = new URL(urlImage);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setDoOutput(true);
@@ -91,16 +90,13 @@ public class FirstFragment extends Fragment {
             final Message message = new Message();
             message.obj = inputStream;
             totalSize = urlConnection.getContentLength();
-
             getActivity().runOnUiThread(new Runnable() {
                 public void run() {
                     mProgressBar.setMax(totalSize);
                 }
             });
-
             final byte[] buffer = new byte[1024];
             int bufferLength;
-
             while ((bufferLength = inputStream.read(buffer)) > 0) {
                 output.write(buffer, 0, bufferLength);
                 myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
@@ -109,35 +105,19 @@ public class FirstFragment extends Fragment {
                     @Override
                     public void run() {
                         mProgressBar.setProgress(downloadedSize);
-                        float per = ((float) downloadedSize / totalSize) * 100;
-                        mTvPercentage.setText("Downloaded " + downloadedSize + "KB / " + totalSize + "KB (" + (int) per + "%)");
+                        float percentage = ((float) downloadedSize / totalSize) * 100;
+                        mTvPercentage.setText(getString(R.string.download, downloadedSize, totalSize, (int) percentage));
                     }
                 });
             }
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    ((SecondFragment) ((DownloadActivity) getActivity()).mFragmentAdapter.getItem(1)).showPhoto(myBitmap);
-
+                    ((ShowImageFragment) ((DownloadActivity) getActivity()).mFragmentAdapter.getItem(1)).showPhoto(myBitmap);
                 }
             });
-
-        } catch (final MalformedURLException e) {
-            showError("Error : MalformedURLException ");
-            e.printStackTrace();
         } catch (final IOException e) {
-            showError("Error : IOException ");
-            e.printStackTrace();
-        } catch (final Exception e) {
-            showError("Error : Please check your internet connection ");
+            Log.e(TAG, getString(R.string.text_error));
         }
-    }
-
-    void showError(final String err) {
-        getActivity().runOnUiThread(new Runnable() {
-            public void run() {
-                Toast.makeText(FirstFragment.super.getActivity(), err, Toast.LENGTH_LONG).show();
-            }
-        });
     }
 }

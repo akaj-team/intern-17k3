@@ -12,7 +12,6 @@ import java.util.List;
  * Created by tiboo on 20/12/2017.
  * Create fragment adapter
  */
-
 public class FragmentAdapter extends FragmentPagerAdapter {
     private List<Fragment> mFragmentList = new ArrayList<>();
     private List<String> mFragmentTitleList = new ArrayList<>();
@@ -43,4 +42,3 @@ public class FragmentAdapter extends FragmentPagerAdapter {
         return mFragmentTitleList.get(position);
     }
 }
-

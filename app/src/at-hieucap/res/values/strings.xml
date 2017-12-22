@@ -4,7 +4,6 @@
     <string name="bai_tap_1">Login Screen</string>
     <string name="bai_tap_2">Calculator</string>
     <string name="bai_tap_3">Recycler View</string>
-    <string name="value_0">0</string>
     <string name="person_1">Nguyen Van A</string>
     <string name="person_2">Nguyen Van B</string>
     <string name="person_3">Nguyen Van C</string>
@@ -32,6 +31,23 @@
     <string name="text_link_check_color_black">I have read and agree with the</string>
     <string name="text_link_check_color_blue">terms and conditions</string>
     <string name="text_the_rest">.</string>
+    <string name="text_email">caphieu@gmail.com</string>
+    <string name="contain">Activity Contain</string>
+    <string name="text_inbox">Inbox</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="address_google_photo">com.google.android.apps.photos</string>
+    <string name="click">Click here</string>
+    <string name="text_save">ahihi</string>
+    <string name="file_name">abc.txt</string>
+    <string name="text_error">Error</string>
+    <string name="folder_name">/Hieu/</string>
+    <string name="exercises_save_data">Exercises save data</string>
+    <string name="btnSharePreference">Share Preference</string>
+    <string name="database">Database</string>
+    <string name="slogan_is_empty">Slogan is empty</string>
+    <string name="in_external">In External</string>
+    <string name="event_company_is_empty">Company is empty</string>
     <string name="division">/</string>
     <string name="mul">*</string>
     <string name="sub">-</string>
@@ -43,4 +59,39 @@
     <string name="event_second_term_is_value_0">Second term is not value = 0 !</string>
     <string name="start">Start</string>
     <string name="percent_start">0%</string>
+    <string name="tv_skip">SKIP</string>
+    <string name="tv_1">Fragment 1</string>
+    <string name="tv_2">Fragment 2</string>
+    <string name="tv_3">Fragment 3</string>
+    <string name="event_update">Update</string>
+    <string name="menu">Menu</string>
+    <string name="information">Information</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="message">Do you want to skip ?</string>
+    <string name="event_cancel">Cancel</string>
+    <string name="event_submit">OK</string>
+    <string name="text_english">ENGLISH</string>
+    <string name="text_vietnamese">VIET NAM</string>
+    <string name="bai_tap_6">Drawer Layout</string>
+    <string name="bai_tap_5">Save data</string>
+    <string name="value_0">0</string>
+    <string name="from_drawable">Drawable</string>
+    <string name="from_asset">Asset</string>
+    <string name="from_storage">Storage</string>
+    <string name="from_internet">Internet</string>
+    <string name="text_load_image">Load Image</string>
+    <string name="text_image_vector">Image Vector</string>
+    <string name="text_nine_path">Nine Path</string>
+    <string name="bai_tap_4">Load Image</string>
+    <string name="bai_tap_7">View pager</string>
+    <string name="bai_tap_8">Thread-Handler</string>
+    <string name="exercise_week_5">Exercise week 5</string>
+    <string name="thread_handler">Thread handler</string>
+    <string name="count_down_timer">Count down timer</string>
+    <string name="title_send">Send</string>
+    <string name="title_result">Result</string>
+    <string name="download" formatted="false">
+        Download %f Byte / %f Byte (%d %)
+    </string>
 </resources>

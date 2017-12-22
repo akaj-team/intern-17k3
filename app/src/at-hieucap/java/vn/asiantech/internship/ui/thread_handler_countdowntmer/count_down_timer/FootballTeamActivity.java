@@ -17,7 +17,6 @@ import vn.asiantech.internship.models.FootballTeam;
  * Created by tiboo on 20/12/2017.
  * Create FootballTeamActivity
  */
-
 public class FootballTeamActivity extends AppCompatActivity {
     private static final String MANCHESTER_UNITED = "Manchester united";
     private static final String MANCHESTER_CITY = "Manchester city";
@@ -44,6 +43,7 @@ public class FootballTeamActivity extends AppCompatActivity {
     CountDownTimer add = new CountDownTimer(10000, 1000) {
         @Override
         public void onTick(long l) {
+            // No-oop
         }
 
         @Override
@@ -59,6 +59,7 @@ public class FootballTeamActivity extends AppCompatActivity {
     CountDownTimer delete = new CountDownTimer(15000, 1000) {
         @Override
         public void onTick(long l) {
+            // No-oop
         }
 
         @Override

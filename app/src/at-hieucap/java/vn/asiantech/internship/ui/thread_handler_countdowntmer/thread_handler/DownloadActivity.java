@@ -17,10 +17,9 @@ import vn.asiantech.internship.R;
  * Created by tiboo on 20/12/2017.
  * Create activity download.
  */
-
 public class DownloadActivity extends AppCompatActivity {
-    private TabLayout mTabLayout;
     FragmentAdapter mFragmentAdapter;
+    private TabLayout mTabLayout;
     private List<Fragment> mFragments = new ArrayList<>();
     private List<String> mFragmentTittles = new ArrayList<>();
 
@@ -35,10 +34,9 @@ public class DownloadActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-
         mFragmentAdapter = new FragmentAdapter(fragmentManager, mFragments, mFragmentTittles);
-        mFragmentAdapter.addFragment(new FirstFragment(), "Send");
-        mFragmentAdapter.addFragment(new SecondFragment(), "Result");
+        mFragmentAdapter.addFragment(new DownLoadImageFragment(), getString(R.string.title_send));
+        mFragmentAdapter.addFragment(new ShowImageFragment(), getString(R.string.title_result));
         viewPager.setAdapter(mFragmentAdapter);
         mTabLayout.setupWithViewPager(viewPager);
     }

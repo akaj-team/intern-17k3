@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.image.ImageExerciseActivity;
 import vn.asiantech.internship.model.DrawerItem;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
@@ -89,6 +90,7 @@ public class DrawerActivity extends AppCompatActivity implements DrawerAdapter.O
         mData.add(new DrawerItem("Login", ITEM, R.drawable.ic_inbox_content, "", new Intent(this, MainActivity.class)));
         mData.add(new DrawerItem("Calculator", ITEM, R.drawable.ic_outbox_content, "", new Intent(this, CalculatorActivity.class)));
         mData.add(new DrawerItem("RecyclerView", ITEM, R.drawable.ic_trash_content, "", new Intent(this, RecyclerViewActivity.class)));
+        mData.add(new DrawerItem("LoadImage", ITEM, R.drawable.ic_outbox_content, "", new Intent(this, ImageExerciseActivity.class)));
     }
 
     private void initDrawer() {

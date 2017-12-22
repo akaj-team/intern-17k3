@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     android:padding="20dp">
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/progressBar" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
@@ -26,6 +20,7 @@
         android:layout_below="@+id/progressBar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="@string/percent_start"
         android:textColor="@color/colorBlue"
         android:textSize="25dp"
