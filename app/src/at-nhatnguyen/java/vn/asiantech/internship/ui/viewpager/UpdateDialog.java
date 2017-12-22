@@ -35,7 +35,6 @@ public class UpdateDialog extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        getDialog().setTitle("Update Information");
         View view = inflater.inflate(R.layout.update_dialog, container);
         mEdtNameUpdate = view.findViewById(R.id.etdNameUpdate);
         mEdtOldUpdate = view.findViewById(R.id.edtOldUpdate);
