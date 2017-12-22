@@ -20,6 +20,7 @@ import vn.asiantech.internship.R;
 public class DownloadActivity extends AppCompatActivity {
     FragmentAdapter mFragmentAdapter;
     private TabLayout mTabLayout;
+    private ViewPager mViewPager;
     private List<Fragment> mFragments = new ArrayList<>();
     private List<String> mFragmentTittles = new ArrayList<>();
 
@@ -27,17 +28,22 @@ public class DownloadActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
-        ViewPager viewPager = findViewById(R.id.viewPagerContain);
+        mViewPager = findViewById(R.id.viewPagerContain);
         mTabLayout = findViewById(R.id.tabLayout);
-        setupViewPager(viewPager);
+        setupViewPager(mViewPager);
     }
 
     private void setupViewPager(ViewPager viewPager) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         mFragmentAdapter = new FragmentAdapter(fragmentManager, mFragments, mFragmentTittles);
-        mFragmentAdapter.addFragment(new DownLoadImageFragment(), getString(R.string.title_send));
+        DownLoadImageFragment dl = new DownLoadImageFragment();
+        mFragmentAdapter.addFragment(dl, getString(R.string.title_send));
         mFragmentAdapter.addFragment(new ShowImageFragment(), getString(R.string.title_result));
         viewPager.setAdapter(mFragmentAdapter);
         mTabLayout.setupWithViewPager(viewPager);
+    }
+
+    public void setCurrentItem(int item, boolean smoothScroll) {
+        mViewPager.setCurrentItem(item, smoothScroll);
     }
 }

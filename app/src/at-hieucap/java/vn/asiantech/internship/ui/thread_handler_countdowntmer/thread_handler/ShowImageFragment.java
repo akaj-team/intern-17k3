@@ -25,7 +25,8 @@ public class ShowImageFragment extends Fragment {
         mImgResult = view.findViewById(R.id.imgResult);
         return view;
     }
+
     public void showPhoto(Bitmap bitmap) {
-                mImgResult.setImageBitmap(bitmap);
-            }
+        mImgResult.setImageBitmap(bitmap);
+    }
 }

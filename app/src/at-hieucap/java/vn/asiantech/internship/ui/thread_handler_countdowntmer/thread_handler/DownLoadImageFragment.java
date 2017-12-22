@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -35,10 +34,6 @@ public class DownLoadImageFragment extends Fragment {
     private Button mBtnStart;
     private TextView mTvPercentage;
     private Bitmap myBitmap;
-
-    public DownLoadImageFragment newInstance() {
-        return new DownLoadImageFragment();
-    }
 
     @Nullable
     @Override
@@ -80,22 +75,19 @@ public class DownLoadImageFragment extends Fragment {
      */
     void downloadImage() {
         try {
-            String urlImage = "http://www.hdwallpaper.nu/wp-content/uploads/2016/01/zlatan_ibrahimovic_wallpaper_93603.jpg";
+            String urlImage = "https://i2-prod.manchestereveningnews.co.uk/incoming/article1736623.ece/ALTERNATES/s1227b/Paul%20Scholes.jpg";
             URL url = new URL(urlImage);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setDoOutput(true);
             urlConnection.connect();
             final InputStream inputStream = urlConnection.getInputStream();
             ByteArrayOutputStream output = new ByteArrayOutputStream();
-            final Message message = new Message();
-            message.obj = inputStream;
             totalSize = urlConnection.getContentLength();
             getActivity().runOnUiThread(new Runnable() {
                 public void run() {
                     mProgressBar.setMax(totalSize);
                 }
             });
-            final byte[] buffer = new byte[1024];
+            final byte[] buffer = new byte[10240];
             int bufferLength;
             while ((bufferLength = inputStream.read(buffer)) > 0) {
                 output.write(buffer, 0, bufferLength);
@@ -115,6 +107,7 @@ public class DownLoadImageFragment extends Fragment {
                 @Override
                 public void run() {
                     ((ShowImageFragment) ((DownloadActivity) getActivity()).mFragmentAdapter.getItem(1)).showPhoto(myBitmap);
+                    ((DownloadActivity) getActivity()).setCurrentItem(1, true);
                 }
             });
         } catch (final IOException e) {
