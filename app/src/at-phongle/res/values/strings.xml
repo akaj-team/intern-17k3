@@ -53,6 +53,6 @@
     <string name="btn_click_thread">Download</string>
     <string name="tv_percen">%</string>
     <string name="tv_item_list_countdown">item countdown 1</string>
-    <string name="btn_thead_handler">Thread-handler-countdowntimer</string>
-    <string name="btn_countdown_timer">Bai countdown timer</string>
+    <string name="btn_thread_handler">Thread-handler</string>
+    <string name="btn_countdown_timer">countdown timer</string>
 </resources>

@@ -1,13 +1,10 @@
 package vn.asiantech.internship.asynchronous;
 
-import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 
 import vn.asiantech.internship.R;
 
@@ -17,25 +14,36 @@ import vn.asiantech.internship.R;
  */
 
 public class HandlerThreadActivity extends AppCompatActivity {
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
+    private Bitmap mBitmap = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handler_thread);
-        Button btnCountdownTimer = findViewById(R.id.btnCountdownTimer);
-        btnCountdownTimer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HandlerThreadActivity.this, CountdownTimerActivity.class);
-                startActivity(intent);
-            }
-        });
-        replaceFragment(ProgressBarFragment.getInstance());
+        initViews();
+        HandlerThreadAdapter handlerThreadAdapter = new HandlerThreadAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(handlerThreadAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
-    protected void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frContainer_download_image, fragment);
-        fragmentTransaction.commit();
+    private void initViews() {
+        mViewPager = findViewById(R.id.viewPagerThreadHandler);
+        mTabLayout = findViewById(R.id.tabLayoutThreadHandler);
+    }
+
+    public Bitmap getmBitmap() {
+        return mBitmap;
+    }
+
+    public void setmBitmap(Bitmap mBitmap) {
+        this.mBitmap = mBitmap;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mViewPager.setCurrentItem(1);
+            }
+        });
     }
 }

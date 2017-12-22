@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.asynchronous.CountdownTimerActivity;
 import vn.asiantech.internship.asynchronous.HandlerThreadActivity;
 import vn.asiantech.internship.calculator.CalculatorActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
@@ -28,6 +29,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
     private Button mBtnSQLiteScreen;
     private Button mBtnImageNinepathVector;
     private Button mBtnThreadHandler;
+    private Button mBtnCountdown;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mBtnSQLiteScreen = findViewById(R.id.btnSQLiteScreen);
         mBtnImageNinepathVector = findViewById(R.id.btnImageNinepathVector);
         mBtnThreadHandler = findViewById(R.id.btnThreadHandler);
+        mBtnCountdown = findViewById(R.id.btnCountdownTimer);
     }
 
     private void addListener() {
@@ -59,6 +62,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mBtnSQLiteScreen.setOnClickListener(this);
         mBtnImageNinepathVector.setOnClickListener(this);
         mBtnThreadHandler.setOnClickListener(this);
+        mBtnCountdown.setOnClickListener(this);
     }
 
     @Override
@@ -99,6 +103,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btnThreadHandler:
                 intent = new Intent(AppActivity.this, HandlerThreadActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnCountdownTimer:
+                intent = new Intent(AppActivity.this, CountdownTimerActivity.class);
                 startActivity(intent);
                 break;
         }

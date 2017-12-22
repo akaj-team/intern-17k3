@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,23 +27,24 @@ import vn.asiantech.internship.R;
  * Fragment ProgressBar Download image
  */
 
-public class ProgressBarFragment extends Fragment {
+public class DownloadImageFragment extends Fragment {
     private static final String URL_IMAGE = "http://3.bp.blogspot.com/-TcpBN_zk_ak/VA5z32DetNI/AAAAAAAAECw/XNjuEcvEI2Q/s1600/hinh-anh-nen-manchester-united-2014-dep-nhat_19.jpg";
     private ProgressBar mProgressBarDownload;
     private TextView mTvProgressBar;
     private Button mBtnClickThread;
+    private Bitmap mBitmap;
     private int mPhotoLength;
     private int mTotal = 0;
 
-    public static Fragment getInstance() {
-        return new ProgressBarFragment();
+    public DownloadImageFragment() {
+        // No - oop
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View v = inflater.inflate(R.layout.fragment_progress_bar, container, false);
+        View v = inflater.inflate(R.layout.fragment_download_image, container, false);
         initViews(v);
         mProgressBarDownload.setMax(100);
         mBtnClickThread.setOnClickListener(new View.OnClickListener() {
@@ -68,14 +68,13 @@ public class ProgressBarFragment extends Fragment {
     }
 
     private void downloadPhoto() {
-        Bitmap bitmap = null;
         HttpURLConnection connection = null;
         InputStream is = null;
         try {
             URL url = new URL(URL_IMAGE);
             connection = (HttpURLConnection) url.openConnection();
             is = connection.getInputStream();
-            bitmap = BitmapFactory.decodeStream(is);
+            mBitmap = BitmapFactory.decodeStream(is);
             // Update progressBar
             mPhotoLength = connection.getContentLength();
             InputStream input = new BufferedInputStream(url.openStream(), 8192);
@@ -105,16 +104,7 @@ public class ProgressBarFragment extends Fragment {
                 e.printStackTrace();
             }
         }
-        if (bitmap != null) {
-            ImageDownloadedFragment imageDownloadedFragment = new ImageDownloadedFragment();
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            byte[] byteArray = stream.toByteArray();
-            Bundle b = new Bundle();
-            b.putByteArray("image", byteArray);
-            imageDownloadedFragment.setArguments(b);
-            ((HandlerThreadActivity) getActivity()).replaceFragment(imageDownloadedFragment);
-        }
+        ((HandlerThreadActivity) getActivity()).setmBitmap(mBitmap);
     }
 
     private void updateProgress(int percent) {
