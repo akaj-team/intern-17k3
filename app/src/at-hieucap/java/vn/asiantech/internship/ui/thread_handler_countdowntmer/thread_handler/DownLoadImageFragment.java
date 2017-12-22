@@ -1,5 +1,6 @@
 package vn.asiantech.internship.ui.thread_handler_countdowntmer.thread_handler;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -57,7 +58,6 @@ public class DownLoadImageFragment extends Fragment {
 
     private void initData() {
         mProgressBar.setProgress(0);
-        mProgressBar.setMax(100);
     }
 
     private void addListener() {
@@ -102,11 +102,12 @@ public class DownLoadImageFragment extends Fragment {
                 myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                 downloadedSize += bufferLength;
                 getActivity().runOnUiThread(new Runnable() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void run() {
                         mProgressBar.setProgress(downloadedSize);
                         float percentage = ((float) downloadedSize / totalSize) * 100;
-                        mTvPercentage.setText(getString(R.string.download, downloadedSize, totalSize, (int) percentage));
+                        mTvPercentage.setText(String.format(getString(R.string.download, downloadedSize, totalSize, percentage)) + "%)");
                     }
                 });
             }

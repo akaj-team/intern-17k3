@@ -92,6 +92,6 @@
     <string name="title_send">Send</string>
     <string name="title_result">Result</string>
     <string name="download" formatted="false">
-        Download %f Byte / %f Byte (%d %)
+        Download %d Byte / %d Byte ( %.0f
     </string>
 </resources>
