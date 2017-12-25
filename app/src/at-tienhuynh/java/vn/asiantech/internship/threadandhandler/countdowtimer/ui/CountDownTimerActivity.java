@@ -66,6 +66,15 @@ public class CountDownTimerActivity extends AppCompatActivity {
     }
 
     /**
+     * Destroy Activity
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        countDownTimer.cancel();
+    }
+
+    /**
      * This is count down timer
      */
     CountDownTimer countDownTimer = new CountDownTimer(180000, 1000) {
@@ -85,7 +94,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
     /**
      * This method to add 2 item after 10 second
      */
-    CountDownTimer addItem = new CountDownTimer(10000, 1000) {
+    CountDownTimer mAddItemTimer = new CountDownTimer(10000, 1000) {
         @Override
         public void onTick(long l) {
             // No-opp
@@ -97,7 +106,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
                 mItemList.add(new Item(getResources().getString(R.string.item_countdown_list)));
                 mItemList.add(new Item(getResources().getString(R.string.item_countdown_list)));
                 mListCountDownTimerAdapter.notifyDataSetChanged();
-                addItem.start();
+                mAddItemTimer.start();
             }
         }
     }.start();
@@ -105,7 +114,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
     /**
      * This method is used to delete middle item after 15 seconds
      */
-    CountDownTimer deleteItem = new CountDownTimer(15000, 1000) {
+    CountDownTimer mDeleteItemTimer = new CountDownTimer(15000, 1000) {
         @Override
         public void onTick(long l) {
             // no-opp
@@ -116,7 +125,7 @@ public class CountDownTimerActivity extends AppCompatActivity {
             if (mCountTime > 0) {
                 mItemList.remove(mItemList.size() / 2);
                 mListCountDownTimerAdapter.notifyDataSetChanged();
-                deleteItem.start();
+                mDeleteItemTimer.start();
             }
         }
     }.start();

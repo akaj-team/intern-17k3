@@ -27,7 +27,7 @@ public class ListCountDownTimerAdapter extends RecyclerView.Adapter<ListCountDow
     public ListCountDownViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_countdown_timer, parent, false);
-        return new ListCountDownViewHolder(view);
+        return new ListCountDownViewHolder(view, mItemLists);
     }
 
     @Override
@@ -43,11 +43,13 @@ public class ListCountDownTimerAdapter extends RecyclerView.Adapter<ListCountDow
     /**
      * This is inner class. It's used to bind data and set values to recycler view
      */
-    class ListCountDownViewHolder extends RecyclerView.ViewHolder {
+    static class ListCountDownViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvItem;
+        private List<Item> mItemLists;
 
-        ListCountDownViewHolder(View itemView) {
+        ListCountDownViewHolder(View itemView, List<Item> itemLists) {
             super(itemView);
+            mItemLists = itemLists;
             mTvItem = itemView.findViewById(R.id.tvItemCountDownTimer);
         }
 

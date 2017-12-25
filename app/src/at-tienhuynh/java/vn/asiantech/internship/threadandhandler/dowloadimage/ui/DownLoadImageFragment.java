@@ -77,7 +77,7 @@ public class DownLoadImageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 initProgressBar();
-                DownloadImageFromPath(LINK_IMAGE);
+                downloadPhoto(LINK_IMAGE);
             }
         });
     }
@@ -85,7 +85,7 @@ public class DownLoadImageFragment extends Fragment {
     /**
      * This method is used to DownLoad Image From The Internet
      */
-    private void DownloadImageFromPath(final String path) {
+    private void downloadPhoto(final String path) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -133,11 +133,6 @@ public class DownLoadImageFragment extends Fragment {
             @Override
             public void run() {
                 while (mStatus < FINISH_PROGRESS) {
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        Log.d("error: ", e.getMessage());
-                    }
                     // use handler to update percent download
                     mProgressBarHandler.post(new Runnable() {
                         @Override
