@@ -54,4 +54,5 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_ok">ok</string>
     <string name="update_information">Update Information</string>
+    <string name="button_canvas">Canvas</string>
 </resources>

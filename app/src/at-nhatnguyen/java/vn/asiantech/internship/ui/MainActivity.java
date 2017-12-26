@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.customview.CanvasActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.imageview.ImageActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
@@ -23,6 +24,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnSaveData;
     private Button mBtnLoadImage;
     private Button mBtnViewPager;
+    private Button mBtnCanvas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
+        mBtnCanvas = findViewById(R.id.btnCanvas);
     }
 
     private void initListener() {
@@ -50,6 +53,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnSaveData.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
+        mBtnCanvas.setOnClickListener(this);
     }
 
     @Override
@@ -75,6 +79,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnViewPager:
                 startActivity(new Intent(this, ViewpagerActivity.class));
+                break;
+            case R.id.btnCanvas:
+                startActivity(new Intent(this, CanvasActivity.class));
                 break;
         }
     }
