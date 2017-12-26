@@ -76,4 +76,5 @@
     <string name="no">No</string>
     <string name="dialog_fragment">Dialog Fagment</string>
     <string name="your_info">Your information</string>
+    <string name="canvas">CANVAS</string>
 </resources>
