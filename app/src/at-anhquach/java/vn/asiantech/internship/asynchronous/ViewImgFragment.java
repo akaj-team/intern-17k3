@@ -29,7 +29,7 @@ public class ViewImgFragment extends Fragment {
         return view;
     }
 
-    public void showPhoto(Bitmap bitmap) {
+    protected void showPhoto(Bitmap bitmap) {
         mImgDownLoadedImg.setImageBitmap(bitmap);
     }
 

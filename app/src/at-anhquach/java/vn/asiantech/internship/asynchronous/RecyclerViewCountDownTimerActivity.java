@@ -16,6 +16,9 @@ import vn.asiantech.internship.R;
  * RecyclerView
  */
 public class RecyclerViewCountDownTimerActivity extends AppCompatActivity {
+    private static final int MILLISINFUTURE = 180000;
+    private static final int COUNTDOWNINTERVAL1 = 10000;
+    private static final int COUNTDOWNINTERVAL2 = 15000;
     private RecyclerView mRecyclerViewCountDownTimer;
     private List<String> mStrs = new ArrayList<>();
     private RecyclerViewAdapter mRecyclerViewAdapter;
@@ -26,24 +29,25 @@ public class RecyclerViewCountDownTimerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_count_down_timer);
         initViews();
         mStrs.add("0");
-        mStrs.add("1");
-        mStrs.add("2");
         initAdapter();
-        new CountDownTimer(180000, 5000) {
-            int count = 0;
-
+        new CountDownTimer(MILLISINFUTURE, COUNTDOWNINTERVAL1) {
             @Override
             public void onTick(long longMilisecond) {
-                ++count;
-                if (count % 2 == 0) {
-                    mStrs.add("3");
-                    mStrs.add("4");
-                    mRecyclerViewAdapter.notifyDataSetChanged();
-                }
-                if (count % 3 == 0) {
-                    mStrs.remove(mStrs.size() / 2);
-                    mRecyclerViewAdapter.notifyDataSetChanged();
-                }
+                mStrs.add("1");
+                mStrs.add("2");
+                mRecyclerViewAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+        new CountDownTimer(MILLISINFUTURE, COUNTDOWNINTERVAL2) {
+            @Override
+            public void onTick(long longMilisecond) {
+                mStrs.remove(mStrs.get(mStrs.size() / 2));
+                mRecyclerViewAdapter.notifyDataSetChanged();
             }
 
             @Override

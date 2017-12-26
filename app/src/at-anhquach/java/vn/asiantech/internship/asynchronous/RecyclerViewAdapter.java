@@ -15,7 +15,7 @@ import vn.asiantech.internship.R;
  * Create adapter for 1 rectcler view
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewViewHolder> {
-    private List<String> mStrs;
+    private static List<String> mStrs;
 
     RecyclerViewAdapter(List<String> strs) {
         mStrs = strs;
@@ -25,8 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_countdowntimer, parent, false);
-        return new RecyclerViewViewHolder(view) {
-        };
+        return new RecyclerViewViewHolder(view);
     }
 
     @Override
@@ -39,7 +38,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mStrs.size();
     }
 
-    class RecyclerViewViewHolder extends RecyclerView.ViewHolder {
+    /**
+     * class RecyclerViewHolder
+     */
+    static class RecyclerViewViewHolder extends RecyclerView.ViewHolder {
         private Button mBtnItem;
 
         RecyclerViewViewHolder(View itemView) {

@@ -1,6 +1,5 @@
 package vn.asiantech.internship.asynchronous;
 
-import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -28,9 +27,9 @@ import vn.asiantech.internship.R;
  */
 public class DownLoadImgFragment extends Fragment {
     private Button mBtnClick;
-    private int mTotalSize;
-    private int mDownloadedSize = 0;
-    private TextView mTvResutlDownLoad;
+    private int mTotalSizeImg;
+    private int mDownloadedSizeImg = 0;
+    private TextView mTvResutlDownLoadImg;
     private ProgressBar mProgressBarDownLoadImg;
     private Bitmap myBitmap;
 
@@ -61,7 +60,7 @@ public class DownLoadImgFragment extends Fragment {
     private void initViews(View view) {
         mBtnClick = view.findViewById(R.id.btnDownLoadImg);
         mProgressBarDownLoadImg = view.findViewById(R.id.progressBarDownLoadImg);
-        mTvResutlDownLoad = view.findViewById(R.id.tvDownLoadImg);
+        mTvResutlDownLoadImg = view.findViewById(R.id.tvDownLoadImg);
     }
 
     private void downloadPhoto() {
@@ -72,10 +71,10 @@ public class DownLoadImgFragment extends Fragment {
             connection.connect();
             InputStream input = connection.getInputStream();
             ByteArrayOutputStream output = new ByteArrayOutputStream();
-            mTotalSize = connection.getContentLength();
+            mTotalSizeImg = connection.getContentLength();
             getActivity().runOnUiThread(new Runnable() {
                 public void run() {
-                    mProgressBarDownLoadImg.setMax(mTotalSize);
+                    mProgressBarDownLoadImg.setMax(mTotalSizeImg);
                 }
             });
 
@@ -84,14 +83,13 @@ public class DownLoadImgFragment extends Fragment {
             while (0 < (bufferLength = input.read(buffer))) {
                 output.write(buffer, 0, bufferLength);
                 myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
-                mDownloadedSize += bufferLength;
+                mDownloadedSizeImg += bufferLength;
                 getActivity().runOnUiThread(new Runnable() {
-                    @SuppressLint("SetTextI18n")
                     @Override
                     public void run() {
-                        mProgressBarDownLoadImg.setProgress(mDownloadedSize);
-                        float per = ((float) mDownloadedSize / mTotalSize) * 100;
-                        mTvResutlDownLoad.setText("DownLoad " + mDownloadedSize + "KB/" + mTotalSize + "KB (" + (int) per + "%)");
+                        mProgressBarDownLoadImg.setProgress(mDownloadedSizeImg);
+                        int per = (int) (((float) mDownloadedSizeImg / (float) mTotalSizeImg) * 100);
+                        mTvResutlDownLoadImg.setText(getString(R.string.textview_download, mDownloadedSizeImg, mTotalSizeImg, per));
                     }
                 });
             }
