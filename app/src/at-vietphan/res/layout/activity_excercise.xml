@@ -60,4 +60,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/view_pager" />
+    <Button
+        android:id="@+id/btnCanvas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/canvas" />
 </LinearLayout>

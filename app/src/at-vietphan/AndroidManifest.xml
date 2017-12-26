@@ -35,5 +35,6 @@
         <activity android:name=".ui.loadimage.ImageVectorActivity" />
         <activity android:name=".ui.viewpager.SliderActivity" />
         <activity android:name=".ui.viewpager.TabLayoutActivity" />
+        <activity android:name=".ui.canvas.CanvasActivity" />
     </application>
 </manifest>
