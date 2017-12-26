@@ -28,12 +28,15 @@ import vn.asiantech.internship.ui.asynchronous.activitys.ThreadHandleActivity;
  * Class OneFragment
  */
 public class OneFragment extends Fragment implements View.OnClickListener {
+    private static final int PROGRESS_BEGIN = 0;
+    private static final int PROGRESS_END = 100;
     private Button mBtnClick;
     private Bitmap mBitmap;
     private ProgressBar mProgressBar;
     private TextView mTvStatus;
     private Handler mHandler = new Handler();
-    private int percent;
+    private Runnable mRunnable;
+    private int mPercent;
 
     @Nullable
     @Override
@@ -75,19 +78,19 @@ public class OneFragment extends Fragment implements View.OnClickListener {
             is = connection.getInputStream();
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             int imgLength = connection.getContentLength();
-            long total = 0;
+            long total = PROGRESS_BEGIN;
             final byte[] data = new byte[1024];
             int count;
             while ((count = is.read(data)) != -1) {
                 total += count;
-                percent = (int) ((total * 100) / imgLength);
-                outputStream.write(data, 0, count);
-                mHandler.post(new Runnable() {
+                mPercent = (int) ((total * PROGRESS_END) / imgLength);
+                outputStream.write(data, PROGRESS_BEGIN, count);
+                mHandler.post(mRunnable = new Runnable() {
                     @SuppressLint("SetTextI18n")
                     public void run() {
-                        mProgressBar.setProgress(percent);
-                        mTvStatus.setText(percent + getString(R.string.tren) + mProgressBar.getMax());
-                        if (percent == 100) {
+                        mProgressBar.setProgress(mPercent);
+                        mTvStatus.setText(mPercent + getString(R.string.tren) + mProgressBar.getMax());
+                        if (mPercent == PROGRESS_END) {
                             Toast.makeText(getContext(), R.string.downloaded, Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -122,4 +125,11 @@ public class OneFragment extends Fragment implements View.OnClickListener {
             });
         }
     }
+
+    @Override
+    public void onDestroy() {
+        mHandler.removeCallbacks(mRunnable);
+        super.onDestroy();
+    }
 }
+

@@ -20,11 +20,70 @@ import vn.asiantech.internship.ui.asynchronous.adapters.CountDownTimerAdapter;
  * Class CountDownTimerActivity
  */
 public class CountDownTimerActivity extends AppCompatActivity {
+    private static final int MILLIS_IN_FUTURE = 180000;
+    private static final int COUNTDOWN_INTERVAL_SECONDS = 1000;
+    private static final int COUNTDOWN_INTERVAL_ADD_ITEMS = 10000;
+    private static final int COUNTDOWN_INTERVAL_REMOVE_ITEMS = 15000;
     private RecyclerView mRecyclerView;
     private CountDownTimerAdapter mCountDownTimerAdapter;
     private List<CountDownTimerItem> mCountDownTimers = new ArrayList<>();
-    private TextView mTextView;
     private int mNumberItem;
+    private TextView mTextView;
+
+    /*
+     * Countdown seconds from 180->0
+     */
+    CountDownTimer countDownSeconds = new CountDownTimer(MILLIS_IN_FUTURE, COUNTDOWN_INTERVAL_SECONDS) {
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onTick(long millisUntilFinished) {
+            mTextView.setText(getString(R.string.seconds_remaining) + 180);
+            int countSeconds = (int) (millisUntilFinished / 1000);
+            mTextView.setText(getString(R.string.seconds_remaining) + countSeconds);
+        }
+
+        @Override
+        public void onFinish() {
+            mTextView.setText(R.string.done);
+        }
+    };
+
+    /*
+     * CountDown 10s add 2 item
+     */
+    CountDownTimer countDownAddItems = new CountDownTimer(MILLIS_IN_FUTURE, COUNTDOWN_INTERVAL_ADD_ITEMS) {
+        @Override
+        public void onTick(long l) {
+            mCountDownTimers.add(new CountDownTimerItem("item " + mNumberItem));
+            mCountDownTimers.add(new CountDownTimerItem("item " + (mNumberItem + 1)));
+            mCountDownTimerAdapter.notifyDataSetChanged();
+            mNumberItem = mNumberItem + 2;
+            Log.d("l", "list: " + mCountDownTimers.size());
+        }
+
+        @Override
+        public void onFinish() {
+            // No-op
+        }
+    };
+
+    /*
+     * CountDown 15s remove 1 item in the middle of the listItem
+     */
+    CountDownTimer countDownRemoveItem = new CountDownTimer(MILLIS_IN_FUTURE, COUNTDOWN_INTERVAL_REMOVE_ITEMS) {
+        @Override
+        public void onTick(long l) {
+            mCountDownTimers.remove(mCountDownTimers.get(mCountDownTimers.size() / 2));
+            mCountDownTimerAdapter.notifyDataSetChanged();
+            Log.d("l", "removed item: " + (mCountDownTimers.size() / 2));
+            Log.d("l", "list 2: " + mCountDownTimers.size());
+        }
+
+        @Override
+        public void onFinish() {
+            // No-op
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,60 +92,9 @@ public class CountDownTimerActivity extends AppCompatActivity {
         initViews();
         initData();
         initAdapter();
-
-        /*
-         * Countdown seconds from 180->0
-         */
-        new CountDownTimer(180000, 1000) {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onTick(long millisUntilFinished) {
-                mTextView.setText(getString(R.string.seconds_remaining) + 180);
-                mTextView.setText(getString(R.string.seconds_remaining) + millisUntilFinished / 1000);
-            }
-
-            @Override
-            public void onFinish() {
-                mTextView.setText(R.string.done);
-            }
-        }.start();
-
-        /*
-         * CountDown 10s add 2 item
-         */
-        new CountDownTimer(180000, 10000) {
-            @Override
-            public void onTick(long l) {
-                mCountDownTimers.add(new CountDownTimerItem("item " + mNumberItem));
-                mCountDownTimers.add(new CountDownTimerItem("item " + (mNumberItem + 1)));
-                mCountDownTimerAdapter.notifyDataSetChanged();
-                mNumberItem = mNumberItem + 2;
-                Log.d("l", "list: " + mCountDownTimers.size());
-            }
-
-            @Override
-            public void onFinish() {
-                // No-op
-            }
-        }.start();
-
-        /*
-          CountDown 15s remove 1 item in the middle of the listItem
-         */
-        new CountDownTimer(180000, 15000) {
-            @Override
-            public void onTick(long l) {
-                mCountDownTimers.remove(mCountDownTimers.get(mCountDownTimers.size() / 2));
-                mCountDownTimerAdapter.notifyDataSetChanged();
-                Log.d("l", "removed item: " + (mCountDownTimers.size() / 2));
-                Log.d("l", "list 2: " + mCountDownTimers.size());
-            }
-
-            @Override
-            public void onFinish() {
-                // No-op
-            }
-        }.start();
+        countDownSeconds.start();
+        countDownAddItems.start();
+        countDownRemoveItem.start();
     }
 
     private void initViews() {
@@ -105,5 +113,13 @@ public class CountDownTimerActivity extends AppCompatActivity {
         mCountDownTimerAdapter = new CountDownTimerAdapter(mCountDownTimers);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mCountDownTimerAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        countDownSeconds.cancel();
+        countDownAddItems.cancel();
+        countDownRemoveItem.cancel();
+        super.onDestroy();
     }
 }

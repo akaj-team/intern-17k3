@@ -27,7 +27,7 @@ public class CountDownTimerAdapter extends RecyclerView.Adapter<CountDownTimerAd
     public CountDownTimerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_countdowntimer, parent, false);
-        return new CountDownTimerHolder(view);
+        return new CountDownTimerHolder(view, mCountDownTimerItems);
     }
 
     @Override
@@ -40,11 +40,16 @@ public class CountDownTimerAdapter extends RecyclerView.Adapter<CountDownTimerAd
         return mCountDownTimerItems.size();
     }
 
-    class CountDownTimerHolder extends RecyclerView.ViewHolder {
+    /**
+     * Class CountDownTimerHolder
+     */
+    static class CountDownTimerHolder extends RecyclerView.ViewHolder {
         private TextView tvTittle;
+        private List<CountDownTimerItem> mCountDownTimerItems;
 
-        CountDownTimerHolder(View itemView) {
+        CountDownTimerHolder(View itemView, List<CountDownTimerItem> countDownTimerItems) {
             super(itemView);
+            mCountDownTimerItems = countDownTimerItems;
             initViews(itemView);
         }
 
