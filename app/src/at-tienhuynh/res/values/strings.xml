@@ -80,4 +80,7 @@
     <string name="name_btn_load_from_internet">From Internet</string>
     <string name="name_btn_nine_path">Nine Path</string>
     <string name="name_btn_draw_vector">Draw Vector</string>
+    <string name="text_btn_canvas_screen">CanVas Screen</string>
+    <string name="tv_canvas_name">Chart</string>
+    <string name="tv_canvas_km">Km</string>
 </resources>

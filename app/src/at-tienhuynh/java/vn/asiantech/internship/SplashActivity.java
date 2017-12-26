@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
+import vn.asiantech.internship.canvas.CanvasActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
@@ -22,6 +23,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnDrawerLayoutScreen;
     private Button mBtnViewPagerScreen;
     private Button mBtnImageScreen;
+    private Button mBtnCanvasScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
         mBtnViewPagerScreen = findViewById(R.id.btnViewPager);
         mBtnImageScreen = findViewById(R.id.btnImageScreen);
+        mBtnCanvasScreen = findViewById(R.id.btnCanvasScreen);
     }
 
     private void initListener() {
@@ -51,6 +54,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnRecyclerViewScreen.setOnClickListener(this);
         mBtnViewPagerScreen.setOnClickListener(this);
         mBtnImageScreen.setOnClickListener(this);
+        mBtnCanvasScreen.setOnClickListener(this);
     }
 
     @Override
@@ -76,6 +80,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnViewPager:
                 startActivity(new Intent(this, SlideActivity.class));
+                break;
+            case R.id.btnCanvasScreen:
+                startActivity(new Intent(this, CanvasActivity.class));
         }
     }
 }
