@@ -36,7 +36,7 @@
         <activity android:name=".ui.imageview.VectorImageActivity" />
         <activity android:name=".ui.viewpager.ViewpagerActivity" />
         <activity android:name=".ui.viewpager.ViewPagerMainActivity" />
-        <activity android:name=".ui.customview.CanvasActivity"></activity>
+        <activity android:name=".ui.customview.CanvasActivity" />
     </application>
 
 </manifest>
