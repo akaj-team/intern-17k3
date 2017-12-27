@@ -43,7 +43,7 @@
         <activity android:name=".image.LoadImageActivity" />
         <activity android:name=".image.NinePathActivity" />
         <activity android:name=".image.VectorDrawerActivity" />
-        <activity android:name=".canvas.CanvasActivity"></activity>
+        <activity android:name=".canvas.CanvasActivity" />
     </application>
 
 </manifest>
