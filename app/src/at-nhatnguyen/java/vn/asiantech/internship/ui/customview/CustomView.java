@@ -37,7 +37,7 @@ public class CustomView extends View {
     private Paint mPaintHide;
     private float mMoveX;
     private float mTouchX;
-    private float sizeCol;
+    private float mSizeCol;
     private int mMarginTop;
     private int mRange;
     private int mStartPeople1;
@@ -56,14 +56,14 @@ public class CustomView extends View {
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         // Get attrs from file xml
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomView, 0, 0);
-        sizeCol = typedArray.getInteger(R.styleable.CustomView_stroke_with, 10);
+        mSizeCol = typedArray.getInteger(R.styleable.CustomView_stroke_with, 10);
         initFirstValues();
         initPaint();
         initDatas();
     }
 
     private void initFirstValues() {
-        mRange = (int) sizeCol * 5;
+        mRange = (int) mSizeCol * 5;
         mMarginTop = 100;
         mStartPeople1 = 170;
         mStartPeople2 = 200;
@@ -79,7 +79,7 @@ public class CustomView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 if (event.getPointerCount() == 1) {
-                    mMoveX = event.getX() - mTouchX + mMoveX;
+                    mMoveX = mMoveX + event.getX() - mTouchX;
                     mTouchX = event.getX();
                     update(mMoveX);
                 }
@@ -101,17 +101,17 @@ public class CustomView extends View {
     private void initPaint() {
         mPaintPeople1 = new Paint();
         mPaintPeople1.setColor(Color.BLUE);
-        mPaintPeople1.setStrokeWidth(sizeCol);
+        mPaintPeople1.setStrokeWidth(mSizeCol);
         mPaintPeople1.setStrokeCap(Paint.Cap.ROUND);
         mPaintPeople1.setAntiAlias(true);
         mPaintPeople2 = new Paint();
         mPaintPeople2.setColor(Color.RED);
-        mPaintPeople2.setStrokeWidth(sizeCol);
+        mPaintPeople2.setStrokeWidth(mSizeCol);
         mPaintPeople2.setStrokeCap(Paint.Cap.ROUND);
         mPaintPeople2.setAntiAlias(true);
         mPaintPeople3 = new Paint();
         mPaintPeople3.setColor(Color.YELLOW);
-        mPaintPeople3.setStrokeWidth(sizeCol);
+        mPaintPeople3.setStrokeWidth(mSizeCol);
         mPaintPeople3.setStrokeCap(Paint.Cap.ROUND);
         mPaintPeople3.setAntiAlias(true);
         mPaintText = new Paint();
