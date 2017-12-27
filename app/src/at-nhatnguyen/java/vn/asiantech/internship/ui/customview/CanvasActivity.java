@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import vn.asiantech.internship.R;
 
+/**
+ * This class use CustomView
+ */
 public class CanvasActivity extends AppCompatActivity {
 
     @Override

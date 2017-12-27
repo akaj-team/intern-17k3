@@ -22,25 +22,29 @@ import vn.asiantech.internship.R;
  * The CustomView for CanvasActivity
  */
 public class CustomView extends View {
+    private static final int BORDER = 13;
+    private static final int ONE_KM = 30;
     // Declare field for new ScaleListener
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
     private List<Integer> resultPeople1;
     private List<Integer> resultPeople2;
     private List<Integer> resultPeople3;
-    private Paint mPaint1;
-    private Paint mPaint2;
-    private Paint mPaint3;
-    private Paint mPaint;
+    private Paint mPaintPeople1;
+    private Paint mPaintPeople2;
+    private Paint mPaintPeople3;
+    private Paint mPaintText;
+    private Paint mPaintHide;
     private float mMoveX;
     private float mTouchX;
-    private float size;
+    private float sizeRow;
     private int mMarginTop;
     private int mRange;
-    private int mStart1;
-    private int mStart2;
-    private int mStart3;
+    private int mStartPeople1;
+    private int mStartPeople2;
+    private int mStartPeople3;
     private int mStartLine;
+    private int mStopLine;
 
     public CustomView(Context context) {
         this(context, null);
@@ -52,15 +56,20 @@ public class CustomView extends View {
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         // Get attrs from file xml
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomView, 0, 0);
-        size = typedArray.getInteger(R.styleable.CustomView_stroke_with, 10);
-        mRange = (int) size * 5;
-        mMarginTop = 100;
-        mStart1 = 170;
-        mStart2 = 200;
-        mStart3 = 230;
-        mStartLine = 150;
-        init();
+        sizeRow = typedArray.getInteger(R.styleable.CustomView_stroke_with, 10);
+        initFirstValues();
+        initPaint();
         initDatas();
+    }
+
+    private void initFirstValues() {
+        mRange = (int) sizeRow * 5;
+        mMarginTop = 100;
+        mStartPeople1 = 170;
+        mStartPeople2 = 200;
+        mStartPeople3 = 230;
+        mStartLine = 150;
+        mStopLine = 1200;
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -70,12 +79,9 @@ public class CustomView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 if (event.getPointerCount() == 1) {
-                    mMoveX =event.getX()- mTouchX + mMoveX;
+                    mMoveX = event.getX() - mTouchX + mMoveX;
                     mTouchX = event.getX();
-                    mStart1 = (int)(170+ mMoveX);
-                    mStart2 = (int)(200+ mMoveX);
-                    mStart3 = (int)(230+ mMoveX);
-                    mStartLine = (int)(150+ mMoveX);
+                    update(mMoveX);
                 }
                 break;
             case MotionEvent.ACTION_DOWN:
@@ -86,26 +92,35 @@ public class CustomView extends View {
         return true;
     }
 
-    private void init() {
-        mPaint1 = new Paint();
-        mPaint1.setColor(Color.BLUE);
-        mPaint1.setStrokeWidth(size);
-        mPaint1.setStrokeCap(Paint.Cap.ROUND);
-        mPaint1.setAntiAlias(true);
-        mPaint2 = new Paint();
-        mPaint2.setColor(Color.RED);
-        mPaint2.setStrokeWidth(size);
-        mPaint2.setStrokeCap(Paint.Cap.ROUND);
-        mPaint2.setAntiAlias(true);
-        mPaint3 = new Paint();
-        mPaint3.setColor(Color.YELLOW);
-        mPaint3.setStrokeWidth(size);
-        mPaint3.setStrokeCap(Paint.Cap.ROUND);
-        mPaint3.setAntiAlias(true);
-        mPaint = new Paint();
-        mPaint.setColor(Color.GRAY);
-        mPaint.setStrokeWidth(2F);
-        mPaint.setTextSize(getResources().getDimensionPixelSize(R.dimen.text_size));
+    private void update(float moveX) {
+        mStartPeople1 = (int) (170 + moveX);
+        mStartPeople2 = (int) (200 + moveX);
+        mStartPeople3 = (int) (230 + moveX);
+    }
+
+    private void initPaint() {
+        mPaintPeople1 = new Paint();
+        mPaintPeople1.setColor(Color.BLUE);
+        mPaintPeople1.setStrokeWidth(sizeRow);
+        mPaintPeople1.setStrokeCap(Paint.Cap.ROUND);
+        mPaintPeople1.setAntiAlias(true);
+        mPaintPeople2 = new Paint();
+        mPaintPeople2.setColor(Color.RED);
+        mPaintPeople2.setStrokeWidth(sizeRow);
+        mPaintPeople2.setStrokeCap(Paint.Cap.ROUND);
+        mPaintPeople2.setAntiAlias(true);
+        mPaintPeople3 = new Paint();
+        mPaintPeople3.setColor(Color.YELLOW);
+        mPaintPeople3.setStrokeWidth(sizeRow);
+        mPaintPeople3.setStrokeCap(Paint.Cap.ROUND);
+        mPaintPeople3.setAntiAlias(true);
+        mPaintText = new Paint();
+        mPaintText.setColor(Color.GRAY);
+        mPaintText.setStrokeWidth(2F);
+        mPaintText.setTextSize(getResources().getDimensionPixelSize(R.dimen.text_size));
+        mPaintHide = new Paint();
+        mPaintHide.setColor(Color.WHITE);
+        mPaintHide.setStrokeWidth(2F);
     }
 
     private void initDatas() {
@@ -119,54 +134,114 @@ public class CustomView extends View {
         resultPeople1.add(9);
         resultPeople1.add(6);
         resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
         resultPeople2.add(1);
         resultPeople2.add(3);
         resultPeople2.add(5);
         resultPeople2.add(2);
         resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
         resultPeople2.add(6);
         resultPeople2.add(5);
         resultPeople3.add(1);
         resultPeople3.add(8);
         resultPeople3.add(5);
+        resultPeople3.add(5);
         resultPeople3.add(2);
         resultPeople3.add(11);
         resultPeople3.add(6);
         resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(11);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.save();
-        int mMax = 0;
-        int oneKm = 30;
-        int border = 13;
+        int max = 0;
         canvas.scale(mScaleFactor, mScaleFactor);
         for (int i = 0; i < resultPeople3.size(); i++) {
-            if (resultPeople1.get(i) > mMax) {
-                mMax = resultPeople1.get(i);
+            if (resultPeople1.get(i) > max) {
+                max = resultPeople1.get(i);
             }
-            if (resultPeople2.get(i) > mMax) {
-                mMax = resultPeople2.get(i);
+            if (resultPeople2.get(i) > max) {
+                max = resultPeople2.get(i);
             }
-            if (resultPeople3.get(i) > mMax) {
-                mMax = resultPeople3.get(i);
+            if (resultPeople3.get(i) > max) {
+                max = resultPeople3.get(i);
             }
         }
-        canvas.drawLine(mStartLine, mMarginTop - border, resultPeople1.size() * mRange + 120, mMarginTop - border, mPaint);
-        canvas.drawLine(mStartLine, (mMax * oneKm) / 2 + mMarginTop - border, resultPeople1.size() * mRange + 120, (mMax * oneKm) / 2 + mMarginTop - border, mPaint);
-        canvas.drawLine(mStartLine, mMax * oneKm + mMarginTop + border, resultPeople1.size() * mRange + 120, mMax * oneKm + mMarginTop + border, mPaint);
-        for (int i = 0; i < resultPeople3.size(); i++) {
-            canvas.drawLine(i * mRange + mStart1, (mMax * oneKm + mMarginTop) - resultPeople1.get(i) * oneKm, i * mRange + mStart1, mMax * oneKm + mMarginTop, mPaint1);
-            canvas.drawLine(i * mRange + mStart2, (mMax * oneKm + mMarginTop) - resultPeople2.get(i) * oneKm, i * mRange + mStart2, mMax * oneKm + mMarginTop, mPaint2);
-            canvas.drawLine(i * mRange + mStart3, (mMax * oneKm + mMarginTop) - resultPeople3.get(i) * oneKm, i * mRange + mStart3, mMax * oneKm + mMarginTop, mPaint3);
-        }
-        canvas.drawText(mMax + " km", 10, mMarginTop - border + (mPaint.getTextSize() / 2), mPaint);
-        canvas.drawText((float) mMax / 2 + " km", 10, (mMax * oneKm) / 2 + mMarginTop - border + (mPaint.getTextSize() / 2), mPaint);
-        canvas.drawText("24 Jul", 130, mMax * oneKm + mMarginTop + 100, mPaint);
-        canvas.drawText("9 Oct", resultPeople1.size() * mRange + 30, mMax * oneKm + mMarginTop + 100, mPaint);
+        drawLineResult(max, canvas);
+        drawGraph(max, canvas);
+        // This rect start at (0,0) and stop at right = 150
+        canvas.drawRect(0, 0, 150, max * ONE_KM + mMarginTop + 100, mPaintHide);
+        // The line is start x = 10
+        canvas.drawText(max + getContext().getString(R.string.km), 10,
+                mMarginTop - BORDER + (mPaintText.getTextSize() / 2), mPaintText);
+        canvas.drawText((float) max / 2 + getContext().getString(R.string.km), 10,
+                (max * ONE_KM) / 2 + mMarginTop - BORDER + (mPaintText.getTextSize() / 2), mPaintText);
         canvas.restore();
+    }
+
+    /**
+     * Draw lines of result
+     */
+    private void drawLineResult(int max, Canvas canvas) {
+        canvas.drawLine(mStartLine, mMarginTop - BORDER, mStopLine, mMarginTop - BORDER, mPaintText);
+        canvas.drawLine(mStartLine, (max * ONE_KM) / 2 + mMarginTop - BORDER, mStopLine, (max * ONE_KM) / 2 + mMarginTop - BORDER, mPaintText);
+        canvas.drawLine(mStartLine, max * ONE_KM + mMarginTop + BORDER, mStopLine, max * ONE_KM + mMarginTop + BORDER, mPaintText);
+    }
+
+    /**
+     * Draw graph with values of peoples
+     */
+    private void drawGraph(int max, Canvas canvas) {
+        for (int i = 0; i < resultPeople3.size(); i++) {
+            canvas.drawLine(i * mRange + mStartPeople1,
+                    (max * ONE_KM + mMarginTop) - resultPeople1.get(i) * ONE_KM,
+                    i * mRange + mStartPeople1, max * ONE_KM + mMarginTop, mPaintPeople1);
+            canvas.drawLine(i * mRange + mStartPeople2,
+                    (max * ONE_KM + mMarginTop) - resultPeople2.get(i) * ONE_KM,
+                    i * mRange + mStartPeople2, max * ONE_KM + mMarginTop, mPaintPeople2);
+            canvas.drawLine(i * mRange + mStartPeople3,
+                    (max * ONE_KM + mMarginTop) - resultPeople3.get(i) * ONE_KM,
+                    i * mRange + mStartPeople3, max * ONE_KM + mMarginTop, mPaintPeople3);
+            canvas.drawText(convertDay(i), i * mRange + mStartPeople2, max * ONE_KM + mMarginTop + 100, mPaintText);
+        }
+    }
+
+    private String convertDay(int i) {
+        int result = i % 7 + 2;
+        String day = "";
+        switch (result) {
+            case 2:
+                day = String.valueOf(2);
+                break;
+            case 3:
+                day = String.valueOf(3);
+                break;
+            case 4:
+                day = String.valueOf(4);
+                break;
+            case 5:
+                day = String.valueOf(5);
+                break;
+            case 6:
+                day = String.valueOf(6);
+                break;
+            case 7:
+                day = String.valueOf(7);
+                break;
+            case 8:
+                day = "CN";
+                break;
+        }
+        return day;
     }
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {

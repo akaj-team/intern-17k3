@@ -55,4 +55,5 @@
     <string name="dialog_ok">ok</string>
     <string name="update_information">Update Information</string>
     <string name="button_canvas">Canvas</string>
+    <string name="km">km</string>
 </resources>
