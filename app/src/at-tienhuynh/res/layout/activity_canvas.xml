@@ -18,8 +18,7 @@
 
     <vn.asiantech.internship.canvas.CustomChart
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
+        android:layout_height="wrap_content"
         app:column_width="30"
         app:stoke_column="30" />
 </LinearLayout>

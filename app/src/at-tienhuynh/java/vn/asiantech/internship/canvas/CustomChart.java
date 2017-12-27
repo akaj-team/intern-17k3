@@ -33,6 +33,7 @@ public class CustomChart extends View {
     private static final int DISTANCE_START = 90;
     private float mStokeWidth = 40F;
     private int mLengthOneColumn = 40;
+    //Paint
     private Paint mPaintPeople1;
     private Paint mPaintPeople2;
     private Paint mPaintPeople3;
@@ -172,7 +173,7 @@ public class CustomChart extends View {
      * Draw Rect
      */
     private void drawRect(Canvas canvas) {
-        canvas.drawRect(0, getHeight() / 2 - mMax * SCALE_Y - ROUND_SCALE,
+        canvas.drawRect(NUM_O, getHeight() / 2 - mMax * SCALE_Y - ROUND_SCALE,
                 mPaintText.measureText(String.valueOf(mMax).concat(getResources().getString(R.string.tv_canvas_km)))
                         + SCALE_X * SPACE_DISTANCE, getHeight() / 2 + ROUND_SCALE, mPaintRect);
     }
