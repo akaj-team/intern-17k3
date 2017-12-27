@@ -7,7 +7,6 @@ import java.util.List;
  * Created at 2017
  * Created by jackty on 25/12/2017.
  */
-
 public final class ChartValues {
 
     private static List<Integer> mPeopleLists;
@@ -22,6 +21,11 @@ public final class ChartValues {
         mPeopleLists.add(5);
         mPeopleLists.add(9);
         mPeopleLists.add(9);
+        mPeopleLists.add(2);
+        mPeopleLists.add(7);
+        mPeopleLists.add(4);
+        mPeopleLists.add(6);
+        mPeopleLists.add(5);
         mPeopleLists.add(6);
         mPeopleLists.add(5);
         return mPeopleLists;
@@ -39,6 +43,11 @@ public final class ChartValues {
         mPeopleLists.add(2);
         mPeopleLists.add(4);
         mPeopleLists.add(10);
+        mPeopleLists.add(4);
+        mPeopleLists.add(12);
+        mPeopleLists.add(3);
+        mPeopleLists.add(11);
+        mPeopleLists.add(2);
         return mPeopleLists;
     }
 
@@ -47,10 +56,15 @@ public final class ChartValues {
      */
     public static List<Integer> people3Values() {
         mPeopleLists = new ArrayList<>();
+        mPeopleLists.add(10);
+        mPeopleLists.add(4);
+        mPeopleLists.add(12);
         mPeopleLists.add(5);
         mPeopleLists.add(3);
         mPeopleLists.add(11);
         mPeopleLists.add(2);
+        mPeopleLists.add(7);
+        mPeopleLists.add(4);
         mPeopleLists.add(7);
         mPeopleLists.add(4);
         mPeopleLists.add(7);

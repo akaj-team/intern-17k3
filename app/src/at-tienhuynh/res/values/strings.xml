@@ -83,4 +83,6 @@
     <string name="text_btn_canvas_screen">CanVas Screen</string>
     <string name="tv_canvas_name">Chart</string>
     <string name="tv_canvas_km">Km</string>
+    <string name="tv_day">24 Jul</string>
+    <string name="tv_day_end">9 Oct</string>
 </resources>
