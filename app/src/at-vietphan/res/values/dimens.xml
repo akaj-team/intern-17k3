@@ -4,4 +4,5 @@
     <dimen name="text_size_tv_result">18dp</dimen>
     <dimen name="text_size_btn">19dp</dimen>
     <dimen name="margin_view_pager">-90dp</dimen>
+    <dimen name="text_size_chart">12dp</dimen>
 </resources>
