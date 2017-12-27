@@ -1,5 +1,6 @@
 package vn.asiantech.internship.ui.canvas;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -29,8 +30,6 @@ public class CustomView extends View {
     private Integer listPeoPel[] = {1, 7, 5, 2, 9, 6, 5};
     private Integer listPeoPel2[] = {1, 3, 5, 2, 2, 6, 5};
     private Integer listPeoPel3[] = {1, 8, 5, 2, 11, 6, 5};
-    private int mStartX = 60;
-    private int mStopX = 60;
     private int mStartY = 50;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
@@ -52,23 +51,18 @@ public class CustomView extends View {
 
     /**
      * getMaxValues from Array
-     *
-     * @return
      */
     private float getMaxValues() {
         int maxPeople1 = Collections.max(Arrays.asList(listPeoPel));
         int maxPeople2 = Collections.max(Arrays.asList(listPeoPel2));
         int maxPeople3 = Collections.max(Arrays.asList(listPeoPel3));
-        float mMax = Math.max(Math.max(maxPeople1, maxPeople2), maxPeople3);
-        return mMax;
+        return (float) Math.max(Math.max(maxPeople1, maxPeople2), maxPeople3);
     }
 
     /**
      * onTouchEvent
-     *
-     * @param ev
-     * @return
      */
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         mScaleDetector.onTouchEvent(ev);
@@ -90,8 +84,6 @@ public class CustomView extends View {
 
     /**
      * onDraw canvas
-     *
-     * @param canvas
      */
     @Override
     protected void onDraw(Canvas canvas) {
@@ -103,6 +95,8 @@ public class CustomView extends View {
         drawLine(canvas);
         for (int i = 0; i < listPeoPel.length; i++) {
             float x = 1.5f;
+            int mStartX = 60;
+            int mStopX = 60;
             canvas.drawLine(i * mStartX * x + mFirstX1, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX1, mStopY, mPaint);
             canvas.drawLine(i * mStartX * x + mFirstX2, getHeight() / 2 - listPeoPel2[i] * mStartY, i * mStopX * x + mFirstX2, mStopY, mPaint2);
             canvas.drawLine(i * mStartX * x + mFirstX3, getHeight() / 2 - listPeoPel3[i] * mStartY, i * mStopX * x + mFirstX3, mStopY, mPaint3);
@@ -112,8 +106,6 @@ public class CustomView extends View {
 
     /**
      * drawLine with canvas
-     *
-     * @param canvas
      */
     private void drawLine(Canvas canvas) {
         canvas.drawLine(80, getHeight() / 2, getWidth(), getHeight() / 2, mPaintMaxLine);
@@ -123,8 +115,6 @@ public class CustomView extends View {
 
     /**
      * drawText with canvas
-     *
-     * @param canvas
      */
     private void drawText(Canvas canvas) {
         canvas.drawText(getResources().getString(R.string.tv_canvas_km), 0, getHeight() / 2, mPaintText);
@@ -136,7 +126,6 @@ public class CustomView extends View {
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
             mScaleFactor *= detector.getScaleFactor();
-            // Don't let the object get too small or too large.
             mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
             invalidate();
             return true;
