@@ -27,6 +27,7 @@
     <string name="btn_recyclerview">RecyclerView</string>
     <string name="btn_save_data">Save Data</string>
     <string name="btn_viewpager">ViewPager</string>
+    <string name="btn_canvas">Canvas</string>
     <string name="edt_hint_number_a">Number A</string>
     <string name="edt_hint_number_b">Number B</string>
     <string name="tv_number_not_0">Number B is not 0</string>
@@ -81,5 +82,8 @@
     <string name="input">input</string>
     <string name="use_memory">Please use memory</string>
     <string name="tv_toolbar">Home</string>
-    <string name="have_not_picked_img">Not picked</string>g
+    <string name="have_not_picked_img">Not picked</string>
+    <string name="tv_canvas_km">Km</string>
+    <string name="tv_canvas_5km">5Km</string>
+    <string name="tv_canvas_10km">10km</string>
 </resources>

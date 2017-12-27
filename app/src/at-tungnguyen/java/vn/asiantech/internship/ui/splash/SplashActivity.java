@@ -9,6 +9,7 @@ import android.widget.Button;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.image.ImageExerciseActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
+import vn.asiantech.internship.ui.canvas.CanvasActivity;
 import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
@@ -27,6 +28,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnDrawerlayout;
     private Button mBtnViewPager;
     private Button mBtnSaveData;
+    private Button mBtnCanVas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
+        mBtnCanVas = findViewById(R.id.btnCanvas);
     }
 
     /**
@@ -60,6 +63,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnViewPager.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
+        mBtnCanVas.setOnClickListener(this);
     }
 
     /**
@@ -98,6 +102,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnViewPager:
                 Intent intentViewPager = new Intent(SplashActivity.this, ViewPagerActivity.class);
                 startActivity(intentViewPager);
+                break;
+            case R.id.btnCanvas:
+                Intent intentCanvas = new Intent(SplashActivity.this, CanvasActivity.class);
+                startActivity(intentCanvas);
                 break;
         }
     }
