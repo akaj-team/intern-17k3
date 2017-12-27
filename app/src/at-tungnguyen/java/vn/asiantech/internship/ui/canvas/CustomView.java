@@ -26,6 +26,7 @@ public class CustomView extends View {
     private Paint mPaint2;
     private Paint mPaint3;
     private Paint mPaintText;
+    private Paint mPaintTextDate;
     private Paint mPaintMaxLine;
     private Integer listPeoPel[] = {1, 7, 5, 2, 9, 6, 5};
     private Integer listPeoPel2[] = {1, 3, 5, 2, 2, 6, 5};
@@ -33,9 +34,9 @@ public class CustomView extends View {
     private int mStartY = 50;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
-    private int mFirstX1 = 80;
-    private int mFirstX2 = 100;
-    private int mFirstX3 = 120;
+    private float mFirstX1 = 110;
+    private int mFirstX2 = 130;
+    private int mFirstX3 = 150;
     private float mDownX;
     private float mMoveX;
 
@@ -97,9 +98,9 @@ public class CustomView extends View {
             float x = 1.5f;
             int mStartX = 60;
             int mStopX = 60;
-            canvas.drawLine(i * mStartX * x + mFirstX1, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX1, mStopY, mPaint);
-            canvas.drawLine(i * mStartX * x + mFirstX2, getHeight() / 2 - listPeoPel2[i] * mStartY, i * mStopX * x + mFirstX2, mStopY, mPaint2);
-            canvas.drawLine(i * mStartX * x + mFirstX3, getHeight() / 2 - listPeoPel3[i] * mStartY, i * mStopX * x + mFirstX3, mStopY, mPaint3);
+            canvas.drawLine(i * mStartX * x + mFirstX1, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX1, mStopY - 8, mPaint);
+            canvas.drawLine(i * mStartX * x + mFirstX2, getHeight() / 2 - listPeoPel2[i] * mStartY, i * mStopX * x + mFirstX2, mStopY - 8, mPaint2);
+            canvas.drawLine(i * mStartX * x + mFirstX3, getHeight() / 2 - listPeoPel3[i] * mStartY, i * mStopX * x + mFirstX3, mStopY - 8, mPaint3);
         }
         canvas.restore();
     }
@@ -117,6 +118,8 @@ public class CustomView extends View {
      * drawText with canvas
      */
     private void drawText(Canvas canvas) {
+        canvas.drawText(getResources().getString(R.string.tv_canvas_month), 80, getHeight() / 2 + 50, mPaintTextDate);
+        canvas.drawText(getResources().getString(R.string.tv_canvas_date), getWidth() - 170, getHeight() / 2 + 50, mPaintTextDate);
         canvas.drawText(getResources().getString(R.string.tv_canvas_km), 0, getHeight() / 2, mPaintText);
         canvas.drawText(getResources().getString(R.string.tv_canvas_5km), 0, getHeight() / 2 - getMaxValues() / 2 * mStartY, mPaintText);
         canvas.drawText(getResources().getString(R.string.tv_canvas_10km), 0, getHeight() / 2 - getMaxValues() * mStartY, mPaintText);
@@ -138,35 +141,41 @@ public class CustomView extends View {
     private void initPaint() {
         //mPaint Red
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaint.setColor(Color.RED);
-        mPaint.setStrokeWidth(10F);
+        mPaint.setColor(getResources().getColor(R.color.colorPurple800));
+        mPaint.setStrokeWidth(15F);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.FILL);
         //mPaint Green
         mPaint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaint2.setColor(Color.GREEN);
-        mPaint2.setStrokeWidth(10F);
+        mPaint2.setColor(getResources().getColor(R.color.colorCyanA700));
+        mPaint2.setStrokeWidth(15F);
         mPaint2.setAntiAlias(true);
-        mPaint.setStrokeCap(Paint.Cap.ROUND);
+        mPaint2.setStrokeCap(Paint.Cap.ROUND);
         mPaint2.setStyle(Paint.Style.FILL);
         //mPaint Blue
         mPaint3 = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaint3.setColor(Color.BLUE);
-        mPaint3.setStrokeWidth(10F);
-        mPaint.setStrokeCap(Paint.Cap.ROUND);
+        mPaint3.setColor(getResources().getColor(R.color.colorOrange500));
+        mPaint3.setStrokeWidth(15F);
+        mPaint3.setStrokeCap(Paint.Cap.ROUND);
         mPaint3.setAntiAlias(true);
         mPaint3.setStyle(Paint.Style.FILL);
-        //Paint text
+        //Paint text Km
         mPaintText = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaintText.setStrokeWidth(4F);
         mPaintText.setTextSize(30);
-        mPaint.setStrokeCap(Paint.Cap.ROUND);
+        mPaintText.setStrokeCap(Paint.Cap.ROUND);
         mPaintText.setColor(Color.GRAY);
+        //Paint text Date
+        mPaintTextDate = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintTextDate.setStrokeWidth(4F);
+        mPaintTextDate.setTextSize(50);
+        mPaintTextDate.setStrokeCap(Paint.Cap.ROUND);
+        mPaintTextDate.setColor(Color.GRAY);
         //Paint Max Line
         mPaintMaxLine = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaintMaxLine.setStrokeWidth(2F);
-        mPaint.setStrokeCap(Paint.Cap.ROUND);
+        mPaintMaxLine.setStrokeCap(Paint.Cap.ROUND);
         mPaintMaxLine.setColor(Color.GRAY);
     }
 }

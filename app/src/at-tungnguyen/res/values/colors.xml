@@ -11,4 +11,7 @@
     <color name="colorLlmain">#041e42</color>
     <color name="black">#000</color>
     <color name="white">#FFF</color>
+    <color name="colorPurple800">#5c2f78</color>
+    <color name="colorCyanA700">#037e91</color>
+    <color name="colorOrange500">#FF9800</color>
 </resources>
