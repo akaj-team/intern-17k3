@@ -46,4 +46,5 @@
     <string name="btn_load_in_asset">Load in Asset</string>
     <string name="btn_load_in_storage">Load in Storage</string>
     <string name="btn_load_in_internet">Load in Internet</string>
+    <string name="distance_km" formatted="false">%d km</string>
 </resources>

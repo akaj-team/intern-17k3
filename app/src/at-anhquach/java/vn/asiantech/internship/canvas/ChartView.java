@@ -1,9 +1,11 @@
 package vn.asiantech.internship.canvas;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -23,12 +25,17 @@ import vn.asiantech.internship.ui.viewpager_tablayout.ScreenUtil;
  */
 public class ChartView extends View {
     private Paint mPaint;
-    private int mWidth;
+    private float mWidth;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
     private List<Integer> mDistanceAs = new ArrayList<>();
     private List<Integer> mDistanceBs = new ArrayList<>();
     private List<Integer> mDistanceCs = new ArrayList<>();
+    private float mCorner;
+    private float mDistanceMove;
+    private float mWitdhScreen = ScreenUtil.getWidthScreen(getContext());
+    private float mHeightScreen = ScreenUtil.getHeightScreen(getContext());
+    private int mOxChart = 130;
 
     public ChartView(Context context) {
         this(context, null);
@@ -40,7 +47,7 @@ public class ChartView extends View {
                 attrs, R.styleable.ChartView, 0, 0
         );
         try {
-            mWidth = a.getInteger(R.styleable.ChartView_line_width, 100);
+            mWidth = a.getInteger(R.styleable.ChartView_line_width, 20);
         } finally {
             a.recycle();
         }
@@ -58,7 +65,7 @@ public class ChartView extends View {
         mDistanceAs.add(2);
         mDistanceAs.add(9);
         mDistanceAs.add(6);
-        mDistanceAs.add(5);
+        mDistanceAs.add(6);
     }
 
     private void initDistanceB() {
@@ -68,7 +75,7 @@ public class ChartView extends View {
         mDistanceBs.add(2);
         mDistanceBs.add(2);
         mDistanceBs.add(6);
-        mDistanceBs.add(5);
+        mDistanceBs.add(6);
     }
 
     private void initDistanceC() {
@@ -78,15 +85,14 @@ public class ChartView extends View {
         mDistanceCs.add(2);
         mDistanceCs.add(11);
         mDistanceCs.add(6);
-        mDistanceCs.add(5);
+        mDistanceCs.add(12);
     }
 
     private float maxLists() {
         int max1 = Collections.max(mDistanceAs);
         int max2 = Collections.max(mDistanceBs);
         int max3 = Collections.max(mDistanceCs);
-        float max = Math.max(Math.max(max1, max2), max3);
-        return max;
+        return (float) Math.max(Math.max(max1, max2), max3);
     }
 
     private void init() {
@@ -94,9 +100,19 @@ public class ChartView extends View {
 
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         mScaleDetector.onTouchEvent(ev);
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_MOVE:
+                mCorner = (ev.getX() - mDistanceMove) + mCorner;
+                mDistanceMove = ev.getX();
+                break;
+            case MotionEvent.ACTION_DOWN:
+                mDistanceMove = ev.getX();
+        }
+        invalidate();
         return true;
     }
 
@@ -106,41 +122,40 @@ public class ChartView extends View {
         canvas.save();
         canvas.scale(mScaleFactor, mScaleFactor);
         mPaint.setColor(getResources().getColor(R.color.colorGrayDark));
-        mPaint.setTextSize(40);
-        mPaint.setStrokeWidth(1f);
-        canvas.drawText(maxLists() + " km", 0, ScreenUtil.getHeightScreen(getContext()) / 2 - maxLists() * 50 + 15, mPaint);
-        canvas.drawLine(150, ScreenUtil.getHeightScreen(getContext()) / 2, ScreenUtil.getWidthScreen(getContext()), ScreenUtil.getHeightScreen(getContext()) / 2, mPaint);
-        canvas.drawLine(150, ScreenUtil.getHeightScreen(getContext()) / 2 - maxLists() * 50, ScreenUtil.getWidthScreen(getContext()), ScreenUtil.getHeightScreen(getContext()) / 2 - maxLists() * 50, mPaint);
-        canvas.drawText("0.3 km", 0, ScreenUtil.getHeightScreen(getContext()) / 2, mPaint);
-        canvas.drawLine(150, ScreenUtil.getHeightScreen(getContext()) / 2 - (maxLists() / 2) * 50, ScreenUtil.getWidthScreen(getContext()), ScreenUtil.getHeightScreen(getContext()) / 2 - (maxLists() / 2) * 50, mPaint);
-        for (int i = 0; i < 7; i++) {
-            mPaint.setColor(getResources().getColor(R.color.colorPurple800));
-            mPaint.setStrokeWidth((float) mWidth);
-            canvas.drawLine(ScreenUtil.getWidthScreen(getContext()) / 2 + (i * mWidth * 7 + mWidth) - ((mWidth * 42) / 2),
-                    ScreenUtil.getHeightScreen(getContext()) / 2 - mDistanceAs.get(i) * 50,
-                    ScreenUtil.getWidthScreen(getContext()) / 2 + (i * mWidth * 7 + mWidth) - ((mWidth * 42) / 2),
-                    ScreenUtil.getHeightScreen(getContext()) / 2, mPaint);
-            mPaint.setColor(getResources().getColor(R.color.colorCyanA700));
-            mPaint.setAntiAlias(true);
-            canvas.drawLine(ScreenUtil.getWidthScreen(getContext()) / 2 + (i * mWidth * 7 + mWidth * 2 + 5) - ((mWidth * 42) / 2),
-                    ScreenUtil.getHeightScreen(getContext()) / 2 - mDistanceBs.get(i) * 50,
-                    ScreenUtil.getWidthScreen(getContext()) / 2 + (i * mWidth * 7 + mWidth * 2 + 5) - ((mWidth * 42) / 2),
-                    ScreenUtil.getHeightScreen(getContext()) / 2, mPaint);
-            mPaint.setColor(getResources().getColor(R.color.colorOrange500));
-            mPaint.setAntiAlias(true);
-            canvas.drawLine(ScreenUtil.getWidthScreen(getContext()) / 2 + (i * mWidth * 7 + mWidth * 3 + 10) - ((mWidth * 42) / 2),
-                    ScreenUtil.getHeightScreen(getContext()) / 2 - mDistanceCs.get(i) * 50,
-                    ScreenUtil.getWidthScreen(getContext()) / 2 + (i * mWidth * 7 + mWidth * 3 + 10) - ((mWidth * 42) / 2),
-                    ScreenUtil.getHeightScreen(getContext()) / 2, mPaint);
+        mPaint.setTextSize(getResources().getDimension(R.dimen.textsize40));
+        drawText(canvas, getContext().getString(R.string.distance_km, ((int) maxLists())), maxLists(), mPaint);
+        drawLine(canvas, 0, mPaint);
+        drawLine(canvas, maxLists(), mPaint);
+        drawText(canvas, getContext().getString(R.string.distance_km, ((int) 0)), 0, mPaint);
+        drawLine(canvas, maxLists() / 2, mPaint);
+        for (int i = 0; i < mDistanceAs.size(); i++) {
+            drawRect(canvas, 0, mDistanceAs.get(i), R.color.colorPurple800, i, mPaint);
+            drawRect(canvas, mWidth + 5, mDistanceBs.get(i), R.color.colorCyanA700, i, mPaint);
+            drawRect(canvas, 2 * mWidth + 5, mDistanceCs.get(i), R.color.colorOrange500, i, mPaint);
         }
         canvas.restore();
     }
+
+    private void drawText(Canvas canvas, String str, float y, Paint paint) {
+        canvas.drawText(str, 0, mHeightScreen / 2 - y * 50, paint);
+    }
+
+    private void drawLine(Canvas canvas, float y, Paint paint) {
+        canvas.drawLine(mOxChart, mHeightScreen / 2 - y * 50, mWitdhScreen, mHeightScreen / 2 - y * 50, paint);
+    }
+
+    private void drawRect(Canvas canvas, float pos, int height, int color, int i, Paint paint) {
+        paint.setColor(getResources().getColor(color));
+        float left = mOxChart + pos + (5 * mWidth + 10) * i;
+        canvas.drawRoundRect(new RectF(left, mHeightScreen / 2 - height * 50,
+                left + mWidth, mHeightScreen / 2), 10, 5, paint);
+    }
+
     private class ScaleListener
             extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
             mScaleFactor *= detector.getScaleFactor();
-
             // Don't let the object get too small or too large.
             mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
             invalidate();

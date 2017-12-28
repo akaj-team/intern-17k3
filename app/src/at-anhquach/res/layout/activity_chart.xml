@@ -5,7 +5,8 @@
     android:layout_height="match_parent">
 
     <vn.asiantech.internship.canvas.ChartView
+        android:id="@+id/chartView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:line_width="20" />
+        app:line_width="25" />
 </RelativeLayout>
