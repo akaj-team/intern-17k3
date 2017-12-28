@@ -1,9 +1,13 @@
-package vn.asiantech.internship.ui.viewpager_tablayout;
+package vn.asiantech.internship.canvas;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+/**
+ * Created by anh.quach on 12/28/17.
+ * get Width get Heigth on Screen
+ */
 public final class ScreenUtil {
     private ScreenUtil() {
         // No-opp
@@ -19,7 +23,6 @@ public final class ScreenUtil {
         WindowManager wm = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dimension = new DisplayMetrics();
-        assert wm != null;
         wm.getDefaultDisplay().getMetrics(dimension);
         return dimension.heightPixels;
     }
@@ -34,7 +37,6 @@ public final class ScreenUtil {
         WindowManager wm = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dimension = new DisplayMetrics();
-        assert wm != null;
         wm.getDefaultDisplay().getMetrics(dimension);
         return dimension.widthPixels;
     }
