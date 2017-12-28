@@ -17,7 +17,6 @@ import java.util.Collections;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.viewpager_tablayout.ScreenUtil;
 
 /**
  * Created by anh.quach on 12/25/17.
