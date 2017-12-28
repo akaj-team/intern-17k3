@@ -27,14 +27,18 @@ public class ChartView extends View {
     private float mWidth;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
+
     private List<Integer> mDistanceAs = new ArrayList<>();
     private List<Integer> mDistanceBs = new ArrayList<>();
     private List<Integer> mDistanceCs = new ArrayList<>();
-    private float mCorner;
+
+    private float mStartX;
     private float mDistanceMove;
     private float mWitdhScreen = ScreenUtil.getWidthScreen(getContext());
     private float mHeightScreen = ScreenUtil.getHeightScreen(getContext());
     private int mOxChart = 130;
+    private int mDistanceBetweenCharts = 5;
+    private int mEnlarge = 50;
 
     public ChartView(Context context) {
         this(context, null);
@@ -106,7 +110,7 @@ public class ChartView extends View {
         mScaleDetector.onTouchEvent(ev);
         switch (ev.getAction()) {
             case MotionEvent.ACTION_MOVE:
-                mCorner = (ev.getX() - mDistanceMove) + mCorner;
+                mStartX = (ev.getX() - mDistanceMove) + mStartX;
                 mDistanceMove = ev.getX();
                 break;
             case MotionEvent.ACTION_DOWN:
@@ -130,24 +134,25 @@ public class ChartView extends View {
         drawLine(canvas, maxLists() / 2, mPaint);
         for (int i = 0; i < mDistanceAs.size(); i++) {
             drawRect(canvas, 0, mDistanceAs.get(i), R.color.colorPurple800, i, mPaint);
-            drawRect(canvas, mWidth + 5, mDistanceBs.get(i), R.color.colorCyanA700, i, mPaint);
-            drawRect(canvas, 2 * mWidth + 5, mDistanceCs.get(i), R.color.colorOrange500, i, mPaint);
+            drawRect(canvas, mWidth + mDistanceBetweenCharts, mDistanceBs.get(i), R.color.colorCyanA700, i, mPaint);
+            drawRect(canvas, 2 * mWidth + mDistanceBetweenCharts*2, mDistanceCs.get(i), R.color.colorOrange500, i, mPaint);
         }
         canvas.restore();
     }
 
     private void drawText(Canvas canvas, String str, float y, Paint paint) {
-        canvas.drawText(str, 0, mHeightScreen / 2 - y * 50, paint);
+        canvas.drawText(str, 0, mHeightScreen / 2 - y * mEnlarge, paint);
     }
 
     private void drawLine(Canvas canvas, float y, Paint paint) {
-        canvas.drawLine(mOxChart, mHeightScreen / 2 - y * 50, mWitdhScreen, mHeightScreen / 2 - y * 50, paint);
+        canvas.drawLine(mOxChart, mHeightScreen / 2 - y * mEnlarge, mWitdhScreen, mHeightScreen / 2 - y * mEnlarge, paint);
     }
 
     private void drawRect(Canvas canvas, float posInit, int height, int color, int posInArray, Paint paint) {
         paint.setColor(getResources().getColor(color));
-        float left = mOxChart + posInit + (5 * mWidth + 10) * posInArray + mCorner;
-        canvas.drawRoundRect(new RectF(left, mHeightScreen / 2 - height * 50,
+        float distanceBetweenGroupChart = 5 * mWidth + mDistanceBetweenCharts*2;
+        float left = mOxChart + posInit + distanceBetweenGroupChart * posInArray + mStartX;
+        canvas.drawRoundRect(new RectF(left, mHeightScreen / 2 - height * mEnlarge,
                 left + mWidth, mHeightScreen / 2), 10, 5, paint);
     }
 
