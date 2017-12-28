@@ -55,7 +55,7 @@ public class ChartView extends View {
         initDistanceA();
         initDistanceB();
         initDistanceC();
-        init();
+        mPaint = new Paint();
     }
 
     private void initDistanceA() {
@@ -93,11 +93,6 @@ public class ChartView extends View {
         int max2 = Collections.max(mDistanceBs);
         int max3 = Collections.max(mDistanceCs);
         return (float) Math.max(Math.max(max1, max2), max3);
-    }
-
-    private void init() {
-        mPaint = new Paint();
-
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -144,9 +139,9 @@ public class ChartView extends View {
         canvas.drawLine(mOxChart, mHeightScreen / 2 - y * 50, mWitdhScreen, mHeightScreen / 2 - y * 50, paint);
     }
 
-    private void drawRect(Canvas canvas, float pos, int height, int color, int i, Paint paint) {
+    private void drawRect(Canvas canvas, float posInit, int height, int color, int posInArray, Paint paint) {
         paint.setColor(getResources().getColor(color));
-        float left = mOxChart + pos + (5 * mWidth + 10) * i;
+        float left = mOxChart + posInit + (5 * mWidth + 10) * posInArray + mCorner;
         canvas.drawRoundRect(new RectF(left, mHeightScreen / 2 - height * 50,
                 left + mWidth, mHeightScreen / 2), 10, 5, paint);
     }
