@@ -78,11 +78,10 @@ public class DownLoadImgFragment extends Fragment {
                 }
             });
 
-            byte[] buffer = new byte[1024];
             int bufferLength;
-            while (0 < (bufferLength = input.read(buffer))) {
-                output.write(buffer, 0, bufferLength);
-                myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
+            while ( -1 != (bufferLength = input.read())) {
+                output.write(bufferLength);
+                myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.toByteArray().length);
                 mDownloadedSizeImg += bufferLength;
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
