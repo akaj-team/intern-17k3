@@ -128,8 +128,7 @@ public class OneFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onDestroy() {
-        mHandler.removeCallbacks(mRunnable);
         super.onDestroy();
+        mHandler.removeCallbacks(mRunnable);
     }
 }
-

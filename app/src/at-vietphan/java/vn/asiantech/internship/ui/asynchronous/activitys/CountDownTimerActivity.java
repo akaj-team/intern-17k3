@@ -6,7 +6,6 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,8 +21,9 @@ import vn.asiantech.internship.ui.asynchronous.adapters.CountDownTimerAdapter;
 public class CountDownTimerActivity extends AppCompatActivity {
     private static final int MILLIS_IN_FUTURE = 180000;
     private static final int COUNTDOWN_INTERVAL_SECONDS = 1000;
-    private static final int TIMES_ADD_ITEMS = 10;
-    private static final int TIMES_DELETE_ITEMS = 15;
+    private static final int TIME_START_COUNTDOWN = 180;
+    private static final int TIME_ADD_ITEM = 10;
+    private static final int TIME_DELETE_ITEM = 15;
     private RecyclerView mRecyclerView;
     private CountDownTimerAdapter mCountDownTimerAdapter;
     private List<CountDownTimerItem> mCountDownTimerItems = new ArrayList<>();
@@ -38,13 +38,13 @@ public class CountDownTimerActivity extends AppCompatActivity {
         @SuppressLint("SetTextI18n")
         @Override
         public void onTick(long millisUntilFinished) {
-            mTextView.setText(getString(R.string.seconds_remaining) + 180);
-            int countSeconds = (int) (millisUntilFinished / 1000);
+            mTextView.setText(getString(R.string.seconds_remaining) + TIME_START_COUNTDOWN);
+            int countSeconds = (int) (millisUntilFinished / COUNTDOWN_INTERVAL_SECONDS);
             mTextView.setText(getString(R.string.seconds_remaining) + countSeconds);
             mCountSeconds++;
-            if (mCountSeconds % TIMES_ADD_ITEMS == 0) {
+            if (mCountSeconds % TIME_ADD_ITEM == 0) {
                 addItems();
-            } else if (mCountSeconds % TIMES_DELETE_ITEMS == 0) {
+            } else if (mCountSeconds % TIME_DELETE_ITEM == 0) {
                 deleteItems();
             }
         }
@@ -71,9 +71,9 @@ public class CountDownTimerActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        mCountDownTimerItems.add(new CountDownTimerItem("item 1"));
-        mCountDownTimerItems.add(new CountDownTimerItem("item 2"));
-        mCountDownTimerItems.add(new CountDownTimerItem("item 3"));
+        mCountDownTimerItems.add(new CountDownTimerItem(getString(R.string.item) + 1));
+        mCountDownTimerItems.add(new CountDownTimerItem(getString(R.string.item) + 2));
+        mCountDownTimerItems.add(new CountDownTimerItem(getString(R.string.item) + 3));
         mTotalItems = mCountDownTimerItems.size();
     }
 
@@ -84,23 +84,20 @@ public class CountDownTimerActivity extends AppCompatActivity {
     }
 
     private void addItems() {
-        mCountDownTimerItems.add(new CountDownTimerItem("item " + (mTotalItems + 1)));
-        mCountDownTimerItems.add(new CountDownTimerItem("item " + (mTotalItems + 2)));
+        mCountDownTimerItems.add(new CountDownTimerItem(getString(R.string.item) + (mTotalItems + 1)));
+        mCountDownTimerItems.add(new CountDownTimerItem(getString(R.string.item) + (mTotalItems + 2)));
         mCountDownTimerAdapter.notifyDataSetChanged();
         mTotalItems = mTotalItems + 2;
-        Log.d("l", "list added: " + mCountDownTimerItems.size());
     }
 
     private void deleteItems() {
         mCountDownTimerItems.remove(mCountDownTimerItems.get(mCountDownTimerItems.size() / 2));
         mCountDownTimerAdapter.notifyDataSetChanged();
-        Log.d("l", "removed item: " + (mCountDownTimerItems.size() / 2));
-        Log.d("l", "list removed: " + mCountDownTimerItems.size());
     }
 
     @Override
     protected void onDestroy() {
-        mCountDownSeconds.cancel();
         super.onDestroy();
+        mCountDownSeconds.cancel();
     }
 }
