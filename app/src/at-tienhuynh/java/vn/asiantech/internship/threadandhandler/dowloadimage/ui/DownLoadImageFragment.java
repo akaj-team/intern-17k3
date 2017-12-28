@@ -89,9 +89,9 @@ public class DownLoadImageFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpURLConnection connection;
-                InputStream input;
-                ByteArrayOutputStream output;
+                HttpURLConnection connection = null;
+                InputStream input = null;
+                ByteArrayOutputStream output = null;
                 try {
                     URL url = new URL(path);
                     connection = (HttpURLConnection) url.openConnection();
@@ -106,18 +106,30 @@ public class DownLoadImageFragment extends Fragment {
                     while ((count = input.read(data)) != -1) {
                         total += count;
                         // Publish the progress
-                        mStatus = (int) (total * FINISH_PROGRESS / fileLength);
-                        output.write(data, START_PROGRESS, count);
-                        // assign bitmap
-                        mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.toByteArray().length);
+                        mStatus = (int) ((total) / fileLength) * FINISH_PROGRESS;
+                        output.write(data, 0, count);
                     }
+                    // assign bitmap
+                    mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.toByteArray().length);
                 } catch (IOException e) {
                     Log.d("error", e.getMessage());
+                } finally {
+                    connection.disconnect();
+                    try {
+                        input.close();
+                        output.close();
+                    } catch (IOException e) {
+                        Log.d("error close :", e.getMessage());
+                    }
+
                 }
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((ViewImageFragment) ((TabManagementActivity) getActivity()).mTabAdapter.getItem(1)).showBitmap(mBitmap);
+                        if (mBitmap != null) {
+                            if (getActivity() instanceof TabManagementActivity)
+                                ((ViewImageFragment) ((TabManagementActivity) getActivity()).mTabAdapter.getItem(1)).showBitmap(mBitmap);
+                        }
                     }
                 });
             }
