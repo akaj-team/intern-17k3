@@ -63,15 +63,16 @@ public class OneFragment extends Fragment implements View.OnClickListener {
             public void run() {
                 HttpURLConnection connection = null;
                 InputStream inputStream = null;
+                ByteArrayOutputStream outputStream = null;
                 try {
-                    Thread.sleep(1000);
                     connection = (HttpURLConnection) new URL(LINK_PICTURE).openConnection();
                     connection.setDoInput(true);
                     connection.connect();
                     int fileLength = connection.getContentLength();
                     inputStream = connection.getInputStream();
-                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    byte data[] = new byte[128];
+                    outputStream = new ByteArrayOutputStream();
+                    // test read and write data : 2
+                    byte data[] = new byte[2];
                     long total = 0;
                     int count;
                     while ((count = inputStream.read(data)) != -1) {
@@ -84,11 +85,10 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                                 mProgressBar.setProgress(mPercent);
                             }
                         });
-                        mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
                     }
+                    // decode out site for performance
+                    mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
                 } catch (IOException e) {
-                    Log.d("", e.getMessage());
-                } catch (InterruptedException e) {
                     Log.d("", e.getMessage());
                 } finally {
                     try {
@@ -98,6 +98,9 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                         if (inputStream != null) {
                             inputStream.close();
                         }
+                        if (outputStream != null) {
+                            outputStream.close();
+                        }
                     } catch (Exception e) {
                         Log.d("", e.getMessage());
                     }
@@ -105,7 +108,11 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((LoadImageActivity) getActivity()).getBitmap(mBitmap);
+                        if (mBitmap != null) {
+                            if (getActivity() instanceof LoadImageActivity) {
+                                ((LoadImageActivity) getActivity()).getBitmap(mBitmap);
+                            }
+                        }
                     }
                 });
             }

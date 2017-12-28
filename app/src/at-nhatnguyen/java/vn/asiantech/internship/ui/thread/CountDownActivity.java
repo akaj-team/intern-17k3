@@ -16,10 +16,14 @@ import vn.asiantech.internship.R;
  * This class countdown timer
  */
 public class CountDownActivity extends AppCompatActivity {
+    private static final int TOTAL_TIME = 180000;
+    private static final int ONE_TIME = 1000;
+    CountDownTimer mCountDownTimer;
     private CountDownAdapter mCountDownAdapter;
     private List<Integer> mNumber;
     private RecyclerView mRecycleViewCountDown;
     private TextView mTvTime;
+    private int mCountSize = 0;
     private int mCount = 0;
 
     @Override
@@ -44,10 +48,21 @@ public class CountDownActivity extends AppCompatActivity {
     }
 
     private void initRun() {
-        CountDownTimer countDownTimer = new CountDownTimer(180000, 1000) {
+        mCountDownTimer = new CountDownTimer(TOTAL_TIME, ONE_TIME) {
             @Override
             public void onTick(long l) {
-                mTvTime.setText(String.valueOf((180000 - l) / 1000));
+                mCount++;
+                mTvTime.setText(String.valueOf(mCount));
+                if(mCount%10==0){
+                    mNumber.add(mCountSize);
+                    mNumber.add(mCountSize + 1);
+                    mCountDownAdapter.notifyDataSetChanged();
+                    mCountSize += 2;
+                }
+                if(mCount%15==0){
+                    mNumber.remove(mNumber.size() / 2);
+                    mCountDownAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -56,37 +71,12 @@ public class CountDownActivity extends AppCompatActivity {
             }
         };
 
-        CountDownTimer countDownTimer1 = new CountDownTimer(180000, 10000) {
+        mCountDownTimer.start();
+    }
 
-            @Override
-            public void onTick(long l) {
-                mNumber.add(mCount);
-                mNumber.add(mCount + 1);
-                mCountDownAdapter.notifyDataSetChanged();
-                mCount += 2;
-            }
-
-            @Override
-            public void onFinish() {
-                //NO-OP
-            }
-        };
-
-        CountDownTimer countDownTimer2 = new CountDownTimer(180000, 15000) {
-            @Override
-            public void onTick(long l) {
-                mNumber.remove(mNumber.size() / 2);
-                mCountDownAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFinish() {
-                //NO-OP
-            }
-        };
-
-        countDownTimer.start();
-        countDownTimer1.start();
-        countDownTimer2.start();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCountDownTimer.cancel();
     }
 }

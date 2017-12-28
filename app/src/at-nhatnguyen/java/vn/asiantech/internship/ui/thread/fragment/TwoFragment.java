@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class TwoFragment extends Fragment {
         mImgView = view.findViewById(R.id.imgPhoto);
     }
 
-    public void setMImgView(Bitmap bitmap) {
+    public void showBitmap(Bitmap bitmap) {
         if (bitmap != null) {
             mImgView.setImageBitmap(bitmap);
         }

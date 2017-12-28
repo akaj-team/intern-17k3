@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.thread.fragment.TwoFragment;
@@ -40,7 +41,7 @@ public class LoadImageActivity extends AppCompatActivity {
         // get TwoFragment form LoadImageAdapter
         TwoFragment twoFragment = (TwoFragment) mLoadImageAdapter.getItem(1);
         if (twoFragment != null) {
-            twoFragment.setMImgView(bitmap);
+            twoFragment.showBitmap(bitmap);
         }
     }
 }
