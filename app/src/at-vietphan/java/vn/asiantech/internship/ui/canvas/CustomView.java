@@ -102,16 +102,16 @@ public class CustomView extends View {
         mPersonC = getResources().getIntArray(R.array.person_three);
     }
 
-    private int setStartX(int startX) {
-        return startX * 150;
+    private int setStartX(int distancePerson, int mStartXPerson) {
+        return mStartXPerson + distancePerson * 150;
     }
 
     private int setStartY() {
         return this.getHeight() / 2;
     }
 
-    private int setStopY(int stopY) {
-        return stopY * 50;
+    private int setStopY(int distancePerson) {
+        return setStartY() - distancePerson * 50;
     }
 
     private int setStartYText() {
@@ -131,7 +131,7 @@ public class CustomView extends View {
         canvas.restore();
     }
 
-    //    Draw left box for hint chart left to left screen
+    //  Draw left box for hint chart left to left screen
     private void drawLeftBox(Canvas canvas) {
         canvas.drawRect(0, 0, 120, getHeight(), mPaintLeftBox);
     }
@@ -139,35 +139,33 @@ public class CustomView extends View {
     //  Draw line person A, B, C
     private void drawLinePerson(Canvas canvas) {
         for (int i = 0; i < mPersonA.length; i++) {
-            int startXA = mStartXPersonA + setStartX(i);
-            int startXB = mStartXPersonB + setStartX(i);
-            int startXC = mStartXPersonC + setStartX(i);
             int startY = setStartY() - RESIDUAL_DISTANCE;
-            int stopYA = setStartY() - setStopY(mPersonA[i]) + RESIDUAL_DISTANCE;
-            int stopYB = setStartY() - setStopY(mPersonB[i]) + RESIDUAL_DISTANCE;
-            int stopYC = setStartY() - setStopY(mPersonC[i]) + RESIDUAL_DISTANCE;
-            canvas.drawLine(startXA, startY, startXA, stopYA, mPaintA);
-            canvas.drawLine(startXB, startY, startXB, stopYB, mPaintB);
-            canvas.drawLine(startXC, startY, startXC, stopYC, mPaintC);
+            int stopYA = setStopY(mPersonA[i]) + RESIDUAL_DISTANCE;
+            int stopYB = setStopY(mPersonB[i]) + RESIDUAL_DISTANCE;
+            int stopYC = setStopY(mPersonC[i]) + RESIDUAL_DISTANCE;
+            canvas.drawLine(setStartX(i, mStartXPersonA), startY, setStartX(i, mStartXPersonA), stopYA, mPaintA);
+            canvas.drawLine(setStartX(i, mStartXPersonB), startY, setStartX(i, mStartXPersonB), stopYB, mPaintB);
+            canvas.drawLine(setStartX(i, mStartXPersonC), startY, setStartX(i, mStartXPersonC), stopYC, mPaintC);
         }
     }
 
     //   Draw lineDistance max, min, between
     private void drawLineDistance(Canvas canvas) {
         int maxDistance = getMaxValueDistance();
-        int startYLineTop = setStartY() - setStopY(maxDistance);
-        int startYLineBetween = setStartY() - setStopY(maxDistance) / 2;
-        canvas.drawLine(START_LINE_DISTANCE, startYLineTop, getWidth(), startYLineTop, mPaintLineDistance);
+        int startYLineBetween = setStopY(maxDistance) + setStopY(maxDistance) / 2;
+        canvas.drawLine(START_LINE_DISTANCE, setStopY(maxDistance), getWidth(), setStopY(maxDistance), mPaintLineDistance);
         canvas.drawLine(START_LINE_DISTANCE, startYLineBetween, getWidth(), startYLineBetween, mPaintLineDistance);
         canvas.drawLine(START_LINE_DISTANCE, setStartY(), getWidth(), setStartY(), mPaintLineDistance);
     }
 
     private void drawText(Canvas canvas) {
-        canvas.drawText("24 Jul", START_LINE_DISTANCE, setStartYText(), mPaintMonth);
-        canvas.drawText("9 Oct", getWidth() - 90, setStartYText(), mPaintMonth);
-        canvas.drawText("0 Km", START_TEXT_DISTANCE, setStartY() + TEXT_BETWEEN_LINE, mPaintDistance);
-        canvas.drawText(getMaxValueDistance() + " Km", START_TEXT_DISTANCE,
-                setStartY() - setStopY(getMaxValueDistance()) + TEXT_BETWEEN_LINE, mPaintDistance);
+        int maxDistance = getMaxValueDistance();
+        canvas.drawText(getContext().getString(R.string.jul_24), START_LINE_DISTANCE, setStartYText(), mPaintMonth);
+        canvas.drawText(getContext().getString(R.string.oct_9), getWidth() - 100, setStartYText(), mPaintMonth);
+        canvas.drawText(0 + getContext().getString(R.string.km),
+                START_TEXT_DISTANCE, setStartY() + TEXT_BETWEEN_LINE, mPaintDistance);
+        canvas.drawText(maxDistance + getContext().getString(R.string.km),
+                START_TEXT_DISTANCE, setStopY(maxDistance) + TEXT_BETWEEN_LINE, mPaintDistance);
     }
 
     /**

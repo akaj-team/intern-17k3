@@ -77,4 +77,7 @@
     <string name="dialog_fragment">Dialog Fagment</string>
     <string name="your_info">Your information</string>
     <string name="canvas">CANVAS</string>
+    <string name="jul_24">24 Jul</string>
+    <string name="oct_9">9 Oct</string>
+    <string name="km">Km</string>
 </resources>
