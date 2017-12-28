@@ -22,66 +22,36 @@ import vn.asiantech.internship.ui.asynchronous.adapters.CountDownTimerAdapter;
 public class CountDownTimerActivity extends AppCompatActivity {
     private static final int MILLIS_IN_FUTURE = 180000;
     private static final int COUNTDOWN_INTERVAL_SECONDS = 1000;
-    private static final int COUNTDOWN_INTERVAL_ADD_ITEMS = 10000;
-    private static final int COUNTDOWN_INTERVAL_REMOVE_ITEMS = 15000;
+    private static final int TIMES_ADD_ITEMS = 10;
+    private static final int TIMES_DELETE_ITEMS = 15;
     private RecyclerView mRecyclerView;
     private CountDownTimerAdapter mCountDownTimerAdapter;
-    private List<CountDownTimerItem> mCountDownTimers = new ArrayList<>();
-    private int mNumberItem;
+    private List<CountDownTimerItem> mCountDownTimerItems = new ArrayList<>();
+    private int mTotalItems;
     private TextView mTextView;
+    private int mCountSeconds = 0;
 
     /*
-     * Countdown seconds from 180->0
+     * Countdown seconds from 180->0, 10s add 2 item, 15s remove 1 item in between list
      */
-    CountDownTimer countDownSeconds = new CountDownTimer(MILLIS_IN_FUTURE, COUNTDOWN_INTERVAL_SECONDS) {
+    CountDownTimer mCountDownSeconds = new CountDownTimer(MILLIS_IN_FUTURE, COUNTDOWN_INTERVAL_SECONDS) {
         @SuppressLint("SetTextI18n")
         @Override
         public void onTick(long millisUntilFinished) {
             mTextView.setText(getString(R.string.seconds_remaining) + 180);
             int countSeconds = (int) (millisUntilFinished / 1000);
             mTextView.setText(getString(R.string.seconds_remaining) + countSeconds);
+            mCountSeconds++;
+            if (mCountSeconds % TIMES_ADD_ITEMS == 0) {
+                addItems();
+            } else if (mCountSeconds % TIMES_DELETE_ITEMS == 0) {
+                deleteItems();
+            }
         }
 
         @Override
         public void onFinish() {
             mTextView.setText(R.string.done);
-        }
-    };
-
-    /*
-     * CountDown 10s add 2 item
-     */
-    CountDownTimer countDownAddItems = new CountDownTimer(MILLIS_IN_FUTURE, COUNTDOWN_INTERVAL_ADD_ITEMS) {
-        @Override
-        public void onTick(long l) {
-            mCountDownTimers.add(new CountDownTimerItem("item " + mNumberItem));
-            mCountDownTimers.add(new CountDownTimerItem("item " + (mNumberItem + 1)));
-            mCountDownTimerAdapter.notifyDataSetChanged();
-            mNumberItem = mNumberItem + 2;
-            Log.d("l", "list: " + mCountDownTimers.size());
-        }
-
-        @Override
-        public void onFinish() {
-            // No-op
-        }
-    };
-
-    /*
-     * CountDown 15s remove 1 item in the middle of the listItem
-     */
-    CountDownTimer countDownRemoveItem = new CountDownTimer(MILLIS_IN_FUTURE, COUNTDOWN_INTERVAL_REMOVE_ITEMS) {
-        @Override
-        public void onTick(long l) {
-            mCountDownTimers.remove(mCountDownTimers.get(mCountDownTimers.size() / 2));
-            mCountDownTimerAdapter.notifyDataSetChanged();
-            Log.d("l", "removed item: " + (mCountDownTimers.size() / 2));
-            Log.d("l", "list 2: " + mCountDownTimers.size());
-        }
-
-        @Override
-        public void onFinish() {
-            // No-op
         }
     };
 
@@ -92,34 +62,45 @@ public class CountDownTimerActivity extends AppCompatActivity {
         initViews();
         initData();
         initAdapter();
-        countDownSeconds.start();
-        countDownAddItems.start();
-        countDownRemoveItem.start();
+        mCountDownSeconds.start();
     }
 
     private void initViews() {
         mRecyclerView = findViewById(R.id.recyclerViewCountDownTimer);
-        mTextView = findViewById(R.id.tvA);
+        mTextView = findViewById(R.id.tvSeconds);
     }
 
     private void initData() {
-        mCountDownTimers.add(new CountDownTimerItem("item 1"));
-        mCountDownTimers.add(new CountDownTimerItem("item 2"));
-        mCountDownTimers.add(new CountDownTimerItem("item 3"));
-        mNumberItem = mCountDownTimers.size();
+        mCountDownTimerItems.add(new CountDownTimerItem("item 1"));
+        mCountDownTimerItems.add(new CountDownTimerItem("item 2"));
+        mCountDownTimerItems.add(new CountDownTimerItem("item 3"));
+        mTotalItems = mCountDownTimerItems.size();
     }
 
     private void initAdapter() {
-        mCountDownTimerAdapter = new CountDownTimerAdapter(mCountDownTimers);
+        mCountDownTimerAdapter = new CountDownTimerAdapter(mCountDownTimerItems);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mCountDownTimerAdapter);
     }
 
+    private void addItems() {
+        mCountDownTimerItems.add(new CountDownTimerItem("item " + (mTotalItems + 1)));
+        mCountDownTimerItems.add(new CountDownTimerItem("item " + (mTotalItems + 2)));
+        mCountDownTimerAdapter.notifyDataSetChanged();
+        mTotalItems = mTotalItems + 2;
+        Log.d("l", "list added: " + mCountDownTimerItems.size());
+    }
+
+    private void deleteItems() {
+        mCountDownTimerItems.remove(mCountDownTimerItems.get(mCountDownTimerItems.size() / 2));
+        mCountDownTimerAdapter.notifyDataSetChanged();
+        Log.d("l", "removed item: " + (mCountDownTimerItems.size() / 2));
+        Log.d("l", "list removed: " + mCountDownTimerItems.size());
+    }
+
     @Override
     protected void onDestroy() {
-        countDownSeconds.cancel();
-        countDownAddItems.cancel();
-        countDownRemoveItem.cancel();
+        mCountDownSeconds.cancel();
         super.onDestroy();
     }
 }
