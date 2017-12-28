@@ -17,8 +17,7 @@ import vn.asiantech.internship.R;
  */
 public class RecyclerViewCountDownTimerActivity extends AppCompatActivity {
     private static final int MILLISINFUTURE = 180000;
-    private static final int COUNTDOWNINTERVAL1 = 10000;
-    private static final int COUNTDOWNINTERVAL2 = 15000;
+    private static final int COUNTDOWNINTERVAL = 1000;
     private RecyclerView mRecyclerViewCountDownTimer;
     private List<String> mStrs = new ArrayList<>();
     private RecyclerViewAdapter mRecyclerViewAdapter;
@@ -30,24 +29,25 @@ public class RecyclerViewCountDownTimerActivity extends AppCompatActivity {
         initViews();
         mStrs.add("0");
         initAdapter();
-        new CountDownTimer(MILLISINFUTURE, COUNTDOWNINTERVAL1) {
-            @Override
-            public void onTick(long longMilisecond) {
-                mStrs.add("1");
-                mStrs.add("2");
-                mRecyclerViewAdapter.notifyDataSetChanged();
-            }
+        new CountDownTimer(MILLISINFUTURE, COUNTDOWNINTERVAL) {
+            int countadd = 0;
+            int countdelete = 0;
 
             @Override
-            public void onFinish() {
-
-            }
-        }.start();
-        new CountDownTimer(MILLISINFUTURE, COUNTDOWNINTERVAL2) {
-            @Override
             public void onTick(long longMilisecond) {
-                mStrs.remove(mStrs.get(mStrs.size() / 2));
-                mRecyclerViewAdapter.notifyDataSetChanged();
+                ++countadd;
+                ++countdelete;
+                if (countadd == 10) {
+                    mStrs.add("1");
+                    mStrs.add("2");
+                    mRecyclerViewAdapter.notifyDataSetChanged();
+                    countadd = 0;
+                }
+                if (countdelete == 15) {
+                    mStrs.remove(mStrs.get(mStrs.size() / 2));
+                    mRecyclerViewAdapter.notifyDataSetChanged();
+                    countdelete = 0;
+                }
             }
 
             @Override
