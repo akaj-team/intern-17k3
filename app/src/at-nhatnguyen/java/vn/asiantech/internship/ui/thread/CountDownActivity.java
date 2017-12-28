@@ -53,13 +53,13 @@ public class CountDownActivity extends AppCompatActivity {
             public void onTick(long l) {
                 mCount++;
                 mTvTime.setText(String.valueOf(mCount));
-                if(mCount%10==0){
+                if (mCount % 10 == 0) {
                     mNumber.add(mCountSize);
                     mNumber.add(mCountSize + 1);
                     mCountDownAdapter.notifyDataSetChanged();
                     mCountSize += 2;
                 }
-                if(mCount%15==0){
+                if (mCount % 15 == 0) {
                     mNumber.remove(mNumber.size() / 2);
                     mCountDownAdapter.notifyDataSetChanged();
                 }
