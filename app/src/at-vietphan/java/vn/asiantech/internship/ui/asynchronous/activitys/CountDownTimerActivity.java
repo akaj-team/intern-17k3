@@ -21,7 +21,6 @@ import vn.asiantech.internship.ui.asynchronous.adapters.CountDownTimerAdapter;
 public class CountDownTimerActivity extends AppCompatActivity {
     private static final int MILLIS_IN_FUTURE = 180000;
     private static final int COUNTDOWN_INTERVAL_SECONDS = 1000;
-    private static final int TIME_START_COUNTDOWN = 180;
     private static final int TIME_ADD_ITEM = 10;
     private static final int TIME_DELETE_ITEM = 15;
     private RecyclerView mRecyclerView;
@@ -38,13 +37,15 @@ public class CountDownTimerActivity extends AppCompatActivity {
         @SuppressLint("SetTextI18n")
         @Override
         public void onTick(long millisUntilFinished) {
-            mTextView.setText(getString(R.string.seconds_remaining) + TIME_START_COUNTDOWN);
             int countSeconds = (int) (millisUntilFinished / COUNTDOWN_INTERVAL_SECONDS);
             mTextView.setText(getString(R.string.seconds_remaining) + countSeconds);
             mCountSeconds++;
-            if (mCountSeconds % TIME_ADD_ITEM == 0) {
+            if (mCountSeconds % TIME_ADD_ITEM == 0 && mCountSeconds % TIME_DELETE_ITEM != 0) {
                 addItems();
-            } else if (mCountSeconds % TIME_DELETE_ITEM == 0) {
+            } else if (mCountSeconds % TIME_ADD_ITEM != 0 && mCountSeconds % TIME_DELETE_ITEM == 0) {
+                deleteItems();
+            } else if (mCountSeconds % TIME_ADD_ITEM == 0 && mCountSeconds % TIME_DELETE_ITEM == 0) {
+                addItems();
                 deleteItems();
             }
         }
