@@ -12,7 +12,6 @@ import vn.asiantech.internship.threadandhandler.dowloadimage.ui.ViewImageFragmen
  * Created by jackty on 19/12/2017.
  */
 public class TabAdapter extends FragmentPagerAdapter {
-
     private static final int FRAGMENT_ONE = 0;
     private static final int FRAGMENT_TW0 = 1;
     private String mNameFragment[] = {"Download", "View"};

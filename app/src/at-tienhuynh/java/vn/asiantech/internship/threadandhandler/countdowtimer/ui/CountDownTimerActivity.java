@@ -19,7 +19,6 @@ import vn.asiantech.internship.threadandhandler.countdowtimer.models.Item;
  * Created by jackty on 20/12/2017.
  */
 public class CountDownTimerActivity extends AppCompatActivity {
-
     private static final int TOTAL_TIME = 180000;
     private static final int DELETE_ITEM_TIME = 15;
     private static final int ADD_ITEM_TIME = 10;

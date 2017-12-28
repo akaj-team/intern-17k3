@@ -16,7 +16,6 @@ import vn.asiantech.internship.threadandhandler.countdowtimer.models.Item;
  * Created by jackty on 20/12/2017.
  */
 public class ListCountDownTimerAdapter extends RecyclerView.Adapter<ListCountDownTimerAdapter.ListCountDownViewHolder> {
-
     private List<Item> mItemLists;
 
     public ListCountDownTimerAdapter(List<Item> itemLists) {

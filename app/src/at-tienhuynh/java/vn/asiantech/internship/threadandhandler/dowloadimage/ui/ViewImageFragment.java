@@ -15,7 +15,6 @@ import vn.asiantech.internship.R;
  * ViewImageFragment to show image downloaded at fragment one
  */
 public class ViewImageFragment extends Fragment {
-
     private ImageView mImgDownLoaded;
     private View mView;
 

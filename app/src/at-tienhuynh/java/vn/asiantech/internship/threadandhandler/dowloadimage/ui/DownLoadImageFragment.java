@@ -26,7 +26,6 @@ import vn.asiantech.internship.R;
  * DownLoadImageFragment to downloading image from internet
  */
 public class DownLoadImageFragment extends Fragment {
-
     private static final String LINK_IMAGE = "https://s-media-cache-ak0.pinimg.com/originals/96/bb/17/96bb17f887be41927c834479fd7590b2.jpg";
     private static final int START_PROGRESS = 0;
     private static final int FINISH_PROGRESS = 100;

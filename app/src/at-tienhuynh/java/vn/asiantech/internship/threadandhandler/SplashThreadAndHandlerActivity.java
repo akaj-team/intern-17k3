@@ -15,7 +15,6 @@ import vn.asiantech.internship.threadandhandler.dowloadimage.ui.TabManagementAct
  * Created by jackty on 20/12/2017.
  */
 public class SplashThreadAndHandlerActivity extends AppCompatActivity implements View.OnClickListener {
-
     private Button mBtnExercise1;
     private Button mBtnExercise2;
 

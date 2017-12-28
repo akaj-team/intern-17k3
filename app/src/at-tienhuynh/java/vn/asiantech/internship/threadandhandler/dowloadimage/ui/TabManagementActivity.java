@@ -13,7 +13,6 @@ import vn.asiantech.internship.threadandhandler.dowloadimage.adapters.TabAdapter
  * Created by jackty on 19/12/2017.
  */
 public class TabManagementActivity extends AppCompatActivity {
-
     public TabAdapter mTabAdapter;
     private TabLayout mTabLayout;
     private ViewPager mViewPagerContainer;
