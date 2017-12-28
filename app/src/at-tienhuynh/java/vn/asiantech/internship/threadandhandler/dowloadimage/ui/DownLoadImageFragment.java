@@ -48,7 +48,7 @@ public class DownLoadImageFragment extends Fragment {
         mView = inflater.inflate(R.layout.fragment_down_load_image, container, false);
         initViews();
         initData();
-        initListeners();
+        initListener();
         return mView;
     }
 
@@ -72,7 +72,7 @@ public class DownLoadImageFragment extends Fragment {
     /**
      * Init Listener for Button
      */
-    private void initListeners() {
+    private void initListener() {
         mBtnStartDownLoad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,8 +127,9 @@ public class DownLoadImageFragment extends Fragment {
                     @Override
                     public void run() {
                         if (mBitmap != null) {
-                            if (getActivity() instanceof TabManagementActivity)
+                            if (getActivity() instanceof TabManagementActivity) {
                                 ((ViewImageFragment) ((TabManagementActivity) getActivity()).mTabAdapter.getItem(1)).showBitmap(mBitmap);
+                            }
                         }
                     }
                 });
@@ -153,15 +154,6 @@ public class DownLoadImageFragment extends Fragment {
                             mTvPercentDownLoad.setText(String.valueOf(mStatus).concat("%"));
                         }
                     });
-                }
-                if (mStatus >= FINISH_PROGRESS) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Log.d("error :", e.getMessage());
-                    }
-                    // set mStatus = 0 for the next download
-                    mStatus = START_PROGRESS;
                 }
             }
         }).start();

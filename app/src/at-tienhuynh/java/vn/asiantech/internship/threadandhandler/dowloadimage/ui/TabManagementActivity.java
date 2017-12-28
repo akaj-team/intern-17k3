@@ -23,7 +23,7 @@ public class TabManagementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_management);
         initViews();
-        initAdapters();
+        initAdapter();
     }
 
     /**
@@ -37,7 +37,7 @@ public class TabManagementActivity extends AppCompatActivity {
     /**
      * Init Adapters
      */
-    private void initAdapters() {
+    private void initAdapter() {
         mTabAdapter = new TabAdapter(getSupportFragmentManager());
         mViewPagerContainer.setAdapter(mTabAdapter);
         mTabLayout.setupWithViewPager(mViewPagerContainer);
