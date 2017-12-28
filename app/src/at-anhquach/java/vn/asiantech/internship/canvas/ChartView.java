@@ -66,6 +66,8 @@ public class ChartView extends View {
         mDistanceAs.add(9);
         mDistanceAs.add(6);
         mDistanceAs.add(6);
+        mDistanceAs.add(9);
+        mDistanceAs.add(2);
     }
 
     private void initDistanceB() {
@@ -76,6 +78,8 @@ public class ChartView extends View {
         mDistanceBs.add(2);
         mDistanceBs.add(6);
         mDistanceBs.add(6);
+        mDistanceBs.add(4);
+        mDistanceBs.add(7);
     }
 
     private void initDistanceC() {
@@ -86,6 +90,8 @@ public class ChartView extends View {
         mDistanceCs.add(11);
         mDistanceCs.add(6);
         mDistanceCs.add(12);
+        mDistanceCs.add(5);
+        mDistanceCs.add(4);
     }
 
     private float maxLists() {

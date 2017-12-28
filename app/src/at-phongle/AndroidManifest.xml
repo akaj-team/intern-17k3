@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -31,6 +30,8 @@
         <activity android:name=".image.ImageActivity" />
         <activity android:name=".image.NinePathActivity" />
         <activity android:name=".image.VectorActivity" />
+        <activity android:name=".viewpager.tutorial.GuideActivity" />
+        <activity android:name=".viewpager.ViewPagerMainActivity" />
     </application>
 
 </manifest>

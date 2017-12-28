@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context="vn.asiantech.internship.ui.main.MainActivity">
 
     <TextView
@@ -21,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvMenuBt"
-        android:layout_marginLeft="30dp"
         android:text="@string/bai_tap_1" />
 
     <Button
@@ -29,7 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnBt1"
-        android:layout_marginLeft="30dp"
         android:text="@string/bai_tap_2" />
 
     <Button
@@ -37,7 +36,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnBt2"
-        android:layout_marginLeft="30dp"
         android:text="@string/bai_tap_3" />
 
     <Button
@@ -45,7 +43,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnBt3"
-        android:layout_marginLeft="30dp"
         android:text="@string/bai_tap_4" />
 
     <Button
@@ -53,6 +50,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnBt4"
-        android:layout_marginLeft="30dp"
         android:text="@string/bai_tap_5" />
+
+    <Button
+        android:id="@+id/btnBt6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvMenuBt"
+        android:text="@string/bai_tap_6" />
+
+    <Button
+        android:id="@+id/btnBt7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btnBt6"
+        android:text="@string/bai_tap_7" />
 </RelativeLayout>

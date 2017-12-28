@@ -9,22 +9,25 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.calculator.CalculatorActivity;
+import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageNinepathVectorActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.PostActivity;
 import vn.asiantech.internship.savedata.ExternalStorageActivity;
 import vn.asiantech.internship.savedata.PersonActivity;
 import vn.asiantech.internship.savedata.SharePreferenceActivity;
+import vn.asiantech.internship.viewpager.tutorial.GuideActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
     private Button mBtnCalculatorScreen;
     private Button mBtnRecyclerViewScreen;
     private Button mBtnDrawerLayoutScreen;
-    private Button mBtnSharePreferenceScreen;
-    private Button mBtnExternalStorageScreen;
-    private Button mBtnSQLiteScreen;
+    private Button mSharePreferenceScreen;
+    private Button mExternalStorageScreen;
+    private Button mSQLiteScreen;
     private Button mBtnImageNinepathVector;
+    private Button mBtnViewPager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,9 +42,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mBtnCalculatorScreen = findViewById(R.id.btnCalculatorScreen);
         mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayoutScreen);
         mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
-        mBtnSharePreferenceScreen = findViewById(R.id.btnSharePreferenceScreen);
-        mBtnExternalStorageScreen = findViewById(R.id.btnExternalStorageScreen);
-        mBtnSQLiteScreen = findViewById(R.id.btnSQLiteScreen);
+        mSharePreferenceScreen = findViewById(R.id.btnSharePreferenceScreen);
+        mExternalStorageScreen = findViewById(R.id.btnExternalStorageScreen);
+        mSQLiteScreen = findViewById(R.id.btnSQLiteScreen);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnImageNinepathVector = findViewById(R.id.btnImageNinepathVector);
     }
 
@@ -50,9 +54,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mBtnCalculatorScreen.setOnClickListener(this);
         mBtnDrawerLayoutScreen.setOnClickListener(this);
         mBtnRecyclerViewScreen.setOnClickListener(this);
-        mBtnSharePreferenceScreen.setOnClickListener(this);
-        mBtnExternalStorageScreen.setOnClickListener(this);
-        mBtnSQLiteScreen.setOnClickListener(this);
+        mSharePreferenceScreen.setOnClickListener(this);
+        mExternalStorageScreen.setOnClickListener(this);
+        mSQLiteScreen.setOnClickListener(this);
+        mBtnViewPager.setOnClickListener(this);
         mBtnImageNinepathVector.setOnClickListener(this);
     }
 
@@ -72,10 +77,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 intent = new Intent(AppActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
-//            case R.id.btnDrawerLayoutScreen:
-//                intent = new Intent(AppActivity.this, DrawerLayoutActivity.class);
-//                startActivity(intent);
-//                break;
+            case R.id.btnDrawerLayoutScreen:
+                intent = new Intent(AppActivity.this, DrawerLayoutActivity.class);
+                startActivity(intent);
+                break;
             case R.id.btnSharePreferenceScreen:
                 intent = new Intent(AppActivity.this, SharePreferenceActivity.class);
                 startActivity(intent);
@@ -90,6 +95,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btnImageNinepathVector:
                 intent = new Intent(AppActivity.this, ImageNinepathVectorActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnViewPager:
+                intent = new Intent(AppActivity.this, GuideActivity.class);
                 startActivity(intent);
                 break;
         }
