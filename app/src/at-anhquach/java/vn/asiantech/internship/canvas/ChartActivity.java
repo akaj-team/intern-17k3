@@ -11,11 +11,6 @@ import vn.asiantech.internship.R;
  * Activity for Chart
  */
 public class ChartActivity extends AppCompatActivity {
-    ChartView chartView;
-
-    public ChartActivity() {
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
