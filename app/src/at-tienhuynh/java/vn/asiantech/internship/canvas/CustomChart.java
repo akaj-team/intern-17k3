@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -201,11 +202,11 @@ public class CustomChart extends View {
     private void drawLine(Canvas canvas) {
         //Draw Max Line
         canvas.drawLine(mPaintText.measureText(String.valueOf(mMax).concat(getResources().getString(R.string.tv_canvas_km))) + SCALE_X * SPACE_DISTANCE,
-                getHeight() / 2 - mMax * SCALE_Y - ROUND_SCALE, getWidth(),
-                getHeight() / 2 - mMax * SCALE_Y - ROUND_SCALE, mPaintMaxLine);
+                getHeight() / 2 - mMax * SCALE_Y, getWidth(),
+                getHeight() / 2 - mMax * SCALE_Y, mPaintMaxLine);
         //Draw End Line
-        canvas.drawLine(NUM_O, getHeight() / 2 + ROUND_SCALE, getWidth(),
-                getHeight() / 2 + ROUND_SCALE, mPaintMaxLine);
+        canvas.drawLine(NUM_O, getHeight() / 2, getWidth(),
+                getHeight() / 2, mPaintMaxLine);
         //Draw Middle Line
         canvas.drawLine(mPaintText.measureText(String.valueOf(mMax).concat(getResources().getString(R.string.tv_canvas_km))),
                 getHeight() / 2 - mMax / 2 * SCALE_Y, getWidth(),
@@ -222,33 +223,31 @@ public class CustomChart extends View {
             int y2 = ChartValues.people2Values().get(i) * SCALE_Y;
             int y3 = ChartValues.people3Values().get(i) * SCALE_Y;
             // draw chart people 1
-            canvas.drawLine(mPointOX + getWidth() / 2 + i * (mLengthOneColumn
-                            * (TOTAL_PEOPLE + SCALE_X)) - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1))
-                            * mLengthOneColumn) / 2 - DISTANCE_START,
-                    getHeight() / 2 - y1,
-                    mPointOX
-                            + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
-                            - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
-                    getHeight() / 2, mPaintPeople1);
+            canvas.drawRoundRect(new RectF(mPointOX + getWidth() / 2 + i * (mLengthOneColumn
+                    * (TOTAL_PEOPLE + SCALE_X)) - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1))
+                    * mLengthOneColumn) / 2 - DISTANCE_START, getHeight() / 2 - y1,
+                    mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
+                            - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
+                    getHeight() / 2), 10, 5, mPaintPeople1);
             // draw chart people 2
-            canvas.drawLine(mPointOX + getWidth() / 2 + i * (mLengthOneColumn
-                            * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn + SCALE_X - ((NUM_DAY * TOTAL_PEOPLE
-                            + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
+            canvas.drawRoundRect(new RectF(mPointOX + getWidth() / 2 + i * (mLengthOneColumn
+                    * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn + SCALE_X - ((NUM_DAY * TOTAL_PEOPLE
+                    + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
                     getHeight() / 2 - y2,
                     mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
                             + mLengthOneColumn + SCALE_X - ((NUM_DAY * TOTAL_PEOPLE
-                            + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
-                    getHeight() / 2, mPaintPeople2);
+                            + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
+                    getHeight() / 2), 10, 5, mPaintPeople2);
             // draw chart people 3
-            canvas.drawLine(mPointOX + getWidth() / 2 + i
-                            * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn * 2 + SCALE_X * 2
-                            - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
+            canvas.drawRoundRect(new RectF(mPointOX + getWidth() / 2 + i
+                    * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn * 2 + SCALE_X * 2
+                    - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
                     getHeight() / 2 - y3,
                     mPointOX + getWidth() / 2 + i
                             * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn * 2
                             + SCALE_X * 2 - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1))
-                            * mLengthOneColumn) / 2 - DISTANCE_START,
-                    getHeight() / 2, mPaintPeople3);
+                            * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
+                    getHeight() / 2), 10, 5, mPaintPeople3);
         }
     }
 
