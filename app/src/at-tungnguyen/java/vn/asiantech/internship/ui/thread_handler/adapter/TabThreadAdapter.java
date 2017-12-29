@@ -12,7 +12,6 @@ import vn.asiantech.internship.ui.thread_handler.ui.thread.ViewFragment;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 19/12/2017.
  */
-
 public class TabThreadAdapter extends FragmentPagerAdapter {
     private String fragments[] = {"DownLoad", "View"};
     private static final int ITEM_DOWNLOAD = 0;

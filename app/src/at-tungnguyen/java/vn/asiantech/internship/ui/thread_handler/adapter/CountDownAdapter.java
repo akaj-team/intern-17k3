@@ -17,7 +17,7 @@ import vn.asiantech.internship.model.CountDownItem;
  */
 
 public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.ViewHolder> {
-    private List<CountDownItem> mCountDownItems;
+    private static List<CountDownItem> mCountDownItems;
 
     public CountDownAdapter(List<CountDownItem> mCountDownItems) {
         this.mCountDownItems = mCountDownItems;
@@ -39,7 +39,7 @@ public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.View
         return mCountDownItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvName;
 
         public ViewHolder(View itemView) {

@@ -23,6 +23,7 @@ public class CountDownActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private CountDownAdapter mCountDownAdapter;
     private TextView mTvCountDown;
+    private CountDownTimer mCountDownTimer;
     private int mCount = 0;
 
     @Override
@@ -67,7 +68,7 @@ public class CountDownActivity extends AppCompatActivity {
      * initCountDown
      */
     private void initCountDown() {
-        new CountDownTimer(180000, 1000) {
+        mCountDownTimer = new CountDownTimer(180000, 1000) {
             @Override
             public void onTick(long l) {
                 mCount = (int) (l / 1000);
@@ -86,7 +87,7 @@ public class CountDownActivity extends AppCompatActivity {
      * addItem for RecyclerView
      */
     private void addItem() {
-        new CountDownTimer(10000, 1000) {
+        mCountDownTimer = new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long l) {
                 //No-opp
@@ -108,7 +109,7 @@ public class CountDownActivity extends AppCompatActivity {
      * DeleteItem RecyclerView
      */
     private void deleteItem() {
-        new CountDownTimer(15000, 1000) {
+        mCountDownTimer = new CountDownTimer(15000, 1000) {
             @Override
             public void onTick(long l) {
                 //No-opp

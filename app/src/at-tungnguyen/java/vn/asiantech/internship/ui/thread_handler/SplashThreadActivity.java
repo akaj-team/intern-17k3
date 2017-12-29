@@ -10,6 +10,10 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.thread_handler.ui.countdowntimer.CountDownActivity;
 import vn.asiantech.internship.ui.thread_handler.ui.thread.ThreadActivity;
 
+/**
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 08/12/2017.
+ */
 public class SplashThreadActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnExercise1;
     private Button mBtnExercise2;

@@ -9,6 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.thread_handler.adapter.TabThreadAdapter;
 
+/**
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 08/12/2017.
+ */
 public class ThreadActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
