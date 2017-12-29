@@ -24,6 +24,15 @@ import vn.asiantech.internship.ui.viewpager_tablayout.ScreenUtil;
  * Chart View
  */
 public class ChartView extends View {
+    private boolean dragged = true;
+    private float startX = 0f;
+    private float startY = 0f;
+    private float translateX = 0f;
+    private float translateY = 0f;
+    private float previousTranslateX = 0f;
+    private float previousTranslateY = 0f;
+
+    private int mode;
     private Paint mPaint;
     private float mWidth;
     private ScaleGestureDetector mScaleDetector;
@@ -33,8 +42,6 @@ public class ChartView extends View {
     private List<Integer> mDistanceBs = new ArrayList<>();
     private List<Integer> mDistanceCs = new ArrayList<>();
 
-    private float mStartX;
-    private float mDistanceMove;
     private float mWitdhScreen = ScreenUtil.getWidthScreen(getContext());
     private float mHeightScreen = ScreenUtil.getHeightScreen(getContext());
     private int mOxChart = 130;
@@ -108,16 +115,49 @@ public class ChartView extends View {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        mScaleDetector.onTouchEvent(ev);
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_MOVE:
-                mStartX = (ev.getX() - mDistanceMove) + mStartX;
-                mDistanceMove = ev.getX();
-                break;
+        int DRAG = 1;
+        int ZOOM = 2;
+        switch (ev.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
-                mDistanceMove = ev.getX();
+                startX = ev.getX();
+                startY = ev.getY();
+                mode = DRAG;
+                startX = ev.getX() - previousTranslateX;
+                startY = ev.getY() - previousTranslateY;
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+                translateX = ev.getX() - startX;
+                translateY = ev.getY() - startY;
+                double distance = Math.sqrt(Math.pow(ev.getX() - (startX + previousTranslateX), 2) +
+                        Math.pow(ev.getY() - (startY + previousTranslateY), 2));
+
+                if (distance > 0) {
+                    dragged = true;
+                }
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                mode = ZOOM;
+                break;
+
+            case MotionEvent.ACTION_UP:
+                mode = 0;
+                dragged = false;
+                previousTranslateX = translateX;
+                previousTranslateY = translateY;
+                break;
+
+            case MotionEvent.ACTION_POINTER_UP:
+                mode = DRAG;
+                previousTranslateX = translateX;
+                previousTranslateY = translateY;
+                break;
         }
-        invalidate();
+        mScaleDetector.onTouchEvent(ev);
+
+        if ((mode == DRAG && mScaleFactor != 1f && dragged) || mode == ZOOM) {
+            invalidate();
+        }
         return true;
     }
 
@@ -126,6 +166,17 @@ public class ChartView extends View {
         super.onDraw(canvas);
         canvas.save();
         canvas.scale(mScaleFactor, mScaleFactor);
+        if ((translateX * -1) < 0) {
+            translateX = 0;
+        } else if ((translateX * -1) > (mScaleFactor - 1) * getWidth()) {
+            translateX = (1 - mScaleFactor) * getWidth();
+        }
+        if (translateY * -1 < 0) {
+            translateY = 0;
+        } else if ((translateY * -1) > (mScaleFactor - 1) * getHeight()) {
+            translateY = (1 - mScaleFactor) * getHeight();
+        }
+        canvas.translate(translateX / mScaleFactor, translateY / mScaleFactor);
         mPaint.setColor(getResources().getColor(R.color.colorGrayDark));
         mPaint.setTextSize(getResources().getDimension(R.dimen.textsize40));
         drawText(canvas, getContext().getString(R.string.distance_km, ((int) maxLists())), maxLists(), mPaint);
@@ -152,7 +203,7 @@ public class ChartView extends View {
     private void drawRect(Canvas canvas, float posInit, int height, int color, int posInArray, Paint paint) {
         paint.setColor(getResources().getColor(color));
         float distanceBetweenGroupChart = 5 * mWidth + mDistanceBetweenCharts * 2;
-        float left = mOxChart + posInit + distanceBetweenGroupChart * posInArray + mStartX;
+        float left = mOxChart + posInit + distanceBetweenGroupChart * posInArray;
         canvas.drawRoundRect(new RectF(left, mHeightScreen / 2 - height * mEnlarge,
                 left + mWidth, mHeightScreen / 2), 10, 5, paint);
     }
@@ -162,9 +213,9 @@ public class ChartView extends View {
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
             mScaleFactor *= detector.getScaleFactor();
-            // Don't let the object get too small or too large.
-            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
-            invalidate();
+            float MIN_ZOOM = 1F;
+            float MAX_ZOOM = 5F;
+            mScaleFactor = Math.max(MIN_ZOOM, Math.min(mScaleFactor, MAX_ZOOM));
             return true;
         }
     }
