@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -27,6 +28,7 @@ public class CustomView extends View {
     private Paint mPaint3;
     private Paint mPaintText;
     private Paint mPaintTextDate;
+    private Paint mPaintRect;
     private Paint mPaintMaxLine;
     private Integer listPeoPel[] = {1, 7, 5, 2, 9, 6, 5};
     private Integer listPeoPel2[] = {1, 3, 5, 2, 2, 6, 5};
@@ -34,9 +36,10 @@ public class CustomView extends View {
     private int mStartY = 50;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
-    private float mFirstX1 = 110;
-    private int mFirstX2 = 130;
+    private float mFirstX1 = 100;
+    private int mFirstX2 = 125;
     private int mFirstX3 = 150;
+
     private float mDownX;
     private float mMoveX;
 
@@ -71,9 +74,9 @@ public class CustomView extends View {
             case MotionEvent.ACTION_MOVE:
                 mMoveX = mMoveX + ev.getX() - mDownX;
                 mDownX = ev.getX();
-                mFirstX1 = (int) (mMoveX + 80);
-                mFirstX2 = (int) (mMoveX + 100);
-                mFirstX3 = (int) (mMoveX + 120);
+                mFirstX1 = (int) (mMoveX + 100);
+                mFirstX2 = (int) (mMoveX + 125);
+                mFirstX3 = (int) (mMoveX + 150);
                 break;
             case MotionEvent.ACTION_DOWN:
                 mDownX = ev.getX();
@@ -86,23 +89,31 @@ public class CustomView extends View {
     /**
      * onDraw canvas
      */
+    @SuppressLint("DrawAllocation")
     @Override
     protected void onDraw(Canvas canvas) {
         int mStopY = getHeight() / 2;
         super.onDraw(canvas);
         canvas.save();
         canvas.scale(mScaleFactor, mScaleFactor);
-        drawText(canvas);
-        drawLine(canvas);
+
         for (int i = 0; i < listPeoPel.length; i++) {
             float x = 1.5f;
             int mStartX = 60;
             int mStopX = 60;
-            canvas.drawLine(i * mStartX * x + mFirstX1, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX1, mStopY - 8, mPaint);
-            canvas.drawLine(i * mStartX * x + mFirstX2, getHeight() / 2 - listPeoPel2[i] * mStartY, i * mStopX * x + mFirstX2, mStopY - 8, mPaint2);
-            canvas.drawLine(i * mStartX * x + mFirstX3, getHeight() / 2 - listPeoPel3[i] * mStartY, i * mStopX * x + mFirstX3, mStopY - 8, mPaint3);
+            canvas.drawRoundRect(new RectF(i * mStartX * x + mFirstX1, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX1 + 20, mStopY), 10, 5, mPaint);
+            canvas.drawRoundRect(new RectF(i * mStartX * x + mFirstX2, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX2 + 20, mStopY), 10, 5, mPaint2);
+            canvas.drawRoundRect(new RectF(i * mStartX * x + mFirstX3, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX3 + 20, mStopY), 10, 5, mPaint3);
         }
+        drawRectTwo(canvas);
+        drawText(canvas);
+        drawLine(canvas);
         canvas.restore();
+    }
+
+    private void drawRectTwo(Canvas canvas) {
+        canvas.drawRect(0, 50, 100, getHeight() / 2, mPaintRect);
+
     }
 
     /**
@@ -119,7 +130,7 @@ public class CustomView extends View {
      */
     private void drawText(Canvas canvas) {
         canvas.drawText(getResources().getString(R.string.tv_canvas_month), 80, getHeight() / 2 + 50, mPaintTextDate);
-        canvas.drawText(getResources().getString(R.string.tv_canvas_date), getWidth() - 170, getHeight() / 2 + 50, mPaintTextDate);
+        canvas.drawText(getResources().getString(R.string.tv_canvas_date), getWidth() - 230, getHeight() / 2 + 50, mPaintTextDate);
         canvas.drawText(getResources().getString(R.string.tv_canvas_km), 0, getHeight() / 2, mPaintText);
         canvas.drawText(getResources().getString(R.string.tv_canvas_5km), 0, getHeight() / 2 - getMaxValues() / 2 * mStartY, mPaintText);
         canvas.drawText(getResources().getString(R.string.tv_canvas_10km), 0, getHeight() / 2 - getMaxValues() * mStartY, mPaintText);
@@ -177,5 +188,11 @@ public class CustomView extends View {
         mPaintMaxLine.setStrokeWidth(2F);
         mPaintMaxLine.setStrokeCap(Paint.Cap.ROUND);
         mPaintMaxLine.setColor(Color.GRAY);
+        //Paint Rect
+        mPaintRect = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintRect.setStrokeWidth(50);
+        mPaintRect.setStrokeCap(Paint.Cap.ROUND);
+        mPaintRect.setColor(Color.WHITE);
+
     }
 }
