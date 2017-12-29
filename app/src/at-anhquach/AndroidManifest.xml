@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.drawerlayout.DrawerLayoutActivity">
+        <activity android:name=".ui.canvas.ChartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

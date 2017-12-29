@@ -28,6 +28,9 @@
     <string name="tag_error">error</string>
     <string name="folder_name_anhquach">/AnhQuach</string>
     <string name="file_name_txt">abc.txt</string>
+    <string name="title_tablayout_thread1">Fragment 1</string>
+    <string name="title_tablayout_thread2">Fragment 2</string>
+    <string name="btn_click">Download!</string>
     <string name="textview_skip">Skip</string>
     <string name="edt_input_your_name">Input your name</string>
     <string name="edt_input_your_phone_number">Input your phone number</string>
@@ -43,4 +46,5 @@
     <string name="btn_load_in_asset">Load in Asset</string>
     <string name="btn_load_in_storage">Load in Storage</string>
     <string name="btn_load_in_internet">Load in Internet</string>
+    <string name="distance_km" formatted="false">%d km</string>
 </resources>

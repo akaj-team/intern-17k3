@@ -18,4 +18,7 @@
     <color name="colorPink100">#F8BBD0</color>
     <color name="colorIndigo300">#7986CB</color>
     <color name="colorCyan300">#4DD0E1</color>
+    <color name="colorPurple800">#6A1B9A</color>
+    <color name="colorCyanA700">#00B8D4</color>
+    <color name="colorOrange500">#FF9800</color>
 </resources>
