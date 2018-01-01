@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.thread_handler_countdowntmer.thread_handler;
+package vn.asiantech.internship.ui.without_prefix.thread_handler;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -26,7 +26,7 @@ public class ShowImageFragment extends Fragment {
         return view;
     }
 
-    public void showPhoto(Bitmap bitmap) {
+    void showPhoto(Bitmap bitmap) {
         mImgResult.setImageBitmap(bitmap);
     }
 }

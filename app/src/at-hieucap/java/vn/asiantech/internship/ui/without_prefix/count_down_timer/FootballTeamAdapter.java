@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.thread_handler_countdowntmer.count_down_timer;
+package vn.asiantech.internship.ui.without_prefix.count_down_timer;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +17,7 @@ import vn.asiantech.internship.models.FootballTeam;
  * Create adapter
  */
 public class FootballTeamAdapter extends RecyclerView.Adapter<FootballTeamAdapter.FootballTeamHolder> {
-    private List<FootballTeam> mFootballTeamList;
+    private static List<FootballTeam> mFootballTeamList;
 
     FootballTeamAdapter(List<FootballTeam> footballTeamList) {
         mFootballTeamList = footballTeamList;
@@ -39,7 +39,10 @@ public class FootballTeamAdapter extends RecyclerView.Adapter<FootballTeamAdapte
         return mFootballTeamList.size();
     }
 
-    public class FootballTeamHolder extends RecyclerView.ViewHolder {
+    /**
+     * Create football team holder
+     */
+    static class FootballTeamHolder extends RecyclerView.ViewHolder {
         private ImageView mImgLogo;
         private TextView mTvName;
         private TextView mTvNation;

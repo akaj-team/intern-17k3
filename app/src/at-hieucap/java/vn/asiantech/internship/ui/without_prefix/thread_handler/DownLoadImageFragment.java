@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.thread_handler_countdowntmer.thread_handler;
+package vn.asiantech.internship.ui.without_prefix.thread_handler;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -28,8 +29,8 @@ import vn.asiantech.internship.R;
  */
 public class DownLoadImageFragment extends Fragment {
     private final String TAG = DownLoadImageFragment.this.getClass().getSimpleName();
-    int downloadedSize = 0;
-    int totalSize = 0;
+    int mDownloadedSize = 0;
+    int mTotalSize = 0;
     private ProgressBar mProgressBar;
     private Button mBtnStart;
     private TextView mTvPercentage;
@@ -81,33 +82,38 @@ public class DownLoadImageFragment extends Fragment {
             urlConnection.connect();
             final InputStream inputStream = urlConnection.getInputStream();
             ByteArrayOutputStream output = new ByteArrayOutputStream();
-            totalSize = urlConnection.getContentLength();
+            mTotalSize = urlConnection.getContentLength();
             getActivity().runOnUiThread(new Runnable() {
                 public void run() {
-                    mProgressBar.setMax(totalSize);
+                    mProgressBar.setMax(mTotalSize);
                 }
             });
             final byte[] buffer = new byte[10240];
             int bufferLength;
+            myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
             while ((bufferLength = inputStream.read(buffer)) > 0) {
                 output.write(buffer, 0, bufferLength);
-                myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
-                downloadedSize += bufferLength;
+                mDownloadedSize += bufferLength;
                 getActivity().runOnUiThread(new Runnable() {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void run() {
-                        mProgressBar.setProgress(downloadedSize);
-                        float percentage = ((float) downloadedSize / totalSize) * 100;
-                        mTvPercentage.setText(String.format(getString(R.string.download, downloadedSize, totalSize, percentage)) + "%)");
+                        mProgressBar.setProgress(mDownloadedSize);
+                        float percentage = ((float) mDownloadedSize / mTotalSize) * 100;
+                        mTvPercentage.setText(String.format(getString(R.string.download, mDownloadedSize, mTotalSize, percentage)) + "%)");
                     }
                 });
             }
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    ((ShowImageFragment) ((DownloadActivity) getActivity()).mFragmentAdapter.getItem(1)).showPhoto(myBitmap);
-                    ((DownloadActivity) getActivity()).setCurrentItem(1, true);
+                    if (myBitmap == null) {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.download_error),
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        ((ShowImageFragment) ((DownloadActivity) getActivity()).mFragmentAdapter.getItem(1)).showPhoto(myBitmap);
+                        ((DownloadActivity) getActivity()).setCurrentItem(1, true);
+                    }
                 }
             });
         } catch (final IOException e) {

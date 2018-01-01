@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.thread_handler_countdowntmer;
+package vn.asiantech.internship.ui.without_prefix;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.thread_handler_countdowntmer.count_down_timer.FootballTeamActivity;
-import vn.asiantech.internship.ui.thread_handler_countdowntmer.thread_handler.DownloadActivity;
+import vn.asiantech.internship.ui.without_prefix.count_down_timer.FootballTeamActivity;
+import vn.asiantech.internship.ui.without_prefix.thread_handler.DownloadActivity;
 
 /**
  * Created by tiboo on 21/12/2017.

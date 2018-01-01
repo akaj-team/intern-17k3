@@ -94,4 +94,5 @@
     <string name="download" formatted="false">
         Downloading %d Byte / %d Byte ( %.0f
     </string>
+    <string name="download_error">Download error</string>
 </resources>

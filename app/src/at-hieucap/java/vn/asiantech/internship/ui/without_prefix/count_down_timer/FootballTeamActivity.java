@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.thread_handler_countdowntmer.count_down_timer;
+package vn.asiantech.internship.ui.without_prefix.count_down_timer;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -29,7 +29,7 @@ public class FootballTeamActivity extends AppCompatActivity {
     private FootballTeamAdapter mAdapter;
     private List<FootballTeam> mFootballTeamList = new ArrayList<>();
     private int mTime;
-    CountDownTimer countTimer = new CountDownTimer(180000, 1000) {
+    CountDownTimer mCountTimer = new CountDownTimer(180000, 1000) {
         @Override
         public void onTick(long l) {
             mTime = (int) (l / 1000);
@@ -40,7 +40,7 @@ public class FootballTeamActivity extends AppCompatActivity {
             mTime = 0;
         }
     };
-    CountDownTimer add = new CountDownTimer(10000, 1000) {
+    CountDownTimer mAdd = new CountDownTimer(10000, 1000) {
         @Override
         public void onTick(long l) {
             // No-oop
@@ -52,11 +52,11 @@ public class FootballTeamActivity extends AppCompatActivity {
                 mFootballTeamList.add(new FootballTeam(R.drawable.ic_manchester_united, MANCHESTER_UNITED, PREMIER_LEAGUE));
                 mFootballTeamList.add(new FootballTeam(R.drawable.ic_real_madrid, REAL_MADRID, LA_LIGA));
                 mAdapter.notifyDataSetChanged();
-                add.start();
+                mAdd.start();
             }
         }
     }.start();
-    CountDownTimer delete = new CountDownTimer(15000, 1000) {
+    CountDownTimer mDelete = new CountDownTimer(15000, 1000) {
         @Override
         public void onTick(long l) {
             // No-oop
@@ -67,7 +67,7 @@ public class FootballTeamActivity extends AppCompatActivity {
             if (mTime > 0) {
                 mFootballTeamList.remove(mFootballTeamList.size() / 2);
                 mAdapter.notifyDataSetChanged();
-                delete.start();
+                mDelete.start();
             }
         }
     }.start();
@@ -79,7 +79,8 @@ public class FootballTeamActivity extends AppCompatActivity {
         initViews();
         initData();
         initAdapter();
-        countTimer.start();
+        mCountTimer.start();
+        mCountTimer.cancel();
     }
 
     private void initAdapter() {

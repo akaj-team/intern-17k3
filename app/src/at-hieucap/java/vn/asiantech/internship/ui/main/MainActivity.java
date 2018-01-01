@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.startActivity(intent_bt7);
                 break;
             case R.id.btnBt8:
-                Intent intent_bt8 = new Intent(this, vn.asiantech.internship.ui.thread_handler_countdowntmer.MainActivity.class);
+                Intent intent_bt8 = new Intent(this, vn.asiantech.internship.ui.without_prefix.MainActivity.class);
                 this.startActivity(intent_bt8);
         }
     }
