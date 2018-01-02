@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
-import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -20,8 +19,6 @@ import java.util.Collections;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.viewpager.utils.ScreenUtil;
 
-import static android.view.MotionEvent.INVALID_POINTER_ID;
-
 /**
  * Created by phongle on 25/12/2560.
  * Class custom view Chart
@@ -30,15 +27,13 @@ public class ChartCustomView extends View {
     private Paint mPaint;
     private ScaleGestureDetector mScaleGestureDetector;
     private float mScaleFactor = 1.f;
-    private float mLastTouchX;
-    private float mLastTouchY;
-    private int mActivePointerId;
-    private float mPosX = 0;
-    private float mPosY = 0;
+    private int mStartX;
+    private float mTouchX;
+    private float mMoveX = 0;
     private float mColumnWidth;
-    private Integer[] mListA = {10, 4, 6, 8, 6, 7, 4};
-    private Integer[] mListB = {5, 1, 7, 7, 10, 9, 8};
-    private Integer[] mListC = {8, 10, 3, 4, 5, 8, 5};
+    private Integer[] mListA = {10, 4, 6, 8, 6, 7, 4, 7, 8, 9, 6};
+    private Integer[] mListB = {5, 1, 7, 7, 10, 9, 8, 4, 5, 6, 3};
+    private Integer[] mListC = {8, 10, 3, 4, 5, 8, 5, 3, 5, 6, 7};
     private int mMaxDistanceList;
     private int mMinDistanceList;
 
@@ -70,76 +65,25 @@ public class ChartCustomView extends View {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        super.onTouchEvent(event);
         mScaleGestureDetector.onTouchEvent(event);
-        final int action = MotionEventCompat.getActionMasked(event);
-
-        switch (action) {
-            case MotionEvent.ACTION_DOWN: {
-                final int pointerIndex = MotionEventCompat.getActionIndex(event);
-                final float x = MotionEventCompat.getX(event, pointerIndex);
-                final float y = MotionEventCompat.getY(event, pointerIndex);
-
-                // Remember where we started (for dragging)
-                mLastTouchX = x;
-                mLastTouchY = y;
-                // Save the ID of this pointer (for dragging)
-                mActivePointerId = MotionEventCompat.getPointerId(event, 0);
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                mTouchX = event.getX();
                 break;
-            }
-
-            case MotionEvent.ACTION_MOVE: {
-                // Find the index of the active pointer and fetch its position
-                final int pointerIndex =
-                        MotionEventCompat.findPointerIndex(event, mActivePointerId);
-
-                final float x = MotionEventCompat.getX(event, pointerIndex);
-                final float y = MotionEventCompat.getY(event, pointerIndex);
-
-                // Calculate the distance moved
-                final float dx = x - mLastTouchX;
-                final float dy = y - mLastTouchY;
-
-                mPosX += dx;
-                mPosY += dy;
-
-                invalidate();
-
-                // Remember this touch position for the next move event
-                mLastTouchX = x;
-                mLastTouchY = y;
-
-                break;
-            }
-
-            case MotionEvent.ACTION_UP: {
-                mActivePointerId = INVALID_POINTER_ID;
-                break;
-            }
-
-            case MotionEvent.ACTION_CANCEL: {
-                mActivePointerId = INVALID_POINTER_ID;
-                break;
-            }
-
-            case MotionEvent.ACTION_POINTER_UP: {
-
-                final int pointerIndex = MotionEventCompat.getActionIndex(event);
-                final int pointerId = MotionEventCompat.getPointerId(event, pointerIndex);
-
-                if (pointerId == mActivePointerId) {
-                    // This was our active pointer going up. Choose a new
-                    // active pointer and adjust accordingly.
-                    final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
-                    mLastTouchX = MotionEventCompat.getX(event, newPointerIndex);
-                    mLastTouchY = MotionEventCompat.getY(event, newPointerIndex);
-                    mActivePointerId = MotionEventCompat.getPointerId(event, newPointerIndex);
+            case MotionEvent.ACTION_MOVE:
+                if (event.getPointerCount() == 1) {
+                    mMoveX = event.getX() - mTouchX + mMoveX;
+                    mTouchX = event.getX();
+                    updateStartXPersonLine(mMoveX);
                 }
                 break;
-            }
         }
         invalidate();
         return true;
+    }
+
+    private void updateStartXPersonLine(float moveX) {
+        mStartX = (int) (moveX);
     }
 
     @SuppressLint("DrawAllocation")
@@ -147,7 +91,6 @@ public class ChartCustomView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.save();
-        canvas.translate(mPosX,mPosY);
         canvas.scale(mScaleFactor, mScaleFactor);
         // Define text
         String maxDistance = mMaxDistanceList + " Km";
@@ -167,6 +110,47 @@ public class ChartCustomView extends View {
         float marginChart = (widthHorizontalAxis - mColumnWidth * 3 - getResources().getDimension(R.dimen.column_margin) * 2 - getResources().getDimension(R.dimen.chart_padding_vertical) * 2);
         float mRadius = 5;
         // Draw
+        mPaint.setColor(getResources().getColor(R.color.dark_violet));
+        mPaint.setAntiAlias(true);
+        for (int i = 0; i < 11; i++) {
+            float startX = mStartX + verticalAxis + getResources().getDimension(R.dimen.chart_padding_vertical);
+            canvas.drawRoundRect(new RectF(startX + i * marginChart / 6,
+                            getResources().getDimension(R.dimen.container_padding_horizontal) + getHeightColumnChart(mListA[i]) * heightVerticalAxis,
+                            mColumnWidth + startX + i * marginChart / 6,
+                            horizontalAxis),
+                    mRadius,
+                    mRadius,
+                    mPaint);
+        }
+        mPaint.setColor(getResources().getColor(R.color.blue_dark));
+        for (int i = 0; i < 11; i++) {
+            float startX = mStartX + verticalAxis + getResources().getDimension(R.dimen.chart_padding_vertical) + mColumnWidth + getResources().getDimension(R.dimen.column_margin);
+            canvas.drawRoundRect(new RectF(startX + i * marginChart / 6,
+                            getResources().getDimension(R.dimen.container_padding_horizontal) + getHeightColumnChart(mListB[i]) * heightVerticalAxis,
+                            mColumnWidth + startX + i * marginChart / 6,
+                            horizontalAxis),
+                    mRadius,
+                    mRadius,
+                    mPaint);
+        }
+        mPaint.setColor(getResources().getColor(R.color.orange));
+        for (int i = 0; i < 11; i++) {
+            float startX = mStartX + verticalAxis + getResources().getDimension(R.dimen.chart_padding_vertical) + mColumnWidth * 2 + getResources().getDimension(R.dimen.column_margin) * 2;
+            canvas.drawRoundRect(new RectF(startX + i * marginChart / 6,
+                            getResources().getDimension(R.dimen.container_padding_horizontal) + getHeightColumnChart(mListC[i]) * heightVerticalAxis,
+                            mColumnWidth + startX + i * marginChart / 6,
+                            horizontalAxis),
+                    mRadius,
+                    mRadius,
+                    mPaint);
+        }
+        mPaint.setColor(getResources().getColor(R.color.snow));
+        canvas.drawRect(new RectF(0,
+                        getResources().getDimension(R.dimen.container_padding_horizontal),
+                        verticalAxis,
+                        getResources().getDimension(R.dimen.container_padding_horizontal) + heightVerticalAxis),
+                mPaint);
+
         mPaint.setFakeBoldText(true);
         mPaint.setColor(Color.GRAY);
         canvas.drawText(maxDistance, getResources().getDimension(R.dimen.container_padding_vertical),
@@ -195,40 +179,7 @@ public class ChartCustomView extends View {
                 horizontalAxis + getResources().getDimension(R.dimen.text_margin) + heightText, mPaint);
         canvas.drawText(stopDay, verticalAxis + widthHorizontalAxis - widthStopDayText,
                 horizontalAxis + getResources().getDimension(R.dimen.text_margin) + heightText, mPaint);
-        mPaint.setColor(getResources().getColor(R.color.dark_violet));
-        mPaint.setAntiAlias(true);
-        for (int i = 0; i < 7; i++) {
-            float startX = verticalAxis + getResources().getDimension(R.dimen.chart_padding_vertical);
-            canvas.drawRoundRect(new RectF(startX + i * marginChart / 6,
-                            getResources().getDimension(R.dimen.container_padding_horizontal) + getHeightColumnChart(mListA[i]) * heightVerticalAxis,
-                            mColumnWidth + startX + i * marginChart / 6,
-                            horizontalAxis),
-                    mRadius,
-                    mRadius,
-                    mPaint);
-        }
-        mPaint.setColor(getResources().getColor(R.color.blue_dark));
-        for (int i = 0; i < 7; i++) {
-            float startX = verticalAxis + getResources().getDimension(R.dimen.chart_padding_vertical) + mColumnWidth + getResources().getDimension(R.dimen.column_margin);
-            canvas.drawRoundRect(new RectF(startX + i * marginChart / 6,
-                            getResources().getDimension(R.dimen.container_padding_horizontal) + getHeightColumnChart(mListB[i]) * heightVerticalAxis,
-                            mColumnWidth + startX + i * marginChart / 6,
-                            horizontalAxis),
-                    mRadius,
-                    mRadius,
-                    mPaint);
-        }
-        mPaint.setColor(getResources().getColor(R.color.orange));
-        for (int i = 0; i < 7; i++) {
-            float startX = verticalAxis + getResources().getDimension(R.dimen.chart_padding_vertical) + mColumnWidth * 2 + getResources().getDimension(R.dimen.column_margin) * 2;
-            canvas.drawRoundRect(new RectF(startX + i * marginChart / 6,
-                            getResources().getDimension(R.dimen.container_padding_horizontal) + getHeightColumnChart(mListC[i]) * heightVerticalAxis,
-                            mColumnWidth + startX + i * marginChart / 6,
-                            horizontalAxis),
-                    mRadius,
-                    mRadius,
-                    mPaint);
-        }
+
         canvas.restore();
     }
 
