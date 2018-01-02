@@ -59,7 +59,6 @@
     <string name="dialog_skip_message">Do you want skip this?</string>
     <string name="dialog_skip_yes">Yes</string>
     <string name="dialog_skip_no">No</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_info_fragment_title">INFOMATION</string>
     <string name="btn_name_update">Update</string>
     <string name="tv_name_info">Your Name</string>
@@ -80,4 +79,10 @@
     <string name="name_btn_load_from_internet">From Internet</string>
     <string name="name_btn_nine_path">Nine Path</string>
     <string name="name_btn_draw_vector">Draw Vector</string>
+    <string name="name_btn_thread">Thread And Handler</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_btn_start_download">Download</string>
+    <string name="name_btn_exercise_1_thread">Exercise 1</string>
+    <string name="name_btn_exercise_2_thread">Exercise 2</string>
+    <string name="item_countdown_list">item :  </string>
 </resources>

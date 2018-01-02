@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import vn.asiantech.internship.ui.asynchronous.activitys.AsynchronousActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.canvas.CanvasActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
@@ -27,6 +28,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnSaveData;
     private Button mBtnLoadImage;
     private Button mBtnViewPager;
+    private Button mBtnAsynchronous;
     private Button mBtnCanvas;
 
     @Override
@@ -45,6 +47,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
+        mBtnAsynchronous = findViewById(R.id.btnAsynchronous);
         mBtnCanvas = findViewById(R.id.btnCanvas);
     }
 
@@ -56,6 +59,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnSaveData.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
+        mBtnAsynchronous.setOnClickListener(this);
         mBtnCanvas.setOnClickListener(this);
     }
 
@@ -83,9 +87,11 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
             case R.id.btnViewPager:
                 startActivity(new Intent(this, SliderActivity.class));
                 break;
+            case R.id.btnAsynchronous:
+                startActivity(new Intent(this, AsynchronousActivity.class));
+                break;
             case R.id.btnCanvas:
                 startActivity(new Intent(this, CanvasActivity.class));
-                break;
         }
     }
 }
