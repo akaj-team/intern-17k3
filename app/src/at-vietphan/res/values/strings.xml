@@ -76,4 +76,7 @@
     <string name="no">No</string>
     <string name="dialog_fragment">Dialog Fagment</string>
     <string name="your_info">Your information</string>
+    <string name="unit_test">Unit Test</string>
+    <string name="input_username">Input UserName</string>
+    <string name="input_password">Input Password</string>
 </resources>
