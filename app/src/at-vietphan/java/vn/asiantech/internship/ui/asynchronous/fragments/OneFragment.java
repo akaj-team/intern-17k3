@@ -70,13 +70,14 @@ public class OneFragment extends Fragment implements View.OnClickListener {
     private void downloadPhoto() {
         HttpURLConnection connection = null;
         InputStream is = null;
+        ByteArrayOutputStream outputStream = null;
         try {
             String imageUrl = "https://wallpaperscraft.com/image/mountains_reeds_grass_sky_109004_2048x1259.jpg";
             connection = (HttpURLConnection) new URL(imageUrl).openConnection();
             connection.setDoInput(true);
             connection.connect();
             is = connection.getInputStream();
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            outputStream = new ByteArrayOutputStream();
             int imgLength = connection.getContentLength();
             long total = PROGRESS_BEGIN;
             final byte[] data = new byte[1024];
@@ -95,13 +96,8 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                         }
                     }
                 });
-                mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
-                try {
-                    Thread.sleep(20);
-                } catch (InterruptedException e) {
-                    e.getMessage();
-                }
             }
+            mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.toByteArray().length);
         } catch (Throwable e) {
             e.getMessage();
         } finally {
@@ -111,6 +107,9 @@ public class OneFragment extends Fragment implements View.OnClickListener {
                 }
                 if (is != null) {
                     is.close();
+                }
+                if (outputStream != null) {
+                    outputStream.close();
                 }
             } catch (Exception e) {
                 e.getMessage();
