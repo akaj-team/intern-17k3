@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".SplashActivity">
 
     <LinearLayout
@@ -67,6 +69,13 @@
             android:layout_margin="10dp"
             android:text="@string/text_btn_view_pager_screen" />
 
+        <Button
+            android:id="@+id/btnThreadAndHandleScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="@string/name_btn_thread" />
         <Button
             android:id="@+id/btnCanvasScreen"
             android:layout_width="match_parent"

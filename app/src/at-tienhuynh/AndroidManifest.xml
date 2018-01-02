@@ -44,6 +44,11 @@
         <activity android:name=".image.NinePathActivity" />
         <activity android:name=".image.VectorDrawerActivity" />
         <activity android:name=".canvas.CanvasActivity" />
+        <activity
+            android:name=".threadandhandler.dowloadimage.ui.TabManagementActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".threadandhandler.SplashThreadAndHandlerActivity" />
+        <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity" />
     </application>
 
 </manifest>
