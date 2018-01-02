@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "vn.asiantech.internship"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0.0"
@@ -109,6 +109,7 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.romandanylyk:pageindicatorview:0.2.0'
+    implementation "com.android.support:support-dynamic-animation:26.1.0"
 }
 
 //apply from: "https://raw.githubusercontent.com/tientun/gradle-android-ci-check/master/ci.gradle"

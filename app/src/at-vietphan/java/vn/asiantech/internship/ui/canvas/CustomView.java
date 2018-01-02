@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Handler;
+import android.support.animation.DynamicAnimation;
+import android.support.animation.FlingAnimation;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -55,7 +57,7 @@ public class CustomView extends View {
     private runnableIpl mRunnable;
     private int mXBegin = 0;
     private int mMoveDistance;
-
+    private FlingAnimation mFlingAnimation;
 
     public CustomView(Context context) {
         this(context, null);
@@ -67,6 +69,7 @@ public class CustomView extends View {
         initViews();
         initData();
         mHandler = new Handler();
+        mFlingAnimation = new FlingAnimation(view, DynamicAnimation.SCROLL_X);
     }
 
     private void initViews() {
@@ -238,7 +241,7 @@ public class CustomView extends View {
     private void delayMove() {
         while (mOffset > 0) {
             mOffset--;
-            Log.d("ooo", "delayMove: "+mOffset);
+            Log.d("ooo", "delayMove: " + mOffset);
             mMoveX += mMoveDistance * 2;
             updateStartXPersonLine(mMoveX);
         }
