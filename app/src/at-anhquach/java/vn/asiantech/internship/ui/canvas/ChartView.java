@@ -6,11 +6,16 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.os.Handler;
+import android.support.animation.DynamicAnimation;
+import android.support.animation.FlingAnimation;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,6 +30,9 @@ import vn.asiantech.internship.ui.viewpager_tablayout.ScreenUtil;
  */
 public class ChartView extends View {
     private boolean dragged = true;
+    float startTime;
+    float time;
+    double distance;
     private float startX = 0f;
     private float startY = 0f;
     private float translateX = 0f;
@@ -37,6 +45,7 @@ public class ChartView extends View {
     private float mWidth;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
+    Handler handler = new Handler();
 
     private List<Integer> mDistanceAs = new ArrayList<>();
     private List<Integer> mDistanceBs = new ArrayList<>();
@@ -47,6 +56,7 @@ public class ChartView extends View {
     private int mOxChart = 130;
     private int mDistanceBetweenCharts = 5;
     private int mEnlarge = 50;
+    private ImageView imageView;
 
     public ChartView(Context context) {
         this(context, null);
@@ -67,6 +77,7 @@ public class ChartView extends View {
         initDistanceB();
         initDistanceC();
         mPaint = new Paint();
+        imageView = findViewById(R.id.img);
     }
 
     private void initDistanceA() {
@@ -78,6 +89,9 @@ public class ChartView extends View {
         mDistanceAs.add(6);
         mDistanceAs.add(6);
         mDistanceAs.add(9);
+        mDistanceAs.add(2);
+        mDistanceAs.add(2);
+        mDistanceAs.add(2);
         mDistanceAs.add(2);
     }
 
@@ -91,6 +105,9 @@ public class ChartView extends View {
         mDistanceBs.add(6);
         mDistanceBs.add(4);
         mDistanceBs.add(7);
+        mDistanceBs.add(7);
+        mDistanceBs.add(7);
+        mDistanceBs.add(7);
     }
 
     private void initDistanceC() {
@@ -102,6 +119,9 @@ public class ChartView extends View {
         mDistanceCs.add(6);
         mDistanceCs.add(12);
         mDistanceCs.add(5);
+        mDistanceCs.add(4);
+        mDistanceCs.add(4);
+        mDistanceCs.add(4);
         mDistanceCs.add(4);
     }
 
@@ -121,6 +141,7 @@ public class ChartView extends View {
             case MotionEvent.ACTION_DOWN:
                 startX = ev.getX();
                 startY = ev.getY();
+                startTime = System.currentTimeMillis();
                 mode = DRAG;
                 startX = ev.getX() - previousTranslateX;
                 startY = ev.getY() - previousTranslateY;
@@ -129,9 +150,11 @@ public class ChartView extends View {
             case MotionEvent.ACTION_MOVE:
                 translateX = ev.getX() - startX;
                 translateY = ev.getY() - startY;
-                double distance = Math.sqrt(Math.pow(ev.getX() - (startX + previousTranslateX), 2) +
-                        Math.pow(ev.getY() - (startY + previousTranslateY), 2));
-
+                float currX = ev.getX();
+                float currY = ev.getY();
+                time = System.currentTimeMillis() - startTime;
+                distance = Math.sqrt(Math.pow(currX - (startX + previousTranslateX), 2) +
+                        Math.pow(currY - (startY + previousTranslateY), 2));
                 if (distance > 0) {
                     dragged = true;
                 }
@@ -145,6 +168,11 @@ public class ChartView extends View {
                 dragged = false;
                 previousTranslateX = translateX;
                 previousTranslateY = translateY;
+                final Runnable r = new Runnable() {
+                    public void run() {
+                        handler.postDelayed(this, 1000);
+                    }
+                };
                 break;
 
             case MotionEvent.ACTION_POINTER_UP:
@@ -177,6 +205,14 @@ public class ChartView extends View {
             translateY = (1 - mScaleFactor) * getHeight();
         }
         canvas.translate(translateX / mScaleFactor, translateY / mScaleFactor);
+        for (int i = 0; i < mDistanceAs.size(); i++) {
+            drawRoundRect(canvas, 0, mDistanceAs.get(i), R.color.colorPurple800, i, mPaint);
+            drawRoundRect(canvas, mWidth + mDistanceBetweenCharts, mDistanceBs.get(i), R.color.colorCyanA700, i, mPaint);
+            drawRoundRect(canvas, 2 * mWidth + mDistanceBetweenCharts * 2, mDistanceCs.get(i), R.color.colorOrange500, i, mPaint);
+        }
+        mPaint.setColor(getResources().getColor(R.color.colorWhite));
+        drawRect(canvas, 0, mPaint);
+        drawRect(canvas, mWitdhScreen - 50, mPaint);
         mPaint.setColor(getResources().getColor(R.color.colorGrayDark));
         mPaint.setTextSize(getResources().getDimension(R.dimen.textsize40));
         drawText(canvas, getContext().getString(R.string.distance_km, ((int) maxLists())), maxLists(), mPaint);
@@ -184,11 +220,6 @@ public class ChartView extends View {
         drawLine(canvas, maxLists(), mPaint);
         drawText(canvas, getContext().getString(R.string.distance_km, ((int) 0)), 0, mPaint);
         drawLine(canvas, maxLists() / 2, mPaint);
-        for (int i = 0; i < mDistanceAs.size(); i++) {
-            drawRect(canvas, 0, mDistanceAs.get(i), R.color.colorPurple800, i, mPaint);
-            drawRect(canvas, mWidth + mDistanceBetweenCharts, mDistanceBs.get(i), R.color.colorCyanA700, i, mPaint);
-            drawRect(canvas, 2 * mWidth + mDistanceBetweenCharts * 2, mDistanceCs.get(i), R.color.colorOrange500, i, mPaint);
-        }
         canvas.restore();
     }
 
@@ -197,10 +228,10 @@ public class ChartView extends View {
     }
 
     private void drawLine(Canvas canvas, float y, Paint paint) {
-        canvas.drawLine(mOxChart, mHeightScreen / 2 - y * mEnlarge, mWitdhScreen, mHeightScreen / 2 - y * mEnlarge, paint);
+        canvas.drawLine(mOxChart, mHeightScreen / 2 - y * mEnlarge, mWitdhScreen - 50, mHeightScreen / 2 - y * mEnlarge, paint);
     }
 
-    private void drawRect(Canvas canvas, float posInit, int height, int color, int posInArray, Paint paint) {
+    private void drawRoundRect(Canvas canvas, float posInit, int height, int color, int posInArray, Paint paint) {
         paint.setColor(getResources().getColor(color));
         float distanceBetweenGroupChart = 5 * mWidth + mDistanceBetweenCharts * 2;
         float left = mOxChart + posInit + distanceBetweenGroupChart * posInArray;
@@ -208,6 +239,12 @@ public class ChartView extends View {
                 left + mWidth, mHeightScreen / 2), 10, 5, paint);
     }
 
+    private void drawRect(Canvas canvas, float left, Paint paint) {
+        canvas.drawRect(left, mHeightScreen / 2 - maxLists() * mEnlarge, left + 130, mHeightScreen / 2, paint);
+    }
+    private double setSpeed(){
+        return distance/time;
+    }
     private class ScaleListener
             extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
@@ -218,5 +255,20 @@ public class ChartView extends View {
             mScaleFactor = Math.max(MIN_ZOOM, Math.min(mScaleFactor, MAX_ZOOM));
             return true;
         }
+        private GestureDetector.OnGestureListener mGestureListener = new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
+
+                //Fling Right/Left
+                FlingAnimation flingX = new FlingAnimation(imageView, DynamicAnimation.TRANSLATION_X);
+                flingX.setStartVelocity(velocityX)
+                        .setMinValue(0) // minimum translationX property
+                        .setMaxValue(2000)  // maximum translationX property
+                        .setFriction(1.1f)
+                        .start();
+                return true;
+            }
+        };
     }
+
 }
