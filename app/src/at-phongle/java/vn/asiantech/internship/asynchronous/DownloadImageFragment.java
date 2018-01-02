@@ -93,6 +93,8 @@ public class DownloadImageFragment extends Fragment {
                 });
                 output.write(data, 0, count);
             }
+            output.close();
+            input.close();
         } catch (Throwable e) {
             Log.d("e", "Download fail!");
         } finally {
@@ -107,7 +109,9 @@ public class DownloadImageFragment extends Fragment {
                 Log.d("vv", "Download Fail!");
             }
         }
-        ((HandlerThreadActivity) getActivity()).setmBitmap(mBitmap);
+        if (mBitmap != null) {
+            ((HandlerThreadActivity) getActivity()).setBitmap(mBitmap);
+        }
     }
 
     private void updateProgress(int percent) {

@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
  * Created by phongle on 22/12/2560.
  * Adapter ViewPager Thread Handler
  */
-
 public class HandlerThreadAdapter extends FragmentPagerAdapter {
     private static final int NUM_ITEMS = 2;
 

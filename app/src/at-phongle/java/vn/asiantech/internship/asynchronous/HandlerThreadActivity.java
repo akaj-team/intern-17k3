@@ -12,7 +12,6 @@ import vn.asiantech.internship.R;
  * Created by phongle on 19/12/2560.
  * Activity Handler Thread
  */
-
 public class HandlerThreadActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -33,11 +32,11 @@ public class HandlerThreadActivity extends AppCompatActivity {
         mTabLayout = findViewById(R.id.tabLayoutThreadHandler);
     }
 
-    public Bitmap getmBitmap() {
+    public Bitmap getBitmap() {
         return mBitmap;
     }
 
-    public void setmBitmap(Bitmap mBitmap) {
+    public void setBitmap(Bitmap mBitmap) {
         this.mBitmap = mBitmap;
         runOnUiThread(new Runnable() {
             @Override

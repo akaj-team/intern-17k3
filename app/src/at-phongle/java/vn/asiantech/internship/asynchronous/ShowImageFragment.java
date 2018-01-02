@@ -33,7 +33,7 @@ public class ShowImageFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         if (isVisibleToUser) {
-            mImgDownloaded.setImageBitmap(((HandlerThreadActivity) getActivity()).getmBitmap());
+            mImgDownloaded.setImageBitmap(((HandlerThreadActivity) getActivity()).getBitmap());
         }
         super.setUserVisibleHint(isVisibleToUser);
     }

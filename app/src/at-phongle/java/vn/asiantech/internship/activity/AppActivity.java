@@ -18,7 +18,7 @@ import vn.asiantech.internship.recyclerview.PostActivity;
 import vn.asiantech.internship.savedata.ExternalStorageActivity;
 import vn.asiantech.internship.savedata.PersonActivity;
 import vn.asiantech.internship.savedata.SharePreferenceActivity;
-import vn.asiantech.internship.viewpager.tutorial.GuideActivity;
+import vn.asiantech.internship.viewpager.ViewPagerMainActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
@@ -49,6 +49,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mSharePreferenceScreen = findViewById(R.id.btnSharePreferenceScreen);
         mExternalStorageScreen = findViewById(R.id.btnExternalStorageScreen);
         mSQLiteScreen = findViewById(R.id.btnSQLiteScreen);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnImageNinepathVector = findViewById(R.id.btnImageNinepathVector);
         mBtnThreadHandler = findViewById(R.id.btnThreadHandler);
         mBtnCountdown = findViewById(R.id.btnCountdownTimer);
@@ -102,6 +103,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btnImageNinepathVector:
                 intent = new Intent(AppActivity.this, ImageNinepathVectorActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnViewPager:
+                intent = new Intent(AppActivity.this, ViewPagerMainActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btnThreadHandler:

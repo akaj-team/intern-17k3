@@ -20,6 +20,8 @@ public class CountdownTimerActivity extends AppCompatActivity {
     private RecyclerView mRecyclerViewCountdown;
     private CountdownTimerAdapter mCountdownTimerAdapter;
     private List<String> mListItem = new ArrayList<>();
+    private static final int TIMER_COUNTDOWN = 18000;
+    private static final int COUNTDOWN_INTERVAL = 5000;
     private int mCount;
 
     @Override
@@ -29,7 +31,7 @@ public class CountdownTimerActivity extends AppCompatActivity {
         mRecyclerViewCountdown = findViewById(R.id.recyclerViewCountdown);
         initData();
         initAdapter();
-        new CountDownTimer(180000, 5000) {
+        new CountDownTimer(TIMER_COUNTDOWN, COUNTDOWN_INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
                 ++mCount;
@@ -45,6 +47,7 @@ public class CountdownTimerActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                onDestroy();
             }
         }.start();
     }

@@ -15,7 +15,6 @@ import vn.asiantech.internship.R;
  * Created by phongle on 21/12/2560.
  * Adapter for recyclerView Item countdown
  */
-
 public class CountdownTimerAdapter extends RecyclerView.Adapter<CountdownTimerAdapter.ItemViewHolder> {
     private List<String> mItemList = new ArrayList<>();
 
@@ -39,6 +38,9 @@ public class CountdownTimerAdapter extends RecyclerView.Adapter<CountdownTimerAd
         return mItemList.size();
     }
 
+    /**
+     * Class ItemViewHolder
+     */
     static class ItemViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvItemCountdown;
 
