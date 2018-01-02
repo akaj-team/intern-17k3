@@ -21,7 +21,9 @@ public class RecyclerViewCountDownTimerActivity extends AppCompatActivity {
     private RecyclerView mRecyclerViewCountDownTimer;
     private List<String> mStrs = new ArrayList<>();
     private RecyclerViewAdapter mRecyclerViewAdapter;
-    CountDownTimer countDownTimer;
+    private CountDownTimer countDownTimer;
+    private int mAdd = 0;
+    private int mDelete = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +33,20 @@ public class RecyclerViewCountDownTimerActivity extends AppCompatActivity {
         mStrs.add("0");
         initAdapter();
         countDownTimer = new CountDownTimer(MILLISINFUTURE, COUNTDOWNINTERVAL) {
-            int countadd = 0;
-            int countdelete = 0;
-
             @Override
             public void onTick(long longMilisecond) {
-                ++countadd;
-                ++countdelete;
-                if (countadd == 10) {
+                ++mAdd;
+                ++mDelete;
+                if (mAdd == 10) {
                     mStrs.add("1");
                     mStrs.add("2");
                     mRecyclerViewAdapter.notifyDataSetChanged();
-                    countadd = 0;
+                    mAdd = 0;
                 }
-                if (countdelete == 15) {
+                if (mDelete == 15) {
                     mStrs.remove(mStrs.get(mStrs.size() / 2));
                     mRecyclerViewAdapter.notifyDataSetChanged();
-                    countdelete = 0;
+                    mDelete = 0;
                 }
             }
 
