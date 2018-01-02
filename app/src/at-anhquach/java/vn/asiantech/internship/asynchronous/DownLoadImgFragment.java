@@ -81,7 +81,6 @@ public class DownLoadImgFragment extends Fragment {
             int bufferLength;
             while (0 < (bufferLength = input.read(buffer))) {
                 output.write(buffer, 0, bufferLength);
-                myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                 mDownloadedSizeImg += bufferLength;
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -91,6 +90,7 @@ public class DownLoadImgFragment extends Fragment {
                         mTvResutlDownLoadImg.setText(getString(R.string.textview_download, mDownloadedSizeImg, mTotalSizeImg, per));
                     }
                 });
+                myBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
             }
             getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -98,6 +98,9 @@ public class DownLoadImgFragment extends Fragment {
                     ((ViewImgFragment) ((ThreadActivity) getActivity()).mTabLayoutAdapter.getItem(1)).showPhoto(myBitmap);
                 }
             });
+            input.close();
+            output.close();
+            connection.disconnect();
         } catch (IOException downloadImg) {
             Log.d(getResources().getString(R.string.tag_error), downloadImg.getMessage());
         }
