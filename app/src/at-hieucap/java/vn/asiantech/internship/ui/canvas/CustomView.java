@@ -24,24 +24,22 @@ public class CustomView extends View {
     private static final int MARGIN_DAY = 50;
     private static final int CORNER_RADIUS = 3;
     private static final int WIDTH_DAY = 86;
-    private static int startHeight;
-    private static int startWidth;
-    private static int widthColumn = 15;
-    private static int maxHeight;
-    private static int widthScreen;
-    private static int heightScreen;
-    private static float unit;
-    private static int MAX_DISTANCE = 0;
-    private static String textDistanceMax;
-    private static String textDistanceCenter;
-    private static String textDistanceStart;
-    private static String textMonday;
-    private static String textSunday;
+    private static int mStartHeight;
+    private static int mStartWidth;
+    private static int mMaxHeight;
+    private static int mWidthScreen;
+    private static float mUnit;
+    private static int mMaxDistance = 0;
+    private static String mTextDistanceMax;
+    private static String mTextDistanceCenter;
+    private static String mTextDistanceStart;
+    private static String mTextMonday;
+    private static String mTextSunday;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
-    private int listPersonA[] = {1, 7, 5, 2, 9, 6, 5};
-    private int listPersonB[] = {1, 3, 5, 2, 2, 6, 5};
-    private int listPersonC[] = {1, 8, 5, 2, 11, 6, 5};
+    private int mListPersonA[] = {1, 7, 5, 2, 9, 6, 5};
+    private int mListPersonB[] = {1, 3, 5, 2, 2, 6, 5};
+    private int mListPersonC[] = {1, 8, 5, 2, 11, 6, 5};
     private Paint mPaintLine;
     private Paint mPaintColumn;
     private Paint mPaintText;
@@ -64,6 +62,10 @@ public class CustomView extends View {
         initPaintLine();
     }
 
+    /**
+     * @param event Event touch
+     * @return event
+     */
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -85,85 +87,104 @@ public class CustomView extends View {
         return true;
     }
 
+    /**
+     * @param canvas Draw
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.save();
         canvas.scale(mScaleFactor, mScaleFactor);
-        calculator();
-        startWidth *= mScaleFactor;
-        startHeight *= mScaleFactor;
-        maxHeight *= mScaleFactor;
-        startWidth += mMove;
+        calculation();
+        mStartWidth *= mScaleFactor;
+        mStartHeight *= mScaleFactor;
+        mMaxHeight *= mScaleFactor;
+        mStartWidth += mMove;
         drawTexts(canvas);
         drawLines(canvas);
         drawColumns(canvas);
         canvas.restore();
     }
 
-    private void calculator() {
-        widthScreen = getWidth();
-        heightScreen = getHeight();
-        startWidth = widthScreen / 6;
-        startHeight = 2 * heightScreen / 3;
-        maxHeight = startHeight - MARGIN_TOP;
-        unit = (float) maxHeight / MAX_DISTANCE;
+    /**
+     * Set value start of columns
+     */
+    private void calculation() {
+        mWidthScreen = getWidth();
+        int heightScreen = getHeight();
+        mStartWidth = mWidthScreen / 6;
+        mStartHeight = 2 * heightScreen / 3;
+        mMaxHeight = mStartHeight - MARGIN_TOP;
+        mUnit = (float) mMaxHeight / mMaxDistance;
     }
 
+    /**mHeightScreen
+     * @param canvas Draw columns distance
+     */
     private void drawColumns(Canvas canvas) {
-        for (int i = 0; i < listPersonA.length; i++) {
+        for (int i = 0; i < mListPersonA.length; i++) {
             int marginColumn = 18;
             // Draw column distance person A
             mPaintColumn.setColor(this.getResources().getColor(R.color.colorColumnDistancePersonA));
-            canvas.drawRoundRect((new RectF(startWidth, startHeight - listPersonA[i] * unit,
-                            startWidth + widthColumn, startHeight)), CORNER_RADIUS, CORNER_RADIUS,
+            int widthColumn = 15;
+            canvas.drawRoundRect((new RectF(mStartWidth, mStartHeight - mListPersonA[i] * mUnit,
+                            mStartWidth + widthColumn, mStartHeight)), CORNER_RADIUS, CORNER_RADIUS,
                     mPaintColumn);
             // Update location start
-            startWidth += marginColumn;
+            mStartWidth += marginColumn;
             // Draw column distance person B
             mPaintColumn.setColor(this.getResources().getColor(R.color.colorColumnDistancePersonB));
-            canvas.drawRoundRect((new RectF(startWidth, startHeight - listPersonB[i] * unit,
-                            startWidth + widthColumn, startHeight)), CORNER_RADIUS, CORNER_RADIUS,
+            canvas.drawRoundRect((new RectF(mStartWidth, mStartHeight - mListPersonB[i] * mUnit,
+                            mStartWidth + widthColumn, mStartHeight)), CORNER_RADIUS, CORNER_RADIUS,
                     mPaintColumn);
             // Update location start
-            startWidth += marginColumn;
+            mStartWidth += marginColumn;
             // Draw column distance person C
             mPaintColumn.setColor(this.getResources().getColor(R.color.colorColumnDistancePersonC));
-            canvas.drawRoundRect((new RectF(startWidth, startHeight - listPersonC[i] * unit,
-                    startWidth + widthColumn, startHeight)), CORNER_RADIUS, CORNER_RADIUS,
+            canvas.drawRoundRect((new RectF(mStartWidth, mStartHeight - mListPersonC[i] * mUnit,
+                            mStartWidth + widthColumn, mStartHeight)), CORNER_RADIUS, CORNER_RADIUS,
                     mPaintColumn);
             // Update location start
-            startWidth += MARGIN_DAY;
+            mStartWidth += MARGIN_DAY;
         }
     }
 
+    /**
+     * @param canvas Draw lines
+     */
     private void drawLines(Canvas canvas) {
         // Draw line min distance
-        canvas.drawLine(startWidth, startHeight, widthScreen, startHeight, mPaintLine);
+        canvas.drawLine(mStartWidth, mStartHeight, mWidthScreen, mStartHeight, mPaintLine);
         // Draw line center distance
-        canvas.drawLine(startWidth, (maxHeight / 2) + MARGIN_TOP, widthScreen,
-                (maxHeight / 2) + MARGIN_TOP, mPaintLine);
+        canvas.drawLine(mStartWidth, (mMaxHeight / 2) + MARGIN_TOP, mWidthScreen,
+                (mMaxHeight / 2) + MARGIN_TOP, mPaintLine);
         // Draw line max distance
-        canvas.drawLine(startWidth, MARGIN_TOP, widthScreen, MARGIN_TOP, mPaintLine);
+        canvas.drawLine(mStartWidth, MARGIN_TOP, mWidthScreen, MARGIN_TOP, mPaintLine);
     }
 
+    /**
+     * @param canvas Draw texts
+     */
     private void drawTexts(Canvas canvas) {
         // Draw text max distance
-        canvas.drawText(textDistanceMax, startWidth - mPaintText.measureText(textDistanceMax) - 10,
+        canvas.drawText(mTextDistanceMax, mStartWidth - mPaintText.measureText(mTextDistanceMax) - 10,
                 MARGIN_TOP + (mPaintText.getTextSize() / 2), mPaintText);
         // Draw text center distance
-        canvas.drawText(textDistanceCenter, startWidth - mPaintText.measureText(textDistanceCenter) - 10,
-                maxHeight / 2 + MARGIN_TOP, mPaintText);
+        canvas.drawText(mTextDistanceCenter, mStartWidth - mPaintText.measureText(mTextDistanceCenter) - 10,
+                mMaxHeight / 2 + MARGIN_TOP, mPaintText);
         // Draw text min distance
-        canvas.drawText(textDistanceStart, startWidth - mPaintText.measureText(textDistanceStart) - 10,
-                startHeight, mPaintText);
+        canvas.drawText(mTextDistanceStart, mStartWidth - mPaintText.measureText(mTextDistanceStart) - 10,
+                mStartHeight, mPaintText);
         // Draw text monday
-        canvas.drawText(textMonday, startWidth, startHeight + mPaintText.getTextSize(), mPaintText);
+        canvas.drawText(mTextMonday, mStartWidth, mStartHeight + mPaintText.getTextSize(), mPaintText);
         // Draw text sunday
-        canvas.drawText(textSunday, startWidth + WIDTH_DAY * 6,
-                startHeight + mPaintText.getTextSize(), mPaintText);
+        canvas.drawText(mTextSunday, mStartWidth + WIDTH_DAY * 6,
+                mStartHeight + mPaintText.getTextSize(), mPaintText);
     }
 
+    /**
+     * Init line
+     */
     private void initPaintLine() {
         mPaintLine = new Paint();
         mPaintLine.setColor(Color.GRAY);
@@ -172,12 +193,18 @@ public class CustomView extends View {
         mPaintLine.setStrokeWidth(3);
     }
 
+    /**
+     * Init column
+     */
     private void initPaintColumn() {
         mPaintColumn = new Paint();
         mPaintColumn.setAntiAlias(true);
         mPaintColumn.setStyle(Paint.Style.FILL);
     }
 
+    /**
+     * Init text
+     */
     private void initPaintText() {
         mPaintText = new Paint();
         mPaintText.setAntiAlias(true);
@@ -187,33 +214,42 @@ public class CustomView extends View {
         mPaintText.setStyle(Paint.Style.STROKE);
     }
 
+    /**
+     * Text
+     */
     private void transmissionString() {
         int startDistance = 0;
-        textDistanceMax = String.valueOf(MAX_DISTANCE) + " Km";
-        textDistanceCenter = String.valueOf(((float) MAX_DISTANCE / 2)) + " Km";
-        textDistanceStart = String.valueOf(startDistance) + " Km";
-        textMonday = getResources().getString(R.string.monday);
-        textSunday = getResources().getString(R.string.sunday);
+        mTextDistanceMax = String.valueOf(mMaxDistance) + " Km";
+        mTextDistanceCenter = String.valueOf(((float) mMaxDistance / 2)) + " Km";
+        mTextDistanceStart = String.valueOf(startDistance) + " Km";
+        mTextMonday = getResources().getString(R.string.monday);
+        mTextSunday = getResources().getString(R.string.sunday);
     }
 
+    /**
+     * Max distance
+     */
     private void findMaxDistance() {
-        for (int aListPersonA : listPersonA) {
-            if (aListPersonA >= MAX_DISTANCE) {
-                MAX_DISTANCE = aListPersonA;
+        for (int aListPersonA : mListPersonA) {
+            if (aListPersonA >= mMaxDistance) {
+                mMaxDistance = aListPersonA;
             }
-            for (int aListPersonB : listPersonB) {
-                if (aListPersonB >= MAX_DISTANCE) {
-                    MAX_DISTANCE = aListPersonB;
+            for (int aListPersonB : mListPersonB) {
+                if (aListPersonB >= mMaxDistance) {
+                    mMaxDistance = aListPersonB;
                 }
-                for (int aListPersonC : listPersonC) {
-                    if (aListPersonC >= MAX_DISTANCE) {
-                        MAX_DISTANCE = aListPersonC;
+                for (int aListPersonC : mListPersonC) {
+                    if (aListPersonC >= mMaxDistance) {
+                        mMaxDistance = aListPersonC;
                     }
                 }
             }
         }
     }
 
+    /**
+     * Scale view
+     */
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
