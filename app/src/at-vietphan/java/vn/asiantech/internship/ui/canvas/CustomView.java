@@ -7,8 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Handler;
-import android.support.animation.DynamicAnimation;
-import android.support.animation.FlingAnimation;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -57,7 +55,6 @@ public class CustomView extends View {
     private runnableIpl mRunnable;
     private int mXBegin = 0;
     private int mMoveDistance;
-    private FlingAnimation mFlingAnimation;
 
     public CustomView(Context context) {
         this(context, null);
@@ -69,33 +66,32 @@ public class CustomView extends View {
         initViews();
         initData();
         mHandler = new Handler();
-        mFlingAnimation = new FlingAnimation(view, DynamicAnimation.SCROLL_X);
     }
 
     private void initViews() {
-//        mPaintA
+        //  mPaintA
         mPaintA = new Paint();
         mPaintA.setColor(Color.RED);
         mPaintA.setAntiAlias(true);
-//        mPaintB
+        //  mPaintB
         mPaintB = new Paint();
         mPaintB.setColor(Color.GREEN);
-//        mPaintC
+        //  mPaintC
         mPaintC = new Paint();
         mPaintC.setColor(Color.BLUE);
-//        mPaintMonth
+        //  mPaintMonth
         mPaintMonth = new Paint();
         mPaintMonth.setColor(Color.DKGRAY);
         mPaintMonth.setTextSize(getResources().getDimensionPixelSize(R.dimen.text_size_chart));
-//        mPaintDistance
+        //  mPaintDistance
         mPaintDistance = new Paint();
         mPaintDistance.setColor(Color.DKGRAY);
         mPaintDistance.setTextSize(getResources().getDimensionPixelSize(R.dimen.text_size_chart));
-//        mPaintLineDistance
+        //  mPaintLineDistance
         mPaintLineDistance = new Paint();
         mPaintLineDistance.setStrokeWidth(STROKE_WIDTH_LINE_DISTANCE);
         mPaintLineDistance.setColor(Color.LTGRAY);
-//        mPaintBox
+        //  mPaintBox
         mPaintBox = new Paint();
         mPaintBox.setColor(Color.WHITE);
     }
@@ -137,13 +133,17 @@ public class CustomView extends View {
         canvas.restore();
     }
 
-    //  Draw box for hint chart in left, right
+    /**
+     * Draw box for hint chart in left, right
+     */
     private void drawBox(Canvas canvas) {
         canvas.drawRect(0, 0, WIDTH_BOX, getHeight(), mPaintBox);
         canvas.drawRect(getWidth() - WIDTH_BOX, 0, getWidth(), getHeight(), mPaintBox);
     }
 
-    //  Draw column person A, B, C
+    /**
+     * Draw column person A, B, C
+     */
     private void drawColumnPerson(Canvas canvas) {
         for (int i = 0; i < mPersonA.length; i++) {
             float stopXA = setStartX(i, mStartXPersonA) + WIDTH_RECT_PERSON;
@@ -158,7 +158,9 @@ public class CustomView extends View {
         }
     }
 
-    //   Draw lineDistance max, min, between
+    /**
+     * Draw lineDistance max, min, between
+     */
     private void drawLineDistance(Canvas canvas) {
         float maxDistance = getMaxValueDistance();
         float stopYBetween = (float) (setStopY(maxDistance / 2) + 0.5);
@@ -167,7 +169,9 @@ public class CustomView extends View {
         canvas.drawLine(START_DISTANCE_LINE, setStartY(), getWidth(), setStartY(), mPaintLineDistance);
     }
 
-    //   Draw text month; distance min, between, max
+    /**
+     * Draw text month; distance min, between, max
+     */
     private void drawText(Canvas canvas) {
         String jul_24 = getContext().getString(R.string.jul_24);
         String oct_9 = getContext().getString(R.string.oct_9);
@@ -186,6 +190,8 @@ public class CustomView extends View {
 
     /**
      * Add int[] in List<Integer> and find max in List
+     *
+     * @return max
      */
     private int getMaxValueDistance() {
         List<Integer> listABC = new ArrayList<>();
