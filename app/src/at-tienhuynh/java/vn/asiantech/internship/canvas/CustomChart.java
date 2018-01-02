@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -47,6 +48,10 @@ public class CustomChart extends View {
     // move
     private float mPointOX = 0;
     private float mPointDownX = 0;
+    //scroll
+    private float mTime = 0;
+    private float mSpeed = 0;
+    private Handler mHandler = new Handler();
 
     public CustomChart(Context context) {
         this(context, null);
@@ -138,12 +143,21 @@ public class CustomChart extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 if (event.getPointerCount() == 1) {
+                    // get position
                     mPointOX = (event.getX() - mPointDownX) + mPointOX;
                     mPointDownX = event.getX();
                 }
                 break;
             case MotionEvent.ACTION_DOWN:
                 mPointDownX = event.getX();
+                break;
+            case MotionEvent.ACTION_UP:
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //No-opp
+                    }
+                }, 0);
                 break;
         }
         invalidate();
