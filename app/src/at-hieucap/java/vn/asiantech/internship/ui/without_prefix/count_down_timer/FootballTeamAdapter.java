@@ -61,7 +61,7 @@ public class FootballTeamAdapter extends RecyclerView.Adapter<FootballTeamAdapte
         public void onBindData(List<FootballTeam> footballTeams) {
             FootballTeam footballTeam = footballTeams.get(getAdapterPosition());
             mImgLogo.setImageResource(footballTeam.getLogo());
-            mTvName.setText(footballTeam.getNameTeam());
+            mTvName.setText(footballTeam.teamName());
             mTvNation.setText(footballTeam.getNation());
         }
     }

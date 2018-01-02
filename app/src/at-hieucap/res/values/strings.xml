@@ -95,4 +95,5 @@
         Downloading %d Byte / %d Byte ( %.0f
     </string>
     <string name="download_error">Download error</string>
+    <string name="close_error">Disconnect error</string>
 </resources>

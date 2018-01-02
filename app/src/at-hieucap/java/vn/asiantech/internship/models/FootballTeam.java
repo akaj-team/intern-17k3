@@ -4,7 +4,6 @@ package vn.asiantech.internship.models;
  * Created by tiboo on 20/12/2017.
  * Create item list : FootballTeam
  */
-
 public class FootballTeam {
     private int logo;
     private String nameTeam;
@@ -24,7 +23,7 @@ public class FootballTeam {
         this.logo = logo;
     }
 
-    public String getNameTeam() {
+    public String teamName() {
         return nameTeam;
     }
 

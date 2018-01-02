@@ -64,6 +64,12 @@ public class FootballTeamActivity extends AppCompatActivity {
         mCountTimer.start();
     }
 
+    @Override
+    protected void onDestroy() {
+        mCountTimer.cancel();
+        super.onDestroy();
+    }
+
     private void initAdapter() {
         mAdapter = new FootballTeamAdapter(mFootballTeamList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
