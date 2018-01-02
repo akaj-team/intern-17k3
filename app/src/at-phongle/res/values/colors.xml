@@ -11,4 +11,6 @@
     <color name="blue_facebook">#3B5998</color>
     <color name="header_color">#041e42</color>
     <color name="blue_dark">#ff0099cc</color>
+    <color name="dark_violet">#663399</color>
+    <color name="orange">#FF6600</color>
 </resources>

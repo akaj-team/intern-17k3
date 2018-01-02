@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_padding">60dp</dimen>
+    // Canvas
+    <dimen name="container_padding_horizontal">30dp</dimen>
+    <dimen name="container_padding_vertical">20dp</dimen>
+    <dimen name="text_size">15dp</dimen>
+    <dimen name="text_margin">10dp</dimen>
+    <dimen name="width_line">1dp</dimen>
+    <dimen name="column_margin">1dp</dimen>
+    <dimen name="chart_padding_vertical">5dp</dimen>
 </resources>
