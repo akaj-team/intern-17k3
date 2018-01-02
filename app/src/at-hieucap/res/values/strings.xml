@@ -83,4 +83,8 @@
     <string name="text_nine_path">Nine Path</string>
     <string name="bai_tap_4">Load Image</string>
     <string name="bai_tap_7">View pager</string>
+    <string name="user_name">User name</string>
+    <string name="password">Password</string>
+    <string name="unit_test">Unit test</string>
+    <string name="login">Login</string>
 </resources>
