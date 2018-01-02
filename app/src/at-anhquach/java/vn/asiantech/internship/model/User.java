@@ -7,6 +7,8 @@ public class User {
     private int id;
     private String name;
     private int age;
+    private int usename;
+    private int password;
 
     public User() {
     }
@@ -33,5 +35,21 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getUsename() {
+        return usename;
+    }
+
+    public void setUsename(int usename) {
+        this.usename = usename;
+    }
+
+    public int getPassword() {
+        return password;
+    }
+
+    public void setPassword(int password) {
+        this.password = password;
     }
 }
