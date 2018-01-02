@@ -17,7 +17,7 @@ import vn.asiantech.internship.models.FootballTeam;
  * Create adapter
  */
 public class FootballTeamAdapter extends RecyclerView.Adapter<FootballTeamAdapter.FootballTeamHolder> {
-    private static List<FootballTeam> mFootballTeamList;
+    private List<FootballTeam> mFootballTeamList;
 
     FootballTeamAdapter(List<FootballTeam> footballTeamList) {
         mFootballTeamList = footballTeamList;
@@ -31,7 +31,7 @@ public class FootballTeamAdapter extends RecyclerView.Adapter<FootballTeamAdapte
 
     @Override
     public void onBindViewHolder(FootballTeamHolder holder, int position) {
-        holder.onBindData();
+        holder.onBindData(mFootballTeamList);
     }
 
     @Override
@@ -58,8 +58,8 @@ public class FootballTeamAdapter extends RecyclerView.Adapter<FootballTeamAdapte
             mTvNation = itemView.findViewById(R.id.tvNation);
         }
 
-        public void onBindData() {
-            FootballTeam footballTeam = mFootballTeamList.get(getAdapterPosition());
+        public void onBindData(List<FootballTeam> footballTeams) {
+            FootballTeam footballTeam = footballTeams.get(getAdapterPosition());
             mImgLogo.setImageResource(footballTeam.getLogo());
             mTvName.setText(footballTeam.getNameTeam());
             mTvNation.setText(footballTeam.getNation());

@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,26 +25,25 @@ public class FootballTeamActivity extends AppCompatActivity {
     private static final String BARCELONA = "Barcelona";
     private static final String PREMIER_LEAGUE = "Premier league";
     private static final String LA_LIGA = "La liga";
+    private static final int LIMIT_TIME = 180000;
+    private static final int ONE_SECOND = 1000;
     private List<FootballTeam> mFootballTeamList = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private FootballTeamAdapter mAdapter;
     private int mTime;
 
-    CountDownTimer mCountTimer = new CountDownTimer(180000, 1000) {
+    CountDownTimer mCountTimer = new CountDownTimer(LIMIT_TIME, ONE_SECOND) {
         @Override
         public void onTick(long l) {
-            mTime = (180000 / 1000) - (int) (l / 1000);
-            Log.d("vv", "onTick: " + mTime);
+            mTime = (LIMIT_TIME / ONE_SECOND) - (int) (l / ONE_SECOND);
             if (mTime % 10 == 0) {
                 mFootballTeamList.add(new FootballTeam(R.drawable.ic_manchester_united, MANCHESTER_UNITED, PREMIER_LEAGUE));
                 mFootballTeamList.add(new FootballTeam(R.drawable.ic_real_madrid, REAL_MADRID, LA_LIGA));
                 mAdapter.notifyDataSetChanged();
-                Log.d("vv", "onFinish add: 1 hit");
             }
             if (mTime % 15 == 0) {
                 mFootballTeamList.remove(mFootballTeamList.size() / 2);
                 mAdapter.notifyDataSetChanged();
-                Log.d("vv", "onFinish delete: 1 hit");
             }
         }
 
