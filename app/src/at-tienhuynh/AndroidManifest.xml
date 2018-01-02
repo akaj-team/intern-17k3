@@ -3,6 +3,7 @@
     package="vn.asiantech.internship">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -43,6 +44,11 @@
         <activity android:name=".image.LoadImageActivity" />
         <activity android:name=".image.NinePathActivity" />
         <activity android:name=".image.VectorDrawerActivity" />
+        <activity
+            android:name=".threadandhandler.dowloadimage.ui.TabManagementActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".threadandhandler.SplashThreadAndHandlerActivity" />
+        <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity" />
     </application>
 
 </manifest>
