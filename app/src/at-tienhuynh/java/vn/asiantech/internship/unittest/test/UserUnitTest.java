@@ -32,7 +32,7 @@ public class UserUnitTest {
     public void checkCapitalLetterAndNumber() {
         Mockito.when(mUser.getUser()).thenReturn("Tien27HH");
         Assert.assertTrue(UserNameValidation.checkCapitalLetterAndNumber(mUser.getUser()));
-        Mockito.when(mUser.getUser()).thenReturn("tien");
+        Mockito.when(mUser.getUser()).thenReturn("tixn");
         Assert.assertFalse(UserNameValidation.checkCapitalLetterAndNumber(mUser.getUser()));
     }
 
@@ -46,7 +46,7 @@ public class UserUnitTest {
 
     @Test
     public void checkUserNameSpecialChar() {
-        Mockito.when(mUser.getUser()).thenReturn("tien");
+        Mockito.when(mUser.getUser()).thenReturn("tivn");
         Assert.assertTrue(UserNameValidation.checkUserNameSpecialChar(mUser.getUser()));
         Mockito.when(mUser.getUser()).thenReturn("&*(=");
         Assert.assertFalse(UserNameValidation.checkUserNameSpecialChar(mUser.getUser()));
@@ -56,7 +56,7 @@ public class UserUnitTest {
     public void checkUserNameIgnoreUpperCase() {
         Mockito.when(mUser.getUser()).thenReturn("tiEn");
         Assert.assertTrue(UserNameValidation.checkUserNameIgnoreUpperCase(mUser.getUser()));
-        Mockito.when(mUser.getUser()).thenReturn("tien");
+        Mockito.when(mUser.getUser()).thenReturn("tibn");
         Assert.assertFalse(UserNameValidation.checkUserNameIgnoreUpperCase(mUser.getUser()));
     }
 }

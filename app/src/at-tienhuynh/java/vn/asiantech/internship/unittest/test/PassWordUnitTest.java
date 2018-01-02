@@ -25,8 +25,8 @@ public class PassWordUnitTest {
         Mockito.when(mUser.getUser()).thenReturn("tienhuynh");
         Mockito.when(mUser.getPassword()).thenReturn("tiennguyen");
         Assert.assertTrue(PasswordValidation.checkDifferentUserName(mUser.getUser(), mUser.getPassword()));
-        Mockito.when(mUser.getUser()).thenReturn("tienhuynh");
-        Mockito.when(mUser.getPassword()).thenReturn("tienhuynh");
+        Mockito.when(mUser.getUser()).thenReturn("tienhuinh");
+        Mockito.when(mUser.getPassword()).thenReturn("tienhuinh");
         Assert.assertFalse(PasswordValidation.checkDifferentUserName(mUser.getUser(), mUser.getPassword()));
     }
 
@@ -42,7 +42,7 @@ public class PassWordUnitTest {
     public void checkAtLeastNumber() {
         Mockito.when(mUser.getPassword()).thenReturn("tienhuynh2%");
         Assert.assertTrue(PasswordValidation.checkAtLeastNumber(mUser.getPassword()));
-        Mockito.when(mUser.getPassword()).thenReturn("tienhuynh");
+        Mockito.when(mUser.getPassword()).thenReturn("tienhuenh");
         Assert.assertFalse(PasswordValidation.checkAtLeastNumber(mUser.getPassword()));
     }
 
@@ -50,7 +50,7 @@ public class PassWordUnitTest {
     public void checkCapitalLetter() {
         Mockito.when(mUser.getPassword()).thenReturn("HUYtien");
         Assert.assertTrue(PasswordValidation.checkCapitalLetter(mUser.getPassword()));
-        Mockito.when(mUser.getPassword()).thenReturn("tienhuynh");
+        Mockito.when(mUser.getPassword()).thenReturn("tienhumnh");
         Assert.assertFalse(PasswordValidation.checkCapitalLetter(mUser.getPassword()));
     }
 
