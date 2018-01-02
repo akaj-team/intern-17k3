@@ -50,7 +50,7 @@ public class CustomChart extends View {
     private float mPointDownX = 0;
     //scroll
     private float mTime = 0;
-    private float mSpeed = 0;
+    private float mSpeed = 1;
     private Handler mHandler = new Handler();
 
     public CustomChart(Context context) {
@@ -146,18 +146,25 @@ public class CustomChart extends View {
                     // get position
                     mPointOX = (event.getX() - mPointDownX) + mPointOX;
                     mPointDownX = event.getX();
+                    // get time
+                    mTime = System.currentTimeMillis() - mTime;
                 }
                 break;
             case MotionEvent.ACTION_DOWN:
                 mPointDownX = event.getX();
+                mTime = System.currentTimeMillis();
                 break;
             case MotionEvent.ACTION_UP:
+                mSpeed = mPointOX / mTime;
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        //No-opp
+                        mSpeed--;
+                        if (mSpeed == 0) {
+                            mSpeed = 1;
+                        }
                     }
-                }, 0);
+                }, 100);
                 break;
         }
         invalidate();
@@ -237,27 +244,27 @@ public class CustomChart extends View {
             int y2 = ChartValues.people2Values().get(i) * SCALE_Y;
             int y3 = ChartValues.people3Values().get(i) * SCALE_Y;
             // draw chart people 1
-            canvas.drawRoundRect(new RectF(mPointOX + getWidth() / 2 + i * (mLengthOneColumn
+            canvas.drawRoundRect(new RectF(mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn
                     * (TOTAL_PEOPLE + SCALE_X)) - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1))
                     * mLengthOneColumn) / 2 - DISTANCE_START, getHeight() / 2 - y1,
-                    mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
+                    mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
                             - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
                     getHeight() / 2), 10, 5, mPaintPeople1);
             // draw chart people 2
-            canvas.drawRoundRect(new RectF(mPointOX + getWidth() / 2 + i * (mLengthOneColumn
+            canvas.drawRoundRect(new RectF(mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn
                     * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn + SCALE_X - ((NUM_DAY * TOTAL_PEOPLE
                     + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
                     getHeight() / 2 - y2,
-                    mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
+                    mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
                             + mLengthOneColumn + SCALE_X - ((NUM_DAY * TOTAL_PEOPLE
                             + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
                     getHeight() / 2), 10, 5, mPaintPeople2);
             // draw chart people 3
-            canvas.drawRoundRect(new RectF(mPointOX + getWidth() / 2 + i
+            canvas.drawRoundRect(new RectF(mSpeed * mPointOX + getWidth() / 2 + i
                     * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn * 2 + SCALE_X * 2
                     - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
                     getHeight() / 2 - y3,
-                    mPointOX + getWidth() / 2 + i
+                    mSpeed * mPointOX + getWidth() / 2 + i
                             * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn * 2
                             + SCALE_X * 2 - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1))
                             * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
