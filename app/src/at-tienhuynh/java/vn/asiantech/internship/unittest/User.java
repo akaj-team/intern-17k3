@@ -6,20 +6,20 @@ package vn.asiantech.internship.unittest;
  */
 public class User {
 
-    private String user;
+    private String userName;
     private String password;
 
     public User(String user, String password) {
-        this.user = user;
+        this.userName = user;
         this.password = password;
     }
 
     public String getUser() {
-        return user;
+        return userName;
     }
 
     public void setUser(String user) {
-        this.user = user;
+        this.userName = user;
     }
 
     public String getPassword() {
