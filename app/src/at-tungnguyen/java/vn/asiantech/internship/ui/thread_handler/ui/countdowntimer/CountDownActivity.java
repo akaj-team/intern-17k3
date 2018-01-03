@@ -18,7 +18,6 @@ import vn.asiantech.internship.ui.thread_handler.adapter.CountDownAdapter;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 08/12/2017.
  */
-
 public class CountDownActivity extends AppCompatActivity {
     private List<CountDownItem> mCountDownTimers = new ArrayList<>();
     private RecyclerView mRecyclerView;
@@ -31,7 +30,6 @@ public class CountDownActivity extends AppCompatActivity {
     private int mAddItem = 0;
     private int mDeleteItem = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +38,6 @@ public class CountDownActivity extends AppCompatActivity {
         initAdapter();
         initData();
         initCountDown();
-
     }
 
     /**

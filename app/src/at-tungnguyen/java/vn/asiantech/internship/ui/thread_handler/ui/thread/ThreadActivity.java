@@ -45,7 +45,6 @@ public class ThreadActivity extends AppCompatActivity {
 
     /**
      * Set Bitmap
-     * @param bitMap
      */
     public void setBitMap(Bitmap bitMap) {
         ViewFragment viewFragment = (ViewFragment) mTabThreadAdapter.getItem(1);

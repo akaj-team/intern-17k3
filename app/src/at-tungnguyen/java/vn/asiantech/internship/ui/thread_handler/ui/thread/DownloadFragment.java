@@ -92,11 +92,6 @@ public class DownloadFragment extends Fragment {
             @Override
             public void run() {
                 while (mStatus < 100) {
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        Log.d("e1", e.getMessage());
-                    }
                     mProgressBarHandler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -106,11 +101,6 @@ public class DownloadFragment extends Fragment {
                     });
                 }
                 if (mStatus >= 100) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Log.d("e", e.getMessage());
-                    }
                     mStatus = 0;
                 }
             }
@@ -170,12 +160,4 @@ public class DownloadFragment extends Fragment {
             }
         }).start();
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mThread.stop();
-    }
-
-
 }
