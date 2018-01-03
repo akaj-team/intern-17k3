@@ -22,6 +22,7 @@ import java.net.URL;
 
 import vn.asiantech.internship.R;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -34,6 +35,7 @@ public class DownloadFragment extends Fragment {
     public int mFinishProgessBar = 100;
     private int mStatus = 0;
     public Bitmap mBitmap;
+    Thread mThread;
     private Handler mProgressBarHandler = new Handler();
     private static String mImageUrl = "https://i.ytimg.com/vi/Orh592OBoKY/maxresdefault.jpg";
 
@@ -75,8 +77,9 @@ public class DownloadFragment extends Fragment {
         mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getBitmapFromURL(mImageUrl);
                 initDownloadImage();
+                getBitmapFromURL(mImageUrl);
+
             }
         });
     }
@@ -85,7 +88,7 @@ public class DownloadFragment extends Fragment {
      * initDownloadImage and get percent progressBar
      */
     private void initDownloadImage() {
-        new Thread(new Runnable() {
+        mThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (mStatus < 100) {
@@ -111,7 +114,8 @@ public class DownloadFragment extends Fragment {
                     mStatus = 0;
                 }
             }
-        }).start();
+        });
+        mThread.start();
     }
 
     /**
@@ -166,4 +170,12 @@ public class DownloadFragment extends Fragment {
             }
         }).start();
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mThread.stop();
+    }
+
+
 }

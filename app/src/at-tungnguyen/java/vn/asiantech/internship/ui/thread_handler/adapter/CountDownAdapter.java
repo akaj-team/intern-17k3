@@ -19,7 +19,7 @@ public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.View
     private static List<CountDownItem> mCountDownItems;
 
     public CountDownAdapter(List<CountDownItem> mCountDownItems) {
-        this.mCountDownItems = mCountDownItems;
+        CountDownAdapter.mCountDownItems = mCountDownItems;
     }
 
     @Override
