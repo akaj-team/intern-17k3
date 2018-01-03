@@ -89,6 +89,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnAsynchronous:
                 startActivity(new Intent(this, AsynchronousActivity.class));
+                break;
             case R.id.btnUnitTest:
                 startActivity(new Intent(this, UnitTestActivity.class));
         }
