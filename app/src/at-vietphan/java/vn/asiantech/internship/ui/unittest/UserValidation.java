@@ -118,19 +118,18 @@ public final class UserValidation {
      * @return isRepeat boolean state
      */
     public static boolean isRepeatCharacterPassword(String password) {
-        boolean isRepeat = false;
+        boolean isRepeat = true;
         int numCount = 0;
         String[] strings = password.split("");
         for (int i = 0; i < strings.length; i++) {
-            String temp = strings[i];
             for (int j = i + 1; j < strings.length; j++) {
-                String temp2 = strings[j];
-                if (temp.equalsIgnoreCase(temp2)) {
+                if (strings[i].equalsIgnoreCase(strings[j])) {
                     numCount++;
-                    if (numCount > 2) {
-                        isRepeat = true;
-                    }
                 }
+            }
+            if (numCount > 2) {
+                isRepeat = false;
+                numCount = 0;
             }
         }
         return isRepeat;

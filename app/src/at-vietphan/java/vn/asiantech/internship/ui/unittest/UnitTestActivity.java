@@ -2,8 +2,6 @@ package vn.asiantech.internship.ui.unittest;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,23 +16,6 @@ public class UnitTestActivity extends AppCompatActivity implements View.OnClickL
     private EditText mEdtUserName;
     private EditText mEdtPassWord;
     private Button mBtnLogin;
-    private TextWatcher mTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            // No-op
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            // No-op
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            userNameValidator(mEdtUserName.getText().toString().trim());
-            passwordValidator(mEdtUserName.getText().toString().trim(), mEdtPassWord.getText().toString().trim());
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +32,6 @@ public class UnitTestActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initListener() {
-        mEdtUserName.addTextChangedListener(mTextWatcher);
-        mEdtPassWord.addTextChangedListener(mTextWatcher);
         mBtnLogin.setOnClickListener(this);
     }
 
@@ -85,6 +64,7 @@ public class UnitTestActivity extends AppCompatActivity implements View.OnClickL
             } else if (!UserValidation.isLengthPassword(password)) {
                 showToast(getString(R.string.check_password_length));
             } else if (!UserValidation.isRepeatCharacterPassword(password)) {
+                showToast(String.valueOf(UserValidation.isRepeatCharacterPassword(password)));
                 showToast(getString(R.string.check_password_repeat_charater_a_little_2_times));
             } else if (!UserValidation.isSpacePassword(password)) {
                 showToast(getString(R.string.check_password_have_not_white_space));

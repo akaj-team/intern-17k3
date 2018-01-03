@@ -1,5 +1,3 @@
-package vn.asiantech.internship.vietphan;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -72,7 +70,7 @@ public class UserUnitTest {
 
     @Test
     public void checkRepeatCharacterPassword() {
-        when(mUser.getPassword()).thenReturn("adminadmin");
+        when(mUser.getPassword()).thenReturn("adminn");
         Assert.assertTrue(UserValidation.isRepeatCharacterPassword(mUser.getPassword()));
     }
 
