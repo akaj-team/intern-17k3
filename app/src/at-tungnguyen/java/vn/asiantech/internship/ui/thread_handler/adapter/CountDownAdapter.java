@@ -15,11 +15,12 @@ import vn.asiantech.internship.model.CountDownItem;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 20/12/2017.
  */
-public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.ViewHolder> {
-    private static List<CountDownItem> mCountDownItems;
 
-    public CountDownAdapter(List<CountDownItem> mCountDownItems) {
-        CountDownAdapter.mCountDownItems = mCountDownItems;
+public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.ViewHolder> {
+    private List<CountDownItem> mCountDownItems;
+
+    public CountDownAdapter(List<CountDownItem> countDownItems) {
+        this.mCountDownItems = countDownItems;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.View
     /**
      * ViewHolder of RecyclerView
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvName;
 
         public ViewHolder(View itemView) {
