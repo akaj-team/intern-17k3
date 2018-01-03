@@ -52,7 +52,7 @@ public class CustomView extends View {
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
     private Handler mHandler;
-    private runnableIpl mRunnable;
+    private Runnable mRunnable;
     private int mXBegin = 0;
     private int mMoveDistance;
 
@@ -207,7 +207,6 @@ public class CustomView extends View {
     @Override
     public boolean onTouchEvent(final MotionEvent event) {
         mScaleDetector.onTouchEvent(event);
-        mRunnable = new runnableIpl(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mTouchX = event.getX();
@@ -237,7 +236,13 @@ public class CustomView extends View {
                 } else {
                     Log.d("hd", "left: " + mMoveDistance);
                 }
-                mHandler.postDelayed(mRunnable, 2000);
+                mHandler.postDelayed(mRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        delayMove();
+                        mHandler.postDelayed(this, 10);
+                    }
+                }, 10);
                 break;
         }
         invalidate();
@@ -263,19 +268,6 @@ public class CustomView extends View {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         mHandler.removeCallbacks(mRunnable);
-    }
-
-    private class runnableIpl implements Runnable {
-        MotionEvent event;
-
-        runnableIpl(MotionEvent event) {
-            this.event = event;
-        }
-
-        @Override
-        public void run() {
-            delayMove();
-        }
     }
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
