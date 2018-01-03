@@ -11,26 +11,26 @@ public final class UserNameValidation {
     /**
      * check length userName > 5 and < 24 character
      *
-     * @param username username
+     * @param userName username
      * @return true when length of username > 5 and < 24 char
      */
-    public static boolean isLengthUserName(String username) {
-        return username.length() > 5 && username.length() < 24;
+    public static boolean isLengthUserName(String userName) {
+        return userName.length() > 5 && userName.length() < 24;
     }
 
     /**
      * check user name have least one capital letter and most 2 number
      *
-     * @param username username
+     * @param userName username
      * @return true when username have least one capital letter and most 2 number
      */
-    public static boolean isCapitalLetterAndNumber(String username) {
+    public static boolean isCapitalLetterAndNumber(String userName) {
         char ch;
         int numCount = 0;
         boolean capitalFlag = false;
         boolean numberFlag = false;
-        for (int i = 0; i < username.length(); i++) {
-            ch = username.charAt(i);
+        for (int i = 0; i < userName.length(); i++) {
+            ch = userName.charAt(i);
             if (Character.isUpperCase(ch)) {
                 capitalFlag = true;
             } else if (Character.isDigit(ch)) {
@@ -49,30 +49,30 @@ public final class UserNameValidation {
     /**
      * check user name have space
      *
-     * @param username username
+     * @param userName username
      * @return true when username not have space
      */
-    public static boolean isUserNameSpace(String username) {
-        return !username.contains(" ");
+    public static boolean isUserNameSpace(String userName) {
+        return !userName.contains(" ");
     }
 
     /**
      * check user name have special char
      *
-     * @param username username
+     * @param userName username
      * @return when username not have special char
      */
-    public static boolean isUserNameSpecialChar(String username) {
-        return username.matches("[A-Za-z0-9]+");
+    public static boolean isUserNameSpecialChar(String userName) {
+        return userName.matches("[A-Za-z0-9]+");
     }
 
     /**
      * Check no distinction between uppercase and lowercase letters
      *
-     * @param username username
+     * @param userName username
      * @return true when no distinction between uppercase and lowercase letters
      */
-    public static boolean isUserNameIgnoreUpperCase(String username) {
-        return !username.equals(username.toLowerCase(Locale.getDefault()));
+    public static boolean isUserNameIgnoreUpperCase(String userName) {
+        return !userName.equals(userName.toLowerCase(Locale.getDefault()));
     }
 }

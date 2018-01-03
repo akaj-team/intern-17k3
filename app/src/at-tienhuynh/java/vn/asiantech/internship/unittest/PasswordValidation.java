@@ -11,12 +11,12 @@ public final class PasswordValidation {
     /**
      * Check password different username
      *
-     * @param username username
+     * @param userName username
      * @param password password
      * @return true when password not equals username
      */
-    public static boolean isDifferentUserName(String username, String password) {
-        return !password.equals(username);
+    public static boolean isDifferentUserName(String userName, String password) {
+        return !password.equals(userName);
     }
 
     /**
