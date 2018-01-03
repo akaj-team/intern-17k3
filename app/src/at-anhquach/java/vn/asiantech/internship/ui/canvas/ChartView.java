@@ -194,17 +194,7 @@ public class ChartView extends View {
         super.onDraw(canvas);
         canvas.save();
         canvas.scale(mScaleFactor, mScaleFactor);
-        if ((translateX * -1) < 0) {
-            translateX = 0;
-        } else if ((translateX * -1) > (mScaleFactor - 1) * getWidth()) {
-            translateX = (1 - mScaleFactor) * getWidth();
-        }
-        if (translateY * -1 < 0) {
-            translateY = 0;
-        } else if ((translateY * -1) > (mScaleFactor - 1) * getHeight()) {
-            translateY = (1 - mScaleFactor) * getHeight();
-        }
-        canvas.translate(translateX / mScaleFactor, translateY / mScaleFactor);
+        translate(canvas);
         for (int i = 0; i < mDistanceAs.size(); i++) {
             drawRoundRect(canvas, 0, mDistanceAs.get(i), R.color.colorPurple800, i, mPaint);
             drawRoundRect(canvas, mWidth + mDistanceBetweenCharts, mDistanceBs.get(i), R.color.colorCyanA700, i, mPaint);
@@ -221,6 +211,20 @@ public class ChartView extends View {
         drawText(canvas, getContext().getString(R.string.distance_km, ((int) 0)), 0, mPaint);
         drawLine(canvas, maxLists() / 2, mPaint);
         canvas.restore();
+    }
+
+    private void translate(Canvas canvas) {
+        if ((translateX * -1) < 0) {
+            translateX = 0;
+        } else if ((translateX * -1) > (mScaleFactor - 1) * getWidth()) {
+            translateX = (1 - mScaleFactor) * getWidth();
+        }
+        if (translateY * -1 < 0) {
+            translateY = 0;
+        } else if ((translateY * -1) > (mScaleFactor - 1) * getHeight()) {
+            translateY = (1 - mScaleFactor) * getHeight();
+        }
+        canvas.translate(translateX / mScaleFactor, translateY / mScaleFactor);
     }
 
     private void drawText(Canvas canvas, String str, float y, Paint paint) {
@@ -242,9 +246,11 @@ public class ChartView extends View {
     private void drawRect(Canvas canvas, float left, Paint paint) {
         canvas.drawRect(left, mHeightScreen / 2 - maxLists() * mEnlarge, left + 130, mHeightScreen / 2, paint);
     }
-    private double setSpeed(){
-        return distance/time;
+
+    private double setSpeed() {
+        return distance / time;
     }
+
     private class ScaleListener
             extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
@@ -255,6 +261,7 @@ public class ChartView extends View {
             mScaleFactor = Math.max(MIN_ZOOM, Math.min(mScaleFactor, MAX_ZOOM));
             return true;
         }
+
         private GestureDetector.OnGestureListener mGestureListener = new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
@@ -270,5 +277,4 @@ public class ChartView extends View {
             }
         };
     }
-
 }
