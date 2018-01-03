@@ -35,7 +35,9 @@
         <activity android:name=".ui.loadimage.ImageVectorActivity" />
         <activity android:name=".ui.viewpager.SliderActivity" />
         <activity android:name=".ui.viewpager.TabLayoutActivity" />
+        <activity android:name=".ui.asynchronous.activitys.ThreadHandleActivity" />
+        <activity android:name=".ui.asynchronous.activitys.AsynchronousActivity" />
+        <activity android:name=".ui.asynchronous.activitys.CountDownTimerActivity"></activity>
         <activity android:name=".ui.unittest.UnitTestActivity" />
     </application>
-
 </manifest>

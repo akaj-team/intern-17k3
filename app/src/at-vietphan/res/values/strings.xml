@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">vietphan-17k3</string>
     <string name="recycler_view">RECYCLER VIEW</string>
     <string name="a_bike_for_everyone_always">a bike for everyone, always</string>
@@ -66,7 +66,7 @@
     <string name="skip">SKIP</string>
     <string name="birthday">Birthday:</string>
     <string name="email_2">Email:</string>
-    <string name="cancel">CANCEL</string>
+    <string name="cancel" tools:ignore="ButtonCase">CANCEL</string>
     <string name="update">UPDATE</string>
     <string name="phan_xuan_viet">Phan Xuan Viet</string>
     <string name="birth_day">02/04/1996</string>
@@ -74,8 +74,18 @@
     <string name="do_you_want_to_skip">Do you want to skip this step?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="dialog_fragment">Dialog Fagment</string>
+    <string name="dialog_fragment">Dialog Fragment</string>
     <string name="your_info">Your information</string>
+    <string name="asynchronous">ASYNCHRONOUS</string>
+    <string name="click_me">CLICK ME</string>
+    <string name="thread_handle">Thread - Handle</string>
+    <string name="countdown_timer">CountDown Timer</string>
+    <string name="found_fragment">found fragment</string>
+    <string name="done">done!</string>
+    <string name="seconds_remaining">seconds remaining:</string>
+    <string name="downloaded">Downloaded</string>
+    <string name="tren">/</string>
+    <string name="item">item </string>
     <string name="unit_test">Unit Test</string>
     <string name="input_username">Input UserName</string>
     <string name="input_password">Input Password</string>

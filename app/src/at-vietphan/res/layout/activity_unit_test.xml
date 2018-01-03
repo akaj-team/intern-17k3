@@ -32,4 +32,10 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login" />
 </LinearLayout>
