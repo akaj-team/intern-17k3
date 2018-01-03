@@ -6,8 +6,11 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -22,7 +25,6 @@ import vn.asiantech.internship.R;
  * The CustomView for CanvasActivity
  */
 public class CustomView extends View {
-    private static final int BORDER = 13;
     private static final int ONE_KM = 30;
     // Declare field for new ScaleListener
     private ScaleGestureDetector mScaleDetector;
@@ -45,6 +47,10 @@ public class CustomView extends View {
     private int mStartPeople3;
     private int mStartLine;
     private int mStopLine;
+    private double s = 0;
+    private double t = 0;
+    private double v = 0;
+    private Handler handler = new Handler();
 
     public CustomView(Context context) {
         this(context, null);
@@ -55,11 +61,12 @@ public class CustomView extends View {
         // New obj of ScaleListener
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         // Get attrs from file xml
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomView, 0, 0);
+        TypedArray typedArray = context.getTheme()
+                .obtainStyledAttributes(attrs, R.styleable.CustomView, 0, 0);
         mSizeCol = typedArray.getInteger(R.styleable.CustomView_stroke_with, 10);
         initFirstValues();
         initPaint();
-        initDatas();
+        initData();
     }
 
     private void initFirstValues() {
@@ -79,13 +86,43 @@ public class CustomView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 if (event.getPointerCount() == 1) {
+                    t = System.currentTimeMillis() - t;
+                    s = mMoveX - event.getX();
+                    v = s / t;
                     mMoveX = mMoveX + event.getX() - mTouchX;
                     mTouchX = event.getX();
                     update(mMoveX);
+                    Log.d("v", " mMoveX:" + mMoveX);
                 }
                 break;
             case MotionEvent.ACTION_DOWN:
                 mTouchX = event.getX();
+                break;
+            case MotionEvent.ACTION_UP:
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (v!=0){
+
+                        if (v > 0) {
+                            mMoveX = (int) (mMoveX + v * 10);
+                            update(mMoveX);
+                            v -= 0.1;
+                            invalidate();
+                        }
+                        if (v < 0) {
+                            mMoveX = (int) (mMoveX + v * 10);
+                            update(mMoveX);
+                            v += 0.1;
+                            invalidate();
+                        } else {
+                            update(0);
+                            invalidate();
+                        }
+                        Log.d("v", " mMoveX:" );
+                        }
+                    }
+                }, 1000);
                 break;
         }
         invalidate();
@@ -123,7 +160,7 @@ public class CustomView extends View {
         mPaintHide.setStrokeWidth(2F);
     }
 
-    private void initDatas() {
+    private void initData() {
         resultPeople1 = new ArrayList<>();
         resultPeople2 = new ArrayList<>();
         resultPeople3 = new ArrayList<>();
@@ -164,6 +201,9 @@ public class CustomView extends View {
         super.onDraw(canvas);
         canvas.save();
         int max = 0;
+//        //move quadrants
+//        canvas.translate(500, 500);
+
         canvas.scale(mScaleFactor, mScaleFactor);
         for (int i = 0; i < resultPeople3.size(); i++) {
             if (resultPeople1.get(i) > max) {
@@ -179,12 +219,14 @@ public class CustomView extends View {
         drawLineResult(max, canvas);
         drawGraph(max, canvas);
         // This rect start at (0,0) and stop at right = 150
-        canvas.drawRect(0, 0, 150, max * ONE_KM + mMarginTop + 100, mPaintHide);
+        canvas.drawRect(0, 0, 150, max * ONE_KM + mMarginTop + 100,
+                mPaintHide);
         // The line is start x = 10
         canvas.drawText(max + getContext().getString(R.string.km), 10,
-                mMarginTop - BORDER + (mPaintText.getTextSize() / 2), mPaintText);
+                mMarginTop + (mPaintText.getTextSize() / 2), mPaintText);
         canvas.drawText((float) max / 2 + getContext().getString(R.string.km), 10,
-                (max * ONE_KM) / 2 + mMarginTop - BORDER + (mPaintText.getTextSize() / 2), mPaintText);
+                (max * ONE_KM) / 2 + mMarginTop + (mPaintText.getTextSize() / 2),
+                mPaintText);
         canvas.restore();
     }
 
@@ -192,9 +234,12 @@ public class CustomView extends View {
      * Draw lines of result
      */
     private void drawLineResult(int max, Canvas canvas) {
-        canvas.drawLine(mStartLine, mMarginTop - BORDER, mStopLine, mMarginTop - BORDER, mPaintText);
-        canvas.drawLine(mStartLine, (max * ONE_KM) / 2 + mMarginTop - BORDER, mStopLine, (max * ONE_KM) / 2 + mMarginTop - BORDER, mPaintText);
-        canvas.drawLine(mStartLine, max * ONE_KM + mMarginTop + BORDER, mStopLine, max * ONE_KM + mMarginTop + BORDER, mPaintText);
+        canvas.drawLine(mStartLine, mMarginTop, mStopLine,
+                mMarginTop, mPaintText);
+        canvas.drawLine(mStartLine, (max * ONE_KM) / 2 + mMarginTop, mStopLine,
+                (max * ONE_KM) / 2 + mMarginTop, mPaintText);
+        canvas.drawLine(mStartLine, max * ONE_KM + mMarginTop, mStopLine,
+                max * ONE_KM + mMarginTop, mPaintText);
     }
 
     /**
@@ -202,16 +247,20 @@ public class CustomView extends View {
      */
     private void drawGraph(int max, Canvas canvas) {
         for (int i = 0; i < resultPeople3.size(); i++) {
-            canvas.drawLine(i * mRange + mStartPeople1,
-                    (max * ONE_KM + mMarginTop) - resultPeople1.get(i) * ONE_KM,
-                    i * mRange + mStartPeople1, max * ONE_KM + mMarginTop, mPaintPeople1);
-            canvas.drawLine(i * mRange + mStartPeople2,
-                    (max * ONE_KM + mMarginTop) - resultPeople2.get(i) * ONE_KM,
-                    i * mRange + mStartPeople2, max * ONE_KM + mMarginTop, mPaintPeople2);
-            canvas.drawLine(i * mRange + mStartPeople3,
-                    (max * ONE_KM + mMarginTop) - resultPeople3.get(i) * ONE_KM,
-                    i * mRange + mStartPeople3, max * ONE_KM + mMarginTop, mPaintPeople3);
-            canvas.drawText(convertDay(i), i * mRange + mStartPeople2, max * ONE_KM + mMarginTop + 100, mPaintText);
+            canvas.drawRoundRect(new RectF(i * mRange + mStartPeople1,
+                            (max * ONE_KM + mMarginTop) - resultPeople1.get(i) * ONE_KM,
+                            i * mRange + mStartPeople1 + mSizeCol, max * ONE_KM + mMarginTop), 10, 5,
+                    mPaintPeople1);
+            canvas.drawRoundRect(new RectF(i * mRange + mStartPeople2,
+                            (max * ONE_KM + mMarginTop) - resultPeople2.get(i) * ONE_KM,
+                            i * mRange + mStartPeople2 + mSizeCol, max * ONE_KM + mMarginTop), 10, 5,
+                    mPaintPeople2);
+            canvas.drawRoundRect(new RectF(i * mRange + mStartPeople3,
+                            (max * ONE_KM + mMarginTop) - resultPeople3.get(i) * ONE_KM,
+                            i * mRange + mStartPeople3 + mSizeCol, max * ONE_KM + mMarginTop), 10, 5,
+                    mPaintPeople3);
+            canvas.drawText(convertDay(i), i * mRange + mStartPeople2,
+                    max * ONE_KM + mMarginTop + 100, mPaintText);
         }
     }
 
@@ -249,7 +298,7 @@ public class CustomView extends View {
         public boolean onScale(ScaleGestureDetector detector) {
             mScaleFactor *= detector.getScaleFactor();
             // Don't let the object get too small or too large.
-            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
+            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 2.0f));
             invalidate();
             return true;
         }
