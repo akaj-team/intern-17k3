@@ -31,6 +31,7 @@ public class DownloadFragment extends Fragment {
     private ProgressBar mProgressBar;
     private Button mBtnStart;
     private View mView;
+    private int mFinishProgressBar;
     private int mStatus = 0;
     public Bitmap mBitmap;
     private long mTotal = 0;
@@ -98,9 +99,6 @@ public class DownloadFragment extends Fragment {
                         }
                     });
                 }
-                if (mStatus >= 100) {
-                    mStatus = 0;
-                }
             }
         }).start();
     }
@@ -123,14 +121,14 @@ public class DownloadFragment extends Fragment {
                     int fileLength = connection.getContentLength();
                     input = connection.getInputStream();
                     output = new ByteArrayOutputStream();
-                    byte data[] = new byte[512];
+                    byte data[] = new byte[1024];
                     int count;
                     while ((count = input.read(data)) != -1) {
                         mTotal += count;
-                        mStatus = (int) (mTotal * 100 / fileLength);
+                        mStatus = (int) ((mTotal) / fileLength) * mFinishProgressBar;
                         output.write(data, 0, count);
                     }
-                    mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
+                    mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.toByteArray().length);
 
                 } catch (IOException e) {
                     Log.d("e", e.getMessage());
