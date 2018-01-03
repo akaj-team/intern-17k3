@@ -76,7 +76,7 @@ public class CountDownActivity extends AppCompatActivity {
             @Override
             public void onTick(long l) {
                 mCount = (int) (l / 1000);
-                mTvCountDown.setText(String.valueOf("T"));
+                mTvCountDown.setText(String.valueOf(mCount));
 
                 ++mAddItem;
                 ++mDeleteItem;
