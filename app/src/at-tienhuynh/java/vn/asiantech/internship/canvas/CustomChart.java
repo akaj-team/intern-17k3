@@ -146,25 +146,34 @@ public class CustomChart extends View {
                     // get position
                     mPointOX = (event.getX() - mPointDownX) + mPointOX;
                     mPointDownX = event.getX();
-                    // get time
-//                    mTime = System.currentTimeMillis() - mTime;
                 }
                 break;
             case MotionEvent.ACTION_DOWN:
                 mPointDownX = event.getX();
-//                mTime = System.currentTimeMillis();
+                mTime = System.currentTimeMillis();
                 break;
             case MotionEvent.ACTION_UP:
-//                mSpeed = mPointOX / mTime;
-//                mHandler.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        mSpeed -= 0.1;
-//                        if (mSpeed == 0) {
-//                            mSpeed = 1;
-//                        }
-//                    }
-//                }, 100);
+                // get time
+                mTime = System.currentTimeMillis() - mTime;
+                mTime = System.currentTimeMillis();
+                // get speed
+                mSpeed = mPointOX / mTime;
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mSpeed != 0) {
+                            // set speed down flow time
+                            invalidate();
+                            if (mSpeed > 0) {
+
+                            } else if (mSpeed < 0) {
+                                mSpeed = -mSpeed;
+                                mSpeed -= 1;
+                            }
+                        }
+                        mHandler.postDelayed(this, 100);
+                    }
+                }, 100);
                 break;
         }
         invalidate();
