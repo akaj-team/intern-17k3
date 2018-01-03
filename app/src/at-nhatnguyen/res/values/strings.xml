@@ -68,5 +68,5 @@
     <string name="password_length"><![CDATA[pass <7 or appear a case]]></string>
     <string name="password_space">Pass have space</string>
     <string name="password_3_upper_case">password have 3 upper case</string>
-    <string name="pass">ok</string>
+    <string name="pass">Login</string>
 </resources>

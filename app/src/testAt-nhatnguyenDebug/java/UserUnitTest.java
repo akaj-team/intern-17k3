@@ -21,8 +21,8 @@ public class UserUnitTest {
 
     @Test
     public void checkUserNameLikePassword() {
-        Mockito.when(mTestUser.getUserName()).thenReturn("nhat");
-        Mockito.when(mTestUser.getPassword()).thenReturn("nhat");
+        Mockito.when(mTestUser.getUserName()).thenReturn("abcdefg");
+        Mockito.when(mTestUser.getPassword()).thenReturn("abcdefg");
         Assert.assertTrue(ValidatePassWord.isPassWordLikeUserName(mTestUser.getUserName(), mTestUser.getPassword()));
         Mockito.when(mTestUser.getUserName()).thenReturn("nhat");
         Mockito.when(mTestUser.getPassword()).thenReturn("nguyen");
@@ -41,7 +41,7 @@ public class UserUnitTest {
 
     @Test
     public void checkLengthPassWord() {
-        Mockito.when(mTestUser.getPassword()).thenReturn("nhat");
+        Mockito.when(mTestUser.getPassword()).thenReturn("nhatnh");
         Assert.assertFalse(ValidatePassWord.isLengthPassWord(mTestUser.getPassword()));
         Mockito.when(mTestUser.getPassword()).thenReturn("nhatnguyen");
         Assert.assertTrue(ValidatePassWord.isLengthPassWord(mTestUser.getPassword()));
@@ -51,7 +51,7 @@ public class UserUnitTest {
     public void checkAppearCase() {
         Mockito.when(mTestUser.getPassword()).thenReturn("nhatnguyen");
         Assert.assertFalse(ValidatePassWord.isAppearCase(mTestUser.getPassword()));
-        Mockito.when(mTestUser.getPassword()).thenReturn("nhat");
+        Mockito.when(mTestUser.getPassword()).thenReturn("nhatd");
         Assert.assertTrue(ValidatePassWord.isAppearCase(mTestUser.getPassword()));
     }
 
@@ -59,7 +59,7 @@ public class UserUnitTest {
     public void checkSpaceCase() {
         Mockito.when(mTestUser.getPassword()).thenReturn("abc asasd");
         Assert.assertFalse(ValidatePassWord.isSpaceCase(mTestUser.getPassword()));
-        Mockito.when(mTestUser.getPassword()).thenReturn("nhat");
+        Mockito.when(mTestUser.getPassword()).thenReturn("asdbsdbsdb");
         Assert.assertTrue(ValidatePassWord.isSpaceCase(mTestUser.getPassword()));
     }
 
