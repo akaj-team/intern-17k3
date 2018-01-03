@@ -13,6 +13,7 @@ import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 import vn.asiantech.internship.savedata.ExerciseManagementActivity;
 import vn.asiantech.internship.threadandhandler.SplashThreadAndHandlerActivity;
+import vn.asiantech.internship.unittest.LoginUnitTestActivity;
 import vn.asiantech.internship.viewpagerandtablelayout.ui.SlideActivity;
 
 /**
@@ -28,6 +29,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnImageScreen;
     private Button mBtnViewPager;
     private Button mBtnThreadAndHandler;
+    private Button mBtnUnitTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnImageScreen = findViewById(R.id.btnImageScreen);
         mBtnThreadAndHandler = findViewById(R.id.btnThreadAndHandleScreen);
         mBtnViewPager = findViewById(R.id.btnViewPager);
+        mBtnUnitTest = findViewById(R.id.btnUnitTest);
     }
 
     /**
@@ -65,6 +68,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnImageScreen.setOnClickListener(this);
         mBtnThreadAndHandler.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
+        mBtnUnitTest.setOnClickListener(this);
     }
 
     /**
@@ -96,6 +100,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnViewPager:
                 startActivity(new Intent(this, SlideActivity.class));
+                break;
+            case R.id.btnUnitTest:
+                startActivity(new Intent(this, LoginUnitTestActivity.class));
         }
     }
 }
