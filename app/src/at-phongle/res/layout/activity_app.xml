@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_calculator_screen" />
+
     <Button
         android:id="@+id/btnRecyclerViewScreen"
         android:layout_width="match_parent"
@@ -53,10 +54,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_image_ninepath_vector" />
+
     <Button
         android:id="@+id/btnViewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_viewpager" />
 
+    <Button
+        android:id="@+id/btnThreadHandler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_thread_handler" />
+
+    <Button
+        android:id="@+id/btnCountdownTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_countdown_timer" />
 </LinearLayout>

@@ -60,4 +60,9 @@
     <string name="btn_ninepath">NinePath</string>
     <string name="btn_vector">Vector</string>
     <string name="btn_image_ninepath_vector">Image-Ninepath-Vector</string>
+    <string name="btn_click_thread">Download</string>
+    <string name="tv_percen">%</string>
+    <string name="tv_item_list_countdown">item countdown 1</string>
+    <string name="btn_thread_handler">Thread-handler</string>
+    <string name="btn_countdown_timer">countdown timer</string>
 </resources>

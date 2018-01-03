@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.asynchronous.CountdownTimerActivity;
+import vn.asiantech.internship.asynchronous.HandlerThreadActivity;
 import vn.asiantech.internship.calculator.CalculatorActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageNinepathVectorActivity;
@@ -16,7 +18,7 @@ import vn.asiantech.internship.recyclerview.PostActivity;
 import vn.asiantech.internship.savedata.ExternalStorageActivity;
 import vn.asiantech.internship.savedata.PersonActivity;
 import vn.asiantech.internship.savedata.SharePreferenceActivity;
-import vn.asiantech.internship.viewpager.tutorial.GuideActivity;
+import vn.asiantech.internship.viewpager.ViewPagerMainActivity;
 
 public class AppActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
@@ -28,6 +30,8 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
     private Button mSQLiteScreen;
     private Button mBtnImageNinepathVector;
     private Button mBtnViewPager;
+    private Button mBtnThreadHandler;
+    private Button mBtnCountdown;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +51,8 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mSQLiteScreen = findViewById(R.id.btnSQLiteScreen);
         mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnImageNinepathVector = findViewById(R.id.btnImageNinepathVector);
+        mBtnThreadHandler = findViewById(R.id.btnThreadHandler);
+        mBtnCountdown = findViewById(R.id.btnCountdownTimer);
     }
 
     private void addListener() {
@@ -59,6 +65,8 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mSQLiteScreen.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
         mBtnImageNinepathVector.setOnClickListener(this);
+        mBtnThreadHandler.setOnClickListener(this);
+        mBtnCountdown.setOnClickListener(this);
     }
 
     @Override
@@ -98,7 +106,15 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(intent);
                 break;
             case R.id.btnViewPager:
-                intent = new Intent(AppActivity.this, GuideActivity.class);
+                intent = new Intent(AppActivity.this, ViewPagerMainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnThreadHandler:
+                intent = new Intent(AppActivity.this, HandlerThreadActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnCountdownTimer:
+                intent = new Intent(AppActivity.this, CountdownTimerActivity.class);
                 startActivity(intent);
                 break;
         }
