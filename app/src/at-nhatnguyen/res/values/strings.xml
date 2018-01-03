@@ -54,4 +54,7 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_ok">ok</string>
     <string name="update_information">Update Information</string>
+    <string name="button_submit">submit</string>
+    <string name="user_name">User Name</string>
+    <string name="pass_word">Pass Word</string>
 </resources>

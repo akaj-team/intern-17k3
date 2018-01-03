@@ -3,7 +3,6 @@
     package="vn.asiantech.internship">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -37,6 +36,7 @@
         <activity android:name=".ui.imageview.VectorImageActivity" />
         <activity android:name=".ui.viewpager.ViewpagerActivity" />
         <activity android:name=".ui.viewpager.ViewPagerMainActivity" />
+        <activity android:name=".ui.unittest.UnitTestActivity"></activity>
     </application>
 
 </manifest>
