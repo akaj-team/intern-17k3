@@ -43,7 +43,9 @@ public class CustomView extends View {
     private int[] mPersonC;
     private float mMoveX;
     private float mTouchX;
-    private float mTime;
+    private float mTimeStart;
+    private float mTimeStop;
+    private float mTimeMove;
     private float mSpeed;
     private int mOffset;
     private int mStartXPersonA;
@@ -53,8 +55,9 @@ public class CustomView extends View {
     private float mScaleFactor = 1.f;
     private Handler mHandler;
     private Runnable mRunnable;
-    private int mXBegin = 0;
-    private int mMoveDistance;
+    private float mXBegin = 0;
+    private float mXStop = 0;
+    private float mMoveDistance;
 
     public CustomView(Context context) {
         this(context, null);
@@ -210,6 +213,7 @@ public class CustomView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mTouchX = event.getX();
+                mTimeStart = System.currentTimeMillis();
                 mXBegin = (int) event.getX();
                 Log.d("aaa", "action down " + event.getX());
                 break;
@@ -217,32 +221,32 @@ public class CustomView extends View {
                 if (event.getPointerCount() == 1) {
                     mMoveX += event.getX() - mTouchX;
                     mTouchX = event.getX();
-                    mTime = System.currentTimeMillis();
-                    mSpeed = mMoveX / mTime;
-                    mOffset = 10;
                     updateStartXPersonLine(mMoveX);
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("aaa", "t: " + mTime);
+                mTimeStop = System.currentTimeMillis();
+                mTimeMove = mTimeStop - mTimeStart;
+                Log.d("aaa", "t: " + mTimeMove);
                 Log.d("aaa", "s: " + mTouchX);
                 Log.d("aaa", "v: " + mSpeed);
                 Log.d("aaa", "offset: " + mOffset);
-                int x = (int) event.getX();
-                mMoveDistance = x - mXBegin > 0 ? 1 : -1;
-                mOffset = 100;
-                if (mMoveDistance == 1) {
-                    Log.d("hd", "right: " + event.getX());
-                } else {
-                    Log.d("hd", "left: " + mMoveDistance);
-                }
+                mXStop = (int) event.getX();
+                mMoveDistance = mXStop - mXBegin;
+                float xxx = mMoveX - mTouchX;
+                Log.d("aaa", "xxx: " + xxx);
+                mOffset = 500;
                 mHandler.postDelayed(mRunnable = new Runnable() {
                     @Override
                     public void run() {
-                        delayMove();
-                        mHandler.postDelayed(this, 10);
+//                        while (mOffset > 0) {
+                            delayMove();
+                            mOffset--;
+
+                            mHandler.postDelayed(this, 100);
+//                        }
                     }
-                }, 10);
+                }, 100);
                 break;
         }
         invalidate();
@@ -250,11 +254,24 @@ public class CustomView extends View {
     }
 
     private void delayMove() {
-        while (mOffset > 0) {
-            mOffset--;
-            Log.d("ooo", "delayMove: " + mOffset);
-            mMoveX += mMoveDistance * 2;
+        if (mMoveDistance > 0) {
+            Log.d("hd", "right: " + mXBegin);
+            mMoveX += 5;
             updateStartXPersonLine(mMoveX);
+            invalidate();
+        } else if (mMoveDistance < 0) {
+            Log.d("hd", "left: " + mMoveDistance);
+            mMoveX -= 5;
+            updateStartXPersonLine(mMoveX);
+            invalidate();
+        } else {
+            Log.d("hd", "hear: " + mMoveDistance);
+            invalidate();
+        }
+        Log.d("ooo", "delayMove: " + mOffset);
+        if(mOffset<=0){
+            mHandler.removeCallbacks(mRunnable);
+                mRunnable.hashCode();
         }
     }
 
