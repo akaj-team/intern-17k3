@@ -97,7 +97,7 @@
     <string name="good_username">good username</string>
     <string name="null_input_password">null input password</string>
     <string name="good_password">good password</string>
-    <string name="check_password_have_least_3_characters">password must have have lest 3 Characters</string>
+    <string name="check_password_have_least_3_characters">password must have lest 3 Characters</string>
     <string name="check_password_have_not_white_space">password must haven\'t white space</string>
     <string name="check_password_repeat_charater_a_little_2_times">password must have repeat character a little 2 times</string>
     <string name="check_password_length">password must have length more than 7 char</string>

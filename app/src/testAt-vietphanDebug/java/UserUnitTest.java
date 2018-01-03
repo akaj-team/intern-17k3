@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import vn.asiantech.internship.models.UserTesting;
 import vn.asiantech.internship.ui.unittest.UserValidation;
@@ -13,7 +12,7 @@ import static org.mockito.Mockito.when;
  * Created by vietphan on 02/01/2018.
  * Class UserUnitTest
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(org.mockito.junit.MockitoJUnitRunner.class)
 public class UserUnitTest {
     @Mock
     private UserTesting mUser;
