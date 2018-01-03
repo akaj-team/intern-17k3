@@ -1,4 +1,4 @@
-package vn.asiantech.internship.test;
+package vn.asiantech.internship.validation;
 
 import java.util.Locale;
 
@@ -15,7 +15,7 @@ public class UserNameValidation {
         return userName.length() > 5 && userName.length() < 24;
     }
 
-    public static boolean checkUserNameCapitalization(String userName) {
+    public static boolean checkCapitalUserName(String userName) {
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isUpperCase(userName.charAt(i))) {
                 return true;
