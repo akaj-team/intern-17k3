@@ -26,13 +26,13 @@ public class UnitTestActivity extends AppCompatActivity implements View.OnClickL
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            userNameValidator(mEdtUserName.getText().toString().trim());
-            passwordValidator(mEdtUserName.getText().toString().trim(), mEdtPassWord.getText().toString().trim());
+            // No-op
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
-            // No-op
+            userNameValidator(mEdtUserName.getText().toString().trim());
+            passwordValidator(mEdtUserName.getText().toString().trim(), mEdtPassWord.getText().toString().trim());
         }
     };
 
