@@ -35,7 +35,7 @@ public class UserUnitTest {
         Assert.assertTrue(ValidatePassWord.isSpecialNumberPassWord(mTestUser.getPassword()));
         Mockito.when(mTestUser.getPassword()).thenReturn("nhat1");
         Assert.assertTrue(ValidatePassWord.isSpecialNumberPassWord(mTestUser.getPassword()));
-        Mockito.when(mTestUser.getPassword()).thenReturn("nhatnguyen");
+        Mockito.when(mTestUser.getPassword()).thenReturn("nhatnguyenhoang");
         Assert.assertFalse(ValidatePassWord.isSpecialNumberPassWord(mTestUser.getPassword()));
     }
 
@@ -43,7 +43,7 @@ public class UserUnitTest {
     public void checkLengthPassWord() {
         Mockito.when(mTestUser.getPassword()).thenReturn("nhatnh");
         Assert.assertFalse(ValidatePassWord.isLengthPassWord(mTestUser.getPassword()));
-        Mockito.when(mTestUser.getPassword()).thenReturn("nhatnguyen");
+        Mockito.when(mTestUser.getPassword()).thenReturn("nhatnguyenhoang");
         Assert.assertTrue(ValidatePassWord.isLengthPassWord(mTestUser.getPassword()));
     }
 
