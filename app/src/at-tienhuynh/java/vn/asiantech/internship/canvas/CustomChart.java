@@ -158,18 +158,16 @@ public class CustomChart extends View {
                 mTime = System.currentTimeMillis();
                 // get speed
                 mSpeed = mPointOX / mTime;
+                //set speed
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         if (mSpeed != 0) {
                             // set speed down flow time
                             invalidate();
-                            if (mSpeed > 0) {
-
-                            } else if (mSpeed < 0) {
-                                mSpeed = -mSpeed;
-                                mSpeed -= 1;
-                            }
+                            mSpeed -= 1;
+                        } else if (mSpeed == 0) {
+                            mPointOX = 0;
                         }
                         mHandler.postDelayed(this, 100);
                     }
@@ -253,30 +251,30 @@ public class CustomChart extends View {
             int y2 = ChartValues.people2Values().get(i) * SCALE_Y;
             int y3 = ChartValues.people3Values().get(i) * SCALE_Y;
             // draw chart people 1
-            canvas.drawRoundRect(new RectF(mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn
+            canvas.drawRoundRect(new RectF(mSpeed * (mPointOX + getWidth() / 2 + i * (mLengthOneColumn
                     * (TOTAL_PEOPLE + SCALE_X)) - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1))
-                    * mLengthOneColumn) / 2 - DISTANCE_START, getHeight() / 2 - y1,
-                    mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
-                            - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
+                    * mLengthOneColumn) / 2 - DISTANCE_START), getHeight() / 2 - y1,
+                    mSpeed * (mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
+                            - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn),
                     getHeight() / 2), 10, 5, mPaintPeople1);
             // draw chart people 2
-            canvas.drawRoundRect(new RectF(mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn
+            canvas.drawRoundRect(new RectF(mSpeed * (mPointOX + getWidth() / 2 + i * (mLengthOneColumn
                     * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn + SCALE_X - ((NUM_DAY * TOTAL_PEOPLE
-                    + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
+                    + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START),
                     getHeight() / 2 - y2,
-                    mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
+                    mSpeed * (mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
                             + mLengthOneColumn + SCALE_X - ((NUM_DAY * TOTAL_PEOPLE
-                            + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
+                            + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn),
                     getHeight() / 2), 10, 5, mPaintPeople2);
             // draw chart people 3
-            canvas.drawRoundRect(new RectF(mSpeed * mPointOX + getWidth() / 2 + i
+            canvas.drawRoundRect(new RectF(mSpeed * (mPointOX + getWidth() / 2 + i
                     * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn * 2 + SCALE_X * 2
-                    - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
+                    - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START),
                     getHeight() / 2 - y3,
-                    mSpeed * mPointOX + getWidth() / 2 + i
+                    mSpeed * (mPointOX + getWidth() / 2 + i
                             * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn * 2
                             + SCALE_X * 2 - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1))
-                            * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
+                            * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn),
                     getHeight() / 2), 10, 5, mPaintPeople3);
         }
     }
