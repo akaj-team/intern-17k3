@@ -26,12 +26,8 @@ public final class UserValidation {
      * @return isLeastOneCapitalLetterUserName boolean state
      */
     public static boolean isLeastOneCapitalLetterUserName(String userName) {
-        boolean isCapital = false;
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isUpperCase(userName.charAt(i))) {
-                isCapital = true;
-            }
-            if (isCapital) {
                 return true;
             }
         }
@@ -56,16 +52,12 @@ public final class UserValidation {
      */
     public static boolean isMostTwoNumberUserName(String userName) {
         int numCount = 0;
-        boolean isSumNumber = false;
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isDigit(userName.charAt(i))) {
                 numCount++;
             }
         }
-        if (numCount <= 2) {
-            isSumNumber = true;
-        }
-        return isSumNumber;
+        return numCount <= 2;
     }
 
     /**
@@ -118,7 +110,6 @@ public final class UserValidation {
      * @return isRepeat boolean state
      */
     public static boolean isRepeatCharacterPassword(String password) {
-        boolean isRepeat = true;
         int numCount = 0;
         String[] strings = password.split("");
         for (int i = 0; i < strings.length; i++) {
@@ -127,12 +118,8 @@ public final class UserValidation {
                     numCount++;
                 }
             }
-            if (numCount > 2) {
-                isRepeat = false;
-                numCount = 0;
-            }
         }
-        return isRepeat;
+        return numCount > 2;
     }
 
     /**
@@ -153,15 +140,11 @@ public final class UserValidation {
      */
     public static boolean isLestThreeCharacters(String password) {
         int numCount = 0;
-        boolean isSumCharacters = false;
         for (int i = 0; i < password.length(); i++) {
             if (Character.isUpperCase(password.charAt(i))) {
                 numCount++;
             }
         }
-        if (numCount >= 3) {
-            isSumCharacters = true;
-        }
-        return isSumCharacters;
+        return numCount >= 3;
     }
 }
