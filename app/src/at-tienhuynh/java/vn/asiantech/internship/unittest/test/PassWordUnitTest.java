@@ -66,7 +66,7 @@ public class PassWordUnitTest {
     public void checkRepeatCharacter() {
         Mockito.when(mUser.getPassword()).thenReturn("Tien270197");
         Assert.assertTrue(PasswordValidation.checkRepeatCharacter(mUser.getPassword()));
-        Mockito.when(mUser.getPassword()).thenReturn("HuuuTien");
+        Mockito.when(mUser.getPassword()).thenReturn("aabccc");
         Assert.assertFalse(PasswordValidation.checkRepeatCharacter(mUser.getPassword()));
     }
 }

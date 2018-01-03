@@ -93,15 +93,15 @@ public class LoginUnitTestActivity extends AppCompatActivity {
                 if (password.length() == 0) {
                     showToast(getString(R.string.null_password));
                 } else if (!PasswordValidation.checkLength(password)) {
-                    showToast(getString(R.string.validate_password_legth));
+                    showToast(getString(R.string.validate_password_length));
                 } else if (!PasswordValidation.checkDifferentUserName(mEdtUserName.getText().toString(), password)) {
-                    showToast(getString(R.string.validate_password_differrent_user_name));
+                    showToast(getString(R.string.validate_password_different_user_name));
                 } else if (PasswordValidation.checkAtLeastNumber(password)) {
                     showToast(getString(R.string.validate_password_have_least_number));
                 } else if (!PasswordValidation.checkPasswordSpace(password)) {
                     showToast(getString(R.string.validate_password_space));
                 } else if (!PasswordValidation.checkCapitalLetter(password)) {
-                    showToast(getString(R.string.validate_password_least_3_capital_leter));
+                    showToast(getString(R.string.validate_password_least_3_capital_letter));
                 } else if (!PasswordValidation.checkRepeatCharacter(password)) {
                     showToast(getString(R.string.validate_password_repeat));
                 } else {

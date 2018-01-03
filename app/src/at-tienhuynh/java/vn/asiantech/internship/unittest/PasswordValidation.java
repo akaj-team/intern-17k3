@@ -89,6 +89,7 @@ public final class PasswordValidation {
                     numCount++;
                     if (numCount > 2) {
                         isRepeat = true;
+                        numCount = 0;
                     }
                 }
             }
