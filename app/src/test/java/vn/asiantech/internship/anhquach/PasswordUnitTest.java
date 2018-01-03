@@ -1,4 +1,4 @@
-package vn.asiantech.internship.test;
+package vn.asiantech.internship.anhquach;
 
 import junit.framework.Assert;
 
@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import vn.asiantech.internship.model.User;
 import vn.asiantech.internship.validation.PasswordValidation;
@@ -14,7 +15,7 @@ import vn.asiantech.internship.validation.PasswordValidation;
  * Created by anh.quach on 1/3/18.
  * password unit test
  */
-@RunWith(org.mockito.junit.MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class PasswordUnitTest {
     @Mock
     private User mUser;
