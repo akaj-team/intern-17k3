@@ -102,27 +102,27 @@ public class CustomView extends View {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        while (v!=0){
-
-                        if (v > 0) {
-                            mMoveX = (int) (mMoveX + v * 10);
-                            update(mMoveX);
-                            v -= 0.1;
-                            invalidate();
-                        }
-                        if (v < 0) {
-                            mMoveX = (int) (mMoveX + v * 10);
-                            update(mMoveX);
-                            v += 0.1;
-                            invalidate();
-                        } else {
-                            update(0);
-                            invalidate();
-                        }
-                        Log.d("v", " mMoveX:" );
+                        if (v != 0) {
+                            if (v > 0) {
+                                mMoveX = (int) (mMoveX + v * 10);
+                                update(mMoveX);
+                                v -= 0.1;
+                                invalidate();
+                            }
+                            if (v < 0) {
+                                mMoveX = (int) (mMoveX + v * 10);
+                                update(mMoveX);
+                                v += 0.1;
+                                invalidate();
+                            } else {
+                                update(0);
+                                invalidate();
+                            }
+                            Log.d("v", " mMoveX:");
+                            handler.postDelayed(this, 10);
                         }
                     }
-                }, 1000);
+                }, 10);
                 break;
         }
         invalidate();
