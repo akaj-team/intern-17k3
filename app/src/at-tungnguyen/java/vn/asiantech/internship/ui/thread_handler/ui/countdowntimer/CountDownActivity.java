@@ -25,6 +25,11 @@ public class CountDownActivity extends AppCompatActivity {
     private TextView mTvCountDown;
     private CountDownTimer mCountDownTimer;
     private int mCount = 0;
+    private static final int MILLISINFUTURE = 180000;
+    private static final int COUNTDOWNINTERVAL = 1000;
+    private int mAddItem = 0;
+    private int mDeleteItem = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,7 @@ public class CountDownActivity extends AppCompatActivity {
         initAdapter();
         initData();
         initCountDown();
-        addItem();
-        deleteItem();
+
     }
 
     /**
@@ -59,70 +63,46 @@ public class CountDownActivity extends AppCompatActivity {
      * initData for list mCountDownTimers
      */
     private void initData() {
-        mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
-        mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
-        mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
+        mCountDownTimers.add(new CountDownItem("Tung"));
+        mCountDownTimers.add(new CountDownItem("Tung"));
+        mCountDownTimers.add(new CountDownItem("Tung"));
     }
 
     /**
      * initCountDown
      */
     private void initCountDown() {
-        mCountDownTimer = new CountDownTimer(180000, 1000) {
+        mCountDownTimer = new CountDownTimer(MILLISINFUTURE, COUNTDOWNINTERVAL) {
             @Override
             public void onTick(long l) {
                 mCount = (int) (l / 1000);
-                mTvCountDown.setText(String.valueOf(l / 1000));
+                mTvCountDown.setText(mCount+"");
+
+                ++mAddItem;
+                ++mDeleteItem;
+                if (mAddItem == 10) {
+                    mCountDownTimers.add(new CountDownItem("Tung"));
+                    mCountDownTimers.add(new CountDownItem("Tung"));
+                    mCountDownAdapter.notifyDataSetChanged();
+                    mAddItem = 0;
+                }
+                if (mDeleteItem == 15) {
+                    mCountDownTimers.remove(mCountDownTimers.size() / 2);
+                    mCountDownAdapter.notifyDataSetChanged();
+                    mDeleteItem = 0;
+                }
             }
 
             @Override
             public void onFinish() {
                 mCount = 0;
-                mTvCountDown.setText(String.valueOf(mCount));
             }
         }.start();
     }
 
-    /**
-     * addItem for RecyclerView
-     */
-    private void addItem() {
-        mCountDownTimer = new CountDownTimer(10000, 1000) {
-            @Override
-            public void onTick(long l) {
-                //No-opp
-            }
-
-            @Override
-            public void onFinish() {
-                if (mCount > 0) {
-                    mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
-                    mCountDownTimers.add(new CountDownItem(String.valueOf(R.string.tv_countdown_timer)));
-                    mCountDownAdapter.notifyDataSetChanged();
-                    addItem();
-                }
-            }
-        }.start();
-    }
-
-    /**
-     * DeleteItem RecyclerView
-     */
-    private void deleteItem() {
-        mCountDownTimer = new CountDownTimer(15000, 1000) {
-            @Override
-            public void onTick(long l) {
-                //No-opp
-            }
-
-            @Override
-            public void onFinish() {
-                if (mCount > 0) {
-                    mCountDownTimers.remove(mCountDownTimers.size() / 2);
-                    mCountDownAdapter.notifyDataSetChanged();
-                    deleteItem();
-                }
-            }
-        }.start();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCountDownTimer.cancel();
     }
 }

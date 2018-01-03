@@ -33,8 +33,9 @@ public class DownloadFragment extends Fragment {
     private View mView;
     private int mStatus = 0;
     public Bitmap mBitmap;
+    private long mTotal = 0;
     private Handler mProgressBarHandler = new Handler();
-    private String mImageUrl = "https://i.ytimg.com/vi/Orh592OBoKY/maxresdefault.jpg";
+    private static String mImageUrl = "https://i.ytimg.com/vi/Orh592OBoKY/maxresdefault.jpg";
 
     public DownloadFragment() {
         //No-opp
@@ -89,11 +90,6 @@ public class DownloadFragment extends Fragment {
             @Override
             public void run() {
                 while (mStatus < 100) {
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        Log.d("e1", e.getMessage());
-                    }
                     mProgressBarHandler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -103,11 +99,6 @@ public class DownloadFragment extends Fragment {
                     });
                 }
                 if (mStatus >= 100) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Log.d("e", e.getMessage());
-                    }
                     mStatus = 0;
                 }
             }
@@ -121,25 +112,39 @@ public class DownloadFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                HttpURLConnection connection = null;
+                InputStream input = null;
+                ByteArrayOutputStream output = null;
                 try {
                     URL url = new URL(imageUrl);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection = (HttpURLConnection) url.openConnection();
                     connection.setDoInput(true);
                     connection.connect();
                     int fileLength = connection.getContentLength();
-                    InputStream input = connection.getInputStream();
-                    ByteArrayOutputStream output = new ByteArrayOutputStream();
+                    input = connection.getInputStream();
+                    output = new ByteArrayOutputStream();
                     byte data[] = new byte[512];
-                    long total = 0;
                     int count;
                     while ((count = input.read(data)) != -1) {
-                        total += count;
+                        mTotal += count;
+                        mStatus = (int) (mTotal * 100 / fileLength);
                         output.write(data, 0, count);
-                        mStatus = (int) (total * 100 / fileLength);
-                        mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                     }
+                    mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
+
                 } catch (IOException e) {
                     Log.d("e", e.getMessage());
+                } finally {
+                    assert connection != null;
+                    connection.disconnect();
+                    try {
+                        assert input != null;
+                        input.close();
+                        assert output != null;
+                        output.close();
+                    } catch (IOException e) {
+                        Log.d("error close :", e.getMessage());
+                    }
                 }
                 if (mBitmap != null) {
                     getActivity().runOnUiThread(new Runnable() {

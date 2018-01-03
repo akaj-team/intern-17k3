@@ -39,6 +39,9 @@ public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.View
         return mCountDownItems.size();
     }
 
+    /**
+     * ViewHolder of RecyclerView
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvName;
 
