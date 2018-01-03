@@ -48,19 +48,16 @@ public final class PasswordValidation {
      * @return true when password have 3 capital letter
      */
     public static boolean isCapitalLetter(String password) {
-        char character;
         int numCount = 0;
-        boolean capitalFlag = false;
         for (int i = 0; i < password.length(); i++) {
-            character = password.charAt(i);
-            if (Character.isUpperCase(character)) {
+            if (Character.isUpperCase(password.charAt(i))) {
                 numCount++;
                 if (numCount >= 3) {
-                    capitalFlag = true;
+                    return true;
                 }
             }
         }
-        return capitalFlag;
+        return false;
     }
 
     /**
@@ -80,7 +77,6 @@ public final class PasswordValidation {
      * @return true when password have character repeat again
      */
     public static boolean isRepeatCharacter(String password) {
-        boolean isRepeat = false;
         int numCount = 0;
         String[] words = password.split("");
         for (int i = 0; i < words.length; i++) {
@@ -88,12 +84,11 @@ public final class PasswordValidation {
                 if (words[i].equals(words[j])) {
                     numCount++;
                     if (numCount > 2) {
-                        isRepeat = true;
-                        numCount = 0;
+                        return false;
                     }
                 }
             }
         }
-        return !isRepeat;
+        return true;
     }
 }

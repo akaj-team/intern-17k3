@@ -3,8 +3,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
-
+import org.mockito.junit.MockitoJUnitRunner;
 import vn.asiantech.internship.unittest.User;
 import vn.asiantech.internship.unittest.UserNameValidation;
 
@@ -21,9 +20,9 @@ public class UserUnitTest {
     @Test
     public void checkLengthUserName() {
         Mockito.when(mUser.getUser()).thenReturn("tienhuuynh");
-        Assert.assertTrue(UserNameValidation.isLengthUserName(mUser.getUser()));
+        Assert.assertTrue(UserNameValidation.isValidateLengthUserName(mUser.getUser()));
         Mockito.when(mUser.getUser()).thenReturn("tien");
-        Assert.assertFalse(UserNameValidation.isLengthUserName(mUser.getUser()));
+        Assert.assertFalse(UserNameValidation.isValidateLengthUserName(mUser.getUser()));
     }
 
     @Test

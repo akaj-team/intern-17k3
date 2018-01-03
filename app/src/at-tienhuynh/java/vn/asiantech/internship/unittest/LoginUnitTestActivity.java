@@ -70,7 +70,7 @@ public class LoginUnitTestActivity extends AppCompatActivity {
         boolean isValidationUserName = false;
         if (username.length() == 0) {
             showToast(getString(R.string.null_user_name));
-        } else if (!UserNameValidation.isLengthUserName(username)) {
+        } else if (!UserNameValidation.isValidateLengthUserName(username)) {
             showToast(getString(R.string.validate_username_length));
         } else if (!UserNameValidation.isCapitalLetterAndNumber(username)) {
             showToast(getString(R.string.validate_username_capture_number));

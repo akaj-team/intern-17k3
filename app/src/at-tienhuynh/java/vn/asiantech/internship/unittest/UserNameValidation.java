@@ -14,7 +14,7 @@ public final class UserNameValidation {
      * @param userName username
      * @return true when length of username > 5 and < 24 char
      */
-    public static boolean isLengthUserName(String userName) {
+    public static boolean isValidateLengthUserName(String userName) {
         return userName.length() > 5 && userName.length() < 24;
     }
 
@@ -25,15 +25,13 @@ public final class UserNameValidation {
      * @return true when username have least one capital letter and most 2 number
      */
     public static boolean isCapitalLetterAndNumber(String userName) {
-        char ch;
         int numCount = 0;
         boolean capitalFlag = false;
         boolean numberFlag = false;
         for (int i = 0; i < userName.length(); i++) {
-            ch = userName.charAt(i);
-            if (Character.isUpperCase(ch)) {
+            if (Character.isUpperCase(userName.charAt(i))) {
                 capitalFlag = true;
-            } else if (Character.isDigit(ch)) {
+            } else if (Character.isDigit(userName.charAt(i))) {
                 numCount++;
                 if (numCount <= 2) {
                     numberFlag = true;
