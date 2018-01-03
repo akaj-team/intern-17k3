@@ -35,9 +35,6 @@ public class DownLoadImageFragment extends Fragment {
     private Button mBtnStart;
     private TextView mTvPercentage;
     private Bitmap mBitmap;
-    private HttpURLConnection mUrlConnection;
-    private InputStream mInputStream;
-    private ByteArrayOutputStream mOutputStream;
 
     @Nullable
     @Override
@@ -81,11 +78,11 @@ public class DownLoadImageFragment extends Fragment {
         try {
             String urlImage = "https://i2-prod.manchestereveningnews.co.uk/incoming/article1736623.ece/ALTERNATES/s1227b/Paul%20Scholes.jpg";
             URL url = new URL(urlImage);
-            mUrlConnection = (HttpURLConnection) url.openConnection();
-            mUrlConnection.connect();
-            mInputStream = mUrlConnection.getInputStream();
-            mOutputStream = new ByteArrayOutputStream();
-            mTotalSize = mUrlConnection.getContentLength();
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.connect();
+            InputStream inputStream = urlConnection.getInputStream();
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            mTotalSize = urlConnection.getContentLength();
             getActivity().runOnUiThread(new Runnable() {
                 public void run() {
                     mProgressBar.setMax(mTotalSize);
@@ -93,8 +90,8 @@ public class DownLoadImageFragment extends Fragment {
             });
             final byte[] buffer = new byte[1024];
             int bufferLength;
-            while ((bufferLength = mInputStream.read(buffer)) > 0) {
-                mOutputStream.write(buffer, 0, bufferLength);
+            while ((bufferLength = inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, bufferLength);
                 mDownloadedSize += bufferLength;
                 getActivity().runOnUiThread(new Runnable() {
                     @SuppressLint("SetTextI18n")
@@ -105,7 +102,7 @@ public class DownLoadImageFragment extends Fragment {
                         mTvPercentage.setText(String.format(getString(R.string.download, mDownloadedSize, mTotalSize, percentage)) + "%)");
                     }
                 });
-                mBitmap = BitmapFactory.decodeByteArray(mOutputStream.toByteArray(), 0, mOutputStream.size());
+                mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.size());
             }
             getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -119,20 +116,11 @@ public class DownLoadImageFragment extends Fragment {
                     }
                 }
             });
+            urlConnection.disconnect();
+            inputStream.close();
+            outputStream.close();
         } catch (final IOException e) {
             Log.e(TAG, getString(R.string.text_error));
-        } finally {
-            mUrlConnection.disconnect();
-            try {
-                mInputStream.close();
-            } catch (IOException e) {
-                Log.e(TAG, getString(R.string.close_error));
-            }
-            try {
-                mOutputStream.close();
-            } catch (IOException e) {
-                Log.e(TAG, getString(R.string.close_error));
-            }
         }
     }
 }
