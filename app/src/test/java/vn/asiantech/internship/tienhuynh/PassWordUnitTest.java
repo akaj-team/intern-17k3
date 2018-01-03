@@ -1,4 +1,4 @@
-package vn.asiantech.internship.unittest.test;
+package vn.asiantech.internship.tienhuynh;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,49 +24,49 @@ public class PassWordUnitTest {
     public void checkDifferentUserName() {
         Mockito.when(mUser.getUser()).thenReturn("tienhuynh");
         Mockito.when(mUser.getPassword()).thenReturn("tiennguyen");
-        Assert.assertTrue(PasswordValidation.checkDifferentUserName(mUser.getUser(), mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isDifferentUserName(mUser.getUser(), mUser.getPassword()));
         Mockito.when(mUser.getUser()).thenReturn("tienhuinh");
         Mockito.when(mUser.getPassword()).thenReturn("tienhuinh");
-        Assert.assertFalse(PasswordValidation.checkDifferentUserName(mUser.getUser(), mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isDifferentUserName(mUser.getUser(), mUser.getPassword()));
     }
 
     @Test
     public void checkPasswordSpace() {
         Mockito.when(mUser.getPassword()).thenReturn("");
-        Assert.assertTrue(PasswordValidation.checkPasswordSpace(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isPasswordSpace(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn(" ");
-        Assert.assertFalse(PasswordValidation.checkPasswordSpace(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isPasswordSpace(mUser.getPassword()));
     }
 
     @Test
     public void checkAtLeastNumber() {
         Mockito.when(mUser.getPassword()).thenReturn("tienhuynh2%");
-        Assert.assertTrue(PasswordValidation.checkAtLeastNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isAtLeastNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("tienhuenh");
-        Assert.assertFalse(PasswordValidation.checkAtLeastNumber(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isAtLeastNumber(mUser.getPassword()));
     }
 
     @Test
     public void checkCapitalLetter() {
         Mockito.when(mUser.getPassword()).thenReturn("HUYtien");
-        Assert.assertTrue(PasswordValidation.checkCapitalLetter(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isCapitalLetter(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("tienhumnh");
-        Assert.assertFalse(PasswordValidation.checkCapitalLetter(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isCapitalLetter(mUser.getPassword()));
     }
 
     @Test
     public void checkLength() {
         Mockito.when(mUser.getPassword()).thenReturn("HUYtien27");
-        Assert.assertTrue(PasswordValidation.checkLength(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isLength(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("ti");
-        Assert.assertFalse(PasswordValidation.checkLength(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isLength(mUser.getPassword()));
     }
 
     @Test
     public void checkRepeatCharacter() {
         Mockito.when(mUser.getPassword()).thenReturn("Tien270197");
-        Assert.assertTrue(PasswordValidation.checkRepeatCharacter(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isRepeatCharacter(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("aabccc");
-        Assert.assertFalse(PasswordValidation.checkRepeatCharacter(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isRepeatCharacter(mUser.getPassword()));
     }
 }

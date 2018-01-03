@@ -11,21 +11,21 @@ public final class PasswordValidation {
     /**
      * Check password different username
      *
-     * @param userName
-     * @param password
-     * @return
+     * @param username username
+     * @param password password
+     * @return true when password not equals username
      */
-    public static boolean checkDifferentUserName(String userName, String password) {
-        return !password.equals(userName);
+    public static boolean isDifferentUserName(String username, String password) {
+        return !password.equals(username);
     }
 
     /**
      * Check have at least one special character or number
      *
-     * @param password
-     * @return
+     * @param password password
+     * @return true when password have one special char or number
      */
-    public static boolean checkAtLeastNumber(String password) {
+    public static boolean isAtLeastNumber(String password) {
         Pattern specialCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Pattern digitCasePatten = Pattern.compile("[0-9 ]");
         return specialCharPatten.matcher(password).find() || digitCasePatten.matcher(password).find();
@@ -34,20 +34,20 @@ public final class PasswordValidation {
     /**
      * check password have space
      *
-     * @param password
-     * @return
+     * @param password password
+     * @return true when password not have space
      */
-    public static boolean checkPasswordSpace(String password) {
+    public static boolean isPasswordSpace(String password) {
         return !password.contains(" ");
     }
 
     /**
      * check password have 3 capital letter
      *
-     * @param password
-     * @return
+     * @param password password
+     * @return true when password have 3 capital letter
      */
-    public static boolean checkCapitalLetter(String password) {
+    public static boolean isCapitalLetter(String password) {
         char character;
         int numCount = 0;
         boolean capitalFlag = false;
@@ -64,22 +64,22 @@ public final class PasswordValidation {
     }
 
     /**
-     * Check length > 7
+     * Check length more than 7
      *
-     * @param password
-     * @return
+     * @param password password
+     * @return true when length of password more than 7
      */
-    public static boolean checkLength(String password) {
+    public static boolean isLength(String password) {
         return password.length() > 7;
     }
 
     /**
-     * Check repeat character password > 2 times
+     * Check repeat character password more than 2 times
      *
      * @param password
-     * @return
+     * @return true when password have character repeat again
      */
-    public static boolean checkRepeatCharacter(String password) {
+    public static boolean isRepeatCharacter(String password) {
         boolean isRepeat = false;
         int numCount = 0;
         String[] words = password.split("");
