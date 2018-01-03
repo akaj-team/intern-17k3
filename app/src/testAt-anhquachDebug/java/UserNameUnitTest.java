@@ -1,5 +1,3 @@
-package vn.asiantech.internship.anhquach;
-
 import junit.framework.Assert;
 
 import org.junit.Test;
