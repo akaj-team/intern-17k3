@@ -18,6 +18,7 @@ import vn.asiantech.internship.ui.thread_handler.adapter.CountDownAdapter;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 08/12/2017.
  */
+
 public class CountDownActivity extends AppCompatActivity {
     private List<CountDownItem> mCountDownTimers = new ArrayList<>();
     private RecyclerView mRecyclerView;
@@ -63,9 +64,9 @@ public class CountDownActivity extends AppCompatActivity {
      * initData for list mCountDownTimers
      */
     private void initData() {
-        mCountDownTimers.add(new CountDownItem("Tung"));
-        mCountDownTimers.add(new CountDownItem("Tung"));
-        mCountDownTimers.add(new CountDownItem("Tung"));
+        mCountDownTimers.add(new CountDownItem(getResources().getString(Integer.parseInt(String.valueOf(R.string.tv_countdown_timer)))));
+        mCountDownTimers.add(new CountDownItem(getResources().getString(Integer.parseInt(String.valueOf(R.string.tv_countdown_timer)))));
+        mCountDownTimers.add(new CountDownItem(getResources().getString(Integer.parseInt(String.valueOf(R.string.tv_countdown_timer)))));
     }
 
     /**
@@ -81,8 +82,8 @@ public class CountDownActivity extends AppCompatActivity {
                 ++mAddItem;
                 ++mDeleteItem;
                 if (mAddItem == 10) {
-                    mCountDownTimers.add(new CountDownItem("Tung"));
-                    mCountDownTimers.add(new CountDownItem("Tung"));
+                    mCountDownTimers.add(new CountDownItem(getResources().getString(Integer.parseInt(String.valueOf(R.string.tv_countdown_timer)))));
+                    mCountDownTimers.add(new CountDownItem(getResources().getString(Integer.parseInt(String.valueOf(R.string.tv_countdown_timer)))));
                     mCountDownAdapter.notifyDataSetChanged();
                     mAddItem = 0;
                 }
