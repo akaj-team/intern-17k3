@@ -54,6 +54,21 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_ok">ok</string>
     <string name="update_information">Update Information</string>
+    <string name="button_submit">submit</string>
+    <string name="user_name">User Name</string>
+    <string name="pass_word">Pass Word</string>
+    <string name="button_test">Test</string>
+    <string name="user_name_length"><![CDATA[5< UserName  <24]]></string>
+    <string name="user_name_upper_case">UserName have not upper case</string>
+    <string name="user_name_special_case">UserName have special case</string>
+    <string name="user_name_number">UserName have more 2 number</string>
+    <string name="user_name_care">UserName UpperCase Or LowerCase</string>
+    <string name="user_name_like">UserName like PassWord</string>
+    <string name="password_special">PassWord have special case or number</string>
+    <string name="password_length"><![CDATA[pass <7 or appear a case]]></string>
+    <string name="password_space">Pass have space</string>
+    <string name="password_three_upper_case">password have 3 upper case</string>
+    <string name="pass">Login</string>
     <string name="button_canvas">Canvas</string>
     <string name="km">km</string>
 </resources>

@@ -37,6 +37,7 @@
         <activity android:name=".ui.viewpager.ViewpagerActivity" />
         <activity android:name=".ui.viewpager.ViewPagerMainActivity" />
         <activity android:name=".ui.customview.CanvasActivity" />
+        <activity android:name=".ui.unittest.UnitTestActivity" />
     </application>
 
 </manifest>

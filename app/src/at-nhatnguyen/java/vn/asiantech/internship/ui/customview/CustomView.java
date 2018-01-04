@@ -10,7 +10,6 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -97,7 +96,6 @@ public class CustomView extends View {
                     mMoveX = mMoveX + event.getX() - mTouchX;
                     mTouchX = event.getX();
                     update(mMoveX);
-                    Log.d("move", " v: " + v + " :touch: " + t + " s: " + s);
                 }
                 break;
             case MotionEvent.ACTION_DOWN:
@@ -106,7 +104,6 @@ public class CustomView extends View {
             case MotionEvent.ACTION_UP:
                 v = (s / t) * 100;
                 if (v > 0.5 || v < -0.5) {
-                    Log.d("up", " v: " + v + " :touch: " + mTouchX + " s: " + s);
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -122,9 +119,6 @@ public class CustomView extends View {
                                     v = 0;
                                     s = 0;
                                     t = 0;
-                                    Log.d("run", "run: "+v);
-//                                    update(mMoveX);
-//                                    invalidate();
                                 }
                             } else {
                                 if (v < -1) {
@@ -138,18 +132,11 @@ public class CustomView extends View {
                                     v = 0;
                                     s = 0;
                                     t = 0;
-                                    Log.d("run", "run: "+v);
-
-//                                    update2(mMoveX);
-//                                    invalidate();
                                 }
                             }
-                            handler.postDelayed(this, 50);
-//                            Log.d("up", " v: " + v + " :touch: " + mTouchX + " s: " + s);
+                            handler.postDelayed(this, 5);
                         }
-                    }, 50);
-                    Log.d("qui", "qui");
-                    break;
+                    }, 5);
                 }
         }
         invalidate();
