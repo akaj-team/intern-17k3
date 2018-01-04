@@ -12,16 +12,24 @@ import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 import vn.asiantech.internship.savedata.ExerciseManagementActivity;
+import vn.asiantech.internship.threadandhandler.SplashThreadAndHandlerActivity;
+import vn.asiantech.internship.unittest.LoginUnitTestActivity;
 import vn.asiantech.internship.viewpagerandtablelayout.ui.SlideActivity;
 
+/**
+ * Created at 2017
+ * Created by jackty on 19/12/2017.
+ */
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnLoginScreen;
     private Button mBtnCalculationScreen;
     private Button mBtnRecyclerViewScreen;
     private Button mBtnSaveDataScreen;
     private Button mBtnDrawerLayoutScreen;
-    private Button mBtnViewPagerScreen;
     private Button mBtnImageScreen;
+    private Button mBtnViewPager;
+    private Button mBtnThreadAndHandler;
+    private Button mBtnUnitTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         initListener();
     }
 
+    /**
+     * Init Views
+     */
     private void initViews() {
         mBtnLoginScreen = findViewById(R.id.btnLoginScreen);
         mBtnCalculationScreen = findViewById(R.id.btnCalculatorScreen);
@@ -38,10 +49,15 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnSaveDataScreen = findViewById(R.id.btnSaveDataScreen);
         mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
         mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
-        mBtnViewPagerScreen = findViewById(R.id.btnViewPager);
         mBtnImageScreen = findViewById(R.id.btnImageScreen);
+        mBtnThreadAndHandler = findViewById(R.id.btnThreadAndHandleScreen);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
+        mBtnUnitTest = findViewById(R.id.btnUnitTest);
     }
 
+    /**
+     * Init Listener
+     */
     private void initListener() {
         mBtnLoginScreen.setOnClickListener(this);
         mBtnCalculationScreen.setOnClickListener(this);
@@ -49,10 +65,15 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnSaveDataScreen.setOnClickListener(this);
         mBtnDrawerLayoutScreen.setOnClickListener(this);
         mBtnRecyclerViewScreen.setOnClickListener(this);
-        mBtnViewPagerScreen.setOnClickListener(this);
         mBtnImageScreen.setOnClickListener(this);
+        mBtnThreadAndHandler.setOnClickListener(this);
+        mBtnViewPager.setOnClickListener(this);
+        mBtnUnitTest.setOnClickListener(this);
     }
 
+    /**
+     * Onclick Button
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -74,8 +95,14 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnImageScreen:
                 startActivity(new Intent(this, ImageManagementExerciseActivity.class));
                 break;
+            case R.id.btnThreadAndHandleScreen:
+                startActivity(new Intent(this, SplashThreadAndHandlerActivity.class));
+                break;
             case R.id.btnViewPager:
                 startActivity(new Intent(this, SlideActivity.class));
+                break;
+            case R.id.btnUnitTest:
+                startActivity(new Intent(this, LoginUnitTestActivity.class));
         }
     }
 }
