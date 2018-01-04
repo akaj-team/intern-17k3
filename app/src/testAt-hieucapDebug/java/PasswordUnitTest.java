@@ -28,19 +28,19 @@ public class PasswordUnitTest {
     @Test
     public void testCharacterSpecialAndDigitNumber() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidationTest.checkCharacterSpecialAndDigitNumber(mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.isCharacterSpecialAndDigitNumber(mLogIn.getPassword()));
     }
 
     @Test
     public void testLength() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidationTest.checkLength(mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.isLengthAllowed(mLogIn.getPassword()));
     }
 
     @Test
     public void testSameCharacter() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidationTest.checkSameCharacter(mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.isSameCharacter(mLogIn.getPassword()));
     }
 
     @Test
@@ -52,6 +52,6 @@ public class PasswordUnitTest {
     @Test
     public void testCapitalLetter() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidationTest.checkCapitalLetter(mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.isCapitalLetter(mLogIn.getPassword()));
     }
 }

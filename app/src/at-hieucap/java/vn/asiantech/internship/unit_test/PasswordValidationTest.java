@@ -7,23 +7,24 @@ import java.util.regex.Pattern;
  * Created by tiboo on 03/01/2018.
  */
 public final class PasswordValidationTest {
-    public PasswordValidationTest() {
+    private PasswordValidationTest() {
+        // No-oop
     }
 
     public static boolean isDifferentUserName(String userName, String password) {
         return !password.equals(userName);
     }
 
-    public static boolean checkCharacterSpecialAndDigitNumber(String password) {
+    public static boolean isCharacterSpecialAndDigitNumber(String password) {
         return password.matches("[a-zA-Z.? ]*") || (Pattern.compile("[0-9 ]")).
                 matcher(password).find();
     }
 
-    public static boolean checkLength(String password) {
+    public static boolean isLengthAllowed(String password) {
         return password.length() > 7;
     }
 
-    public static boolean checkSameCharacter(String password) {
+    public static boolean isSameCharacter(String password) {
         int count = 0;
         String[] text = password.split("");
         for (int i = 0; i < text.length; i++) {
@@ -40,7 +41,7 @@ public final class PasswordValidationTest {
         return !password.contains(" ");
     }
 
-    public static boolean checkCapitalLetter(String password) {
+    public static boolean isCapitalLetter(String password) {
         int numCount = 0;
         for (int i = 0; i < password.length(); i++) {
             if (Character.isUpperCase(password.charAt(i))) {

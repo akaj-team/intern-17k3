@@ -15,43 +15,43 @@ import static org.mockito.Mockito.when;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class UsernameUnitTest {
-    private static final String TEXT_TEST = "CapHieU12";
+    private static final String TEXT_TEST = "capHieu12";
     @Mock
     private Login mLogIn;
 
     @Test
     public void testLength() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UsernameValidationTest.checkLength(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.isLengthAllowed(mLogIn.getUser()));
     }
 
     @Test
     public void testCapitalLetter() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UsernameValidationTest.checkCapitalLetter(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.isCapitalLetter(mLogIn.getUser()));
     }
 
     @Test
     public void testCharacters() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UsernameValidationTest.checkCharacters(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.isCharacters(mLogIn.getUser()));
     }
 
     @Test
     public void testHaveSpace() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UsernameValidationTest.checkHaveSpace(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.isHaveSpace(mLogIn.getUser()));
     }
 
     @Test
     public void testDigitNumber() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UsernameValidationTest.checkDigitNumber(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.isDigitNumber(mLogIn.getUser()));
     }
 
     @Test
     public void testUpperCaseOrLowerCase() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UsernameValidationTest.checkUpperCaseOrLowerCase(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.isUpperCaseOrLowerCase(mLogIn.getUser()));
     }
 }

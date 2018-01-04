@@ -54,17 +54,17 @@ public class LoginActivity extends AppCompatActivity {
     private boolean isValidateUserName(String userName) {
         if (userName.length() == 0) {
             showToast(getString(R.string.user_name_empty));
-        } else if (!UsernameValidationTest.checkLength(userName)) {
+        } else if (!UsernameValidationTest.isLengthAllowed(userName)) {
             showToast(getString(R.string.test_user_name_length));
-        } else if (!UsernameValidationTest.checkCapitalLetter(userName)) {
+        } else if (!UsernameValidationTest.isCapitalLetter(userName)) {
             showToast(getString(R.string.test_user_name_capital_letter));
-        } else if (!UsernameValidationTest.checkHaveSpace(userName)) {
+        } else if (!UsernameValidationTest.isHaveSpace(userName)) {
             showToast(getString(R.string.test_user_name_have_space));
-        } else if (!UsernameValidationTest.checkCharacters(userName)) {
+        } else if (!UsernameValidationTest.isCharacters(userName)) {
             showToast(getString(R.string.test_user_name_special_character));
-        } else if (!UsernameValidationTest.checkDigitNumber(userName)) {
+        } else if (!UsernameValidationTest.isDigitNumber(userName)) {
             showToast(getString(R.string.test_user_name_digit_number));
-        } else if (!UsernameValidationTest.checkUpperCaseOrLowerCase(userName)) {
+        } else if (!UsernameValidationTest.isUpperCaseOrLowerCase(userName)) {
             showToast(getString(R.string.test_user_name_upper_case_or_lower_case));
         } else {
             return true;
@@ -75,17 +75,17 @@ public class LoginActivity extends AppCompatActivity {
     private boolean validatePassWord(String password) {
         if (password.length() == 0) {
             showToast(getString(R.string.password_empty));
-        } else if (!PasswordValidationTest.checkLength(password)) {
+        } else if (!PasswordValidationTest.isLengthAllowed(password)) {
             showToast(getString(R.string.test_password_length));
         } else if (!PasswordValidationTest.isDifferentUserName(mEdtUserName.getText().toString(), password)) {
             showToast(getString(R.string.test_password_different_user_name));
-        } else if (PasswordValidationTest.checkCharacterSpecialAndDigitNumber(password)) {
+        } else if (PasswordValidationTest.isCharacterSpecialAndDigitNumber(password)) {
             showToast(getString(R.string.test_password_character_special_and_digit_number));
         } else if (!PasswordValidationTest.isHaveSpace(password)) {
             showToast(getString(R.string.test_password_have_space));
-        } else if (!PasswordValidationTest.checkCapitalLetter(password)) {
+        } else if (!PasswordValidationTest.isCapitalLetter(password)) {
             showToast(getString(R.string.test_password_capital_letter));
-        } else if (!PasswordValidationTest.checkSameCharacter(password)) {
+        } else if (!PasswordValidationTest.isSameCharacter(password)) {
             showToast(getString(R.string.test_password_same_character));
         } else {
             return true;

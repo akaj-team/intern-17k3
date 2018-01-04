@@ -7,41 +7,42 @@ import java.util.Locale;
  * Created by tiboo on 03/01/2018.
  */
 public final class UsernameValidationTest {
-    public static boolean checkLength(String userName) {
+    private UsernameValidationTest() {
+        // No-oop
+    }
+
+    public static boolean isLengthAllowed(String userName) {
         return userName.length() > 5 && userName.length() < 24;
     }
 
-    public static boolean checkCapitalLetter(String userName) {
-        boolean capitalLetterFlag = false;
+    public static boolean isCapitalLetter(String userName) {
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isUpperCase(userName.charAt(i))) {
-                capitalLetterFlag = true;
+                return true;
             }
         }
-        return capitalLetterFlag;
+        return false;
     }
 
-    public static boolean checkHaveSpace(String userName) {
+    public static boolean isHaveSpace(String userName) {
         return !userName.contains(" ");
     }
 
-    public static boolean checkCharacters(String userName) {
+    public static boolean isCharacters(String userName) {
         return userName.matches("[A-Za-z0-9]+");
     }
 
-    public static boolean checkDigitNumber(String userName) {
-        boolean digitNumberFlag = false;
+    public static boolean isDigitNumber(String userName) {
         int countDigitNumber = 0;
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isDigit(userName.charAt(i))) {
                 countDigitNumber++;
-                digitNumberFlag = countDigitNumber <= 2;
             }
         }
-        return digitNumberFlag;
+        return countDigitNumber <= 2;
     }
 
-    public static boolean checkUpperCaseOrLowerCase(String userName) {
+    public static boolean isUpperCaseOrLowerCase(String userName) {
         return !userName.equals(userName.toLowerCase(Locale.getDefault()));
     }
 }
