@@ -17,7 +17,7 @@ public class PasswordUnitTest {
     @Mock
     private Account mAccount;
     @Test
-    public void CheckDifferenceUsername(){
+    public void checkDifferenceUsername(){
         Mockito.when(mAccount.getUsername()).thenReturn("Phongle");
         Mockito.when(mAccount.getPassword()).thenReturn("Phongle");
         Assert.assertFalse(ValidatePassword.isDifferenceUsername(mAccount.getUsername(),mAccount.getPassword()));
@@ -26,14 +26,14 @@ public class PasswordUnitTest {
         Assert.assertTrue(ValidatePassword.isDifferenceUsername(mAccount.getUsername(),mAccount.getPassword()));
     }
     @Test
-    public void CheckLengthPassword(){
+    public void checkLengthPassword(){
         Mockito.when(mAccount.getPassword()).thenReturn("admin");
         Assert.assertFalse(ValidatePassword.checkMinLength(mAccount.getPassword()));
         Mockito.when(mAccount.getPassword()).thenReturn("adminPhong");
         Assert.assertTrue(ValidatePassword.checkMinLength(mAccount.getPassword()));
     }
     @Test
-    public void CheckAtLeastSpecialCharOrNum(){
+    public void checkAtLeastSpecialCharOrNum(){
         Mockito.when(mAccount.getPassword()).thenReturn("phongleth");
         Assert.assertFalse(ValidatePassword.atLeastSpecialCharOrNumber(mAccount.getPassword()));
         Mockito.when(mAccount.getPassword()).thenReturn("phongle1");
@@ -42,21 +42,21 @@ public class PasswordUnitTest {
         Assert.assertTrue(ValidatePassword.atLeastSpecialCharOrNumber(mAccount.getPassword()));
     }
     @Test
-    public void CheckAtThreeUppercase(){
+    public void checkAtThreeUppercase(){
         Mockito.when(mAccount.getPassword()).thenReturn("phongleTH");
         Assert.assertFalse(ValidatePassword.isAtLeastThreeUpperCase(mAccount.getPassword()));
         Mockito.when(mAccount.getPassword()).thenReturn("phongTHA");
         Assert.assertTrue(ValidatePassword.isAtLeastThreeUpperCase(mAccount.getPassword()));
     }
     @Test
-    public void CheckNonRepeat(){
+    public void checkNonRepeat(){
         Mockito.when(mAccount.getPassword()).thenReturn("lelelephong");
         Assert.assertFalse(ValidatePassword.isNonRepeat(mAccount.getPassword()));
         Mockito.when(mAccount.getPassword()).thenReturn("lephongle");
         Assert.assertTrue(ValidatePassword.isNonRepeat(mAccount.getPassword()));
     }
     @Test
-    public void CheckNonSpace(){
+    public void checkNonSpace(){
         Mockito.when(mAccount.getPassword()).thenReturn("admin cui");
         Assert.assertFalse(ValidatePassword.isNonWhiteSpace(mAccount.getPassword()));
         Mockito.when(mAccount.getPassword()).thenReturn("admincuibap");
