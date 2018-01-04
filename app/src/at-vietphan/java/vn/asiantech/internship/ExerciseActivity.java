@@ -13,6 +13,7 @@ import vn.asiantech.internship.ui.loadimage.ImageLoaderActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.unittest.UnitTestActivity;
 import vn.asiantech.internship.ui.viewpager.SliderActivity;
 
 /**
@@ -28,6 +29,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnLoadImage;
     private Button mBtnViewPager;
     private Button mBtnAsynchronous;
+    private Button mBtnUnitTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnAsynchronous = findViewById(R.id.btnAsynchronous);
+        mBtnUnitTest = findViewById(R.id.btnUnitTest);
     }
 
     private void initListener() {
@@ -57,6 +60,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnLoadImage.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
         mBtnAsynchronous.setOnClickListener(this);
+        mBtnUnitTest.setOnClickListener(this);
     }
 
     @Override
@@ -85,6 +89,8 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnAsynchronous:
                 startActivity(new Intent(this, AsynchronousActivity.class));
+            case R.id.btnUnitTest:
+                startActivity(new Intent(this, UnitTestActivity.class));
         }
     }
 }

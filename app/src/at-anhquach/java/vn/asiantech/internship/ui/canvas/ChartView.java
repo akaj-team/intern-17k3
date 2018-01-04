@@ -1,5 +1,6 @@
 package vn.asiantech.internship.ui.canvas;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,15 +8,15 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Handler;
-import android.support.animation.DynamicAnimation;
-import android.support.animation.FlingAnimation;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,6 +47,7 @@ public class ChartView extends View {
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
     Handler handler = new Handler();
+    RelativeLayout relativeLayout;
 
     private List<Integer> mDistanceAs = new ArrayList<>();
     private List<Integer> mDistanceBs = new ArrayList<>();
@@ -62,6 +64,7 @@ public class ChartView extends View {
         this(context, null);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public ChartView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         TypedArray a = context.getTheme().obtainStyledAttributes(
@@ -73,11 +76,20 @@ public class ChartView extends View {
             a.recycle();
         }
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
+        final GestureDetector myGesture = new GestureDetector(context, new MyOnGestureListener());
         initDistanceA();
         initDistanceB();
         initDistanceC();
         mPaint = new Paint();
         imageView = findViewById(R.id.img);
+        relativeLayout = findViewById(R.id.main);
+        imageView.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return myGesture.onTouchEvent(event);
+            }
+        });
+        imageView.setClickable(true);
     }
 
     private void initDistanceA() {
@@ -182,7 +194,6 @@ public class ChartView extends View {
                 break;
         }
         mScaleDetector.onTouchEvent(ev);
-
         if ((mode == DRAG && mScaleFactor != 1f && dragged) || mode == ZOOM) {
             invalidate();
         }
@@ -261,20 +272,67 @@ public class ChartView extends View {
             mScaleFactor = Math.max(MIN_ZOOM, Math.min(mScaleFactor, MAX_ZOOM));
             return true;
         }
+    }
+    private class MyOnGestureListener implements GestureDetector.OnGestureListener {
 
-        private GestureDetector.OnGestureListener mGestureListener = new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
+        int MIN_DIST = 100;
+        @Override
+        public boolean onDown(MotionEvent e) {
+            return false;
+        }
 
-                //Fling Right/Left
-                FlingAnimation flingX = new FlingAnimation(imageView, DynamicAnimation.TRANSLATION_X);
-                flingX.setStartVelocity(velocityX)
-                        .setMinValue(0) // minimum translationX property
-                        .setMaxValue(2000)  // maximum translationX property
-                        .setFriction(1.1f)
-                        .start();
-                return true;
+        @Override
+        public void onShowPress(MotionEvent e) {
+
+        }
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            return false;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            return false;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                float e1X = e1.getX();
+                float e1Y = e1.getY();
+                float e2X = e2.getX();
+                float e2Y = e2.getY();
+                float distX = e2X - e1X;
+                float distY = e2Y - e1Y;
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            //                       getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int offsetY = displayMetrics.heightPixels - relativeLayout.getMeasuredHeight();
+
+            int[] location = new int[2];
+            imageView.getLocationOnScreen(location);
+            float orgX = location[0];
+            float orgY = location[1] - offsetY;
+
+            float stopX = orgX + distX;
+            float stopY = orgY + distY;
+
+            if (distX > MIN_DIST) {
+                //Fling Right
+                ObjectAnimator flingAnimator = ObjectAnimator.ofFloat(imageView, "translationX", orgX, stopX);
+                flingAnimator.setDuration(1000);
+                flingAnimator.start();
+            }else if(distX < - MIN_DIST){
+                //Fling Left
+                ObjectAnimator flingAnimator = ObjectAnimator.ofFloat(imageView, "translationX", orgX, stopX);
+                flingAnimator.setDuration(1000);
+                flingAnimator.start();
             }
-        };
+            return false;
+        }
     }
 }
