@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     private void validate() {
         if (validateUserName(mEdtUserName.getText().toString()) &&
                 validatePassWord(mEdtPassword.getText().toString())) {
-            showToast(getString(R.string.validate_done));
+            showToast(getString(R.string.test_done));
         }
     }
 
