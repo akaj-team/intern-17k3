@@ -29,33 +29,33 @@ public class PasswordUnitTest {
     @Test
     public void isSpecialCharOrNumber() {
         Mockito.when(mUser.getPassword()).thenReturn("hana@ngocanh");
-        Assert.assertTrue(PasswordValidation.isSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh12");
-        Assert.assertTrue(PasswordValidation.isSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hana@ngocanh7");
-        Assert.assertTrue(PasswordValidation.isSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh");
-        Assert.assertFalse(PasswordValidation.isSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
     }
 
     @Test
     public void isPasswordLenght() {
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh");
-        Assert.assertFalse(PasswordValidation.isPasswordLenght(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isIncorrectPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hana");
-        Assert.assertFalse(PasswordValidation.isPasswordLenght(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isIncorrectPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanaHH");
-        Assert.assertFalse(PasswordValidation.isPasswordLenght(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isIncorrectPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("asdfghjkl");
-        Assert.assertTrue(PasswordValidation.isPasswordLenght(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isIncorrectPasswordLenght(mUser.getPassword()));
     }
 
     @Test
     public void isPassSpace() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh2");
-        Assert.assertTrue(PasswordValidation.isPassSpace(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isContainPassSpace(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("ngoc anh");
-        Assert.assertFalse(PasswordValidation.isPassSpace(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isContainPassSpace(mUser.getPassword()));
     }
 
     @Test

@@ -11,7 +11,7 @@ public class UserNameValidation {
 
     }
 
-    public static boolean isUserNameLength(String userName) {
+    public static boolean isIncorrectUserNameLength(String userName) {
         return userName.length() > 5 && userName.length() < 24;
     }
 
@@ -24,7 +24,7 @@ public class UserNameValidation {
         return false;
     }
 
-    public static boolean isUserNameSpace(String userName) {
+    public static boolean isContainUserNameSpace(String userName) {
         return !userName.contains(" ");
     }
 

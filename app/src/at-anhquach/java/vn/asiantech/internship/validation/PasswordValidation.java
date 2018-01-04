@@ -15,13 +15,13 @@ public class PasswordValidation {
         return !pass.equals(userName);
     }
 
-    public static boolean isSpecialCharOrNumber(String password) {
+    public static boolean isContainSpecialCharOrNumber(String password) {
         Pattern specialCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Pattern digitCasePatten = Pattern.compile("[0-9 ]");
         return specialCharPatten.matcher(password).find() || digitCasePatten.matcher(password).find();
     }
 
-    public static boolean isPasswordLenght(String pass) {
+    public static boolean isIncorrectPasswordLenght(String pass) {
         if (pass.length() >= 7) {
             int numCount = 0;
             String[] words = pass.split("");
@@ -38,7 +38,7 @@ public class PasswordValidation {
         return false;
     }
 
-    public static boolean isPassSpace(String pass) {
+    public static boolean isContainPassSpace(String pass) {
         return !pass.contains(" ");
     }
 
