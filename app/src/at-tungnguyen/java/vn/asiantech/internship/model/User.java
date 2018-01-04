@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.unittest.model;
+package vn.asiantech.internship.model;
 
 /**
  * Author Asian Tech Inc.

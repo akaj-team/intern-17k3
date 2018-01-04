@@ -1,4 +1,7 @@
-package vn.asiantech.internship.ui.unittest;
+package vn.asiantech.internship.ui.validation;
+
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 /**
  * Author Asian Tech Inc.
@@ -9,16 +12,66 @@ public class UserValidation {
     public UserValidation() {
     }
 
-    public static boolean checkUserNameLenght(String userName) {
+    /**
+     * Check the lenght UserName
+     * @param userName
+     * @return
+     */
+    public static boolean ischeckUserLenght(String userName) {
         return userName.length() > 5 && userName.length() < 24;
     }
 
-    public static boolean checkCapUserName(String userName) {
+    /**
+     * Check special UserName
+     * @param userName
+     * @return
+     */
+    public static boolean isCheckUserSpecial(String userName) {
+        Pattern checkUserSpecial = Pattern.compile("^[a-z0-9A-Z]");
+        return checkUserSpecial.matcher(userName).find();
+    }
+
+    /**
+     * Check Space of Username
+     * @param userName
+     * @return
+     */
+    public static boolean isCheckUserSpace(String userName) {
+        return !userName.contains(" ");
+    }
+
+    /**
+     * Check capital and number
+     * @param userName
+     * @return
+     */
+    public static boolean isCheckUserCapitalAndNumber(String userName) {
+        int numCount;
+        boolean capitalCharacter = false;
+        boolean numberCharacter = false;
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isUpperCase(userName.charAt(i))) {
-                return true;
+                capitalCharacter = true;
+            } else if (Character.isDigit(userName.charAt(i))) {
+                numCount = i;
+                numCount++;
+                if (numCount >= 2) {
+                    numberCharacter = true;
+                }
+                if (capitalCharacter && numberCharacter) {
+                    return true;
+                }
             }
         }
         return false;
+    }
+
+    /**
+     * Check distinction between uppercase and lowercase letters
+     * @param userName
+     * @return
+     */
+    public static boolean isUserNameUpperCaseOrLowerCase(String userName) {
+        return !userName.equals(userName.toLowerCase(Locale.getDefault()));
     }
 }

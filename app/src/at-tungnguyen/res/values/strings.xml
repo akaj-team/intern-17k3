@@ -83,7 +83,8 @@
     <string name="tv_toolbar">Home</string>
     <string name="btn_thread">Thread-Handler</string>
 
-    <!-- TODO: Remove or change this placeholder text --><string name="btn_start">Start</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="btn_start">Start</string>
     <string name="tv_countdown">Tungkute</string>
     <string name="btn_thread_ex1">Exercise1</string>
     <string name="btn_thread_ex2">Exercise2</string>
@@ -91,4 +92,20 @@
     <string name="tv_percent">0%</string>
     <string name="have_not_picked_img">Not picked</string>
     <string name="tv_countdown_timer">Tungkute</string>
+    <string name="tv_username">UserName</string>
+    <string name="tv_password">Password</string>
+    <string name="tv_test_login"> Login </string>
+    <string name="btn_login_validation">Validation</string>
+    <string name="user_name_l">Độ dài username lớn hơn 5 và nhỏ hơn 24 kí tự</string>
+    <string name="user_name_lenght">Độ dài username lớn hơn 5 và nhỏ hơn 24 kí tự</string>
+    <string name="user_name_capital_or_number">Username Có ít nhất một kí tự viết hoa và 2 kí tự số</string>
+    <string name="user_name_not_space">UserName không chứa space</string>
+    <string name="user_name_not_character_special">UserName không chứa kí tự đặc biệt</string>
+    <string name="password_three_character_Capital">Password Có ít nhất 3 kí tự hoa</string>
+    <string name="password_character_lenght">Độ dài password nhỏ nhất là 7 kí tự</string>
+    <string name="password_not_repeat">Password không được lặp lại quá 2 lần</string>
+    <string name="password_not_space">Password không được chứa khoảng trống</string>
+    <string name="password_special_number">Password phải có 1 kí tự đặc biệt hoặc số</string>
+    <string name="password_user_different">UserName và Password phải khác nhau</string>
+
 </resources>
