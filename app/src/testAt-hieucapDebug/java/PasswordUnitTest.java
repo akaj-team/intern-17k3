@@ -5,7 +5,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import vn.asiantech.internship.models.Login;
-import vn.asiantech.internship.unit_test.PasswordValidation;
+import vn.asiantech.internship.unit_test.PasswordValidationTest;
 
 import static org.mockito.Mockito.when;
 
@@ -22,36 +22,36 @@ public class PasswordUnitTest {
     @Test
     public void testDifferentUserName() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidation.checkDifferentUserName(mLogIn.getUser(), mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.isDifferentUserName(mLogIn.getUser(), mLogIn.getPassword()));
     }
 
     @Test
     public void testCharacterSpecialAndDigitNumber() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidation.checkCharacterSpecialAndDigitNumber(mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.checkCharacterSpecialAndDigitNumber(mLogIn.getPassword()));
     }
 
     @Test
     public void testLength() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidation.checkLength(mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.checkLength(mLogIn.getPassword()));
     }
 
     @Test
     public void testSameCharacter() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidation.checkSameCharacter(mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.checkSameCharacter(mLogIn.getPassword()));
     }
 
     @Test
     public void testSpace() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidation.checkHaveSpace(mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.isHaveSpace(mLogIn.getPassword()));
     }
 
     @Test
     public void testCapitalLetter() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidation.checkCapitalLetter(mLogIn.getPassword()));
+        Assert.assertTrue(PasswordValidationTest.checkCapitalLetter(mLogIn.getPassword()));
     }
 }

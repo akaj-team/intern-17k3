@@ -5,7 +5,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import vn.asiantech.internship.models.Login;
-import vn.asiantech.internship.unit_test.UserNameValidation;
+import vn.asiantech.internship.unit_test.UsernameValidationTest;
 
 import static org.mockito.Mockito.when;
 
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
  * Created by tiboo on 03/01/2018.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class UserUnitTest {
+public class UsernameUnitTest {
     private static final String TEXT_TEST = "CapHieU12";
     @Mock
     private Login mLogIn;
@@ -22,37 +22,36 @@ public class UserUnitTest {
     @Test
     public void testLength() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UserNameValidation.checkLength(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.checkLength(mLogIn.getUser()));
     }
 
     @Test
     public void testCapitalLetter() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UserNameValidation.checkCapitalLetter(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.checkCapitalLetter(mLogIn.getUser()));
     }
 
     @Test
     public void testCharacters() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UserNameValidation.checkCharacters(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.checkCharacters(mLogIn.getUser()));
     }
 
     @Test
     public void testHaveSpace() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UserNameValidation.checkHaveSpace(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.checkHaveSpace(mLogIn.getUser()));
     }
 
     @Test
     public void testDigitNumber() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-
-        Assert.assertTrue(UserNameValidation.checkDigitNumber(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.checkDigitNumber(mLogIn.getUser()));
     }
 
     @Test
     public void testUpperCaseOrLowerCase() {
         when(mLogIn.getUser()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(UserNameValidation.checkUpperCaseOrLowerCase(mLogIn.getUser()));
+        Assert.assertTrue(UsernameValidationTest.checkUpperCaseOrLowerCase(mLogIn.getUser()));
     }
 }

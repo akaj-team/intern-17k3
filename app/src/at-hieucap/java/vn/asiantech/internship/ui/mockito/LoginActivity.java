@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.unit_test.PasswordValidation;
-import vn.asiantech.internship.unit_test.UserNameValidation;
+import vn.asiantech.internship.unit_test.PasswordValidationTest;
+import vn.asiantech.internship.unit_test.UsernameValidationTest;
 
 /**
  * Create login activity unit test
@@ -26,10 +26,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unit_test);
         initViews();
-        setButtonLogin();
+        setListener();
     }
 
-    private void setButtonLogin() {
+    private void setListener() {
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validate() {
-        if (validateUserName(mEdtUserName.getText().toString()) &&
-                validatePassWord(mEdtPassword.getText().toString())) {
+        if (isValidateUserName(mEdtUserName.getText().toString()) &&
+                validatePassWord(mEdtPassword.getText().toString().trim())) {
             showToast(getString(R.string.test_done));
         }
     }
@@ -51,48 +51,46 @@ public class LoginActivity extends AppCompatActivity {
         mBtnLogin = findViewById(R.id.btnLogin);
     }
 
-    private boolean validateUserName(String userName) {
-        boolean validationUserName = false;
+    private boolean isValidateUserName(String userName) {
         if (userName.length() == 0) {
             showToast(getString(R.string.user_name_empty));
-        } else if (!UserNameValidation.checkLength(userName)) {
+        } else if (!UsernameValidationTest.checkLength(userName)) {
             showToast(getString(R.string.test_user_name_length));
-        } else if (!UserNameValidation.checkCapitalLetter(userName)) {
+        } else if (!UsernameValidationTest.checkCapitalLetter(userName)) {
             showToast(getString(R.string.test_user_name_capital_letter));
-        } else if (!UserNameValidation.checkHaveSpace(userName)) {
+        } else if (!UsernameValidationTest.checkHaveSpace(userName)) {
             showToast(getString(R.string.test_user_name_have_space));
-        } else if (!UserNameValidation.checkCharacters(userName)) {
+        } else if (!UsernameValidationTest.checkCharacters(userName)) {
             showToast(getString(R.string.test_user_name_special_character));
-        } else if (!UserNameValidation.checkDigitNumber(userName)) {
+        } else if (!UsernameValidationTest.checkDigitNumber(userName)) {
             showToast(getString(R.string.test_user_name_digit_number));
-        } else if (!UserNameValidation.checkUpperCaseOrLowerCase(userName)) {
+        } else if (!UsernameValidationTest.checkUpperCaseOrLowerCase(userName)) {
             showToast(getString(R.string.test_user_name_upper_case_or_lower_case));
         } else {
-            validationUserName = true;
+            return true;
         }
-        return validationUserName;
+        return false;
     }
 
     private boolean validatePassWord(String password) {
-        boolean validationPassword = false;
         if (password.length() == 0) {
             showToast(getString(R.string.password_empty));
-        } else if (!PasswordValidation.checkLength(password)) {
+        } else if (!PasswordValidationTest.checkLength(password)) {
             showToast(getString(R.string.test_password_length));
-        } else if (!PasswordValidation.checkDifferentUserName(mEdtUserName.getText().toString(), password)) {
+        } else if (!PasswordValidationTest.isDifferentUserName(mEdtUserName.getText().toString(), password)) {
             showToast(getString(R.string.test_password_different_user_name));
-        } else if (PasswordValidation.checkCharacterSpecialAndDigitNumber(password)) {
+        } else if (PasswordValidationTest.checkCharacterSpecialAndDigitNumber(password)) {
             showToast(getString(R.string.test_password_character_special_and_digit_number));
-        } else if (!PasswordValidation.checkHaveSpace(password)) {
+        } else if (!PasswordValidationTest.isHaveSpace(password)) {
             showToast(getString(R.string.test_password_have_space));
-        } else if (!PasswordValidation.checkCapitalLetter(password)) {
+        } else if (!PasswordValidationTest.checkCapitalLetter(password)) {
             showToast(getString(R.string.test_password_capital_letter));
-        } else if (!PasswordValidation.checkSameCharacter(password)) {
+        } else if (!PasswordValidationTest.checkSameCharacter(password)) {
             showToast(getString(R.string.test_password_same_character));
         } else {
-            validationPassword = true;
+            return true;
         }
-        return validationPassword;
+        return false;
     }
 
     private void showToast(String message) {

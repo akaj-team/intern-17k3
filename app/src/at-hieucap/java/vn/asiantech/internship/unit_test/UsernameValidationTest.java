@@ -6,17 +6,15 @@ import java.util.Locale;
  * Create check user name
  * Created by tiboo on 03/01/2018.
  */
-public final class UserNameValidation {
+public final class UsernameValidationTest {
     public static boolean checkLength(String userName) {
         return userName.length() > 5 && userName.length() < 24;
     }
 
     public static boolean checkCapitalLetter(String userName) {
-        char ch;
         boolean capitalLetterFlag = false;
         for (int i = 0; i < userName.length(); i++) {
-            ch = userName.charAt(i);
-            if (Character.isUpperCase(ch)) {
+            if (Character.isUpperCase(userName.charAt(i))) {
                 capitalLetterFlag = true;
             }
         }
@@ -32,12 +30,10 @@ public final class UserNameValidation {
     }
 
     public static boolean checkDigitNumber(String userName) {
-        char ch;
         boolean digitNumberFlag = false;
         int countDigitNumber = 0;
         for (int i = 0; i < userName.length(); i++) {
-            ch = userName.charAt(i);
-            if (Character.isDigit(ch)) {
+            if (Character.isDigit(userName.charAt(i))) {
                 countDigitNumber++;
                 digitNumberFlag = countDigitNumber <= 2;
             }
