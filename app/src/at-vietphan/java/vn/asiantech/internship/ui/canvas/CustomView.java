@@ -134,6 +134,8 @@ public class CustomView extends View {
 
     /**
      * Draw box for hint chart in left, right
+     *
+     * @param canvas canvas
      */
     private void drawBox(Canvas canvas) {
         canvas.drawRect(0, 0, WIDTH_BOX, getHeight(), mPaintBox);
@@ -142,6 +144,8 @@ public class CustomView extends View {
 
     /**
      * Draw column person A, B, C
+     *
+     * @param canvas canvas
      */
     private void drawColumnPerson(Canvas canvas) {
         for (int i = 0; i < mPersonA.length; i++) {
@@ -159,6 +163,8 @@ public class CustomView extends View {
 
     /**
      * Draw lineDistance max, min, between
+     *
+     * @param canvas canvas
      */
     private void drawLineDistance(Canvas canvas) {
         float maxDistance = getMaxValueDistance();
@@ -168,8 +174,11 @@ public class CustomView extends View {
         canvas.drawLine(START_DISTANCE_LINE, setStartY(), getWidth(), setStartY(), mPaintLineDistance);
     }
 
+
     /**
-     * Draw text month; distance min, between, max
+     * Draw text month, distance max, between, min
+     *
+     * @param canvas canvas
      */
     private void drawText(Canvas canvas) {
         String jul_24 = getContext().getString(R.string.jul_24);
