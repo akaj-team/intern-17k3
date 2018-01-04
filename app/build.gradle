@@ -93,8 +93,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.android.support:design:26.1.0'
     implementation 'me.relex:circleindicator:1.2.2@aar'
-    testCompile 'org.mockito:mockito-core:2.7.22'
-    androidTestCompile 'org.mockito:mockito-android:2.7.22'
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:2.13.0"
 }
 
 //apply from: "https://raw.githubusercontent.com/tientun/gradle-android-ci-check/master/ci.gradle"
