@@ -240,9 +240,9 @@ public class CustomView extends View {
      */
     private void transmissionString() {
         int startDistance = 0;
-        mTextDistanceMax = String.valueOf(mMaxDistance) + " Km";
-        mTextDistanceCenter = String.valueOf(((float) mMaxDistance / 2)) + " Km";
-        mTextDistanceStart = String.valueOf(startDistance) + " Km";
+        mTextDistanceMax = mMaxDistance + " Km";
+        mTextDistanceCenter = (float) mMaxDistance / 2 + " Km";
+        mTextDistanceStart = startDistance + " Km";
         mTextMonday = getResources().getString(R.string.monday);
         mTextSunday = getResources().getString(R.string.sunday);
     }
