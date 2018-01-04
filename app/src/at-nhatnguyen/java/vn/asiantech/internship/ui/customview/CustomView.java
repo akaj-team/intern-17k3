@@ -103,6 +103,9 @@ public class CustomView extends View {
                 break;
             case MotionEvent.ACTION_DOWN:
                 mTouchX = event.getX();
+                v = 0;
+                s = 0;
+                t = 0;
                 break;
             case MotionEvent.ACTION_UP:
                 v = (s / t) * 100;
@@ -122,6 +125,7 @@ public class CustomView extends View {
                                     v = 0;
                                     s = 0;
                                     t = 0;
+                                    invalidate();
                                 } else {
                                     handler.postDelayed(this, 5);
                                 }
@@ -137,6 +141,7 @@ public class CustomView extends View {
                                     v = 0;
                                     s = 0;
                                     t = 0;
+                                    invalidate();
                                 } else {
                                     handler.postDelayed(this, 5);
                                 }
