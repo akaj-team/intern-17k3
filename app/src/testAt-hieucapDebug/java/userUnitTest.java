@@ -26,13 +26,13 @@ public class userUnitTest {
 
     @Test
     public void testCapitalLetter() {
-        when(mLogIn.getUser()).thenReturn("a767eqưeqeqsd");
+        when(mLogIn.getUser()).thenReturn("a767eqAưeqeqsd");
         Assert.assertTrue(UserNameValidation.checkCapitalLetter(mLogIn.getUser()));
     }
 
     @Test
     public void testCharacters() {
-        when(mLogIn.getUser()).thenReturn("a767eqưeqeqsd");
+        when(mLogIn.getUser()).thenReturn("a767eqqeqsd");
         Assert.assertTrue(UserNameValidation.checkCharacters(mLogIn.getUser()));
     }
 
@@ -44,14 +44,14 @@ public class userUnitTest {
 
     @Test
     public void testDigitNumber() {
-        when(mLogIn.getUser()).thenReturn("a767eqưeqeqsd");
+        when(mLogIn.getUser()).thenReturn("a76eqưeqeqsd");
 
         Assert.assertTrue(UserNameValidation.checkDigitNumber(mLogIn.getUser()));
     }
 
     @Test
     public void testUpperCaseOrLowerCase() {
-        when(mLogIn.getUser()).thenReturn("a767eqưeqeqsd");
+        when(mLogIn.getUser()).thenReturn("a76eqAeqsd");
         Assert.assertTrue(UserNameValidation.checkUpperCaseOrLowerCase(mLogIn.getUser()));
     }
 }
