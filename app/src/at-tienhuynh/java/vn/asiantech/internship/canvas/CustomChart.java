@@ -10,7 +10,6 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -47,11 +46,13 @@ public class CustomChart extends View {
     private float scaleFactor = 1f;
     private ScaleGestureDetector detector;
     // move
-    private float mPointOX = 0;
-    private float mPointDownX = 0;
+    private int mStartPeople = 0;
+    private double mPointOX = 0;
+    private double mPointDownX = 0;
     //scroll
+    private double mTimeStart = 0;
     private double mTimeMoving = 0;
-    private float mSpeed = 1;
+    private float mSpeed = 0;
     private Handler mHandler = new Handler();
 
     public CustomChart(Context context) {
@@ -147,47 +148,53 @@ public class CustomChart extends View {
                     // get position
                     mPointOX = (event.getX() - mPointDownX) + mPointOX;
                     mPointDownX = event.getX();
-                    // get time
-                    mTimeMoving = System.currentTimeMillis() - mTimeMoving;
-                    Log.d("XXX", "" + mTimeMoving);
+                    updateStartPosition(mPointOX);
+                    mTimeMoving = System.currentTimeMillis() - mTimeStart;
                 }
                 break;
             case MotionEvent.ACTION_DOWN:
                 mPointDownX = event.getX();
-                mTimeMoving = System.currentTimeMillis();
+                mPointOX = 0;
+                mTimeMoving = 0;
+                mSpeed = 0;
+                mTimeStart = System.currentTimeMillis();
                 break;
             case MotionEvent.ACTION_UP:
-                if (mTimeMoving != 0) {
-                    // get speed
-                    mSpeed = (float) (mPointOX / mTimeMoving);
-                    //set speed
-                    if (mSpeed != 0) {
-                        mHandler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (mSpeed > 0) {
-                                    mSpeed -= 0.01;
-                                    invalidate();
-                                    if (mSpeed < 0) {
-                                        mSpeed = 0;
-                                    }
-                                } else {
-                                    mSpeed += 0.01;
-                                    invalidate();
-                                    if (mSpeed > 0) {
-                                        mSpeed = 0;
-                                    }
-
-                                }
-                                mHandler.postDelayed(this, 10);
+                mSpeed = (float) (-mPointOX / mTimeMoving);
+                mSpeed = mSpeed * 25f;
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mSpeed > 0) {
+                            mSpeed--;
+                            updateStartPosition(mSpeed * 10f + mPointOX);
+                            invalidate();
+                            if (mSpeed < 0) {
+                                mSpeed = 0;
                             }
-                        }, 10);
+                            mHandler.postDelayed(this, 10);
+                        } else if (mSpeed < 0) {
+                            mSpeed++;
+                            updateStartPosition2(-(mSpeed * 10f + mPointOX));
+                            invalidate();
+                            if (mSpeed > 0) {
+                                mSpeed = 0;
+                            }
+                            mHandler.postDelayed(this, 10);
+                        }
                     }
-                }
+                }, 10);
         }
-
         invalidate();
         return true;
+    }
+
+    private void updateStartPosition(double moveX) {
+        mStartPeople = (int) (0 + moveX);
+    }
+
+    private void updateStartPosition2(double moveX) {
+        mStartPeople = (int) (0 - moveX);
     }
 
     @Override
@@ -263,27 +270,27 @@ public class CustomChart extends View {
             int y2 = ChartValues.people2Values().get(i) * SCALE_Y;
             int y3 = ChartValues.people3Values().get(i) * SCALE_Y;
             // draw chart people 1
-            canvas.drawRoundRect(new RectF(mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn
+            canvas.drawRoundRect(new RectF(mStartPeople + getWidth() / 2 + i * (mLengthOneColumn
                     * (TOTAL_PEOPLE + SCALE_X)) - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1))
                     * mLengthOneColumn) / 2 - DISTANCE_START, getHeight() / 2 - y1,
-                    mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
+                    mStartPeople + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
                             - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
                     getHeight() / 2), 10, 5, mPaintPeople1);
             // draw chart people 2
-            canvas.drawRoundRect(new RectF(mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn
+            canvas.drawRoundRect(new RectF(mStartPeople + getWidth() / 2 + i * (mLengthOneColumn
                     * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn + SCALE_X - ((NUM_DAY * TOTAL_PEOPLE
                     + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
                     getHeight() / 2 - y2,
-                    mSpeed * mPointOX + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
+                    mStartPeople + getWidth() / 2 + i * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X))
                             + mLengthOneColumn + SCALE_X - ((NUM_DAY * TOTAL_PEOPLE
                             + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
                     getHeight() / 2), 10, 5, mPaintPeople2);
             // draw chart people 3
-            canvas.drawRoundRect(new RectF(mSpeed * mPointOX + getWidth() / 2 + i
+            canvas.drawRoundRect(new RectF(mStartPeople + getWidth() / 2 + i
                     * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn * 2 + SCALE_X * 2
                     - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1)) * mLengthOneColumn) / 2 - DISTANCE_START,
                     getHeight() / 2 - y3,
-                    mSpeed * mPointOX + getWidth() / 2 + i
+                    mStartPeople + getWidth() / 2 + i
                             * (mLengthOneColumn * (TOTAL_PEOPLE + SCALE_X)) + mLengthOneColumn * 2
                             + SCALE_X * 2 - ((NUM_DAY * TOTAL_PEOPLE + (NUM_DAY - 1))
                             * mLengthOneColumn) / 2 - DISTANCE_START + mLengthOneColumn,
