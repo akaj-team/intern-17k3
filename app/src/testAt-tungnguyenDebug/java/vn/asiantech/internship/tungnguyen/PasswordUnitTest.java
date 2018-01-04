@@ -25,8 +25,8 @@ public class PasswordUnitTest {
         Mockito.when(mUser.getUserName()).thenReturn("Tungkute");
         Mockito.when(mUser.getPassword()).thenReturn("Tungkute");
         Assert.assertFalse(PasswordValidation.isCheckPasswordDifferentUser(mUser.getUserName(), mUser.getPassword()));
-        Mockito.when(mUser.getUserName()).thenReturn("Tungkute");
-        Mockito.when(mUser.getPassword()).thenReturn("TungkutE");
+        Mockito.when(mUser.getUserName()).thenReturn("Tunghandsome");
+        Mockito.when(mUser.getPassword()).thenReturn("TunghandSome");
         Assert.assertTrue(PasswordValidation.isCheckPasswordDifferentUser(mUser.getUserName(), mUser.getPassword()));
     }
 
