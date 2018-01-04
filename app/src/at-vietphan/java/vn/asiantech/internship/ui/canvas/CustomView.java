@@ -9,7 +9,6 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -31,6 +30,9 @@ public class CustomView extends View {
     private static final int START_DISTANCE_LINE = 100;
     private static final int START_DISTANCE_TEXT = 10;
     private static final int TEXT_BETWEEN_LINE = 10;
+    private static final int START_X_PERSON_A = 100;
+    private static final int START_X_PERSON_B = 120;
+    private static final int START_X_PERSON_C = 140;
     private Paint mPaintA;
     private Paint mPaintB;
     private Paint mPaintC;
@@ -41,16 +43,16 @@ public class CustomView extends View {
     private int[] mPersonA;
     private int[] mPersonB;
     private int[] mPersonC;
+    private int mStartXPersonA;
+    private int mStartXPersonB;
+    private int mStartXPersonC;
     private float mMoveX;
     private float mTouchX;
     private long mTimeStart;
     private float mSpeed;
-    private int mStartXPersonA;
-    private int mStartXPersonB;
-    private int mStartXPersonC;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
-    private Handler mHandler;
+    private Handler mHandler = new Handler();
     private Runnable mRunnable;
 
     public CustomView(Context context) {
@@ -94,9 +96,9 @@ public class CustomView extends View {
     }
 
     private void initData() {
-        mStartXPersonA = 100;
-        mStartXPersonB = 120;
-        mStartXPersonC = 140;
+        mStartXPersonA = START_X_PERSON_A;
+        mStartXPersonB = START_X_PERSON_B;
+        mStartXPersonC = START_X_PERSON_C;
         mPersonA = getResources().getIntArray(R.array.person_one);
         mPersonB = getResources().getIntArray(R.array.person_two);
         mPersonC = getResources().getIntArray(R.array.person_three);
@@ -216,9 +218,8 @@ public class CustomView extends View {
                     if (!isStop && mMoveX > 0.0f) {
                         mMoveX = 0.0f;
                     }
-                    // this is fail check stop chart in right
-                    if (isStop && mMoveX >= (setStartX(mPersonC.length - 1, mStartXPersonC))) {
-                        mMoveX = setStartX(mPersonA.length - 1, mStartXPersonA);
+                    if (isStop && mMoveX < 0.0f && (getWidth() - 100) >= (setStartX(mPersonC.length - 1, mStartXPersonC) + WIDTH_RECT_PERSON)) {
+                        mMoveX = (getWidth() - 160) - 100 * mPersonA.length;
                     }
                     updateStartXPersonLine(mMoveX);
                 }
@@ -229,14 +230,12 @@ public class CustomView extends View {
                 long mTimeMove = System.currentTimeMillis() - mTimeStart;
                 if (mTimeMove > 0) {
                     mSpeed = mMoveDistance / mTimeMove;
-                    mSpeed = mSpeed * 50.0f;
-                    mHandler = new Handler();
+                    mSpeed = mSpeed * 10.0f;
                     mHandler.postDelayed(mRunnable = new Runnable() {
                         @Override
                         public void run() {
                             if (mSpeed > 0) {
-                                mSpeed--;
-                                Log.d("hd", "right: " + mSpeed);
+                                mSpeed -= 0.5f;
                                 mMoveX += mSpeed;
                                 updateStartXPersonLine(mMoveX);
                                 if (mMoveX > 0) {
@@ -244,12 +243,14 @@ public class CustomView extends View {
                                 }
                                 mHandler.postDelayed(this, 1);
                             } else if (mSpeed < 0) {
-                                mSpeed++;
-                                Log.d("hd", "left: " + mSpeed);
+                                mSpeed += 0.5f;
                                 mMoveX += mSpeed;
                                 updateStartXPersonLine(mMoveX);
                                 if (mSpeed > 0) {
                                     mSpeed = 0;
+                                }
+                                if (mMoveX < 0.0f && (getWidth() - 100) >= (setStartX(mPersonC.length - 1, mStartXPersonC) + WIDTH_RECT_PERSON)) {
+                                    mMoveX = (getWidth() - 160) - 100 * mPersonA.length;
                                 }
                                 mHandler.postDelayed(this, 1);
                             }
@@ -257,15 +258,14 @@ public class CustomView extends View {
                         }
                     }, 1);
                 }
-                break;
         }
         return true;
     }
 
     private void updateStartXPersonLine(float moveX) {
-        mStartXPersonA = (int) (100 + moveX);
-        mStartXPersonB = (int) (120 + moveX);
-        mStartXPersonC = (int) (140 + moveX);
+        mStartXPersonA = (int) (START_X_PERSON_A + moveX);
+        mStartXPersonB = (int) (START_X_PERSON_B + moveX);
+        mStartXPersonC = (int) (START_X_PERSON_C + moveX);
     }
 
     @Override
