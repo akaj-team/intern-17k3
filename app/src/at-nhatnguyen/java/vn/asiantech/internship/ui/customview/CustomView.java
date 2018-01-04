@@ -47,9 +47,10 @@ public class CustomView extends View {
     private int mStartPeople3;
     private int mStartLine;
     private int mStopLine;
-    private double s = 0;
-    private double t = 0;
-    private double v = 0;
+    private double s;
+    private double t;
+    private double v;
+    //    private int limit = 0;
     private Handler handler = new Handler();
 
     public CustomView(Context context) {
@@ -77,6 +78,11 @@ public class CustomView extends View {
         mStartPeople3 = 230;
         mStartLine = 150;
         mStopLine = 1200;
+        mMoveX = 0;
+        mTouchX = 0;
+        s = 0;
+        t = 0;
+        v = 0;
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -87,43 +93,64 @@ public class CustomView extends View {
             case MotionEvent.ACTION_MOVE:
                 if (event.getPointerCount() == 1) {
                     t = System.currentTimeMillis() - t;
-                    s = mMoveX - event.getX();
-                    v = s / t;
+                    s = event.getX() - mTouchX;
                     mMoveX = mMoveX + event.getX() - mTouchX;
                     mTouchX = event.getX();
                     update(mMoveX);
-                    Log.d("v", " mMoveX:" + mMoveX);
+                    Log.d("move", " v: " + v + " :touch: " + t + " s: " + s);
                 }
                 break;
             case MotionEvent.ACTION_DOWN:
                 mTouchX = event.getX();
                 break;
             case MotionEvent.ACTION_UP:
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (v != 0) {
+                v = (s / t) * 100;
+                if (v > 0.5 || v < -0.5) {
+                    Log.d("up", " v: " + v + " :touch: " + mTouchX + " s: " + s);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
                             if (v > 0) {
-                                mMoveX = (int) (mMoveX + v * 10);
+                                if (v > 1) {
+                                    v = 1;
+                                }
+                                mMoveX = (int) (mMoveX + v * 50);
+                                v -= 0.01;
                                 update(mMoveX);
-                                v -= 0.1;
                                 invalidate();
-                            }
-                            if (v < 0) {
-                                mMoveX = (int) (mMoveX + v * 10);
-                                update(mMoveX);
-                                v += 0.1;
-                                invalidate();
+                                if (v < 0) {
+                                    v = 0;
+                                    s = 0;
+                                    t = 0;
+                                    Log.d("run", "run: "+v);
+//                                    update(mMoveX);
+//                                    invalidate();
+                                }
                             } else {
-                                update(0);
+                                if (v < -1) {
+                                    v = -1;
+                                }
+                                mMoveX = (int) (mMoveX - v * 50);
+                                v += 0.01;
+                                update2(mMoveX);
                                 invalidate();
+                                if (v > 0) {
+                                    v = 0;
+                                    s = 0;
+                                    t = 0;
+                                    Log.d("run", "run: "+v);
+
+//                                    update2(mMoveX);
+//                                    invalidate();
+                                }
                             }
-                            Log.d("v", " mMoveX:");
-                            handler.postDelayed(this, 10);
+                            handler.postDelayed(this, 50);
+//                            Log.d("up", " v: " + v + " :touch: " + mTouchX + " s: " + s);
                         }
-                    }
-                }, 10);
-                break;
+                    }, 50);
+                    Log.d("qui", "qui");
+                    break;
+                }
         }
         invalidate();
         return true;
@@ -133,6 +160,12 @@ public class CustomView extends View {
         mStartPeople1 = (int) (170 + moveX);
         mStartPeople2 = (int) (200 + moveX);
         mStartPeople3 = (int) (230 + moveX);
+    }
+
+    private void update2(float moveX) {
+        mStartPeople1 = (int) (170 - moveX);
+        mStartPeople2 = (int) (200 - moveX);
+        mStartPeople3 = (int) (230 - moveX);
     }
 
     private void initPaint() {
@@ -164,6 +197,187 @@ public class CustomView extends View {
         resultPeople1 = new ArrayList<>();
         resultPeople2 = new ArrayList<>();
         resultPeople3 = new ArrayList<>();
+        resultPeople1.add(1);
+        resultPeople1.add(7);
+        resultPeople1.add(5);
+        resultPeople1.add(2);
+        resultPeople1.add(9);
+        resultPeople1.add(6);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople2.add(1);
+        resultPeople2.add(3);
+        resultPeople2.add(5);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(5);
+        resultPeople3.add(1);
+        resultPeople3.add(8);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(2);
+        resultPeople3.add(11);
+        resultPeople3.add(6);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(11);
+
+        resultPeople1.add(1);
+        resultPeople1.add(7);
+        resultPeople1.add(5);
+        resultPeople1.add(2);
+        resultPeople1.add(9);
+        resultPeople1.add(6);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople2.add(1);
+        resultPeople2.add(3);
+        resultPeople2.add(5);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(5);
+        resultPeople3.add(1);
+        resultPeople3.add(8);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(2);
+        resultPeople3.add(11);
+        resultPeople3.add(6);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(11);
+        resultPeople1.add(1);
+        resultPeople1.add(7);
+        resultPeople1.add(5);
+        resultPeople1.add(2);
+        resultPeople1.add(9);
+        resultPeople1.add(6);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople2.add(1);
+        resultPeople2.add(3);
+        resultPeople2.add(5);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(5);
+        resultPeople3.add(1);
+        resultPeople3.add(8);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(2);
+        resultPeople3.add(11);
+        resultPeople3.add(6);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(11);
+        resultPeople1.add(1);
+        resultPeople1.add(7);
+        resultPeople1.add(5);
+        resultPeople1.add(2);
+        resultPeople1.add(9);
+        resultPeople1.add(6);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople2.add(1);
+        resultPeople2.add(3);
+        resultPeople2.add(5);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(5);
+        resultPeople3.add(1);
+        resultPeople3.add(8);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(2);
+        resultPeople3.add(11);
+        resultPeople3.add(6);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(11);
+        resultPeople1.add(1);
+        resultPeople1.add(7);
+        resultPeople1.add(5);
+        resultPeople1.add(2);
+        resultPeople1.add(9);
+        resultPeople1.add(6);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople2.add(1);
+        resultPeople2.add(3);
+        resultPeople2.add(5);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(5);
+        resultPeople3.add(1);
+        resultPeople3.add(8);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(2);
+        resultPeople3.add(11);
+        resultPeople3.add(6);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(11);
+        resultPeople1.add(1);
+        resultPeople1.add(7);
+        resultPeople1.add(5);
+        resultPeople1.add(2);
+        resultPeople1.add(9);
+        resultPeople1.add(6);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople1.add(5);
+        resultPeople2.add(1);
+        resultPeople2.add(3);
+        resultPeople2.add(5);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(2);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(6);
+        resultPeople2.add(5);
+        resultPeople3.add(1);
+        resultPeople3.add(8);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(2);
+        resultPeople3.add(11);
+        resultPeople3.add(6);
+        resultPeople3.add(5);
+        resultPeople3.add(5);
+        resultPeople3.add(11);
         resultPeople1.add(1);
         resultPeople1.add(7);
         resultPeople1.add(5);
