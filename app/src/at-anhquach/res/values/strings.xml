@@ -48,4 +48,6 @@
     <string name="btn_load_in_internet">Load in Internet</string>
     <string name="distance_km" formatted="false">%d km</string>
     <string name="textview_download" formatted="false">DownLoad %dKB/%dKB %d%%</string>
+    <string name="day">24Jul</string>
+    <string name="month">Oct</string>
 </resources>

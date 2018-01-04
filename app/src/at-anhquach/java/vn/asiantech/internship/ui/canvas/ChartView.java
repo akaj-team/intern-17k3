@@ -185,11 +185,14 @@ public class ChartView extends View {
         drawRect(canvas, mWitdhScreen - 50, mPaint);
         mPaint.setColor(getResources().getColor(R.color.colorGrayDark));
         mPaint.setTextSize(getResources().getDimension(R.dimen.textsize40));
-        drawText(canvas, getContext().getString(R.string.distance_km, ((int) maxLists())), maxLists(), mPaint);
+        drawText(canvas, getContext().getString(R.string.distance_km, ((int) maxLists())), 0, maxLists(), mPaint);
+        drawText(canvas, getContext().getString(R.string.day), mOxChart, -1, mPaint);
+        drawText(canvas, getContext().getString(R.string.month), mWitdhScreen - 100, -1, mPaint);
         drawLine(canvas, 0, mPaint);
         drawLine(canvas, maxLists(), mPaint);
-        drawText(canvas, getContext().getString(R.string.distance_km, ((int) 0)), 0, mPaint);
+        drawText(canvas, getContext().getString(R.string.distance_km, ((int) 0)), 0, 0, mPaint);
         drawLine(canvas, maxLists() / 2, mPaint);
+
         canvas.restore();
     }
 
@@ -207,8 +210,8 @@ public class ChartView extends View {
         canvas.translate(translateX / mScaleFactor, translateY / mScaleFactor);
     }
 
-    private void drawText(Canvas canvas, String str, float y, Paint paint) {
-        canvas.drawText(str, 0, mHeightScreen / 2 - y * mEnlarge, paint);
+    private void drawText(Canvas canvas, String str, float x, float y, Paint paint) {
+        canvas.drawText(str, x, mHeightScreen / 2 - y * mEnlarge, paint);
     }
 
     private void drawLine(Canvas canvas, float y, Paint paint) {
