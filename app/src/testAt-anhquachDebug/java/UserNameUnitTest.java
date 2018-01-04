@@ -35,18 +35,10 @@ public class UserNameUnitTest {
     }
 
     @Test
-    public void isUserNameSpace() {
-        Mockito.when(mUser.getUsename()).thenReturn("");
-        Assert.assertTrue(UserNameValidation.isContainUserNameSpace(mUser.getUsename()));
-        Mockito.when(mUser.getUsename()).thenReturn(" ");
-        Assert.assertFalse(UserNameValidation.isContainUserNameSpace(mUser.getUsename()));
-    }
-
-    @Test
     public void isContainSpecialChar() {
         Mockito.when(mUser.getUsename()).thenReturn("hanangocanh");
         Assert.assertTrue(UserNameValidation.isContainSpecialChar(mUser.getUsename()));
-        Mockito.when(mUser.getUsename()).thenReturn("!@#$%^&*()");
+        Mockito.when(mUser.getUsename()).thenReturn("!@#$%^ &*()");
         Assert.assertFalse(UserNameValidation.isContainSpecialChar(mUser.getUsename()));
     }
 

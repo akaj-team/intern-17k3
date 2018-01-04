@@ -24,12 +24,8 @@ public class UserNameValidation {
         return false;
     }
 
-    public static boolean isContainUserNameSpace(String userName) {
-        return !userName.contains(" ");
-    }
-
     public static boolean isContainSpecialChar(String userName) {
-        return userName.matches("[A-Za-z0-9]+");
+        return userName.matches("[A-Za-z0-9]+")&&!userName.contains(" ");
     }
 
     public static boolean isMostTwoDigits(String userName) {
