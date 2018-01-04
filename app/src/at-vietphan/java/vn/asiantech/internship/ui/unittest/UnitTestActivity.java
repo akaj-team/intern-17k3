@@ -44,7 +44,7 @@ public class UnitTestActivity extends AppCompatActivity implements View.OnClickL
             } else if (!UserValidation.isSpecialCharAndSpaceUserName(userName)) {
                 showToast(getString(R.string.check_username_special_char_and_white_space));
             } else if (!UserValidation.isMostTwoNumberUserName(userName)) {
-                showToast(getString(R.string.check_username_most_2_number));
+                showToast(getString(R.string.check_username_most_two_number));
             } else if (!UserValidation.isUpperCaseLowercaseUserName(userName)) {
                 showToast(getString(R.string.check_username_uppercase_lowercase));
             } else {
@@ -63,13 +63,13 @@ public class UnitTestActivity extends AppCompatActivity implements View.OnClickL
                 showToast(getString(R.string.check_password_at_least_special_or_number));
             } else if (!UserValidation.isLengthPassword(password)) {
                 showToast(getString(R.string.check_password_length));
-            } else if (!UserValidation.isRepeatCharacterPassword(password)) {
+            } else if (UserValidation.isRepeatCharacterPassword(password)) {
                 showToast(String.valueOf(UserValidation.isRepeatCharacterPassword(password)));
-                showToast(getString(R.string.check_password_repeat_charater_a_little_2_times));
+                showToast(getString(R.string.check_password_repeat_charater_a_little_two_times));
             } else if (!UserValidation.isSpacePassword(password)) {
                 showToast(getString(R.string.check_password_have_not_white_space));
             } else if (!UserValidation.isLestThreeCharacters(password)) {
-                showToast(getString(R.string.check_password_have_least_3_characters));
+                showToast(getString(R.string.check_password_have_least_three_characters));
             } else {
                 showToast(getString(R.string.good_password));
             }
