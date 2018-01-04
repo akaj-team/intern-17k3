@@ -1,0 +1,79 @@
+package vn.asiantech.internship.ui.validation;
+
+import java.util.regex.Pattern;
+
+/**
+ * Author Asian Tech Inc.
+ * Created by tungnguyen on 03/01/2018.
+ */
+
+public class PasswordValidation {
+    public PasswordValidation() {
+    }
+
+    /**
+     * Check the username must be different than the password
+     */
+    public static boolean isCheckPasswordDifferentUser(String userName, String passWord) {
+        return !passWord.equals(userName);
+    }
+
+    /**
+     * Check password must be special
+     */
+    public static boolean isCheckPassSpecial(String password) {
+        Pattern checkPassSpecial = Pattern.compile("^[a-z0-9A-Z]");
+        return !checkPassSpecial.matcher(password).find();
+    }
+
+    /**
+     * Check lenght password
+     */
+    public static boolean isCheckPassLenght(String password) {
+        return password.length() > 7;
+    }
+
+    /**
+     * Check password not r
+     */
+    public static boolean isCheckPassRepeat(String password) {
+        boolean isRepeat = false;
+        int numCount = 0;
+        String[] words = password.split("");
+        for (int i = 0; i < words.length; i++) {
+            for (int j = i + 1; j < words.length; j++) {
+                if (words[i].equals(words[j])) {
+                    numCount++;
+                    if (numCount > 2) {
+                        isRepeat = true;
+                        numCount = 0;
+                    }
+                }
+            }
+        }
+        return !isRepeat;
+    }
+
+    /**
+     * Check password not character space
+     */
+    public static boolean isPasswordSpace(String password) {
+        return !password.contains(" ");
+    }
+
+    /**
+     * Check password c
+     */
+    public static boolean isCheckPassCapital(String password) {
+        int numCount = 0;
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isUpperCase(password.charAt(i))) {
+                numCount++;
+                if (numCount >= 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
