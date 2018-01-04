@@ -108,7 +108,7 @@ public class UserUnitTest {
     }
 
     @Test
-    public void isUserNameUpperCaseOrLowerCase() {
+    public void checkUserNameUpperCaseOrLowerCase() {
         Mockito.when(mTestUser.getUserName()).thenReturn("NhatnguyEn");
         Assert.assertTrue(ValidateUserName.isUserNameUpperCaseOrLowerCase(mTestUser.getUserName()));
     }

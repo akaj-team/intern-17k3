@@ -82,7 +82,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnTest:
                 startActivity(new Intent(this, UnitTestActivity.class));
-                break;
         }
     }
 }

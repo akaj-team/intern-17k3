@@ -42,7 +42,7 @@ public class UnitTestActivity extends AppCompatActivity {
     }
 
     private void validate() {
-        if (!ValidateUserName.isLengthUserName(mEdtUserName.getText().toString())) {
+        if (!ValidateUserName.isLengthUserName(mEdtUserName.getText().toString().trim())) {
             showToast(getResources().getString(R.string.user_name_length));
         } else if (!ValidateUserName.isUpperCaseUserName(mEdtUserName.getText().toString())) {
             showToast(getResources().getString(R.string.user_name_upper_case));
@@ -63,7 +63,7 @@ public class UnitTestActivity extends AppCompatActivity {
         } else if (!ValidatePassWord.isSpaceCase(mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.password_space));
         } else if (!ValidatePassWord.isLeastThreeUpperCase(mEdtPassWord.getText().toString())) {
-            showToast(getResources().getString(R.string.password_3_upper_case));
+            showToast(getResources().getString(R.string.password_three_upper_case));
         } else {
             showToast(getResources().getString(R.string.pass));
         }

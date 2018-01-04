@@ -46,21 +46,19 @@ public final class ValidatePassWord {
      * @return true when case appear more 2 time
      */
     public static boolean isAppearCase(String password) {
-        boolean check = true;
         int count = 0;
         String pass[] = password.split("");
         for (int i = 0; i < password.length(); i++) {
             for (int j = i + 1; j < password.length(); j++) {
                 if (pass[i].equals(pass[j])) {
                     count++;
+                    if (count > 2) {
+                        return false;
+                    }
                 }
             }
-            if (count > 2) {
-                check = false;
-                count = 0;
-            }
         }
-        return check;
+        return true;
     }
 
     /**
