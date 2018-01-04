@@ -75,4 +75,5 @@
     <string name="at_least_three_uppercase_password">Password phai co it nhat 3 ki tu viet hoa !</string>
     <string name="non_repeat_password">Username khong duoc chua ki tu lap lai qua 2 lan !</string>
     <string name="non_space_password">Password khong duoc chua khoang trang!</string>
+    <string name="btn_unit_test">unit test</string>
 </resources>

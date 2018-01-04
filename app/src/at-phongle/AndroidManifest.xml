@@ -12,8 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name="vn.asiantech.internship.activity.AppActivity">-->
-        <activity android:name="vn.asiantech.internship.unittest.TestLogin">
+        <activity android:name="vn.asiantech.internship.activity.AppActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -33,6 +32,7 @@
         <activity android:name=".image.VectorActivity" />
         <activity android:name=".viewpager.tutorial.GuideActivity" />
         <activity android:name=".viewpager.ViewPagerMainActivity" />
+    <activity android:name="vn.asiantech.internship.unittest.TestLogin"/>
     </application>
 
 </manifest>
