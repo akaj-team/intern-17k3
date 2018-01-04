@@ -71,4 +71,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/canvas" />
+
+    <Button
+        android:id="@+id/btnUnitTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/unit_test" />
 </LinearLayout>

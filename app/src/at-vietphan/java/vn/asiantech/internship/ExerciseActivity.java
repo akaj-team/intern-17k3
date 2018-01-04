@@ -14,6 +14,7 @@ import vn.asiantech.internship.ui.loadimage.ImageLoaderActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.unittest.UnitTestActivity;
 import vn.asiantech.internship.ui.viewpager.SliderActivity;
 
 /**
@@ -30,6 +31,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnViewPager;
     private Button mBtnAsynchronous;
     private Button mBtnCanvas;
+    private Button mBtnUnitTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnAsynchronous = findViewById(R.id.btnAsynchronous);
         mBtnCanvas = findViewById(R.id.btnCanvas);
+        mBtnUnitTest = findViewById(R.id.btnUnitTest);
     }
 
     private void initListener() {
@@ -61,6 +64,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnViewPager.setOnClickListener(this);
         mBtnAsynchronous.setOnClickListener(this);
         mBtnCanvas.setOnClickListener(this);
+        mBtnUnitTest.setOnClickListener(this);
     }
 
     @Override
@@ -92,6 +96,9 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnCanvas:
                 startActivity(new Intent(this, CanvasActivity.class));
+                break;
+            case R.id.btnUnitTest:
+                startActivity(new Intent(this, UnitTestActivity.class));
         }
     }
 }
