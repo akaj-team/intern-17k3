@@ -11,7 +11,6 @@ import vn.asiantech.internship.R;
  * Class CanvasActivity
  */
 public class CanvasActivity extends AppCompatActivity {
-    private CustomView customView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

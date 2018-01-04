@@ -43,11 +43,8 @@ public class CustomView extends View {
     private int[] mPersonC;
     private float mMoveX;
     private float mTouchX;
-    private float mTimeStart;
-    private float mTimeStop;
-    private float mTimeMove;
+    private long mTimeStart;
     private float mSpeed;
-    private int mOffset;
     private int mStartXPersonA;
     private int mStartXPersonB;
     private int mStartXPersonC;
@@ -55,9 +52,6 @@ public class CustomView extends View {
     private float mScaleFactor = 1.f;
     private Handler mHandler;
     private Runnable mRunnable;
-    private float mXBegin = 0;
-    private float mXStop = 0;
-    private float mMoveDistance;
 
     public CustomView(Context context) {
         this(context, null);
@@ -214,65 +208,58 @@ public class CustomView extends View {
             case MotionEvent.ACTION_DOWN:
                 mTouchX = event.getX();
                 mTimeStart = System.currentTimeMillis();
-                mXBegin = (int) event.getX();
-                Log.d("aaa", "action down " + event.getX());
                 break;
             case MotionEvent.ACTION_MOVE:
+                boolean isStop = mTouchX >= event.getX();
                 if (event.getPointerCount() == 1) {
                     mMoveX += event.getX() - mTouchX;
-                    mTouchX = event.getX();
+                    if (!isStop && mMoveX > 0.0f) {
+                        mMoveX = 0.0f;
+                    }
+                    // this is fail check stop chart in right
+                    if (isStop && mMoveX >= (setStartX(mPersonC.length - 1, mStartXPersonC))) {
+                        mMoveX = setStartX(mPersonA.length - 1, mStartXPersonA);
+                    }
                     updateStartXPersonLine(mMoveX);
                 }
+                invalidate();
                 break;
             case MotionEvent.ACTION_UP:
-                mTimeStop = System.currentTimeMillis();
-                mTimeMove = mTimeStop - mTimeStart;
-                Log.d("aaa", "t: " + mTimeMove);
-                Log.d("aaa", "s: " + mTouchX);
-                Log.d("aaa", "v: " + mSpeed);
-                Log.d("aaa", "offset: " + mOffset);
-                mXStop = (int) event.getX();
-                mMoveDistance = mXStop - mXBegin;
-                float xxx = mMoveX - mTouchX;
-                Log.d("aaa", "xxx: " + xxx);
-                mOffset = 500;
-                mHandler.postDelayed(mRunnable = new Runnable() {
-                    @Override
-                    public void run() {
-//                        while (mOffset > 0) {
-                            delayMove();
-                            mOffset--;
-
-                            mHandler.postDelayed(this, 100);
-//                        }
-                    }
-                }, 100);
+                float mMoveDistance = event.getX() - mTouchX;
+                long mTimeMove = System.currentTimeMillis() - mTimeStart;
+                if (mTimeMove > 0) {
+                    mSpeed = mMoveDistance / mTimeMove;
+                    mSpeed = mSpeed * 50.0f;
+                    mHandler = new Handler();
+                    mHandler.postDelayed(mRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            if (mSpeed > 0) {
+                                mSpeed--;
+                                Log.d("hd", "right: " + mSpeed);
+                                mMoveX += mSpeed;
+                                updateStartXPersonLine(mMoveX);
+                                if (mMoveX > 0) {
+                                    mSpeed = 0;
+                                }
+                                mHandler.postDelayed(this, 1);
+                            } else if (mSpeed < 0) {
+                                mSpeed++;
+                                Log.d("hd", "left: " + mSpeed);
+                                mMoveX += mSpeed;
+                                updateStartXPersonLine(mMoveX);
+                                if (mSpeed > 0) {
+                                    mSpeed = 0;
+                                }
+                                mHandler.postDelayed(this, 1);
+                            }
+                            invalidate();
+                        }
+                    }, 1);
+                }
                 break;
         }
-        invalidate();
         return true;
-    }
-
-    private void delayMove() {
-        if (mMoveDistance > 0) {
-            Log.d("hd", "right: " + mXBegin);
-            mMoveX += 5;
-            updateStartXPersonLine(mMoveX);
-            invalidate();
-        } else if (mMoveDistance < 0) {
-            Log.d("hd", "left: " + mMoveDistance);
-            mMoveX -= 5;
-            updateStartXPersonLine(mMoveX);
-            invalidate();
-        } else {
-            Log.d("hd", "hear: " + mMoveDistance);
-            invalidate();
-        }
-        Log.d("ooo", "delayMove: " + mOffset);
-        if(mOffset<=0){
-            mHandler.removeCallbacks(mRunnable);
-                mRunnable.hashCode();
-        }
     }
 
     private void updateStartXPersonLine(float moveX) {
