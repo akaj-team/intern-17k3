@@ -14,44 +14,44 @@ import static org.mockito.Mockito.when;
  * Created by tiboo on 03/01/2018.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class passWordUnitTest {
-
+public class PasswordUnitTest {
+    private static final String TEXT_TEST = "CaapHieU12";
     @Mock
     private Login mLogIn;
 
     @Test
     public void testDifferentUserName() {
-        when(mLogIn.getPassword()).thenReturn("dsad7ád7sad");
+        when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
         Assert.assertTrue(PasswordValidation.checkDifferentUserName(mLogIn.getUser(), mLogIn.getPassword()));
     }
 
     @Test
     public void testCharacterSpecialAndDigitNumber() {
-        when(mLogIn.getPassword()).thenReturn("dsad7ád7sad");
+        when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
         Assert.assertTrue(PasswordValidation.checkCharacterSpecialAndDigitNumber(mLogIn.getPassword()));
     }
 
     @Test
     public void testLength() {
-        when(mLogIn.getPassword()).thenReturn("dsad7ád7sad");
+        when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
         Assert.assertTrue(PasswordValidation.checkLength(mLogIn.getPassword()));
     }
 
     @Test
     public void testSameCharacter() {
-        when(mLogIn.getPassword()).thenReturn("dsad7ád7sad");
+        when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
         Assert.assertTrue(PasswordValidation.checkSameCharacter(mLogIn.getPassword()));
     }
 
     @Test
     public void testSpace() {
-        when(mLogIn.getPassword()).thenReturn("dsad7ád7sad");
+        when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
         Assert.assertTrue(PasswordValidation.checkHaveSpace(mLogIn.getPassword()));
     }
 
     @Test
     public void testCapitalLetter() {
-        when(mLogIn.getPassword()).thenReturn("dsad7ád7sAADad");
+        when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
         Assert.assertTrue(PasswordValidation.checkCapitalLetter(mLogIn.getPassword()));
     }
 }
