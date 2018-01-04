@@ -14,6 +14,7 @@ import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 import vn.asiantech.internship.ui.thread.ThreadActivity;
+import vn.asiantech.internship.ui.unittest.UnitTestActivity;
 import vn.asiantech.internship.ui.viewpager.ViewpagerActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -24,6 +25,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnSaveData;
     private Button mBtnLoadImage;
     private Button mBtnViewPager;
+    private Button mBtnTest;
     private Button mBtnThread;
 
     @Override
@@ -42,6 +44,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnSaveData = findViewById(R.id.btnSaveData);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
+        mBtnTest = findViewById(R.id.btnTest);
         mBtnThread = findViewById(R.id.btnThread);
     }
 
@@ -53,6 +56,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnSaveData.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
+        mBtnTest.setOnClickListener(this);
         mBtnThread.setOnClickListener(this);
     }
 
@@ -83,6 +87,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btnThread:
                 startActivity(new Intent(this, ThreadActivity.class));
                 break;
+            case R.id.btnTest:
+                startActivity(new Intent(this, UnitTestActivity.class));
         }
     }
 }
