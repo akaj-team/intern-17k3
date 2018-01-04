@@ -41,13 +41,13 @@ public class PasswordUnitTest {
     @Test
     public void isIncorrectPasswordLenght() {
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh");
-        Assert.assertFalse(PasswordValidation.isIncorrectPasswordLenght(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isCorrectPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hana");
-        Assert.assertFalse(PasswordValidation.isIncorrectPasswordLenght(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isCorrectPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanaHH");
-        Assert.assertFalse(PasswordValidation.isIncorrectPasswordLenght(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isCorrectPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("asdfghjkl");
-        Assert.assertTrue(PasswordValidation.isIncorrectPasswordLenght(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isCorrectPasswordLenght(mUser.getPassword()));
     }
 
     @Test

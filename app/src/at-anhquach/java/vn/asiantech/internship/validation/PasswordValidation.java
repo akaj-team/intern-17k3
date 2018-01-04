@@ -21,7 +21,7 @@ public class PasswordValidation {
         return specialCharPatten.matcher(password).find() || digitCasePatten.matcher(password).find();
     }
 
-    public static boolean isIncorrectPasswordLenght(String pass) {
+    public static boolean isCorrectPasswordLenght(String pass) {
         if (pass.length() >= 7) {
             int numCount = 0;
             String[] words = pass.split("");
@@ -37,7 +37,7 @@ public class PasswordValidation {
             }
             return true;
         }
-        return true;
+        return false;
     }
 
     public static boolean isContainPasswordSpace(String pass) {
