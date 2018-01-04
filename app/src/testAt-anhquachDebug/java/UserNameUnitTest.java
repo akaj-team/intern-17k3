@@ -19,23 +19,23 @@ public class UserNameUnitTest {
     private User mUser;
 
     @Test
-    public void isUserNameLength() {
+    public void checkUserNameLength() {
         Mockito.when(mUser.getUsename()).thenReturn("ngocanh");
-        Assert.assertTrue(UserNameValidation.isIncorrectUserNameLength(mUser.getUsename()));
+        Assert.assertTrue(UserNameValidation.isCorrectUserNameLength(mUser.getUsename()));
         Mockito.when(mUser.getUsename()).thenReturn("hana");
-        Assert.assertFalse(UserNameValidation.isIncorrectUserNameLength(mUser.getUsename()));
+        Assert.assertFalse(UserNameValidation.isCorrectUserNameLength(mUser.getUsename()));
     }
 
     @Test
-    public void isCapitalUserName() {
+    public void checkCapitalUserName() {
         Mockito.when(mUser.getUsename()).thenReturn("ngocanhH");
-        Assert.assertTrue(UserNameValidation.isCapitalUserName(mUser.getUsename()));
+        Assert.assertTrue(UserNameValidation.isHaveAtLeastACapitalUserName(mUser.getUsename()));
         Mockito.when(mUser.getUsename()).thenReturn("anh");
-        Assert.assertFalse(UserNameValidation.isCapitalUserName(mUser.getUsename()));
+        Assert.assertFalse(UserNameValidation.isHaveAtLeastACapitalUserName(mUser.getUsename()));
     }
 
     @Test
-    public void isContainSpecialChar() {
+    public void checkContainSpecialChar() {
         Mockito.when(mUser.getUsename()).thenReturn("hanangocanh");
         Assert.assertTrue(UserNameValidation.isContainSpecialChar(mUser.getUsename()));
         Mockito.when(mUser.getUsename()).thenReturn("!@#$%^ &*()");
@@ -43,7 +43,7 @@ public class UserNameUnitTest {
     }
 
     @Test
-    public void isUserNameIgnoreUpperCase() {
+    public void checkUserNameIgnoreUpperCase() {
         Mockito.when(mUser.getUsename()).thenReturn("abcd");
         Assert.assertTrue(UserNameValidation.isUserNameIgnoreUpperCase(mUser.getUsename()));
         Mockito.when(mUser.getUsename()).thenReturn("Abcd");
@@ -51,7 +51,7 @@ public class UserNameUnitTest {
     }
 
     @Test
-    public void isMostTwoDigits() {
+    public void checkMostTwoDigits() {
         Mockito.when(mUser.getUsename()).thenReturn("ngocanh97");
         Assert.assertTrue(UserNameValidation.isMostTwoDigits(mUser.getUsename()));
         Mockito.when(mUser.getUsename()).thenReturn("ngocanh1997");

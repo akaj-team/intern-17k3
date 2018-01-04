@@ -21,13 +21,13 @@ public class PasswordUnitTest {
     @Test
     public void checkDifferentUserName() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh");
-        Assert.assertTrue(PasswordValidation.checkDifferentUserName(mUser.getPassword(), "ngocanhH"));
+        Assert.assertTrue(PasswordValidation.isDifferentUserName(mUser.getPassword(), "ngocanhH"));
         Mockito.when(mUser.getPassword()).thenReturn("ngocaH");
-        Assert.assertFalse(PasswordValidation.checkDifferentUserName(mUser.getPassword(), "ngocaH"));
+        Assert.assertFalse(PasswordValidation.isDifferentUserName(mUser.getPassword(), "ngocaH"));
     }
 
     @Test
-    public void isContainSpecialCharOrNumber() {
+    public void checkContainSpecialCharOrNumber() {
         Mockito.when(mUser.getPassword()).thenReturn("hana@ngocanh");
         Assert.assertTrue(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh12");
@@ -39,7 +39,7 @@ public class PasswordUnitTest {
     }
 
     @Test
-    public void isIncorrectPasswordLenght() {
+    public void checkIncorrectPasswordLenght() {
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh");
         Assert.assertFalse(PasswordValidation.isCorrectPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hana");
@@ -51,7 +51,7 @@ public class PasswordUnitTest {
     }
 
     @Test
-    public void isContainPasswordSpace() {
+    public void checkContainPasswordSpace() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh2");
         Assert.assertTrue(PasswordValidation.isContainPasswordSpace(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("ngoc anh");
@@ -59,7 +59,7 @@ public class PasswordUnitTest {
     }
 
     @Test
-    public void isAtLeastThreeCapitalChar() {
+    public void checkAtLeastThreeCapitalChar() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh");
         Assert.assertTrue(PasswordValidation.isAtLeastThreeCapitalChar(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("ngocanhHHHH");

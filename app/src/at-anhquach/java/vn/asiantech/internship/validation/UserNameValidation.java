@@ -11,11 +11,11 @@ public class UserNameValidation {
 
     }
 
-    public static boolean isIncorrectUserNameLength(String userName) {
+    public static boolean isCorrectUserNameLength(String userName) {
         return userName.length() > 5 && userName.length() < 24;
     }
 
-    public static boolean isCapitalUserName(String userName) {
+    public static boolean isHaveAtLeastACapitalUserName(String userName) {
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isUpperCase(userName.charAt(i))) {
                 return true;

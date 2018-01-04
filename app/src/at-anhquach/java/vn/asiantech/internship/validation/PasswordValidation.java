@@ -11,7 +11,7 @@ public class PasswordValidation {
 
     }
 
-    public static boolean checkDifferentUserName(String pass, String userName) {
+    public static boolean isDifferentUserName(String pass, String userName) {
         return !pass.equals(userName);
     }
 
