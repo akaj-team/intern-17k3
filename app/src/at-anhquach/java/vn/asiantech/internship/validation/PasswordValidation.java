@@ -11,7 +11,7 @@ public class PasswordValidation {
 
     }
 
-    public static boolean isDifferentUserName(String pass, String userName) {
+    public static boolean checkDifferentUserName(String pass, String userName) {
         return !pass.equals(userName);
     }
 
@@ -29,7 +29,9 @@ public class PasswordValidation {
                 for (int j = i + 1; j < words.length; j++) {
                     if (words[i].equals(words[j])) {
                         numCount++;
-                        return numCount > 2;
+                        if (numCount > 2) {
+                            return false;
+                        }
                     }
                 }
             }
@@ -38,11 +40,11 @@ public class PasswordValidation {
         return false;
     }
 
-    public static boolean isContainPassSpace(String pass) {
+    public static boolean isContainPasswordSpace(String pass) {
         return !pass.contains(" ");
     }
 
-    public static boolean isMostThreeCapitalChar(String pass) {
+    public static boolean isAtLeastThreeCapitalChar(String pass) {
         int count = 0;
         for (int i = 0; i < pass.length(); i++) {
             if (Character.isUpperCase(pass.charAt(i))) {

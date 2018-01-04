@@ -19,15 +19,15 @@ public class PasswordUnitTest {
     private User mUser;
 
     @Test
-    public void isDifferentUserName() {
+    public void checkDifferentUserName() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh");
-        Assert.assertTrue(PasswordValidation.isDifferentUserName(mUser.getPassword(), "ngocanhH"));
+        Assert.assertTrue(PasswordValidation.checkDifferentUserName(mUser.getPassword(), "ngocanhH"));
         Mockito.when(mUser.getPassword()).thenReturn("ngocaH");
-        Assert.assertFalse(PasswordValidation.isDifferentUserName(mUser.getPassword(), "ngocaH"));
+        Assert.assertFalse(PasswordValidation.checkDifferentUserName(mUser.getPassword(), "ngocaH"));
     }
 
     @Test
-    public void isSpecialCharOrNumber() {
+    public void isContainSpecialCharOrNumber() {
         Mockito.when(mUser.getPassword()).thenReturn("hana@ngocanh");
         Assert.assertTrue(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh12");
@@ -39,7 +39,7 @@ public class PasswordUnitTest {
     }
 
     @Test
-    public void isPasswordLenght() {
+    public void isIncorrectPasswordLenght() {
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh");
         Assert.assertFalse(PasswordValidation.isIncorrectPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hana");
@@ -51,18 +51,18 @@ public class PasswordUnitTest {
     }
 
     @Test
-    public void isPassSpace() {
+    public void isContainPasswordSpace() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh2");
-        Assert.assertTrue(PasswordValidation.isContainPassSpace(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isContainPasswordSpace(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("ngoc anh");
-        Assert.assertFalse(PasswordValidation.isContainPassSpace(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isContainPasswordSpace(mUser.getPassword()));
     }
 
     @Test
-    public void isMostThreeCapitalChar() {
+    public void isAtLeastThreeCapitalChar() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh");
-        Assert.assertTrue(PasswordValidation.isMostThreeCapitalChar(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isAtLeastThreeCapitalChar(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("ngocanhHHHH");
-        Assert.assertFalse(PasswordValidation.isMostThreeCapitalChar(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isAtLeastThreeCapitalChar(mUser.getPassword()));
     }
 }
