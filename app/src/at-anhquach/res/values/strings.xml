@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">anhquach-17k3</string>
+    <string name="operator_add">+</string>
+    <string name="operator_divide">/</string>
+    <string name="operator_multi">*</string>
+    <string name="operator_sub">-</string>
+    <string name="error_divide_zero">Cannot divide for 0</string>
+    <string name="btn_issue1_name">Issue 1</string>
+    <string name="btn_issue2_name">Create Calculator View</string>
     <string name="textview_or">or</string>
     <string name="textview_slogan">a bike for everyone, always</string>
     <string name="btn_login_facebook_title">LOG IN WITH FACEBOOK</string>
@@ -11,4 +18,33 @@
     <string name="edt_hint_enter_number">Enter mobile number</string>
     <string name="edt_hint_full_name">Full name</string>
     <string name="edt_hint_email">Email</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="email">anh.quach@asiantech.vn</string>
+    <string name="btn_save_data">Save</string>
+    <string name="edt_hint_input_text">Input Text</string>
+    <string name="key_save_data">SAVE_DATA</string>
+    <string name="key_id_user">idUser</string>
+    <string name="tag_error">error</string>
+    <string name="folder_name_anhquach">/AnhQuach</string>
+    <string name="file_name_txt">abc.txt</string>
+    <string name="title_tablayout_thread1">Fragment 1</string>
+    <string name="title_tablayout_thread2">Fragment 2</string>
+    <string name="btn_click">Download!</string>
+    <string name="textview_skip">Skip</string>
+    <string name="edt_input_your_name">Input your name</string>
+    <string name="edt_input_your_phone_number">Input your phone number</string>
+    <string name="edt_input_your_email_user">Input your email user</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_update">Update</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_btn_cancel">Cancel</string>
+    <string name="dialog_btn_ok">OK</string>
+    <string name="dialog_message_skip_step">Do you sure skip all step?</string>
+    <string name="dialog_title_skip_step">Skip all step</string>
+    <string name="btn_load_in_drawable">Load in drawable</string>
+    <string name="btn_load_in_asset">Load in Asset</string>
+    <string name="btn_load_in_storage">Load in Storage</string>
+    <string name="btn_load_in_internet">Load in Internet</string>
+    <string name="textview_download" formatted="false">DownLoad %dKB/%dKB %d%%</string>
 </resources>

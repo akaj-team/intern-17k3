@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <Button
+        android:id="@+id/btnLoginScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_login_screen" />
+
+    <Button
+        android:id="@+id/btnCalculatorScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_calculator_screen" />
+    <Button
+        android:id="@+id/btnRecyclerViewScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_recycler_view_screen" />
+
+    <Button
+        android:id="@+id/btnDrawerLayoutScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_drawer_layout_screen" />
+
+    <Button
+        android:id="@+id/btnSharePreferenceScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_share_preference" />
+
+    <Button
+        android:id="@+id/btnExternalStorageScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_external_storage" />
+
+    <Button
+        android:id="@+id/btnSQLiteScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_sqlite_screen" />
+
+    <Button
+        android:id="@+id/btnImageNinepathVector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_image_ninepath_vector" />
+    <Button
+        android:id="@+id/btnViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_viewpager" />
+
+</LinearLayout>

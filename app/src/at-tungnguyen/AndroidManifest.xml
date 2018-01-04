@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.asiantech.internship">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +15,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="vn.asiantech.internship.MainActivity">
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.caculatorview.CalculatorActivity" />
+        <activity android:name=".ui.login.MainActivity" />
+        <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
+        <activity android:name=".image.LoadImageActivity" />
+        <activity android:name=".image.ImageExerciseActivity" />
+        <activity android:name=".image.NinePathActivity" />
+        <activity android:name=".image.VectorActivity" />
+        <activity android:name=".ui.drawer.DrawerActivity" />
+        <activity android:name=".ui.savedata.ex1.SharedPreferencesActivity" />
+        <activity android:name=".ui.savedata.ex2.ExternalActivity" />
+        <activity android:name=".ui.savedata.SaveDataActivity" />
+        <activity android:name=".ui.savedata.ex3.UserActivity" />
+        <activity android:name=".ui.savedata.ex3.CompanyActivity" />
+        <activity android:name=".ui.thread_handler.ui.thread.ThreadActivity" />
+        <activity android:name=".ui.thread_handler.ui.countdowntimer.CountDownActivity" />
+        <activity android:name=".ui.thread_handler.SplashThreadActivity" />
+        <activity android:name=".ui.viewpager.ui.ViewPagerActivity" />
+        <activity android:name=".ui.viewpager.ui.TabLayoutActivity" />
+        <activity android:name=".ui.unittest.LoginActivity"></activity>
     </application>
 
 </manifest>

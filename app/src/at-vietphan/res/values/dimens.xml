@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_my_list_exercise">18dp</dimen>
+    <dimen name="text_size_tv_result">18dp</dimen>
+    <dimen name="text_size_btn">19dp</dimen>
+    <dimen name="margin_view_pager">-90dp</dimen>
+</resources>

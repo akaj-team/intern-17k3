@@ -4,4 +4,17 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBgRecyclerView">#DCDCDC</color>
+    <color name="colorTitle">#00A5FA</color>
+    <color name="colorheader">#041e42</color>
+    <color name="colorTextLoginPhone">#00A9FE</color>
+    <color name="colorCusor">#ababb2</color>
+    <color name="colorBottomLine">#ababb2</color>
+    <color name="colorBgBtnLogin">#325C94</color>
+    <color name="colorSolidBtnLogin">#325C94</color>
+    <color name="colorBgBtnLoginPhone">#00A9FE</color>
+    <color name="colorSolidBtnLoginPhone">#ffffff</color>
+    <color name="colorBgTv">#DBDBDB</color>
+    <color name="colorSignupAcc">#00A0EF</color>
+    <color name="colorTerms">#00A4FA</color>
+    <color name="colorTvResult">#FF327B</color>
 </resources>

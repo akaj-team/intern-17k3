@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.asiantech.internship">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +14,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ExerciseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
+        <activity android:name=".ui.calculator.CalculatorActivity" />
+        <activity android:name=".ui.drawerlayout.DrawerActivity" />
+        <activity android:name=".ui.savedata.SharePreferenceActivity" />
+        <activity android:name=".ui.savedata.ExternalStorageActivity" />
+        <activity android:name=".ui.savedata.SQLiteActivity" />
+        <activity android:name=".ui.savedata.CompanyActivity" />
+        <activity android:name=".ui.savedata.SaveDataActivity" />
+        <activity android:name=".ui.loadimage.ImageLoaderActivity" />
+        <activity android:name=".ui.loadimage.NinePathActivity" />
+        <activity android:name=".ui.loadimage.ImageVectorActivity" />
+        <activity android:name=".ui.viewpager.SliderActivity" />
+        <activity android:name=".ui.viewpager.TabLayoutActivity" />
+        <activity android:name=".ui.asynchronous.activitys.ThreadHandleActivity" />
+        <activity android:name=".ui.asynchronous.activitys.AsynchronousActivity" />
+        <activity android:name=".ui.asynchronous.activitys.CountDownTimerActivity"></activity>
     </application>
 </manifest>

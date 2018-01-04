@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.asiantech.internship">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,15 +13,42 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/SelectEx"
-            android:theme="@style/NoActionBarTheme">
+            android:name=".SplashActivity"
+            android:label="@string/SelectEx">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".recyclerview.StatusActivity" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".calculation.CalculatorActivity" />
+        <activity android:name=".savedata.ExerciseManagementActivity" />
+        <activity android:name=".savedata.SharedPreferencesActivity" />
+        <activity android:name=".savedata.WriteExternalActivity" />
+        <activity android:name=".savedata.SqLiteActivity" />
+        <activity android:name=".savedata.CompanyActivity" />
+        <activity
+            android:name=".drawerlayout.DrawerLayoutActivity"
+            android:theme="@style/DrawerLayoutTheme" />
+        <activity
+            android:name=".viewpagerandtablelayout.ui.SlideActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".viewpagerandtablelayout.ui.TabLayoutActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".image.ImageManagementExerciseActivity" />
+        <activity android:name=".image.LoadImageActivity" />
+        <activity android:name=".image.NinePathActivity" />
+        <activity android:name=".image.VectorDrawerActivity" />
+        <activity
+            android:name=".threadandhandler.dowloadimage.ui.TabManagementActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".threadandhandler.SplashThreadAndHandlerActivity" />
+        <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity" />
     </application>
 
 </manifest>

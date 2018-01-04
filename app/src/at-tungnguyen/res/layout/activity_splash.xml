@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="vn.asiantech.internship.ui.splash.SplashActivity">
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_login" />
+
+    <Button
+        android:id="@+id/btnCalculator"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_calculator_view" />
+
+    <Button
+        android:id="@+id/btnRecyclerView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_recyclerview" />
+
+    <Button
+        android:id="@+id/btnSaveData"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_save_data" />
+
+    <Button
+        android:id="@+id/btnDrawerlayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_drawerlayout" />
+
+    <Button
+        android:id="@+id/btnThread"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_thread" />
+
+    <Button
+        android:id="@+id/btnLoadImage"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_loadImage" />
+
+    <Button
+        android:id="@+id/btnViewPager"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_viewpager" />
+
+    <Button
+        android:id="@+id/btnValidation"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_login_validation" />
+</LinearLayout>
