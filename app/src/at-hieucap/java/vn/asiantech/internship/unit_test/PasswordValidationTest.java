@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  */
 public final class PasswordValidationTest {
     private PasswordValidationTest() {
-        // No-oop
+        // No-op
     }
 
     public static boolean isDifferentUserName(String userName, String password) {

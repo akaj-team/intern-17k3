@@ -8,7 +8,7 @@ import java.util.Locale;
  */
 public final class UsernameValidationTest {
     private UsernameValidationTest() {
-        // No-oop
+        // No-op
     }
 
     public static boolean isLengthAllowed(String userName) {

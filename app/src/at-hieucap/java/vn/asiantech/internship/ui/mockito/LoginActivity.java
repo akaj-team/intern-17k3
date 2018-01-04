@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validate() {
-        if (isValidateUserName(mEdtUserName.getText().toString()) &&
+        if (isValidateUserName(mEdtUserName.getText().toString().trim()) &&
                 validatePassWord(mEdtPassword.getText().toString().trim())) {
             showToast(getString(R.string.test_done));
         }
