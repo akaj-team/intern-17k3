@@ -4,7 +4,6 @@ package vn.asiantech.internship.models;
  * Created by phongle on 3/1/2561.
  * Class model account
  */
-
 public class Account {
     private String Username;
     private String Password;
