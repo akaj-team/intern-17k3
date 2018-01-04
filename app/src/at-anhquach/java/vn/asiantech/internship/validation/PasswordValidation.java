@@ -37,7 +37,7 @@ public class PasswordValidation {
             }
             return true;
         }
-        return false;
+        return true;
     }
 
     public static boolean isContainPasswordSpace(String pass) {
