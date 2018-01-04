@@ -72,8 +72,11 @@ public class CustomView extends View {
     private void initFirstValues() {
         mRange = (int) mSizeCol * 5;
         mMarginTop = 100;
+        // position of first monday people1
         mStartPeople1 = 170;
+        // position of first monday people2
         mStartPeople2 = 200;
+        // position of first monday people3
         mStartPeople3 = 230;
         mStartLine = 150;
         mStopLine = 1200;
@@ -119,6 +122,8 @@ public class CustomView extends View {
                                     v = 0;
                                     s = 0;
                                     t = 0;
+                                } else {
+                                    handler.postDelayed(this, 5);
                                 }
                             } else {
                                 if (v < -1) {
@@ -132,9 +137,10 @@ public class CustomView extends View {
                                     v = 0;
                                     s = 0;
                                     t = 0;
+                                } else {
+                                    handler.postDelayed(this, 5);
                                 }
                             }
-                            handler.postDelayed(this, 5);
                         }
                     }, 5);
                 }
