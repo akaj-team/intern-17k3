@@ -2,4 +2,7 @@
 
     <string name="title_tablayout_home">HOME</string>
     <string name="title_tablayout_info">INFO</string>
+    <string name="textview_kb">KB/</string>
+    <string name="bracket_first">(</string>
+    <string name="null_input_username">null input username</string>
 </resources>

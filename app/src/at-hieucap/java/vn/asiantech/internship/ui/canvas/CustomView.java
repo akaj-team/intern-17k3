@@ -2,6 +2,7 @@ package vn.asiantech.internship.ui.canvas;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -30,6 +31,7 @@ public class CustomView extends View {
     private static int mWidthScreen;
     private static float mUnit;
     private static int mMaxDistance = 0;
+    private static int mWidthColumn;
     private static String mTextDistanceMax;
     private static String mTextDistanceCenter;
     private static String mTextDistanceStart;
@@ -37,9 +39,9 @@ public class CustomView extends View {
     private static String mTextSunday;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
-    private int mListPersonA[] = {1, 7, 5, 2, 9, 6, 5};
-    private int mListPersonB[] = {1, 3, 5, 2, 2, 6, 5};
-    private int mListPersonC[] = {1, 8, 5, 2, 11, 6, 5};
+    private int mListPersonA[] = {1, 7, 5, 2, 9, 6, 5, 6, 8, 3, 5, 4, 6, 12};
+    private int mListPersonB[] = {1, 3, 5, 2, 2, 6, 5, 5, 7, 2, 13, 1, 3, 2};
+    private int mListPersonC[] = {1, 8, 5, 2, 11, 6, 5, 1, 4, 6, 7, 2, 6, 6};
     private Paint mPaintLine;
     private Paint mPaintColumn;
     private Paint mPaintText;
@@ -54,6 +56,9 @@ public class CustomView extends View {
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        TypedArray typedArray = context.getTheme()
+                .obtainStyledAttributes(attrs, R.styleable.CustomView, 0, 0);
+        mWidthColumn = typedArray.getInteger(R.styleable.CustomView_stroke_with, 10);
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         findMaxDistance();
         transmissionString();
@@ -95,15 +100,35 @@ public class CustomView extends View {
         super.onDraw(canvas);
         canvas.save();
         canvas.scale(mScaleFactor, mScaleFactor);
-        calculation();
         mStartWidth *= mScaleFactor;
         mStartHeight *= mScaleFactor;
         mMaxHeight *= mScaleFactor;
-        mStartWidth += mMove;
-        drawTexts(canvas);
+        calculation();
         drawLines(canvas);
         drawColumns(canvas);
+        drawTextsDay(canvas);
+        drawFrames(canvas);
+        drawTextsDistance(canvas);
         canvas.restore();
+    }
+
+    /**
+     * @param canvas Draw frames for columns
+     */
+    private void drawFrames(Canvas canvas) {
+        mPaintColumn.setColor(this.getResources().getColor(R.color.colorWhite));
+        canvas.drawRect(new RectF(0, 0, getWidth() / 6, getHeight()), mPaintColumn);
+    }
+
+    /**
+     * @param canvas Draw text days
+     */
+    private void drawTextsDay(Canvas canvas) {
+        // Draw text monday
+        canvas.drawText(mTextMonday, getWidth() / 6 + mMove, mStartHeight + mPaintText.getTextSize(), mPaintText);
+        // Draw text sunday
+        canvas.drawText(mTextSunday, getWidth() / 6 + mMove + WIDTH_DAY * 6,
+                mStartHeight + mPaintText.getTextSize(), mPaintText);
     }
 
     /**
@@ -118,7 +143,9 @@ public class CustomView extends View {
         mUnit = (float) mMaxHeight / mMaxDistance;
     }
 
-    /**mHeightScreen
+    /**
+     * mHeightScreen
+     *
      * @param canvas Draw columns distance
      */
     private void drawColumns(Canvas canvas) {
@@ -126,23 +153,22 @@ public class CustomView extends View {
             int marginColumn = 18;
             // Draw column distance person A
             mPaintColumn.setColor(this.getResources().getColor(R.color.colorColumnDistancePersonA));
-            int widthColumn = 15;
-            canvas.drawRoundRect((new RectF(mStartWidth, mStartHeight - mListPersonA[i] * mUnit,
-                            mStartWidth + widthColumn, mStartHeight)), CORNER_RADIUS, CORNER_RADIUS,
+            canvas.drawRoundRect((new RectF(mStartWidth + mMove, mStartHeight - mListPersonA[i] * mUnit,
+                            mStartWidth + mWidthColumn + mMove, mStartHeight)), CORNER_RADIUS, CORNER_RADIUS,
                     mPaintColumn);
             // Update location start
             mStartWidth += marginColumn;
             // Draw column distance person B
             mPaintColumn.setColor(this.getResources().getColor(R.color.colorColumnDistancePersonB));
-            canvas.drawRoundRect((new RectF(mStartWidth, mStartHeight - mListPersonB[i] * mUnit,
-                            mStartWidth + widthColumn, mStartHeight)), CORNER_RADIUS, CORNER_RADIUS,
+            canvas.drawRoundRect((new RectF(mStartWidth + mMove, mStartHeight - mListPersonB[i] * mUnit,
+                            mStartWidth + mWidthColumn + mMove, mStartHeight)), CORNER_RADIUS, CORNER_RADIUS,
                     mPaintColumn);
             // Update location start
             mStartWidth += marginColumn;
             // Draw column distance person C
             mPaintColumn.setColor(this.getResources().getColor(R.color.colorColumnDistancePersonC));
-            canvas.drawRoundRect((new RectF(mStartWidth, mStartHeight - mListPersonC[i] * mUnit,
-                            mStartWidth + widthColumn, mStartHeight)), CORNER_RADIUS, CORNER_RADIUS,
+            canvas.drawRoundRect((new RectF(mStartWidth + mMove, mStartHeight - mListPersonC[i] * mUnit,
+                            mStartWidth + mWidthColumn + mMove, mStartHeight)), CORNER_RADIUS, CORNER_RADIUS,
                     mPaintColumn);
             // Update location start
             mStartWidth += MARGIN_DAY;
@@ -163,23 +189,18 @@ public class CustomView extends View {
     }
 
     /**
-     * @param canvas Draw texts
+     * @param canvas Draw text distances
      */
-    private void drawTexts(Canvas canvas) {
+    private void drawTextsDistance(Canvas canvas) {
         // Draw text max distance
-        canvas.drawText(mTextDistanceMax, mStartWidth - mPaintText.measureText(mTextDistanceMax) - 10,
+        canvas.drawText(mTextDistanceMax, getWidth() / 6 - mPaintText.measureText(mTextDistanceMax) - 10,
                 MARGIN_TOP + (mPaintText.getTextSize() / 2), mPaintText);
         // Draw text center distance
-        canvas.drawText(mTextDistanceCenter, mStartWidth - mPaintText.measureText(mTextDistanceCenter) - 10,
+        canvas.drawText(mTextDistanceCenter, getWidth() / 6 - mPaintText.measureText(mTextDistanceCenter) - 10,
                 mMaxHeight / 2 + MARGIN_TOP, mPaintText);
         // Draw text min distance
-        canvas.drawText(mTextDistanceStart, mStartWidth - mPaintText.measureText(mTextDistanceStart) - 10,
+        canvas.drawText(mTextDistanceStart, getWidth() / 6 - mPaintText.measureText(mTextDistanceStart) - 10,
                 mStartHeight, mPaintText);
-        // Draw text monday
-        canvas.drawText(mTextMonday, mStartWidth, mStartHeight + mPaintText.getTextSize(), mPaintText);
-        // Draw text sunday
-        canvas.drawText(mTextSunday, mStartWidth + WIDTH_DAY * 6,
-                mStartHeight + mPaintText.getTextSize(), mPaintText);
     }
 
     /**
