@@ -29,13 +29,11 @@ public class PasswordValidation {
                 for (int j = i + 1; j < words.length; j++) {
                     if (words[i].equals(words[j])) {
                         numCount++;
-                        if (numCount > 2) {
-                            return true;
-                        }
+                        return numCount > 2;
                     }
                 }
             }
-            return false;
+            return true;
         }
         return false;
     }

@@ -46,7 +46,7 @@ public class PasswordUnitTest {
         Assert.assertFalse(PasswordValidation.isPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanaHH");
         Assert.assertFalse(PasswordValidation.isPasswordLenght(mUser.getPassword()));
-        Mockito.when(mUser.getPassword()).thenReturn("anhquach123");
+        Mockito.when(mUser.getPassword()).thenReturn("asdfghjkl");
         Assert.assertTrue(PasswordValidation.isPasswordLenght(mUser.getPassword()));
     }
 
