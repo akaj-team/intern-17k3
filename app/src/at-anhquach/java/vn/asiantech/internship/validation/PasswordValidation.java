@@ -7,18 +7,21 @@ import java.util.regex.Pattern;
  * Password Validation
  */
 public class PasswordValidation {
-    public static boolean checkDifferentUserName(String pass, String userName) {
+    private PasswordValidation() {
+
+    }
+
+    public static boolean isDifferentUserName(String pass, String userName) {
         return !pass.equals(userName);
     }
 
-    public static boolean checkSpecialCharOrNumber(String password) {
+    public static boolean isSpecialCharOrNumber(String password) {
         Pattern specialCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Pattern digitCasePatten = Pattern.compile("[0-9 ]");
         return specialCharPatten.matcher(password).find() || digitCasePatten.matcher(password).find();
     }
 
-    public static boolean checkPasswordLenght(String pass) {
-        boolean isRepeat = false;
+    public static boolean isPasswordLenght(String pass) {
         if (pass.length() >= 7) {
             int numCount = 0;
             String[] words = pass.split("");
@@ -27,20 +30,21 @@ public class PasswordValidation {
                     if (words[i].equals(words[j])) {
                         numCount++;
                         if (numCount > 2) {
-                            isRepeat = true;
+                            return true;
                         }
                     }
                 }
             }
-            return !isRepeat;
+            return false;
         }
-    return false;
+        return false;
     }
 
-    public static boolean checkPassSpace(String pass) {
+    public static boolean isPassSpace(String pass) {
         return !pass.contains(" ");
     }
-    public static boolean checkMostThreeCapitalChar(String pass){
+
+    public static boolean isMostThreeCapitalChar(String pass) {
         int count = 0;
         for (int i = 0; i < pass.length(); i++) {
             if (Character.isUpperCase(pass.charAt(i))) {

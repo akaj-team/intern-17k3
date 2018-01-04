@@ -19,52 +19,50 @@ public class PasswordUnitTest {
     private User mUser;
 
     @Test
-    public void checkDifferentUserName() {
-        Mockito.when(mUser.getUsename()).thenReturn("ngocanH");
+    public void isDifferentUserName() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh");
-        Assert.assertTrue(PasswordValidation.checkDifferentUserName(mUser.getPassword(), mUser.getUsename()));
-        Mockito.when(mUser.getUsename()).thenReturn("ngocanH");
-        Mockito.when(mUser.getPassword()).thenReturn("ngocanH");
-        Assert.assertFalse(PasswordValidation.checkDifferentUserName(mUser.getPassword(), mUser.getUsename()));
+        Assert.assertTrue(PasswordValidation.isDifferentUserName(mUser.getPassword(), "ngocanhH"));
+        Mockito.when(mUser.getPassword()).thenReturn("ngocaH");
+        Assert.assertFalse(PasswordValidation.isDifferentUserName(mUser.getPassword(), "ngocaH"));
     }
 
     @Test
-    public void checkSpecialCharOrNumber() {
+    public void isSpecialCharOrNumber() {
         Mockito.when(mUser.getPassword()).thenReturn("hana@ngocanh");
-        Assert.assertTrue(PasswordValidation.checkSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh12");
-        Assert.assertTrue(PasswordValidation.checkSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hana@ngocanh7");
-        Assert.assertTrue(PasswordValidation.checkSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh");
-        Assert.assertFalse(PasswordValidation.checkSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isSpecialCharOrNumber(mUser.getPassword()));
     }
 
     @Test
-    public void checkPasswordLenght() {
+    public void isPasswordLenght() {
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh");
-        Assert.assertFalse(PasswordValidation.checkPasswordLenght(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hana");
-        Assert.assertFalse(PasswordValidation.checkPasswordLenght(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanaHH");
-        Assert.assertFalse(PasswordValidation.checkPasswordLenght(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isPasswordLenght(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("anhquach123");
-        Assert.assertTrue(PasswordValidation.checkPasswordLenght(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isPasswordLenght(mUser.getPassword()));
     }
 
     @Test
-    public void checkPassSpace() {
+    public void isPassSpace() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh2");
-        Assert.assertTrue(PasswordValidation.checkPassSpace(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isPassSpace(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("ngoc anh");
-        Assert.assertFalse(PasswordValidation.checkPassSpace(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isPassSpace(mUser.getPassword()));
     }
 
     @Test
-    public void checkMostThreeCapitalChar() {
+    public void isMostThreeCapitalChar() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh");
-        Assert.assertTrue(PasswordValidation.checkMostThreeCapitalChar(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isMostThreeCapitalChar(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("ngocanhHHHH");
-        Assert.assertFalse(PasswordValidation.checkMostThreeCapitalChar(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isMostThreeCapitalChar(mUser.getPassword()));
     }
 }

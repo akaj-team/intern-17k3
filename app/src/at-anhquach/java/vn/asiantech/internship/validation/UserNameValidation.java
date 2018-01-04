@@ -11,11 +11,11 @@ public class UserNameValidation {
 
     }
 
-    public static boolean checkUserNameLength(String userName) {
+    public static boolean isUserNameLength(String userName) {
         return userName.length() > 5 && userName.length() < 24;
     }
 
-    public static boolean checkCapitalUserName(String userName) {
+    public static boolean isCapitalUserName(String userName) {
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isUpperCase(userName.charAt(i))) {
                 return true;
@@ -24,15 +24,15 @@ public class UserNameValidation {
         return false;
     }
 
-    public static boolean checkUserNameSpace(String userName) {
+    public static boolean isUserNameSpace(String userName) {
         return !userName.contains(" ");
     }
 
-    public static boolean checkContainSpecialChar(String userName) {
+    public static boolean isContainSpecialChar(String userName) {
         return userName.matches("[A-Za-z0-9]+");
     }
 
-    public static boolean checkMostTwoDigits(String userName) {
+    public static boolean isMostTwoDigits(String userName) {
         int count = 0;
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isDigit(userName.charAt(i))) {
@@ -42,7 +42,7 @@ public class UserNameValidation {
         return count <= 2;
     }
 
-    public static boolean checkUserNameIgnoreUpperCase(String userName) {
+    public static boolean isUserNameIgnoreUpperCase(String userName) {
         return userName.equals(userName.toLowerCase(Locale.getDefault()));
     }
 }
