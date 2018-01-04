@@ -59,7 +59,6 @@
     <string name="dialog_skip_message">Do you want skip this?</string>
     <string name="dialog_skip_yes">Yes</string>
     <string name="dialog_skip_no">No</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_info_fragment_title">INFOMATION</string>
     <string name="btn_name_update">Update</string>
     <string name="tv_name_info">Your Name</string>
@@ -80,4 +79,28 @@
     <string name="name_btn_load_from_internet">From Internet</string>
     <string name="name_btn_nine_path">Nine Path</string>
     <string name="name_btn_draw_vector">Draw Vector</string>
+    <string name="name_btn_thread">Thread And Handler</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_btn_start_download">Download</string>
+    <string name="name_btn_exercise_1_thread">Exercise 1</string>
+    <string name="name_btn_exercise_2_thread">Exercise 2</string>
+    <string name="item_countdown_list">item :  </string>
+    <string name="name_btn_unit_text">Unit Test Login</string>
+    <string name="unit_test_login_user">user name</string>
+    <string name="unit_test_login_password">password</string>
+    <string name="unit_test_btn_login">login</string>
+    <string name="null_user_name">Please input user name</string>
+    <string name="validate_username_length">Length of userName is higher than 5 and lower than 25</string>
+    <string name="validate_username_capture_number">user name have least one capital letter and most 2 number</string>
+    <string name="validate_username_space">user name have space</string>
+    <string name="validate_username_special_char">username have special character</string>
+    <string name="validate_username_no_distinction">distinction between uppercase and lowercase letters</string>
+    <string name="validate_done">Done</string>
+    <string name="null_password">please input password</string>
+    <string name="validate_password_length"><![CDATA[password must > 7 character]]></string>
+    <string name="validate_password_different_user_name">password is not different username</string>
+    <string name="validate_password_have_least_number">password have at least one special character or number</string>
+    <string name="validate_password_space">password have space</string>
+    <string name="validate_password_least_3_capital_letter">password have least 3 capital letter</string>
+    <string name="validate_password_repeat">repeat character password 2 times</string>
 </resources>

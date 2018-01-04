@@ -96,4 +96,23 @@
     </string>
     <string name="download_error">Download error</string>
     <string name="close_error">Disconnect error</string>
+    <string name="user_name">User name</string>
+    <string name="password">Password</string>
+    <string name="unit_test">Unit test</string>
+    <string name="login">Login</string>
+    <string name="user_name_empty">User name is empty</string>
+    <string name="test_user_name_length">User name length is not allowed</string>
+    <string name="test_user_name_digit_number">User name not have two number</string>
+    <string name="test_user_name_capital_letter">User name not enough capital letter</string>
+    <string name="test_user_name_have_space">User name have character space</string>
+    <string name="test_user_name_special_character">Username have special character</string>
+    <string name="test_user_name_upper_case_or_lower_case">User name is case sensitive</string>
+    <string name="password_empty">Password is empty</string>
+    <string name="test_password_length">Password length is not allowed</string>
+    <string name="test_password_different_user_name">Password is not different username</string>
+    <string name="test_password_character_special_and_digit_number">Password have at least one special character or character number</string>
+    <string name="test_password_have_space">Password have character space</string>
+    <string name="test_password_capital_letter">Password not enough three capital letters</string>
+    <string name="test_password_same_character">Password have character overlap more than two times</string>
+    <string name="test_done">Done</string>
 </resources>
