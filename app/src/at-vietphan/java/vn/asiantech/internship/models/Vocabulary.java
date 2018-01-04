@@ -19,23 +19,11 @@ public class Vocabulary {
         return FirstLanguage;
     }
 
-    public void setFirstLanguage(String firstLanguage) {
-        FirstLanguage = firstLanguage;
-    }
-
     public int getImageAnimal() {
         return imageAnimal;
     }
 
-    public void setImageAnimal(int imageAnimal) {
-        this.imageAnimal = imageAnimal;
-    }
-
     public String getSecondLanguage() {
         return SecondLanguage;
-    }
-
-    public void setSecondLanguage(String secondLanguage) {
-        SecondLanguage = secondLanguage;
     }
 }
