@@ -32,7 +32,7 @@ public class CustomView extends View {
     private Paint mPaintMaxLine;
     private Integer listPeoPel[] = {1, 7, 5, 2, 9, 6, 5};
     private Integer listPeoPel2[] = {1, 3, 5, 2, 2, 6, 5};
-    private Integer listPeoPel3[] = {1, 8, 5, 2, 11, 6, 5};
+    private Integer listPeoPel3[] = {1, 8, 5, 2, 10, 6, 5};
     private int mStartY = 50;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
@@ -102,8 +102,8 @@ public class CustomView extends View {
             int mStartX = 60;
             int mStopX = 60;
             canvas.drawRoundRect(new RectF(i * mStartX * x + mFirstX1, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX1 + 20, mStopY), 10, 5, mPaint);
-            canvas.drawRoundRect(new RectF(i * mStartX * x + mFirstX2, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX2 + 20, mStopY), 10, 5, mPaint2);
-            canvas.drawRoundRect(new RectF(i * mStartX * x + mFirstX3, getHeight() / 2 - listPeoPel[i] * mStartY, i * mStopX * x + mFirstX3 + 20, mStopY), 10, 5, mPaint3);
+            canvas.drawRoundRect(new RectF(i * mStartX * x + mFirstX2, getHeight() / 2 - listPeoPel2[i] * mStartY, i * mStopX * x + mFirstX2 + 20, mStopY), 10, 5, mPaint2);
+            canvas.drawRoundRect(new RectF(i * mStartX * x + mFirstX3, getHeight() / 2 - listPeoPel3[i] * mStartY, i * mStopX * x + mFirstX3 + 20, mStopY), 10, 5, mPaint3);
         }
         drawRectTwo(canvas);
         drawText(canvas);
@@ -113,7 +113,6 @@ public class CustomView extends View {
 
     private void drawRectTwo(Canvas canvas) {
         canvas.drawRect(0, 50, 100, getHeight() / 2, mPaintRect);
-
     }
 
     /**
@@ -121,7 +120,7 @@ public class CustomView extends View {
      */
     private void drawLine(Canvas canvas) {
         canvas.drawLine(80, getHeight() / 2, getWidth(), getHeight() / 2, mPaintMaxLine);
-        canvas.drawLine(80, getHeight() / 2 - getMaxValues() / 2 * mStartY, getWidth(), getHeight() / 2 - getMaxValues() / 2 * mStartY, mPaintMaxLine);
+        canvas.drawLine(80, getHeight() / 2 - getMaxValues() / 2 * mStartY, getWidth(), getHeight() / 2 - getMaxValues() /2 * mStartY, mPaintMaxLine);
         canvas.drawLine(80, getHeight() / 2 - getMaxValues() * mStartY, getWidth(), getHeight() / 2 - getMaxValues() * mStartY, mPaintMaxLine);
     }
 
@@ -193,6 +192,5 @@ public class CustomView extends View {
         mPaintRect.setStrokeWidth(50);
         mPaintRect.setStrokeCap(Paint.Cap.ROUND);
         mPaintRect.setColor(Color.WHITE);
-
     }
 }
