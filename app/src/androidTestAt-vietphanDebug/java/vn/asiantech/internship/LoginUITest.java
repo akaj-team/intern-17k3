@@ -75,7 +75,7 @@ public class LoginUITest {
 
     @Test
     public void checkPasswordDifferentUserName() {
-        onView(withId(R.id.edtPassword)).perform(typeText("PASword1"), closeSoftKeyboard());
+        onView(withId(R.id.edtPassword)).perform(typeText("PASword5"), closeSoftKeyboard());
         onView(withId(R.id.edtUserName)).perform(typeText("PASword5"), closeSoftKeyboard());
         onView(withId(R.id.btnLogin)).perform(click());
         onView(withText(startsWith("password must have different username")))
