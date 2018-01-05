@@ -1,7 +1,5 @@
 package vn.asiantech.internship.ui.validation;
 
-import java.util.regex.Pattern;
-
 /**
  * Author Asian Tech Inc.
  * Created by tungnguyen on 03/01/2018.
@@ -22,8 +20,7 @@ public class PasswordValidation {
      * Check password must be special
      */
     public static boolean isCheckPassSpecial(String password) {
-        Pattern checkPassSpecial = Pattern.compile("^[a-z0-9A-Z]");
-        return !checkPassSpecial.matcher(password).find();
+        return !password.matches("([a-zA-Z].+)([!@#$%^&*].+)");
     }
 
     /**
@@ -34,7 +31,7 @@ public class PasswordValidation {
     }
 
     /**
-     * Check password not r
+     * Check password not repeat
      */
     public static boolean isCheckPassRepeat(String password) {
         boolean isRepeat = false;
@@ -62,7 +59,7 @@ public class PasswordValidation {
     }
 
     /**
-     * Check password c
+     * Check password capital
      */
     public static boolean isCheckPassCapital(String password) {
         int numCount = 0;

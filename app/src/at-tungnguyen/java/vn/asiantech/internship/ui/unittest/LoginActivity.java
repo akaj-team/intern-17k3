@@ -80,8 +80,12 @@ public class LoginActivity extends AppCompatActivity {
             showToast(getResources().getString(R.string.password_not_repeat));
         } else if (!PasswordValidation.isPasswordSpace(password)) {
             showToast(getResources().getString(R.string.password_not_space));
+        } else if (!PasswordValidation.isCheckPassSpecial(password)) {
+            showToast(getResources().getString(R.string.password_special_number));
         } else if (!PasswordValidation.isCheckPasswordDifferentUser(userName, password)) {
             showToast(getResources().getString(R.string.password_user_different));
+        } else{
+            showToast(getResources().getString(R.string.login_successfully));
         }
     }
 
