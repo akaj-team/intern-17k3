@@ -44,8 +44,8 @@ public class SignUpFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
         mImgNext = view.findViewById(R.id.imgNext);
-        mEdtUsername = view.findViewById(R.id.edtEmail);
-        mEdtPassword = view.findViewById(R.id.edtFullName);
+        mEdtUsername = view.findViewById(R.id.edtPassword);
+        mEdtPassword = view.findViewById(R.id.edtUsername);
         mEdtEnterPhoneNumber = view.findViewById(R.id.edtEnterPhoneNumber);
         mChkTermAccept = view.findViewById(R.id.chkTermAccept);
         TextView tvReadAgreeTerm = view.findViewById(R.id.tvReadAndAgreeTerm);
