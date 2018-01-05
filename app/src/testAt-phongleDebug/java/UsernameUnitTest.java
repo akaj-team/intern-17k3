@@ -20,11 +20,11 @@ public class UsernameUnitTest {
     @Test
     public void checkLengthUsername() {
         Mockito.when(mAccount.getUsername()).thenReturn("user");
-        Assert.assertFalse(ValidateUsername.checkLengthUsername(mAccount.getUsername()));
+        Assert.assertFalse(ValidateUsername.isCheckLengthUsername(mAccount.getUsername()));
         Mockito.when(mAccount.getUsername()).thenReturn("useruseruseruseruseruseruseruseruseruseruseruseruseruser");
-        Assert.assertFalse(ValidateUsername.checkLengthUsername(mAccount.getUsername()));
+        Assert.assertFalse(ValidateUsername.isCheckLengthUsername(mAccount.getUsername()));
         Mockito.when(mAccount.getUsername()).thenReturn("user01");
-        Assert.assertTrue(ValidateUsername.checkLengthUsername(mAccount.getUsername()));
+        Assert.assertTrue(ValidateUsername.isCheckLengthUsername(mAccount.getUsername()));
     }
 
     @Test

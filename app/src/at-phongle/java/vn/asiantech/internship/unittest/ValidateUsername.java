@@ -9,13 +9,17 @@ import java.util.regex.Pattern;
  * Class check validate username
  */
 public final class ValidateUsername {
+    private ValidateUsername() {
+        // No - op
+    }
+
     /**
      * Check length username more than 5 and little than 24
      *
      * @param username username
      * @return checkLengthUsername boolean state
      */
-    public static boolean checkLengthUsername(String username) {
+    public static boolean isCheckLengthUsername(String username) {
         return (5 < username.length()) && (username.length() < 24);
     }
 
@@ -53,12 +57,7 @@ public final class ValidateUsername {
      * @return isNonWhiteSpace boolean state
      */
     public static boolean isNonWhiteSpace(String username) {
-        for (int i = 0; i < username.length(); i++) {
-            if (Character.isWhitespace(username.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        return !username.contains(" ");
     }
 
     /**
@@ -80,7 +79,7 @@ public final class ValidateUsername {
     /**
      * Function non distinct uppercase and lowercase
      *
-     * @param username
+     * @param username username
      * @return isUserUpperCaseOrLowercase boolean state
      */
     public static boolean isUserNameUpperCaseOrLowerCase(String username) {

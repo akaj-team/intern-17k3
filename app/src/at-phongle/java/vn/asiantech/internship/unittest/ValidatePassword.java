@@ -8,6 +8,10 @@ import java.util.regex.Pattern;
  * Class validate password
  */
 public final class ValidatePassword {
+    private ValidatePassword() {
+        // No - op
+    }
+
     /**
      * Check password difference username
      *
@@ -25,7 +29,7 @@ public final class ValidatePassword {
      * @param password password
      * @return boolean state
      */
-    public static boolean checkMinLength(String password) {
+    public static boolean isCheckMinLength(String password) {
         return password.length() >= 7;
     }
 
@@ -35,7 +39,7 @@ public final class ValidatePassword {
      * @param password password
      * @return atLeastSpecialCharOrNumber boolean state
      */
-    public static boolean atLeastSpecialCharOrNumber(String password) {
+    public static boolean isAtLeastSpecialCharOrNumber(String password) {
         Pattern p = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(password);
         return (m.find());
@@ -70,12 +74,7 @@ public final class ValidatePassword {
      * @return isNonSpace boolean state
      */
     public static boolean isNonWhiteSpace(String password) {
-        for (int i = 0; i < password.length(); i++) {
-            if (Character.isWhitespace(password.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        return !password.contains(" ");
     }
 
     /**

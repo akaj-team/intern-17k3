@@ -36,7 +36,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
         initViews();
-        addListener();
+        addListeners();
     }
 
     private void initViews() {
@@ -52,7 +52,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         mBtnUnitTest = findViewById(R.id.btnUnitTest);
     }
 
-    private void addListener() {
+    private void addListeners() {
         mBtnLoginScreen.setOnClickListener(this);
         mBtnCalculatorScreen.setOnClickListener(this);
         mBtnDrawerLayoutScreen.setOnClickListener(this);
@@ -108,7 +108,6 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
             case R.id.btnUnitTest:
                 intent = new Intent(AppActivity.this, TestLogin.class);
                 startActivity(intent);
-                break;
         }
     }
 }

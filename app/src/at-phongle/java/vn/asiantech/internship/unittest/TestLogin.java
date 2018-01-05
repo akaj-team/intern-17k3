@@ -27,8 +27,8 @@ public class TestLogin extends AppCompatActivity {
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateUsername(mEdtUsername.getText().toString());
-                validatePassword(mEdtUsername.getText().toString(), mEdtPassword.getText().toString());
+                validateUsername(mEdtUsername.getText().toString().trim());
+                validatePassword(mEdtUsername.getText().toString().trim(), mEdtPassword.getText().toString().trim());
             }
         });
     }
@@ -40,7 +40,7 @@ public class TestLogin extends AppCompatActivity {
     }
 
     private void validateUsername(String username) {
-        if (!ValidateUsername.checkLengthUsername(username)) {
+        if (!ValidateUsername.isCheckLengthUsername(username)) {
             showToast(getResources().getString(R.string.check_length_username));
         } else if (!ValidateUsername.isAtLeastUpperCase(username)) {
             showToast(getResources().getString(R.string.at_least_uppercase_username));
@@ -58,9 +58,9 @@ public class TestLogin extends AppCompatActivity {
     private void validatePassword(String username, String password) {
         if (!ValidatePassword.isDifferenceUsername(username, password)) {
             showToast(getResources().getString(R.string.check_difference_password));
-        } else if (!ValidatePassword.checkMinLength(password)) {
+        } else if (!ValidatePassword.isCheckMinLength(password)) {
             showToast(getResources().getString(R.string.check_length_password));
-        } else if (!ValidatePassword.atLeastSpecialCharOrNumber(password)) {
+        } else if (!ValidatePassword.isAtLeastSpecialCharOrNumber(password)) {
             showToast(getResources().getString(R.string.at_least_special_char_or_num_password));
         } else if (!ValidatePassword.isAtLeastThreeUpperCase(password)) {
             showToast(getResources().getString(R.string.at_least_three_uppercase_password));
