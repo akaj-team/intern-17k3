@@ -63,7 +63,7 @@
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtUsername"
+        android:layout_below="@id/edtFullName"
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_gray_bottom_line"
         android:gravity="center_vertical"
@@ -76,7 +76,7 @@
         android:id="@+id/lnCheck"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/edtPassword"
+        android:layout_below="@+id/edtEmail"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
