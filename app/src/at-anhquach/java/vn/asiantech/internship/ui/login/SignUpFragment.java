@@ -44,8 +44,8 @@ public class SignUpFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
         mImgNext = view.findViewById(R.id.imgNext);
-        mEdtUsername = view.findViewById(R.id.edtPassword);
-        mEdtPassword = view.findViewById(R.id.edtUsername);
+        mEdtUsername = view.findViewById(R.id.edtUsername);
+        mEdtPassword = view.findViewById(R.id.edtPassword);
         mEdtEnterPhoneNumber = view.findViewById(R.id.edtEnterPhoneNumber);
         mChkTermAccept = view.findViewById(R.id.chkTermAccept);
         TextView tvReadAgreeTerm = view.findViewById(R.id.tvReadAndAgreeTerm);
@@ -162,9 +162,9 @@ public class SignUpFragment extends Fragment {
                 String password = mEdtPassword.getText().toString();
                 if (TextUtils.equals(username, "") || TextUtils.equals(password, "")) {
                     showToast("Not enough data");
-                } else if (!UserNameValidation.isIncorrectUserNameLength(username)) {
+                } else if (!UserNameValidation.isCorrectUserNameLength(username)) {
                     showToast("Length must more than 5 and less than 24");
-                } else if (!UserNameValidation.isCapitalUserName(username)) {
+                } else if (!UserNameValidation.isHaveAtLeastACapitalUserName(username)) {
                     showToast("User name must have at least a capital letter");
                 } else if (!UserNameValidation.isContainSpecialChar(username)) {
                     showToast("User name can't contain special letter and space");
@@ -174,9 +174,9 @@ public class SignUpFragment extends Fragment {
                     showToast("Password must different username");
                 } else if (!PasswordValidation.isContainPasswordSpace(password)) {
                     showToast("Password don't contain space");
-                } else if (PasswordValidation.isContainSpecialCharOrNumber(password)) {
+                } else if (!PasswordValidation.isContainAtLeastSpecialCharOrNumber(password)) {
                     showToast("Password must contain at least a specical letter or a number letter");
-                } else if (PasswordValidation.isIncorrectPasswordLenght(password)) {
+                } else if (!PasswordValidation.isCorrectPasswordLenght(password)) {
                     showToast("Passwords have at least seven letter and contain at most two duplicate letters");
                 } else if (!PasswordValidation.isAtLeastThreeCapitalChar(password)) {
                     showToast("Password must have at least three capital letter");
