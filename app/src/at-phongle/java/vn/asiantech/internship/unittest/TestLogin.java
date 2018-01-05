@@ -2,6 +2,7 @@ package vn.asiantech.internship.unittest;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -27,8 +28,15 @@ public class TestLogin extends AppCompatActivity {
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateUsername(mEdtUsername.getText().toString().trim());
-                validatePassword(mEdtUsername.getText().toString().trim(), mEdtPassword.getText().toString().trim());
+                if (validateUsername(mEdtUsername.getText().toString().trim())) {
+                    if (validatePassword(mEdtUsername.getText().toString().trim(), mEdtPassword.getText().toString().trim())) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(
+                                TestLogin.this);
+                        builder.setTitle("Notification");
+                        builder.setMessage("Access granted!");
+                        builder.show();
+                    }
+                }
             }
         });
     }
@@ -39,35 +47,51 @@ public class TestLogin extends AppCompatActivity {
         mBtnLogin = findViewById(R.id.btnLogin);
     }
 
-    private void validateUsername(String username) {
+    private boolean validateUsername(String username) {
         if (!ValidateUsername.isCheckLengthUsername(username)) {
             showToast(getResources().getString(R.string.check_length_username));
+            return false;
         } else if (!ValidateUsername.isAtLeastUpperCase(username)) {
             showToast(getResources().getString(R.string.at_least_uppercase_username));
+            return false;
         } else if (!ValidateUsername.isNonSpecialChar(username)) {
             showToast(getResources().getString(R.string.non_special_char_username));
+            return false;
         } else if (!ValidateUsername.isNonWhiteSpace(username)) {
             showToast(getResources().getString(R.string.non_space_username));
+            return false;
         } else if (!ValidateUsername.isAtMostTwoNumber(username)) {
             showToast(getResources().getString(R.string.at_most_two_num_username));
+            return false;
         } else if (!ValidateUsername.isUserNameUpperCaseOrLowerCase(username)) {
             showToast(getResources().getString(R.string.non_uppercase_or_lowercase));
+            return false;
+        } else {
+            return true;
         }
     }
 
-    private void validatePassword(String username, String password) {
+    private boolean validatePassword(String username, String password) {
         if (!ValidatePassword.isDifferenceUsername(username, password)) {
             showToast(getResources().getString(R.string.check_difference_password));
+            return false;
         } else if (!ValidatePassword.isCheckMinLength(password)) {
             showToast(getResources().getString(R.string.check_length_password));
+            return false;
         } else if (!ValidatePassword.isAtLeastSpecialCharOrNumber(password)) {
             showToast(getResources().getString(R.string.at_least_special_char_or_num_password));
+            return false;
         } else if (!ValidatePassword.isAtLeastThreeUpperCase(password)) {
             showToast(getResources().getString(R.string.at_least_three_uppercase_password));
+            return false;
         } else if (!ValidatePassword.isNonRepeat(password)) {
             showToast(getResources().getString(R.string.non_repeat_password));
+            return false;
         } else if (!ValidatePassword.isNonWhiteSpace(password)) {
             showToast(getResources().getString(R.string.non_space_password));
+            return false;
+        } else {
+            return true;
         }
     }
 

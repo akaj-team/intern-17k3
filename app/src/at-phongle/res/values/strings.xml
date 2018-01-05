@@ -65,7 +65,7 @@
     <string name="btn_login">Login</string>
     <string name="check_length_username">Username must have more than 5 char and little than 24 char !</string>
     <string name="at_least_uppercase_username">Username must have at least one uppercase !</string>
-    <string name="non_special_char_username">Username can not have special char  !</string>
+    <string name="non_special_char_username">Username can not have special char !</string>
     <string name="non_space_username">Username can not have white space !</string>
     <string name="at_most_two_num_username">Username just have at most two number !</string>
     <string name="non_uppercase_or_lowercase">Username non distinct uppercase or lowercase !</string>
@@ -73,7 +73,7 @@
     <string name="check_length_password">Password must have more than 7 char !</string>
     <string name="at_least_special_char_or_num_password">Password must have at least one special char or number !</string>
     <string name="at_least_three_uppercase_password">Password must have at least three uppercase !</string>
-    <string name="non_repeat_password">Username can not repeat over twice !</string>
+    <string name="non_repeat_password">Password can not repeat over twice !</string>
     <string name="non_space_password">Password can not have white space !</string>
     <string name="btn_unit_test">unit test</string>
 </resources>
