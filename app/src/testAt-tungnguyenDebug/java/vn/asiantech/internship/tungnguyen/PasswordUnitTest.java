@@ -17,6 +17,7 @@ import vn.asiantech.internship.ui.validation.PasswordValidation;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class PasswordUnitTest {
+
     @Mock
     private User mUser;
 
