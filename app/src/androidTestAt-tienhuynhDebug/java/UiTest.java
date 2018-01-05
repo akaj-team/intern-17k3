@@ -151,7 +151,7 @@ public class UiTest {
     public void checkToastPasswordAtLeastNumber() {
         // type text and press button.
         Espresso.onView(withId(R.id.edtUserName))
-                .perform(typeText("TIEN271ABC"), closeSoftKeyboard());
+                .perform(typeText("TIEN271ABD"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.edtPassWord))
                 .perform(typeText("TIENbilt"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.btnLoginUnitTest))
@@ -170,7 +170,7 @@ public class UiTest {
     public void checkToastPasswordSpace() {
         // type text and press button.
         Espresso.onView(withId(R.id.edtUserName))
-                .perform(typeText("TIEN271ABC"), closeSoftKeyboard());
+                .perform(typeText("TIEN271ABE"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.edtPassWord))
                 .perform(typeText("TIENbilt "), closeSoftKeyboard());
         Espresso.onView(withId(R.id.btnLoginUnitTest))
@@ -188,7 +188,7 @@ public class UiTest {
     public void checkToastPasswordCapitalLetter() {
         // type text and press button.
         Espresso.onView(withId(R.id.edtUserName))
-                .perform(typeText("TIEN271ABC"), closeSoftKeyboard());
+                .perform(typeText("TIEN271ABI"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.edtPassWord))
                 .perform(typeText("tienbilt2"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.btnLoginUnitTest))
@@ -206,7 +206,7 @@ public class UiTest {
     public void checkToastLengthPassword() {
         // type text and press button.
         Espresso.onView(withId(R.id.edtUserName))
-                .perform(typeText("TIEN271ABC"), closeSoftKeyboard());
+                .perform(typeText("TIEN271ABK"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.edtPassWord))
                 .perform(typeText("TIEN27"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.btnLoginUnitTest))
@@ -224,7 +224,7 @@ public class UiTest {
     public void checkToastRepeatCharacter() {
         // type text and press button.
         Espresso.onView(withId(R.id.edtUserName))
-                .perform(typeText("TIEN271ABC"), closeSoftKeyboard());
+                .perform(typeText("TIEN271ABR"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.edtPassWord))
                 .perform(typeText("TIENNN27"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.btnLoginUnitTest))
@@ -242,7 +242,7 @@ public class UiTest {
     public void checkDialogDone() {
         // type text and press button.
         Espresso.onView(withId(R.id.edtUserName))
-                .perform(typeText("TIEN271ABC"), closeSoftKeyboard());
+                .perform(typeText("TIEN271ABT"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.edtPassWord))
                 .perform(typeText("TIEN27hui"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.btnLoginUnitTest))
