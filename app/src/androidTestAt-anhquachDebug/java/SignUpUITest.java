@@ -1,7 +1,8 @@
+import android.app.Instrumentation;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,8 +21,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.core.StringStartsWith.startsWith;
-import static org.mockito.AdditionalMatchers.not;
 
 /**
  * Created by anh.quach on 1/5/18.
@@ -32,26 +33,54 @@ public class SignUpUITest {
     @Rule
     public ActivityTestRule<LoginActivity> mActivityRule =
             new ActivityTestRule<>(LoginActivity.class);
-
-    @Before
-    public void init() {
-        mActivityRule.getActivity()
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frLogin, SignUpFragment.newInstance())
-                .commit();
-    }
-
+//
+//    @Test
+//    public void checkToastWhenBlankPassword() {
+//        setupFragment();
+//        // Type text and then press the button.
+//        onView(withId(R.id.edtUsername))
+//                .perform(typeText("hanangocanh"), closeSoftKeyboard());
+//        onView(withId(R.id.imgNext)).perform(click());
+//
+//        // Check toast
+//        onView(withText(startsWith("Not enough data")))
+//                .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
+//                .check(matches(isDisplayed()));
+//    }
+//    @Test
+//    public void checkToastWhenNotDifferentUserName() {
+//        setupFragment();
+//        // Type text and then press the button.
+//        onView(withId(R.id.edtUsername))
+//                .perform(typeText("hanangocanH"), closeSoftKeyboard());
+//        onView(withId(R.id.edtPassword))
+//                .perform(typeText("hanangocanH"), closeSoftKeyboard());
+//        onView(withId(R.id.imgNext)).perform(click());
+//
+//        // Check toast
+//        onView(withText(startsWith("Password must different username")))
+//                .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
+//                .check(matches(isDisplayed()));
+//    }
     @Test
-    public void checkToastWhenBlankPassword() {
+    public void checkToastWhenPasswordContainSpace() {
+        setupFragment();
         // Type text and then press the button.
         onView(withId(R.id.edtUsername))
-                .perform(typeText("trungnnq@gmail.com"), closeSoftKeyboard());
+                .perform(typeText("hanangocanH"), closeSoftKeyboard());
+        onView(withId(R.id.edtPassword))
+                .perform(typeText("hanangoc anh"), closeSoftKeyboard());
         onView(withId(R.id.imgNext)).perform(click());
 
         // Check toast
-        onView(withText(startsWith("Username and password can not blank")))
+        onView(withText(startsWith("Password don't contain space")))
                 .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));
+    }
+    private void setupFragment() {
+        android.support.v4.app.FragmentManager fragmentManager = mActivityRule.getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frLogin, new SignUpFragment()).commit();
+        Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
+        instrumentation.waitForIdleSync();
     }
 }
