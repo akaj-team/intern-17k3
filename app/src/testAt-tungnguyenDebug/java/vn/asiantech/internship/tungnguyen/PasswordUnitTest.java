@@ -21,7 +21,7 @@ public class PasswordUnitTest {
     private User mUser;
 
     @Test
-    public void isCheckPasswordDifferentUser() {
+    public void checkPasswordDifferentUser() {
         Mockito.when(mUser.getUserName()).thenReturn("Tungkute");
         Mockito.when(mUser.getPassword()).thenReturn("Tungkute");
         Assert.assertFalse(PasswordValidation.isCheckPasswordDifferentUser(mUser.getUserName(), mUser.getPassword()));
@@ -31,21 +31,19 @@ public class PasswordUnitTest {
     }
 
     @Test
-    public void isCheckPassSpecial() {
+    public void checkPassSpecial() {
         Mockito.when(mUser.getPassword()).thenReturn("tung");
         Assert.assertTrue(PasswordValidation.isCheckPassSpecial(mUser.getPassword()));
-//        Mockito.when(mUser.getPassword()).thenReturn("tungmoutian");
-//        Assert.assertFalse(PasswordValidation.isCheckPassSpecial(mUser.getPassword()));
     }
 
     @Test
-    public void isCheckPassLenght() {
+    public void checkPassLenght() {
         Mockito.when(mUser.getPassword()).thenReturn("12345678");
         Assert.assertTrue(PasswordValidation.isCheckPassLenght(mUser.getPassword()));
     }
 
     @Test
-    public void isCheckPassRepair() {
+    public void checkPassRepair() {
         Mockito.when(mUser.getPassword()).thenReturn("Tungkute");
         Assert.assertTrue(PasswordValidation.isCheckPassRepeat(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("SSFFAA");
@@ -53,7 +51,7 @@ public class PasswordUnitTest {
     }
 
     @Test
-    public void isCheckPassSpace(){
+    public void checkPassSpace() {
         Mockito.when(mUser.getPassword()).thenReturn("");
         Assert.assertTrue(PasswordValidation.isPasswordSpace(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn(" ");
@@ -61,7 +59,7 @@ public class PasswordUnitTest {
     }
 
     @Test
-    public void isCheckPassCap(){
+    public void checkPassCap() {
         Mockito.when(mUser.getPassword()).thenReturn("ABAsd");
         Assert.assertTrue(PasswordValidation.isCheckPassCapital(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("asdasd");

@@ -21,7 +21,7 @@ public class UserUnitTest {
     private User mUser;
 
     @Test
-    public void ischeckUserLenght() {
+    public void checkUserLenght() {
         Mockito.when(mUser.getUserName()).thenReturn("abcabc");
         Assert.assertTrue(UserValidation.ischeckUserLenght(mUser.getUserName()));
         Mockito.when(mUser.getUserName()).thenReturn("abcab");
@@ -29,7 +29,7 @@ public class UserUnitTest {
     }
 
     @Test
-    public void isCheckUserSpecial() {
+    public void checkUserSpecial() {
         Mockito.when(mUser.getUserName()).thenReturn("asd");
         Assert.assertTrue(UserValidation.isCheckUserSpecial(mUser.getUserName()));
         Mockito.when(mUser.getUserName()).thenReturn("$$$");
@@ -37,7 +37,7 @@ public class UserUnitTest {
     }
 
     @Test
-    public void isCheckUserSpace() {
+    public void checkUserSpace() {
         Mockito.when(mUser.getUserName()).thenReturn("");
         Assert.assertTrue(UserValidation.isCheckUserSpace(mUser.getUserName()));
         Mockito.when(mUser.getUserName()).thenReturn(" ");
@@ -45,7 +45,7 @@ public class UserUnitTest {
     }
 
     @Test
-    public void isCheckUserSpecialAndNumber() {
+    public void checkUserSpecialAndNumber() {
         Mockito.when(mUser.getUserName()).thenReturn("Tung12");
         Assert.assertTrue(UserValidation.isCheckUserCapitalAndNumber(mUser.getUserName()));
         Mockito.when(mUser.getUserName()).thenReturn("tung1");
@@ -53,7 +53,7 @@ public class UserUnitTest {
     }
 
     @Test
-    public void isUserNameSpecialChar() {
+    public void checkUserNameSpecialChar() {
         Mockito.when(mUser.getUserName()).thenReturn("TungkutE");
         Assert.assertTrue(UserValidation.isUserNameUpperCaseOrLowerCase(mUser.getUserName()));
     }

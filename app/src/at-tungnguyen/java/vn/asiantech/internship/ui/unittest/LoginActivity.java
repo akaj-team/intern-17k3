@@ -23,9 +23,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login3);
+        setContentView(R.layout.activity_login);
         initViews();
-        initListener();
+        initListeners();
     }
 
     /**
@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * initListener LoginActivity
      */
-    private void initListener() {
+    private void initListeners() {
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,8 +62,8 @@ public class LoginActivity extends AppCompatActivity {
      * checkValidate LoginActivity
      */
     private void checkValidate() {
-        String userName = mEdtName.getText().toString();
-        String password = mEdtPass.getText().toString();
+        String userName = mEdtName.getText().toString().trim();
+        String password = mEdtPass.getText().toString().trim();
         if (!UserValidation.ischeckUserLenght(userName)) {
             showToast(getResources().getString(R.string.user_name_lenght));
         } else if (!UserValidation.isCheckUserCapitalAndNumber(userName)) {
@@ -84,9 +84,8 @@ public class LoginActivity extends AppCompatActivity {
             showToast(getResources().getString(R.string.password_special_number));
         } else if (!PasswordValidation.isCheckPasswordDifferentUser(userName, password)) {
             showToast(getResources().getString(R.string.password_user_different));
-        } else{
+        } else {
             showToast(getResources().getString(R.string.login_successfully));
         }
     }
-
 }

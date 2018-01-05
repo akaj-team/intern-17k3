@@ -5,8 +5,9 @@ package vn.asiantech.internship.ui.validation;
  * Created by tungnguyen on 03/01/2018.
  */
 
-public class PasswordValidation {
-    public PasswordValidation() {
+public final class PasswordValidation {
+
+    private PasswordValidation() {
     }
 
     /**
@@ -34,21 +35,19 @@ public class PasswordValidation {
      * Check password not repeat
      */
     public static boolean isCheckPassRepeat(String password) {
-        boolean isRepeat = false;
         int numCount = 0;
         String[] words = password.split("");
         for (int i = 0; i < words.length; i++) {
             for (int j = i + 1; j < words.length; j++) {
                 if (words[i].equals(words[j])) {
                     numCount++;
-                    if (numCount > 2) {
-                        isRepeat = true;
-                        numCount = 0;
-                    }
                 }
             }
+            if (numCount > 2) {
+                return false;
+            }
         }
-        return !isRepeat;
+        return true;
     }
 
     /**

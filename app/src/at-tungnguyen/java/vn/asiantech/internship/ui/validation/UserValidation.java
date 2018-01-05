@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
  * Created by tungnguyen on 03/01/2018.
  */
 
-public class UserValidation {
-    public UserValidation() {
+public final class UserValidation {
+    private UserValidation() {
     }
 
     /**
@@ -50,16 +50,14 @@ public class UserValidation {
      * @return
      */
     public static boolean isCheckUserCapitalAndNumber(String userName) {
-        int numCount;
         boolean capitalCharacter = false;
         boolean numberCharacter = false;
         for (int i = 0; i < userName.length(); i++) {
             if (Character.isUpperCase(userName.charAt(i))) {
                 capitalCharacter = true;
             } else if (Character.isDigit(userName.charAt(i))) {
-                numCount = i;
-                numCount++;
-                if (numCount >= 2) {
+
+                if (i >= 2) {
                     numberCharacter = true;
                 }
                 if (capitalCharacter && numberCharacter) {
