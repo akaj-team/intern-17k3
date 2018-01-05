@@ -129,8 +129,6 @@ public class LoginUITest {
     public void checkLeastThreeCharacters() {
         onView(withId(R.id.edtUserName)).perform(typeText("Vietviet1"), closeSoftKeyboard());
         onView(withId(R.id.edtPassword)).perform(typeText("PAssword1"), closeSoftKeyboard());
-        onView(withId(R.id.edtUserName))
-                .perform(typeText(""), closeSoftKeyboard());
         onView(withId(R.id.btnLogin)).perform(click());
         onView(withText(startsWith("password must have lest 3 Characters")))
                 .inRoot(withDecorView(not(is(mActivityTestRule.getActivity().getWindow().getDecorView()))))
