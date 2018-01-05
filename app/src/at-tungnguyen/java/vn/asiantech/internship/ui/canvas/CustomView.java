@@ -39,7 +39,7 @@ public class CustomView extends View {
     private float mFirstX1 = 100;
     private int mFirstX2 = 125;
     private int mFirstX3 = 150;
-
+    private int columnMarginHorizontal = 10;
     private float mDownX;
     private float mMoveX;
 
@@ -112,7 +112,9 @@ public class CustomView extends View {
     }
 
     private void drawRectTwo(Canvas canvas) {
-        canvas.drawRect(0, 50, 100, getHeight() / 2, mPaintRect);
+        canvas.drawRect(0, 0, getPaddingLeft() + 100, getHeight() / 2, mPaintRect);
+        canvas.drawRect(getWidth() - getPaddingRight() - 100 +columnMarginHorizontal, 0, getWidth(), getHeight(), mPaintRect);
+
     }
 
     /**
