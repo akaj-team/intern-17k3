@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class PasswordUnitTest {
-    private static final String TEXT_TEST = "CaapHieU12";
+    private static final String TEXT_TEST = "C*aapHieU";
     @Mock
     private Login mLogIn;
 

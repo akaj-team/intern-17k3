@@ -1,7 +1,5 @@
 package vn.asiantech.internship.unit_test;
 
-import java.util.regex.Pattern;
-
 /**
  * Create check password
  * Created by tiboo on 03/01/2018.
@@ -16,8 +14,7 @@ public final class PasswordValidationTest {
     }
 
     public static boolean isCharacterSpecialAndDigitNumber(String password) {
-        return password.matches("[a-zA-Z.? ]*") || (Pattern.compile("[0-9 ]")).
-                matcher(password).find();
+        return password.matches("[a-zA-Z.? ]*") || password.matches("[0-9 ]");
     }
 
     public static boolean isLengthAllowed(String password) {
@@ -33,8 +30,11 @@ public final class PasswordValidationTest {
                     count++;
                 }
             }
+            if (count >= 2) {
+                return false;
+            } else count = 0;
         }
-        return count <= 2;
+        return true;
     }
 
     public static boolean isHaveSpace(String password) {
