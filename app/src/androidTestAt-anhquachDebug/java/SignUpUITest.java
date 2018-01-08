@@ -3,9 +3,11 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.login.LoginActivity;
@@ -28,6 +30,7 @@ import static org.hamcrest.core.StringStartsWith.startsWith;
  * Created by anh.quach on 1/5/18.
  * Test UI sign up fragment
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4.class)
 public class SignUpUITest {
     @Rule
@@ -35,7 +38,7 @@ public class SignUpUITest {
             new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void checkToastWhenBlankPassword() {
+    public void checkToastAWhenBlankPassword() {
         setupFragment();
         onView(withId(R.id.edtUsername))
                 .perform(typeText("hanangocanh"), closeSoftKeyboard());
