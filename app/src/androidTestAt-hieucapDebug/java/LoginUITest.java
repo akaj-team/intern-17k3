@@ -220,7 +220,7 @@ public class LoginUITest {
         onView(withId(R.id.edtUserName))
                 .perform(typeText("Hieu22intern"), closeSoftKeyboard());
         onView(withId(R.id.edtPassword))
-                .perform(typeText("HIUe9845intern"), closeSoftKeyboard());
+                .perform(typeText("C*aapHieU"), closeSoftKeyboard());
         onView(withId(R.id.btnLogin)).perform(click());
         // Check toast
         onView(withText("Congratulations on your successful login !!!")).check(matches(isDisplayed()));

@@ -14,7 +14,7 @@ public final class PasswordValidationTest {
     }
 
     public static boolean isCharacterSpecialAndDigitNumber(String password) {
-        return password.matches("[a-zA-Z.? ]*") || password.matches("[0-9 ]");
+        return password.matches("[a-zA-Z.? ]+");
     }
 
     public static boolean isLengthAllowed(String password) {

@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class PasswordUnitTest {
-    private static final String TEXT_TEST = "C*aapHieU";
+    private static final String TEXT_TEST = "Ca%apHieU";
     @Mock
     private Login mLogIn;
 
@@ -28,7 +28,7 @@ public class PasswordUnitTest {
     @Test
     public void testCharacterSpecialAndDigitNumber() {
         when(mLogIn.getPassword()).thenReturn(TEXT_TEST);
-        Assert.assertTrue(PasswordValidationTest.isCharacterSpecialAndDigitNumber(mLogIn.getPassword()));
+        Assert.assertFalse(PasswordValidationTest.isCharacterSpecialAndDigitNumber(mLogIn.getPassword()));
     }
 
     @Test
