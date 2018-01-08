@@ -22,11 +22,12 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.core.StringStartsWith.startsWith;
 
 /**
- * Create UI test
+ * Create  login UI test
  * Created by tiboo on 05/01/2018.
  */
 @RunWith(AndroidJUnit4.class)
 public class LoginUITest {
+    private static final String TEXT_USERNAME_VALID = "Hieu22intern";
     @Rule
     public ActivityTestRule<LoginActivity> mActivityRule =
             new ActivityTestRule<>(LoginActivity.class);
@@ -117,7 +118,7 @@ public class LoginUITest {
     public void checkNullPassword() {
         // Type text username and then press the button.
         onView(withId(R.id.edtUserName))
-                .perform(typeText("Hieu22intern"), closeSoftKeyboard());
+                .perform(typeText(TEXT_USERNAME_VALID), closeSoftKeyboard());
         onView(withId(R.id.btnLogin)).perform(click());
         // Check toast when password is empty
         onView(withText(startsWith("Password is empty")))
@@ -129,9 +130,9 @@ public class LoginUITest {
     public void checkPasswordDifferentUsername() {
         // Type text username.
         onView(withId(R.id.edtUserName))
-                .perform(typeText("Hieu22intern"), closeSoftKeyboard());
+                .perform(typeText(TEXT_USERNAME_VALID), closeSoftKeyboard());
         onView(withId(R.id.edtPassword))
-                .perform(typeText("Hieu22intern"), closeSoftKeyboard());
+                .perform(typeText(TEXT_USERNAME_VALID), closeSoftKeyboard());
         onView(withId(R.id.btnLogin)).perform(click());
         // Check toast when password is not different username
         onView(withText(startsWith("Password is not different username")))
@@ -143,7 +144,7 @@ public class LoginUITest {
     public void checkCharacterSpecialAndDigitNumberPassword() {
         // Type text username.
         onView(withId(R.id.edtUserName))
-                .perform(typeText("Hieu22intern"), closeSoftKeyboard());
+                .perform(typeText(TEXT_USERNAME_VALID), closeSoftKeyboard());
         // Type text password and then press the button.
         onView(withId(R.id.edtPassword))
                 .perform(typeText("Hieuintern"), closeSoftKeyboard());
@@ -158,7 +159,7 @@ public class LoginUITest {
     public void checkLengthAllowedPassword() {
         // Type text username and then press the button.
         onView(withId(R.id.edtUserName))
-                .perform(typeText("Hieu22intern"), closeSoftKeyboard());
+                .perform(typeText(TEXT_USERNAME_VALID), closeSoftKeyboard());
         // Type text username and then press the button.
         onView(withId(R.id.edtPassword))
                 .perform(typeText("hie2u"), closeSoftKeyboard());
@@ -173,7 +174,7 @@ public class LoginUITest {
     public void checkSameCharacterPassword() {
         // Type text username and then press the button.
         onView(withId(R.id.edtUserName))
-                .perform(typeText("Hieu22intern"), closeSoftKeyboard());
+                .perform(typeText(TEXT_USERNAME_VALID), closeSoftKeyboard());
         // Type text username and then press the button.
         onView(withId(R.id.edtPassword))
                 .perform(typeText("hiefdsABFff2u"), closeSoftKeyboard());
@@ -188,7 +189,7 @@ public class LoginUITest {
     public void checkHaveSpacePassword() {
         // Type text username and then press the button.
         onView(withId(R.id.edtUserName))
-                .perform(typeText("Hieu22intern"), closeSoftKeyboard());
+                .perform(typeText(TEXT_USERNAME_VALID), closeSoftKeyboard());
         // Type text username and then press the button.
         onView(withId(R.id.edtPassword))
                 .perform(typeText("hieds ff2u4"), closeSoftKeyboard());
@@ -203,7 +204,7 @@ public class LoginUITest {
     public void checkCapitalLetterPassword() {
         // Type text username and then press the button.
         onView(withId(R.id.edtUserName))
-                .perform(typeText("Hieu22intern"), closeSoftKeyboard());
+                .perform(typeText(TEXT_USERNAME_VALID), closeSoftKeyboard());
         // Type text username and then press the button.
         onView(withId(R.id.edtPassword))
                 .perform(typeText("hiedsff2u4"), closeSoftKeyboard());
@@ -218,7 +219,7 @@ public class LoginUITest {
     public void checkDialogShow() {
         // Type text and then press the button.
         onView(withId(R.id.edtUserName))
-                .perform(typeText("Hieu22intern"), closeSoftKeyboard());
+                .perform(typeText(TEXT_USERNAME_VALID), closeSoftKeyboard());
         onView(withId(R.id.edtPassword))
                 .perform(typeText("C*aapHieU"), closeSoftKeyboard());
         onView(withId(R.id.btnLogin)).perform(click());

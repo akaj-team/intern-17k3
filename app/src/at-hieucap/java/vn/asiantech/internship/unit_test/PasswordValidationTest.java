@@ -32,7 +32,9 @@ public final class PasswordValidationTest {
             }
             if (count >= 2) {
                 return false;
-            } else count = 0;
+            } else {
+                count = 0;
+            }
         }
         return true;
     }
