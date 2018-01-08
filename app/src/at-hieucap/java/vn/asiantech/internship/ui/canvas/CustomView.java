@@ -112,9 +112,9 @@ public class CustomView extends View {
      * @param canvas : Draw Text Distances
      */
     private void drawTextDistances(Canvas canvas) {
-        canvas.drawText(String.valueOf(mMaxDistance) + getResources().getString(R.string.text_kilometer), getPaddingLeft() - mPaintText.measureText(String.valueOf(mMaxDistance) + getResources().getString(R.string.text_kilometer)) - 10, getPaddingTop() + mPaintText.getTextSize() / 2, mPaintText);
-        canvas.drawText(String.valueOf((float) mMaxDistance / 2) + getResources().getString(R.string.text_kilometer), getPaddingLeft() - mPaintText.measureText(String.valueOf((float) mMaxDistance / 2) + getResources().getString(R.string.text_kilometer)) - 10, getHeightColumn((float) mMaxDistance / 2) + mPaintText.getTextSize() / 2, mPaintText);
-        canvas.drawText(String.valueOf(getResources().getString(R.string.value_0)) + getResources().getString(R.string.text_kilometer), getPaddingLeft() - mPaintText.measureText(String.valueOf(getResources().getString(R.string.value_0)) + getResources().getString(R.string.text_kilometer)) - 10, getHeight() - getPaddingBottom() + mPaintText.getTextSize() / 2, mPaintText);
+        canvas.drawText(mMaxDistance + getResources().getString(R.string.text_kilometer), getPaddingLeft() - mPaintText.measureText(mMaxDistance + getResources().getString(R.string.text_kilometer)) - 10, getPaddingTop() + mPaintText.getTextSize() / 2, mPaintText);
+        canvas.drawText((float) mMaxDistance / 2 + getResources().getString(R.string.text_kilometer), getPaddingLeft() - mPaintText.measureText((float) mMaxDistance / 2 + getResources().getString(R.string.text_kilometer)) - 10, getHeightColumn((float) mMaxDistance / 2) + mPaintText.getTextSize() / 2, mPaintText);
+        canvas.drawText(getResources().getString(R.string.value_0) + getResources().getString(R.string.text_kilometer), getPaddingLeft() - mPaintText.measureText(getResources().getString(R.string.value_0) + getResources().getString(R.string.text_kilometer)) - 10, getHeight() - getPaddingBottom() + mPaintText.getTextSize() / 2, mPaintText);
     }
 
     /**
