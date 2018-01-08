@@ -88,7 +88,7 @@ public class ChartView extends View {
                 attrs, R.styleable.ChartView, 0, 0
         );
         try {
-            columnWidth = a.getInteger(R.styleable.ChartView_line_width, 20);
+            columnWidth = a.getInteger(R.styleable.ChartView_column_width, 20);
         } finally {
             a.recycle();
         }
