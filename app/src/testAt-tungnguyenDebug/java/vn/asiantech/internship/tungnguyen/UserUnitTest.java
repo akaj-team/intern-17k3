@@ -32,7 +32,7 @@ public class UserUnitTest {
     public void checkUserSpecial() {
         Mockito.when(mUser.getUserName()).thenReturn("asd");
         Assert.assertTrue(UserValidation.isCheckUserSpecial(mUser.getUserName()));
-        Mockito.when(mUser.getUserName()).thenReturn("$$$");
+        Mockito.when(mUser.getUserName()).thenReturn("Sopa$$$");
         Assert.assertFalse(UserValidation.isCheckUserSpecial(mUser.getUserName()));
     }
 
