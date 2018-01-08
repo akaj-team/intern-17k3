@@ -58,7 +58,7 @@
     <string name="user_name">User Name</string>
     <string name="pass_word">Pass Word</string>
     <string name="button_test">Test</string>
-    <string name="user_name_length">UserName 5-24</string>
+    <string name="user_name_length">UserName from 5 to 24 case</string>
     <string name="user_name_upper_case">UserName have not upper case</string>
     <string name="user_name_special_case">UserName have special case</string>
     <string name="user_name_number">UserName have more 2 number</string>
@@ -68,6 +68,6 @@
     <string name="password_length">Pass less than 7 or appear a case</string>
     <string name="password_space">Pass have space</string>
     <string name="password_three_upper_case">password have 3 upper case</string>
-    <string name="pass">login_success</string>
+    <string name="message_login_success">login_success</string>
     <string name="password_blank">Password is blank</string>
 </resources>

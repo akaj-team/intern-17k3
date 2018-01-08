@@ -69,7 +69,7 @@ public class UnitTestActivity extends AppCompatActivity {
         } else if (!ValidatePassWord.isLeastThreeUpperCase(mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.password_three_upper_case));
         } else {
-            showDialogSuccess(getResources().getString(R.string.pass));
+            showDialogSuccess(getResources().getString(R.string.message_login_success));
         }
     }
 
