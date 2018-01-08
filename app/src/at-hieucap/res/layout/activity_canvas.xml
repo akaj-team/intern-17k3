@@ -12,5 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
+        android:paddingBottom="100dp"
+        android:paddingLeft="60dp"
+        android:paddingRight="20dp"
+        android:paddingTop="50dp"
         add:stroke_with="15" />
 </RelativeLayout>
