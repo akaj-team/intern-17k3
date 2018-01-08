@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CustomChart">
-        <attr name="column_width" format="integer" />
-        <attr name="stoke_column" format="float" />
+    <declare-styleable name="CustomView">
+        <attr name="column_width" format="integer" />/>
     </declare-styleable>
 </resources>
