@@ -2,4 +2,15 @@
 <resources>
     <dimen name="sile_padding">55dp</dimen>
     <dimen name="textsize40">13sp</dimen>
+    <dimen name="text_size_in_profile_graph">12dp</dimen>
+    <dimen name="text_size_in_distance_graph">14dp</dimen>
+    <dimen name="tab_text_size">24sp</dimen>
+    <dimen name="text_size_all_spend_graph">16dp</dimen>
+    <dimen name="line_height">1dp</dimen>
+    <dimen name="line_margin_left">6dp</dimen>
+    <dimen name="line_margin_bottom">6dp</dimen>
+    <dimen name="columns_margin_horizontal">10dp</dimen>
+    <dimen name="column_divider_width">1dp</dimen>
+    <dimen name="column_width">10dp</dimen>
+    <dimen name="column_corner_radius">3dp</dimen>
 </resources>
