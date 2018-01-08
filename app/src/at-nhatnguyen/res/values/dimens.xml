@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_size">15dp</dimen>
+    <dimen name="columns_margin_horizontal">10dp</dimen>
+    <dimen name="column_divider_width">1dp</dimen>
+    <dimen name="column_width">10dp</dimen>
+    <dimen name="column_corner_radius">3dp</dimen>
+    <dimen name="tv_value_chart">14dp</dimen>
 </resources>

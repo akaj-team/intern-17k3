@@ -7,14 +7,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import vn.asiantech.internship.R;
@@ -24,33 +24,38 @@ import vn.asiantech.internship.R;
  * The CustomView for CanvasActivity
  */
 public class CustomView extends View {
-    private static final int ONE_KM = 30;
-    // Declare field for new ScaleListener
-    private ScaleGestureDetector mScaleDetector;
-    private float mScaleFactor = 1.f;
-    private List<Integer> resultPeople1;
-    private List<Integer> resultPeople2;
-    private List<Integer> resultPeople3;
-    private Paint mPaintPeople1;
-    private Paint mPaintPeople2;
-    private Paint mPaintPeople3;
-    private Paint mPaintText;
-    private Paint mPaintHide;
-    private float mMoveX;
-    private float mTouchX;
-    private float mSizeCol;
-    private int mMarginTop;
-    private int mRange;
-    private int mStartPeople1;
-    private int mStartPeople2;
-    private int mStartPeople3;
-    private int mStartLine;
-    private int mStopLine;
-    private double s;
-    private double t;
-    private double v;
-    //    private int limit = 0;
-    private Handler handler = new Handler();
+    private Paint paintText = new Paint();
+    private Paint paintRect = new Paint();
+    private Paint paintLine = new Paint();
+    private Paint paintColumn = new Paint();
+    private Paint paintColumn1 = new Paint();
+    private Paint paintColumn2 = new Paint();
+    private int columnWidth = getResources().getDimensionPixelSize(R.dimen.column_width);
+    private int columnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
+    private int columnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
+    private List<Integer> data = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+    private int max = Collections.max(data);
+    private int sizeData = data.size();
+    //To save the first left of all columns
+    private float lefts[] = new float[sizeData];
+    //Prev x coordinate in action move
+    private float prevXMove;
+    //x coordinate
+    //If move from left to right or right to left, it's the x coordinate in action down
+    //If move from left to right, to left..., it's the x coordinate in the latest corner
+    private float xDown;
+    //Same with #xDown but it's time
+    private long timeDown;
+    //Move speed after move and fling
+    private float v;
+    //To handle move column function
+    private float offsetX;
+    //Check if swipe to left or right
+    private boolean isMoveToRight;
+    //Save x coordinate of columns
+    private List<Float> paths = new ArrayList<>();
+    //Same with #path but it's times
+    private List<Long> times = new ArrayList<>();
 
     public CustomView(Context context) {
         this(context, null);
@@ -58,421 +63,103 @@ public class CustomView extends View {
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        // New obj of ScaleListener
-        mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
-        // Get attrs from file xml
-        TypedArray typedArray = context.getTheme()
-                .obtainStyledAttributes(attrs, R.styleable.CustomView, 0, 0);
-        mSizeCol = typedArray.getInteger(R.styleable.CustomView_stroke_with, 10);
-        initFirstValues();
-        initPaint();
-        initData();
+        // Get attrs from XML file
+        attributeSet(context, attrs);
+        // init Paint
+        init();
     }
 
-    private void initFirstValues() {
-        mRange = (int) mSizeCol * 5;
-        mMarginTop = 100;
-        // position of first monday people1
-        mStartPeople1 = 170;
-        // position of first monday people2
-        mStartPeople2 = 200;
-        // position of first monday people3
-        mStartPeople3 = 230;
-        mStartLine = 150;
-        mStopLine = 1200;
-        mMoveX = 0;
-        mTouchX = 0;
-        s = 0;
-        t = 0;
-        v = 0;
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        mScaleDetector.onTouchEvent(event);
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_MOVE:
-                if (event.getPointerCount() == 1) {
-                    t = System.currentTimeMillis() - t;
-                    s = event.getX() - mTouchX;
-                    mMoveX = mMoveX + event.getX() - mTouchX;
-                    mTouchX = event.getX();
-                    update(mMoveX);
-                }
-                break;
-            case MotionEvent.ACTION_DOWN:
-                mTouchX = event.getX();
-                v = 0;
-                s = 0;
-                t = 0;
-                break;
-            case MotionEvent.ACTION_UP:
-                v = (s / t) * 100;
-                if (v > 0.5 || v < -0.5) {
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (v > 0) {
-                                if (v > 1) {
-                                    v = 1;
-                                }
-                                mMoveX = (int) (mMoveX + v * 50);
-                                v -= 0.01;
-                                update(mMoveX);
-                                invalidate();
-                                if (v < 0) {
-                                    v = 0;
-                                    s = 0;
-                                    t = 0;
-                                    invalidate();
-                                } else {
-                                    handler.postDelayed(this, 5);
-                                }
-                            } else {
-                                if (v < -1) {
-                                    v = -1;
-                                }
-                                mMoveX = (int) (mMoveX - v * 50);
-                                v += 0.01;
-                                update2(mMoveX);
-                                invalidate();
-                                if (v > 0) {
-                                    v = 0;
-                                    s = 0;
-                                    t = 0;
-                                    invalidate();
-                                } else {
-                                    handler.postDelayed(this, 5);
-                                }
-                            }
-                        }
-                    }, 5);
-                }
+    /**
+     * Get attrs from XML file
+     * NOTICE mStokeWidth should be the same as mLengthOneColumn
+     *
+     * @param attrs attrs
+     */
+    private void attributeSet(Context context, AttributeSet attrs) {
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.CustomView, 0, 0);
+        try {
+            columnWidth = typedArray.getInteger(R.styleable.CustomView_stroke_with, 40);
+        } finally {
+            typedArray.recycle();
         }
-        invalidate();
-        return true;
     }
 
-    private void update(float moveX) {
-        mStartPeople1 = (int) (170 + moveX);
-        mStartPeople2 = (int) (200 + moveX);
-        mStartPeople3 = (int) (230 + moveX);
-    }
+    /**
+     * Init Paint
+     */
+    private void init() {
+        paintText.setColor(Color.GRAY);
+        paintText.setTextSize(getResources().getDimension(R.dimen.tv_value_chart));
 
-    private void update2(float moveX) {
-        mStartPeople1 = (int) (170 - moveX);
-        mStartPeople2 = (int) (200 - moveX);
-        mStartPeople3 = (int) (230 - moveX);
-    }
+        paintLine.setColor(Color.GRAY);
+        paintLine.setStrokeWidth(5);
+        paintLine.setAntiAlias(true);
 
-    private void initPaint() {
-        mPaintPeople1 = new Paint();
-        mPaintPeople1.setColor(Color.BLUE);
-        mPaintPeople1.setStrokeWidth(mSizeCol);
-        mPaintPeople1.setStrokeCap(Paint.Cap.ROUND);
-        mPaintPeople1.setAntiAlias(true);
-        mPaintPeople2 = new Paint();
-        mPaintPeople2.setColor(Color.RED);
-        mPaintPeople2.setStrokeWidth(mSizeCol);
-        mPaintPeople2.setStrokeCap(Paint.Cap.ROUND);
-        mPaintPeople2.setAntiAlias(true);
-        mPaintPeople3 = new Paint();
-        mPaintPeople3.setColor(Color.YELLOW);
-        mPaintPeople3.setStrokeWidth(mSizeCol);
-        mPaintPeople3.setStrokeCap(Paint.Cap.ROUND);
-        mPaintPeople3.setAntiAlias(true);
-        mPaintText = new Paint();
-        mPaintText.setColor(Color.GRAY);
-        mPaintText.setStrokeWidth(2F);
-        mPaintText.setTextSize(getResources().getDimensionPixelSize(R.dimen.text_size));
-        mPaintHide = new Paint();
-        mPaintHide.setColor(Color.WHITE);
-        mPaintHide.setStrokeWidth(2F);
-    }
+        paintColumn.setColor(Color.BLUE);
+        paintColumn.setAntiAlias(true);
 
-    private void initData() {
-        resultPeople1 = new ArrayList<>();
-        resultPeople2 = new ArrayList<>();
-        resultPeople3 = new ArrayList<>();
-        resultPeople1.add(1);
-        resultPeople1.add(7);
-        resultPeople1.add(5);
-        resultPeople1.add(2);
-        resultPeople1.add(9);
-        resultPeople1.add(6);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople2.add(1);
-        resultPeople2.add(3);
-        resultPeople2.add(5);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(5);
-        resultPeople3.add(1);
-        resultPeople3.add(8);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(2);
-        resultPeople3.add(11);
-        resultPeople3.add(6);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(11);
+        paintColumn1.setColor(Color.RED);
+        paintColumn1.setAntiAlias(true);
 
-        resultPeople1.add(1);
-        resultPeople1.add(7);
-        resultPeople1.add(5);
-        resultPeople1.add(2);
-        resultPeople1.add(9);
-        resultPeople1.add(6);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople2.add(1);
-        resultPeople2.add(3);
-        resultPeople2.add(5);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(5);
-        resultPeople3.add(1);
-        resultPeople3.add(8);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(2);
-        resultPeople3.add(11);
-        resultPeople3.add(6);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(11);
-        resultPeople1.add(1);
-        resultPeople1.add(7);
-        resultPeople1.add(5);
-        resultPeople1.add(2);
-        resultPeople1.add(9);
-        resultPeople1.add(6);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople2.add(1);
-        resultPeople2.add(3);
-        resultPeople2.add(5);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(5);
-        resultPeople3.add(1);
-        resultPeople3.add(8);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(2);
-        resultPeople3.add(11);
-        resultPeople3.add(6);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(11);
-        resultPeople1.add(1);
-        resultPeople1.add(7);
-        resultPeople1.add(5);
-        resultPeople1.add(2);
-        resultPeople1.add(9);
-        resultPeople1.add(6);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople2.add(1);
-        resultPeople2.add(3);
-        resultPeople2.add(5);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(5);
-        resultPeople3.add(1);
-        resultPeople3.add(8);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(2);
-        resultPeople3.add(11);
-        resultPeople3.add(6);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(11);
-        resultPeople1.add(1);
-        resultPeople1.add(7);
-        resultPeople1.add(5);
-        resultPeople1.add(2);
-        resultPeople1.add(9);
-        resultPeople1.add(6);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople2.add(1);
-        resultPeople2.add(3);
-        resultPeople2.add(5);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(5);
-        resultPeople3.add(1);
-        resultPeople3.add(8);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(2);
-        resultPeople3.add(11);
-        resultPeople3.add(6);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(11);
-        resultPeople1.add(1);
-        resultPeople1.add(7);
-        resultPeople1.add(5);
-        resultPeople1.add(2);
-        resultPeople1.add(9);
-        resultPeople1.add(6);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople2.add(1);
-        resultPeople2.add(3);
-        resultPeople2.add(5);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(5);
-        resultPeople3.add(1);
-        resultPeople3.add(8);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(2);
-        resultPeople3.add(11);
-        resultPeople3.add(6);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(11);
-        resultPeople1.add(1);
-        resultPeople1.add(7);
-        resultPeople1.add(5);
-        resultPeople1.add(2);
-        resultPeople1.add(9);
-        resultPeople1.add(6);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople1.add(5);
-        resultPeople2.add(1);
-        resultPeople2.add(3);
-        resultPeople2.add(5);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(2);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(6);
-        resultPeople2.add(5);
-        resultPeople3.add(1);
-        resultPeople3.add(8);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(2);
-        resultPeople3.add(11);
-        resultPeople3.add(6);
-        resultPeople3.add(5);
-        resultPeople3.add(5);
-        resultPeople3.add(11);
+        paintColumn2.setColor(Color.YELLOW);
+        paintColumn2.setAntiAlias(true);
+
+        paintRect.setColor(Color.WHITE);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.save();
-        int max = 0;
-//        //move quadrants
-//        canvas.translate(500, 500);
-
-        canvas.scale(mScaleFactor, mScaleFactor);
-        for (int i = 0; i < resultPeople3.size(); i++) {
-            if (resultPeople1.get(i) > max) {
-                max = resultPeople1.get(i);
-            }
-            if (resultPeople2.get(i) > max) {
-                max = resultPeople2.get(i);
-            }
-            if (resultPeople3.get(i) > max) {
-                max = resultPeople3.get(i);
-            }
-        }
-        drawLineResult(max, canvas);
-        drawGraph(max, canvas);
-        // This rect start at (0,0) and stop at right = 150
-        canvas.drawRect(0, 0, 150, max * ONE_KM + mMarginTop + 100,
-                mPaintHide);
-        // The line is start x = 10
-        canvas.drawText(max + getContext().getString(R.string.km), 10,
-                mMarginTop + (mPaintText.getTextSize() / 2), mPaintText);
-        canvas.drawText((float) max / 2 + getContext().getString(R.string.km), 10,
-                (max * ONE_KM) / 2 + mMarginTop + (mPaintText.getTextSize() / 2),
-                mPaintText);
-        canvas.restore();
+        //Draw Line
+        drawLine(canvas);
+        // drawChart
+        drawChart(canvas);
+        // drawRect
+        drawRect(canvas);
+        //drawText
+        drawText(canvas);
     }
 
     /**
-     * Draw lines of result
+     * Draw Line
+     *
+     * @param canvas canvas
      */
-    private void drawLineResult(int max, Canvas canvas) {
-        canvas.drawLine(mStartLine, mMarginTop, mStopLine,
-                mMarginTop, mPaintText);
-        canvas.drawLine(mStartLine, (max * ONE_KM) / 2 + mMarginTop, mStopLine,
-                (max * ONE_KM) / 2 + mMarginTop, mPaintText);
-        canvas.drawLine(mStartLine, max * ONE_KM + mMarginTop, mStopLine,
-                max * ONE_KM + mMarginTop, mPaintText);
+    private void drawLine(Canvas canvas) {
+        //Draw Max Line
+        canvas.drawLine(paintText.measureText(String.valueOf(max).concat(getResources().getString(R.string.km))),
+                getTop(max), getWidth(),
+                getTop(max), paintLine);
+        //Draw End Line
+        canvas.drawLine(0, getHeight() - getPaddingBottom(),
+                getWidth(), getHeight() - getPaddingBottom(), paintLine);
+        //Draw Middle Line
+        canvas.drawLine(0,
+                getTop(max / 2), getWidth(),
+                getTop(max / 2), paintLine);
     }
 
     /**
-     * Draw graph with values of peoples
+     * Draw Chart
+     *
+     * @param canvas canvas
      */
-    private void drawGraph(int max, Canvas canvas) {
-        for (int i = 0; i < resultPeople3.size(); i++) {
-            canvas.drawRoundRect(new RectF(i * mRange + mStartPeople1,
-                            (max * ONE_KM + mMarginTop) - resultPeople1.get(i) * ONE_KM,
-                            i * mRange + mStartPeople1 + mSizeCol, max * ONE_KM + mMarginTop), 10, 5,
-                    mPaintPeople1);
-            canvas.drawRoundRect(new RectF(i * mRange + mStartPeople2,
-                            (max * ONE_KM + mMarginTop) - resultPeople2.get(i) * ONE_KM,
-                            i * mRange + mStartPeople2 + mSizeCol, max * ONE_KM + mMarginTop), 10, 5,
-                    mPaintPeople2);
-            canvas.drawRoundRect(new RectF(i * mRange + mStartPeople3,
-                            (max * ONE_KM + mMarginTop) - resultPeople3.get(i) * ONE_KM,
-                            i * mRange + mStartPeople3 + mSizeCol, max * ONE_KM + mMarginTop), 10, 5,
-                    mPaintPeople3);
-            canvas.drawText(convertDay(i), i * mRange + mStartPeople2,
-                    max * ONE_KM + mMarginTop + 100, mPaintText);
+    @SuppressLint("NewApi")
+    private void drawChart(Canvas canvas) {
+        float leftRect = getWidth() - getPaddingRight() - columnMarginHorizontal - columnWidth - 100 - offsetX;
+        for (int index = 0; index < sizeData; index++) {
+            canvas.drawRoundRect(new RectF(leftRect - 100 * index, getTop(data.get(index)), leftRect - 100 * index + columnWidth, getHeight() - getPaddingBottom()), columnCornerRadius, columnCornerRadius, paintColumn);
+            canvas.drawRoundRect(new RectF(leftRect - 100 * index - 42, getTop(data.get(index)), leftRect - 100 * index - 42 + columnWidth, getHeight() - getPaddingBottom()), columnCornerRadius, columnCornerRadius, paintColumn1);
+            canvas.drawRoundRect(new RectF(leftRect - 100 * index - 84, getTop(data.get(index)), leftRect - 100 * index - 84 + columnWidth, getHeight() - getPaddingBottom()), columnCornerRadius, columnCornerRadius, paintColumn2);
+            canvas.drawText(convertDay(index), leftRect - 100 * index - 42 + columnWidth,
+                    getTop(data.get(index)-1), paintLine);
+            //Save the first left of all columns
+            if (offsetX == 0) {
+                lefts[index] = leftRect;
+            }
+            leftRect -= columnWidth + columnMarginHorizontal;
         }
     }
 
@@ -505,14 +192,148 @@ public class CustomView extends View {
         return day;
     }
 
-    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
-        @Override
-        public boolean onScale(ScaleGestureDetector detector) {
-            mScaleFactor *= detector.getScaleFactor();
-            // Don't let the object get too small or too large.
-            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 2.0f));
-            invalidate();
-            return true;
-        }
+    /**
+     * Draw Rect
+     *
+     * @param canvas canvas
+     */
+    private void drawRect(Canvas canvas) {
+        canvas.drawRect(0, 0, getPaddingLeft() + 100 - columnMarginHorizontal, getHeight(), paintRect);
+        canvas.drawRect(getWidth() - getPaddingRight() - 100 + columnMarginHorizontal, 0, getWidth(), getHeight(), paintRect);
     }
+
+    /**
+     * Draw Text
+     *
+     * @param canvas canvas
+     */
+    private void drawText(Canvas canvas) {
+        //Draw Text Max Values
+        canvas.drawText(String.valueOf(max).concat(getResources().getString(R.string.km)), 0, 50, paintText);
+        //Draw Text Max Values
+        canvas.drawText(String.valueOf(max / 2).concat(getResources().getString(R.string.km)), 0, getHeight() / 2 - max, paintText);
+    }
+
+    /**
+     * @param value value
+     * @return top
+     */
+    private float getTop(int value) {
+        float realHeight = (getHeight() - getPaddingBottom() - getPaddingTop()) * (value * 1F / max * 1F);
+        return getHeight() - getPaddingBottom() - realHeight;
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            //Reset data
+            paths.clear();
+            times.clear();
+            prevXMove = ev.getX();
+            xDown = prevXMove;
+            timeDown = System.currentTimeMillis();
+
+            //Save the data of the first touch
+            paths.add(prevXMove);
+            times.add(timeDown);
+        } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
+            float currentXMove = ev.getX();
+            paths.add(currentXMove);
+            times.add(System.currentTimeMillis());
+
+            //When long touch, reset data
+            if (prevXMove == currentXMove) {
+                xDown = currentXMove;
+                timeDown = System.currentTimeMillis();
+                paths.clear();
+                times.clear();
+            }
+            isMoveToRight = prevXMove <= currentXMove;
+            if (ev.getPointerCount() == 1) {
+                //Check if the last column at right move to limit
+                if (!isMoveToRight && offsetX == 0) {
+                    return true;
+                }
+                //Check if the last column at left move to limit
+                if (isMoveToRight && offsetX <= lefts[sizeData - 1] - getPaddingLeft() - 100) {
+                    return true;
+                }
+                //Update offsetX
+                offsetX += prevXMove - currentXMove;
+
+                //If move to left and and the last column exceed the limit, must block it
+                if (!isMoveToRight && offsetX > 0) {
+                    offsetX = 0;
+                }
+                //If move to right and and the first column exceed the limit, must block it
+                if (isMoveToRight && offsetX <= lefts[sizeData - 1] - getPaddingLeft() - 100) {
+                    offsetX = lefts[sizeData - 1] - getPaddingLeft() - 100;
+                }
+            }
+            //Update latest x coordinate
+            prevXMove = currentXMove;
+            //Re-draw
+            invalidate();
+        } else if (ev.getAction() == MotionEvent.ACTION_UP) {
+            //Find the latest corner, 1 2 3 4 5 6 5 4 3 2 1, corner is 6
+            int size = paths.size();
+            for (int i = size - 1; i > 0; i--) {
+                if ((isMoveToRight && paths.get(i - 1) > paths.get(i)) || (!isMoveToRight && paths.get(i - 1) < paths.get(i))) {
+                    xDown = paths.get(i);
+                    timeDown = times.get(i);
+                    break;
+                }
+                if (i - 1 == 0) {
+                    xDown = paths.get(0);
+                    timeDown = times.get(0);
+                }
+            }
+            //Check if the last column at left move to limit
+            if (isMoveToRight && offsetX <= lefts[sizeData - 1] - getPaddingLeft() - 100) {
+                return true;
+            }
+            //Check if the last column at right move to limit
+            if (!isMoveToRight && offsetX == 0) {
+                return true;
+            }
+
+            //Calculate the move speed to handle scroll after fling
+            long time = System.currentTimeMillis() - timeDown;
+            final float s = ev.getX() - xDown;
+            if (time > 0) {
+                v = Math.abs(s / time);
+                v = v * 50 / 3F;
+                if (v > 0) {
+                    final android.os.Handler handler = new android.os.Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Check if the first column at left move to limit
+                            if (isMoveToRight) {
+                                offsetX -= v;
+                                if (offsetX < lefts[sizeData - 1] - getPaddingLeft() - 100) {
+                                    offsetX = lefts[sizeData - 1] - getPaddingLeft() - 100;
+                                    v = 0;
+                                }
+                            } else {//Check if the last column at right move to limit
+                                offsetX += v;
+                                if (offsetX > 0) {
+                                    offsetX = 0;
+                                    v = 0;
+                                }
+                            }
+                            invalidate();
+                            //Scroll, scroll, scroll...
+                            if (v-- > 0) {
+                                handler.postDelayed(this, 1);
+                            }
+                        }
+                    }, 1);
+                }
+            }
+        }
+        return true;
+    }
+
 }
