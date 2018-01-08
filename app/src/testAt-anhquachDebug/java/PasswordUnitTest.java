@@ -61,8 +61,8 @@ public class PasswordUnitTest {
     @Test
     public void checkAtLeastThreeCapitalChar() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh");
-        Assert.assertTrue(PasswordValidation.isAtLeastThreeCapitalChar(mUser.getPassword()));
-        Mockito.when(mUser.getPassword()).thenReturn("ngocanhHHHH");
         Assert.assertFalse(PasswordValidation.isAtLeastThreeCapitalChar(mUser.getPassword()));
+        Mockito.when(mUser.getPassword()).thenReturn("ngocanhHHHH");
+        Assert.assertTrue(PasswordValidation.isAtLeastThreeCapitalChar(mUser.getPassword()));
     }
 }
