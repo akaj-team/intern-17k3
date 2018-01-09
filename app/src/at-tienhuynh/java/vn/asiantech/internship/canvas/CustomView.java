@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -143,13 +144,12 @@ public class CustomView extends View {
      *
      * @param canvas canvas
      */
-    @SuppressLint("NewApi")
     private void drawChart(Canvas canvas) {
         float leftRect = getWidth() - getPaddingRight() - columnMarginHorizontal - columnWidth - 100 - offsetX;
         for (int index = 0; index < sizeData; index++) {
-            canvas.drawRoundRect(leftRect - 100 * index, getTop(data.get(index)), leftRect - 100 * index + columnWidth, getHeight() - getPaddingBottom(), columnCornerRadius, columnCornerRadius, paintColumn);
-            canvas.drawRoundRect(leftRect - 100 * index - 42, getTop(data.get(index)), leftRect - 100 * index - 42 + columnWidth, getHeight() - getPaddingBottom(), columnCornerRadius, columnCornerRadius, paintColumn1);
-            canvas.drawRoundRect(leftRect - 100 * index - 84, getTop(data.get(index)), leftRect - 100 * index - 84 + columnWidth, getHeight() - getPaddingBottom(), columnCornerRadius, columnCornerRadius, paintColumn2);
+            canvas.drawRoundRect(new RectF(leftRect - 100 * index, getTop(data.get(index)), leftRect - 100 * index + columnWidth, getHeight() - getPaddingBottom()), columnCornerRadius, columnCornerRadius, paintColumn);
+            canvas.drawRoundRect(new RectF(leftRect - 100 * index - columnWidth - 5, getTop(data.get(index)), leftRect - 100 * index - 5, getHeight() - getPaddingBottom()), columnCornerRadius, columnCornerRadius, paintColumn1);
+            canvas.drawRoundRect(new RectF(leftRect - 100 * index - columnWidth * 2 - 10, getTop(data.get(index)), leftRect - 100 * index - columnWidth - 10, getHeight() - getPaddingBottom()), columnCornerRadius, columnCornerRadius, paintColumn2);
             //Save the first left of all columns
             if (offsetX == 0) {
                 lefts[index] = leftRect;
