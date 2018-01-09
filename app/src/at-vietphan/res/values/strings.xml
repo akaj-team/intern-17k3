@@ -107,4 +107,5 @@
     <string name="check_password_length">password must have length more than 7 char</string>
     <string name="check_password_at_least_special_or_number">password must have at least special or number</string>
     <string name="check_password_different_username">password must have different username</string>
+    <string name="tv_canvas_km">km</string>
 </resources>

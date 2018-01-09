@@ -5,4 +5,8 @@
     <dimen name="text_size_btn">19dp</dimen>
     <dimen name="margin_view_pager">-90dp</dimen>
     <dimen name="text_size_chart">12dp</dimen>
+    <dimen name="tv_value_chart">14dp</dimen>
+    <dimen name="columns_margin_horizontal">10dp</dimen>
+    <dimen name="column_width">10dp</dimen>
+    <dimen name="column_corner_radius">3dp</dimen>
 </resources>

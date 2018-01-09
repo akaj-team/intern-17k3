@@ -3,10 +3,13 @@
     android:id="@+id/llCanvas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:gravity="center">
 
     <vn.asiantech.internship.ui.canvas.CustomView
         android:id="@+id/customView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="300dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp" />
 </LinearLayout>
