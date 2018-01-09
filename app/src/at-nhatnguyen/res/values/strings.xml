@@ -70,4 +70,9 @@
     <string name="password_three_upper_case">password have 3 upper case</string>
     <string name="message_login_success">login_success</string>
     <string name="password_blank">Password is blank</string>
+    <string name="pass">Login</string>
+    <string name="button_thread">Thread</string>
+    <string name="btn_download">DownLoad</string>
+    <string name="exercise_thread">Thread</string>
+    <string name="exercise_count_down">CountTimer</string>
 </resources>
