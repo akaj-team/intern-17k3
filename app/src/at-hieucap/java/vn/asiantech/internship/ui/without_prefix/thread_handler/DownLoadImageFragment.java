@@ -35,6 +35,9 @@ public class DownLoadImageFragment extends Fragment {
     private Button mBtnStart;
     private TextView mTvPercentage;
     private Bitmap mBitmap;
+    private HttpURLConnection urlConnection;
+    private InputStream inputStream;
+    private ByteArrayOutputStream outputStream;
 
     @Nullable
     @Override
@@ -78,10 +81,10 @@ public class DownLoadImageFragment extends Fragment {
         try {
             String urlImage = "https://i2-prod.manchestereveningnews.co.uk/incoming/article1736623.ece/ALTERNATES/s1227b/Paul%20Scholes.jpg";
             URL url = new URL(urlImage);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.connect();
-            InputStream inputStream = urlConnection.getInputStream();
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            inputStream = urlConnection.getInputStream();
+            outputStream = new ByteArrayOutputStream();
             mTotalSize = urlConnection.getContentLength();
             getActivity().runOnUiThread(new Runnable() {
                 public void run() {
@@ -102,8 +105,8 @@ public class DownLoadImageFragment extends Fragment {
                         mTvPercentage.setText(String.format(getString(R.string.download, mDownloadedSize, mTotalSize, percentage)) + "%)");
                     }
                 });
-                mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.size());
             }
+            mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.size());
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -116,11 +119,19 @@ public class DownLoadImageFragment extends Fragment {
                     }
                 }
             });
-            urlConnection.disconnect();
-            inputStream.close();
             outputStream.close();
         } catch (final IOException e) {
-            Log.e(TAG, getString(R.string.text_error));
+            Log.e(TAG, getString(R.string.disconnect_error));
+        } finally {
+            urlConnection.disconnect();
+            if (inputStream != null && outputStream != null) {
+                try {
+                    inputStream.close();
+                    outputStream.close();
+                } catch (IOException e) {
+                    Log.e(TAG, getString(R.string.close_error));
+                }
+            }
         }
     }
 }
