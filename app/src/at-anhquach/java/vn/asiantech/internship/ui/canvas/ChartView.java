@@ -47,7 +47,7 @@ public class ChartView extends View {
     private ScaleGestureDetector mScaleDetector;
     private int columnWidth;
     double distance;
-    private int mOxChart = 130;
+    private int mOxChart = (int) getResources().getDimension(R.dimen.ox_chart);
     private int columnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
     private int columnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
     private float mWitdhScreen = ScreenUtil.getWidthScreen(getContext());
@@ -56,26 +56,16 @@ public class ChartView extends View {
     private List<Integer> mDistanceAs = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
     private List<Integer> mDistanceBs = new ArrayList<>(Arrays.asList(1, 2, 5, 2, 7, 8, 9, 7, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
     private List<Integer> mDistanceCs = new ArrayList<>(Arrays.asList(3, 9, 5, 6, 10, 8, 9, 2, 4, 4, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+    private List<Float> paths = new ArrayList<>();
+    private List<Long> times = new ArrayList<>();
 
     private float lefts[] = new float[mDistanceAs.size()];
-    //Prev x coordinate in action move
     private float prevXMove;
-    //x coordinate
-    //If move from left to right or right to left, it's the x coordinate in action down
-    //If move from left to right, to left..., it's the x coordinate in the latest corner
     private float xDown;
-    //Same with #xDown but it's time
     private long timeDown;
-    //Move speed after move and fling
     private float v;
-    //To handle move column function
     private float offsetX;
-    //Check if swipe to left or right
     private boolean isMoveToRight;
-    //Save x coordinate of columns
-    private List<Float> paths = new ArrayList<>();
-    //Same with #path but it's times
-    private List<Long> times = new ArrayList<>();
 
     public ChartView(Context context) {
         this(context, null);
@@ -98,7 +88,7 @@ public class ChartView extends View {
 
     private void init() {
         mPaintText.setColor(getResources().getColor(R.color.colorGrayDark));
-        mPaintText.setTextSize(getResources().getDimension(R.dimen.textsize40));
+        mPaintText.setTextSize(getResources().getDimension(R.dimen.textsize13sp));
         mPaintText.setAntiAlias(true);
 
         mPaintRect.setColor(getResources().getColor(R.color.colorWhite));
@@ -130,9 +120,10 @@ public class ChartView extends View {
         int ZOOM = 2;
         switch (ev.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
+                mode = DRAG;
+
                 startX = ev.getX();
                 startY = ev.getY();
-                mode = DRAG;
                 startX = ev.getX() - previousTranslateX;
                 startY = ev.getY() - previousTranslateY;
 
@@ -141,29 +132,28 @@ public class ChartView extends View {
                 prevXMove = ev.getX();
                 xDown = prevXMove;
                 timeDown = System.currentTimeMillis();
-                //Save the data of the first touch
+
                 paths.add(prevXMove);
                 times.add(timeDown);
                 break;
             case MotionEvent.ACTION_MOVE:
-                translateX = ev.getX() - startX;
-                translateY = ev.getY() - startY;
                 float currX = ev.getX();
                 float currY = ev.getY();
+
+                translateX = ev.getX() - startX;
+                translateY = ev.getY() - startY;
                 distance = Math.sqrt(Math.pow(currX - (startX + previousTranslateX), 2) +
                         Math.pow(currY - (startY + previousTranslateY), 2));
-                float currentXMove = ev.getX();
-                paths.add(currentXMove);
+                paths.add(currX);
                 times.add(System.currentTimeMillis());
 
-                //When long touch, reset data
-                if (prevXMove == currentXMove) {
-                    xDown = currentXMove;
+                if (prevXMove == currX) {
+                    xDown = currX;
                     timeDown = System.currentTimeMillis();
                     paths.clear();
                     times.clear();
                 }
-                isMoveToRight = prevXMove <= currentXMove;
+                isMoveToRight = prevXMove <= currX;
                 if (ev.getPointerCount() == 1) {
                     //Check if the last column at right move to limit
                     if (!isMoveToRight && offsetX == 0) {
@@ -174,7 +164,7 @@ public class ChartView extends View {
                         return true;
                     }
                     //Update offsetX
-                    offsetX += prevXMove - currentXMove;
+                    offsetX += prevXMove - currX;
 
                     //If move to left and and the last column exceed the limit, must block it
                     if (!isMoveToRight && offsetX > 0) {
@@ -186,7 +176,7 @@ public class ChartView extends View {
                     }
                 }
                 //Update latest x coordinate
-                prevXMove = currentXMove;
+                prevXMove = currX;
                 invalidate();
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
@@ -290,7 +280,6 @@ public class ChartView extends View {
         drawText(canvas, getContext().getString(R.string.distance_km, ((int) 0)), 0, 0, mPaintText);
 
         drawLine(canvas, maxLists() / 2, mPaintLine);
-
         canvas.restore();
     }
 
@@ -298,9 +287,12 @@ public class ChartView extends View {
     private void drawChart(Canvas canvas) {
         float leftRect = getWidth() - getPaddingRight() - columnMarginHorizontal - columnWidth - 100 - offsetX;
         for (int index = 0; index < mDistanceAs.size(); index++) {
-            canvas.drawRoundRect(leftRect - 100 * index, getTop(mDistanceAs.get(index)), leftRect - 100 * index + columnWidth, mHeightScreen / 2 - getPaddingBottom(), columnCornerRadius, columnCornerRadius, mPaintColumn);
-            canvas.drawRoundRect(leftRect - 100 * index - columnWidth - 5, getTop(mDistanceBs.get(index)), leftRect - 100 * index - 5, mHeightScreen / 2 - getPaddingBottom(), columnCornerRadius, columnCornerRadius, mPaintColumn1);
-            canvas.drawRoundRect(leftRect - 100 * index - columnWidth * 2 - 10, getTop(mDistanceCs.get(index)), leftRect - 100 * index - columnWidth - 10, mHeightScreen / 2 - getPaddingBottom(), columnCornerRadius, columnCornerRadius, mPaintColumn2);
+            canvas.drawRoundRect(leftRect - 100 * index, getTop(mDistanceAs.get(index)), leftRect - 100 * index + columnWidth,
+                    mHeightScreen / 2 - getPaddingBottom(), columnCornerRadius, columnCornerRadius, mPaintColumn);
+            canvas.drawRoundRect(leftRect - 100 * index - columnWidth - 5, getTop(mDistanceBs.get(index)), leftRect - 100 * index - 5,
+                    mHeightScreen / 2 - getPaddingBottom(), columnCornerRadius, columnCornerRadius, mPaintColumn1);
+            canvas.drawRoundRect(leftRect - 100 * index - columnWidth * 2 - 10, getTop(mDistanceCs.get(index)), leftRect - 100 * index - columnWidth - 10,
+                    mHeightScreen / 2 - getPaddingBottom(), columnCornerRadius, columnCornerRadius, mPaintColumn2);
             //Save the first left of all columns
             if (offsetX == 0) {
                 lefts[index] = leftRect;

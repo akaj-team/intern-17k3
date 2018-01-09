@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="sile_padding">55dp</dimen>
-    <dimen name="textsize40">13sp</dimen>
+    <dimen name="textsize13sp">13sp</dimen>
     <dimen name="text_size_in_profile_graph">12dp</dimen>
     <dimen name="text_size_in_distance_graph">14dp</dimen>
     <dimen name="tab_text_size">24sp</dimen>
@@ -13,4 +13,5 @@
     <dimen name="column_divider_width">1dp</dimen>
     <dimen name="column_width">10dp</dimen>
     <dimen name="column_corner_radius">3dp</dimen>
+    <dimen name="ox_chart">130</dimen>
 </resources>
