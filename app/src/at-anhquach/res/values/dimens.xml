@@ -13,5 +13,5 @@
     <dimen name="column_divider_width">1dp</dimen>
     <dimen name="column_width">10dp</dimen>
     <dimen name="column_corner_radius">3dp</dimen>
-    <dimen name="ox_chart">130</dimen>
+    <dimen name="ox_chart">35dp</dimen>
 </resources>

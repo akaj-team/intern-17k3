@@ -47,7 +47,7 @@ public class ChartView extends View {
     private ScaleGestureDetector mScaleDetector;
     private int columnWidth;
     double distance;
-    private int mOxChart = (int) getResources().getDimension(R.dimen.ox_chart);
+    private int mOxChart = getResources().getDimensionPixelSize(R.dimen.ox_chart);
     private int columnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
     private int columnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
     private float mWitdhScreen = ScreenUtil.getWidthScreen(getContext());
