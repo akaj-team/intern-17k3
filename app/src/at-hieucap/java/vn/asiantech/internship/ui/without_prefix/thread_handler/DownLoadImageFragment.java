@@ -35,9 +35,9 @@ public class DownLoadImageFragment extends Fragment {
     private Button mBtnStart;
     private TextView mTvPercentage;
     private Bitmap mBitmap;
-    private HttpURLConnection urlConnection;
-    private InputStream inputStream;
-    private ByteArrayOutputStream outputStream;
+    private HttpURLConnection mUrlConnection;
+    private InputStream mInputStream;
+    private ByteArrayOutputStream mOutputStream;
 
     @Nullable
     @Override
@@ -81,11 +81,11 @@ public class DownLoadImageFragment extends Fragment {
         try {
             String urlImage = "https://i2-prod.manchestereveningnews.co.uk/incoming/article1736623.ece/ALTERNATES/s1227b/Paul%20Scholes.jpg";
             URL url = new URL(urlImage);
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.connect();
-            inputStream = urlConnection.getInputStream();
-            outputStream = new ByteArrayOutputStream();
-            mTotalSize = urlConnection.getContentLength();
+            mUrlConnection = (HttpURLConnection) url.openConnection();
+            mUrlConnection.connect();
+            mInputStream = mUrlConnection.getInputStream();
+            mOutputStream = new ByteArrayOutputStream();
+            mTotalSize = mUrlConnection.getContentLength();
             getActivity().runOnUiThread(new Runnable() {
                 public void run() {
                     mProgressBar.setMax(mTotalSize);
@@ -93,8 +93,8 @@ public class DownLoadImageFragment extends Fragment {
             });
             final byte[] buffer = new byte[1024];
             int bufferLength;
-            while ((bufferLength = inputStream.read(buffer)) > 0) {
-                outputStream.write(buffer, 0, bufferLength);
+            while ((bufferLength = mInputStream.read(buffer)) > 0) {
+                mOutputStream.write(buffer, 0, bufferLength);
                 mDownloadedSize += bufferLength;
                 getActivity().runOnUiThread(new Runnable() {
                     @SuppressLint("SetTextI18n")
@@ -106,7 +106,7 @@ public class DownLoadImageFragment extends Fragment {
                     }
                 });
             }
-            mBitmap = BitmapFactory.decodeByteArray(outputStream.toByteArray(), 0, outputStream.size());
+            mBitmap = BitmapFactory.decodeByteArray(mOutputStream.toByteArray(), 0, mOutputStream.size());
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -119,15 +119,15 @@ public class DownLoadImageFragment extends Fragment {
                     }
                 }
             });
-            outputStream.close();
+            mOutputStream.close();
         } catch (final IOException e) {
             Log.e(TAG, getString(R.string.disconnect_error));
         } finally {
-            urlConnection.disconnect();
-            if (inputStream != null && outputStream != null) {
+            mUrlConnection.disconnect();
+            if (mInputStream != null && mOutputStream != null) {
                 try {
-                    inputStream.close();
-                    outputStream.close();
+                    mInputStream.close();
+                    mOutputStream.close();
                 } catch (IOException e) {
                     Log.e(TAG, getString(R.string.close_error));
                 }
