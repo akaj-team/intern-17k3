@@ -92,20 +92,15 @@ public class CustomView extends View {
     private void init() {
         paintText.setColor(Color.GRAY);
         paintText.setTextSize(getResources().getDimension(R.dimen.tv_value_chart));
-
         paintLine.setColor(Color.GRAY);
         paintLine.setStrokeWidth(5);
         paintLine.setAntiAlias(true);
-
         paintColumn.setColor(Color.BLUE);
         paintColumn.setAntiAlias(true);
-
         paintColumn1.setColor(Color.RED);
         paintColumn1.setAntiAlias(true);
-
         paintColumn2.setColor(Color.YELLOW);
         paintColumn2.setAntiAlias(true);
-
         paintRect.setColor(Color.WHITE);
     }
 
@@ -129,7 +124,8 @@ public class CustomView extends View {
      */
     private void drawLine(Canvas canvas) {
         //Draw Max Line
-        canvas.drawLine(paintText.measureText(String.valueOf(max).concat(getResources().getString(R.string.km))),
+        canvas.drawLine(paintText.measureText(String.valueOf(max).concat(getResources()
+                        .getString(R.string.km))),
                 getTop(max), getWidth(),
                 getTop(max), paintLine);
         //Draw End Line
@@ -160,35 +156,6 @@ public class CustomView extends View {
             }
             leftRect -= columnWidth + columnMarginHorizontal;
         }
-    }
-
-    private String convertDay(int i) {
-        int result = i % 7 + 2;
-        String day = "";
-        switch (result) {
-            case 2:
-                day = String.valueOf(2);
-                break;
-            case 3:
-                day = String.valueOf(3);
-                break;
-            case 4:
-                day = String.valueOf(4);
-                break;
-            case 5:
-                day = String.valueOf(5);
-                break;
-            case 6:
-                day = String.valueOf(6);
-                break;
-            case 7:
-                day = String.valueOf(7);
-                break;
-            case 8:
-                day = "CN";
-                break;
-        }
-        return day;
     }
 
     /**
@@ -334,5 +301,4 @@ public class CustomView extends View {
         }
         return true;
     }
-
 }
