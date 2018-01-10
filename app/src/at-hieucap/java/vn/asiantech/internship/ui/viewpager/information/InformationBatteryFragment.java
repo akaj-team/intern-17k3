@@ -96,14 +96,18 @@ public class InformationBatteryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.fragment_broadcast_receiver, container, false);
+        initViews(view);
+        registerBatteryLevelReceiver();
+        return view;
+    }
+
+    private void initViews(View view) {
         mTvBatteryLevel = view.findViewById(R.id.tvBatteryLevel);
         mTvBatteryTechnology = view.findViewById(R.id.tvBatteryTechnology);
         mTvBatteryPlugged = view.findViewById(R.id.tvBatteryPlugged);
         mTvBatteryHealth = view.findViewById(R.id.tvBatteryHealth);
         mTvBatteryStatus = view.findViewById(R.id.tvBatteryStatus);
         mImgBatteryLevel = view.findViewById(R.id.imgBattery);
-        registerBatteryLevelReceiver();
-        return view;
     }
 
     @Override
