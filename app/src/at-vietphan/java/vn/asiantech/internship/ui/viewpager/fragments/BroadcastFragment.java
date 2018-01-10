@@ -76,6 +76,8 @@ public class BroadcastFragment extends Fragment {
                     mImgBattery.setBackgroundResource(R.drawable.img_spin_animation_50);
                 } else if (level <= 75) {
                     mImgBattery.setBackgroundResource(R.drawable.img_spin_animation_75);
+                }else {
+                    mImgBattery.setBackgroundResource(R.drawable.img_spin_animation_100);
                 }
                 AnimationDrawable animationDrawable = (AnimationDrawable) mImgBattery.getBackground();
                 animationDrawable.start();
