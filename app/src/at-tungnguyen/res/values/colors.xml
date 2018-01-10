@@ -11,7 +11,18 @@
     <color name="colorLlmain">#041e42</color>
     <color name="black">#000</color>
     <color name="white">#FFF</color>
-    <color name="colorPurple800">#5c2f78</color>
+    <color name="colorPurple800">#d793d1</color>
     <color name="colorCyanA700">#037e91</color>
     <color name="colorOrange500">#FF9800</color>
+
+    <color name="whisper">#EAEAF4</color>
+    <color name="tundora">#464646</color>
+    <color name="brightGray">#383F4C</color>
+    <color name="shuttleGray">#5C606B</color>
+    <color name="blackSqueeze">#EEF3F9</color>
+    <color name="doveGray">#80676767</color>
+    <color name="bondiBlue">#018ABE</color>
+    <color name="rockBlue">#9BACC6</color>
+    <color name="santasGray">#9494AF</color>
+    <color name="boulder">#757575</color>
 </resources>
