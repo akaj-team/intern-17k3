@@ -103,4 +103,6 @@
     <string name="validate_password_space">password have space</string>
     <string name="validate_password_least_3_capital_letter">password have least 3 capital letter</string>
     <string name="validate_password_repeat">repeat character password 2 times</string>
+    <string name="name_btn_data_binding">Data binding</string>
+    <string name="name_btn_update_profile">update</string>
 </resources>

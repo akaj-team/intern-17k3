@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
+import vn.asiantech.internship.databinding.DataBindingActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
@@ -30,6 +31,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnViewPager;
     private Button mBtnThreadAndHandler;
     private Button mBtnUnitTest;
+    private Button mBtnDataBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnThreadAndHandler = findViewById(R.id.btnThreadAndHandleScreen);
         mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnUnitTest = findViewById(R.id.btnUnitTest);
+        mBtnDataBinding = findViewById(R.id.btnDataBinding);
     }
 
     /**
@@ -69,6 +72,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnThreadAndHandler.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
         mBtnUnitTest.setOnClickListener(this);
+        mBtnDataBinding.setOnClickListener(this);
     }
 
     /**
@@ -103,6 +107,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnUnitTest:
                 startActivity(new Intent(this, LoginUnitTestActivity.class));
+                break;
+            case R.id.btnDataBinding:
+                startActivity(new Intent(this, DataBindingActivity.class));
         }
     }
 }

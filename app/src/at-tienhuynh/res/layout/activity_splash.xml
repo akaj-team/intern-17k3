@@ -72,6 +72,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:text="@string/name_btn_thread" />
+
         <Button
             android:id="@+id/btnUnitTest"
             android:layout_width="match_parent"
@@ -79,6 +80,14 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:text="@string/name_btn_unit_text" />
+
+        <Button
+            android:id="@+id/btnDataBinding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="@string/name_btn_data_binding" />
 
     </LinearLayout>
 </ScrollView>
