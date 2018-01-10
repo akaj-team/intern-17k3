@@ -26,6 +26,7 @@ public class InformationBatteryFragment extends Fragment {
     private static final int PART_FOUR_BATTERY = 25;
     private static final int HALF_BATTERY = 50;
     private static final int THREE_PART_FOUR_BATTERY = 75;
+    private static final int FULL_BATTERY = 100;
     private TextView mTvBatteryLevel;
     private TextView mTvBatteryTechnology;
     private TextView mTvBatteryPlugged;
@@ -58,8 +59,6 @@ public class InformationBatteryFragment extends Fragment {
                     } else {
                         setBackgroundImage(R.drawable.ic_battery_level_4);
                     }
-                } else if (status == BatteryManager.BATTERY_STATUS_FULL) {
-                    mImgBatteryLevel.setBackgroundResource(R.drawable.ic_battery_level_4);
                 } else if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
                     if (level >= CLEAN_BATTERY && level <= PART_FOUR_BATTERY) {
                         setAnimationImage(R.drawable.bg_animation_level_1);
@@ -67,8 +66,10 @@ public class InformationBatteryFragment extends Fragment {
                         setAnimationImage(R.drawable.bg_animation_level_2);
                     } else if (level > HALF_BATTERY && level <= THREE_PART_FOUR_BATTERY) {
                         setAnimationImage(R.drawable.bg_animation_level_3);
+                    } else if (level > THREE_PART_FOUR_BATTERY && level < FULL_BATTERY) {
+                        setAnimationImage(R.drawable.bg_animation_level_3);
                     } else {
-                        setAnimationImage(R.drawable.bg_animation_level_4);
+                        setBackgroundImage(R.drawable.ic_battery_level_4);
                     }
                     mFrameAnimation.start();
                 } else {
