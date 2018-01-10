@@ -102,4 +102,24 @@
     <string name="test_password_capital_letter">Password not enough three capital letters</string>
     <string name="test_password_same_character">Password have character overlap more than two times</string>
     <string name="test_done">Done</string>
+    <string name="battery_not_present">Battery not present!!!</string>
+    <string name="text_present">present</string>
+    <string name="text_technology">technology</string>
+    <string name="text_plugged">plugged</string>
+    <string name="text_scale">scale</string>
+    <string name="text_health">health</string>
+    <string name="text_status">status</string>
+    <string name="text_level">level</string>
+    <string name="text_unknown">Unknown</string>
+    <string name="text_charging_ac">AC</string>
+    <string name="text_charging_usb">USB</string>
+    <string name="text_dead">Dead</string>
+    <string name="text_good">Good</string>
+    <string name="text_over_voltage">Over Voltage</string>
+    <string name="text_over_heat">Over Heat</string>
+    <string name="text_failure">Failure</string>
+    <string name="text_charging">Charging</string>
+    <string name="text_discharging">Discharging</string>
+    <string name="text_full">Full</string>
+    <string name="text_not_charging">Not Charging</string>
 </resources>
