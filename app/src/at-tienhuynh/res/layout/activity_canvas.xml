@@ -8,16 +8,8 @@
     android:orientation="vertical"
     tools:context="vn.asiantech.internship.canvas.CanvasActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/tv_canvas_name"
-        android:textColor="@color/colorAccent"
-        android:textSize="30dp" />
-
     <vn.asiantech.internship.canvas.CustomView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
         app:column_width="40" />
