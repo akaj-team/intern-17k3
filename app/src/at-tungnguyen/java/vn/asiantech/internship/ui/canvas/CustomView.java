@@ -79,7 +79,7 @@ public class CustomView extends View {
         mPaintText.setTextSize(getResources().getDimension(R.dimen.tv_chart));
 
         mPaintLine.setColor(ContextCompat.getColor(getContext(), R.color.black));
-        mPaintLine.setStrokeWidth(5);
+        mPaintLine.setStrokeWidth(2);
         mPaintLine.setAntiAlias(true);
 
         mPaintColumn.setColor(ContextCompat.getColor(getContext(), R.color.colorPurple800));

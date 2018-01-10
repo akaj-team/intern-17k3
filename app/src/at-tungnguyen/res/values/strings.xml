@@ -82,6 +82,35 @@
     <string name="input">input</string>
     <string name="use_memory">Please use memory</string>
     <string name="tv_toolbar">Home</string>
+    <string name="btn_thread">Thread-Handler</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="btn_start">Start</string>
+    <string name="tv_countdown">Tungkute</string>
+    <string name="btn_thread_ex1">Exercise1</string>
+    <string name="btn_thread_ex2">Exercise2</string>
+    <string name="tv_count">0</string>
+    <string name="tv_percent">0%</string>
+    <string name="tv_countdown_timer">Tungkute</string>
+    <string name="tv_username">UserName</string>
+    <string name="tv_password">Password</string>
+    <string name="tv_test_login"> Login </string>
+    <string name="btn_login_validation">Validation</string>
+    <string name="user_name_lenght">The username length is greater than 5 and is less than 24 characters</string>
+    <string name="user_name_capital_or_number">Username There is at least one capital letter and two numerals</string>
+    <string name="user_name_not_space">UserName does not contain space</string>
+    <string name="user_name_not_character_special">UserName does not contain special characters</string>
+    <string name="password_three_character_Capital">Password There are at least 3 uppercase letters</string>
+    <string name="password_character_lenght">The minimum password length is 7 characters</string>
+    <string name="password_not_repeat">Password can not be repeated more than 2 times</string>
+    <string name="password_not_space">Password can not contain spaces</string>
+    <string name="password_special_number">Password must contain 1 special character or number</string>
+    <string name="password_user_different">UserName and Password must be different</string>
+    <string name="title_tablayout_home">HOME</string>
+    <string name="title_tablayout_info">INFO</string>
+    <string name="textview_kb">KB/</string>
+    <string name="bracket_first">(</string>
+    <string name="login_successfully">Login successfully</string>
     <string name="have_not_picked_img">Not picked</string>
     <string name="tv_canvas_km">Km</string>
     <string name="tv_canvas_5km">5Km</string>

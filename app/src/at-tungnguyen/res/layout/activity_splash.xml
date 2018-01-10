@@ -38,6 +38,12 @@
         android:text="@string/tv_drawerlayout" />
 
     <Button
+        android:id="@+id/btnThread"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_thread" />
+
+    <Button
         android:id="@+id/btnLoadImage"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -48,6 +54,12 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_viewpager" />
+
+    <Button
+        android:id="@+id/btnValidation"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_login_validation" />
 
     <Button
         android:id="@+id/btnCanvas"

@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.asynchronous.RecyclerViewCountDownTimerActivity;
+import vn.asiantech.internship.asynchronous.ThreadActivity;
 import vn.asiantech.internship.image.LoadImageActivity;
 import vn.asiantech.internship.image.NinePathImageActivity;
 import vn.asiantech.internship.image.VectorImageActivity;
@@ -32,8 +34,6 @@ import vn.asiantech.internship.ui.viewpager_tablayout.StepActivity;
  * Create Drawer Layout
  */
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
-    private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
-    private static final int REQUEST_CODE_PICK_IMAGE = 77;
     private DrawerLayout mDrawerLayout;
     private RecyclerView mRecyclerViewLeftMenu;
     private LinearLayout mLlContent;
@@ -67,8 +67,9 @@ public class DrawerLayoutActivity extends AppCompatActivity implements View.OnCl
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Load Image", new Intent(this, LoadImageActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Nine Path Image", new Intent(this, NinePathImageActivity.class)));
         mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Vector Image", new Intent(this, VectorImageActivity.class)));
-        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Vector Image", new Intent(this, VectorImageActivity.class)));
-        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "ViewPager TabLayout", new Intent(this, StepActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Card learn English", new Intent(this, StepActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Thread", new Intent(this, ThreadActivity.class)));
+        mIssueList.add(new Issue(R.drawable.ic_move_to_inbox_black_24dp, "Count Down Timer", new Intent(this, RecyclerViewCountDownTimerActivity.class)));
     }
 
     private void initDrawer() {
