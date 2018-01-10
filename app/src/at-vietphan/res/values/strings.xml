@@ -103,4 +103,20 @@
     <string name="check_password_length">password must have length more than 7 char</string>
     <string name="check_password_at_least_special_or_number">password must have at least special or number</string>
     <string name="check_password_different_username">password must have different username</string>
+    <string name="usb">USB</string>
+    <string name="ac">AC</string>
+    <string name="wireless">WIRELESS</string>
+    <string name="not_plugin">NOT PLUGIN</string>
+    <string name="percent">%</string>
+    <string name="cold">Cold</string>
+    <string name="dead">Dead</string>
+    <string name="good">Good</string>
+    <string name="over_heat">Over Heat</string>
+    <string name="over_voltage">Over Voltage</string>
+    <string name="uknown">Unknown</string>
+    <string name="failure">Unspecified failure</string>
+    <string name="charging">Charging</string>
+    <string name="discharging">Discharging</string>
+    <string name="battery_full">Battery Full</string>
+    <string name="not_charging">Not Charging</string>
 </resources>
