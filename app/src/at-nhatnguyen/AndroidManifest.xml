@@ -40,6 +40,7 @@
         <activity android:name=".ui.thread.ThreadActivity" />
         <activity android:name=".ui.thread.CountDownActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
+        <activity android:name=".ui.viewpager.Battery.BatteryActivity" />
     </application>
 
 </manifest>
