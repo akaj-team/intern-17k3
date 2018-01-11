@@ -9,8 +9,9 @@
     tools:context="vn.asiantech.internship.canvas.CanvasActivity">
 
     <vn.asiantech.internship.canvas.CustomView
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:column_width="40dp" />
 </LinearLayout>

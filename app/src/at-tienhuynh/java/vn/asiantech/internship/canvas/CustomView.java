@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -49,6 +50,17 @@ public class CustomView extends View {
     private boolean mIsMoveToRight;
     private List<Float> mPaths;
     private List<Long> mTimes;
+    // scale
+    private boolean dragged = true;
+    private int mode;
+    private float mStartX = 0f;
+    private float mStartY = 0f;
+    private float mTranslateX = 0f;
+    private float mTranslateY = 0f;
+    private float mPreviousTranslateX = 0f;
+    private float mPreviousTranslateY = 0f;
+    private float mScaleFactor = 1.f;
+    private ScaleGestureDetector mScaleDetector;
 
     public CustomView(Context context) {
         this(context, null);
@@ -58,6 +70,8 @@ public class CustomView extends View {
         super(context, attrs);
         // Get attrs from XML file
         attributeSet(context, attrs);
+        // scale
+        mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         // init Paint
         init();
         // init Data List
@@ -75,7 +89,7 @@ public class CustomView extends View {
                 attrs,
                 R.styleable.CustomView, DEFAULT_ATTRS, DEFAULT_ATTRS);
         try {
-            mColumnWidth = typedArray.getInteger(R.styleable.CustomView_column_width, getResources()
+            mColumnWidth = (int) typedArray.getDimension(R.styleable.CustomView_column_width, getResources()
                     .getDimensionPixelSize(R.dimen.custom_view_default_column_width));
         } finally {
             typedArray.recycle();
@@ -199,6 +213,10 @@ public class CustomView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //scale
+        canvas.save();
+        canvas.scale(mScaleFactor, mScaleFactor);
+        translate(canvas);
         //Draw Line
         drawLine(canvas);
         // drawChart
@@ -207,6 +225,8 @@ public class CustomView extends View {
         drawRect(canvas);
         //drawText
         drawText(canvas);
+        //restore
+        canvas.restore();
     }
 
     /**
@@ -308,6 +328,8 @@ public class CustomView extends View {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+        int DRAG = 1;
+        int ZOOM = 2;
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             //Reset mDataListPeopleOne
             mPaths.clear();
@@ -319,6 +341,20 @@ public class CustomView extends View {
             //Save the mDataListPeopleOne of the first touch
             mPaths.add(mPrevXMove);
             mTimes.add(mTimeDown);
+
+            //scale
+            mode = DRAG;
+
+            mStartX = ev.getX();
+            mStartY = ev.getY();
+            mStartX = ev.getX() - mPreviousTranslateX;
+            mStartY = ev.getY() - mPreviousTranslateY;
+        } else if (ev.getAction() == MotionEvent.ACTION_POINTER_DOWN) {
+            mode = ZOOM;
+        } else if (ev.getAction() == MotionEvent.ACTION_POINTER_UP) {
+            mode = DRAG;
+            mPreviousTranslateX = mTranslateX;
+            mPreviousTranslateY = mTranslateY;
         } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
             float currentXMove = ev.getX();
             mPaths.add(currentXMove);
@@ -355,9 +391,20 @@ public class CustomView extends View {
             }
             //Update latest x coordinate
             mPrevXMove = currentXMove;
+
+            //scale
+            mTranslateX = ev.getX() - mStartX;
+            mTranslateY = ev.getY() - mStartY;
             //Re-draw
             invalidate();
         } else if (ev.getAction() == MotionEvent.ACTION_UP) {
+
+            //scale
+            mode = 0;
+            dragged = false;
+            mPreviousTranslateX = mTranslateX;
+            mPreviousTranslateY = mTranslateY;
+
             //Find the latest corner, 1 2 3 4 5 6 5 4 3 2 1, corner is 6
             int size = mPaths.size();
             for (int i = size - 1; i > 0; i--) {
@@ -415,6 +462,36 @@ public class CustomView extends View {
                 }
             }
         }
+        mScaleDetector.onTouchEvent(ev);
+        if ((mode == DRAG && mScaleFactor != 1f && dragged) || mode == ZOOM) {
+            invalidate();
+        }
         return true;
+    }
+
+    private class ScaleListener
+            extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            mScaleFactor *= detector.getScaleFactor();
+            float MIN_ZOOM = 1F;
+            float MAX_ZOOM = 5F;
+            mScaleFactor = Math.max(MIN_ZOOM, Math.min(mScaleFactor, MAX_ZOOM));
+            return true;
+        }
+    }
+
+    private void translate(Canvas canvas) {
+        if ((mTranslateX * -1) < 0) {
+            mTranslateX = 0;
+        } else if ((mTranslateX * -1) > (mScaleFactor - 1) * getWidth()) {
+            mTranslateX = (1 - mScaleFactor) * getWidth();
+        }
+        if (mTranslateY * -1 < 0) {
+            mTranslateY = 0;
+        } else if ((mTranslateY * -1) > (mScaleFactor - 1) * getHeight()) {
+            mTranslateY = (1 - mScaleFactor) * getHeight();
+        }
+        canvas.translate(mTranslateX / mScaleFactor, mTranslateY / mScaleFactor);
     }
 }
