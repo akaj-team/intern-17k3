@@ -12,5 +12,5 @@
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
         android:padding="20dp"
-        add:stroke_with="25" />
+        add:stroke_with="5dp" />
 </LinearLayout>

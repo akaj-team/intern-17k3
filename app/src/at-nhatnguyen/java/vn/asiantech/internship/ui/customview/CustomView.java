@@ -10,6 +10,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -24,24 +25,28 @@ import vn.asiantech.internship.R;
  * The CustomView for CanvasActivity
  */
 public class CustomView extends View {
+    private static final int MARGIN = 100;
+    private static final int DISTANCE_COLUMN = 42;
+    private ScaleGestureDetector mScaleDetector;
+    private float mScaleFactor = 1.f;
     private Paint mPaintText;
     private Paint mPaintRect;
     private Paint mPaintLine;
-    private Paint mPaintColumn1;
-    private Paint mPaintColumn2;
-    private Paint mPaintColumn3;
-    private int mColumnWidth = getResources().getDimensionPixelSize(R.dimen.column_width);
-    private int mColumnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
-    private int mColumnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
-    private List<Integer> mDatas1;
-    private List<Integer> mDatas2;
-    private List<Integer> mDatas3;
+    private Paint mPaintColumnRed;
+    private Paint mPaintColumnYELLOW;
+    private Paint mPaintColumnBLUE;
+    private int mColumnWidth;
+    private int mColumnCornerRadius;
+    private int mColumnMarginHorizontal;
+    private List<Integer> mDataReds;
+    private List<Integer> mDataYellows;
+    private List<Integer> mDataBlues;
     private int mMax;
     private int mSizeData;
     //To save the first left of all columns
     private float mLefts[];
     //Prev x coordinate in action move
-    private float prevXMove;
+    private float mPrevXMove;
     //x coordinate
     //If move from left to right or right to left, it's the x coordinate in action down
     //If move from left to right, to left..., it's the x coordinate in the latest corner
@@ -53,7 +58,7 @@ public class CustomView extends View {
     //To handle move column function
     private float mOffsetX;
     //Check if swipe to left or right
-    private boolean isMoveToRight;
+    private boolean mIsMoveToRight;
     //Save x coordinate of columns
     private List<Float> mPaths;
     //Same with #path but it's mTimes
@@ -65,6 +70,7 @@ public class CustomView extends View {
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         // Get attrs from XML file
         attributeSet(context, attrs);
         // init Paint
@@ -82,7 +88,7 @@ public class CustomView extends View {
                 attrs,
                 R.styleable.CustomView, 0, 0);
         try {
-            mColumnWidth = typedArray.getInteger(R.styleable.CustomView_stroke_with, 40);
+            mColumnWidth = typedArray.getDimensionPixelSize(R.styleable.CustomView_stroke_with, getResources().getDimensionPixelSize(R.dimen.custom_view_default_column_width));
         } finally {
             typedArray.recycle();
         }
@@ -95,34 +101,49 @@ public class CustomView extends View {
         mPaintText = new Paint();
         mPaintText.setColor(Color.GRAY);
         mPaintText.setTextSize(getResources().getDimension(R.dimen.tv_value_chart));
+
         mPaintLine = new Paint();
         mPaintLine.setColor(Color.GRAY);
-        mPaintLine.setStrokeWidth(5);
+        mPaintLine.setStrokeWidth(getResources().getDimension(R.dimen.stroke_width));
         mPaintLine.setAntiAlias(true);
-        mPaintColumn1 = new Paint();
-        mPaintColumn1.setColor(Color.RED);
-        mPaintColumn1.setAntiAlias(true);
-        mPaintColumn2 = new Paint();
-        mPaintColumn2.setColor(Color.YELLOW);
-        mPaintColumn2.setAntiAlias(true);
-        mPaintColumn3 = new Paint();
-        mPaintColumn3.setColor(Color.BLUE);
-        mPaintColumn3.setAntiAlias(true);
+
+        mPaintColumnRed = new Paint();
+        mPaintColumnRed.setColor(Color.RED);
+        mPaintColumnRed.setAntiAlias(true);
+
+        mPaintColumnYELLOW = new Paint();
+        mPaintColumnYELLOW.setColor(Color.YELLOW);
+        mPaintColumnYELLOW.setAntiAlias(true);
+
+        mPaintColumnBLUE = new Paint();
+        mPaintColumnBLUE.setColor(Color.BLUE);
+        mPaintColumnBLUE.setAntiAlias(true);
+
         mPaintRect = new Paint();
         mPaintRect.setColor(Color.WHITE);
-        mDatas1 = new ArrayList<>(Arrays.asList(11, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-        mDatas2 = new ArrayList<>(Arrays.asList(8, 6, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-        mDatas3 = new ArrayList<>(Arrays.asList(3, 5, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-        mSizeData = mDatas1.size();
-        mMax = Collections.max(mDatas1);
+
+        mDataReds = new ArrayList<>(Arrays.asList(10, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+        mDataYellows = new ArrayList<>(Arrays.asList(11, 6, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+        mDataBlues = new ArrayList<>(Arrays.asList(3, 5, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+
+        mSizeData = mDataReds.size();
+
+        mMax = Math.max(Collections.max(mDataReds), Math.max(Collections.max(mDataYellows), Collections.max(mDataBlues)));
+
         mLefts = new float[mSizeData];
         mPaths = new ArrayList<>();
         mTimes = new ArrayList<>();
+
+        mColumnWidth = getResources().getDimensionPixelSize(R.dimen.column_width);
+        mColumnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
+        mColumnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.save();
+        canvas.scale(mScaleFactor, mScaleFactor);
         //Draw Line
         drawLine(canvas);
         // drawChart
@@ -140,17 +161,26 @@ public class CustomView extends View {
      */
     private void drawLine(Canvas canvas) {
         //Draw Max Line
-        canvas.drawLine(mPaintText.measureText(String.valueOf(mMax).concat(getResources()
-                        .getString(R.string.km))),
-                getTop(mMax), getWidth(),
-                getTop(mMax), mPaintLine);
+        canvas.drawLine(
+                mPaintText.measureText(String.valueOf(mMax).concat(getResources().getString(R.string.km))),
+                getTop(mMax),
+                getWidth(),
+                getTop(mMax),
+                mPaintLine);
         //Draw End Line
-        canvas.drawLine(0, getHeight() - getPaddingBottom(),
-                getWidth(), getHeight() - getPaddingBottom(), mPaintLine);
+        canvas.drawLine(
+                0,
+                getHeight() - getPaddingBottom(),
+                getWidth(),
+                getHeight() - getPaddingBottom(),
+                mPaintLine);
         //Draw Middle Line
-        canvas.drawLine(0,
-                getTop(mMax / 2), getWidth(),
-                getTop(mMax / 2), mPaintLine);
+        canvas.drawLine(
+                0,
+                getTop(mMax / 2),
+                getWidth(),
+                getTop(mMax / 2),
+                mPaintLine);
     }
 
     /**
@@ -159,13 +189,16 @@ public class CustomView extends View {
      * @param canvas canvas
      */
     private void drawChart(Canvas canvas) {
-        float leftRect = getWidth() - getPaddingRight() - mColumnMarginHorizontal - mColumnWidth - 100 - mOffsetX;
+        float leftRect = getWidth() - getPaddingRight() - mColumnMarginHorizontal - mColumnWidth - MARGIN - mOffsetX;
         for (int index = 0; index < mSizeData; index++) {
-            canvas.drawRoundRect(new RectF(leftRect - 100 * index, getTop(mDatas1.get(index)), leftRect - 100 * index + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumn1);
-            canvas.drawRoundRect(new RectF(leftRect - 100 * index - 42, getTop(mDatas2.get(index)), leftRect - 100 * index - 42 + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumn2);
-            canvas.drawRoundRect(new RectF(leftRect - 100 * index - 84, getTop(mDatas3.get(index)), leftRect - 100 * index - 84 + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumn3);
-            canvas.drawText(convertDay(mSizeData-index), leftRect - 100 * index - 84 + mColumnWidth,
-                    getHeight() - getPaddingBottom() + 50, mPaintText);
+            canvas.drawRoundRect(new RectF(leftRect - MARGIN * index, getTop(mDataReds.get(index)), leftRect - 100 * index + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnRed);
+            canvas.drawRoundRect(new RectF(leftRect - MARGIN * index - DISTANCE_COLUMN, getTop(mDataYellows.get(index)), leftRect - 100 * index - 42 + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnYELLOW);
+            canvas.drawRoundRect(new RectF(leftRect - MARGIN * index - DISTANCE_COLUMN * 2, getTop(mDataBlues.get(index)), leftRect - 100 * index - 84 + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnBLUE);
+            canvas.drawText(
+                    convertDay(mSizeData - index),
+                    leftRect - MARGIN * index - DISTANCE_COLUMN * 2 + mColumnWidth,
+                    getHeight() - getPaddingBottom() + 50,
+                    mPaintText);
             //Save the first left of all columns
             if (mOffsetX == 0) {
                 mLefts[index] = leftRect;
@@ -176,29 +209,9 @@ public class CustomView extends View {
 
     private String convertDay(int i) {
         int result = i % 7 + 2;
-        String day = "";
-        switch (result) {
-            case 2:
-                day = String.valueOf(2);
-                break;
-            case 3:
-                day = String.valueOf(3);
-                break;
-            case 4:
-                day = String.valueOf(4);
-                break;
-            case 5:
-                day = String.valueOf(5);
-                break;
-            case 6:
-                day = String.valueOf(6);
-                break;
-            case 7:
-                day = String.valueOf(7);
-                break;
-            case 8:
-                day = "CN";
-                break;
+        String day = "CN";
+        if (result != 8) {
+            day = String.valueOf(result);
         }
         return day;
     }
@@ -209,8 +222,8 @@ public class CustomView extends View {
      * @param canvas canvas
      */
     private void drawRect(Canvas canvas) {
-        canvas.drawRect(0, 0, getPaddingLeft() + 100 - mColumnMarginHorizontal, getHeight(), mPaintRect);
-        canvas.drawRect(getWidth() - getPaddingRight() - 100 + mColumnMarginHorizontal, 0, getWidth(), getHeight(), mPaintRect);
+        canvas.drawRect(0, 0, getPaddingLeft() + MARGIN - mColumnMarginHorizontal, getHeight(), mPaintRect);
+        canvas.drawRect(getWidth() - getPaddingRight() - MARGIN + mColumnMarginHorizontal, 0, getWidth(), getHeight(), mPaintRect);
     }
 
     /**
@@ -221,8 +234,8 @@ public class CustomView extends View {
     private void drawText(Canvas canvas) {
         //Draw Text Max Values
         canvas.drawText(String.valueOf(mMax).concat(getResources().getString(R.string.km)), 0, getTop(mMax), mPaintText);
-        //Draw Text Max Values
-        canvas.drawText(String.valueOf(mMax / 2).concat(getResources().getString(R.string.km)), 0, getTop(mMax / 2), mPaintText);
+        //Draw Text half part Values
+        canvas.drawText(String.valueOf((float) mMax / 2).concat(getResources().getString(R.string.km)), 0, getTop(mMax / 2), mPaintText);
     }
 
     /**
@@ -237,16 +250,17 @@ public class CustomView extends View {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+        mScaleDetector.onTouchEvent(ev);
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             //Reset mDatas
             mPaths.clear();
             mTimes.clear();
-            prevXMove = ev.getX();
-            mXDown = prevXMove;
+            mPrevXMove = ev.getX();
+            mXDown = mPrevXMove;
             mTimeDown = System.currentTimeMillis();
 
             //Save the mDatas of the first touch
-            mPaths.add(prevXMove);
+            mPaths.add(mPrevXMove);
             mTimes.add(mTimeDown);
         } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
             float currentXMove = ev.getX();
@@ -254,43 +268,43 @@ public class CustomView extends View {
             mTimes.add(System.currentTimeMillis());
 
             //When long touch, reset mDatas
-            if (prevXMove == currentXMove) {
+            if (mPrevXMove == currentXMove) {
                 mXDown = currentXMove;
                 mTimeDown = System.currentTimeMillis();
                 mPaths.clear();
                 mTimes.clear();
             }
-            isMoveToRight = prevXMove <= currentXMove;
+            mIsMoveToRight = mPrevXMove <= currentXMove;
             if (ev.getPointerCount() == 1) {
                 //Check if the last column at right move to limit
-                if (!isMoveToRight && mOffsetX == 0) {
+                if (!mIsMoveToRight && mOffsetX == 0) {
                     return true;
                 }
                 //Check if the last column at left move to limit
-                if (isMoveToRight && mOffsetX <= mLefts[mSizeData - 1] - getPaddingLeft() - 100) {
+                if (mIsMoveToRight && mOffsetX <= mLefts[mSizeData - 1] - getPaddingLeft() - 100) {
                     return true;
                 }
                 //Update offsetX
-                mOffsetX += prevXMove - currentXMove;
+                mOffsetX += mPrevXMove - currentXMove;
 
                 //If move to left and and the last column exceed the limit, must block it
-                if (!isMoveToRight && mOffsetX > 0) {
+                if (!mIsMoveToRight && mOffsetX > 0) {
                     mOffsetX = 0;
                 }
                 //If move to right and and the first column exceed the limit, must block it
-                if (isMoveToRight && mOffsetX <= mLefts[mSizeData - 1] - getPaddingLeft() - 100) {
+                if (mIsMoveToRight && mOffsetX <= mLefts[mSizeData - 1] - getPaddingLeft() - 100) {
                     mOffsetX = mLefts[mSizeData - 1] - getPaddingLeft() - 100;
                 }
             }
             //Update latest x coordinate
-            prevXMove = currentXMove;
+            mPrevXMove = currentXMove;
             //Re-draw
             invalidate();
         } else if (ev.getAction() == MotionEvent.ACTION_UP) {
             //Find the latest corner, 1 2 3 4 5 6 5 4 3 2 1, corner is 6
             int size = mPaths.size();
             for (int i = size - 1; i > 0; i--) {
-                if ((isMoveToRight && mPaths.get(i - 1) > mPaths.get(i)) || (!isMoveToRight && mPaths.get(i - 1) < mPaths.get(i))) {
+                if ((mIsMoveToRight && mPaths.get(i - 1) > mPaths.get(i)) || (!mIsMoveToRight && mPaths.get(i - 1) < mPaths.get(i))) {
                     mXDown = mPaths.get(i);
                     mTimeDown = mTimes.get(i);
                     break;
@@ -301,11 +315,11 @@ public class CustomView extends View {
                 }
             }
             //Check if the last column at left move to limit
-            if (isMoveToRight && mOffsetX <= mLefts[mSizeData - 1] - getPaddingLeft() - 100) {
+            if (mIsMoveToRight && mOffsetX <= mLefts[mSizeData - 1] - getPaddingLeft() - 100) {
                 return true;
             }
             //Check if the last column at right move to limit
-            if (!isMoveToRight && mOffsetX == 0) {
+            if (!mIsMoveToRight && mOffsetX == 0) {
                 return true;
             }
 
@@ -321,7 +335,7 @@ public class CustomView extends View {
                         @Override
                         public void run() {
                             //Check if the first column at left move to limit
-                            if (isMoveToRight) {
+                            if (mIsMoveToRight) {
                                 mOffsetX -= mSpeed;
                                 if (mOffsetX < mLefts[mSizeData - 1] - getPaddingLeft() - 100) {
                                     mOffsetX = mLefts[mSizeData - 1] - getPaddingLeft() - 100;
@@ -345,5 +359,16 @@ public class CustomView extends View {
             }
         }
         return true;
+    }
+
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            mScaleFactor *= detector.getScaleFactor();
+            // Don't let the object get too small or too large.
+            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 2.0f));
+            invalidate();
+            return true;
+        }
     }
 }

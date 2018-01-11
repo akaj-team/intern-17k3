@@ -6,4 +6,6 @@
     <dimen name="column_width">10dp</dimen>
     <dimen name="column_corner_radius">3dp</dimen>
     <dimen name="tv_value_chart">14dp</dimen>
+    <dimen name="custom_view_default_column_width">40dp</dimen>
+    <dimen name="stroke_width">2dp</dimen>
 </resources>
