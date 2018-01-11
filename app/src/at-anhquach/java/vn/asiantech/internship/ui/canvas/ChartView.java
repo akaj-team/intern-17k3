@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -26,46 +28,47 @@ import vn.asiantech.internship.ui.viewpager_tablayout.ScreenUtil;
  * Chart View
  */
 public class ChartView extends View {
+    private static final int OFFSET100 = 100;
+
     private boolean dragged = true;
     private int mode;
 
-    private float startX = 0f;
-    private float startY = 0f;
-    private float translateX = 0f;
-    private float translateY = 0f;
-    private float previousTranslateX = 0f;
-    private float previousTranslateY = 0f;
+    private float mStartX = 0f;
+    private float mStartY = 0f;
+    private float mTranslateX = 0f;
+    private float mTranslateY = 0f;
+    private float mPreviousTranslateX = 0f;
+    private float mPreviousTranslateY = 0f;
     private float mScaleFactor = 1.f;
 
-    private Paint mPaintColumn1 = new Paint();
     private Paint mPaintText = new Paint();
     private Paint mPaintLine = new Paint();
-    private Paint mPaintColumn = new Paint();
-    private Paint mPaintColumn2 = new Paint();
+    private Paint mPaintColumnCyanA700 = new Paint();
+    private Paint mPaintColumnPurple800 = new Paint();
+    private Paint mPaintColumnOrange500 = new Paint();
     private Paint mPaintRect = new Paint();
 
     private ScaleGestureDetector mScaleDetector;
-    private int columnWidth;
-    double distance;
+    private int mColumnWidth;
     private int mOxChart = getResources().getDimensionPixelSize(R.dimen.ox_chart);
-    private int columnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
-    private int columnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
-    private float mWitdhScreen = ScreenUtil.getWidthScreen(getContext());
+    private int mColumnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
+    private int mColumnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
     private float mHeightScreen = ScreenUtil.getHeightScreen(getContext());
 
-    private List<Integer> mDistanceAs = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-    private List<Integer> mDistanceBs = new ArrayList<>(Arrays.asList(1, 2, 5, 2, 7, 8, 9, 7, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-    private List<Integer> mDistanceCs = new ArrayList<>(Arrays.asList(3, 9, 5, 6, 10, 8, 9, 2, 4, 4, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-    private List<Float> paths = new ArrayList<>();
-    private List<Long> times = new ArrayList<>();
+    private List<Integer> mDistancePurple800s = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+    private List<Integer> mDistanceCyanA700s = new ArrayList<>(Arrays.asList(1, 2, 5, 2, 7, 8, 9, 7, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+    private List<Integer> mDistanceOrange500s = new ArrayList<>(Arrays.asList(3, 9, 5, 6, 10, 8, 9, 2, 4, 4, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+    private List<Float> mPaths = new ArrayList<>();
+    private List<Long> mTimes = new ArrayList<>();
 
-    private float lefts[] = new float[mDistanceAs.size()];
-    private float prevXMove;
-    private float xDown;
-    private long timeDown;
-    private float v;
-    private float offsetX;
-    private boolean isMoveToRight;
+    private float mLefts[] = new float[mDistancePurple800s.size()];
+    private float mPrevXMove;
+    private float mXDown;
+    private long mTimeDown;
+    private float mV;
+    private float mOffsetX;
+    private boolean mIsMoveToRight;
+    private int mMaxDistance;
 
     public ChartView(Context context) {
         this(context, null);
@@ -78,39 +81,38 @@ public class ChartView extends View {
                 attrs, R.styleable.ChartView, 0, 0
         );
         try {
-            columnWidth = a.getInteger(R.styleable.ChartView_column_width, 20);
+            mColumnWidth = a.getInteger(R.styleable.ChartView_column_width, 20);
         } finally {
             a.recycle();
         }
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
+        maxLists();
         init();
     }
-
+    private void maxLists() {
+        int max1 = Collections.max(mDistancePurple800s);
+        int max2 = Collections.max(mDistanceCyanA700s);
+        int max3 = Collections.max(mDistanceOrange500s);
+        mMaxDistance = Math.max(Math.max(max1, max2), max3);
+    }
     private void init() {
         mPaintText.setColor(getResources().getColor(R.color.colorGrayDark));
         mPaintText.setTextSize(getResources().getDimension(R.dimen.textsize13sp));
         mPaintText.setAntiAlias(true);
 
-        mPaintRect.setColor(getResources().getColor(R.color.colorWhite));
+        mPaintRect.setColor(Color.WHITE);
 
         mPaintLine.setColor(getResources().getColor(R.color.colorGrayDark));
         mPaintLine.setAntiAlias(true);
 
-        mPaintColumn.setColor(getResources().getColor(R.color.colorPurple800));
-        mPaintColumn.setAntiAlias(true);
+        mPaintColumnPurple800.setColor(getResources().getColor(R.color.colorPurple800));
+        mPaintColumnPurple800.setAntiAlias(true);
 
-        mPaintColumn1.setColor(getResources().getColor(R.color.colorCyanA700));
-        mPaintColumn1.setAntiAlias(true);
+        mPaintColumnCyanA700.setColor(getResources().getColor(R.color.colorCyanA700));
+        mPaintColumnCyanA700.setAntiAlias(true);
 
-        mPaintColumn2.setColor(getResources().getColor(R.color.colorOrange500));
-        mPaintColumn2.setAntiAlias(true);
-    }
-
-    private float maxLists() {
-        int max1 = Collections.max(mDistanceAs);
-        int max2 = Collections.max(mDistanceBs);
-        int max3 = Collections.max(mDistanceCs);
-        return (float) Math.max(Math.max(max1, max2), max3);
+        mPaintColumnOrange500.setColor(getResources().getColor(R.color.colorOrange500));
+        mPaintColumnOrange500.setAntiAlias(true);
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -122,61 +124,57 @@ public class ChartView extends View {
             case MotionEvent.ACTION_DOWN:
                 mode = DRAG;
 
-                startX = ev.getX();
-                startY = ev.getY();
-                startX = ev.getX() - previousTranslateX;
-                startY = ev.getY() - previousTranslateY;
+                mStartX = ev.getX();
+                mStartY = ev.getY();
+                mStartX = ev.getX() - mPreviousTranslateX;
+                mStartY = ev.getY() - mPreviousTranslateY;
 
-                paths.clear();
-                times.clear();
-                prevXMove = ev.getX();
-                xDown = prevXMove;
-                timeDown = System.currentTimeMillis();
+                mPaths.clear();
+                mTimes.clear();
+                mPrevXMove = ev.getX();
+                mXDown = mPrevXMove;
+                mTimeDown = System.currentTimeMillis();
 
-                paths.add(prevXMove);
-                times.add(timeDown);
+                mPaths.add(mPrevXMove);
+                mTimes.add(mTimeDown);
                 break;
             case MotionEvent.ACTION_MOVE:
                 float currX = ev.getX();
-                float currY = ev.getY();
+                mTranslateX = ev.getX() - mStartX;
+                mTranslateY = ev.getY() - mStartY;
+                mPaths.add(currX);
+                mTimes.add(System.currentTimeMillis());
 
-                translateX = ev.getX() - startX;
-                translateY = ev.getY() - startY;
-                distance = Math.sqrt(Math.pow(currX - (startX + previousTranslateX), 2) +
-                        Math.pow(currY - (startY + previousTranslateY), 2));
-                paths.add(currX);
-                times.add(System.currentTimeMillis());
-
-                if (prevXMove == currX) {
-                    xDown = currX;
-                    timeDown = System.currentTimeMillis();
-                    paths.clear();
-                    times.clear();
+                if (mPrevXMove == currX) {
+                    mXDown = currX;
+                    mTimeDown = System.currentTimeMillis();
+                    mPaths.clear();
+                    mTimes.clear();
                 }
-                isMoveToRight = prevXMove <= currX;
+                mIsMoveToRight = mPrevXMove <= currX;
                 if (ev.getPointerCount() == 1) {
                     //Check if the last column at right move to limit
-                    if (!isMoveToRight && offsetX == 0) {
+                    if (!mIsMoveToRight && mOffsetX == 0) {
                         return true;
                     }
                     //Check if the last column at left move to limit
-                    if (isMoveToRight && offsetX <= lefts[mDistanceAs.size() - 1] - getPaddingLeft() - 100) {
+                    if (mIsMoveToRight && mOffsetX <= mLefts[mDistancePurple800s.size() - 1] - getPaddingLeft() - OFFSET100) {
                         return true;
                     }
                     //Update offsetX
-                    offsetX += prevXMove - currX;
+                    mOffsetX += mPrevXMove - currX;
 
                     //If move to left and and the last column exceed the limit, must block it
-                    if (!isMoveToRight && offsetX > 0) {
-                        offsetX = 0;
+                    if (!mIsMoveToRight && mOffsetX > 0) {
+                        mOffsetX = 0;
                     }
                     //If move to right and and the first column exceed the limit, must block it
-                    if (isMoveToRight && offsetX <= lefts[mDistanceAs.size() - 1] - getPaddingLeft() - 100) {
-                        offsetX = lefts[mDistanceAs.size() - 1] - getPaddingLeft() - 100;
+                    if (mIsMoveToRight && mOffsetX <= mLefts[mDistancePurple800s.size() - 1] - getPaddingLeft() - OFFSET100) {
+                        mOffsetX = mLefts[mDistancePurple800s.size() - 1] - getPaddingLeft() - OFFSET100;
                     }
                 }
                 //Update latest x coordinate
-                prevXMove = currX;
+                mPrevXMove = currX;
                 invalidate();
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
@@ -185,58 +183,58 @@ public class ChartView extends View {
             case MotionEvent.ACTION_UP:
                 mode = 0;
                 dragged = false;
-                previousTranslateX = translateX;
-                previousTranslateY = translateY;
+                mPreviousTranslateX = mTranslateX;
+                mPreviousTranslateY = mTranslateY;
                 //Find the latest corner, 1 2 3 4 5 6 5 4 3 2 1, corner is 6
-                int size = paths.size();
+                int size = mPaths.size();
                 for (int i = size - 1; i > 0; i--) {
-                    if ((isMoveToRight && paths.get(i - 1) > paths.get(i)) || (!isMoveToRight && paths.get(i - 1) < paths.get(i))) {
-                        xDown = paths.get(i);
-                        timeDown = times.get(i);
+                    if ((mIsMoveToRight && mPaths.get(i - 1) > mPaths.get(i)) || (!mIsMoveToRight && mPaths.get(i - 1) < mPaths.get(i))) {
+                        mXDown = mPaths.get(i);
+                        mTimeDown = mTimes.get(i);
                         break;
                     }
                     if (i - 1 == 0) {
-                        xDown = paths.get(0);
-                        timeDown = times.get(0);
+                        mXDown = mPaths.get(0);
+                        mTimeDown = mTimes.get(0);
                     }
                 }
                 //Check if the last column at left move to limit
-                if (isMoveToRight && offsetX <= lefts[mDistanceAs.size() - 1] - getPaddingLeft() - 100) {
+                if (mIsMoveToRight && mOffsetX <= mLefts[mDistancePurple800s.size() - 1] - getPaddingLeft() - OFFSET100) {
                     return true;
                 }
                 //Check if the last column at right move to limit
-                if (!isMoveToRight && offsetX == 0) {
+                if (!mIsMoveToRight && mOffsetX == 0) {
                     return true;
                 }
 
                 //Calculate the move speed to handle scroll after fling
-                long time = System.currentTimeMillis() - timeDown;
-                final float s = ev.getX() - xDown;
+                long time = System.currentTimeMillis() - mTimeDown;
+                final float s = ev.getX() - mXDown;
                 if (time > 0) {
-                    v = Math.abs(s / time);
-                    v = v * 50 / 3F;
-                    if (v > 0) {
+                    mV = Math.abs(s / time);
+                    mV = mV * 50 / 3F;
+                    if (mV > 0) {
                         final android.os.Handler handler = new android.os.Handler();
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 //Check if the first column at left move to limit
-                                if (isMoveToRight) {
-                                    offsetX -= v;
-                                    if (offsetX < lefts[mDistanceAs.size() - 1] - getPaddingLeft() - 100) {
-                                        offsetX = lefts[mDistanceAs.size() - 1] - getPaddingLeft() - 100;
-                                        v = 0;
+                                if (mIsMoveToRight) {
+                                    mOffsetX -= mV;
+                                    if (mOffsetX < mLefts[mDistancePurple800s.size() - 1] - getPaddingLeft() - OFFSET100) {
+                                        mOffsetX = mLefts[mDistancePurple800s.size() - 1] - getPaddingLeft() - OFFSET100;
+                                        mV = 0;
                                     }
                                 } else {//Check if the last column at right move to limit
-                                    offsetX += v;
-                                    if (offsetX > 0) {
-                                        offsetX = 0;
-                                        v = 0;
+                                    mOffsetX += mV;
+                                    if (mOffsetX > 0) {
+                                        mOffsetX = 0;
+                                        mV = 0;
                                     }
                                 }
                                 invalidate();
                                 //Scroll, scroll, scroll...
-                                if (v-- > 0) {
+                                if (mV-- > 0) {
                                     handler.postDelayed(this, 1);
                                 }
                             }
@@ -246,8 +244,8 @@ public class ChartView extends View {
                 break;
             case MotionEvent.ACTION_POINTER_UP:
                 mode = DRAG;
-                previousTranslateX = translateX;
-                previousTranslateY = translateY;
+                mPreviousTranslateX = mTranslateX;
+                mPreviousTranslateY = mTranslateY;
                 break;
         }
         mScaleDetector.onTouchEvent(ev);
@@ -268,36 +266,35 @@ public class ChartView extends View {
         drawChart(canvas);
 
         drawRect(canvas, 0, mPaintRect);
-        drawRect(canvas, mWitdhScreen - 50, mPaintRect);
+        drawRect(canvas, getWidth() - 50, mPaintRect);
 
-        drawText(canvas, getContext().getString(R.string.distance_km, ((int) maxLists())), 0, maxLists(), mPaintText);
+        drawText(canvas, getContext().getString(R.string.distance_km, ((int) mMaxDistance)), 0, mMaxDistance, mPaintText);
         drawText(canvas, getContext().getString(R.string.day), mOxChart, -1, mPaintText);
-        drawText(canvas, getContext().getString(R.string.month), mWitdhScreen - 100, -1, mPaintText);
+        drawText(canvas, getContext().getString(R.string.month), getWidth() - OFFSET100, -1, mPaintText);
 
         drawLine(canvas, 0, mPaintLine);
-        drawLine(canvas, maxLists(), mPaintLine);
+        drawLine(canvas, mMaxDistance, mPaintLine);
 
         drawText(canvas, getContext().getString(R.string.distance_km, ((int) 0)), 0, 0, mPaintText);
 
-        drawLine(canvas, maxLists() / 2, mPaintLine);
+        drawLine(canvas, mMaxDistance / 2, mPaintLine);
         canvas.restore();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void drawChart(Canvas canvas) {
-        float leftRect = getWidth() - getPaddingRight() - columnMarginHorizontal - columnWidth - 100 - offsetX;
-        for (int index = 0; index < mDistanceAs.size(); index++) {
-            canvas.drawRoundRect(leftRect - 100 * index, getTop(mDistanceAs.get(index)), leftRect - 100 * index + columnWidth,
-                    mHeightScreen / 2 - getPaddingBottom(), columnCornerRadius, columnCornerRadius, mPaintColumn);
-            canvas.drawRoundRect(leftRect - 100 * index - columnWidth - 5, getTop(mDistanceBs.get(index)), leftRect - 100 * index - 5,
-                    mHeightScreen / 2 - getPaddingBottom(), columnCornerRadius, columnCornerRadius, mPaintColumn1);
-            canvas.drawRoundRect(leftRect - 100 * index - columnWidth * 2 - 10, getTop(mDistanceCs.get(index)), leftRect - 100 * index - columnWidth - 10,
-                    mHeightScreen / 2 - getPaddingBottom(), columnCornerRadius, columnCornerRadius, mPaintColumn2);
+        float leftRect = getWidth() - getPaddingRight() - mColumnMarginHorizontal - mColumnWidth - OFFSET100 - mOffsetX;
+        for (int index = 0; index < mDistancePurple800s.size(); index++) {
+            canvas.drawRoundRect(new RectF(leftRect - OFFSET100 * index, getTop(mDistancePurple800s.get(index)), leftRect - OFFSET100 * index + mColumnWidth,
+                    mHeightScreen / 2 - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnPurple800);
+            canvas.drawRoundRect(new RectF(leftRect - OFFSET100 * index - mColumnWidth - 5, getTop(mDistanceCyanA700s.get(index)), leftRect - OFFSET100 * index - 5,
+                    mHeightScreen / 2 - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnCyanA700);
+            canvas.drawRoundRect(new RectF(leftRect - OFFSET100 * index - mColumnWidth * 2 - 10, getTop(mDistanceOrange500s.get(index)), leftRect - OFFSET100 * index - mColumnWidth - 10,
+                    mHeightScreen / 2 - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnOrange500);
             //Save the first left of all columns
-            if (offsetX == 0) {
-                lefts[index] = leftRect;
+            if (mOffsetX == 0) {
+                mLefts[index] = leftRect;
             }
-            leftRect -= columnWidth + columnMarginHorizontal;
+            leftRect -= mColumnWidth + mColumnMarginHorizontal;
         }
     }
 
@@ -306,17 +303,17 @@ public class ChartView extends View {
     }
 
     private void translate(Canvas canvas) {
-        if ((translateX * -1) < 0) {
-            translateX = 0;
-        } else if ((translateX * -1) > (mScaleFactor - 1) * getWidth()) {
-            translateX = (1 - mScaleFactor) * getWidth();
+        if ((mTranslateX * -1) < 0) {
+            mTranslateX = 0;
+        } else if ((mTranslateX * -1) > (mScaleFactor - 1) * getWidth()) {
+            mTranslateX = (1 - mScaleFactor) * getWidth();
         }
-        if (translateY * -1 < 0) {
-            translateY = 0;
-        } else if ((translateY * -1) > (mScaleFactor - 1) * getHeight()) {
-            translateY = (1 - mScaleFactor) * getHeight();
+        if (mTranslateY * -1 < 0) {
+            mTranslateY = 0;
+        } else if ((mTranslateY * -1) > (mScaleFactor - 1) * getHeight()) {
+            mTranslateY = (1 - mScaleFactor) * getHeight();
         }
-        canvas.translate(translateX / mScaleFactor, translateY / mScaleFactor);
+        canvas.translate(mTranslateX / mScaleFactor, mTranslateY / mScaleFactor);
     }
 
     private void drawText(Canvas canvas, String str, float x, float y, Paint paint) {
@@ -324,11 +321,11 @@ public class ChartView extends View {
     }
 
     private void drawLine(Canvas canvas, float y, Paint paint) {
-        canvas.drawLine(mOxChart, mHeightScreen / 2 - y * 50, mWitdhScreen - 50, mHeightScreen / 2 - y * 50, paint);
+        canvas.drawLine(mOxChart, mHeightScreen / 2 - y * 50, getWidth() - 50, mHeightScreen / 2 - y * 50, paint);
     }
 
     private void drawRect(Canvas canvas, float left, Paint paint) {
-        canvas.drawRect(left, mHeightScreen / 2 - maxLists() * 50, left + 130, mHeightScreen / 2, paint);
+        canvas.drawRect(left, mHeightScreen / 2 - mMaxDistance * 50, left + 130, mHeightScreen / 2, paint);
     }
 
     private class ScaleListener
