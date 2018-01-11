@@ -60,7 +60,7 @@ public class DataBindingActivity extends AppCompatActivity implements View.OnCli
             }, mYear, mMonth, mDay);
             datePickerDialog.show();
         } else if (view.getId() == R.id.btnSubmit) {
-            Toast.makeText(this, "submit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.submit), Toast.LENGTH_SHORT).show();
         }
     }
 
