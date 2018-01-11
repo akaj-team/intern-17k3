@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <variable
+            name="user"
+            type="vn.asiantech.internship.model.User" />
+    </data>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -57,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:text="@{user.email}"
             android:background="@drawable/bg_edt_gray"
             android:padding="7dp"
             android:textSize="14sp" />
@@ -139,3 +147,4 @@
             android:text="@string/btn_update" />
     </LinearLayout>
 </LinearLayout>
+</layout>

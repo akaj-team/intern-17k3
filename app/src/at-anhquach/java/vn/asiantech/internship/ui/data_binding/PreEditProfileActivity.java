@@ -11,7 +11,6 @@ import vn.asiantech.internship.R;
  * Edit Profile Activity
  */
 public class PreEditProfileActivity extends AppCompatActivity{
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
