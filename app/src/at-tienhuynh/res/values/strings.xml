@@ -107,4 +107,13 @@
     <string name="name_btn_update_profile">update</string>
     <string name="tv_edit_info">Edit Profile</string>
     <string name="edt_email_edit_info">Email</string>
+    <string name="tv_birth_day">Birth Day</string>
+    <string name="tv_gender">Gender</string>
+    <string name="edt_phone_edit_info">Contact Number</string>
+    <string name="tv_preview_info">Preview Info</string>
+    <string name="name_btn_back_to_edit_profile">edit profile</string>
+    <string-array name="gender_choose">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

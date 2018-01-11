@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
-import vn.asiantech.internship.databinding.DataBindingActivity;
+import vn.asiantech.internship.databinding.EditInfoActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
@@ -22,6 +22,7 @@ import vn.asiantech.internship.viewpagerandtablelayout.ui.SlideActivity;
  * Created by jackty on 19/12/2017.
  */
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
+
     private Button mBtnLoginScreen;
     private Button mBtnCalculationScreen;
     private Button mBtnRecyclerViewScreen;
@@ -109,7 +110,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(this, LoginUnitTestActivity.class));
                 break;
             case R.id.btnDataBinding:
-                startActivity(new Intent(this, DataBindingActivity.class));
+                startActivity(new Intent(this, EditInfoActivity.class));
         }
     }
 }
