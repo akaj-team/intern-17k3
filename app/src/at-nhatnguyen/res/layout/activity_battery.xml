@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.ui.viewpager.Battery.BatteryActivity">
+    tools:context="vn.asiantech.internship.ui.viewpager.battery.BatteryActivity">
 
     <ImageView
         android:id="@+id/imgBattery"

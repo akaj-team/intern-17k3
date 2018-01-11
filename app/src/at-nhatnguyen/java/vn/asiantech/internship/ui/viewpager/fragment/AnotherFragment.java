@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.MainActivity;
-import vn.asiantech.internship.ui.viewpager.Battery.BatteryActivity;
+import vn.asiantech.internship.ui.viewpager.battery.BatteryActivity;
 
 /**
  * A simple {@link Fragment} subclass.

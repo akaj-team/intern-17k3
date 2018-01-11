@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.viewpager.Battery;
+package vn.asiantech.internship.ui.viewpager.battery;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
