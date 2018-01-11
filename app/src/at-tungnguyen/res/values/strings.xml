@@ -111,4 +111,21 @@
     <string name="textview_kb">KB/</string>
     <string name="bracket_first">(</string>
     <string name="login_successfully">Login successfully</string>
+    <string name="tv_battery">Battery_info</string>
+    <string name="battery_level">battery_level</string>
+    <string name="battery_charging">Charging: </string>
+    <string name="battery_discharging">Discharging: </string>
+    <string name="battery_notcharging">NotCharging: </string>
+    <string name="battery_full">Battery Full</string>
+    <string name="battery_unknown">Unknown</string>
+    <string name="battery_heath_good">good</string>
+    <string name="battery_heath_heat">heat</string>
+    <string name="battery_heath_dead">dead</string>
+    <string name="battery_heath_over">over</string>
+    <string name="battery_heath_failure">Failure</string>
+    <string name="battery_plugged_ac">Plugged AC</string>
+    <string name="battery_plugged_usb">Plugged USB</string>
+    <string name="tv_heath_battery">Battery Heath:</string>
+    <string name="tv_technolory_battery">Technolory:</string>
+
 </resources>
