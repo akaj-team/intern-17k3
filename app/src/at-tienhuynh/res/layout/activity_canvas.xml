@@ -12,5 +12,5 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
-        app:column_width="40" />
+        app:column_width="40dp" />
 </LinearLayout>
