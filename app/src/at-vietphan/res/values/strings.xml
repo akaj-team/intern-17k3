@@ -86,7 +86,7 @@
     <string name="downloaded">Downloaded</string>
     <string name="tren">/</string>
     <string name="item">item </string>
-    <string name="unit_test">Unit Test</string>
+    <string name="unit_test">UNIT - UI TEST</string>
     <string name="input_username">Input UserName</string>
     <string name="input_password">Input Password</string>
     <string name="check_length_username">user name must have lengt more than 5 and a little than 24</string>
@@ -103,4 +103,12 @@
     <string name="check_password_length">password must have length more than 7 char</string>
     <string name="check_password_at_least_special_or_number">password must have at least special or number</string>
     <string name="check_password_different_username">password must have different username</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="e_mail">E-mail</string>
+    <string name="_0979047004">0979047004</string>
+    <string name="data_binding">DATA BINDING</string>
+    <string name="submit">SUBMIT</string>
+    <string name="gender">Gender</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="edit_profile">EDIT PROFILE</string>
 </resources>

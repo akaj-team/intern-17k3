@@ -72,4 +72,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/unit_test" />
+
+    <Button
+        android:id="@+id/btnDataBinding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/data_binding" />
 </LinearLayout>
