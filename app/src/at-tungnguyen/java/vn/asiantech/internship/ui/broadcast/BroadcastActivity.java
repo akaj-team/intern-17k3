@@ -28,7 +28,7 @@ public class BroadcastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broadcast);
         initViews();
-        BatteryLevelReceiver();
+        batteryLevelReceiver();
     }
 
     //Register Broadcast Receiver
@@ -100,7 +100,7 @@ public class BroadcastActivity extends AppCompatActivity {
     /**
      * Register battery
      */
-    private void BatteryLevelReceiver() {
+    private void batteryLevelReceiver() {
         IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         registerReceiver(mBroadcastReceiver, filter);
     }
