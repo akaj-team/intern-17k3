@@ -7,9 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -81,7 +79,7 @@ public class ChartView extends View {
                 attrs, R.styleable.ChartView, 0, 0
         );
         try {
-            mColumnWidth = a.getInteger(R.styleable.ChartView_column_width, 20);
+            mColumnWidth = (int) a.getDimension(R.styleable.ChartView_column_width, 10);
         } finally {
             a.recycle();
         }
@@ -89,12 +87,14 @@ public class ChartView extends View {
         maxLists();
         init();
     }
+
     private void maxLists() {
         int max1 = Collections.max(mDistancePurple800s);
         int max2 = Collections.max(mDistanceCyanA700s);
         int max3 = Collections.max(mDistanceOrange500s);
         mMaxDistance = Math.max(Math.max(max1, max2), max3);
     }
+
     private void init() {
         mPaintText.setColor(getResources().getColor(R.color.colorGrayDark));
         mPaintText.setTextSize(getResources().getDimension(R.dimen.textsize13sp));
@@ -255,7 +255,6 @@ public class ChartView extends View {
         return true;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
