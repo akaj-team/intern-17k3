@@ -115,7 +115,7 @@
     <string name="battery_level">battery_level</string>
     <string name="battery_charging">Charging: </string>
     <string name="battery_discharging">Discharging: </string>
-    <string name="battery_notcharging">NotCharging: </string>
+    <string name="battery_not_charging">NotCharging: </string>
     <string name="battery_full">Battery Full</string>
     <string name="battery_unknown">Unknown</string>
     <string name="battery_heath_good">good</string>
@@ -126,6 +126,6 @@
     <string name="battery_plugged_ac">Plugged AC</string>
     <string name="battery_plugged_usb">Plugged USB</string>
     <string name="tv_heath_battery">Battery Heath:</string>
-    <string name="tv_technolory_battery">Technolory:</string>
-
+    <string name="tv_technology_battery">Technology:</string>
+    <string name="tv_plugged_battery">Battery Plugged :</string>
 </resources>

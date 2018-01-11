@@ -122,7 +122,7 @@ public class BroadcastActivity extends AppCompatActivity {
                 setDefaultImage(levelBattery);
                 break;
             case BatteryManager.BATTERY_STATUS_NOT_CHARGING:
-                mBatteryStatus.setText(R.string.battery_notcharging);
+                mBatteryStatus.setText(R.string.battery_not_charging);
 
             case BatteryManager.BATTERY_STATUS_FULL:
                 mBatteryStatus.setText(R.string.battery_full);
