@@ -105,4 +105,6 @@
     <string name="validate_password_repeat">repeat character password 2 times</string>
     <string name="name_btn_data_binding">Data binding</string>
     <string name="name_btn_update_profile">update</string>
+    <string name="tv_edit_info">Edit Profile</string>
+    <string name="edt_email_edit_info">Email</string>
 </resources>
