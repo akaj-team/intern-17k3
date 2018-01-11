@@ -47,4 +47,17 @@
     <string name="btn_load_in_storage">Load in Storage</string>
     <string name="btn_load_in_internet">Load in Internet</string>
     <string name="textview_download" formatted="false">DownLoad %dKB/%dKB %d%%</string>
+    <string name="edittext_birthday" formatted="false">%d/%d/%d</string>
+    <string name="tv_edit_profile">EDIT PROFILE</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_birth_date">Birth Date</string>
+    <string name="tv_gender">Gender</string>
+    <string name="tv_contact_number">Contact Number</string>
+    <string name="tv_profile">PROFILE</string>
+    <string name="title_tablayout_home">HOME</string>
+    <string name="title_tablayout_info">INFO</string>
+    <string-array name="gender_arrays">
+        <item>Felmale</item>
+        <item>Male</item>
+    </string-array>
 </resources>

@@ -63,7 +63,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         }
 
         private void onBindData(User user) {
-            mTvUserName.setText(user.getName());
+            mTvUserName.setText(user.getFullname());
             mTvAge.setText(String.valueOf(user.getAge()));
         }
     }

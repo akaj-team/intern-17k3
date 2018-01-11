@@ -76,6 +76,9 @@ android {
     repositories {
         jcenter()
     }
+    dataBinding {
+        enabled = true
+    }
 
 }
 

@@ -24,8 +24,8 @@ public class DialogUpdateFragment extends DialogFragment {
     private Button mBtnUpdate;
     private Button mBtnCancel;
 
-    public static DialogFragment newInstance() {
-        return new DialogFragment();
+    public static DialogUpdateFragment newInstance() {
+        return new DialogUpdateFragment();
     }
 
     @Override
