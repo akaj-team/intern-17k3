@@ -25,7 +25,7 @@ public class UserNameValidation {
     }
 
     public static boolean isContainSpecialChar(String userName) {
-        return userName.matches("[A-Za-z0-9]+")&&!userName.contains(" ");
+        return userName.matches("[A-Za-z0-9]+") && !userName.contains(" ");
     }
 
     public static boolean isMostTwoDigits(String userName) {

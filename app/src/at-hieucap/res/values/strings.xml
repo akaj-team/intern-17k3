@@ -57,6 +57,8 @@
     <string name="event_two_term_is_empty">First term and second term is not empty !</string>
     <string name="text_null"> </string>
     <string name="event_second_term_is_value_0">Second term is not value = 0 !</string>
+    <string name="start">Start</string>
+    <string name="percent_start">0%</string>
     <string name="tv_skip">SKIP</string>
     <string name="tv_1">Fragment 1</string>
     <string name="tv_2">Fragment 2</string>
@@ -83,6 +85,18 @@
     <string name="text_nine_path">Nine Path</string>
     <string name="bai_tap_4">Load Image</string>
     <string name="bai_tap_7">View pager</string>
+    <string name="bai_tap_8">Thread-Handler</string>
+    <string name="exercise_week_5">Exercise week 5</string>
+    <string name="thread_handler">Thread handler</string>
+    <string name="count_down_timer">Count down timer</string>
+    <string name="title_send">Send</string>
+    <string name="title_result">Result</string>
+    <string name="download" formatted="false">
+        Downloading %d Byte / %d Byte ( %.0f
+    </string>
+    <string name="download_error">Download error</string>
+    <string name="disconnect_error">Disconnect error</string>
+    <string name="close_error">Close input stream, output stream error</string>
     <string name="user_name">User name</string>
     <string name="password">Password</string>
     <string name="unit_test">Unit test</string>
