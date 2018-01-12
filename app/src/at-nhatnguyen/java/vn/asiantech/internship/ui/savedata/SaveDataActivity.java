@@ -9,7 +9,7 @@ import android.widget.Button;
 import vn.asiantech.internship.R;
 
 /**
- * Activity option save data
+ * DownloadActivity option save data
  */
 public class SaveDataActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnSharePreference;
