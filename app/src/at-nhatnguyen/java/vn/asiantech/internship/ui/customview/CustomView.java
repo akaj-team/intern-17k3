@@ -33,8 +33,8 @@ public class CustomView extends View {
     private Paint mPaintRect;
     private Paint mPaintLine;
     private Paint mPaintColumnRed;
-    private Paint mPaintColumnYELLOW;
-    private Paint mPaintColumnBLUE;
+    private Paint mPaintColumnYellow;
+    private Paint mPaintColumnBlue;
     private int mColumnWidth;
     private int mColumnCornerRadius;
     private int mColumnMarginHorizontal;
@@ -111,13 +111,13 @@ public class CustomView extends View {
         mPaintColumnRed.setColor(Color.RED);
         mPaintColumnRed.setAntiAlias(true);
 
-        mPaintColumnYELLOW = new Paint();
-        mPaintColumnYELLOW.setColor(Color.YELLOW);
-        mPaintColumnYELLOW.setAntiAlias(true);
+        mPaintColumnYellow = new Paint();
+        mPaintColumnYellow.setColor(Color.YELLOW);
+        mPaintColumnYellow.setAntiAlias(true);
 
-        mPaintColumnBLUE = new Paint();
-        mPaintColumnBLUE.setColor(Color.BLUE);
-        mPaintColumnBLUE.setAntiAlias(true);
+        mPaintColumnBlue = new Paint();
+        mPaintColumnBlue.setColor(Color.BLUE);
+        mPaintColumnBlue.setAntiAlias(true);
 
         mPaintRect = new Paint();
         mPaintRect.setColor(Color.WHITE);
@@ -177,9 +177,9 @@ public class CustomView extends View {
         //Draw Middle Line
         canvas.drawLine(
                 0,
-                getTop(mMax / 2),
+                getTop((float)mMax / 2),
                 getWidth(),
-                getTop(mMax / 2),
+                getTop((float)mMax / 2),
                 mPaintLine);
     }
 
@@ -192,8 +192,8 @@ public class CustomView extends View {
         float leftRect = getWidth() - getPaddingRight() - mColumnMarginHorizontal - mColumnWidth - MARGIN - mOffsetX;
         for (int index = 0; index < mSizeData; index++) {
             canvas.drawRoundRect(new RectF(leftRect - MARGIN * index, getTop(mDataReds.get(index)), leftRect - 100 * index + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnRed);
-            canvas.drawRoundRect(new RectF(leftRect - MARGIN * index - DISTANCE_COLUMN, getTop(mDataYellows.get(index)), leftRect - 100 * index - 42 + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnYELLOW);
-            canvas.drawRoundRect(new RectF(leftRect - MARGIN * index - DISTANCE_COLUMN * 2, getTop(mDataBlues.get(index)), leftRect - 100 * index - 84 + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnBLUE);
+            canvas.drawRoundRect(new RectF(leftRect - MARGIN * index - DISTANCE_COLUMN, getTop(mDataYellows.get(index)), leftRect - 100 * index - 42 + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnYellow);
+            canvas.drawRoundRect(new RectF(leftRect - MARGIN * index - DISTANCE_COLUMN * 2, getTop(mDataBlues.get(index)), leftRect - 100 * index - 84 + mColumnWidth, getHeight() - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnBlue);
             canvas.drawText(
                     convertDay(mSizeData - index),
                     leftRect - MARGIN * index - DISTANCE_COLUMN * 2 + mColumnWidth,
@@ -233,16 +233,16 @@ public class CustomView extends View {
      */
     private void drawText(Canvas canvas) {
         //Draw Text Max Values
-        canvas.drawText(String.valueOf(mMax).concat(getResources().getString(R.string.km)), 0, getTop(mMax), mPaintText);
+        canvas.drawText(String.valueOf(mMax).concat(getResources().getString(R.string.km)), 0, getTop((float)mMax), mPaintText);
         //Draw Text half part Values
-        canvas.drawText(String.valueOf((float) mMax / 2).concat(getResources().getString(R.string.km)), 0, getTop(mMax / 2), mPaintText);
+        canvas.drawText(String.valueOf((float) mMax / 2).concat(getResources().getString(R.string.km)), 0, getTop((float)mMax / 2), mPaintText);
     }
 
     /**
      * @param value value
      * @return top
      */
-    private float getTop(int value) {
+    private float getTop(float value) {
         float realHeight = (getHeight() - getPaddingBottom() - getPaddingTop()) * (value * 1F / mMax * 1F);
         return getHeight() - getPaddingBottom() - realHeight;
     }
@@ -366,7 +366,7 @@ public class CustomView extends View {
         public boolean onScale(ScaleGestureDetector detector) {
             mScaleFactor *= detector.getScaleFactor();
             // Don't let the object get too small or too large.
-            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 2.0f));
+            mScaleFactor = Math.max(1.0f, Math.min(mScaleFactor, 2.0f));
             invalidate();
             return true;
         }
