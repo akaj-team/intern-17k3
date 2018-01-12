@@ -25,7 +25,7 @@ public class CustomView extends View {
     private static final int START_X_COLUMN_A = 0;
     private static final int START_X_COLUMN_B = 24;
     private static final int START_X_COLUMN_C = START_X_COLUMN_B * 2;
-    private static final int WIDTH_BOX = 100;
+    private static final int WIDTH_BOX = 120;
     private Paint mPaintText = new Paint();
     private Paint mPaintRect = new Paint();
     private Paint mPaintLine = new Paint();
