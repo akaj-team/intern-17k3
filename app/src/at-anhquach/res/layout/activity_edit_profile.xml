@@ -99,7 +99,7 @@
                     android:layout_height="25dp"
                     android:layout_gravity="right"
                     android:background="?android:attr/selectableItemBackground"
-                    android:onClick="@{() -> user.clearEditText(edtEmailProfile)}"/>
+                    android:onClick="@{() -> user.clearEditText(edtEmailProfile)}" />
             </FrameLayout>
 
             <LinearLayout
@@ -108,11 +108,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
+                    android:layout_marginRight="20dp"
                     android:text="@string/tv_birth_date"
                     android:textColor="@color/colorGrayDark"
                     android:textSize="13sp" />
@@ -121,7 +121,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="15dp"
                     android:layout_weight="1"
                     android:text="@string/tv_gender"
                     android:textColor="@color/colorGrayDark"
@@ -133,18 +132,30 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/edtDatePicker"
-                    android:layout_width="0dp"
+                <FrameLayout
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_edt_gray"
-                    android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_600_18dp"
-                    android:inputType="date"
-                    android:padding="8dp"
-                    android:textSize="14sp" />
+                    android:ems="13">
+
+                    <EditText
+                        android:id="@+id/edtDatePicker"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/bg_edt_gray"
+                        android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_600_18dp"
+                        android:inputType="date"
+                        android:padding="8dp"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="@{() -> user.showDatePicker(edtDatePicker,context)}" />
+                </FrameLayout>
 
                 <Spinner
                     android:id="@+id/spinnerGender"
@@ -153,6 +164,7 @@
                     android:layout_marginBottom="20dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_spinner"
+                    android:entries="@array/gender_arrays"
                     android:padding="7dp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -187,7 +199,7 @@
                     android:layout_height="25dp"
                     android:layout_gravity="right"
                     android:background="?android:attr/selectableItemBackground"
-                    android:onClick="@{() -> user.clearEditText(edtContactNumberProfile)}"/>
+                    android:onClick="@{() -> user.clearEditText(edtContactNumberProfile)}" />
             </FrameLayout>
         </LinearLayout>
 
@@ -197,6 +209,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
+            android:onClick="@{() -> user.startActivityPreEdit(context)}"
             android:src="@drawable/selecter_btn_next" />
     </LinearLayout>
 </layout>

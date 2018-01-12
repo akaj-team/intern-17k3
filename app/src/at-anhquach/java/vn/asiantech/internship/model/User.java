@@ -1,12 +1,17 @@
 package vn.asiantech.internship.model;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
+import java.util.Calendar;
+
+import vn.asiantech.internship.R;
+import vn.asiantech.internship.ui.data_binding.EditProfileActivity;
 import vn.asiantech.internship.ui.data_binding.PreEditProfileActivity;
 
 /**
@@ -107,8 +112,30 @@ public class User extends BaseObservable {
     public void clearEditText(EditText edt) {
         edt.setText("");
     }
-    public void startActivityPreEdit(Context context){
-        Intent intent = new Intent(view.getContext(), PreEditProfileActivity.class);
-       view.getContext().startActivity();
+
+    public void startActivityPreEdit(Context context) {
+        Intent intent = new Intent(context, PreEditProfileActivity.class);
+        context.startActivity(intent);
+    }
+
+    public void startActivityEdit(Context context) {
+        Intent intent = new Intent(context, EditProfileActivity.class);
+        context.startActivity(intent);
+    }
+
+    public void showDatePicker(final EditText edt, final Context context) {
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int month, int day) {
+                        edt.setText(context.getResources().getString(R.string.edittext_birthday, day, month + 1, year));
+                    }
+                }, year, month, day);
+        datePickerDialog.show();
     }
 }

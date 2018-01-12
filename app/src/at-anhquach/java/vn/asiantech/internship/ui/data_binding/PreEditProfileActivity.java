@@ -13,13 +13,12 @@ import vn.asiantech.internship.model.User;
  * Created by anh.quach on 1/10/18.
  * Edit Profile Activity
  */
-public class PreEditProfileActivity extends AppCompatActivity{
+public class PreEditProfileActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityPreEditProfileBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_pre_edit_profile);
         User user = new User();
-        user.setFullname("Chau");
         binding.setUser(user);
     }
 }
