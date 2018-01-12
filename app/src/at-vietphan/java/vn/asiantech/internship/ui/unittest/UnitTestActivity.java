@@ -14,7 +14,8 @@ import vn.asiantech.internship.R;
  * Class UnitTestActivity
  */
 public class UnitTestActivity extends AppCompatActivity implements View.OnClickListener {
-    boolean mCheckLogin = false;
+    boolean mIsUsernameSuccess = false;
+    boolean mIsPasswordSuccess = false;
     private EditText mEdtUserName;
     private EditText mEdtPassWord;
     private Button mBtnLogin;
@@ -50,7 +51,7 @@ public class UnitTestActivity extends AppCompatActivity implements View.OnClickL
             } else if (!UserValidation.isUpperCaseLowercaseUserName(userName)) {
                 showToast(getString(R.string.check_username_uppercase_lowercase));
             } else {
-                mCheckLogin = true;
+                mIsUsernameSuccess = true;
             }
         } else {
             showToast(getString(R.string.null_input_username));
@@ -72,7 +73,7 @@ public class UnitTestActivity extends AppCompatActivity implements View.OnClickL
             } else if (!UserValidation.isLestThreeCharacters(password)) {
                 showToast(getString(R.string.check_password_have_least_three_characters));
             } else {
-                mCheckLogin = true;
+                mIsPasswordSuccess = true;
             }
         } else {
             showToast(getString(R.string.null_input_password));
@@ -85,7 +86,7 @@ public class UnitTestActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        if (mCheckLogin) {
+        if (mIsUsernameSuccess && mIsPasswordSuccess) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(R.string.notification);
             builder.setMessage(R.string.login_success);

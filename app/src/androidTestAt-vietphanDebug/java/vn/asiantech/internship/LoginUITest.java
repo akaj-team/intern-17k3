@@ -29,9 +29,8 @@ import static org.hamcrest.core.StringStartsWith.startsWith;
 @RunWith(AndroidJUnit4.class)
 public class LoginUITest {
 
-    @SuppressWarnings("unchecked")
     @Rule
-    public ActivityTestRule<UnitTestActivity> mActivityTestRule = new ActivityTestRule(UnitTestActivity.class);
+    public ActivityTestRule<UnitTestActivity> mActivityTestRule = new ActivityTestRule<>(UnitTestActivity.class);
 
     @Test
     public void checkLengthUserName() {
