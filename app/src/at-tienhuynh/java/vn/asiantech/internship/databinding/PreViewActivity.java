@@ -8,11 +8,15 @@ import android.view.View;
 import vn.asiantech.internship.R;
 
 public class PreViewActivity extends AppCompatActivity {
+    User user = new User();
+    String name, mail, day, phone;
+    int gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_view);
+        getDataBundle();
     }
 
     /**
@@ -22,5 +26,15 @@ public class PreViewActivity extends AppCompatActivity {
      */
     public void editProfile(View view) {
         startActivity(new Intent(PreViewActivity.this, EditInfoActivity.class));
+    }
+
+    private void getDataBundle() {
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            user = bundle.getParcelable("user");
+            if (user != null) {
+                name = user.getName();
+            }
+        }
     }
 }

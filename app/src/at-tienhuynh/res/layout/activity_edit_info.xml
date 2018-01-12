@@ -6,10 +6,6 @@
         <variable
             name="user"
             type="vn.asiantech.internship.databinding.User" />
-
-        <variable
-            name="handler"
-            type="vn.asiantech.internship.databinding.HandlerClick" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -66,7 +62,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:background="?android:attr/selectableItemBackground"
-                        android:onClick="@{()->handler.clearText(edtNameUpdate) }" />
+                        android:onClick="@{()->user.clearText(edtNameUpdate) }" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -102,7 +98,8 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
-                        android:background="?android:attr/selectableItemBackground" />
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="@{()->user.clearText(edtEmailUpdate)}" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -142,7 +139,8 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_gravity="right"
-                                android:background="?android:attr/selectableItemBackground" />
+                                android:background="?android:attr/selectableItemBackground"
+                                android:onClick="@{()->user.showDatePicker(edtBirthday)}" />
                         </FrameLayout>
                     </LinearLayout>
 
@@ -164,7 +162,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:background="@drawable/spinner_border"
-                            android:entries="@array/gender_choose" />
+                            android:entries="@array/gender_array"
+                            android:onItemSelected="@{(adapter, view, position, l) -> user.onItemSelected(adapter, view, position, l)}"
+                            android:selectedItemPosition="@{user.gender}" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -194,7 +194,8 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
-                        android:background="?android:attr/selectableItemBackground" />
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="@{()->user.clearText(edtContactNumber)}" />
                 </FrameLayout>
             </LinearLayout>
         </LinearLayout>
@@ -205,6 +206,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
+            android:onClick="@{()->user.updateUser(user,context,edtNameUpdate.getText(),edtEmailUpdate.getText(),edtBirthday.getText(),edtContactNumber.getText())}"
             android:text="@string/name_btn_update_profile" />
     </RelativeLayout>
 </layout>

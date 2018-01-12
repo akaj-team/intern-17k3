@@ -112,7 +112,8 @@
     <string name="edt_phone_edit_info">Contact Number</string>
     <string name="tv_preview_info">Preview Info</string>
     <string name="name_btn_back_to_edit_profile">edit profile</string>
-    <string-array name="gender_choose">
+    <string name="edittext_birthday" formatted="false">%d/%d/%d</string>
+    <string-array name="gender_array">
         <item>Male</item>
         <item>Female</item>
     </string-array>
