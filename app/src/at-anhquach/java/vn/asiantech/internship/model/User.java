@@ -1,8 +1,13 @@
 package vn.asiantech.internship.model;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.view.View;
 import android.widget.EditText;
+
+import vn.asiantech.internship.ui.data_binding.PreEditProfileActivity;
 
 /**
  * Define class User
@@ -102,5 +107,8 @@ public class User extends BaseObservable {
     public void clearEditText(EditText edt) {
         edt.setText("");
     }
-
+    public void startActivityPreEdit(Context context){
+        Intent intent = new Intent(view.getContext(), PreEditProfileActivity.class);
+       view.getContext().startActivity();
+    }
 }
