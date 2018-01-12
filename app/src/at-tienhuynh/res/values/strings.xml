@@ -97,7 +97,7 @@
     <string name="validate_username_no_distinction">distinction between uppercase and lowercase letters</string>
     <string name="validate_done">Done</string>
     <string name="null_password">please input password</string>
-    <string name="validate_password_length"><![CDATA[password must > 7 character]]></string>
+    <string name="validate_password_length">password must > 7 character</string>
     <string name="validate_password_different_user_name">password is not different username</string>
     <string name="validate_password_have_least_number">password have at least one special character or number</string>
     <string name="validate_password_space">password have space</string>

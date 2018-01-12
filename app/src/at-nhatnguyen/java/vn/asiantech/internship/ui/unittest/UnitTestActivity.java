@@ -57,11 +57,11 @@ public class UnitTestActivity extends AppCompatActivity {
         } else if (ValidatePassWord.isPassWordLikeUserName(mEdtUserName.getText().toString()
                 , mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.user_name_like));
-        } else if (mEdtPassWord.getText().length() == 0) {
+        } else if (mEdtPassWord.getText().toString().trim().length() == 0) {
             showToast(getResources().getString(R.string.password_blank));
         } else if (!ValidatePassWord.isSpecialNumberPassWord(mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.password_special));
-        } else if (!ValidatePassWord.isLengthPassWord(mEdtPassWord.getText().toString()) ||
+        } else if (!ValidatePassWord.isLengthPassWord(mEdtPassWord.getText().toString().trim()) ||
                 !ValidatePassWord.isAppearCase(mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.password_length));
         } else if (!ValidatePassWord.isSpaceCase(mEdtPassWord.getText().toString())) {
