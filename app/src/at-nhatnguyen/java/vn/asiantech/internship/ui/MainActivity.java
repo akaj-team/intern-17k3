@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.databinding.DataBindingActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.imageview.ImageActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
@@ -27,6 +28,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnViewPager;
     private Button mBtnTest;
     private Button mBtnThread;
+    private Button mBtnDataBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnTest = findViewById(R.id.btnTest);
         mBtnThread = findViewById(R.id.btnThread);
+        mBtnDataBinding = findViewById(R.id.btnDataBinding);
     }
 
     private void initListener() {
@@ -58,6 +61,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnViewPager.setOnClickListener(this);
         mBtnTest.setOnClickListener(this);
         mBtnThread.setOnClickListener(this);
+        mBtnDataBinding.setOnClickListener(this);
     }
 
     @Override
@@ -89,6 +93,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnTest:
                 startActivity(new Intent(this, UnitTestActivity.class));
+                break;
+            case R.id.btnDataBinding:
+                startActivity(new Intent(this, DataBindingActivity.class));
         }
     }
 }

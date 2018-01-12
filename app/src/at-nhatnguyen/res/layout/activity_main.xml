@@ -69,4 +69,11 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/button_test" />
+
+    <Button
+        android:id="@+id/btnDataBinding"
+        style="@style/btn_default"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_data_binding" />
 </LinearLayout>

@@ -73,4 +73,14 @@
     <string name="btn_download">DownLoad</string>
     <string name="exercise_thread">Thread</string>
     <string name="exercise_count_down">CountTimer</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="birth_date">Birth date</string>
+    <string name="button_data_binding">Data Binding</string>
+    <string name="gender">Gender</string>
+    <string name="contact">Contact Number</string>
+    <string name="link">-</string>
+    <string-array name="spinner_gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>
