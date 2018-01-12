@@ -69,4 +69,8 @@
     <string name="password_space">Pass have space</string>
     <string name="password_three_upper_case">password have 3 upper case</string>
     <string name="pass">Login</string>
+    <string name="button_thread">Thread</string>
+    <string name="btn_download">DownLoad</string>
+    <string name="exercise_thread">Thread</string>
+    <string name="exercise_count_down">CountTimer</string>
 </resources>
