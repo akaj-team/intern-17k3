@@ -19,7 +19,6 @@ import java.util.Collections;
 import java.util.List;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.viewpager_tablayout.ScreenUtil;
 
 /**
  * Created by anh.quach on 12/29/17.
@@ -28,8 +27,8 @@ import vn.asiantech.internship.ui.viewpager_tablayout.ScreenUtil;
 public class ChartView extends View {
     private static final int OFFSET100 = 100;
 
-    private boolean dragged = true;
-    private int mode;
+    private boolean mDragged = true;
+    private boolean mIsMoveToRight;
 
     private float mStartX = 0f;
     private float mStartY = 0f;
@@ -38,35 +37,34 @@ public class ChartView extends View {
     private float mPreviousTranslateX = 0f;
     private float mPreviousTranslateY = 0f;
     private float mScaleFactor = 1.f;
+    private float mLefts[];
+    private float mPrevXMove;
+    private float mXDown;
+    private float mV;
+    private float mOffsetX;
+    private float mMaxDistance;
 
-    private Paint mPaintText = new Paint();
-    private Paint mPaintLine = new Paint();
-    private Paint mPaintColumnCyanA700 = new Paint();
-    private Paint mPaintColumnPurple800 = new Paint();
-    private Paint mPaintColumnOrange500 = new Paint();
-    private Paint mPaintRect = new Paint();
-
-    private ScaleGestureDetector mScaleDetector;
     private int mColumnWidth;
     private int mOxChart = getResources().getDimensionPixelSize(R.dimen.ox_chart);
     private int mColumnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
     private int mColumnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
-    private float mHeightScreen = ScreenUtil.getHeightScreen(getContext());
+    private int mMode;
+    private long mTimeDown;
+
+    private Paint mPaintText;
+    private Paint mPaintLine;
+    private Paint mPaintColumnCyanA700;
+    private Paint mPaintColumnPurple800;
+    private Paint mPaintColumnOrange500;
+    private Paint mPaintRect;
+
+    private ScaleGestureDetector mScaleDetector;
 
     private List<Integer> mDistancePurple800s;
     private List<Integer> mDistanceCyanA700s;
     private List<Integer> mDistanceOrange500s;
     private List<Float> mPaths;
     private List<Long> mTimes;
-
-    private float mLefts[];
-    private float mPrevXMove;
-    private float mXDown;
-    private long mTimeDown;
-    private float mV;
-    private float mOffsetX;
-    private boolean mIsMoveToRight;
-    private float mMaxDistance;
 
     public ChartView(Context context) {
         this(context, null);
@@ -107,6 +105,13 @@ public class ChartView extends View {
     }
 
     private void initPaint() {
+        mPaintText = new Paint();
+        mPaintLine = new Paint();
+        mPaintRect = new Paint();
+        mPaintColumnCyanA700 = new Paint();
+        mPaintColumnPurple800 = new Paint();
+        mPaintColumnOrange500 = new Paint();
+
         mPaintText.setColor(getResources().getColor(R.color.colorGrayDark));
         mPaintText.setTextSize(getResources().getDimension(R.dimen.textsize13sp));
         mPaintText.setAntiAlias(true);
@@ -133,7 +138,7 @@ public class ChartView extends View {
         int ZOOM = 2;
         switch (ev.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
-                mode = DRAG;
+                mMode = DRAG;
 
                 mStartX = ev.getX();
                 mStartY = ev.getY();
@@ -189,11 +194,11 @@ public class ChartView extends View {
                 invalidate();
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
-                mode = ZOOM;
+                mMode = ZOOM;
                 break;
             case MotionEvent.ACTION_UP:
-                mode = 0;
-                dragged = false;
+                mMode = 0;
+                mDragged = false;
                 mPreviousTranslateX = mTranslateX;
                 mPreviousTranslateY = mTranslateY;
                 //Find the latest corner, 1 2 3 4 5 6 5 4 3 2 1, corner is 6
@@ -254,13 +259,13 @@ public class ChartView extends View {
                 }
                 break;
             case MotionEvent.ACTION_POINTER_UP:
-                mode = DRAG;
+                mMode = DRAG;
                 mPreviousTranslateX = mTranslateX;
                 mPreviousTranslateY = mTranslateY;
                 break;
         }
         mScaleDetector.onTouchEvent(ev);
-        if ((mode == DRAG && mScaleFactor != 1f && dragged) || mode == ZOOM) {
+        if ((mMode == DRAG && mScaleFactor != 1f && mDragged) || mMode == ZOOM) {
             invalidate();
         }
         return true;
@@ -296,11 +301,11 @@ public class ChartView extends View {
         float leftRect = getWidth() - getPaddingRight() - mColumnMarginHorizontal - mColumnWidth - OFFSET100 - mOffsetX;
         for (int index = 0; index < mDistancePurple800s.size(); index++) {
             canvas.drawRoundRect(new RectF(leftRect - OFFSET100 * index, getTop(mDistancePurple800s.get(index)), leftRect - OFFSET100 * index + mColumnWidth,
-                    mHeightScreen / 2 - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnPurple800);
+                    getHeight() / 2 - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnPurple800);
             canvas.drawRoundRect(new RectF(leftRect - OFFSET100 * index - mColumnWidth - 5, getTop(mDistanceCyanA700s.get(index)), leftRect - OFFSET100 * index - 5,
-                    mHeightScreen / 2 - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnCyanA700);
+                    getHeight() / 2 - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnCyanA700);
             canvas.drawRoundRect(new RectF(leftRect - OFFSET100 * index - mColumnWidth * 2 - 10, getTop(mDistanceOrange500s.get(index)), leftRect - OFFSET100 * index - mColumnWidth - 10,
-                    mHeightScreen / 2 - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnOrange500);
+                    getHeight() / 2 - getPaddingBottom()), mColumnCornerRadius, mColumnCornerRadius, mPaintColumnOrange500);
             //Save the first left of all columns
             if (mOffsetX == 0) {
                 mLefts[index] = leftRect;
@@ -310,7 +315,7 @@ public class ChartView extends View {
     }
 
     private float getTop(int value) {
-        return mHeightScreen / 2 - value * 50;
+        return getHeight() / 2 - value * 50;
     }
 
     private void translate(Canvas canvas) {
@@ -328,15 +333,15 @@ public class ChartView extends View {
     }
 
     private void drawText(Canvas canvas, String str, float x, float y, Paint paint) {
-        canvas.drawText(str, x, mHeightScreen / 2 - y * 50, paint);
+        canvas.drawText(str, x, getHeight() / 2 - y * 50, paint);
     }
 
     private void drawLine(Canvas canvas, float y, Paint paint) {
-        canvas.drawLine(mOxChart, mHeightScreen / 2 - y * 50, getWidth() - 50, mHeightScreen / 2 - y * 50, paint);
+        canvas.drawLine(mOxChart, getHeight() / 2 - y * 50, getWidth() - 50, getHeight() / 2 - y * 50, paint);
     }
 
     private void drawRect(Canvas canvas, float left, Paint paint) {
-        canvas.drawRect(left, mHeightScreen / 2 - mMaxDistance * 50, left + 130, mHeightScreen / 2, paint);
+        canvas.drawRect(left, getHeight() / 2 - mMaxDistance * 50, left + 130, getHeight() / 2, paint);
     }
 
     private class ScaleListener
