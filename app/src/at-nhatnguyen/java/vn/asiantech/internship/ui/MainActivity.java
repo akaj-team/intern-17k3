@@ -8,11 +8,13 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.customview.CanvasActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.imageview.ImageActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.thread.ThreadActivity;
 import vn.asiantech.internship.ui.unittest.UnitTestActivity;
 import vn.asiantech.internship.ui.viewpager.ViewpagerActivity;
 
@@ -25,6 +27,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnLoadImage;
     private Button mBtnViewPager;
     private Button mBtnTest;
+    private Button mBtnCanvas;
+    private Button mBtnThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnTest = findViewById(R.id.btnTest);
+        mBtnCanvas = findViewById(R.id.btnCanvas);
+        mBtnThread = findViewById(R.id.btnThread);
     }
 
     private void initListener() {
@@ -53,7 +59,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnSaveData.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
+        mBtnCanvas.setOnClickListener(this);
         mBtnTest.setOnClickListener(this);
+        mBtnThread.setOnClickListener(this);
     }
 
     @Override
@@ -79,6 +87,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnViewPager:
                 startActivity(new Intent(this, ViewpagerActivity.class));
+                break;
+            case R.id.btnCanvas:
+                startActivity(new Intent(this, CanvasActivity.class));
+                break;
+            case R.id.btnThread:
+                startActivity(new Intent(this, ThreadActivity.class));
                 break;
             case R.id.btnTest:
                 startActivity(new Intent(this, UnitTestActivity.class));

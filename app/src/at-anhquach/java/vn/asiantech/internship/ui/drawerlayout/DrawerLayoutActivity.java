@@ -1,5 +1,6 @@
 package vn.asiantech.internship.ui.drawerlayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -33,9 +34,8 @@ import vn.asiantech.internship.ui.viewpager_tablayout.StepActivity;
 /**
  * Create Drawer Layout
  */
+@SuppressLint("Registered")
 public class DrawerLayoutActivity extends AppCompatActivity implements View.OnClickListener, DrawerLayoutAdapter.OnItemClickListener {
-    private static final String GOOGLE_PHOTOS_PACKAGE_NAME = "com.google.android.apps.photos";
-    private static final int REQUEST_CODE_PICK_IMAGE = 77;
     private DrawerLayout mDrawerLayout;
     private RecyclerView mRecyclerViewLeftMenu;
     private LinearLayout mLlContent;

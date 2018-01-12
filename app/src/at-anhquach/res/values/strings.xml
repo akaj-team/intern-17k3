@@ -16,8 +16,8 @@
     <string name="textview_memo_info_enter">Enter your details below to get started </string>
     <string name="textview_memo_term">I have read and agree with the terms and conditions.</string>
     <string name="edt_hint_enter_number">Enter mobile number</string>
-    <string name="edt_hint_full_name">Full name</string>
-    <string name="edt_hint_email">Email</string>
+    <string name="edt_hint_username">Username</string>
+    <string name="edt_hint_password">Password</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="email">anh.quach@asiantech.vn</string>
@@ -46,5 +46,8 @@
     <string name="btn_load_in_asset">Load in Asset</string>
     <string name="btn_load_in_storage">Load in Storage</string>
     <string name="btn_load_in_internet">Load in Internet</string>
+    <string name="distance_km">km</string>
     <string name="textview_download" formatted="false">DownLoad %dKB/%dKB %d%%</string>
+    <string name="day">24Jul</string>
+    <string name="month">Oct</string>
 </resources>
