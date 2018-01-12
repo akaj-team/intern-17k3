@@ -29,17 +29,10 @@ public class CustomView extends View {
     private Paint mPaintColumnBlue = new Paint();
     private Paint mPaintColumnOrange = new Paint();
     private int mColumnWidth = getResources().getDimensionPixelSize(R.dimen.column_width);
-    private ScaleGestureDetector mScaleDetector;
-    private int mFirstX1 = 80;
-    private int mFirstX2 = 100;
-    private int mFirstX3 = 120;
-    private float mDownX;
-    private float mMoveX;
     private int mColumnCornerRadiusHorizontal = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
     private List<Integer> mDataList = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 11, 2, 6, 7, 10, 9, 2, 4, 5, 6, 10, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
     private List<Integer> mDataList2 = new ArrayList<>(Arrays.asList(3, 2, 6, 3, 7, 8, 10, 2, 4, 5, 6, 7, 6, 9, 3, 9, 5, 3, 7, 8, 9, 6, 4, 5, 7, 9, 6, 8, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 10, 8, 9, 2, 4, 11, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
     private List<Integer> mDataList3 = new ArrayList<>(Arrays.asList(2, 4, 3, 5, 8, 3, 11, 5, 6, 2, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 10, 9, 4, 5, 10, 10, 8, 9, 2, 11, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 10, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-
     private int max = Collections.max(mDataList);
     private int mSizeData = mDataList.size();
     private float mLefts[] = new float[mSizeData];
@@ -49,10 +42,20 @@ public class CustomView extends View {
     private float mSpeed;
     private float mOffsetX;
     int mMarginLeft = 100;
-
     private boolean mIsMoveToRight;
     private List<Float> mPaths = new ArrayList<>();
     private List<Long> mTimes = new ArrayList<>();
+    // scale
+    private boolean dragged = true;
+    private int mode;
+    private float mStartX = 0f;
+    private float mStartY = 0f;
+    private float mTranslateX = 0f;
+    private float mTranslateY = 0f;
+    private float mPreviousTranslateX = 0f;
+    private float mPreviousTranslateY = 0f;
+    private float mScaleFactor = 1.f;
+    private ScaleGestureDetector mScaleDetector;
 
     public CustomView(Context context) {
         this(context, null);
@@ -62,6 +65,8 @@ public class CustomView extends View {
         super(context, attrs);
         // Get attrs from XML file
         attributeSet(context, attrs);
+        // scale
+        mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         init();
     }
 
@@ -75,7 +80,7 @@ public class CustomView extends View {
                 attrs,
                 R.styleable.CustomView, 0, 0);
         try {
-            mColumnWidth = typedArray.getInteger(R.styleable.CustomView_column_width,40);
+            mColumnWidth = typedArray.getInteger(R.styleable.CustomView_column_width, 40);
         } finally {
             typedArray.recycle();
         }
@@ -107,6 +112,10 @@ public class CustomView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //scale
+        canvas.save();
+        canvas.scale(mScaleFactor, mScaleFactor);
+        translate(canvas);
         //Draw Line
         drawLine(canvas);
         // drawChart
@@ -115,6 +124,7 @@ public class CustomView extends View {
         drawRect(canvas);
         //drawText
         drawText(canvas);
+        canvas.restore();
     }
 
     /**
@@ -195,7 +205,8 @@ public class CustomView extends View {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-
+        int DRAG = 1;
+        int ZOOM = 2;
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             //Reset mDataList
             mPaths.clear();
@@ -207,6 +218,19 @@ public class CustomView extends View {
             //Save the mDataList of the first touch
             mPaths.add(mPrevXMove);
             mTimes.add(mTimeDown);
+
+            mode = DRAG;
+            mStartX = ev.getX();
+            mStartY = ev.getY();
+            mStartX = ev.getX() - mPreviousTranslateX;
+            mStartY = ev.getY() - mPreviousTranslateY;
+        } else if (ev.getAction() == MotionEvent.ACTION_POINTER_DOWN) {
+            mode = ZOOM;
+        } else if (ev.getAction() == MotionEvent.ACTION_POINTER_UP) {
+            mode = DRAG;
+            mPreviousTranslateX = mTranslateX;
+            mPreviousTranslateY = mTranslateY;
+
         } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
             float currentXMove = ev.getX();
             mPaths.add(currentXMove);
@@ -243,9 +267,18 @@ public class CustomView extends View {
             }
             //Update latest x coordinate
             mPrevXMove = currentXMove;
+
+            //scale
+            mTranslateX = ev.getX() - mStartX;
+            mTranslateY = ev.getY() - mStartY;
             //Re-draw
             invalidate();
         } else if (ev.getAction() == MotionEvent.ACTION_UP) {
+            //scale
+            mode = 0;
+            dragged = false;
+            mPreviousTranslateX = mTranslateX;
+            mPreviousTranslateY = mTranslateY;
             //Find the latest corner, 1 2 3 4 5 6 5 4 3 2 1, corner is 6
             int size = mPaths.size();
             for (int i = size - 1; i > 0; i--) {
@@ -303,6 +336,36 @@ public class CustomView extends View {
                 }
             }
         }
+        mScaleDetector.onTouchEvent(ev);
+        if ((mode == DRAG && mScaleFactor != 1f && dragged) || mode == ZOOM) {
+            invalidate();
+        }
         return true;
+    }
+
+    private class ScaleListener
+            extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            mScaleFactor *= detector.getScaleFactor();
+            float MIN_ZOOM = 1F;
+            float MAX_ZOOM = 5F;
+            mScaleFactor = Math.max(MIN_ZOOM, Math.min(mScaleFactor, MAX_ZOOM));
+            return true;
+        }
+    }
+
+    private void translate(Canvas canvas) {
+        if ((mTranslateX * -1) < 0) {
+            mTranslateX = 0;
+        } else if ((mTranslateX * -1) > (mScaleFactor - 1) * getWidth()) {
+            mTranslateX = (1 - mScaleFactor) * getWidth();
+        }
+        if (mTranslateY * -1 < 0) {
+            mTranslateY = 0;
+        } else if ((mTranslateY * -1) > (mScaleFactor - 1) * getHeight()) {
+            mTranslateY = (1 - mScaleFactor) * getHeight();
+        }
+        canvas.translate(mTranslateX / mScaleFactor, mTranslateY / mScaleFactor);
     }
 }
