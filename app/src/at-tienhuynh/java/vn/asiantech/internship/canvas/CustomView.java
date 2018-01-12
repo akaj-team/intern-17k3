@@ -182,10 +182,10 @@ public class CustomView extends View {
         //get mMax of 3 list
         // first get max every list
         // after get max value of three max pick above
-        float max1 = Collections.max(mDataListPeoplePink);
-        float max2 = Collections.max(mDataListPeopleCyan);
-        float max3 = Collections.max(mDataListPeopleCyan);
-        mMax = Math.max(Math.max(max1, max2), max3);
+        float maxListPeoplePink = Collections.max(mDataListPeoplePink);
+        float maxListPeopleCyan = Collections.max(mDataListPeopleCyan);
+        float maxListPeopleBlue = Collections.max(mDataListPeopleBlue);
+        mMax = Math.max(Math.max(maxListPeoplePink, maxListPeopleCyan), maxListPeopleBlue);
         // get size of list
         mSizeData = mDataListPeoplePink.size();
         // get lefts size
