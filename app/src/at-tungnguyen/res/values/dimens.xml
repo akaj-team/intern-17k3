@@ -19,4 +19,6 @@
     <dimen name="column_divider_width">1dp</dimen>
     <dimen name="column_width">10dp</dimen>
     <dimen name="column_corner_radius">3dp</dimen>
+    <dimen name="tv_paint_line">2dp</dimen>
+    <dimen name="custom_column_width">40dp</dimen>
 </resources>
