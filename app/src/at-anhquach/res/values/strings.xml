@@ -46,5 +46,8 @@
     <string name="btn_load_in_asset">Load in Asset</string>
     <string name="btn_load_in_storage">Load in Storage</string>
     <string name="btn_load_in_internet">Load in Internet</string>
+    <string name="distance_km">km</string>
     <string name="textview_download" formatted="false">DownLoad %dKB/%dKB %d%%</string>
+    <string name="day">24Jul</string>
+    <string name="month">Oct</string>
 </resources>
