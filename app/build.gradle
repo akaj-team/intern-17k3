@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "vn.asiantech.internship"
-        minSdkVersion 16
+        minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0.0"
@@ -98,11 +98,9 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.13.0'
     // Android runner and rules support
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test:rules:1.0.1'
     // UI Espresso framework
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
 
 //apply from: "https://raw.githubusercontent.com/tientun/gradle-android-ci-check/master/ci.gradle"

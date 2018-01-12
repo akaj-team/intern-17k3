@@ -158,8 +158,8 @@ public class SignUpFragment extends Fragment {
         mImgNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = mEdtUsername.getText().toString();
-                String password = mEdtPassword.getText().toString();
+                String username = mEdtUsername.getText().toString().trim();
+                String password = mEdtPassword.getText().toString().trim();
                 if (TextUtils.equals(username, "") || TextUtils.equals(password, "")) {
                     showToast("Not enough data");
                 } else if (!UserNameValidation.isCorrectUserNameLength(username)) {

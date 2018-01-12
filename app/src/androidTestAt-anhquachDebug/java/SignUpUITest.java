@@ -2,6 +2,7 @@ import android.app.Instrumentation;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.v4.app.FragmentManager;
 
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -177,7 +178,7 @@ public class SignUpUITest {
     }
 
     private void setupFragment() {
-        android.support.v4.app.FragmentManager fragmentManager = mActivityRule.getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = mActivityRule.getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frLogin, new SignUpFragment()).commit();
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
         instrumentation.waitForIdleSync();
