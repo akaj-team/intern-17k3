@@ -15,7 +15,6 @@ import vn.asiantech.internship.model.CountDownItem;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 20/12/2017.
  */
-
 public class CountDownAdapter extends RecyclerView.Adapter<CountDownAdapter.ViewHolder> {
     private List<CountDownItem> mCountDownItems;
 

@@ -1,6 +1,7 @@
 package vn.asiantech.internship.ui.thread_handler.ui.thread;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -35,7 +36,6 @@ public class DownloadFragment extends Fragment {
     public int mFinishProgessBar = 100;
     private int mStatus = 0;
     public Bitmap mBitmap;
-    Thread mThread;
     private Handler mProgressBarHandler = new Handler();
     private static String mImageUrl = "https://i.ytimg.com/vi/Orh592OBoKY/maxresdefault.jpg";
 
@@ -77,42 +77,18 @@ public class DownloadFragment extends Fragment {
         mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initDownloadImage();
                 getBitmapFromURL(mImageUrl);
-
             }
         });
     }
 
-    /**
-     * initDownloadImage and get percent progressBar
-     */
-    private void initDownloadImage() {
-        mThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (mStatus < 100) {
-                    mProgressBarHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mProgressBar.setProgress(mStatus);
-                            tvPercent.setText(String.valueOf(mStatus).concat("%"));
-                        }
-                    });
-                }
-                if (mStatus >= 100) {
-                    mStatus = 0;
-                }
-            }
-        });
-        mThread.start();
-    }
 
     /**
      * get Bitmap from URL
      */
     public void getBitmapFromURL(final String imageUrl) {
         new Thread(new Runnable() {
+            @SuppressLint("Assert")
             @Override
             public void run() {
                 HttpURLConnection connection = null;
@@ -133,20 +109,28 @@ public class DownloadFragment extends Fragment {
                         total += count;
                         output.write(data, 0, count);
                         mStatus = (int) (total * mFinishProgessBar / fileLength);
-                        mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                     }
+                    mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
+                    mProgressBarHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mProgressBar.setProgress(mStatus);
+                            tvPercent.setText(String.valueOf(mStatus).concat("%"));
+                        }
+                    });
                 } catch (IOException e) {
                     Log.d("e", e.getMessage());
                 } finally {
-                    assert connection != null;
-                    connection.disconnect();
-                    try {
-                        assert input != null;
-                        input.close();
-                        assert output != null;
-                        output.close();
-                    } catch (IOException e) {
-                        Log.d("error :", e.getMessage());
+                    if (connection != null) {
+                        connection.disconnect();
+                    } else {
+                        try {
+                            assert false;
+                            input.close();
+                            output.close();
+                        } catch (IOException e) {
+                            Log.d("error :", e.getMessage());
+                        }
                     }
                 }
                 if (mBitmap != null) {
