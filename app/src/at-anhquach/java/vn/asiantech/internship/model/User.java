@@ -1,16 +1,18 @@
 package vn.asiantech.internship.model;
 
-import java.util.Date;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.widget.EditText;
 
 /**
  * Define class User
  */
-public class User {
+public class User extends BaseObservable {
     private int id;
     private String fullname;
-    private Date birthday;
+    private String birthday;
     private String email;
-    private int gender;
+    private String gender;
     private String contactnumber;
     private int age;
     private String usename;
@@ -31,8 +33,46 @@ public class User {
         return fullname;
     }
 
+    @Bindable
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    @Bindable
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    @Bindable
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+
+    }
+
+    @Bindable
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getContactnumber() {
+        return contactnumber;
+    }
+
+    @Bindable
+    public void setContactnumber(String contactnumber) {
+        this.contactnumber = contactnumber;
     }
 
     public int getAge() {
@@ -59,35 +99,8 @@ public class User {
         this.password = password;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public void clearEditText(EditText edt) {
+        edt.setText("");
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getGender() {
-        return gender;
-    }
-
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
-
-    public String getContactnumber() {
-        return contactnumber;
-    }
-
-    public void setContactnumber(String contactnumber) {
-        this.contactnumber = contactnumber;
-    }
 }

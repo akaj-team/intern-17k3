@@ -2,6 +2,7 @@ package vn.asiantech.internship.ui.data_binding;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import android.widget.Spinner;
 import java.util.Calendar;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.databinding.ActivityEditProfileBinding;
+import vn.asiantech.internship.model.User;
 
 /**
  * Created by anh.quach on 1/10/18.
@@ -27,7 +30,9 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        ActivityEditProfileBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile);
+        User user = new User();
+        binding.setUser(user);
         Spinner mSpinner = findViewById(R.id.spinnerGender);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.gender_arrays, android.R.layout.simple_spinner_item);
