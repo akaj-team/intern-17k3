@@ -22,18 +22,18 @@ import java.util.List;
 import vn.asiantech.internship.R;
 
 public class CustomView extends View {
-    private Paint mPaintText = new Paint();
-    private Paint mPaintRect = new Paint();
-    private Paint mPaintLine = new Paint();
-    private Paint mPaintColumnPink = new Paint();
-    private Paint mPaintColumnBlue = new Paint();
-    private Paint mPaintColumnOrange = new Paint();
+    private Paint mPaintText;
+    private Paint mPaintRect;
+    private Paint mPaintLine;
+    private Paint mPaintColumnPink;
+    private Paint mPaintColumnBlue;
+    private Paint mPaintColumnOrange;
     private int mColumnWidth = getResources().getDimensionPixelSize(R.dimen.column_width);
     private int mColumnCornerRadiusHorizontal = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
     private List<Integer> mDataList = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 11, 2, 6, 7, 10, 9, 2, 4, 5, 6, 10, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-    private List<Integer> mDataList2 = new ArrayList<>(Arrays.asList(3, 2, 6, 3, 7, 8, 10, 2, 4, 5, 6, 7, 6, 9, 3, 9, 5, 3, 7, 8, 9, 6, 4, 5, 7, 9, 6, 8, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 10, 8, 9, 2, 4, 11, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-    private List<Integer> mDataList3 = new ArrayList<>(Arrays.asList(2, 4, 3, 5, 8, 3, 11, 5, 6, 2, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 10, 9, 4, 5, 10, 10, 8, 9, 2, 11, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 10, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
-    private int max = Collections.max(mDataList);
+    private List<Integer> mDataList2;
+    private List<Integer> mDataList3;
+    private float mMax = Collections.max(mDataList);
     private int mSizeData = mDataList.size();
     private float mLefts[] = new float[mSizeData];
     private float mPrevXMove;
@@ -43,11 +43,11 @@ public class CustomView extends View {
     private float mOffsetX;
     int mMarginLeft = 100;
     private boolean mIsMoveToRight;
-    private List<Float> mPaths = new ArrayList<>();
-    private List<Long> mTimes = new ArrayList<>();
+    private List<Float> mPaths;
+    private List<Long> mTimes;
     // scale
-    private boolean dragged = true;
-    private int mode;
+    private boolean mDragged = true;
+    private int mMode;
     private float mStartX = 0f;
     private float mStartY = 0f;
     private float mTranslateX = 0f;
@@ -63,11 +63,28 @@ public class CustomView extends View {
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        initValues();
         // Get attrs from XML file
         attributeSet(context, attrs);
         // scale
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
-        init();
+        initPaint();
+    }
+
+    /**
+     * init Value
+     */
+    private void initValues() {
+        mPaintText = new Paint();
+        mPaintRect = new Paint();
+        mPaintLine = new Paint();
+        mPaintColumnPink = new Paint();
+        mPaintColumnBlue = new Paint();
+        mPaintColumnOrange = new Paint();
+        mDataList2 = new ArrayList<>(Arrays.asList(3, 2, 6, 3, 7, 8, 10, 2, 4, 5, 6, 7, 6, 9, 3, 9, 5, 3, 7, 8, 9, 6, 4, 5, 7, 9, 6, 8, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 10, 8, 9, 2, 4, 11, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+        mDataList3 = new ArrayList<>(Arrays.asList(2, 4, 3, 5, 8, 3, 11, 5, 6, 2, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 10, 9, 4, 5, 10, 10, 8, 9, 2, 11, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 10, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+        mPaths = new ArrayList<>();
+        mTimes = new ArrayList<>();
     }
 
     /**
@@ -88,9 +105,9 @@ public class CustomView extends View {
     }
 
     /**
-     * init Paint
+     * initPaint Paint
      */
-    private void init() {
+    private void initPaint() {
         mPaintText.setColor(Color.GRAY);
         mPaintText.setTextSize(getResources().getDimension(R.dimen.tv_chart));
 
@@ -136,18 +153,18 @@ public class CustomView extends View {
     private void drawLine(Canvas canvas) {
         //Draw Max Line
         canvas.drawLine(0,
-                getTop(max),
+                getTop((int) mMax),
                 getWidth(),
-                getTop(max),
+                getTop((int) mMax),
                 mPaintLine);
         //Draw End Line
         canvas.drawLine(0, getHeight() - getPaddingBottom(),
                 getWidth(), getHeight() - getPaddingBottom(), mPaintLine);
         //Draw Middle Line
         canvas.drawLine(0,
-                getTop(max / 2),
+                getTop((int) (mMax / 2)),
                 getWidth(),
-                getTop(max / 2),
+                getTop((int) (mMax / 2)),
                 mPaintLine);
     }
 
@@ -187,9 +204,9 @@ public class CustomView extends View {
      */
     private void drawText(Canvas canvas) {
         //Draw Text Max Values
-        canvas.drawText(String.valueOf(max).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop(max) + mColumnWidth, mPaintText);
+        canvas.drawText(String.valueOf(mMax).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop((int) mMax) + mColumnWidth, mPaintText);
         //Draw Text Center Values
-        canvas.drawText(String.valueOf(max / 2).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop(max / 2), mPaintText);
+        canvas.drawText(String.valueOf(mMax / 2).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop((int) (mMax / 2)), mPaintText);
         //Draw Text Below
         canvas.drawText(getResources().getString(R.string.tv_canvas_km), 0, getHeight(), mPaintText);
     }
@@ -199,7 +216,7 @@ public class CustomView extends View {
      * @return top
      */
     private float getTop(int value) {
-        float realHeight = (getHeight() - getPaddingBottom() - getPaddingTop()) * (value * 1F / max * 1F);
+        float realHeight = (getHeight() - getPaddingBottom() - getPaddingTop()) * (value * 1F / mMax * 1F);
         return getHeight() - getPaddingBottom() - realHeight;
     }
 
@@ -220,15 +237,15 @@ public class CustomView extends View {
             mPaths.add(mPrevXMove);
             mTimes.add(mTimeDown);
 
-            mode = DRAG;
+            mMode = DRAG;
             mStartX = ev.getX();
             mStartY = ev.getY();
             mStartX = ev.getX() - mPreviousTranslateX;
             mStartY = ev.getY() - mPreviousTranslateY;
         } else if (ev.getAction() == MotionEvent.ACTION_POINTER_DOWN) {
-            mode = ZOOM;
+            mMode = ZOOM;
         } else if (ev.getAction() == MotionEvent.ACTION_POINTER_UP) {
-            mode = DRAG;
+            mMode = DRAG;
             mPreviousTranslateX = mTranslateX;
             mPreviousTranslateY = mTranslateY;
 
@@ -276,8 +293,8 @@ public class CustomView extends View {
             invalidate();
         } else if (ev.getAction() == MotionEvent.ACTION_UP) {
             //scale
-            mode = 0;
-            dragged = false;
+            mMode = 0;
+            mDragged = false;
             mPreviousTranslateX = mTranslateX;
             mPreviousTranslateY = mTranslateY;
             //Find the latest corner, 1 2 3 4 5 6 5 4 3 2 1, corner is 6
@@ -338,7 +355,7 @@ public class CustomView extends View {
             }
         }
         mScaleDetector.onTouchEvent(ev);
-        if ((mode == DRAG && mScaleFactor != 1f && dragged) || mode == ZOOM) {
+        if ((mMode == DRAG && mScaleFactor != 1f && mDragged) || mMode == ZOOM) {
             invalidate();
         }
         return true;
