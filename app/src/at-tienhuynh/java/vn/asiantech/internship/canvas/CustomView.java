@@ -36,10 +36,10 @@ public class CustomView extends View {
     private int mColumnWidth;
     private int mColumnCornerRadius;
     private int mColumnMarginHorizontal;
-    private List<Integer> mDataListPeopleOne;
-    private List<Integer> mDataListPeopleTwo;
-    private List<Integer> mDataListPeopleThree;
-    private int mMax;
+    private List<Integer> mDataListPeoplePink;
+    private List<Integer> mDataListPeopleCyan;
+    private List<Integer> mDataListPeopleBlue;
+    private float mMax;
     private int mSizeData;
     private float mLefts[];
     private float mPrevXMove;
@@ -51,8 +51,8 @@ public class CustomView extends View {
     private List<Float> mPaths;
     private List<Long> mTimes;
     // scale
-    private boolean dragged = true;
-    private int mode;
+    private boolean mIsDragged = true;
+    private int mMode;
     private float mStartX = 0f;
     private float mStartY = 0f;
     private float mTranslateX = 0f;
@@ -70,8 +70,6 @@ public class CustomView extends View {
         super(context, attrs);
         // Get attrs from XML file
         attributeSet(context, attrs);
-        // scale
-        mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         // init Paint
         init();
         // init Data List
@@ -89,7 +87,7 @@ public class CustomView extends View {
                 attrs,
                 R.styleable.CustomView, DEFAULT_ATTRS, DEFAULT_ATTRS);
         try {
-            mColumnWidth = (int) typedArray.getDimension(R.styleable.CustomView_column_width, getResources()
+            mColumnWidth = typedArray.getDimensionPixelSize(R.styleable.CustomView_column_width, getResources()
                     .getDimensionPixelSize(R.dimen.custom_view_default_column_width));
         } finally {
             typedArray.recycle();
@@ -100,13 +98,16 @@ public class CustomView extends View {
      * Init Paint
      */
     private void init() {
+
+        // scale
+        mScaleDetector = new ScaleGestureDetector(getContext(), new ScaleListener());
+
         mPaintText = new Paint();
         mPaintText.setColor(Color.GRAY);
         mPaintText.setTextSize(getResources().getDimension(R.dimen.tv_value_chart));
 
         mPaintLine = new Paint();
         mPaintLine.setColor(Color.BLACK);
-        mPaintLine.setStrokeWidth(5);
         mPaintLine.setAntiAlias(true);
 
         mPaintColumnPink = new Paint();
@@ -124,7 +125,6 @@ public class CustomView extends View {
         mPaintRect = new Paint();
         mPaintRect.setColor(Color.WHITE);
 
-        mColumnWidth = getResources().getDimensionPixelSize(R.dimen.column_width);
         mColumnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
         mColumnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
 
@@ -138,7 +138,7 @@ public class CustomView extends View {
     private void initData() {
 
         //set data to list people one
-        mDataListPeopleOne = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4,
+        mDataListPeoplePink = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4,
                 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5,
                 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6,
                 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6,
@@ -152,7 +152,7 @@ public class CustomView extends View {
                 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
 
         //set data to list people two
-        mDataListPeopleTwo = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4,
+        mDataListPeopleCyan = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4,
                 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5,
                 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6,
                 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6,
@@ -166,7 +166,7 @@ public class CustomView extends View {
                 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
 
         //set data to list people three
-        mDataListPeopleThree = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4,
+        mDataListPeopleBlue = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4,
                 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5,
                 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6,
                 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6,
@@ -182,27 +182,14 @@ public class CustomView extends View {
         //get mMax of 3 list
         // first get max every list
         // after get max value of three max pick above
-        int maxLists1, maxLists2, maxLists3;
-        maxLists1 = getMaxValue(mDataListPeopleOne);
-        maxLists2 = getMaxValue(mDataListPeopleTwo);
-        maxLists3 = getMaxValue(mDataListPeopleThree);
-        mMax = Math.max(maxLists1, Math.max(maxLists2, maxLists3));
+        float max1 = Collections.max(mDataListPeoplePink);
+        float max2 = Collections.max(mDataListPeopleCyan);
+        float max3 = Collections.max(mDataListPeopleCyan);
+        mMax = Math.max(Math.max(max1, max2), max3);
         // get size of list
-        mSizeData = mDataListPeopleOne.size();
+        mSizeData = mDataListPeoplePink.size();
         // get lefts size
         mLefts = new float[mSizeData];
-    }
-
-    /**
-     * Get max value in list
-     *
-     * @param lists lists data integer
-     * @return value max of this list
-     */
-    private int getMaxValue(List<Integer> lists) {
-        int maxValue;
-        maxValue = Collections.max(lists);
-        return maxValue;
     }
 
     /**
@@ -263,19 +250,19 @@ public class CustomView extends View {
     private void drawChart(Canvas canvas) {
         float leftRect = getWidth() - getPaddingRight() - mColumnMarginHorizontal - mColumnWidth - 100 - mOffsetX;
         for (int index = 0; index < mSizeData; index++) {
-            canvas.drawRoundRect(new RectF(leftRect - 100 * index, getTop(mDataListPeopleOne.get(index)),
+            canvas.drawRoundRect(new RectF(leftRect - 100 * index, getTop(mDataListPeoplePink.get(index)),
                             leftRect - 100 * index + mColumnWidth,
                             getHeight() - getPaddingBottom()),
                     mColumnCornerRadius, mColumnCornerRadius,
                     mPaintColumnPink);
             leftRect -= mColumnMarginHorizontal + mColumnWidth;
-            canvas.drawRoundRect(new RectF(leftRect - 100 * index - mColumnWidth - 5, getTop(mDataListPeopleTwo.get(index)),
+            canvas.drawRoundRect(new RectF(leftRect - 100 * index - mColumnWidth - 5, getTop(mDataListPeopleCyan.get(index)),
                             leftRect - 100 * index - 5,
                             getHeight() - getPaddingBottom()),
                     mColumnCornerRadius, mColumnCornerRadius,
                     mPaintColumnCyan);
             leftRect -= mColumnMarginHorizontal + mColumnWidth;
-            canvas.drawRoundRect(new RectF(leftRect - 100 * index - mColumnWidth * 2 - 10, getTop(mDataListPeopleThree.get(index)),
+            canvas.drawRoundRect(new RectF(leftRect - 100 * index - mColumnWidth * 2 - 10, getTop(mDataListPeopleBlue.get(index)),
                             leftRect - 100 * index - mColumnWidth - 10,
                             getHeight() - getPaddingBottom()),
                     mColumnCornerRadius, mColumnCornerRadius,
@@ -311,7 +298,7 @@ public class CustomView extends View {
      */
     private void drawText(Canvas canvas) {
         //Draw Text Max Values
-        canvas.drawText(String.valueOf(mMax).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop(mMax) + mColumnWidth, mPaintText);
+        canvas.drawText(String.valueOf(mMax).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop(mMax), mPaintText);
         //Draw Text Max Values
         canvas.drawText(String.valueOf(mMax / 2).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop(mMax / 2), mPaintText);
     }
@@ -320,7 +307,7 @@ public class CustomView extends View {
      * @param value value
      * @return top
      */
-    private float getTop(int value) {
+    private float getTop(float value) {
         float realHeight = (getHeight() - getPaddingBottom() - getPaddingTop()) * (value * 1F / mMax * 1F);
         return getHeight() - getPaddingBottom() - realHeight;
     }
@@ -331,28 +318,28 @@ public class CustomView extends View {
         int DRAG = 1;
         int ZOOM = 2;
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            //Reset mDataListPeopleOne
+            //Reset mDataListPeoplePink
             mPaths.clear();
             mTimes.clear();
             mPrevXMove = ev.getX();
             mXDown = mPrevXMove;
             mTimeDown = System.currentTimeMillis();
 
-            //Save the mDataListPeopleOne of the first touch
+            //Save the mDataListPeoplePink of the first touch
             mPaths.add(mPrevXMove);
             mTimes.add(mTimeDown);
 
             //scale
-            mode = DRAG;
+            mMode = DRAG;
 
             mStartX = ev.getX();
             mStartY = ev.getY();
             mStartX = ev.getX() - mPreviousTranslateX;
             mStartY = ev.getY() - mPreviousTranslateY;
         } else if (ev.getAction() == MotionEvent.ACTION_POINTER_DOWN) {
-            mode = ZOOM;
+            mMode = ZOOM;
         } else if (ev.getAction() == MotionEvent.ACTION_POINTER_UP) {
-            mode = DRAG;
+            mMode = DRAG;
             mPreviousTranslateX = mTranslateX;
             mPreviousTranslateY = mTranslateY;
         } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
@@ -360,7 +347,7 @@ public class CustomView extends View {
             mPaths.add(currentXMove);
             mTimes.add(System.currentTimeMillis());
 
-            //When long touch, reset mDataListPeopleOne
+            //When long touch, reset mDataListPeoplePink
             if (mPrevXMove == currentXMove) {
                 mXDown = currentXMove;
                 mTimeDown = System.currentTimeMillis();
@@ -400,8 +387,8 @@ public class CustomView extends View {
         } else if (ev.getAction() == MotionEvent.ACTION_UP) {
 
             //scale
-            mode = 0;
-            dragged = false;
+            mMode = 0;
+            mIsDragged = false;
             mPreviousTranslateX = mTranslateX;
             mPreviousTranslateY = mTranslateY;
 
@@ -463,7 +450,7 @@ public class CustomView extends View {
             }
         }
         mScaleDetector.onTouchEvent(ev);
-        if ((mode == DRAG && mScaleFactor != 1f && dragged) || mode == ZOOM) {
+        if ((mMode == DRAG && mScaleFactor != 1f && mIsDragged) || mMode == ZOOM) {
             invalidate();
         }
         return true;
