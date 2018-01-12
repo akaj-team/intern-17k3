@@ -140,16 +140,18 @@ public class CustomView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        // Scale canvas
         canvas.save();
         canvas.scale(mScaleFactor, mScaleFactor);
-        //Draw Line
+        // Draw Line
         drawLine(canvas);
-        // drawChart
+        // DrawChart
         drawChart(canvas);
-        // drawRect
+        // DrawRect
         drawRect(canvas);
-        //drawText
+        // DrawText
         drawText(canvas);
+        // Restore canvas
         canvas.restore();
     }
 
