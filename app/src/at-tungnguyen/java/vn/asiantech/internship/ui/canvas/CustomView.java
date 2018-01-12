@@ -80,7 +80,8 @@ public class CustomView extends View {
                 attrs,
                 R.styleable.CustomView, 0, 0);
         try {
-            mColumnWidth = typedArray.getInteger(R.styleable.CustomView_column_width, 40);
+            mColumnWidth = (int) typedArray.getDimension(R.styleable.CustomView_column_width, getResources()
+                    .getDimensionPixelSize(R.dimen.custom_column_width));
         } finally {
             typedArray.recycle();
         }
@@ -186,9 +187,9 @@ public class CustomView extends View {
      */
     private void drawText(Canvas canvas) {
         //Draw Text Max Values
-        canvas.drawText(String.valueOf(max).concat(getResources().getString(R.string.tv_canvas_km)), 0, 20, mPaintText);
+        canvas.drawText(String.valueOf(max).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop(max) + mColumnWidth, mPaintText);
         //Draw Text Center Values
-        canvas.drawText(String.valueOf(max / 2).concat(getResources().getString(R.string.tv_canvas_km)), 0, getHeight() / 2, mPaintText);
+        canvas.drawText(String.valueOf(max / 2).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop(max / 2), mPaintText);
         //Draw Text Below
         canvas.drawText(getResources().getString(R.string.tv_canvas_km), 0, getHeight(), mPaintText);
     }
