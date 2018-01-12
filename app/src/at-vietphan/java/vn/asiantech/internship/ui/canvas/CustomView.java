@@ -35,25 +35,13 @@ public class CustomView extends View {
     private int mColumnWidth;
     private int mColumnCornerRadius;
     private int mColumnMarginHorizontal;
-    private List<Integer> mDataRed = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9));
-    private List<Integer> mDataPrimary = new ArrayList<>(Arrays.asList(3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12,
-            3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12,
-            3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12,
-            3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12,
-            3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12));
-    private List<Integer> mDataYellow = new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-            2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-            2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-            2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-            2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10));
-    private int mSizeData = mDataRed.size();
+    private List<Integer> mDataRed;
+    private List<Integer> mDataPrimary;
+    private List<Integer> mDataYellow;
+    private int mSizeData;
     private int mMax;
     //To save the first left of all columns
-    private float mLefts[] = new float[mSizeData];
+    private float mLefts[];
     //Prev x coordinate in action move
     private float mPrevXMove;
     //x coordinate
@@ -69,9 +57,9 @@ public class CustomView extends View {
     //Check if swipe to left or right
     private boolean mIsMoveToRight;
     //Save x coordinate of columns
-    private List<Float> mPaths = new ArrayList<>();
+    private List<Float> mPaths;
     //Same with #path but it's mTimes
-    private List<Long> mTimes = new ArrayList<>();
+    private List<Long> mTimes;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
 
@@ -84,8 +72,8 @@ public class CustomView extends View {
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         // Get attrs from XML file
         attributeSet(context, attrs);
-        // init Paint
         init();
+        initData();
     }
 
     /**
@@ -99,15 +87,12 @@ public class CustomView extends View {
                 attrs,
                 R.styleable.CustomView, 0, 0);
         try {
-            mColumnWidth = typedArray.getInteger(R.styleable.CustomView_rect_width, getResources().getDimensionPixelSize(R.dimen.custom_view_default_column_width));
+            mColumnWidth = typedArray.getDimensionPixelSize(R.styleable.CustomView_rect_width, getResources().getDimensionPixelSize(R.dimen.custom_view_default_column_width));
         } finally {
             typedArray.recycle();
         }
     }
 
-    /**
-     * Init Paint
-     */
     private void init() {
         mPaintText.setColor(Color.GRAY);
         mPaintText.setTextSize(getResources().getDimension(R.dimen.tv_value_chart));
@@ -127,7 +112,29 @@ public class CustomView extends View {
         mColumnWidth = getResources().getDimensionPixelSize(R.dimen.column_width);
         mColumnCornerRadius = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
         mColumnMarginHorizontal = getResources().getDimensionPixelSize(R.dimen.columns_margin_horizontal);
+        mPaths = new ArrayList<>();
+        mTimes = new ArrayList<>();
+    }
+
+    private void initData() {
+        mDataRed = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        mDataPrimary = new ArrayList<>(Arrays.asList(3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12,
+                3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12,
+                3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12,
+                3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12,
+                3, 4, 5, 6, 7, 8, 9, 11, 12, 3, 4, 5, 6, 7, 8, 9, 11, 12));
+        mDataYellow = new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        mSizeData = mDataRed.size();
         mMax = Math.max(Collections.max(mDataRed), Math.max(Collections.max(mDataPrimary), Collections.max(mDataYellow)));
+        mLefts = new float[mSizeData];
     }
 
     @Override
@@ -143,6 +150,7 @@ public class CustomView extends View {
         drawRect(canvas);
         //drawText
         drawText(canvas);
+        canvas.restore();
     }
 
     /**
@@ -189,7 +197,7 @@ public class CustomView extends View {
      */
     private void drawRect(Canvas canvas) {
         canvas.drawRect(0, 0, getPaddingLeft() + WIDTH_BOX - mColumnMarginHorizontal, getHeight(), mPaintRect);
-        canvas.drawRect(getWidth() - getPaddingRight() - WIDTH_BOX + mColumnMarginHorizontal, 0, getWidth(), getHeight(), mPaintRect);
+        canvas.drawRect(getWidth() - getPaddingRight() - WIDTH_BOX + mColumnMarginHorizontal, 0, getWidth() * (1 + mScaleFactor * 2), getHeight(), mPaintRect);
     }
 
     /**
