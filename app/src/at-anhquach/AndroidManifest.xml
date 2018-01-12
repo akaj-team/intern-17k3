@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.login.LoginActivity">
+        <activity android:name=".ui.canvas.ChartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".ui.calculator.CalculatorViewActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".ui.drawerlayout.DrawerLayoutActivity" />
+        <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".savedata.ExternalStorageActivity" />
         <activity android:name=".savedata.SharePreferenceActivity" />
