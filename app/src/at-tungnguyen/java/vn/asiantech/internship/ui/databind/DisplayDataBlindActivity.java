@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.datablind;
+package vn.asiantech.internship.ui.databind;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -9,7 +9,7 @@ import android.widget.Button;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.image.ImageExerciseActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
-import vn.asiantech.internship.ui.datablind.DataBlindActivity;
+import vn.asiantech.internship.ui.databind.DataBindActivity;
 import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
@@ -112,7 +112,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(intentValidation);
                 break;
             case R.id.btnDataBlind:
-                Intent intentDatablind = new Intent(SplashActivity.this, DataBlindActivity.class);
+                Intent intentDatablind = new Intent(SplashActivity.this, DataBindActivity.class);
                 startActivity(intentDatablind);
         }
     }
