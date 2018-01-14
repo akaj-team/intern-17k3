@@ -12,17 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.mockito.LoginActivity">
+        <activity android:name=".ui.without_prefix.thread_handler.DownloadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.viewpager.home.InitialActivity" />
-        <activity android:name=".ui.viewpager.information.HomeActivity" />
         <activity android:name=".ui.calculator.CalculatorActivity" />
         <activity android:name=".ui.recyclerview.PersonViewActivity" />
         <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.without_prefix.count_down_timer.FootballTeamActivity" />
+        <activity android:name=".ui.viewpager.home.InitialActivity" />
+        <activity android:name=".ui.viewpager.information.HomeActivity" />
         <activity android:name=".ui.drawerlayout.DrawerLayoutActivity" />
         <activity android:name=".ui.savedata.SharePreferenceActivity" />
         <activity android:name=".ui.savedata.ExternalStorageActivity" />
@@ -33,5 +34,6 @@
         <activity android:name=".ui.loadimage.LoadImageActivity" />
         <activity android:name=".ui.loadimage.ImageVectorActivity" />
         <activity android:name=".ui.loadimage.NinePathActivity" />
+        <activity android:name=".ui.without_prefix.MainActivity" />
     </application>
 </manifest>
