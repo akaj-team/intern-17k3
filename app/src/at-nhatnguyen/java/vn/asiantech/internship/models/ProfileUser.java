@@ -1,5 +1,6 @@
 package vn.asiantech.internship.models;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,7 +17,7 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 
 import vn.asiantech.internship.BR;
-import vn.asiantech.internship.ui.databinding.ProfileActivity;
+import vn.asiantech.internship.ui.databinding.DataBindingActivity;
 
 /**
  * profile user
@@ -34,26 +36,28 @@ public class ProfileUser extends BaseObservable implements Parcelable {
             return new ProfileUser[size];
         }
     };
+    public static final int REQUEST_CODE = 1;
+    private int gender;
+    private String urlAvatar;
     private String name;
     private String email;
     private String birthDate;
-    public int gender;
     private String phoneNumber;
     private boolean isTextEmpty;
 
-
-    public ProfileUser(String name, String email, int gender, String phoneNumber) {
+    public ProfileUser(String name, String email, int gender, String phoneNumber, String urlAvatar) {
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
+        this.urlAvatar = urlAvatar;
 
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
         updateBirthDate(year, month, day);
-        checkEmpty();
+        checkEmptyEditText();
     }
 
     protected ProfileUser(Parcel in) {
@@ -62,6 +66,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         birthDate = in.readString();
         gender = in.readInt();
         phoneNumber = in.readString();
+        urlAvatar = in.readString();
     }
 
     @Bindable
@@ -104,10 +109,6 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.gender);
     }
 
-    public void setSelectedGender(int position){
-        setGender(position);
-    }
-
     @Bindable
     public String getPhoneNumber() {
         return phoneNumber;
@@ -126,6 +127,16 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     public void setTextEmpty(boolean textEmpty) {
         isTextEmpty = textEmpty;
         notifyPropertyChanged(BR.textEmpty);
+    }
+
+    @Bindable
+    public String getUrlAvatar() {
+        return urlAvatar;
+    }
+
+    public void setUrlAvatar(String urlAvatar) {
+        this.urlAvatar = urlAvatar;
+        notifyPropertyChanged(BR.urlAvatar);
     }
 
     public void cleanName() {
@@ -167,14 +178,18 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     }
 
     public void updateProfile(Context context, ProfileUser profileUser) {
-        setName(name);
-        setEmail(email);
-        setBirthDate(birthDate);
-        setGender(gender);
-        setPhoneNumber(phoneNumber);
-        Intent intent = new Intent(context, ProfileActivity.class);
-        intent.putExtra("profile", profileUser);
-        context.startActivity(intent);
+        if (context instanceof DataBindingActivity) {
+            Intent intent = new Intent();
+            intent.putExtra(ProfileUser.class.getSimpleName(), profileUser);
+            ((DataBindingActivity) context).setResult(Activity.RESULT_OK, intent);
+            ((DataBindingActivity) context).finish();
+        }
+    }
+
+    public void editProfile(Context context, ProfileUser profileUser) {
+        Intent intent = new Intent(context, DataBindingActivity.class);
+        intent.putExtra(ProfileUser.class.getSimpleName(), profileUser);
+        ((AppCompatActivity) context).startActivityForResult(intent, REQUEST_CODE);
     }
 
     @Override
@@ -189,9 +204,10 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         dest.writeString(birthDate);
         dest.writeInt(gender);
         dest.writeString(phoneNumber);
+        dest.writeString(urlAvatar);
     }
 
-    public void checkEmpty() {
+    public void checkEmptyEditText() {
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(phoneNumber)) {
             setTextEmpty(false);
         } else {
@@ -201,14 +217,14 @@ public class ProfileUser extends BaseObservable implements Parcelable {
 
     public void afterTextChange(Editable s, int typeItem) {
         if (typeItem == 0) {
-            name = s.toString();
+            setName(s.toString());
         } else if (typeItem == 1) {
-            email = s.toString();
+            setEmail(s.toString());
         } else if (typeItem == 2) {
-            birthDate = s.toString();
+            setBirthDate(s.toString());
         } else if (typeItem == 3) {
-            phoneNumber = s.toString();
+            setPhoneNumber(s.toString());
         }
-        checkEmpty();
+        checkEmptyEditText();
     }
 }

@@ -83,4 +83,6 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string name="button_canvas">Canvas</string>
+    <string name="km">km</string>
 </resources>

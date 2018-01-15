@@ -48,23 +48,23 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/edtFullName"
+        android:id="@+id/edtUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/bg_edt_bottom"
-        android:hint="@string/edt_hint_full_name"
+        android:hint="@string/edt_hint_username"
         android:inputType="text"
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/edtEmail"
+        android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/bg_edt_bottom"
-        android:hint="@string/edt_hint_email"
-        android:inputType="textEmailAddress"
+        android:hint="@string/edt_hint_password"
+        android:inputType="textPassword"
         android:textSize="20dp" />
 
     <LinearLayout

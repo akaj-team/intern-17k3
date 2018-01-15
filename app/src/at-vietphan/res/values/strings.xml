@@ -89,9 +89,9 @@
     <string name="unit_test">Unit Test</string>
     <string name="input_username">Input UserName</string>
     <string name="input_password">Input Password</string>
-    <string name="check_length_username">user name must have lengt more than 5 and a little than 24</string>
+    <string name="check_length_username">user name must have length more than 5 and a little than 24</string>
     <string name="check_username_least_one_capital_letter">username must have least one capital letter</string>
-    <string name="check_username_special_char_and_white_space">username must have\'nt special char and white space</string>
+    <string name="check_username_special_char_and_white_space">username must haven\'t special char and white space</string>
     <string name="check_username_most_two_number">username must have most 2 number</string>
     <string name="check_username_uppercase_lowercase">username must no distinction between have uppercase lowercase</string>
     <string name="good_username">good username</string>
@@ -103,4 +103,6 @@
     <string name="check_password_length">password must have length more than 7 char</string>
     <string name="check_password_at_least_special_or_number">password must have at least special or number</string>
     <string name="check_password_different_username">password must have different username</string>
+    <string name="login_success">Login success</string>
+    <string name="notification">Notification</string>
 </resources>

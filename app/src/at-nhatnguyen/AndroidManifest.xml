@@ -39,6 +39,7 @@
         <activity android:name=".ui.thread.LoadImageActivity" />
         <activity android:name=".ui.thread.ThreadActivity" />
         <activity android:name=".ui.thread.CountDownActivity" />
+        <activity android:name=".ui.customview.CanvasActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
         <activity android:name=".ui.databinding.DataBindingActivity" />
         <activity android:name=".ui.databinding.ProfileActivity"></activity>
