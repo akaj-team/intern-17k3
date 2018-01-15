@@ -28,7 +28,7 @@ public class User extends BaseObservable implements Parcelable {
     private String birthDay;
     private int gender;
     private String contactNumber;
-    private boolean isButtonEnable;
+    private boolean isBtnEnable;
     private String url;
 
     public User() {
@@ -128,13 +128,13 @@ public class User extends BaseObservable implements Parcelable {
     }
 
     @Bindable
-    public boolean isButtonEnable() {
-        return isButtonEnable;
+    public boolean isBtnEnable() {
+        return isBtnEnable;
     }
 
-    private void setButtonEnable(boolean buttonEnable) {
-        isButtonEnable = buttonEnable;
-        notifyPropertyChanged(BR.buttonEnable);
+    private void setBtnEnable(boolean btnEnable) {
+        isBtnEnable = btnEnable;
+        notifyPropertyChanged(BR.btnEnable);
     }
 
     @Bindable
@@ -260,9 +260,9 @@ public class User extends BaseObservable implements Parcelable {
 
     private void checkEmptyEditText() {
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(contactNumber)) {
-            setButtonEnable(true);
+            setBtnEnable(true);
         } else {
-            setButtonEnable(false);
+            setBtnEnable(false);
         }
     }
 

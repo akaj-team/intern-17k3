@@ -12,6 +12,9 @@ android {
         dataBinding {
             enabled = true
         }
+        aaptOptions {
+            cruncherEnabled = false
+        }
     }
     signingConfigs {
         debug {
