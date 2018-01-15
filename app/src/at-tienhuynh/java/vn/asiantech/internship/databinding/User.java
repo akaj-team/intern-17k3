@@ -9,10 +9,9 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
-import android.view.View;
-import android.widget.AdapterView;
+import android.text.TextUtils;
 import android.widget.DatePicker;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -24,22 +23,27 @@ import vn.asiantech.internship.R;
  * AsianTech Co., Ltd
  */
 public class User extends BaseObservable implements Parcelable {
-    public String name;
-    public String email;
-    public String birthDay;
-    public int gender;
-    public String contactNumber;
+    private String name;
+    private String email;
+    private String birthDay;
+    private int gender;
+    private String contactNumber;
+    private boolean isButtonEnable;
+    private String url;
 
     public User() {
-        //No-opp
+        //get Current Day
+        getCurrentDay();
     }
 
-    public User(String name, String email, String birthDay, int gender, String contactNumber) {
+    public User(String name, String email, String birthDay, int gender, String contactNumber, String url) {
         this.name = name;
         this.email = email;
         this.birthDay = birthDay;
         this.gender = gender;
         this.contactNumber = contactNumber;
+        this.url = url;
+
     }
 
     /**
@@ -53,6 +57,7 @@ public class User extends BaseObservable implements Parcelable {
         birthDay = in.readString();
         gender = in.readInt();
         contactNumber = in.readString();
+        url = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -106,7 +111,7 @@ public class User extends BaseObservable implements Parcelable {
     }
 
 
-    private void setGender(int gender) {
+    public void setGender(int gender) {
         this.gender = gender;
         notifyPropertyChanged(BR.gender);
     }
@@ -122,13 +127,49 @@ public class User extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.contactNumber);
     }
 
+    @Bindable
+    public boolean isButtonEnable() {
+        return isButtonEnable;
+    }
+
+    private void setButtonEnable(boolean buttonEnable) {
+        isButtonEnable = buttonEnable;
+        notifyPropertyChanged(BR.buttonEnable);
+    }
+
+    @Bindable
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+        notifyPropertyChanged(BR.url);
+    }
+
     /**
      * Clear edt when user click button
-     *
-     * @param edt edit text to clear
      */
-    public void clearText(EditText edt) {
-        edt.setText("");
+    public void clearText(int type) {
+        //type = 0 is name
+        //type = 1 is email
+        if (type == 0) {
+            setName("");
+        } else if (type == 1) {
+            setEmail("");
+        } else {
+            setContactNumber("");
+        }
+
+    }
+
+    private void getCurrentDay() {
+        // calendar
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        setBirthDay(String.valueOf(day).concat("/").concat(String.valueOf(month + 1)).concat("/").concat(String.valueOf(year)));
     }
 
     /**
@@ -136,11 +177,14 @@ public class User extends BaseObservable implements Parcelable {
      *
      * @param edt edit text to display calender when user choose day picker
      */
-    public void showDatePicker(final EditText edt) {
-        final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+    public void showDatePicker(final TextView edt) {
+        // calendar
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        //show current day
+        edt.setText(edt.getContext().getResources().getString(R.string.edittext_birthday, day, month + 1, year));
         DatePickerDialog datePickerDialog = new DatePickerDialog(edt.getContext(),
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -155,27 +199,53 @@ public class User extends BaseObservable implements Parcelable {
     /**
      * Update User Profile
      */
-    public void updateUser(User user, Context context, Editable name, Editable mail, Editable date, Editable contactNumber) {
-        setName(String.valueOf(name));
-        setEmail(String.valueOf(mail));
-        setBirthDay(String.valueOf(date));
+    public void updateUser(User user, Context context) {
+        setName(name);
+        setEmail(email);
+        setBirthDay(birthDay);
         setContactNumber(String.valueOf(contactNumber));
-        goToActivity(context, user);
-    }
-
-    public void goToActivity(Context context, User user) {
         Intent intent = new Intent(context, PreViewActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable("user", user);
+        bundle.putParcelable(User.class.getSimpleName(), user);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
 
     /**
-     * Item Selected Spinner
+     * set Text Gender in Profile Activity
      */
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        setGender(i);
+    public String getValueToGender() {
+        if (gender == 0) {
+            return "Male";
+        } else {
+            return "Female";
+        }
+    }
+
+    /**
+     * @param s    s is value of edit text
+     * @param type type of editText
+     */
+    public void afterTextChange(Editable s, int type) {
+        // type = 0 is name
+        // type = 1 is email
+        // type = 2 is birthDay
+        if (type == 0) {
+            name = s.toString();
+        } else if (type == 1) {
+            email = s.toString();
+        } else {
+            contactNumber = s.toString();
+        }
+        checkEmptyEditText();
+    }
+
+    private void checkEmptyEditText() {
+        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(contactNumber)) {
+            setButtonEnable(true);
+        } else {
+            setButtonEnable(false);
+        }
     }
 
     @Override
@@ -190,5 +260,6 @@ public class User extends BaseObservable implements Parcelable {
         parcel.writeString(birthDay);
         parcel.writeInt(gender);
         parcel.writeString(contactNumber);
+        parcel.writeString(url);
     }
 }

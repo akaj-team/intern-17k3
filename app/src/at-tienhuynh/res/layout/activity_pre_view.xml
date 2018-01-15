@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="user"
+            type="vn.asiantech.internship.databinding.User" />
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
         android:orientation="vertical">
 
         <LinearLayout
@@ -31,14 +36,16 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:src="@drawable/ic_user_header" />
+                app:imageUrl="@{user.url}" />
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:editable="false"
-                android:inputType="text"
-                android:textSize="15sp"
+                android:gravity="center"
+                android:text="@{user.name}"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp"
                 tools:ignore="Deprecated" />
         </LinearLayout>
 
@@ -55,26 +62,16 @@
                 android:text="@string/edt_email_edit_info"
                 android:textStyle="bold" />
 
-            <FrameLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="13">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="@drawable/bg_edt_number"
-                    android:editable="false"
-                    android:inputType="textEmailAddress"
-                    tools:ignore="Deprecated" />
-
-                <Button
-                    android:id="@+id/btnHintEmailInfo"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:background="?android:attr/selectableItemBackground" />
-            </FrameLayout>
+                android:layout_height="30dp"
+                android:background="@drawable/bg_edt_number"
+                android:editable="false"
+                android:gravity="center"
+                android:text="@{user.email}"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp"
+                tools:ignore="Deprecated" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,13 +91,16 @@
                         android:text="@string/tv_birth_day"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/edtBirthday"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/bg_edt_number"
                         android:editable="false"
-                        android:inputType="date"
+                        android:gravity="center"
+                        android:text="@{user.birthDay}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp"
                         tools:ignore="Deprecated" />
 
                 </LinearLayout>
@@ -118,11 +118,15 @@
                         android:text="@string/tv_gender"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <TextView
+                        android:id="@+id/tvGender"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/bg_edt_number"
-                        android:editable="false"
+                        android:gravity="center"
+                        android:text="@{user.getValueToGender}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp"
                         tools:ignore="Deprecated" />
                 </LinearLayout>
             </LinearLayout>
@@ -133,26 +137,18 @@
                 android:text="@string/edt_phone_edit_info"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/edtContactNumber"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@drawable/bg_edt_number"
-                android:drawableRight="@drawable/ic_clear_black_18dp"
                 android:editable="false"
                 android:gravity="center"
-                android:inputType="number"
+                android:text="@{user.contactNumber}"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp"
                 tools:ignore="Deprecated" />
 
         </LinearLayout>
     </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="5dp"
-        android:background="@color/colorAccent"
-        android:onClick="editProfile"
-        android:text="@string/name_btn_back_to_edit_profile" />
-</RelativeLayout>
+</layout>

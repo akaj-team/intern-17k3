@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -41,7 +41,7 @@
                     android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    android:src="@drawable/ic_user_header" />
+                    app:imageUrl="@{user.url}" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -51,6 +51,7 @@
                         android:id="@+id/edtNameUpdate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:afterTextChanged="@{(name)->user.afterTextChange(name,0)}"
                         android:drawableRight="@drawable/ic_clear_white_18dp"
                         android:inputType="text"
                         android:text="@{user.name}"
@@ -62,7 +63,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:background="?android:attr/selectableItemBackground"
-                        android:onClick="@{()->user.clearText(edtNameUpdate) }" />
+                        android:onClick="@{()->user.clearText(0) }" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -88,6 +89,7 @@
                         android:id="@+id/edtEmailUpdate"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:afterTextChanged="@{(mail)->user.afterTextChange(mail,1)}"
                         android:background="@drawable/bg_edt_number"
                         android:drawableRight="@drawable/ic_clear_black_18dp"
                         android:inputType="textEmailAddress"
@@ -99,7 +101,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:background="?android:attr/selectableItemBackground"
-                        android:onClick="@{()->user.clearText(edtEmailUpdate)}" />
+                        android:onClick="@{()->user.clearText(1)}" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -125,14 +127,14 @@
                             android:layout_height="wrap_content"
                             android:ems="13">
 
-                            <EditText
-                                android:id="@+id/edtBirthday"
+                            <TextView
+                                android:id="@+id/tvBirthday"
                                 android:layout_width="match_parent"
                                 android:layout_height="30dp"
                                 android:background="@drawable/bg_edt_number"
                                 android:drawableRight="@drawable/ic_keyboard_arrow_down_black_18dp"
-                                android:inputType="date"
-                                android:text="@{user.birthDay}" />
+                                android:text="@{user.birthDay}"
+                                android:textColor="@color/colorBlack" />
 
                             <Button
                                 android:id="@+id/btnHintDateInfo"
@@ -140,7 +142,7 @@
                                 android:layout_height="50dp"
                                 android:layout_gravity="right"
                                 android:background="?android:attr/selectableItemBackground"
-                                android:onClick="@{()->user.showDatePicker(edtBirthday)}" />
+                                android:onClick="@{()->user.showDatePicker(tvBirthday)}" />
                         </FrameLayout>
                     </LinearLayout>
 
@@ -163,8 +165,7 @@
                             android:layout_height="30dp"
                             android:background="@drawable/spinner_border"
                             android:entries="@array/gender_array"
-                            android:onItemSelected="@{(adapter, view, position, l) -> user.onItemSelected(adapter, view, position, l)}"
-                            android:selectedItemPosition="@{user.gender}" />
+                            android:selectedItemPosition="@={user.gender}" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -183,6 +184,7 @@
                         android:id="@+id/edtContactNumber"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:afterTextChanged="@{(phone)->user.afterTextChange(phone,3)}"
                         android:background="@drawable/bg_edt_number"
                         android:drawableRight="@drawable/ic_clear_black_18dp"
                         android:gravity="center"
@@ -195,7 +197,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:background="?android:attr/selectableItemBackground"
-                        android:onClick="@{()->user.clearText(edtContactNumber)}" />
+                        android:onClick="@{()->user.clearText(2)}" />
                 </FrameLayout>
             </LinearLayout>
         </LinearLayout>
@@ -206,7 +208,8 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
-            android:onClick="@{()->user.updateUser(user,context,edtNameUpdate.getText(),edtEmailUpdate.getText(),edtBirthday.getText(),edtContactNumber.getText())}"
+            android:enabled="@{user.isButtonEnable}"
+            android:onClick="@{()->user.updateUser(user,context)}"
             android:text="@string/name_btn_update_profile" />
     </RelativeLayout>
 </layout>

@@ -11,13 +11,13 @@ import vn.asiantech.internship.R;
  */
 public class EditInfoActivity extends AppCompatActivity {
 
-    private ActivityEditInfoBinding mActivityEditInfoBinding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set content view Data Binding
-        mActivityEditInfoBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_info);
-        mActivityEditInfoBinding.setUser(new User("tien", "ma", "222", 1, "213123"));
+        ActivityEditInfoBinding mActivityEditInfoBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_info);
+        User user = new User();
+        user.setUrl("https://beebom-redkapmedia.netdna-ssl.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg");
+        mActivityEditInfoBinding.setUser(user);
     }
 }

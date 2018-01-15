@@ -1,5 +1,6 @@
 package vn.asiantech.internship;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import vn.asiantech.internship.viewpagerandtablelayout.ui.SlideActivity;
  * Created at 2017
  * Created by jackty on 19/12/2017.
  */
+@SuppressLint("Registered")
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button mBtnLoginScreen;
