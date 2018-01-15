@@ -82,7 +82,6 @@ public class DownloadFragment extends Fragment {
         });
     }
 
-
     /**
      * get Bitmap from URL
      */
@@ -109,28 +108,25 @@ public class DownloadFragment extends Fragment {
                         total += count;
                         output.write(data, 0, count);
                         mStatus = (int) (total * mFinishProgessBar / fileLength);
+                        mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
+                        mProgressBarHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mProgressBar.setProgress(mStatus);
+                                tvPercent.setText(String.valueOf(mStatus).concat("%"));
+                            }
+                        });
                     }
-                    mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
-                    mProgressBarHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mProgressBar.setProgress(mStatus);
-                            tvPercent.setText(String.valueOf(mStatus).concat("%"));
-                        }
-                    });
                 } catch (IOException e) {
                     Log.d("e", e.getMessage());
                 } finally {
-                    if (connection != null) {
-                        connection.disconnect();
-                    } else {
-                        try {
-                            assert false;
-                            input.close();
-                            output.close();
-                        } catch (IOException e) {
-                            Log.d("error :", e.getMessage());
-                        }
+                    connection.disconnect();
+                    try {
+                        assert false;
+                        input.close();
+                        output.close();
+                    } catch (IOException e) {
+                        Log.d("error :", e.getMessage());
                     }
                 }
                 if (mBitmap != null) {

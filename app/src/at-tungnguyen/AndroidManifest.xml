@@ -3,11 +3,7 @@
     package="vn.asiantech.internship">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -39,7 +35,7 @@
         <activity android:name=".ui.savedata.ex3.CompanyActivity" />
         <activity android:name=".ui.thread_handler.ui.thread.ThreadActivity" />
         <activity android:name=".ui.thread_handler.ui.countdowntimer.CountDownActivity" />
-        <activity android:name=".ui.thread_handler.SplashThreadActivity"/>
+        <activity android:name=".ui.thread_handler.SplashThreadActivity" />
         <activity android:name=".ui.viewpager.ui.ViewPagerActivity" />
         <activity android:name=".ui.viewpager.ui.TabLayoutActivity" />
         <activity android:name=".ui.unittest.LoginActivity" />
