@@ -14,6 +14,6 @@ public class DataBindingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityDataBindingBinding activityDataBindingBinding = DataBindingUtil.setContentView(this, R.layout.activity_data_binding);
-        activityDataBindingBinding.setProfileUser(new ProfileUser("nhat", "nhat.com", "30-04-1995", 0, "0909090909"));
+        activityDataBindingBinding.setProfileUser(new ProfileUser("nhat", "nhat.com", 0, "0909090909"));
     }
 }

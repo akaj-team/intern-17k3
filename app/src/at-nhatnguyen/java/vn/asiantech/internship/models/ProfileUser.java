@@ -1,14 +1,16 @@
 package vn.asiantech.internship.models;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.Button;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.DatePicker;
-import android.widget.EditText;
 
 import java.util.Calendar;
 
@@ -32,18 +34,26 @@ public class ProfileUser extends BaseObservable implements Parcelable {
             return new ProfileUser[size];
         }
     };
-    public String name;
-    public String email;
-    public String birthDate;
+    private String name;
+    private String email;
+    private String birthDate;
     public int gender;
-    public String phoneNumber;
+    private String phoneNumber;
+    private boolean isTextEmpty;
 
-    public ProfileUser(String name, String email, String birthDate, int gender, String phoneNumber) {
+
+    public ProfileUser(String name, String email, int gender, String phoneNumber) {
         this.name = name;
         this.email = email;
-        this.birthDate = birthDate;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
+
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        updateBirthDate(year, month, day);
+        checkEmpty();
     }
 
     protected ProfileUser(Parcel in) {
@@ -61,6 +71,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
+        notifyPropertyChanged(BR.name);
     }
 
     @Bindable
@@ -70,7 +81,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
 
     public void setEmail(String email) {
         this.email = email;
-        notifyPropertyChanged(BR.name);
+        notifyPropertyChanged(BR.email);
     }
 
     @Bindable
@@ -93,6 +104,10 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.gender);
     }
 
+    public void setSelectedGender(int position){
+        setGender(position);
+    }
+
     @Bindable
     public String getPhoneNumber() {
         return phoneNumber;
@@ -103,44 +118,63 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.phoneNumber);
     }
 
-    public void cleanName(EditText edtName) {
-        edtName.setText("");
+    @Bindable
+    public boolean isTextEmpty() {
+        return isTextEmpty;
     }
 
-    public void cleanEmail(EditText edtEmail) {
-        edtEmail.setText("");
+    public void setTextEmpty(boolean textEmpty) {
+        isTextEmpty = textEmpty;
+        notifyPropertyChanged(BR.textEmpty);
     }
 
-    public void cleanPhoneNumber(EditText edtPhoneNumber) {
-        edtPhoneNumber.setText("");
+    public void cleanName() {
+        setName("");
     }
 
-    public void updateBirthDate(EditText edtBirthDate, int year, int month, int day) {
-        edtBirthDate.setText(String.valueOf(year).concat("-").concat(String.valueOf(month + 1).concat("-").concat(String.valueOf(day))));
+    public void cleanEmail() {
+        setEmail("");
     }
 
-    public void showDialog(final EditText edtBirthDate) {
+    public void cleanPhoneNumber() {
+        setPhoneNumber("");
+    }
+
+    public String displayGender() {
+        if (getGender() == 0) {
+            return "Male";
+        } else {
+            return "Female";
+        }
+    }
+
+    public void showDialog(View v) {
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(edtBirthDate.getContext(), new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                updateBirthDate(edtBirthDate, year, month, dayOfMonth);
+                updateBirthDate(year, month, dayOfMonth);
             }
         }, year, month, day);
         datePickerDialog.show();
     }
 
-    public void updateProfile(Button btnUpdate, EditText name, EditText email, EditText birthDate, EditText phoneNumber, ProfileUser profileUser) {
-        setName(name.getText().toString());
-        setEmail(email.getText().toString());
-        setBirthDate(birthDate.getText().toString());
-        setPhoneNumber(phoneNumber.getText().toString());
-        Intent intent = new Intent(btnUpdate.getContext(), ProfileActivity.class);
+    public void updateBirthDate(int year, int month, int day) {
+        setBirthDate(String.valueOf(year).concat("-").concat(String.valueOf(month + 1).concat("-").concat(String.valueOf(day))));
+    }
+
+    public void updateProfile(Context context, ProfileUser profileUser) {
+        setName(name);
+        setEmail(email);
+        setBirthDate(birthDate);
+        setGender(gender);
+        setPhoneNumber(phoneNumber);
+        Intent intent = new Intent(context, ProfileActivity.class);
         intent.putExtra("profile", profileUser);
-        btnUpdate.getContext().startActivity(intent);
+        context.startActivity(intent);
     }
 
     @Override
@@ -155,5 +189,26 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         dest.writeString(birthDate);
         dest.writeInt(gender);
         dest.writeString(phoneNumber);
+    }
+
+    public void checkEmpty() {
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(phoneNumber)) {
+            setTextEmpty(false);
+        } else {
+            setTextEmpty(true);
+        }
+    }
+
+    public void afterTextChange(Editable s, int typeItem) {
+        if (typeItem == 0) {
+            name = s.toString();
+        } else if (typeItem == 1) {
+            email = s.toString();
+        } else if (typeItem == 2) {
+            birthDate = s.toString();
+        } else if (typeItem == 3) {
+            phoneNumber = s.toString();
+        }
+        checkEmpty();
     }
 }

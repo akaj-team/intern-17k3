@@ -42,6 +42,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:afterTextChanged="@{(text)->ProfileUser.afterTextChange(text,0)}"
                 android:background="@drawable/bg_edittext_under"
                 android:drawableRight="@drawable/ic_clear_white_24dp"
                 android:inputType="text"
@@ -57,7 +58,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
                 android:background="?android:attr/selectableItemBackground"
-                android:onClick="@{()->ProfileUser.cleanName(edtNameProfile)}" />
+                android:onClick="@{()->ProfileUser.cleanName()}" />
         </RelativeLayout>
 
         <LinearLayout
@@ -84,6 +85,7 @@
                     android:id="@+id/edtEmailProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:afterTextChanged="@{(text)->ProfileUser.afterTextChange(text,1)}"
                     android:background="@drawable/bg_bottom_gray_border"
                     android:drawableRight="@drawable/ic_clear_blue_grey_400_24dp"
                     android:inputType="text"
@@ -96,7 +98,7 @@
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:background="?android:attr/selectableItemBackground"
-                    android:onClick="@{()->ProfileUser.cleanEmail(edtEmailProfile)}" />
+                    android:onClick="@{()->ProfileUser.cleanEmail()}" />
             </RelativeLayout>
 
             <LinearLayout
@@ -126,10 +128,14 @@
                             android:id="@+id/edtBirthDataProfile"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
+                            android:afterTextChanged="@{(text)->ProfileUser.afterTextChange(text,2)}"
                             android:background="@drawable/bg_bottom_gray_border"
                             android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                            android:enabled="false"
                             android:inputType="text"
-                            android:text="@{ProfileUser.birthDate}" />
+                            android:paddingLeft="2dp"
+                            android:text="@{ProfileUser.birthDate}"
+                            android:textColor="@color/black" />
 
                         <Button
                             android:id="@+id/btnBirthDateProfile"
@@ -138,7 +144,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="25dp"
                             android:background="?android:attr/selectableItemBackground"
-                            android:onClick="@{()->ProfileUser.showDialog(edtBirthDataProfile)}" />
+                            android:onClick="@{ProfileUser.showDialog}" />
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -166,7 +172,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/spinner_gender"
-                            android:selectedItemPosition="@{ProfileUser.gender}" />
+                            android:selectedItemPosition="@={ProfileUser.gender}" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -192,6 +198,7 @@
                         android:id="@+id/edtContactProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:afterTextChanged="@{(text)->ProfileUser.afterTextChange(text,3)}"
                         android:background="@drawable/bg_bottom_gray_border"
                         android:drawableRight="@drawable/ic_clear_blue_grey_400_24dp"
                         android:inputType="number"
@@ -203,7 +210,7 @@
                         android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:background="?android:attr/selectableItemBackground"
-                        android:onClick="@{()->ProfileUser.cleanPhoneNumber(edtContactProfile)}" />
+                        android:onClick="@{()->ProfileUser.cleanPhoneNumber()}" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -214,7 +221,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background_yellow"
-            android:onClick="@{()->ProfileUser.updateProfile(btnSubmitProfile,edtNameProfile,edtEmailProfile,edtBirthDataProfile,edtContactProfile,ProfileUser)}"
+            android:enabled="@{ProfileUser.isTextEmpty}"
+            android:onClick="@{()->ProfileUser.updateProfile(context,ProfileUser)}"
             android:text="@string/button_submit" />
     </LinearLayout>
 </layout>
