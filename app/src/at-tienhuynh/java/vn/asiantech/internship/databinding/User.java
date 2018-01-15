@@ -1,11 +1,11 @@
 package vn.asiantech.internship.databinding;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
@@ -23,6 +23,7 @@ import vn.asiantech.internship.R;
  * AsianTech Co., Ltd
  */
 public class User extends BaseObservable implements Parcelable {
+    public static final int REQUEST_CODE = 1;
     private String name;
     private String email;
     private String birthDay;
@@ -200,33 +201,21 @@ public class User extends BaseObservable implements Parcelable {
      * Update User Profile
      */
     public void updateUser(User user, Context context) {
-        setName(name);
-        setEmail(email);
-        setBirthDay(birthDay);
-        setContactNumber(String.valueOf(contactNumber));
         Intent intent = new Intent(context, PreViewActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(User.class.getSimpleName(), user);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
+        intent.putExtra(User.class.getSimpleName(), user);
+        if (context instanceof EditInfoActivity) {
+            ((EditInfoActivity) context).setResult(Activity.RESULT_OK, intent);
+            ((EditInfoActivity) context).finish();
+        }
     }
 
     /**
      * Edit user when click Edit in Profile Activity
      */
     public void editUser(User user, Context context) {
-        setName(name);
-        setEmail(email);
-        setBirthDay(birthDay);
-        setGender(gender);
-        setContactNumber(contactNumber);
-        setUrl(url);
-        setContactNumber(String.valueOf(contactNumber));
         Intent intent = new Intent(context, EditInfoActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(User.class.getSimpleName(), user);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
+        intent.putExtra(User.class.getSimpleName(), user);
+        ((PreViewActivity) context).startActivityForResult(intent, REQUEST_CODE);
     }
 
     /**

@@ -15,12 +15,10 @@ public class EditInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set content view Data Binding
-        ActivityEditInfoBinding mActivityEditInfoBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_info);
+        ActivityEditInfoBinding activityEditInfoBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_info);
         // get data
-        Bundle bundle = getIntent().getExtras();
-        // setBinding
-        if (bundle != null) {
-            mActivityEditInfoBinding.setUser((User) bundle.getParcelable(User.class.getSimpleName()));
+        if (getIntent().getParcelableExtra(User.class.getSimpleName()) != null) {
+            activityEditInfoBinding.setUser((User) getIntent().getParcelableExtra(User.class.getSimpleName()));
         }
     }
 }
