@@ -1,10 +1,14 @@
 package vn.asiantech.internship.models;
 
+import android.databinding.BaseObservable;
+
+import vn.asiantech.internship.BR;
+
 /**
  * Created by vietphan on 15/01/2017.
  * Class ProfileUser
  */
-public class ProfileUser extends BaseObservable{
+public class ProfileUser extends BaseObservable {
     private String name;
     private String email;
     private String birthDate;
@@ -29,7 +33,7 @@ public class ProfileUser extends BaseObservable{
 
     public void setName(String name) {
         this.name = name;
-        name.notifyAll();
+        notifyPropertyChanged(BR.UserProperties);
     }
 
     public String getEmail() {
