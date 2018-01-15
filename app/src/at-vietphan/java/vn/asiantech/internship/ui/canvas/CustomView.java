@@ -26,12 +26,12 @@ public class CustomView extends View {
     private static final int START_X_COLUMN_B = 24;
     private static final int START_X_COLUMN_C = START_X_COLUMN_B * 2;
     private static final int WIDTH_BOX = 120;
-    private Paint mPaintText = new Paint();
-    private Paint mPaintRect = new Paint();
-    private Paint mPaintLine = new Paint();
-    private Paint mPaintColumnRed = new Paint();
-    private Paint mPaintColumnPrimary = new Paint();
-    private Paint mPaintColumnYellow = new Paint();
+    private Paint mPaintText;
+    private Paint mPaintRect;
+    private Paint mPaintLine;
+    private Paint mPaintColumnRed;
+    private Paint mPaintColumnPrimary;
+    private Paint mPaintColumnYellow;
     private int mColumnWidth;
     private int mColumnCornerRadius;
     private int mColumnMarginHorizontal;
@@ -94,6 +94,12 @@ public class CustomView extends View {
     }
 
     private void init() {
+        mPaintText = new Paint();
+        mPaintRect = new Paint();
+        mPaintLine = new Paint();
+        mPaintColumnRed = new Paint();
+        mPaintColumnPrimary = new Paint();
+        mPaintColumnYellow = new Paint();
         mPaintText.setColor(Color.GRAY);
         mPaintText.setTextSize(getResources().getDimension(R.dimen.tv_value_chart));
         //Draw line distance
