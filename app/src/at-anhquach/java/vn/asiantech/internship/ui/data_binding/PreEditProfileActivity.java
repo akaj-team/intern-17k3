@@ -14,11 +14,15 @@ import vn.asiantech.internship.model.User;
  * Edit Profile Activity
  */
 public class PreEditProfileActivity extends AppCompatActivity {
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityPreEditProfileBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_pre_edit_profile);
-        User user = new User();
-        binding.setUser(user);
+        User mUser = getIntent().getParcelableExtra(User.class.getSimpleName());
+        // setBinding
+        if (mUser != null) {
+            binding.setUser(mUser);
+        }
     }
 }

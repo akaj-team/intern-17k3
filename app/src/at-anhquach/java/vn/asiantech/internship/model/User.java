@@ -5,8 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.Calendar;
 
@@ -17,7 +24,8 @@ import vn.asiantech.internship.ui.data_binding.PreEditProfileActivity;
 /**
  * Define class User
  */
-public class User extends BaseObservable {
+public class User extends BaseObservable implements Parcelable {
+
     private int id;
     private String fullname;
     private String birthday;
@@ -27,9 +35,35 @@ public class User extends BaseObservable {
     private int age;
     private String usename;
     private String password;
+    private String imgUrl;
 
     public User() {
+        getCurrentDay();
     }
+
+    protected User(Parcel in) {
+        id = in.readInt();
+        fullname = in.readString();
+        birthday = in.readString();
+        email = in.readString();
+        gender = in.readString();
+        contactnumber = in.readString();
+        age = in.readInt();
+        usename = in.readString();
+        password = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -71,8 +105,16 @@ public class User extends BaseObservable {
 
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     @Bindable
-    public void setGender(String gender) {
+    private void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -81,7 +123,7 @@ public class User extends BaseObservable {
     }
 
     @Bindable
-    public void setContactnumber(String contactnumber) {
+    private void setContactnumber(String contactnumber) {
         this.contactnumber = contactnumber;
     }
 
@@ -113,8 +155,35 @@ public class User extends BaseObservable {
         edt.setText("");
     }
 
-    public void startActivityPreEdit(Context context) {
+    public void afterTextChange(Editable text, int type, ImageView img) {
+        switch (type) {
+            case 0:
+                fullname = text.toString();
+                checkInputInfo(img);
+                break;
+            case 1:
+                email = text.toString();
+                checkInputInfo(img);
+                break;
+            case 2:
+                birthday = text.toString();
+                checkInputInfo(img);
+                break;
+            case 3:
+                contactnumber = text.toString();
+                checkInputInfo(img);
+                break;
+        }
+    }
+
+    public void intentActivityPreEdit(Context context) {
+        setFullname(fullname);
+        setBirthday(birthday);
+        setEmail(email);
+        setGender(gender);
+        setContactnumber(contactnumber);
         Intent intent = new Intent(context, PreEditProfileActivity.class);
+        intent.putExtra(User.class.getSimpleName(), this);
         context.startActivity(intent);
     }
 
@@ -137,5 +206,50 @@ public class User extends BaseObservable {
                     }
                 }, year, month, day);
         datePickerDialog.show();
+    }
+
+    private void checkInputInfo(ImageView img) {
+        if (!TextUtils.isEmpty(fullname) && !TextUtils.isEmpty(email) &&
+                !TextUtils.isEmpty(birthday) && !TextUtils.isEmpty(contactnumber)) {
+            img.setSelected(true);
+            img.setEnabled(true);
+        } else {
+            img.setSelected(false);
+            img.setEnabled(false);
+        }
+    }
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id, Context context) {
+        if (pos == 1) {
+            gender = context.getResources().getStringArray(R.array.gender_arrays)[pos];
+        } else gender = context.getResources().getStringArray(R.array.gender_arrays)[0];
+    }
+
+    private void getCurrentDay() {
+        // calendar
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        setBirthday(String.valueOf(day).concat("/").concat(String.valueOf(month + 1)).concat("/").concat(String.valueOf(year)));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(fullname);
+        dest.writeString(birthday);
+        dest.writeString(email);
+        dest.writeString(gender);
+        dest.writeString(contactnumber);
+        dest.writeInt(age);
+        dest.writeString(usename);
+        dest.writeString(password);
     }
 }

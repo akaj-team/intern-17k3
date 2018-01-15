@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -12,8 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.data_binding.PreEditProfileActivity">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +34,8 @@
                 android:layout_height="120dp"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/img_avatar" />
+                android:src="@drawable/img_avatar"
+                app:imageUrl="@{user.imgUrl}" />
 
             <TextView
                 android:layout_width="match_parent"

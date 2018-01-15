@@ -106,6 +106,10 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.13.0'
     implementation 'junit:junit:4.12'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation('com.github.bumptech.glide:glide:4.5.0') {
+        exclude group: "com.android.support"
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
 }
 
 //apply from: "https://raw.githubusercontent.com/tientun/gradle-android-ci-check/master/ci.gradle"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -33,7 +34,7 @@
                 android:layout_height="120dp"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/img_avatar" />
+                app:imageUrl="@{user.imgUrl}" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -44,6 +45,7 @@
                     android:id="@+id/edtNameProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:afterTextChanged="@{(fullname) -> user.afterTextChange(fullname,0,imgSubmitProfile)}"
                     android:background="@drawable/bg_edt_bottom_white"
                     android:drawableRight="@drawable/ic_clear_white_18dp"
                     android:inputType="text"
@@ -88,6 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
+                    android:afterTextChanged="@{(email) -> user.afterTextChange(email,1,imgSubmitProfile)}"
                     android:background="@drawable/bg_edt_gray"
                     android:drawableRight="@drawable/ic_clear_grey_600_18dp"
                     android:inputType="textEmailAddress"
@@ -143,9 +146,11 @@
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
+                        android:afterTextChanged="@{(date) -> user.afterTextChange(date,2,imgSubmitProfile)}"
                         android:background="@drawable/bg_edt_gray"
                         android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_600_18dp"
                         android:inputType="date"
+                        android:text="@{user.birthday}"
                         android:padding="8dp"
                         android:textSize="14sp" />
 
@@ -165,6 +170,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg_spinner"
                     android:entries="@array/gender_arrays"
+                    android:onItemSelected="@{(a,b,c,d) -> user.onItemSelected(a,b,c,d,context)}"
                     android:padding="7dp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -188,10 +194,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:afterTextChanged="@{(number) -> user.afterTextChange(number,3,imgSubmitProfile)}"
                     android:background="@drawable/bg_edt_gray"
                     android:drawableRight="@drawable/ic_clear_grey_600_18dp"
                     android:inputType="phone"
                     android:padding="7dp"
+                    android:text=""
                     android:textSize="14sp" />
 
                 <Button
@@ -204,12 +212,12 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imgSubmit"
+            android:id="@+id/imgSubmitProfile"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:onClick="@{() -> user.startActivityPreEdit(context)}"
+            android:onClick="@{() -> user.intentActivityPreEdit(context)}"
             android:src="@drawable/selecter_btn_next" />
     </LinearLayout>
 </layout>
