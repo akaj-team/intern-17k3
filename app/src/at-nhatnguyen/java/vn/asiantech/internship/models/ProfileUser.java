@@ -23,7 +23,6 @@ import vn.asiantech.internship.ui.databinding.DataBindingActivity;
  * profile user
  * Created by hoangnhat on 12/01/2018.
  */
-
 public class ProfileUser extends BaseObservable implements Parcelable {
     public static final Creator<ProfileUser> CREATOR = new Creator<ProfileUser>() {
         @Override

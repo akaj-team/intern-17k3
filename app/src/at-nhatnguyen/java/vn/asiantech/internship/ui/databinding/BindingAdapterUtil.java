@@ -10,7 +10,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by hoangnhat on 15/01/2018.
  * Adapter Util
  */
-
 public class BindingAdapterUtil {
 
     @BindingAdapter({"imageUrl"})
