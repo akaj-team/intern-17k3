@@ -99,10 +99,8 @@ dependencies {
     implementation "com.android.support:support-dynamic-animation:26.1.0"
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:support-v4:26.1.0'
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
     // Required -- JUnit 4 framework
     testImplementation "org.mockito:mockito-core:2.13.0"
-    implementation 'com.romandanylyk:pageindicatorview:0.2.0'
     testImplementation 'org.mockito:mockito-core:2.13.0'
     // Android runner and rules support
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -110,7 +108,6 @@ dependencies {
     // UI Espresso framework
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'junit:junit:4.12'
-    compile 'com.squareup.picasso:picasso:2.5.2'
     //glide
     implementation('com.github.bumptech.glide:glide:4.5.0') {
         exclude group: "com.android.support"
