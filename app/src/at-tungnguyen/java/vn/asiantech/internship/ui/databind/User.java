@@ -3,10 +3,16 @@ package vn.asiantech.internship.ui.databind;
 import android.app.DatePickerDialog;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.databinding.InverseBindingAdapter;
+import android.databinding.InverseBindingListener;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -75,12 +81,12 @@ public class User extends BaseObservable {
     }
 
     @Bindable
-    public String getmContact() {
+    public String getContact() {
         return contact;
     }
 
-    public void setmContact(String mContact) {
-        this.contact = mContact;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public void onChangeNameClick(Editable edtName) {
@@ -112,8 +118,12 @@ public class User extends BaseObservable {
         mDatePickerDialog.show();
     }
 
-    public void cleanProfileName(Editable s) {
+    public void cleanProfileName(Editable edtName) {
         setUserName(" ");
+    }
+
+    public void cleanEmail(Editable edtEmail) {
+        setEmail(" ");
     }
 
     public void afterChangeText(Editable edtAfter, int type) {
@@ -126,8 +136,39 @@ public class User extends BaseObservable {
         } else if (type == 5) {
             contact = edtAfter.toString();
         }
+        Log.d("ssss", "afterChangeText: " + userName + email + birthDate + contact);
     }
-    public void chooiseSpinerGender(View view,int type){
 
+    public void setSpinerGender(TextView v) {
+
+    }
+
+    public void onItemSelected(int position) {
+        Log.d("bbbb", "onItemSelected: " + position);
+    }
+
+    @InverseBindingAdapter(attribute = "selection", event = "selectionAttrChanged")
+    public static String getSelectedValue(AdapterView view) {
+        return (String) view.getSelectedItem();
+    }
+
+    @BindingAdapter(value = {"selection", "selectionAttrChanged", "adapter"}, requireAll = false)
+    public static void setAdapter(AdapterView view, String newSelection, final InverseBindingListener bindingListener, ArrayAdapter adapter) {
+        view.setAdapter(adapter);
+        view.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                bindingListener.onChange();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //Nothing
+            }
+        });
+        if (newSelection != null) {
+            int pos = ((ArrayAdapter) view.getAdapter()).getPosition(newSelection);
+            view.setSelection(pos);
+        }
     }
 }
