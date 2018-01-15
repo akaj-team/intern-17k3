@@ -4,4 +4,11 @@
     <dimen name="text_size_tv_result">18dp</dimen>
     <dimen name="text_size_btn">19dp</dimen>
     <dimen name="margin_view_pager">-90dp</dimen>
+    <dimen name="text_size_chart">12dp</dimen>
+    <dimen name="tv_value_chart">14dp</dimen>
+    <dimen name="columns_margin_horizontal">10dp</dimen>
+    <dimen name="column_width">10dp</dimen>
+    <dimen name="column_corner_radius">3dp</dimen>
+    <dimen name="custom_view_default_column_width">20dp</dimen>
+    <dimen name="line_stroke_width">2dp</dimen>
 </resources>
