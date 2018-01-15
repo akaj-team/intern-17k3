@@ -18,8 +18,8 @@ import android.widget.ImageView;
 import java.util.Calendar;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.data_binding.EditProfileActivity;
-import vn.asiantech.internship.ui.data_binding.PreEditProfileActivity;
+import vn.asiantech.internship.databinding.EditProfileActivity;
+import vn.asiantech.internship.databinding.PreEditProfileActivity;
 
 /**
  * Define class User
