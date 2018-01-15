@@ -52,7 +52,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:afterTextChanged="@{(name)->user.afterTextChange(name,0)}"
-                        android:drawableRight="@drawable/ic_clear_white_18dp"
+                        android:drawableRight="@drawable/ic_keyboard_arrow_down_black_18dp"
                         android:inputType="text"
                         android:text="@{user.name}"
                         android:textSize="15sp" />
@@ -91,7 +91,7 @@
                         android:layout_height="30dp"
                         android:afterTextChanged="@{(mail)->user.afterTextChange(mail,1)}"
                         android:background="@drawable/bg_edt_number"
-                        android:drawableRight="@drawable/ic_clear_black_18dp"
+                        android:drawableRight="@drawable/ic_keyboard_arrow_down_black_18dp"
                         android:inputType="textEmailAddress"
                         android:text="@{user.email}" />
 
@@ -186,7 +186,7 @@
                         android:layout_height="30dp"
                         android:afterTextChanged="@{(phone)->user.afterTextChange(phone,3)}"
                         android:background="@drawable/bg_edt_number"
-                        android:drawableRight="@drawable/ic_clear_black_18dp"
+                        android:drawableRight="@drawable/ic_keyboard_arrow_down_black_18dp"
                         android:gravity="center"
                         android:inputType="number"
                         android:text="@{user.contactNumber}" />
