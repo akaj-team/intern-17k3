@@ -120,6 +120,7 @@
     <string name="edittext_birthday" formatted="false">%d/%d/%d</string>
     <string name="tv_gender_male">Male</string>
     <string name="tv_gender_female">Female</string>
+    <string name="name_btn_edit_profile">Edit</string>
     <string-array name="gender_array">
         <item>Male</item>
         <item>Female</item>

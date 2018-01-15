@@ -16,8 +16,11 @@ public class EditInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // set content view Data Binding
         ActivityEditInfoBinding mActivityEditInfoBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_info);
-        User user = new User();
-        user.setUrl("https://beebom-redkapmedia.netdna-ssl.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg");
-        mActivityEditInfoBinding.setUser(user);
+        // get data
+        Bundle bundle = getIntent().getExtras();
+        // setBinding
+        if (bundle != null) {
+            mActivityEditInfoBinding.setUser((User) bundle.getParcelable(User.class.getSimpleName()));
+        }
     }
 }

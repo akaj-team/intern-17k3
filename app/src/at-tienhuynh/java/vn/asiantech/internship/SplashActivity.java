@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
-import vn.asiantech.internship.databinding.EditInfoActivity;
 import vn.asiantech.internship.canvas.CanvasActivity;
+import vn.asiantech.internship.databinding.PreViewActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
@@ -119,7 +119,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(this, LoginUnitTestActivity.class));
                 break;
             case R.id.btnDataBinding:
-                startActivity(new Intent(this, EditInfoActivity.class));
+                startActivity(new Intent(this, PreViewActivity.class));
         }
     }
 }

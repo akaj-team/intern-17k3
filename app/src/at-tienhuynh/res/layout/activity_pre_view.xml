@@ -150,5 +150,14 @@
                 tools:ignore="Deprecated" />
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:onClick="@{()->user.editUser(user,context)}"
+            android:text="@string/name_btn_edit_profile" />
+
     </LinearLayout>
 </layout>

@@ -122,7 +122,7 @@ public class User extends BaseObservable implements Parcelable {
     }
 
 
-    private void setContactNumber(String contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
         notifyPropertyChanged(BR.contactNumber);
     }
@@ -205,6 +205,24 @@ public class User extends BaseObservable implements Parcelable {
         setBirthDay(birthDay);
         setContactNumber(String.valueOf(contactNumber));
         Intent intent = new Intent(context, PreViewActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(User.class.getSimpleName(), user);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    /**
+     * Edit user when click Edit in Profile Activity
+     */
+    public void editUser(User user, Context context) {
+        setName(name);
+        setEmail(email);
+        setBirthDay(birthDay);
+        setGender(gender);
+        setContactNumber(contactNumber);
+        setUrl(url);
+        setContactNumber(String.valueOf(contactNumber));
+        Intent intent = new Intent(context, EditInfoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable(User.class.getSimpleName(), user);
         intent.putExtras(bundle);
