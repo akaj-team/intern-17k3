@@ -85,6 +85,11 @@
     <string name="name_btn_exercise_1_thread">Exercise 1</string>
     <string name="name_btn_exercise_2_thread">Exercise 2</string>
     <string name="item_countdown_list">item :  </string>
+    <string name="text_btn_canvas_screen">CanVas Screen</string>
+    <string name="tv_canvas_name">Chart</string>
+    <string name="tv_canvas_km">Km</string>
+    <string name="tv_day">24 Jul</string>
+    <string name="tv_day_end">9 Oct</string>
     <string name="name_btn_unit_text">Unit Test Login</string>
     <string name="unit_test_login_user">user name</string>
     <string name="unit_test_login_password">password</string>
@@ -97,7 +102,7 @@
     <string name="validate_username_no_distinction">distinction between uppercase and lowercase letters</string>
     <string name="validate_done">Done</string>
     <string name="null_password">please input password</string>
-    <string name="validate_password_length"><![CDATA[password must > 7 character]]></string>
+    <string name="validate_password_length">password must > 7 character</string>
     <string name="validate_password_different_user_name">password is not different username</string>
     <string name="validate_password_have_least_number">password have at least one special character or number</string>
     <string name="validate_password_space">password have space</string>
