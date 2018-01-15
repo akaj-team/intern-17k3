@@ -9,7 +9,7 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Company;
 
 /**
- * Company Activity
+ * Company DownloadActivity
  */
 public class CompanyActivity extends AppCompatActivity {
     private TextView mTvNameCompany;

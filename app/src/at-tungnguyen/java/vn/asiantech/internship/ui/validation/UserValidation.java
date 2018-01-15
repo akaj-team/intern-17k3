@@ -1,7 +1,6 @@
 package vn.asiantech.internship.ui.validation;
 
 import java.util.Locale;
-import java.util.regex.Pattern;
 
 /**
  * Author Asian Tech Inc.
@@ -29,8 +28,8 @@ public final class UserValidation {
      * @return
      */
     public static boolean isCheckUserSpecial(String userName) {
-        Pattern checkUserSpecial = Pattern.compile("^[a-z0-9A-Z]");
-        return checkUserSpecial.matcher(userName).find();
+        return !userName.matches("([a-zA-Z].+)([!@#$%^&*].+)");
+
     }
 
     /**

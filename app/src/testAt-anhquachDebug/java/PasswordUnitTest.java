@@ -29,13 +29,13 @@ public class PasswordUnitTest {
     @Test
     public void checkContainSpecialCharOrNumber() {
         Mockito.when(mUser.getPassword()).thenReturn("hana@ngocanh");
-        Assert.assertTrue(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isContainAtLeastSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh12");
-        Assert.assertTrue(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isContainAtLeastSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hana@ngocanh7");
-        Assert.assertTrue(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertTrue(PasswordValidation.isContainAtLeastSpecialCharOrNumber(mUser.getPassword()));
         Mockito.when(mUser.getPassword()).thenReturn("hanangocanh");
-        Assert.assertFalse(PasswordValidation.isContainSpecialCharOrNumber(mUser.getPassword()));
+        Assert.assertFalse(PasswordValidation.isContainAtLeastSpecialCharOrNumber(mUser.getPassword()));
     }
 
     @Test
@@ -61,8 +61,8 @@ public class PasswordUnitTest {
     @Test
     public void checkAtLeastThreeCapitalChar() {
         Mockito.when(mUser.getPassword()).thenReturn("ngocanh");
-        Assert.assertTrue(PasswordValidation.isAtLeastThreeCapitalChar(mUser.getPassword()));
-        Mockito.when(mUser.getPassword()).thenReturn("ngocanhHHHH");
         Assert.assertFalse(PasswordValidation.isAtLeastThreeCapitalChar(mUser.getPassword()));
+        Mockito.when(mUser.getPassword()).thenReturn("ngocanhHHHH");
+        Assert.assertTrue(PasswordValidation.isAtLeastThreeCapitalChar(mUser.getPassword()));
     }
 }

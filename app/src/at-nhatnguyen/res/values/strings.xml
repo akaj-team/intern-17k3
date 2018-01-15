@@ -73,6 +73,8 @@
     <string name="btn_download">DownLoad</string>
     <string name="exercise_thread">Thread</string>
     <string name="exercise_count_down">CountTimer</string>
+    <string name="button_canvas">Canvas</string>
+    <string name="km">km</string>
     <string name="battery">Battery</string>
     <string name="plugged_ac">AC</string>
     <string name="plugged_usb">USB</string>
