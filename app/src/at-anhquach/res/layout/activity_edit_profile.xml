@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="vn.asiantech.internship.model.User" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGrayDark"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_edit_profile"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="25dp"
+                app:imageUrl="@{user.imgUrl}" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="13">
+
+                <EditText
+                    android:id="@+id/edtNameProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:afterTextChanged="@{(fullname) -> user.afterTextChange(fullname,0,imgSubmitProfile)}"
+                    android:background="@drawable/bg_edt_bottom_white"
+                    android:drawableRight="@drawable/ic_clear_white_18dp"
+                    android:inputType="text"
+                    android:padding="5dp"
+                    android:text="@{user.fullname}"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:onClick="@{() -> user.clearEditText(edtNameProfile)}" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:paddingTop="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:text="@string/tv_email"
+                android:textColor="@color/colorGrayDark"
+                android:textSize="13sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="13">
+
+                <EditText
+                    android:id="@+id/edtEmailProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:afterTextChanged="@{(email) -> user.afterTextChange(email,1,imgSubmitProfile)}"
+                    android:background="@drawable/bg_edt_gray"
+                    android:drawableRight="@drawable/ic_clear_grey_600_18dp"
+                    android:inputType="textEmailAddress"
+                    android:padding="7dp"
+                    android:text="@{user.email}"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:onClick="@{() -> user.clearEditText(edtEmailProfile)}" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_birth_date"
+                    android:textColor="@color/colorGrayDark"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/tv_gender"
+                    android:textColor="@color/colorGrayDark"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:ems="13">
+
+                    <EditText
+                        android:id="@+id/edtDatePicker"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:afterTextChanged="@{(date) -> user.afterTextChange(date,2,imgSubmitProfile)}"
+                        android:background="@drawable/bg_edt_gray"
+                        android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_600_18dp"
+                        android:inputType="date"
+                        android:padding="8dp"
+                        android:text="@{user.birthday}"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="@{() -> user.showDatePicker(edtDatePicker,context)}" />
+                </FrameLayout>
+
+                <Spinner
+                    android:id="@+id/spinnerGender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spinner"
+                    android:entries="@array/gender_arrays"
+                    android:onItemSelected="@{(a,b,c,d) -> user.onItemSelected(a,b,c,d,context)}"
+                    android:padding="7dp"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:text="@string/tv_contact_number"
+                android:textColor="@color/colorGrayDark"
+                android:textSize="13sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="13">
+
+                <EditText
+                    android:id="@+id/edtContactNumberProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:afterTextChanged="@{(number) -> user.afterTextChange(number,3,imgSubmitProfile)}"
+                    android:background="@drawable/bg_edt_gray"
+                    android:drawableRight="@drawable/ic_clear_grey_600_18dp"
+                    android:inputType="phone"
+                    android:padding="7dp"
+                    android:text="@{user.contactnumber}"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:onClick="@{() -> user.clearEditText(edtContactNumberProfile)}" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgSubmitProfile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:onClick="@{() -> user.intentActivityPreEdit(context)}"
+            android:src="@drawable/selecter_btn_next" />
+    </LinearLayout>
+</layout>
