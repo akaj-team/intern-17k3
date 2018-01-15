@@ -10,8 +10,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Calendar;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.utils.CustomEditText;
 import vn.asiantech.internship.utils.MyEditText;
@@ -28,6 +31,11 @@ public class DataBindingActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_data_binding);
         initViews();
         initListeners();
+        CircleImageView circleImageView = findViewById(R.id.imgAvatar);
+
+        Glide.with(this)
+                .load("http://2sao.vietnamnetjsc.vn/images/2017/03/24/20/38/Anh-doi-thuong-xinh-dep-cua-hot-girl-bong-chuyen-tuyen-Viet-Nam-3.jpg")
+                .into(circleImageView);
     }
 
     private void initViews() {
