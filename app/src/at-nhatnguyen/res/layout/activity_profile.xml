@@ -70,7 +70,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -136,6 +137,7 @@
                     android:textSize="20dp" />
             </LinearLayout>
         </LinearLayout>
+
         <Button
             android:id="@+id/btnSubmitProfile"
             style="@style/Base.TextAppearance.AppCompat.Widget.Button.Borderless.Colored"

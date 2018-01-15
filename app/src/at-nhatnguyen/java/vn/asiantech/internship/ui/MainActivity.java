@@ -8,7 +8,6 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
-import vn.asiantech.internship.ui.databinding.DataBindingActivity;
 import vn.asiantech.internship.ui.customview.CanvasActivity;
 import vn.asiantech.internship.ui.databinding.ProfileActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
