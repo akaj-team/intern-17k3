@@ -86,6 +86,10 @@
     <string name="downloaded">Downloaded</string>
     <string name="tren">/</string>
     <string name="item">item </string>
+    <string name="canvas">CANVAS</string>
+    <string name="jul_24">24 Jul</string>
+    <string name="oct_9">9 Oct</string>
+    <string name="km">Km</string>
     <string name="unit_test">Unit Test</string>
     <string name="input_username">Input UserName</string>
     <string name="input_password">Input Password</string>
@@ -103,6 +107,7 @@
     <string name="check_password_length">password must have length more than 7 char</string>
     <string name="check_password_at_least_special_or_number">password must have at least special or number</string>
     <string name="check_password_different_username">password must have different username</string>
+    <string name="tv_canvas_km">km</string>
     <string name="login_success">Login success</string>
     <string name="notification">Notification</string>
     <string name="usb">USB</string>
