@@ -137,7 +137,6 @@
                             android:selectedItemPosition="@={profileUser.genDer}"
                             android:spinnerMode="dropdown" />
                     </LinearLayout>
-
                 </LinearLayout>
             </LinearLayout>
 
