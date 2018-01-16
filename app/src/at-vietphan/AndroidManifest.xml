@@ -39,6 +39,7 @@
         <activity android:name=".ui.asynchronous.activitys.AsynchronousActivity" />
         <activity android:name=".ui.asynchronous.activitys.CountDownTimerActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
-        <activity android:name=".ui.databinding.DataBindingActivity" />
+        <activity android:name=".ui.databinding.PreviewProfileActivity" />
+        <activity android:name=".ui.databinding.EditProfileActivity" />
     </application>
 </manifest>

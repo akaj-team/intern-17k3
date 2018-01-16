@@ -4,7 +4,7 @@
     <data>
 
         <variable
-            name="UserProperties"
+            name="profileUser"
             type="vn.asiantech.internship.models.ProfileUser" />
     </data>
 
@@ -33,22 +33,23 @@
                 android:id="@+id/imgAvatar"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@drawable/ic_account"
                 app:civ_border_color="@android:color/white"
-                app:civ_border_width="1dp" />
+                app:civ_border_width="1dp"
+                app:imageUrl="@{profileUser.imageUrl}" />
 
-            <vn.asiantech.internship.utils.CustomEditText
+            <vn.asiantech.internship.utils.MyEditText
                 android:id="@+id/edtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
+                android:afterTextChanged="@{(text)->profileUser.afterTextChange(text, edtName)}"
                 android:background="@drawable/bg_bottom_line_edt_data_binding"
                 android:drawableRight="@drawable/ic_clear_white_24dp"
                 android:inputType="text"
                 android:padding="2dp"
-                android:text="@string/phan_xuan_viet"
+                android:text="@{profileUser.name}"
                 android:textColor="@android:color/white" />
         </LinearLayout>
 
@@ -72,9 +73,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_number_text_view"
                 android:drawableRight="@drawable/ic_clear_grey_800_24dp"
-                android:hint="@string/text_view_email"
                 android:inputType="textEmailAddress"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:text="@{profileUser.email}" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -102,9 +103,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableRight="@drawable/ic_dropdownlist"
-                        android:hint="@string/birth_day"
                         android:inputType="date"
-                        android:padding="5dp" />
+                        android:onClick="@{()->profileUser.showDatePicker(edtBirthDate)}"
+                        android:padding="5dp"
+                        android:text="@{profileUser.birthDate}" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,10 +128,12 @@
                         android:background="@drawable/bg_number_text_view">
 
                         <Spinner
+                            android:id="@+id/spnGender"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/gender"
                             android:padding="5dp"
+                            android:selectedItemPosition="@{profileUser.genDer}"
                             android:spinnerMode="dropdown" />
                     </LinearLayout>
 
@@ -149,9 +153,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_number_text_view"
                 android:drawableRight="@drawable/ic_clear_grey_800_24dp"
-                android:hint="@string/_0979047004"
                 android:inputType="phone"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:text="@{profileUser.phone}" />
 
             <Button
                 android:id="@+id/btnSubmit"
@@ -160,6 +164,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_btn_login"
+                android:onClick="@{()->profileUser.updateProfile(context,profileUser)}"
                 android:padding="5dp"
                 android:text="@string/submit" />
         </LinearLayout>

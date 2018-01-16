@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import vn.asiantech.internship.ui.asynchronous.activitys.AsynchronousActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
-import vn.asiantech.internship.ui.databinding.DataBindingActivity;
+import vn.asiantech.internship.ui.databinding.PreviewProfileActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.loadimage.ImageLoaderActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
@@ -98,7 +98,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this, UnitTestActivity.class));
                 break;
             case R.id.btnDataBinding:
-                startActivity(new Intent(this, DataBindingActivity.class));
+                startActivity(new Intent(this, PreviewProfileActivity.class));
         }
     }
 }
