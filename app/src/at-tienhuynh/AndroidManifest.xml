@@ -55,6 +55,7 @@
         <activity
             android:name=".databinding.PreViewActivity"
             android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".viewpagerandtablelayout.ui.BatteryActivity"/>
     </application>
 
 </manifest>
