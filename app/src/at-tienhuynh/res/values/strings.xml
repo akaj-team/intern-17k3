@@ -108,4 +108,17 @@
     <string name="validate_password_space">password have space</string>
     <string name="validate_password_least_3_capital_letter">password have least 3 capital letter</string>
     <string name="validate_password_repeat">repeat character password 2 times</string>
+    <string name="name_btn_battery_info">Battery info</string>
+    <string name="battery_status_ac">AC</string>
+    <string name="battery_status_usb">USB</string>
+    <string name="battery_status_unknown">UNKNOWN</string>
+    <string name="battery_heath_dead">DEAD</string>
+    <string name="battery_heath_good">GOOD</string>
+    <string name="battery_heath_over">OVER VOLTAGE</string>
+    <string name="battery_heath_heat">OVER HEART</string>
+    <string name="battery_heath_failure">FAILURE</string>
+    <string name="battery_status_charging">CHARGING</string>
+    <string name="battery_status_dis_charging">DISCHARGING</string>
+    <string name="battery_status_full">FULL</string>
+    <string name="battery_status_not_charging">NOT CHARGING</string>
 </resources>
