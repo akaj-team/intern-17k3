@@ -1,5 +1,6 @@
 package vn.asiantech.internship.model;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import vn.asiantech.internship.databinding.PreEditProfileActivity;
  * Define class User
  */
 public class User extends BaseObservable implements Parcelable {
+    public static final int REQUEST_CODE = 1;
 
     private int id;
     private String fullname;
@@ -185,7 +187,10 @@ public class User extends BaseObservable implements Parcelable {
         setContactnumber(contactnumber);
         Intent intent = new Intent(context, PreEditProfileActivity.class);
         intent.putExtra(User.class.getSimpleName(), this);
-        context.startActivity(intent);
+        if (context instanceof EditProfileActivity) {
+            ((EditProfileActivity) context).setResult(Activity.RESULT_OK, intent);
+            ((EditProfileActivity) context).finish();
+        }
     }
 
     public void intentActivityEdit(Context context) {
@@ -197,7 +202,7 @@ public class User extends BaseObservable implements Parcelable {
         setContactnumber(contactnumber);
         Intent intent = new Intent(context, EditProfileActivity.class);
         intent.putExtra(User.class.getSimpleName(), this);
-        context.startActivity(intent);
+        ((PreEditProfileActivity) context).startActivityForResult(intent, REQUEST_CODE);
     }
 
     public void showDatePicker(final EditText edt, final Context context) {

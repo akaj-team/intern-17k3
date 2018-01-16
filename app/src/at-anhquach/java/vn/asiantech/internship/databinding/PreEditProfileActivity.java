@@ -1,5 +1,6 @@
 package vn.asiantech.internship.databinding;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,17 +15,15 @@ import vn.asiantech.internship.model.User;
  */
 public class PreEditProfileActivity extends AppCompatActivity {
     private User mUser;
+    private ActivityPreEditProfileBinding mBinding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityPreEditProfileBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_pre_edit_profile);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_pre_edit_profile);
         mUser = new User();
         setData();
-        User userIntent = getIntent().getParcelableExtra(User.class.getSimpleName());
-        if (userIntent != null) {
-            binding.setUser(userIntent);
-        } else binding.setUser(mUser);
+        mBinding.setUser(mUser);
     }
 
     private void setData() {
@@ -34,5 +33,13 @@ public class PreEditProfileActivity extends AppCompatActivity {
         mUser.setGender(getResources().getStringArray(R.array.gender_arrays)[0]);
         mUser.setEmail("anh.quach@asiantech");
         mUser.setContactnumber("01679961569");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == User.REQUEST_CODE && data != null) {
+            mBinding.setUser((User) data.getParcelableExtra(User.class.getSimpleName()));
+        }
     }
 }

@@ -38,6 +38,4 @@
         <activity android:name=".asynchronous.ThreadActivity" />
         <activity android:name=".databinding.EditProfileActivity" />
     </application>
-
 </manifest>
-
