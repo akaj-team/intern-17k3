@@ -124,7 +124,6 @@ public class BatteryActivity extends AppCompatActivity {
             getStatusString(status, mTvBatteryStatus, level);
             // set level
             mTvBatteryLevel.setText(String.valueOf(level));
-
         }
     };
 
@@ -154,10 +153,6 @@ public class BatteryActivity extends AppCompatActivity {
     private void getHealthString(int health, TextView tvHeath) {
 
         switch (health) {
-            case BatteryManager.BATTERY_HEALTH_UNKNOWN:
-                // unknown
-                tvHeath.setText(R.string.battery_status_unknown);
-                break;
             case BatteryManager.BATTERY_HEALTH_GOOD:
                 // good
                 tvHeath.setText(R.string.battery_heath_good);
@@ -178,6 +173,9 @@ public class BatteryActivity extends AppCompatActivity {
                 //failure
                 tvHeath.setText(R.string.battery_heath_failure);
                 break;
+            default:
+                // unknown
+                tvHeath.setText(R.string.battery_status_unknown);
         }
     }
 
@@ -213,7 +211,6 @@ public class BatteryActivity extends AppCompatActivity {
                 break;
             default:
                 tvStatus.setText(R.string.battery_status_unknown);
-
         }
     }
 }
