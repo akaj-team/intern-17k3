@@ -16,7 +16,6 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import vn.asiantech.internship.BR;
-import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.databinding.EditProfileActivity;
 
 /**
@@ -42,15 +41,6 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     private int genDer;
     private String phone;
     private String imageUrl;
-
-    public ProfileUser(String name, String email, String birthDate, int genDer, String phone, String imageUrl) {
-        this.name = name;
-        this.email = email;
-        this.birthDate = birthDate;
-        this.genDer = genDer;
-        this.phone = phone;
-        this.imageUrl = imageUrl;
-    }
 
     public ProfileUser() {
 
@@ -131,16 +121,16 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         ((AppCompatActivity) context).startActivityForResult(intent, REQUEST_CODE);
     }
 
-    public void afterTextChange(Editable text, int id) {
-        if (id == R.id.edtName) {
+    public void afterTextChange(Editable text, int index) {
+        if (index == 0) {
             setName(String.valueOf(text));
-        } else if (id == R.id.edtEmail) {
+        } else if (index == 1) {
             setEmail(String.valueOf(text));
-        } else if (id == R.id.edtBirthDate) {
+        } else if (index == 2) {
             setBirthDate(String.valueOf(text));
-        } else if (id == R.id.spnGender) {
+        } else if (index == 3) {
             setGenDer(Integer.parseInt(String.valueOf(text)));
-        } else if (id == R.id.edtPhone) {
+        } else if (index == 4) {
             setPhone(String.valueOf(text));
         }
     }

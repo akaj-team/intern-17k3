@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -37,16 +38,15 @@
                 app:civ_border_width="1dp"
                 app:imageUrl="@{profileUser.imageUrl}" />
 
-            <vn.asiantech.internship.utils.MyEditText
+            <vn.asiantech.internship.utils.MyEditTextWhileClear
                 android:id="@+id/edtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
-                android:afterTextChanged="@{(text)->profileUser.afterTextChange(text, edtName)}"
+                android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,0)}"
                 android:background="@drawable/bg_bottom_line_edt_data_binding"
-                android:drawableRight="@drawable/ic_clear_white_24dp"
                 android:inputType="text"
                 android:padding="2dp"
                 android:text="@{profileUser.name}"
@@ -67,12 +67,12 @@
                 android:layout_marginTop="30dp"
                 android:text="@string/e_mail" />
 
-            <vn.asiantech.internship.utils.MyEditText
+            <vn.asiantech.internship.utils.MyEditTextGreyClear
                 android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,1)}"
                 android:background="@drawable/bg_number_text_view"
-                android:drawableRight="@drawable/ic_clear_grey_800_24dp"
                 android:inputType="textEmailAddress"
                 android:padding="5dp"
                 android:text="@{profileUser.email}" />
@@ -102,6 +102,7 @@
                         android:id="@+id/edtBirthDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:afterTextChanged="@{(text)->profileUser.afterTextChange(text, 2)}"
                         android:drawableRight="@drawable/ic_dropdownlist"
                         android:inputType="date"
                         android:onClick="@{()->profileUser.showDatePicker(edtBirthDate)}"
@@ -133,7 +134,7 @@
                             android:layout_height="wrap_content"
                             android:entries="@array/gender"
                             android:padding="5dp"
-                            android:selectedItemPosition="@{profileUser.genDer}"
+                            android:selectedItemPosition="@={profileUser.genDer}"
                             android:spinnerMode="dropdown" />
                     </LinearLayout>
 
@@ -147,12 +148,12 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/contact_number" />
 
-            <vn.asiantech.internship.utils.MyEditText
+            <vn.asiantech.internship.utils.MyEditTextGreyClear
                 android:id="@+id/edtPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,4)}"
                 android:background="@drawable/bg_number_text_view"
-                android:drawableRight="@drawable/ic_clear_grey_800_24dp"
                 android:inputType="phone"
                 android:padding="5dp"
                 android:text="@{profileUser.phone}" />

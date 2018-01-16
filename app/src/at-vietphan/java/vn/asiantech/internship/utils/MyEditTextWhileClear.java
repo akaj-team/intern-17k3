@@ -16,20 +16,20 @@ import vn.asiantech.internship.R;
  * Created by vietphan on 11/01/2018.
  * Class MyEditText
  */
-public class MyEditText extends AppCompatEditText {
-    private Drawable imgCloseButton = getResources().getDrawable(R.drawable.ic_clear_grey_800_24dp);
+public class MyEditTextWhileClear extends AppCompatEditText {
+    public Drawable imgCloseButton = getResources().getDrawable(R.drawable.ic_clear_white_24dp);
 
-    public MyEditText(Context context) {
+    public MyEditTextWhileClear(Context context) {
         super(context);
         init();
     }
 
-    public MyEditText(Context context, AttributeSet attrs, int defStyle) {
+    public MyEditTextWhileClear(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
 
-    public MyEditText(Context context, AttributeSet attrs) {
+    public MyEditTextWhileClear(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
@@ -42,14 +42,16 @@ public class MyEditText extends AppCompatEditText {
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                MyEditText et = MyEditText.this;
-                if (et.getCompoundDrawables()[2] == null)
+                MyEditTextWhileClear et = MyEditTextWhileClear.this;
+                if (et.getCompoundDrawables()[2] == null) {
                     return false;
-                if (event.getAction() != MotionEvent.ACTION_UP)
+                }
+                if (event.getAction() != MotionEvent.ACTION_UP) {
                     return false;
+                }
                 if (event.getX() > et.getWidth() - et.getPaddingRight() - imgCloseButton.getIntrinsicWidth()) {
                     et.setText("");
-                    MyEditText.this.handleClearButton();
+                    MyEditTextWhileClear.this.handleClearButton();
                 }
                 return false;
             }
@@ -63,7 +65,7 @@ public class MyEditText extends AppCompatEditText {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                MyEditText.this.handleClearButton();
+                MyEditTextWhileClear.this.handleClearButton();
             }
 
             @Override
