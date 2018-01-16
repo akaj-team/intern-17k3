@@ -1,18 +1,17 @@
 package vn.asiantech.internship.ui.databind;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.databinding.BindingAdapter;
-import android.databinding.InverseBindingAdapter;
-import android.databinding.InverseBindingListener;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.text.Editable;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
-import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -23,23 +22,49 @@ import vn.asiantech.internship.BR;
  * Created by tungnguyen on 12/01/2018.
  */
 
-public class User extends BaseObservable {
+public class User extends BaseObservable implements Parcelable {
     private String userName;
     private String email;
     private String birthDate;
     private int gender;
     private String contact;
+    private String url;
+    private boolean isCheckEmpty = true;
+
+    public static final int REQUEST_CODE_EDIT = 123;
 
     public User() {
     }
 
-    public User(String userName, String email, String birthDate, int gender, String contact) {
+    public User(String userName, String email, String birthDate, int gender, String contact,String url) {
         this.userName = userName;
         this.email = email;
         this.birthDate = birthDate;
         this.gender = gender;
         this.contact = contact;
+        this.url = url;
     }
+
+    protected User(Parcel in) {
+        userName = in.readString();
+        email = in.readString();
+        birthDate = in.readString();
+        gender = in.readInt();
+        contact = in.readString();
+        url = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     @Bindable
     public String getUserName() {
@@ -76,8 +101,18 @@ public class User extends BaseObservable {
         return gender;
     }
 
-    public void setmGender(int mGender) {
-        this.gender = mGender;
+    public void setGender(int gender) {
+        this.gender = gender;
+        notifyPropertyChanged(BR.gender);
+    }
+    @Bindable
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+        notifyPropertyChanged(BR.url);
     }
 
     @Bindable
@@ -87,16 +122,22 @@ public class User extends BaseObservable {
 
     public void setContact(String contact) {
         this.contact = contact;
+        notifyPropertyChanged(BR.contact);
     }
 
-    public void onChangeNameClick(Editable edtName) {
-        setUserName(String.valueOf(edtName.toString()));
-        Log.d("sssss", "onChangeNameClick:" + userName);
+    @Bindable
+    public boolean isCheckEmpty() {
+        return isCheckEmpty;
+    }
+
+    private void setCheckEmpty(boolean checkEmpty) {
+        isCheckEmpty = checkEmpty;
+        notifyPropertyChanged(BR.checkEmpty);
+
     }
 
     public void afterTextChanged(Editable s) {
         userName = s.toString();
-        Log.d("sssss", "afterTextChanged: " + userName);
     }
 
     private void updateBirthDate(int date, int month, int year) {
@@ -118,13 +159,18 @@ public class User extends BaseObservable {
         mDatePickerDialog.show();
     }
 
-    public void cleanProfileName(Editable edtName) {
-        setUserName(" ");
+    public void cleanProfileName() {
+        setUserName("");
     }
 
-    public void cleanEmail(Editable edtEmail) {
-        setEmail(" ");
+    public void cleanEmail() {
+        setEmail("");
     }
+
+    public void cleanContact() {
+        setContact("");
+    }
+
 
     public void afterChangeText(Editable edtAfter, int type) {
         if (type == 1) {
@@ -136,39 +182,50 @@ public class User extends BaseObservable {
         } else if (type == 5) {
             contact = edtAfter.toString();
         }
-        Log.d("ssss", "afterChangeText: " + userName + email + birthDate + contact);
+        checkEmptyUtil();
     }
 
-    public void setSpinerGender(TextView v) {
+    public void setPriviewUser(User user, Context context) {
+        Intent intent = new Intent(context, PriviewUserActivity.class);
+        intent.putExtra(User.class.getSimpleName(), user);
+        ((EditUserActivity) context).setResult(Activity.RESULT_OK, intent);
+        ((EditUserActivity) context).finish();
 
     }
 
-    public void onItemSelected(int position) {
-        Log.d("bbbb", "onItemSelected: " + position);
+    public void editUser(User user, Context context) {
+        Intent intent = new Intent(context, EditUserActivity.class);
+        intent.putExtra(User.class.getSimpleName(), user);
+        ((PriviewUserActivity) context).startActivityForResult(intent, REQUEST_CODE_EDIT);
     }
 
-    @InverseBindingAdapter(attribute = "selection", event = "selectionAttrChanged")
-    public static String getSelectedValue(AdapterView view) {
-        return (String) view.getSelectedItem();
+    public String selectGender() {
+        if (gender == 0) {
+            return "Male";
+        } else
+            return "Female";
     }
 
-    @BindingAdapter(value = {"selection", "selectionAttrChanged", "adapter"}, requireAll = false)
-    public static void setAdapter(AdapterView view, String newSelection, final InverseBindingListener bindingListener, ArrayAdapter adapter) {
-        view.setAdapter(adapter);
-        view.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                bindingListener.onChange();
-            }
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                //Nothing
-            }
-        });
-        if (newSelection != null) {
-            int pos = ((ArrayAdapter) view.getAdapter()).getPosition(newSelection);
-            view.setSelection(pos);
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(userName);
+        parcel.writeString(email);
+        parcel.writeString(birthDate);
+        parcel.writeInt(gender);
+        parcel.writeString(contact);
+        parcel.writeString(url);
+    }
+
+    public void checkEmptyUtil() {
+        if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(contact)) {
+            setCheckEmpty(false);
+        } else {
+            setCheckEmpty(true);
         }
     }
 }

@@ -16,7 +16,7 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
     <string-array name="spinnerItems">
-        <item>Female</item>
         <item>Male</item>
+        <item>Female</item>
     </string-array>
 </resources>

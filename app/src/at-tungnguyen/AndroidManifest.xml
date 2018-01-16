@@ -38,8 +38,8 @@
         <activity android:name=".ui.viewpager.ui.ViewPagerActivity" />
         <activity android:name=".ui.viewpager.ui.TabLayoutActivity" />
         <activity android:name=".ui.unittest.LoginActivity" />
-        <activity android:name=".ui.databind.DataBindActivity" />
-        <activity android:name=".ui.databind.DisplayDataBlindActivity"/>
+        <activity android:name=".ui.databind.EditUserActivity" />
+        <activity android:name=".ui.databind.PriviewUserActivity"/>
     </application>
 
 </manifest>
