@@ -108,7 +108,6 @@ public class DownloadFragment extends Fragment {
                         total += count;
                         output.write(data, 0, count);
                         mStatus = (int) (total * mFinishProgessBar / fileLength);
-                        mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                         mProgressBarHandler.post(new Runnable() {
                             @Override
                             public void run() {
@@ -116,6 +115,7 @@ public class DownloadFragment extends Fragment {
                                 tvPercent.setText(String.valueOf(mStatus).concat("%"));
                             }
                         });
+                        mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                     }
                 } catch (IOException e) {
                     Log.d("e", e.getMessage());

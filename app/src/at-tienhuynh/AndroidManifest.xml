@@ -50,6 +50,7 @@
         <activity android:name=".threadandhandler.SplashThreadAndHandlerActivity" />
         <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity" />
         <activity android:name=".unittest.LoginUnitTestActivity" />
+        <activity android:name=".viewpagerandtablelayout.ui.BatteryActivity"/>
     </application>
 
 </manifest>
