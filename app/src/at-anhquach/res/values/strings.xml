@@ -48,6 +48,23 @@
     <string name="btn_load_in_internet">Load in Internet</string>
     <string name="distance_km">km</string>
     <string name="textview_download" formatted="false">DownLoad %dKB/%dKB %d%%</string>
+    <string name="title_tablayout_home">HOME</string>
+    <string name="title_tablayout_info">INFO</string>
+    <string name="title_tablayout_info_battery">BATTERY</string>
+    <string name="btn_information_battery">Information Battery</string>
+    <string name="tv_level_battery" formatted="false">%d %%</string>
+    <string name="tv_ac">AC</string>
+    <string name="tv_usb">USB</string>
+    <string name="tv_unknown">Unknown</string>
+    <string name="tv_good">Good</string>
+    <string name="tv_overheated">Overheated</string>
+    <string name="tv_dead">Dead</string>
+    <string name="tv_overvoltage">Overvoltage</string>
+    <string name="tv_failed">Failed</string>
+    <string name="tv_charging">Charging</string>
+    <string name="tv_discharging">Discharging</string>
+    <string name="tv_notcharging">Not charging</string>
+    <string name="tv_full">Full</string>
     <string name="day">24Jul</string>
     <string name="month">Oct</string>
 </resources>
