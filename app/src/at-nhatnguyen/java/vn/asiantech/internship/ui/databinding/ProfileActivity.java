@@ -10,21 +10,21 @@ import vn.asiantech.internship.databinding.ActivityProfileBinding;
 import vn.asiantech.internship.models.ProfileUser;
 
 public class ProfileActivity extends AppCompatActivity {
-    private ActivityProfileBinding activityProfileBinding;
+    private ActivityProfileBinding mActivityProfileBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
+        mActivityProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
         ProfileUser profileUser = new ProfileUser("nhat", "nhat.com", 1, "0909090909", "https://onehdwallpaper.com/wp-content/uploads/2016/11/Most-Beautiful-Girls-Wallpapers.jpg");
-        activityProfileBinding.setProfileUser(profileUser);
+        mActivityProfileBinding.setProfileUser(profileUser);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ProfileUser.REQUEST_CODE && data != null) {
-            activityProfileBinding.setProfileUser((ProfileUser) data.getParcelableExtra(ProfileUser.class.getSimpleName()));
+            mActivityProfileBinding.setProfileUser((ProfileUser) data.getParcelableExtra(ProfileUser.class.getSimpleName()));
         }
     }
 }
