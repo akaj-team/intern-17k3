@@ -14,5 +14,4 @@
     <item
         android:drawable="@drawable/ic_battery_full"
         android:duration="200" />
-
 </animation-list>

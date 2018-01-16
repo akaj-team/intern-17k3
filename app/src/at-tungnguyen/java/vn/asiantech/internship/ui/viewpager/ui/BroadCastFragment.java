@@ -37,6 +37,4 @@ public class BroadCastFragment extends Fragment {
        });
         return view;
     }
-
-
 }

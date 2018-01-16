@@ -147,7 +147,6 @@ public class BroadcastActivity extends AppCompatActivity {
                 mImageView.setBackgroundResource(R.drawable.ic_battery_full);
             }
         }
-
     }
 
     /**
