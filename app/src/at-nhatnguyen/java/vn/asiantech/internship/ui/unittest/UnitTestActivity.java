@@ -1,6 +1,7 @@
 package vn.asiantech.internship.ui.unittest;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -56,16 +57,31 @@ public class UnitTestActivity extends AppCompatActivity {
         } else if (ValidatePassWord.isPassWordLikeUserName(mEdtUserName.getText().toString()
                 , mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.user_name_like));
+        } else if (mEdtPassWord.getText().toString().trim().length() == 0) {
+            showToast(getResources().getString(R.string.password_blank));
         } else if (!ValidatePassWord.isSpecialNumberPassWord(mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.password_special));
-        } else if (!ValidatePassWord.isLengthPassWord(mEdtPassWord.getText().toString()) || !ValidatePassWord.isAppearCase(mEdtPassWord.getText().toString())) {
+        } else if (!ValidatePassWord.isLengthPassWord(mEdtPassWord.getText().toString().trim()) ||
+                !ValidatePassWord.isAppearCase(mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.password_length));
         } else if (!ValidatePassWord.isSpaceCase(mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.password_space));
         } else if (!ValidatePassWord.isLeastThreeUpperCase(mEdtPassWord.getText().toString())) {
             showToast(getResources().getString(R.string.password_three_upper_case));
         } else {
-            showToast(getResources().getString(R.string.pass));
+            showDialogSuccess(getResources().getString(R.string.message_login_success));
         }
+    }
+
+    /**
+     * Method show dialog when success
+     * @param message message
+     */
+    private void showDialogSuccess(String message){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Notification");
+        alertDialogBuilder.setMessage(message);
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
