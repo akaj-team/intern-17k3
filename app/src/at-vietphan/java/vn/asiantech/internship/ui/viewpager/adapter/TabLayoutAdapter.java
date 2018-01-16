@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import vn.asiantech.internship.ui.viewpager.fragments.BroadcastFragment;
 import vn.asiantech.internship.ui.viewpager.fragments.HomeFragment;
 import vn.asiantech.internship.ui.viewpager.fragments.InformationFragment;
 
@@ -12,7 +13,7 @@ import vn.asiantech.internship.ui.viewpager.fragments.InformationFragment;
  * Class TabLayoutAdapter
  */
 public class TabLayoutAdapter extends FragmentPagerAdapter {
-    private static final int NUM_TABS = 2;
+    private static final int NUM_TABS = 3;
 
     public TabLayoutAdapter(FragmentManager manager) {
         super(manager);
@@ -26,7 +27,7 @@ public class TabLayoutAdapter extends FragmentPagerAdapter {
             case 1:
                 return new InformationFragment();
             default:
-                return null;
+                return new BroadcastFragment();
         }
     }
 
@@ -43,7 +44,7 @@ public class TabLayoutAdapter extends FragmentPagerAdapter {
             case 1:
                 return "INFO";
             default:
-                return null;
+                return "BROADCAST";
         }
     }
 }
