@@ -14,6 +14,7 @@ public class EditUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityEditUserBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_user);
+
         if (getIntent().getParcelableExtra(User.class.getSimpleName()) != null) {
             Log.d("sssss", "onCreate: ");
             binding.setUser((User) getIntent().getParcelableExtra(User.class.getSimpleName()));
