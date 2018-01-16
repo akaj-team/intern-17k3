@@ -128,4 +128,5 @@
     <string name="tv_heath_battery">Battery Heath:</string>
     <string name="tv_technology_battery">Technology:</string>
     <string name="tv_plugged_battery">Battery Plugged :</string>
+    <string name="btn_broadcast">BroadCast</string>
 </resources>
