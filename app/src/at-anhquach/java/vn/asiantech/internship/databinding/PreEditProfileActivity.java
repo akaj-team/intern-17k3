@@ -1,7 +1,5 @@
 package vn.asiantech.internship.databinding;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,12 +21,10 @@ public class PreEditProfileActivity extends AppCompatActivity {
         ActivityPreEditProfileBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_pre_edit_profile);
         mUser = new User();
         setData();
-//       // User userIntent = getIntent().getParcelableExtra(User.class.getSimpleName());
-        binding.setUser(mUser);
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra(User.class.getSimpleName(),mUser);
-        setResult(Activity.RESULT_OK,returnIntent);
-        //finish();
+        User userIntent = getIntent().getParcelableExtra(User.class.getSimpleName());
+        if (userIntent != null) {
+            binding.setUser(userIntent);
+        } else binding.setUser(mUser);
     }
 
     private void setData() {
@@ -40,5 +36,3 @@ public class PreEditProfileActivity extends AppCompatActivity {
         mUser.setContactnumber("01679961569");
     }
 }
-
-
