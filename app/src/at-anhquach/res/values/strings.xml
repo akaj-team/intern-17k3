@@ -61,8 +61,6 @@
         <item>Felmale</item>
         <item>Male</item>
     </string-array>
-    <string name="title_tablayout_home">HOME</string>
-    <string name="title_tablayout_info">INFO</string>
     <string name="title_tablayout_info_battery">BATTERY</string>
     <string name="btn_information_battery">Information Battery</string>
     <string name="tv_level_battery" formatted="false">%d %%</string>
