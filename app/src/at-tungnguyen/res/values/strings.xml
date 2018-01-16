@@ -111,4 +111,5 @@
     <string name="textview_kb">KB/</string>
     <string name="bracket_first">(</string>
     <string name="login_successfully">Login successfully</string>
+    <string name="btn_datablind">DataBlind</string>
 </resources>
