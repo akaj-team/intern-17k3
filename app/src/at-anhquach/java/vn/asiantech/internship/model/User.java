@@ -236,7 +236,9 @@ public class User extends BaseObservable implements Parcelable {
                                int pos, long id, Context context) {
         if (pos == 1) {
             gender = context.getResources().getStringArray(R.array.gender_arrays)[pos];
-        } else gender = context.getResources().getStringArray(R.array.gender_arrays)[0];
+        } else {
+            gender = context.getResources().getStringArray(R.array.gender_arrays)[0];
+        }
     }
 
     @Override
