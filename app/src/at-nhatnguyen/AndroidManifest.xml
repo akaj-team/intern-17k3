@@ -41,6 +41,7 @@
         <activity android:name=".ui.thread.CountDownActivity" />
         <activity android:name=".ui.customview.CanvasActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
+        <activity android:name=".ui.viewpager.battery.BatteryActivity" />
     </application>
 
 </manifest>

@@ -37,5 +37,6 @@
         <activity android:name=".image.VectorImageActivity" />
         <activity android:name=".asynchronous.ThreadActivity" />
         <activity android:name=".databinding.EditProfileActivity" />
+        <activity android:name=".ui.viewpager_tablayout.InfoBatteryActivity"/>
     </application>
 </manifest>
