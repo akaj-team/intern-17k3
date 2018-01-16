@@ -130,13 +130,13 @@ public class User extends BaseObservable implements Parcelable {
      * Check Empty Edit text
      */
     @Bindable
-    public boolean isCheckEmpty() {
+    public boolean isCheckEmptyUtil() {
         return isCheckEmpty;
     }
 
     private void setCheckEmpty(boolean checkEmpty) {
         isCheckEmpty = checkEmpty;
-        notifyPropertyChanged(BR.checkEmpty);
+        notifyPropertyChanged(BR.checkEmptyUtil);
     }
 
     /**
@@ -218,8 +218,9 @@ public class User extends BaseObservable implements Parcelable {
     public String selectItemGender() {
         if (gender == 0) {
             return "Male";
-        } else
+        } else {
             return "Female";
+        }
     }
 
     @Override

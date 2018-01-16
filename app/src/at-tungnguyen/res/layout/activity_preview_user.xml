@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:gravity="center"
-                android:text="EDIT PROFILE"
+                android:text="@string/tv_edit_profile"
                 android:textSize="16dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -46,7 +46,6 @@
                 android:layout_margin="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:hint="Dimitri Polsovka ChiCo "
                 android:text="@{user.userName}" />
         </LinearLayout>
 
@@ -65,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="E-mail"
+                    android:text="@string/tv_email_user"
                     android:textColor="#797f81"
                     android:textSize="20sp" />
 
@@ -95,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Birth Date"
+                        android:text="@string/tv_birthday_user"
                         android:textColor="#797f81"
                         android:textSize="20sp" />
 
@@ -116,7 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Gender"
+                        android:text="@string/tv_gender_user"
                         android:textColor="#797f81"
                         android:textSize="20sp" />
 
@@ -137,7 +136,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Contact Number"
+                    android:text="@string/tv_contact_user"
                     android:textColor="#797f81"
                     android:textSize="20sp" />
 
@@ -155,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="@{() -> user.editUser(user,context)}"
-            android:text="Edit"
+            android:text="@string/tv_edit_user"
             android:textSize="18dp" />
     </LinearLayout>
 </layout>
