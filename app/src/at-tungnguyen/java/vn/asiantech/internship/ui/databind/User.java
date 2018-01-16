@@ -36,7 +36,7 @@ public class User extends BaseObservable implements Parcelable {
     public User() {
     }
 
-    public User(String userName, String email, String birthDate, int gender, String contact,String url) {
+    public User(String userName, String email, String birthDate, int gender, String contact, String url) {
         this.userName = userName;
         this.email = email;
         this.birthDate = birthDate;
@@ -105,6 +105,7 @@ public class User extends BaseObservable implements Parcelable {
         this.gender = gender;
         notifyPropertyChanged(BR.gender);
     }
+
     @Bindable
     public String getUrl() {
         return url;
@@ -125,6 +126,11 @@ public class User extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.contact);
     }
 
+    /**
+     * Check Empty Edit text
+     *
+     * @return
+     */
     @Bindable
     public boolean isCheckEmpty() {
         return isCheckEmpty;
@@ -133,18 +139,25 @@ public class User extends BaseObservable implements Parcelable {
     private void setCheckEmpty(boolean checkEmpty) {
         isCheckEmpty = checkEmpty;
         notifyPropertyChanged(BR.checkEmpty);
-
     }
 
-    public void afterTextChanged(Editable s) {
-        userName = s.toString();
-    }
-
+    /**
+     * Update DateTimePicker
+     *
+     * @param date
+     * @param month
+     * @param year
+     */
     private void updateBirthDate(int date, int month, int year) {
         setBirthDate(String.valueOf(date).concat("-").concat(String.valueOf(month + 1).concat("-").concat(String.valueOf(year))));
     }
 
-    public void showDialog(final View view) {
+    /**
+     * Show Dialog DataTimePicker
+     *
+     * @param view
+     */
+    public void showDialogDate(final View view) {
         Calendar calender = Calendar.getInstance();
         int date = calender.get(Calendar.DAY_OF_MONTH);
         int month = calender.get(Calendar.MONTH);
@@ -171,7 +184,13 @@ public class User extends BaseObservable implements Parcelable {
         setContact("");
     }
 
-
+    /**
+     * Set AfterChangeText Edit text
+     * set Aft
+     *
+     * @param edtAfter
+     * @param type
+     */
     public void afterChangeText(Editable edtAfter, int type) {
         if (type == 1) {
             userName = edtAfter.toString();
@@ -185,21 +204,36 @@ public class User extends BaseObservable implements Parcelable {
         checkEmptyUtil();
     }
 
-    public void setPriviewUser(User user, Context context) {
-        Intent intent = new Intent(context, PriviewUserActivity.class);
+    /**
+     * Send Data EditUser to PreViewUser
+     *
+     * @param user
+     * @param context
+     */
+    public void setPreviewUser(User user, Context context) {
+        Intent intent = new Intent(context, PreviewUserActivity.class);
         intent.putExtra(User.class.getSimpleName(), user);
         ((EditUserActivity) context).setResult(Activity.RESULT_OK, intent);
         ((EditUserActivity) context).finish();
 
     }
 
+    /**
+     * Send Data PreViewUser to EditUser
+     *
+     * @param user
+     * @param context
+     */
     public void editUser(User user, Context context) {
         Intent intent = new Intent(context, EditUserActivity.class);
         intent.putExtra(User.class.getSimpleName(), user);
-        ((PriviewUserActivity) context).startActivityForResult(intent, REQUEST_CODE_EDIT);
+        ((PreviewUserActivity) context).startActivityForResult(intent, REQUEST_CODE_EDIT);
     }
 
-    public String selectGender() {
+    /**
+     * Select Item Gender
+     */
+    public String selectItemGender() {
         if (gender == 0) {
             return "Male";
         } else
@@ -221,6 +255,9 @@ public class User extends BaseObservable implements Parcelable {
         parcel.writeString(url);
     }
 
+    /**
+     * Check Empty username , email , contact
+     */
     public void checkEmptyUtil() {
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(contact)) {
             setCheckEmpty(false);
