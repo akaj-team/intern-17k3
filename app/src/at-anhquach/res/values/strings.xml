@@ -16,8 +16,8 @@
     <string name="textview_memo_info_enter">Enter your details below to get started </string>
     <string name="textview_memo_term">I have read and agree with the terms and conditions.</string>
     <string name="edt_hint_enter_number">Enter mobile number</string>
-    <string name="edt_hint_full_name">User name</string>
-    <string name="edt_hint_email">Password</string>
+    <string name="edt_hint_username">Username</string>
+    <string name="edt_hint_password">Password</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="email">anh.quach@asiantech.vn</string>
@@ -46,5 +46,25 @@
     <string name="btn_load_in_asset">Load in Asset</string>
     <string name="btn_load_in_storage">Load in Storage</string>
     <string name="btn_load_in_internet">Load in Internet</string>
+    <string name="distance_km">km</string>
     <string name="textview_download" formatted="false">DownLoad %dKB/%dKB %d%%</string>
+    <string name="title_tablayout_home">HOME</string>
+    <string name="title_tablayout_info">INFO</string>
+    <string name="title_tablayout_info_battery">BATTERY</string>
+    <string name="btn_information_battery">Information Battery</string>
+    <string name="tv_level_battery" formatted="false">%d %%</string>
+    <string name="tv_ac">AC</string>
+    <string name="tv_usb">USB</string>
+    <string name="tv_unknown">Unknown</string>
+    <string name="tv_good">Good</string>
+    <string name="tv_overheated">Overheated</string>
+    <string name="tv_dead">Dead</string>
+    <string name="tv_overvoltage">Overvoltage</string>
+    <string name="tv_failed">Failed</string>
+    <string name="tv_charging">Charging</string>
+    <string name="tv_discharging">Discharging</string>
+    <string name="tv_notcharging">Not charging</string>
+    <string name="tv_full">Full</string>
+    <string name="day">24Jul</string>
+    <string name="month">Oct</string>
 </resources>

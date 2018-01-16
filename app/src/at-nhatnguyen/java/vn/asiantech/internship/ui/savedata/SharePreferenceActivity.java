@@ -10,7 +10,7 @@ import android.widget.EditText;
 import vn.asiantech.internship.R;
 
 /**
- * Activity save data by SharePreference
+ * DownloadActivity save data by SharePreference
  */
 public class SharePreferenceActivity extends AppCompatActivity {
     private Button mBtnSave;

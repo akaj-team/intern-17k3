@@ -13,4 +13,7 @@
     <color name="colorHeader">#041e42</color>
     <color name="colorSlogan">#65a3e4</color>
     <color name="colorHeaderDrawer">#15879e</color>
+    <color name="colorPurple800">#6A1B9A</color>
+    <color name="colorCyanA700">#00B8D4</color>
+    <color name="colorOrange500">#FF9800</color>
 </resources>
