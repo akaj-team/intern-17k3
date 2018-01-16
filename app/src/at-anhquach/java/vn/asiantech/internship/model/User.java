@@ -2,7 +2,6 @@ package vn.asiantech.internship.model;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Parcel;
@@ -18,8 +17,6 @@ import android.widget.ImageView;
 import java.util.Calendar;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.databinding.EditProfileActivity;
-import vn.asiantech.internship.databinding.PreEditProfileActivity;
 
 /**
  * Define class User
@@ -177,27 +174,27 @@ public class User extends BaseObservable implements Parcelable {
     }
 
     public void intentActivityPreEdit(Context context) {
-        setImgUrl(imgUrl);
-        setFullname(fullname);
-        setBirthday(birthday);
-        setEmail(email);
-        setGender(gender);
-        setContactnumber(contactnumber);
-        Intent intent = new Intent(context, PreEditProfileActivity.class);
-        intent.putExtra(User.class.getSimpleName(), this);
-        context.startActivity(intent);
+////        setImgUrl(imgUrl);
+////        setFullname(fullname);
+////        setBirthday(birthday);
+////        setEmail(email);
+////        setGender(gender);
+////        setContactnumber(contactnumber);
+//        Intent intent = new Intent(context, PreEditProfileActivity.class);
+//       // intent.putExtra(User.class.getSimpleName(), this);
+//        ((EditProfileActivity)context).startActivityForResult(intent,1);
     }
 
     public void intentActivityEdit(Context context) {
-        setImgUrl(imgUrl);
-        setFullname(fullname);
-        setBirthday(birthday);
-        setEmail(email);
-        setGender(gender);
-        setContactnumber(contactnumber);
-        Intent intent = new Intent(context, EditProfileActivity.class);
-        intent.putExtra(User.class.getSimpleName(), this);
-        context.startActivity(intent);
+//        setImgUrl(imgUrl);
+//        setFullname(fullname);
+//        setBirthday(birthday);
+//        setEmail(email);
+//        setGender(gender);
+//        setContactnumber(contactnumber);
+//        Intent intent = new Intent(context, EditProfileActivity.class);
+//        //intent.putExtra(User.class.getSimpleName(), this);
+//        context.startActivity(intent);
     }
 
     public void showDatePicker(final EditText edt, final Context context) {
