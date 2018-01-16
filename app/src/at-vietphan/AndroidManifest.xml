@@ -38,6 +38,7 @@
         <activity android:name=".ui.asynchronous.activitys.ThreadHandleActivity" />
         <activity android:name=".ui.asynchronous.activitys.AsynchronousActivity" />
         <activity android:name=".ui.asynchronous.activitys.CountDownTimerActivity" />
+        <activity android:name=".ui.canvas.CanvasActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
     </application>
 </manifest>
