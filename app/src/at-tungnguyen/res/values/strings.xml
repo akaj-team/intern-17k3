@@ -112,4 +112,10 @@
     <string name="bracket_first">(</string>
     <string name="login_successfully">Login successfully</string>
     <string name="btn_datablind">DataBlind</string>
+    <string name="tv_email_user">Email</string>
+    <string name="tv_birthday_user">BirthDay</string>
+    <string name="tv_gender_user">Gender</string>
+    <string name="tv_contact_user">Contact</string>
+    <string name="tv_submit_user">Submit</string>
+    <string name="tv_edit_profile">Edit Profile</string>
 </resources>

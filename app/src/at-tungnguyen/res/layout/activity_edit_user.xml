@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:gravity="center"
-                android:text="EDIT PROFILE"
+                android:text="@string/tv_edit_profile"
                 android:textSize="16dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -36,9 +36,8 @@
                 android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:src="@drawable/profile"
-                app:imageUrl="@{user.url}"
                 app:civ_border_width="2dp"
-                />
+                app:imageUrl="@{user.url}" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -52,7 +51,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:afterTextChanged="@{(text) -> user.afterChangeText(text,1) }"
-                    android:hint="Dimitri Polsovka ChiCo "
+                    android:inputType="text"
                     android:src="@drawable/ic_clear_grey_600_18dp"
                     android:text="@{user.userName}" />
 
@@ -86,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="E-mail"
+                    android:text="@string/tv_email_user"
                     android:textColor="#797f81"
                     android:textSize="20sp" />
 
@@ -98,6 +97,7 @@
                         android:id="@+id/edtEmailProfile"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:inputType="textEmailAddress"
                         android:afterTextChanged="@{(text) -> user.afterChangeText(text,2) }"
                         android:background="@drawable/bg_border_edt"
                         android:text="@{user.email}" />
@@ -135,7 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Birth Date"
+                        android:text="@string/tv_birthday_user"
                         android:textColor="#797f81"
                         android:textSize="20sp" />
 
@@ -143,6 +143,7 @@
                         android:id="@+id/edtBirthDate"
                         android:layout_width="170dp"
                         android:layout_height="40dp"
+                        android:inputType="date"
                         android:afterTextChanged="@{(text) -> user.afterChangeText(text,3) }"
                         android:background="@drawable/bg_border_edt"
                         android:drawableRight="@drawable/ic_arrow_drop_down_grey_600_24dp"
@@ -161,7 +162,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Gender"
+                        android:text="@string/tv_gender_user"
                         android:textColor="#797f81"
                         android:textSize="20sp" />
 
@@ -184,7 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Contact Number"
+                    android:text="@string/tv_contact_user"
                     android:textColor="#797f81"
                     android:textSize="20sp" />
 
@@ -198,7 +199,7 @@
                         android:layout_height="40dp"
                         android:afterTextChanged="@{(text) -> user.afterChangeText(text,5) }"
                         android:background="@drawable/bg_border_edt"
-                        android:hint="+81626061362"
+                        android:inputType="number"
                         android:text="@{user.contact}" />
 
                     <Button
@@ -224,7 +225,7 @@
             android:layout_gravity="center"
             android:enabled="@{user.isCheckEmpty}"
             android:onClick="@{() -> user.setPreviewUser(user,context)}"
-            android:text="Submit"
+            android:text="@string/tv_submit_user"
             android:textSize="18dp" />
     </LinearLayout>
 </layout>

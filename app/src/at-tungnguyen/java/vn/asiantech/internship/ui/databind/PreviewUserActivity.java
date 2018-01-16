@@ -26,9 +26,6 @@ public class PreviewUserActivity extends AppCompatActivity {
 
     /**
      * Get Data from EditText
-     * @param requestCode
-     * @param resultCode
-     * @param data
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

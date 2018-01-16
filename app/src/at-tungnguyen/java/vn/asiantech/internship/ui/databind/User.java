@@ -128,8 +128,6 @@ public class User extends BaseObservable implements Parcelable {
 
     /**
      * Check Empty Edit text
-     *
-     * @return
      */
     @Bindable
     public boolean isCheckEmpty() {
@@ -143,10 +141,6 @@ public class User extends BaseObservable implements Parcelable {
 
     /**
      * Update DateTimePicker
-     *
-     * @param date
-     * @param month
-     * @param year
      */
     private void updateBirthDate(int date, int month, int year) {
         setBirthDate(String.valueOf(date).concat("-").concat(String.valueOf(month + 1).concat("-").concat(String.valueOf(year))));
@@ -154,8 +148,6 @@ public class User extends BaseObservable implements Parcelable {
 
     /**
      * Show Dialog DataTimePicker
-     *
-     * @param view
      */
     public void showDialogDate(final View view) {
         Calendar calender = Calendar.getInstance();
@@ -187,9 +179,6 @@ public class User extends BaseObservable implements Parcelable {
     /**
      * Set AfterChangeText Edit text
      * set Aft
-     *
-     * @param edtAfter
-     * @param type
      */
     public void afterChangeText(Editable edtAfter, int type) {
         if (type == 1) {
@@ -206,23 +195,16 @@ public class User extends BaseObservable implements Parcelable {
 
     /**
      * Send Data EditUser to PreViewUser
-     *
-     * @param user
-     * @param context
      */
     public void setPreviewUser(User user, Context context) {
         Intent intent = new Intent(context, PreviewUserActivity.class);
         intent.putExtra(User.class.getSimpleName(), user);
         ((EditUserActivity) context).setResult(Activity.RESULT_OK, intent);
         ((EditUserActivity) context).finish();
-
     }
 
     /**
      * Send Data PreViewUser to EditUser
-     *
-     * @param user
-     * @param context
      */
     public void editUser(User user, Context context) {
         Intent intent = new Intent(context, EditUserActivity.class);
