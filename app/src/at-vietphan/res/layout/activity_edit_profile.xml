@@ -152,7 +152,7 @@
                 android:id="@+id/edtPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,4)}"
+                android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,3)}"
                 android:background="@drawable/bg_number_text_view"
                 android:inputType="phone"
                 android:padding="5dp"

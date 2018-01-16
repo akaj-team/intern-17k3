@@ -129,8 +129,6 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         } else if (index == 2) {
             setBirthDate(String.valueOf(text));
         } else if (index == 3) {
-            setGenDer(Integer.parseInt(String.valueOf(text)));
-        } else if (index == 4) {
             setPhone(String.valueOf(text));
         }
     }
@@ -156,8 +154,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         DatePickerDialog datePickerDialog = new DatePickerDialog(edt.getContext(),
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int month, int day) {
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
                         setBirthDate(day + "/" + (month + 1) + "/" + year);
                     }
                 }, year, month, day);
