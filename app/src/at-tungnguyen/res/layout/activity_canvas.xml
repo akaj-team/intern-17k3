@@ -9,6 +9,6 @@
     <vn.asiantech.internship.ui.canvas.CustomView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        app:column_width="20dp"
+        app:column_width="40dp"
         android:background="@color/white" />
 </LinearLayout>

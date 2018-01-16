@@ -28,14 +28,14 @@ public class CustomView extends View {
     private Paint mPaintColumnPink;
     private Paint mPaintColumnBlue;
     private Paint mPaintColumnOrange;
-    private int mColumnWidth = getResources().getDimensionPixelSize(R.dimen.column_width);
-    private int mColumnCornerRadiusHorizontal = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
-    private List<Integer> mDataList = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 11, 2, 6, 7, 10, 9, 2, 4, 5, 6, 10, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+    private int mColumnWidth;
+    private int mColumnCornerRadiusHorizontal;
+    private List<Integer> mDataList;
     private List<Integer> mDataList2;
     private List<Integer> mDataList3;
-    private float mMax = Collections.max(mDataList);
-    private int mSizeData = mDataList.size();
-    private float mLefts[] = new float[mSizeData];
+    private float mMax;
+    private int mSizeData;
+    private float mLefts[];
     private float mPrevXMove;
     private float mXDown;
     private long mTimeDown;
@@ -63,11 +63,11 @@ public class CustomView extends View {
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        initValues();
         // Get attrs from XML file
         attributeSet(context, attrs);
         // scale
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
+        initValues();
         initPaint();
     }
 
@@ -85,6 +85,15 @@ public class CustomView extends View {
         mDataList3 = new ArrayList<>(Arrays.asList(2, 4, 3, 5, 8, 3, 11, 5, 6, 2, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 10, 9, 4, 5, 10, 10, 8, 9, 2, 11, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 10, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
         mPaths = new ArrayList<>();
         mTimes = new ArrayList<>();
+        mDataList = new ArrayList<>(Arrays.asList(2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 11, 2, 4, 5, 6, 7, 11, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 11, 2, 6, 7, 10, 9, 2, 4, 5, 6, 10, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9));
+        float maxListPeoplePink = Collections.max(mDataList);
+        float maxListPeopleCyan = Collections.max(mDataList2);
+        float maxListPeopleBlue = Collections.max(mDataList3);
+        mMax = Math.max(Math.max(maxListPeoplePink, maxListPeopleCyan), maxListPeopleBlue);
+        // get size of list
+        mSizeData = mDataList.size();
+        // get lefts size
+        mLefts = new float[mSizeData];
     }
 
     /**
@@ -125,6 +134,8 @@ public class CustomView extends View {
         mPaintColumnOrange.setAntiAlias(true);
 
         mPaintRect.setColor(ContextCompat.getColor(getContext(), R.color.white));
+        mColumnWidth = getResources().getDimensionPixelSize(R.dimen.column_width);
+        mColumnCornerRadiusHorizontal = getResources().getDimensionPixelSize(R.dimen.column_corner_radius);
     }
 
     @Override
