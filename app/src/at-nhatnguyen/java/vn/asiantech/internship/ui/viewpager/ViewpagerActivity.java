@@ -26,8 +26,6 @@ public class ViewpagerActivity extends AppCompatActivity {
     private List<Screen> mScreens;
     private ScreenPagerAdapter mScreenPagerAdapter;
     private ViewPager mViewPager;
-    private int mPositionPager;
-    private boolean mIsLastPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

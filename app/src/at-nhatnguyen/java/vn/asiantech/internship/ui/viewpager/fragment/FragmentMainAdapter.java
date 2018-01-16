@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class FragmentMainAdapter extends FragmentPagerAdapter {
     private static final int POSITION_HOME = 0;
     private static final int POSITION_INFORMATION = 1;
+    private static final int POSITION_ANOTHER = 2;
 
     public FragmentMainAdapter(FragmentManager fm) {
         super(fm);
@@ -26,13 +27,15 @@ public class FragmentMainAdapter extends FragmentPagerAdapter {
             case POSITION_INFORMATION:
                 fragment = new InforFragment();
                 break;
+            case POSITION_ANOTHER:
+                fragment = new AnotherFragment();
         }
         return fragment;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -45,6 +48,8 @@ public class FragmentMainAdapter extends FragmentPagerAdapter {
             case POSITION_INFORMATION:
                 title = "Infor";
                 break;
+            case POSITION_ANOTHER:
+                title = "Another";
         }
         return title;
     }

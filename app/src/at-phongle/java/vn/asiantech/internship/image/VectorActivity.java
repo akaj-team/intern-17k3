@@ -8,7 +8,7 @@ import vn.asiantech.internship.R;
 
 /**
  * Created by phongle on 13/12/2560.
- * Vector Activity
+ * Vector DownloadActivity
  */
 public class VectorActivity extends AppCompatActivity {
     @Override
