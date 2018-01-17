@@ -16,6 +16,7 @@ import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 import vn.asiantech.internship.ui.unittest.LoginActivity;
 import vn.asiantech.internship.ui.viewpager.ui.ViewPagerActivity;
+import vn.asiantech.internship.ui.thread_handler.SplashThreadActivity;
 
 /**
  * Author Asian Tech Inc.
@@ -31,6 +32,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnSaveData;
     private Button mBtnValidation;
     private Button mBtnBroadcast;
+    private Button mBtnThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
+        mBtnThread = findViewById(R.id.btnThread);
         mBtnValidation = findViewById(R.id.btnValidation);
         mBtnBroadcast = findViewById(R.id.btnBroadcast);
     }
@@ -67,6 +70,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLoadImage.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
         mBtnValidation.setOnClickListener(this);
+        mBtnThread.setOnClickListener(this);
         mBtnBroadcast.setOnClickListener(this);
     }
 
@@ -109,6 +113,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnValidation:
                 Intent intentValidation = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intentValidation);
+            case R.id.btnThread:
+                Intent intentThread = new Intent(SplashActivity.this, SplashThreadActivity.class);
+                startActivity(intentThread);
+                break;
             case R.id.btnBroadcast:
                 Intent intentBroadcast = new Intent(SplashActivity.this, BroadcastActivity.class);
                 startActivity(intentBroadcast);
