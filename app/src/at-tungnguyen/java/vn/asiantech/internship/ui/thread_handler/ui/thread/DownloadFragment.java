@@ -115,18 +115,23 @@ public class DownloadFragment extends Fragment {
                                 tvPercent.setText(String.valueOf(mStatus).concat("%"));
                             }
                         });
-                        mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                     }
+                    mBitmap = BitmapFactory.decodeByteArray(output.toByteArray(), 0, output.size());
                 } catch (IOException e) {
                     Log.d("e", e.getMessage());
                 } finally {
-                    connection.disconnect();
                     try {
-                        assert false;
-                        input.close();
-                        output.close();
-                    } catch (IOException e) {
-                        Log.d("error :", e.getMessage());
+                        if (connection != null) {
+                            connection.disconnect();
+                        }
+                        if (input != null) {
+                            input.close();
+                        }
+                        if (output != null) {
+                            output.close();
+                        }
+                    } catch (Exception e) {
+                        e.getMessage();
                     }
                 }
                 if (mBitmap != null) {

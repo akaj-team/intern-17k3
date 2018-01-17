@@ -110,4 +110,20 @@
     <string name="tv_canvas_km">km</string>
     <string name="login_success">Login success</string>
     <string name="notification">Notification</string>
+    <string name="usb">USB</string>
+    <string name="ac">AC</string>
+    <string name="wireless">WIRELESS</string>
+    <string name="not_plugin">NOT PLUGIN</string>
+    <string name="percent">%</string>
+    <string name="cold">Cold</string>
+    <string name="dead">Dead</string>
+    <string name="good">Good</string>
+    <string name="over_heat">Over Heat</string>
+    <string name="over_voltage">Over Voltage</string>
+    <string name="uknown">Unknown</string>
+    <string name="failure">Unspecified failure</string>
+    <string name="charging">Charging</string>
+    <string name="discharging">Discharging</string>
+    <string name="battery_full">Battery Full</string>
+    <string name="not_charging">Not Charging</string>
 </resources>
