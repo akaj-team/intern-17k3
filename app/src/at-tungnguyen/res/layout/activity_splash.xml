@@ -6,7 +6,6 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context="vn.asiantech.internship.ui.splash.SplashActivity">
-
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="300dp"
@@ -60,6 +59,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_login_validation" />
+
     <Button
         android:id="@+id/btnDataBlind"
         android:layout_width="300dp"
