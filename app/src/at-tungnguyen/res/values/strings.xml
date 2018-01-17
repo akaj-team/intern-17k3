@@ -111,4 +111,7 @@
     <string name="textview_kb">KB/</string>
     <string name="bracket_first">(</string>
     <string name="login_successfully">Login successfully</string>
+    <string name="tv_name_music">NameMsic</string>
+    <string name="tv_single">Single</string>
+    <string name="btn_service">Service</string>
 </resources>

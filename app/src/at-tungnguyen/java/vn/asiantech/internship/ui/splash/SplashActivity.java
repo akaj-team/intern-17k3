@@ -13,6 +13,7 @@ import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.service.MusicActivity;
 import vn.asiantech.internship.ui.unittest.LoginActivity;
 import vn.asiantech.internship.ui.viewpager.ui.ViewPagerActivity;
 
@@ -29,6 +30,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnViewPager;
     private Button mBtnSaveData;
     private Button mBtnValidation;
+    private Button mBtnService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnValidation = findViewById(R.id.btnValidation);
+        mBtnService = findViewById(R.id.btnService);
     }
 
     /**
@@ -64,6 +67,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnLoadImage.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
         mBtnValidation.setOnClickListener(this);
+        mBtnService.setOnClickListener(this);
     }
 
     /**
@@ -106,6 +110,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnValidation:
                 Intent intentValidation = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intentValidation);
+            case R.id.btnService:
+                Intent intentService = new Intent(SplashActivity.this, MusicActivity.class);
+                startActivity(intentService);
         }
     }
 }
