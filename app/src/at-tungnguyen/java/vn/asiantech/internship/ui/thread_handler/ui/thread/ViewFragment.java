@@ -48,7 +48,7 @@ public class ViewFragment extends Fragment {
      *
      * @param bitmap
      */
-    public void setImageBitmapp(Bitmap bitmap) {
+    public void setImageBitmap(Bitmap bitmap) {
         mImgLoadImage.setImageBitmap(bitmap);
     }
 }
