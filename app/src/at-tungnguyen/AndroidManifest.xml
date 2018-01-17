@@ -38,5 +38,6 @@
         <activity android:name=".ui.viewpager.ui.ViewPagerActivity" />
         <activity android:name=".ui.viewpager.ui.TabLayoutActivity" />
         <activity android:name=".ui.unittest.LoginActivity" />
+        <activity android:name=".ui.broadcast.BroadcastActivity"/>
     </application>
 </manifest>
