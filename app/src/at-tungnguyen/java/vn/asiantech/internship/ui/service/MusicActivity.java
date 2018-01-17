@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     private RecyclerView mRecyclerViewMusic;
     private MusicAdapter mMusicAdapter;
     private LinearLayout mLlMusic;
+    private Button mBtnPlay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     private void initViews() {
         mLlMusic = findViewById(R.id.llToolMusic);
         mRecyclerViewMusic = findViewById(R.id.recyclerviewMusic);
+        mBtnPlay = findViewById(R.id.btnPlayMusic);
     }
     private void initAdapter() {
         mMusicList = new ArrayList<>();
@@ -46,15 +49,18 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         });
     }
     private void initData() {
-        mMusicList.add(new Music("Nguoi la oi", "Karrik"));
-        mMusicList.add(new Music("Tinh don phuong", "Lam Truong"));
-        mMusicList.add(new Music("Tinh don phuong", "Lam Truong"));
-        mMusicList.add(new Music("Tinh don phuong", "Lam Truong"));
-        mMusicList.add(new Music("Tinh don phuong", "Lam Truong"));
+        mMusicList.add(new Music("Nguoi la oi", "Karrik",false));
+        mMusicList.add(new Music("Tinh don phuong", "Lam Truong",false));
+
     }
 
     @Override
     public void onItemClick(Music music) {
         mLlMusic.setVisibility(View.VISIBLE);
+        getClickPlay();
+    }
+
+    private void getClickPlay() {
+        if()
     }
 }

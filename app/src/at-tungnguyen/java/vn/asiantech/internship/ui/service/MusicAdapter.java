@@ -41,7 +41,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MusicViewHol
         return mMusicLists.size();
     }
 
-    class MusicViewHolder extends RecyclerView.ViewHolder{
+    class MusicViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvNameMusic;
         private TextView mTvSingle;
 
@@ -64,6 +64,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MusicViewHol
         }
 
     }
+
     public interface OnItemClickListener {
         void onItemClick(Music music);
     }
