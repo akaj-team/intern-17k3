@@ -61,6 +61,11 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     }
 
     private void getClickPlay() {
-        if()
+        mBtnPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }
