@@ -38,7 +38,12 @@
         <activity android:name=".ui.viewpager.ui.ViewPagerActivity" />
         <activity android:name=".ui.viewpager.ui.TabLayoutActivity" />
         <activity android:name=".ui.unittest.LoginActivity" />
-        <activity android:name=".ui.service.MusicActivity"></activity>
+        <activity android:name=".ui.service.MusicActivity"/>
+        <service
+            android:name=".ui.service.MusicPlayService"
+            android:label="Music Service" >
+        </service>
+
     </application>
 
 </manifest>
