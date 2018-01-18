@@ -106,7 +106,7 @@ public class CustomView extends View {
                 attrs,
                 R.styleable.CustomView, 0, 0);
         try {
-            mColumnWidth = (int) typedArray.getDimension(R.styleable.CustomView_column_width, getResources()
+            mColumnWidth = typedArray.getDimensionPixelOffset(R.styleable.CustomView_column_width, getResources()
                     .getDimensionPixelSize(R.dimen.custom_column_width));
         } finally {
             typedArray.recycle();
@@ -164,18 +164,18 @@ public class CustomView extends View {
     private void drawLine(Canvas canvas) {
         //Draw Max Line
         canvas.drawLine(0,
-                getTop((int) mMax),
+                getTop(mMax),
                 getWidth(),
-                getTop((int) mMax),
+                getTop(mMax),
                 mPaintLine);
         //Draw End Line
         canvas.drawLine(0, getHeight() - getPaddingBottom(),
                 getWidth(), getHeight() - getPaddingBottom(), mPaintLine);
         //Draw Middle Line
         canvas.drawLine(0,
-                getTop((int) (mMax / 2)),
+                getTop((mMax / 2)),
                 getWidth(),
-                getTop((int) (mMax / 2)),
+                getTop((mMax / 2)),
                 mPaintLine);
     }
 
@@ -215,9 +215,9 @@ public class CustomView extends View {
      */
     private void drawText(Canvas canvas) {
         //Draw Text Max Values
-        canvas.drawText(String.valueOf(mMax).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop((int) mMax) + mColumnWidth, mPaintText);
+        canvas.drawText(mMax + (getResources().getString(R.string.tv_canvas_km)), 0, getTop(mMax) + mColumnWidth, mPaintText);
         //Draw Text Center Values
-        canvas.drawText(String.valueOf(mMax / 2).concat(getResources().getString(R.string.tv_canvas_km)), 0, getTop((int) (mMax / 2)), mPaintText);
+        canvas.drawText(mMax / 2 + (getResources().getString(R.string.tv_canvas_km)), 0, getTop(mMax / 2), mPaintText);
         //Draw Text Below
         canvas.drawText(getResources().getString(R.string.tv_canvas_km), 0, getHeight(), mPaintText);
     }
@@ -226,7 +226,7 @@ public class CustomView extends View {
      * @param value value
      * @return top
      */
-    private float getTop(int value) {
+    private float getTop(float value) {
         float realHeight = (getHeight() - getPaddingBottom() - getPaddingTop()) * (value * 1F / mMax * 1F);
         return getHeight() - getPaddingBottom() - realHeight;
     }
