@@ -1,6 +1,7 @@
 package vn.asiantech.internship.unittest;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -56,7 +57,7 @@ public class LoginUnitTestActivity extends AppCompatActivity {
         // validation user name
         if (isValidateUserName(mEdtUserName.getText().toString()) &&
                 isValidatePassWord(mEdtPassWord.getText().toString())) {
-            showToast(getString(R.string.validate_done));
+            showSuccessDialog(getString(R.string.validate_done));
         }
     }
 
@@ -100,7 +101,7 @@ public class LoginUnitTestActivity extends AppCompatActivity {
             showToast(getString(R.string.validate_password_length));
         } else if (!PasswordValidation.isDifferentUserName(mEdtUserName.getText().toString(), password)) {
             showToast(getString(R.string.validate_password_different_user_name));
-        } else if (PasswordValidation.isAtLeastNumber(password)) {
+        } else if (!PasswordValidation.isAtLeastNumber(password)) {
             showToast(getString(R.string.validate_password_have_least_number));
         } else if (!PasswordValidation.isPasswordSpace(password)) {
             showToast(getString(R.string.validate_password_space));
@@ -121,5 +122,18 @@ public class LoginUnitTestActivity extends AppCompatActivity {
      */
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Show dialog when login success
+     *
+     * @param message message
+     */
+    private void showSuccessDialog(String message) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Notification");
+        alertDialogBuilder.setMessage(message);
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

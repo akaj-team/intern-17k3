@@ -85,6 +85,11 @@
     <string name="name_btn_exercise_1_thread">Exercise 1</string>
     <string name="name_btn_exercise_2_thread">Exercise 2</string>
     <string name="item_countdown_list">item :  </string>
+    <string name="text_btn_canvas_screen">CanVas Screen</string>
+    <string name="tv_canvas_name">Chart</string>
+    <string name="tv_canvas_km">Km</string>
+    <string name="tv_day">24 Jul</string>
+    <string name="tv_day_end">9 Oct</string>
     <string name="name_btn_unit_text">Unit Test Login</string>
     <string name="unit_test_login_user">user name</string>
     <string name="unit_test_login_password">password</string>
@@ -97,10 +102,23 @@
     <string name="validate_username_no_distinction">distinction between uppercase and lowercase letters</string>
     <string name="validate_done">Done</string>
     <string name="null_password">please input password</string>
-    <string name="validate_password_length"><![CDATA[password must > 7 character]]></string>
+    <string name="validate_password_length">password must > 7 character</string>
     <string name="validate_password_different_user_name">password is not different username</string>
     <string name="validate_password_have_least_number">password have at least one special character or number</string>
     <string name="validate_password_space">password have space</string>
     <string name="validate_password_least_3_capital_letter">password have least 3 capital letter</string>
     <string name="validate_password_repeat">repeat character password 2 times</string>
+    <string name="name_btn_battery_info">Battery info</string>
+    <string name="battery_status_ac">AC</string>
+    <string name="battery_status_usb">USB</string>
+    <string name="battery_status_unknown">UNKNOWN</string>
+    <string name="battery_heath_dead">DEAD</string>
+    <string name="battery_heath_good">GOOD</string>
+    <string name="battery_heath_over">OVER VOLTAGE</string>
+    <string name="battery_heath_heat">OVER HEART</string>
+    <string name="battery_heath_failure">FAILURE</string>
+    <string name="battery_status_charging">CHARGING</string>
+    <string name="battery_status_dis_charging">DISCHARGING</string>
+    <string name="battery_status_full">FULL</string>
+    <string name="battery_status_not_charging">NOT CHARGING</string>
 </resources>

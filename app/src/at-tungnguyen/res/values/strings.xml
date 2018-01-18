@@ -82,7 +82,6 @@
     <string name="input">input</string>
     <string name="use_memory">Please use memory</string>
     <string name="tv_toolbar">Home</string>
-    <string name="btn_thread">Thread-Handler</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="btn_start">Start</string>
@@ -92,6 +91,7 @@
     <string name="tv_count">0</string>
     <string name="tv_percent">0%</string>
     <string name="tv_countdown_timer">Tungkute</string>
+
     <string name="tv_username">UserName</string>
     <string name="tv_password">Password</string>
     <string name="tv_test_login"> Login </string>
@@ -111,6 +111,27 @@
     <string name="textview_kb">KB/</string>
     <string name="bracket_first">(</string>
     <string name="login_successfully">Login successfully</string>
+    <string name="tv_battery">Battery_info</string>
+    <string name="battery_level">battery_level</string>
+    <string name="battery_charging">Charging: </string>
+    <string name="battery_discharging">Discharging: </string>
+    <string name="battery_not_charging">NotCharging: </string>
+    <string name="battery_full">Battery Full</string>
+    <string name="battery_unknown">Unknown</string>
+    <string name="battery_heath_good">good</string>
+    <string name="battery_heath_heat">heat</string>
+    <string name="battery_heath_dead">dead</string>
+    <string name="battery_heath_over">over</string>
+    <string name="battery_heath_failure">Failure</string>
+    <string name="battery_plugged_ac">Plugged AC</string>
+    <string name="battery_plugged_usb">Plugged USB</string>
+    <string name="tv_heath_battery">Battery Heath:</string>
+    <string name="tv_technology_battery">Technology:</string>
+    <string name="tv_plugged_battery">Battery Plugged :</string>
+    <string name="btn_broadcast">BroadCast</string>
+    <string name="btn_thread">Thread-Handler</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="have_not_picked_img">Not picked</string>
     <string name="tv_canvas_km">Km</string>
     <string name="tv_canvas_5km">5Km</string>

@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import vn.asiantech.internship.viewpagerandtablelayout.ui.AnotherFragment;
 import vn.asiantech.internship.viewpagerandtablelayout.ui.HomeFragment;
 import vn.asiantech.internship.viewpagerandtablelayout.ui.InfoFragment;
 
@@ -14,7 +15,8 @@ import vn.asiantech.internship.viewpagerandtablelayout.ui.InfoFragment;
 public class TabLayoutAdapter extends FragmentPagerAdapter {
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_INFO = 1;
-    private String[] mFragment = {"Home", "Info"};
+    private static final int FRAGMENT_ANOTHER = 2;
+    private String[] mFragment = {"Home", "Info", "Another"};
 
     public TabLayoutAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
@@ -27,6 +29,8 @@ public class TabLayoutAdapter extends FragmentPagerAdapter {
                 return new HomeFragment();
             case FRAGMENT_INFO:
                 return new InfoFragment();
+            case FRAGMENT_ANOTHER:
+                return new AnotherFragment();
             default:
                 return null;
         }

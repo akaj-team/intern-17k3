@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
+import vn.asiantech.internship.canvas.CanvasActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
@@ -29,6 +30,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnImageScreen;
     private Button mBtnViewPager;
     private Button mBtnThreadAndHandler;
+    private Button mBtnCanvasScreen;
     private Button mBtnUnitTest;
 
     @Override
@@ -49,9 +51,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnSaveDataScreen = findViewById(R.id.btnSaveDataScreen);
         mBtnRecyclerViewScreen = findViewById(R.id.btnRecyclerViewScreen);
         mBtnDrawerLayoutScreen = findViewById(R.id.btnDrawerLayout);
+        mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnImageScreen = findViewById(R.id.btnImageScreen);
         mBtnThreadAndHandler = findViewById(R.id.btnThreadAndHandleScreen);
-        mBtnViewPager = findViewById(R.id.btnViewPager);
+        mBtnCanvasScreen = findViewById(R.id.btnCanvasScreen);
         mBtnUnitTest = findViewById(R.id.btnUnitTest);
     }
 
@@ -68,6 +71,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnImageScreen.setOnClickListener(this);
         mBtnThreadAndHandler.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
+        mBtnCanvasScreen.setOnClickListener(this);
         mBtnUnitTest.setOnClickListener(this);
     }
 
@@ -100,6 +104,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnViewPager:
                 startActivity(new Intent(this, SlideActivity.class));
+                break;
+            case R.id.btnCanvasScreen:
+                startActivity(new Intent(this, CanvasActivity.class));
                 break;
             case R.id.btnUnitTest:
                 startActivity(new Intent(this, LoginUnitTestActivity.class));

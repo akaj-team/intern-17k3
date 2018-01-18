@@ -26,7 +26,7 @@ import vn.asiantech.internship.ui.recyclerview.CommentActivity;
 import vn.asiantech.internship.util.GoogleUtil;
 
 /**
- * Activity of screen with drawerLayout
+ * DownloadActivity of screen with drawerLayout
  */
 public class DrawerActivity extends AppCompatActivity implements MenuAdapter.OnItemClickListener {
     private static final int REQUEST_CODE_PICK_IMAGE = 2;

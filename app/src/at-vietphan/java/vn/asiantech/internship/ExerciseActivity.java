@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import vn.asiantech.internship.ui.asynchronous.activitys.AsynchronousActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
+import vn.asiantech.internship.ui.canvas.CanvasActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.loadimage.ImageLoaderActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
@@ -29,6 +30,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
     private Button mBtnLoadImage;
     private Button mBtnViewPager;
     private Button mBtnAsynchronous;
+    private Button mBtnCanvas;
     private Button mBtnUnitTest;
 
     @Override
@@ -48,6 +50,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
         mBtnAsynchronous = findViewById(R.id.btnAsynchronous);
+        mBtnCanvas = findViewById(R.id.btnCanvas);
         mBtnUnitTest = findViewById(R.id.btnUnitTest);
     }
 
@@ -60,6 +63,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
         mBtnLoadImage.setOnClickListener(this);
         mBtnViewPager.setOnClickListener(this);
         mBtnAsynchronous.setOnClickListener(this);
+        mBtnCanvas.setOnClickListener(this);
         mBtnUnitTest.setOnClickListener(this);
     }
 
@@ -89,6 +93,9 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnAsynchronous:
                 startActivity(new Intent(this, AsynchronousActivity.class));
+                break;
+            case R.id.btnCanvas:
+                startActivity(new Intent(this, CanvasActivity.class));
                 break;
             case R.id.btnUnitTest:
                 startActivity(new Intent(this, UnitTestActivity.class));

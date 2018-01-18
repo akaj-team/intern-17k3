@@ -1,6 +1,7 @@
 package vn.asiantech.internship.ui.unittest;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -59,6 +60,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
+     * Method show dialog when success
+     */
+    private void showDialogSuccess(String message) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Notification");
+        alertDialogBuilder.setMessage(message);
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    /**
      * checkValidate LoginActivity
      */
     private void checkValidate() {
@@ -85,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
         } else if (!PasswordValidation.isCheckPasswordDifferentUser(userName, password)) {
             showToast(getResources().getString(R.string.password_user_different));
         } else {
-            showToast(getResources().getString(R.string.login_successfully));
+            showDialogSuccess(getResources().getString(R.string.login_successfully));
         }
     }
 }
