@@ -96,7 +96,7 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         // register Broad cast
         registerBroadcast();
         // set show panel
-        showBottomPanel(getSharePreference());
+        showBottomPanel(isShowBottomPanel());
     }
 
 
@@ -172,7 +172,7 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
     /**
      * get share preference
      */
-    private boolean getSharePreference() {
+    private boolean isShowBottomPanel() {
         boolean check;
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         check = prefs.getBoolean("check", false);
@@ -196,8 +196,6 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                // Set Icon
-                .setSmallIcon(R.drawable.ic_music_item)
                 // Dismiss Notification
                 .setAutoCancel(false)
                 .setOngoing(true)
@@ -228,7 +226,7 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
     public void onItemClickListener(int potion) {
         mIsShowBottomPanel = true;
         setSharePreference(mIsShowBottomPanel);
-        showBottomPanel(getSharePreference());
+        showBottomPanel(isShowBottomPanel());
         mIsPlay = true;
         mPosition = potion;
         //set name song to Bottom Play
@@ -255,7 +253,7 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
                 mIsPlay = false;
                 mIsShowBottomPanel = false;
                 setSharePreference(mIsShowBottomPanel);
-                showBottomPanel(getSharePreference());
+                showBottomPanel(isShowBottomPanel());
                 break;
             case R.id.imgPlayMusic:
                 if (!mIsPlay) {

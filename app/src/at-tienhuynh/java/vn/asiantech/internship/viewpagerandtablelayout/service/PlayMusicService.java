@@ -20,6 +20,8 @@ import vn.asiantech.internship.viewpagerandtablelayout.models.Music;
  */
 public class PlayMusicService extends Service implements MediaPlayer.OnCompletionListener {
 
+    private static final String CURRENT_TIME = "currentTime";
+    private static final String TOTAL_TIME = "totalTime";
     private static MediaPlayer mMediaPlayer;
     private ArrayList<Music> mMusicLists = new ArrayList<>();
     private int mPosition;
@@ -30,6 +32,7 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
 
     @Override
     public void onCreate() {
+        super.onCreate();
         // init Media
         initMedia();
     }
@@ -101,16 +104,16 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
         mCountTimeResumeSong = new CountDownTimer(mTimeResuming, 1000) {
             @Override
             public void onTick(long l) {
-                sendTimeIntent.putExtra("currentTime", mMediaPlayer.getCurrentPosition());
-                sendTimeIntent.putExtra("totalTime", mMediaPlayer.getDuration());
+                sendTimeIntent.putExtra(CURRENT_TIME, mMediaPlayer.getCurrentPosition());
+                sendTimeIntent.putExtra(TOTAL_TIME, mMediaPlayer.getDuration());
                 sendBroadcast(sendTimeIntent);
                 mTimeResuming = l;
             }
 
             @Override
             public void onFinish() {
-                sendTimeIntent.putExtra("currentTime", mMediaPlayer.getCurrentPosition());
-                sendTimeIntent.putExtra("totalTime", mMediaPlayer.getDuration());
+                sendTimeIntent.putExtra(CURRENT_TIME, mMediaPlayer.getCurrentPosition());
+                sendTimeIntent.putExtra(TOTAL_TIME, mMediaPlayer.getDuration());
                 sendBroadcast(sendTimeIntent);
             }
         }.start();
@@ -144,16 +147,16 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
             mCountTimeStartSong = new CountDownTimer(mMediaPlayer.getDuration(), 1000) {
                 @Override
                 public void onTick(long l) {
-                    sendTimeIntent.putExtra("currentTime", mMediaPlayer.getCurrentPosition());
-                    sendTimeIntent.putExtra("totalTime", mMediaPlayer.getDuration());
+                    sendTimeIntent.putExtra(CURRENT_TIME, mMediaPlayer.getCurrentPosition());
+                    sendTimeIntent.putExtra(TOTAL_TIME, mMediaPlayer.getDuration());
                     sendBroadcast(sendTimeIntent);
                     mTimeResuming = l;
                 }
 
                 @Override
                 public void onFinish() {
-                    sendTimeIntent.putExtra("currentTime", mMediaPlayer.getCurrentPosition());
-                    sendTimeIntent.putExtra("totalTime", mMediaPlayer.getDuration());
+                    sendTimeIntent.putExtra(CURRENT_TIME, mMediaPlayer.getCurrentPosition());
+                    sendTimeIntent.putExtra(TOTAL_TIME, mMediaPlayer.getDuration());
                     sendBroadcast(sendTimeIntent);
                 }
             };
