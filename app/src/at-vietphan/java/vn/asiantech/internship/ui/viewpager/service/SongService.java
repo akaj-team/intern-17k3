@@ -22,7 +22,6 @@ import vn.asiantech.internship.ui.viewpager.service.util.UtilFunctions;
 
 public class SongService extends Service implements AudioManager.OnAudioFocusChangeListener {
     private static Timer mTimer;
-    private MediaPlayer mMediaPlayer;
     @SuppressLint("HandlerLeak")
     private final Handler handler = new Handler() {
         @Override
@@ -41,6 +40,7 @@ public class SongService extends Service implements AudioManager.OnAudioFocusCha
 //            }
         }
     };
+    private MediaPlayer mMediaPlayer;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -66,15 +66,14 @@ public class SongService extends Service implements AudioManager.OnAudioFocusCha
             if (PlayerConstants.SONGS_LIST.size() <= 0) {
                 PlayerConstants.SONGS_LIST = UtilFunctions.listOfSongs(getApplicationContext());
             }
-            MediaItem data = PlayerConstants.SONGS_LIST.get(PlayerConstants.SONG_NUMBER);
-            String songPath = data.getPath();
+            MediaItem mediaItem = PlayerConstants.SONGS_LIST.get(PlayerConstants.SONG_NUMBER);
+            String songPath = mediaItem.getPath();
             playSong(songPath);
-
             PlayerConstants.SONG_CHANGE_HANDLER = new Handler(new Callback() {
                 @Override
                 public boolean handleMessage(Message msg) {
-                    MediaItem data = PlayerConstants.SONGS_LIST.get(PlayerConstants.SONG_NUMBER);
-                    String songPath = data.getPath();
+                    MediaItem mediaItem = PlayerConstants.SONGS_LIST.get(PlayerConstants.SONG_NUMBER);
+                    String songPath = mediaItem.getPath();
                     try {
                         playSong(songPath);
                         MusicActivity.changeUI();
