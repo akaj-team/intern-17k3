@@ -20,7 +20,6 @@ public class RecyclerViewActivity extends AppCompatActivity implements NewFeedAd
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
-
         initViews();
         initData();
         initAdapter();

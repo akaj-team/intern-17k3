@@ -10,16 +10,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.viewpager_tablayout.InfoBatteryActivity;
+import vn.asiantech.internship.ui.viewpager_tablayout.activity.InfoBatteryActivity;
+import vn.asiantech.internship.ui.viewpager_tablayout.activity.PlayMusicActivity;
 
 /**
  * Created by anh.quach on 1/9/18.
  * Fragment information battery
  */
-public class InfoBatteryFragment extends Fragment {
+public class BroadcastReceiverAndServiceFragment extends Fragment {
 
-    public InfoBatteryFragment newInstance() {
-        return new InfoBatteryFragment();
+    public BroadcastReceiverAndServiceFragment newInstance() {
+        return new BroadcastReceiverAndServiceFragment();
     }
 
     @Nullable
@@ -31,6 +32,13 @@ public class InfoBatteryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), InfoBatteryActivity.class));
+            }
+        });
+        Button mBtnPlayMusic = view.findViewById(R.id.btnPlayMusic);
+        mBtnPlayMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), PlayMusicActivity.class));
             }
         });
         return view;

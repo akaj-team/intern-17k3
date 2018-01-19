@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.viewpager_tablayout;
+package vn.asiantech.internship.util;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

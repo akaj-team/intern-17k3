@@ -50,8 +50,9 @@
     <string name="textview_download" formatted="false">DownLoad %dKB/%dKB %d%%</string>
     <string name="title_tablayout_home">HOME</string>
     <string name="title_tablayout_info">INFO</string>
-    <string name="title_tablayout_info_battery">BATTERY</string>
+    <string name="title_tablayout_info_battery">BR and Service</string>
     <string name="btn_information_battery">Information Battery</string>
+    <string name="btn_play_music">Play Music</string>
     <string name="tv_level_battery" formatted="false">%d %%</string>
     <string name="tv_ac">AC</string>
     <string name="tv_usb">USB</string>
@@ -67,4 +68,20 @@
     <string name="tv_full">Full</string>
     <string name="day">24Jul</string>
     <string name="month">Oct</string>
+    <string name="action_send_data">sendData</string>
+
+    <string name="new_message_notification_title_template">New message: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="new_message_notification_placeholder_text_template">You said %1$s and lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel
+        semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
 </resources>

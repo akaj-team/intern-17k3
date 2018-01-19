@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.viewpager_tablayout;
+package vn.asiantech.internship.ui.viewpager_tablayout.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -13,7 +13,7 @@ import java.util.List;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.viewpager_tablayout.adapter.TabLayoutAdapter;
 import vn.asiantech.internship.ui.viewpager_tablayout.fragment.HomeFragment;
-import vn.asiantech.internship.ui.viewpager_tablayout.fragment.InfoBatteryFragment;
+import vn.asiantech.internship.ui.viewpager_tablayout.fragment.BroadcastReceiverAndServiceFragment;
 import vn.asiantech.internship.ui.viewpager_tablayout.fragment.InfoFragment;
 
 public class TabLayoutActivity extends AppCompatActivity {
@@ -41,7 +41,7 @@ public class TabLayoutActivity extends AppCompatActivity {
         TabLayoutAdapter mTabLayoutAdapter = new TabLayoutAdapter(manager, mFragments, mFragmentTittles);
         mTabLayoutAdapter.addFrag(new HomeFragment(), getString(R.string.title_tablayout_home));
         mTabLayoutAdapter.addFrag(new InfoFragment(), getString(R.string.title_tablayout_info));
-        mTabLayoutAdapter.addFrag(new InfoBatteryFragment(), getString(R.string.title_tablayout_info_battery));
+        mTabLayoutAdapter.addFrag(new BroadcastReceiverAndServiceFragment(), getString(R.string.title_tablayout_info_battery));
         mViewPagerMain.setAdapter(mTabLayoutAdapter);
     }
 
