@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -40,5 +41,18 @@
         <activity android:name=".ui.asynchronous.activitys.CountDownTimerActivity" />
         <activity android:name=".ui.canvas.CanvasActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
+        <activity android:name=".ui.viewpager.broadcast.BroadCastReceiverActivity" />
+        <activity android:name=".ui.viewpager.broadcast.TActivity" />
+        <activity android:name=".ui.viewpager.broadcast.SeekBarActivity" />
+        <activity android:name=".ui.viewpager.service.MusicActivity" />
+
+        <service android:name=".ui.viewpager.broadcast.MediaPlayerService" />
+        <service android:name=".ui.viewpager.broadcast.BackgroundAudioService" />
+
+        <service
+            android:name=".ui.viewpager.service.SongService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
+
 </manifest>

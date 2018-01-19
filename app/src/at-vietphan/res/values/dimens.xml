@@ -12,4 +12,7 @@
     <dimen name="custom_view_default_column_width">20dp</dimen>
     <dimen name="line_stroke_width">2dp</dimen>
     <dimen name="tv_battery_status">20dp</dimen>
+    <dimen name="button_width">32dp</dimen>
+    <dimen name="small_button_width">28dp</dimen>
+    <dimen name="small_image_art_width">85dp</dimen>
 </resources>

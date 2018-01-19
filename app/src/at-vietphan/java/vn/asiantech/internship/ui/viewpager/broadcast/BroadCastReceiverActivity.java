@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.viewpager.fragments;
+package vn.asiantech.internship.ui.viewpager.broadcast;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -8,20 +8,13 @@ import android.content.IntentFilter;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.BatteryManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import vn.asiantech.internship.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class BroadcastFragment extends Fragment {
+public class BroadCastReceiverActivity extends AppCompatActivity {
     private ImageView mImgBattery;
     private TextView mTvPercent;
     private TextView mTvPlugin;
@@ -29,25 +22,21 @@ public class BroadcastFragment extends Fragment {
     private TextView mTvState;
     private TextView mTvTechnology;
 
-    public static BroadcastFragment newInstance() {
-        return new BroadcastFragment();
-    }
-
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_broadcast, container, false);
-        initViews(view);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_broad_cast_receiver);
+        initViews();
         batteryStatus();
-        return view;
     }
 
-    private void initViews(View view) {
-        mImgBattery = view.findViewById(R.id.imgBattery);
-        mTvPercent = view.findViewById(R.id.tvPercent);
-        mTvPlugin = view.findViewById(R.id.tvPlugin);
-        mTvHealth = view.findViewById(R.id.tvHealth);
-        mTvState = view.findViewById(R.id.tvState);
-        mTvTechnology = view.findViewById(R.id.tvTechnology);
+    private void initViews() {
+        mImgBattery = findViewById(R.id.imgBattery);
+        mTvPercent = findViewById(R.id.tvPercent);
+        mTvPlugin = findViewById(R.id.tvPlugin);
+        mTvHealth = findViewById(R.id.tvHealth);
+        mTvState = findViewById(R.id.tvState);
+        mTvTechnology = findViewById(R.id.tvTechnology);
     }
 
     private void batteryStatus() {
@@ -62,7 +51,7 @@ public class BroadcastFragment extends Fragment {
                 batteryAnimationCharging(intent);
             }
         };
-        getContext().registerReceiver(batteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        registerReceiver(batteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     }
 
     private void batteryAnimationCharging(Intent intent) {
@@ -76,7 +65,7 @@ public class BroadcastFragment extends Fragment {
                     mImgBattery.setBackgroundResource(R.drawable.img_spin_animation_50);
                 } else if (level <= 75) {
                     mImgBattery.setBackgroundResource(R.drawable.img_spin_animation_75);
-                }else {
+                } else {
                     mImgBattery.setBackgroundResource(R.drawable.img_spin_animation_100);
                 }
                 AnimationDrawable animationDrawable = (AnimationDrawable) mImgBattery.getBackground();
@@ -103,7 +92,7 @@ public class BroadcastFragment extends Fragment {
     }
 
     private void batteryPlugin() {
-        Intent batteryStatus = getContext().registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        Intent batteryStatus = registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
         if (chargePlug >= 0) {
             if (chargePlug == BatteryManager.BATTERY_PLUGGED_USB) {

@@ -1,10 +1,9 @@
 package vn.asiantech.internship.ui.viewpager.adapter;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import vn.asiantech.internship.ui.viewpager.fragments.BroadcastFragment;
+import vn.asiantech.internship.ui.viewpager.fragments.OtherFragment;
 import vn.asiantech.internship.ui.viewpager.fragments.HomeFragment;
 import vn.asiantech.internship.ui.viewpager.fragments.InformationFragment;
 
@@ -20,14 +19,14 @@ public class TabLayoutAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public android.support.v4.app.Fragment getItem(int position) {
         switch (position) {
             case 0:
                 return new HomeFragment();
             case 1:
                 return new InformationFragment();
             default:
-                return new BroadcastFragment();
+                return new OtherFragment();
         }
     }
 
@@ -44,7 +43,7 @@ public class TabLayoutAdapter extends FragmentPagerAdapter {
             case 1:
                 return "INFO";
             default:
-                return "BROADCAST";
+                return "OTHER";
         }
     }
 }
