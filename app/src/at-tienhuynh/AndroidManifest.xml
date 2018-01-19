@@ -53,7 +53,9 @@
         <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity" />
         <activity android:name=".unittest.LoginUnitTestActivity" />
         <activity android:name=".viewpagerandtablelayout.ui.BatteryActivity" />
-        <activity android:name=".viewpagerandtablelayout.ui.PlayMusicActivity"></activity>
+        <activity
+            android:name=".viewpagerandtablelayout.ui.PlayMusicActivity"
+            android:theme="@style/NoActionBarTheme" />
     </application>
 
 </manifest>

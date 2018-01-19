@@ -37,7 +37,7 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent.getAction() != null) {
+        if (intent != null && intent.getAction() != null) {
             switch (intent.getAction()) {
                 case "data":
                     mMusicLists = intent.getParcelableArrayListExtra("list");
@@ -101,18 +101,17 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
         mCountTimeResumeSong = new CountDownTimer(mTimeResuming, 1000) {
             @Override
             public void onTick(long l) {
-                sendTimeIntent.putExtra("totalTime", mMediaPlayer.getDuration());
                 sendTimeIntent.putExtra("currentTime", mMediaPlayer.getCurrentPosition());
+                sendTimeIntent.putExtra("totalTime", mMediaPlayer.getDuration());
                 sendBroadcast(sendTimeIntent);
                 mTimeResuming = l;
             }
 
             @Override
             public void onFinish() {
+                sendTimeIntent.putExtra("currentTime", mMediaPlayer.getCurrentPosition());
                 sendTimeIntent.putExtra("totalTime", mMediaPlayer.getDuration());
-                sendTimeIntent.putExtra("currentTime", mMediaPlayer.getDuration());
                 sendBroadcast(sendTimeIntent);
-
             }
         }.start();
     }
@@ -136,33 +135,29 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
      */
     private void playSongMusic(int position) {
         try {
-            sendTimeIntent.setAction("sendTime");
-            mMediaPlayer.reset();
             Uri myUri = Uri.parse("android.resource://" + this.getPackageName() + "/" + mMusicLists.get(position).getSong());
+            mMediaPlayer.reset();
             mMediaPlayer.setDataSource(this, myUri);
-            mMediaPlayer.prepareAsync();
-            mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            mMediaPlayer.prepare();
+            mMediaPlayer.start();
+            sendTimeIntent.setAction("sendTime");
+            mCountTimeStartSong = new CountDownTimer(mMediaPlayer.getDuration(), 1000) {
                 @Override
-                public void onPrepared(final MediaPlayer mediaPlayer) {
-                    mediaPlayer.start();
-                    mCountTimeStartSong = new CountDownTimer(mediaPlayer.getDuration(), 1000) {
-                        @Override
-                        public void onTick(long l) {
-                            sendTimeIntent.putExtra("totalTime", mediaPlayer.getDuration());
-                            sendTimeIntent.putExtra("currentTime", mediaPlayer.getCurrentPosition());
-                            sendBroadcast(sendTimeIntent);
-                            mTimeResuming = l;
-                        }
-
-                        @Override
-                        public void onFinish() {
-                            sendTimeIntent.putExtra("totalTime", mediaPlayer.getDuration());
-                            sendTimeIntent.putExtra("currentTime", mediaPlayer.getCurrentPosition());
-                            sendBroadcast(sendTimeIntent);
-                        }
-                    }.start();
+                public void onTick(long l) {
+                    sendTimeIntent.putExtra("currentTime", mMediaPlayer.getCurrentPosition());
+                    sendTimeIntent.putExtra("totalTime", mMediaPlayer.getDuration());
+                    sendBroadcast(sendTimeIntent);
+                    mTimeResuming = l;
                 }
-            });
+
+                @Override
+                public void onFinish() {
+                    sendTimeIntent.putExtra("currentTime", mMediaPlayer.getCurrentPosition());
+                    sendTimeIntent.putExtra("totalTime", mMediaPlayer.getDuration());
+                    sendBroadcast(sendTimeIntent);
+                }
+            };
+            mCountTimeStartSong.start();
         } catch (IOException e) {
             Log.d("XXX", e.getMessage());
         }
@@ -172,9 +167,4 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
     public void onCompletion(MediaPlayer mediaPlayer) {
         //no -opp
     }
-
-    @Override
-    public void onDestroy() {
-    }
-
 }

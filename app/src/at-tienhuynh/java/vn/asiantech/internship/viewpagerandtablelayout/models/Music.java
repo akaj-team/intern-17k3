@@ -11,17 +11,20 @@ public class Music implements Parcelable {
     private String name;
     private String singer;
     private int song;
+    private String time;
 
-    public Music(String name, String singer, int song) {
+    public Music(String name, String singer, int song, String time) {
         this.name = name;
         this.singer = singer;
         this.song = song;
+        this.time = time;
     }
 
     public Music(Parcel in) {
         name = in.readString();
         singer = in.readString();
         song = in.readInt();
+        time = in.readString();
     }
 
     public static final Creator<Music> CREATOR = new Creator<Music>() {
@@ -60,6 +63,14 @@ public class Music implements Parcelable {
         this.song = song;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -70,5 +81,6 @@ public class Music implements Parcelable {
         parcel.writeString(name);
         parcel.writeString(singer);
         parcel.writeInt(song);
+        parcel.writeString(time);
     }
 }

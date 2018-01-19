@@ -1,16 +1,21 @@
 package vn.asiantech.internship.viewpagerandtablelayout.ui;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RemoteViews;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -26,6 +31,7 @@ import vn.asiantech.internship.viewpagerandtablelayout.service.PlayMusicService;
  */
 public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter.onItemClick, View.OnClickListener {
 
+    private static final String MY_PREFS_NAME = "checkShow";
     private SeekBar mSeekBarMusic;
     private ImageView mImgPlay;
     private TextView mTvTimeSongBottomPlay;
@@ -39,12 +45,14 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
     private boolean mIsPlay;
     private Intent mIntent;
     private int mPosition;
+    private boolean mIsShowBottomPanel;
+
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals("sendTime")) {
-                int total = intent.getIntExtra("totalTime", 0);
                 int current = intent.getIntExtra("currentTime", 0);
+                int total = intent.getIntExtra("totalTime", 0);
                 mSeekBarMusic.setProgress(current);
                 mSeekBarMusic.setMax(total);
                 mTvTimeSongBottomPlay.setText(getString(R.string.time_song, convertTime(current), convertTime(total)));
@@ -87,7 +95,10 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         sendData();
         // register Broad cast
         registerBroadcast();
+        // set show panel
+        showBottomPanel(getSharePreference());
     }
+
 
     private void initViews() {
         mRecyclerViewPlayMusic = findViewById(R.id.recyclerViewMusic);
@@ -100,13 +111,15 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         mImgPreviousSong = findViewById(R.id.imgPreviousSong);
         mSeekBarMusic = findViewById(R.id.seekBar);
         mIntent = new Intent(PlayMusicActivity.this, PlayMusicService.class);
+        // marquee tv song name
+        mTvNameSongBottomPlay.setSelected(true);
     }
 
     private void initData() {
         mMusicLists = new ArrayList<>();
-        mMusicLists.add(new Music("Havana", "Trump", R.raw.the_spectre));
-        mMusicLists.add(new Music("Until you", "Oba", R.raw.thefatrat));
-        mMusicLists.add(new Music("Waiting love", "Jack", R.raw.nguoi_la_oi));
+        mMusicLists.add(new Music("Havana", "Trump", R.raw.the_spectre, "0:30"));
+        mMusicLists.add(new Music("Until you", "Oba", R.raw.thefatrat, "0:22"));
+        mMusicLists.add(new Music("Waiting love", "Jack", R.raw.nguoi_la_oi, "3:37"));
     }
 
     private void initRecyclerView() {
@@ -132,10 +145,90 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         startService(mIntent);
     }
 
+    /**
+     * show bottom panel
+     *
+     * @param checkShow checkShow
+     */
+    private void showBottomPanel(boolean checkShow) {
+        if (checkShow) {
+            mLlPlayBottom.setVisibility(View.VISIBLE);
+        } else {
+            mLlPlayBottom.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * set share preference
+     *
+     * @param check check panel is show or not
+     */
+    private void setSharePreference(boolean check) {
+        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean("check", check);
+        editor.apply();
+    }
+
+    /**
+     * get share preference
+     */
+    private boolean getSharePreference() {
+        boolean check;
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        check = prefs.getBoolean("check", false);
+        return check;
+    }
+
+    /**
+     * Set notification manager
+     */
+    private void setNotification() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, buildNotification().build());
+    }
+
+    protected NotificationCompat.Builder buildNotification() {
+        // Open NotificationView.java Activity
+        PendingIntent pIntent = PendingIntent.getActivity(
+                this,
+                1,
+                getIntent(),
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                // Set Icon
+                .setSmallIcon(R.drawable.ic_music_item)
+                // Dismiss Notification
+                .setAutoCancel(false)
+                .setOngoing(true)
+                .setCustomContentView(getComplexNotificationView())
+                // Set PendingIntent into Notification
+                .setContentIntent(pIntent);
+        return builder;
+    }
+
+    private RemoteViews getComplexNotificationView() {
+        RemoteViews notificationView = new RemoteViews(
+                this.getPackageName(),
+                R.layout.activity_custom_notification);
+        notificationView.setTextViewText(R.id.tvTile, mMusicLists.get(mPosition).getName());
+        notificationView.setTextViewText(R.id.tvItemText, mMusicLists.get(mPosition).getSinger());
+        Intent intent = new Intent(this, PlayMusicActivity.class);
+        intent.setAction("stop");
+        PendingIntent pIntent = PendingIntent.getService(
+                this,
+                1,
+                intent,
+                0);
+        notificationView.setOnClickPendingIntent(R.id.imgPlayNotice, pIntent);
+        return notificationView;
+    }
 
     @Override
     public void onItemClickListener(int potion) {
-        mLlPlayBottom.setVisibility(View.VISIBLE);
+        mIsShowBottomPanel = true;
+        setSharePreference(mIsShowBottomPanel);
+        showBottomPanel(getSharePreference());
         mIsPlay = true;
         mPosition = potion;
         //set name song to Bottom Play
@@ -144,6 +237,9 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         mIntent.putExtra("i", potion);
         startService(mIntent);
         mImgPlay.setImageResource(R.drawable.ic_pause_white_24dp);
+        // send notification
+        // set notification
+        setNotification();
     }
 
     private void setNameBottomPlay(int position) {
@@ -157,7 +253,9 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
                 mIntent.setAction("stop");
                 startService(mIntent);
                 mIsPlay = false;
-                mLlPlayBottom.setVisibility(View.INVISIBLE);
+                mIsShowBottomPanel = false;
+                setSharePreference(mIsShowBottomPanel);
+                showBottomPanel(getSharePreference());
                 break;
             case R.id.imgPlayMusic:
                 if (!mIsPlay) {
@@ -204,7 +302,6 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        stopService(mIntent);
         unregisterReceiver(mBroadcastReceiver);
     }
 
@@ -214,12 +311,19 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
     private void registerBroadcast() {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("sendTime");
+        intentFilter.addAction("stop");
         registerReceiver(mBroadcastReceiver, intentFilter);
     }
 
-    private String convertTime(int milisecond) {
-        int minute = milisecond / 60000;
-        int second = (milisecond / 1000) % 60;
+    /**
+     * Convert time from service send to activity
+     *
+     * @param millisecond millisecond
+     * @return string time
+     */
+    private String convertTime(int millisecond) {
+        int minute = millisecond / 60000;
+        int second = (millisecond / 1000) % 60;
         return minute + ":" + second;
     }
 }

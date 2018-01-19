@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@android:style/TextAppearance.StatusBar.EventContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorHeader">
+
+    <ImageView
+        android:id="@+id/imgNoticeLeft"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_music_item" />
+
+    <LinearLayout
+        android:id="@+id/llText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="false"
+        android:layout_margin="8dp"
+        android:layout_toRightOf="@+id/imgNoticeLeft"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/llText"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgPlayNotice"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_play_arrow_white_24dp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_clear_white_18dp" />
+    </LinearLayout>
+
+</RelativeLayout>

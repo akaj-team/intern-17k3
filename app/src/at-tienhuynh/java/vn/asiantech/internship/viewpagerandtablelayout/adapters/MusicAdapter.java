@@ -52,11 +52,13 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MusicAdapter
     class MusicAdapterViewHolder extends RecyclerView.ViewHolder {
         TextView mTvNameSong;
         TextView mTvSinger;
+        TextView mTvTime;
 
         MusicAdapterViewHolder(View itemView) {
             super(itemView);
             mTvNameSong = itemView.findViewById(R.id.tvNameSong);
             mTvSinger = itemView.findViewById(R.id.tvSingerSong);
+            mTvTime = itemView.findViewById(R.id.tvTimeItem);
         }
 
         private void onBindData(List<Music> musicLists) {
@@ -64,6 +66,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MusicAdapter
             if (music != null) {
                 mTvNameSong.setText(music.getName());
                 mTvSinger.setText(music.getSinger());
+                mTvTime.setText(music.getTime());
             }
         }
     }
