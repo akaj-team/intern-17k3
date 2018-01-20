@@ -13,7 +13,10 @@ public class Music implements Parcelable{
     private String single;
     private boolean isPlay;
 
-    public Music(String nameMusic, String single,boolean isPlay) {
+    public Music() {
+    }
+
+    public Music(String nameMusic, String single, boolean isPlay) {
         this.nameMusic = nameMusic;
         this.single = single;
         this.isPlay = isPlay;
@@ -71,5 +74,14 @@ public class Music implements Parcelable{
         parcel.writeString(nameMusic);
         parcel.writeString(single);
         parcel.writeByte((byte) (isPlay ? 1 : 0));
+    }
+
+    @Override
+    public String toString() {
+        return "Music{" +
+                "nameMusic='" + nameMusic + '\'' +
+                ", single='" + single + '\'' +
+                ", isPlay=" + isPlay +
+                '}';
     }
 }

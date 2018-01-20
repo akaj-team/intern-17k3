@@ -58,14 +58,13 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MusicViewHol
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mOnItemClickListener.onItemClick(music);
+                    mOnItemClickListener.onItemClick(music,getAdapterPosition());
                 }
             });
         }
-
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Music music);
+        void onItemClick(Music music, int position);
     }
 }

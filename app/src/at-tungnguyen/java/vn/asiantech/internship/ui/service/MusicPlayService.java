@@ -3,11 +3,8 @@ package vn.asiantech.internship.ui.service;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Bundle;
+import android.os.Binder;
 import android.os.IBinder;
-import android.widget.Toast;
-
-import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Music;
@@ -19,45 +16,102 @@ import vn.asiantech.internship.model.Music;
  */
 
 public class MusicPlayService extends Service {
-    MediaPlayer play;
-    List<MediaPlayer> mList;
+    static MediaPlayer mMediaPlayer;
+    int[] mList;
+    Music music;
+    private int mPositon = 0;
+    private final IBinder musicBind = new MusicBinder();
+
     public MusicPlayService() {
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return musicBind;
+    }
+
+    //binder
+    public class MusicBinder extends Binder {
+        MusicPlayService getService() {
+            return MusicPlayService.this;
+        }
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mList.add(MediaPlayer.create(getApplicationContext(), R.raw.music));
-        mList.add(MediaPlayer.create(getApplicationContext(), R.raw.music_2));
-        Toast.makeText(getApplicationContext(), "Đang nghe nhạc", Toast.LENGTH_LONG).show();
+        mList = new int[]{R.raw.music_2, R.raw.music3, R.raw.music3, R.raw.music3};
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        play.start();
         if (intent != null) {
-            if (intent.getAction() != null) {
-                switch (intent.getAction()) {
-                    case "data":
-                        if (intent.getExtras() != null) {
-                            Bundle bundle = intent.getExtras().getBundle("data");
-                                Music music = bundle.getParcelable("music");
-                        }
-                }
-            }
+//            if (intent.getAction() != null) {
+//                switch (intent.getAction()) {
+//                    case "data":
+//                        int mPosition = intent.getIntExtra("position", 0);
+//                        Log.d("AAAA", "onStartCommand: " + intent.getIntExtra("position", 0));
+//                        Music music = intent.getParcelableExtra("music");
+//                        mMediaPlayer = MediaPlayer.create(getApplicationContext(), mList[mPositon]);
+//                        Log.d("AAAA", "onStartCommand: " + music.getNameMusic());
+//                    case "music":
+//                }
+//            }
         }
         return START_STICKY;
     }
 
-    @Override
-    public void onDestroy() {
-        play.release();
-        Toast.makeText(getApplicationContext(), "Dừng nhạc", Toast.LENGTH_LONG).show();
-        super.onDestroy();
+    public void onNext() {
+        mPositon++;
+        if (mPositon < mList.length) {
+            if (mMediaPlayer.isPlaying()) {
+                mMediaPlayer.stop();
+            } else {
+                mPositon = mList.length;
+            }
+            mMediaPlayer = MediaPlayer.create(getApplicationContext(), mList[mPositon]);
+            mMediaPlayer.start();
+        }
+    }
+
+    public void onPrevious() {
+        mPositon--;
+        if (mPositon < mList.length) {
+            if (mMediaPlayer.isPlaying()) {
+                mMediaPlayer.stop();
+            } else {
+                mPositon = mList.length;
+            }
+            mMediaPlayer = MediaPlayer.create(getApplicationContext(), mList[mPositon]);
+            mMediaPlayer.start();
+        }
+    }
+
+    public void onPause() {
+        mMediaPlayer.pause();
+    }
+
+    public boolean isPlaying() {
+        mMediaPlayer.isPlaying();
+        return false;
+    }
+
+    public void onPlay() {
+        mMediaPlayer.start();
+    }
+
+    public void onStop() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+        }
+    }
+
+    public String getNameMusic(Music music){
+        return music.getNameMusic();
+    }
+    public void onItemMusicClick(int position) {
+        onStop();
+        mMediaPlayer = MediaPlayer.create(getApplicationContext(), mList[position]);
+        mMediaPlayer.start();
     }
 }
