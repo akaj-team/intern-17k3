@@ -6,11 +6,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.util.Log;
 
 import java.util.ArrayList;
 
-import vn.asiantech.internship.ui.viewpager.service.MediaItem;
+import vn.asiantech.internship.ui.viewpager.service.models.Song;
 
 public class UtilFunctions {
 
@@ -37,14 +36,13 @@ public class UtilFunctions {
      * @param context context
      * @return listOfSongs
      */
-    public static ArrayList<MediaItem> listOfSongs(Context context) {
+    public static ArrayList<Song> listOfSongs(Context context) {
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         Cursor c = context.getContentResolver().query(uri, null, MediaStore.Audio.Media.IS_MUSIC + " != 0", null, null);
-        ArrayList<MediaItem> listOfSongs = new ArrayList<>();
+        ArrayList<Song> listOfSongs = new ArrayList<>();
         c.moveToFirst();
         while (c.moveToNext()) {
-            MediaItem songData = new MediaItem();
-
+            Song song = new Song();
             String title = c.getString(c.getColumnIndex(MediaStore.Audio.Media.TITLE));
             String artist = c.getString(c.getColumnIndex(MediaStore.Audio.Media.ARTIST));
             String album = c.getString(c.getColumnIndex(MediaStore.Audio.Media.ALBUM));
@@ -53,17 +51,16 @@ public class UtilFunctions {
             long albumId = c.getLong(c.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID));
             String composer = c.getString(c.getColumnIndex(MediaStore.Audio.Media.COMPOSER));
 
-            songData.setTitle(title);
-            songData.setAlbum(album);
-            songData.setArtist(artist);
-            songData.setDuration(duration);
-            songData.setPath(data);
-            songData.setAlbumId(albumId);
-            songData.setComposer(composer);
-            listOfSongs.add(songData);
+            song.setTitle(title);
+            song.setAlbum(album);
+            song.setArtist(artist);
+            song.setDuration(duration);
+            song.setPath(data);
+            song.setAlbumId(albumId);
+            song.setComposer(composer);
+            listOfSongs.add(song);
         }
         c.close();
-        Log.d("SIZE", "SIZE: " + listOfSongs.size());
         return listOfSongs;
     }
 

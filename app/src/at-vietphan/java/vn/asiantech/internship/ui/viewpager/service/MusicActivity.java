@@ -13,7 +13,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -22,18 +21,25 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.viewpager.service.util.PlayerConstants;
+import vn.asiantech.internship.ui.viewpager.service.adapter.SongAdapter;
+import vn.asiantech.internship.ui.viewpager.service.controller.MusicController;
+import vn.asiantech.internship.ui.viewpager.service.models.Song;
+import vn.asiantech.internship.ui.viewpager.service.service.MediaService;
+import vn.asiantech.internship.ui.viewpager.service.util.Constants;
 import vn.asiantech.internship.ui.viewpager.service.util.UtilFunctions;
 
-public class MusicActivity extends AppCompatActivity implements MediaItemAdapter.OnItemClickListener, OnClickListener {
-    private static TextView mTvPlayingSong;
-    private static ImageView mImgPause;
-    private static ImageView mImgPlay;
-    private static ImageView mImgNext;
-    private static ImageView mImgPrevious;
+public class MusicActivity extends AppCompatActivity implements SongAdapter.OnItemClickListener, OnClickListener {
+    @SuppressLint("StaticFieldLeak")
     private static LinearLayout mLnPlayingSong;
-    private MediaItemAdapter mMediaItemAdapter;
+    @SuppressLint("StaticFieldLeak")
+    private static TextView mTvPlayingSong;
+    @SuppressLint("StaticFieldLeak")
+    private static ImageView mImgPlay;
+    @SuppressLint("StaticFieldLeak")
+    private static ImageView mImgPause;
     private ImageView mImgStop;
+    private ImageView mImgPrevious;
+    private ImageView mImgNext;
     private RecyclerView mRecyclerView;
     private ProgressBar mProgressBar;
     private TextView mTvBufferDuration;
@@ -41,18 +47,18 @@ public class MusicActivity extends AppCompatActivity implements MediaItemAdapter
 
     @SuppressLint("SetTextI18n")
     @SuppressWarnings("deprecation")
-    public static void updateUI() {
+    public static void updateLayoutUI() {
         try {
-            MediaItem data = PlayerConstants.SONGS_LIST.get(PlayerConstants.SONG_NUMBER);
-            mTvPlayingSong.setText(data.getTitle() + " " + data.getArtist() + "-" + data.getAlbum());
+            Song song = Constants.SONGS_LIST.get(Constants.SONG_NUMBER);
+            mTvPlayingSong.setText(song.getTitle() + " " + song.getArtist() + "-" + song.getAlbum());
             mLnPlayingSong.setVisibility(View.VISIBLE);
         } catch (Exception ex) {
             ex.getMessage();
         }
     }
 
-    public static void changeButton() {
-        if (PlayerConstants.IS_SONG_PAUSED) {
+    public static void updateBtnUI() {
+        if (Constants.IS_SONG_PAUSED) {
             mImgPause.setVisibility(View.GONE);
             mImgPlay.setVisibility(View.VISIBLE);
         } else {
@@ -61,9 +67,9 @@ public class MusicActivity extends AppCompatActivity implements MediaItemAdapter
         }
     }
 
-    public static void changeUI() {
-        updateUI();
-        changeButton();
+    public static void updateAllUI() {
+        updateLayoutUI();
+        updateBtnUI();
     }
 
     @Override
@@ -71,9 +77,24 @@ public class MusicActivity extends AppCompatActivity implements MediaItemAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
         initViews();
-        initListeners();
         initData();
         initAdapter();
+        initListeners();
+        this.getApplicationContext();
+    }
+
+    private void initViews() {
+        mLnPlayingSong = findViewById(R.id.lnPlayingSong);
+        mTvPlayingSong = findViewById(R.id.tvNowPlaying);
+        mImgPlay = findViewById(R.id.imgPlay);
+        mImgPause = findViewById(R.id.imgPause);
+        mImgStop = findViewById(R.id.imgStop);
+        mImgPrevious = findViewById(R.id.imgPrevious);
+        mImgNext = findViewById(R.id.imgNext);
+        mRecyclerView = findViewById(R.id.recyclerViewMusic);
+        mProgressBar = findViewById(R.id.progressBar);
+        mTvBufferDuration = findViewById(R.id.tvBufferDuration);
+        mTvDuration = findViewById(R.id.tvDuration);
     }
 
     private void initData() {
@@ -88,28 +109,14 @@ public class MusicActivity extends AppCompatActivity implements MediaItemAdapter
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             }
         } else {
-            PlayerConstants.SONGS_LIST = UtilFunctions.listOfSongs(getApplicationContext());
+            Constants.SONGS_LIST = UtilFunctions.listOfSongs(getApplicationContext());
         }
     }
 
     private void initAdapter() {
-        mMediaItemAdapter = new MediaItemAdapter(PlayerConstants.SONGS_LIST, this);
-        mRecyclerView.setAdapter(mMediaItemAdapter);
+        SongAdapter songAdapter = new SongAdapter(Constants.SONGS_LIST, this);
+        mRecyclerView.setAdapter(songAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    private void initViews() {
-        mTvPlayingSong = findViewById(R.id.tvNowPlaying);
-        mImgPlay = findViewById(R.id.imgPlay);
-        mImgPause = findViewById(R.id.imgPause);
-        mImgNext = findViewById(R.id.imgNext);
-        mImgPrevious = findViewById(R.id.imgPrevious);
-        mProgressBar = findViewById(R.id.progressBar);
-        mImgStop = findViewById(R.id.imgStop);
-        mTvBufferDuration = findViewById(R.id.tvBufferDuration);
-        mTvDuration = findViewById(R.id.tvDuration);
-        mRecyclerView = findViewById(R.id.recyclerViewMusic);
-        mLnPlayingSong = findViewById(R.id.lnPlayingSong);
     }
 
     private void initListeners() {
@@ -125,14 +132,15 @@ public class MusicActivity extends AppCompatActivity implements MediaItemAdapter
     protected void onResume() {
         super.onResume();
         try {
-            boolean isServiceRunning = UtilFunctions.isServiceRunning(SongService.class.getName(), getApplicationContext());
+            boolean isServiceRunning = UtilFunctions.isServiceRunning(MediaService.class.getName(), getApplicationContext());
             if (isServiceRunning) {
-                updateUI();
+                updateLayoutUI();
+                updateBtnUI();
             } else {
                 mLnPlayingSong.setVisibility(View.GONE);
             }
-            changeButton();
-            PlayerConstants.PROGRESSBAR_HANDLER = new Handler() {
+
+            Constants.PROGRESSBAR_HANDLER = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
                     Integer i[] = (Integer[]) msg.obj;
@@ -148,38 +156,35 @@ public class MusicActivity extends AppCompatActivity implements MediaItemAdapter
 
     @Override
     public void onItemClick(int position) {
-        Log.d("TAG", "TAG Tapped INOUT(IN)");
-        PlayerConstants.IS_SONG_PAUSED = false;
-        PlayerConstants.SONG_NUMBER = position;
-        boolean isServiceRunning = UtilFunctions.isServiceRunning(SongService.class.getName(), getApplicationContext());
+        Constants.IS_SONG_PAUSED = false;
+        Constants.SONG_NUMBER = position;
+        boolean isServiceRunning = UtilFunctions.isServiceRunning(MediaService.class.getName(), getApplicationContext());
         if (!isServiceRunning) {
-            Intent i = new Intent(getApplicationContext(), SongService.class);
+            Intent i = new Intent(getApplicationContext(), MediaService.class);
             startService(i);
         } else {
-            PlayerConstants.SONG_CHANGE_HANDLER.sendMessage(PlayerConstants.SONG_CHANGE_HANDLER.obtainMessage());
+            Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
         }
-        updateUI();
-        changeButton();
-        Log.d("TAG", "TAG Tapped INOUT(OUT)");
+        updateAllUI();
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imgPlay:
-                Controls.playControl(getApplicationContext());
+                MusicController.playControl(getApplicationContext());
                 break;
             case R.id.imgPause:
-                Controls.pauseControl(getApplicationContext());
+                MusicController.pauseControl(getApplicationContext());
                 break;
             case R.id.imgNext:
-                Controls.nextControl(getApplicationContext());
+                MusicController.nextControl(getApplicationContext());
                 break;
             case R.id.imgPrevious:
-                Controls.previousControl(getApplicationContext());
+                MusicController.previousControl(getApplicationContext());
                 break;
             case R.id.imgStop:
-                stopService(new Intent(getApplicationContext(), SongService.class));
+                stopService(new Intent(getApplicationContext(), MediaService.class));
                 mLnPlayingSong.setVisibility(View.GONE);
         }
     }

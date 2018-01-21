@@ -18,7 +18,6 @@
         <activity android:name=".ExerciseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -42,17 +41,24 @@
         <activity android:name=".ui.canvas.CanvasActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
         <activity android:name=".ui.viewpager.broadcast.BroadCastReceiverActivity" />
-        <activity android:name=".ui.viewpager.broadcast.TActivity" />
-        <activity android:name=".ui.viewpager.broadcast.SeekBarActivity" />
         <activity android:name=".ui.viewpager.service.MusicActivity" />
 
-        <service android:name=".ui.viewpager.broadcast.MediaPlayerService" />
-        <service android:name=".ui.viewpager.broadcast.BackgroundAudioService" />
-
         <service
-            android:name=".ui.viewpager.service.SongService"
+            android:name=".ui.viewpager.service.service.MediaService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:permission="@string/service" />
+        <receiver
+            android:name=".ui.viewpager.service.broadcast.NotificationBroadcast"
+            android:permission="@string/notification">
+            <intent-filter>
+                <action android:name="delete" />
+                <action android:name="pause" />
+                <action android:name="next" />
+                <action android:name="play" />
+                <action android:name="previous" />
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
     </application>
-
 </manifest>

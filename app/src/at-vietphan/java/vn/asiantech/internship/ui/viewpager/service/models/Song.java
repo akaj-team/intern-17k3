@@ -1,6 +1,6 @@
-package vn.asiantech.internship.ui.viewpager.service;
+package vn.asiantech.internship.ui.viewpager.service.models;
 
-public class MediaItem {
+public class Song {
     private String title;
     private String artist;
     private String album;
