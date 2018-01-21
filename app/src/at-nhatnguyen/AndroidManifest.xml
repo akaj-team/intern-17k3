@@ -42,6 +42,9 @@
         <activity android:name=".ui.customview.CanvasActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
         <activity android:name=".ui.viewpager.battery.BatteryActivity" />
+        <activity android:name=".ui.viewpager.music.MusicActivity" />
+
+        <service android:name=".ui.viewpager.music.ServiceMusic" />
     </application>
 
 </manifest>
