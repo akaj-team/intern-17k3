@@ -1,15 +1,11 @@
 package vn.asiantech.internship.ui.viewpager.music;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.os.IBinder;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -21,6 +17,8 @@ import java.io.IOException;
  */
 
 public class ServiceMusic extends Service {
+    private static final String TIME_CURRENT = "CurrentTime";
+    private static final String TIME_TOTAL = "TotalTime";
     int a;
     private MediaPlayer mediaPlayer;
     private CountDownTimer countDownTimerStart;
@@ -68,7 +66,6 @@ public class ServiceMusic extends Service {
             }
         }
         return START_NOT_STICKY;
-//        return START_STICKY_COMPATIBILITY;
     }
 
     private void stopMusic() {
@@ -87,16 +84,16 @@ public class ServiceMusic extends Service {
         countDownTimerResume = new CountDownTimer(timeRemaining, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                sendTime.putExtra("CurrentTime", mediaPlayer.getCurrentPosition());
-                sendTime.putExtra("TotalTime", mediaPlayer.getDuration());
+                sendTime.putExtra(TIME_CURRENT, mediaPlayer.getCurrentPosition());
+                sendTime.putExtra(TIME_TOTAL, mediaPlayer.getDuration());
                 sendBroadcast(sendTime);
                 timeRemaining = millisUntilFinished;
             }
 
             @Override
             public void onFinish() {
-                sendTime.putExtra("CurrentTime", mediaPlayer.getCurrentPosition());
-                sendTime.putExtra("TotalTime", mediaPlayer.getDuration());
+                sendTime.putExtra(TIME_CURRENT, mediaPlayer.getCurrentPosition());
+                sendTime.putExtra(TIME_TOTAL, mediaPlayer.getDuration());
                 sendBroadcast(sendTime);
             }
         };
@@ -123,28 +120,28 @@ public class ServiceMusic extends Service {
             countDownTimerStart = new CountDownTimer(mediaPlayer.getDuration(), 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    sendTime.putExtra("CurrentTime", mediaPlayer.getCurrentPosition());
-                    sendTime.putExtra("TotalTime", mediaPlayer.getDuration());
+                    sendTime.putExtra(TIME_CURRENT, mediaPlayer.getCurrentPosition());
+                    sendTime.putExtra(TIME_TOTAL, mediaPlayer.getDuration());
                     sendBroadcast(sendTime);
                     timeRemaining = millisUntilFinished;
                 }
 
                 @Override
                 public void onFinish() {
-                    sendTime.putExtra("CurrentTime", mediaPlayer.getCurrentPosition());
-                    sendTime.putExtra("TotalTime", mediaPlayer.getDuration());
+                    sendTime.putExtra(TIME_CURRENT, mediaPlayer.getCurrentPosition());
+                    sendTime.putExtra(TIME_TOTAL, mediaPlayer.getDuration());
                     sendBroadcast(sendTime);
                 }
             };
             countDownTimerStart.start();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.d("", e.getMessage());
         }
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         mediaPlayer.stop();
+        super.onDestroy();
     }
 }

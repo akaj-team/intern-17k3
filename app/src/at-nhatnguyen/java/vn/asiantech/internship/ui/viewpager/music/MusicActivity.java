@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +25,8 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Song;
 
 public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnItemClickListener, View.OnClickListener {
+    private static final String POSITION = "position";
+    private static final String ACTION_PLAY = "Play";
     private RecyclerView mRecyclerViewSong;
     private List<Song> mSongs;
     private Intent mIntentSendAction;
@@ -131,29 +132,18 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         mSongs.add(new Song("Kém duyên", R.drawable.ic_plate, R.raw.kemduyen));
         mSongs.add(new Song("Người lạ ơi", R.drawable.ic_plate, R.raw.nguoilaoi));
         mSongs.add(new Song("Buồn của anh", R.drawable.ic_plate, R.raw.buoncuaanh));
-        mSongs.add(new Song("Đã lỡ yêu em nhiều", R.drawable.ic_plate, R.raw.daloyeuemnhieu));
-        mSongs.add(new Song("Kém duyên", R.drawable.ic_plate, R.raw.kemduyen));
-        mSongs.add(new Song("Người lạ ơi", R.drawable.ic_plate, R.raw.nguoilaoi));
-        mSongs.add(new Song("Buồn của anh", R.drawable.ic_plate, R.raw.buoncuaanh));
-        mSongs.add(new Song("Đã lỡ yêu em nhiều", R.drawable.ic_plate, R.raw.daloyeuemnhieu));
-        mSongs.add(new Song("Kém duyên", R.drawable.ic_plate, R.raw.kemduyen));
-        mSongs.add(new Song("Người lạ ơi", R.drawable.ic_plate, R.raw.nguoilaoi));
-        mSongs.add(new Song("Buồn của anh", R.drawable.ic_plate, R.raw.buoncuaanh));
-        mSongs.add(new Song("Đã lỡ yêu em nhiều", R.drawable.ic_plate, R.raw.daloyeuemnhieu));
-        mSongs.add(new Song("Kém duyên", R.drawable.ic_plate, R.raw.kemduyen));
-        mSongs.add(new Song("Người lạ ơi", R.drawable.ic_plate, R.raw.nguoilaoi));
-        mSongs.add(new Song("Buồn của anh", R.drawable.ic_plate, R.raw.buoncuaanh));
-        mSongs.add(new Song("Đã lỡ yêu em nhiều", R.drawable.ic_plate, R.raw.daloyeuemnhieu));
-        mSongs.add(new Song("Kém duyên", R.drawable.ic_plate, R.raw.kemduyen));
-        mSongs.add(new Song("Người lạ ơi", R.drawable.ic_plate, R.raw.nguoilaoi));
-        mSongs.add(new Song("Buồn của anh", R.drawable.ic_plate, R.raw.buoncuaanh));
-        mSongs.add(new Song("Đã lỡ yêu em nhiều", R.drawable.ic_plate, R.raw.daloyeuemnhieu));
-        mSongs.add(new Song("Kém duyên", R.drawable.ic_plate, R.raw.kemduyen));
-        mSongs.add(new Song("Người lạ ơi", R.drawable.ic_plate, R.raw.nguoilaoi));
-        mSongs.add(new Song("Buồn của anh", R.drawable.ic_plate, R.raw.buoncuaanh));
-        mSongs.add(new Song("Đã lỡ yêu em nhiều", R.drawable.ic_plate, R.raw.daloyeuemnhieu));
-        mSongs.add(new Song("Kém duyên", R.drawable.ic_plate, R.raw.kemduyen));
-        mSongs.add(new Song("Người lạ ơi", R.drawable.ic_plate, R.raw.nguoilaoi));
+        mSongs.add(new Song("Đã lỡ yêu 1 em nhiều", R.drawable.ic_plate, R.raw.daloyeuemnhieu));
+        mSongs.add(new Song("Kém 1 duyên", R.drawable.ic_plate, R.raw.kemduyen));
+        mSongs.add(new Song("Người 1 lạ ơi", R.drawable.ic_plate, R.raw.nguoilaoi));
+        mSongs.add(new Song("Buồn 1 của anh", R.drawable.ic_plate, R.raw.buoncuaanh));
+        mSongs.add(new Song("Đã lỡ yêu 2 em nhiều", R.drawable.ic_plate, R.raw.daloyeuemnhieu));
+        mSongs.add(new Song("Kém 2 duyên", R.drawable.ic_plate, R.raw.kemduyen));
+        mSongs.add(new Song("Người lạ 2 ơi", R.drawable.ic_plate, R.raw.nguoilaoi));
+        mSongs.add(new Song("Buồn của 2 anh", R.drawable.ic_plate, R.raw.buoncuaanh));
+        mSongs.add(new Song("Đã lỡ yêu ", R.drawable.ic_plate, R.raw.daloyeuemnhieu));
+        mSongs.add(new Song("Kém 3", R.drawable.ic_plate, R.raw.kemduyen));
+        mSongs.add(new Song("Người ơi 3", R.drawable.ic_plate, R.raw.nguoilaoi));
+        mSongs.add(new Song("Buồn của anh 3", R.drawable.ic_plate, R.raw.buoncuaanh));
     }
 
     private void initAdapter() {
@@ -167,8 +157,8 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         mTvNameSong.setText(mSongs.get(position).getName());
         mImgAvatarSong.setImageResource(mSongs.get(position).getAvatar());
         mListSong.add(position);
-        mIntentSendAction.setAction("Play");
-        mIntentSendAction.putExtra("position", mSongs.get(position).getResource());
+        mIntentSendAction.setAction(ACTION_PLAY);
+        mIntentSendAction.putExtra(POSITION, mSongs.get(position).getResource());
         startService(mIntentSendAction);
         mRunning = true;
         updateController(true);
@@ -208,14 +198,14 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
                     int songPrevious = mListSong.get(mListSong.size() - 1);
                     mTvNameSong.setText(mSongs.get(songPrevious).getName());
                     mImgAvatarSong.setImageResource(mSongs.get(songPrevious).getAvatar());
-                    mIntentSendAction.setAction("Play");
-                    mIntentSendAction.putExtra("position", mSongs.get(songPrevious).getResource());
+                    mIntentSendAction.setAction(ACTION_PLAY);
+                    mIntentSendAction.putExtra(POSITION, mSongs.get(songPrevious).getResource());
                     startService(mIntentSendAction);
                     sing = true;
                     setBtnPlayPause(true);
                 } else {
-                    mIntentSendAction.setAction("Play");
-                    mIntentSendAction.putExtra("position", mSongs.get(0).getResource());
+                    mIntentSendAction.setAction(ACTION_PLAY);
+                    mIntentSendAction.putExtra(POSITION, mSongs.get(0).getResource());
                     startService(mIntentSendAction);
                 }
                 break;
@@ -225,8 +215,8 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
                 mTvNameSong.setText(mSongs.get(songNext).getName());
                 mImgAvatarSong.setImageResource(mSongs.get(songNext).getAvatar());
                 mListSong.add(songNext);
-                mIntentSendAction.setAction("Play");
-                mIntentSendAction.putExtra("position", mSongs.get(songNext).getResource());
+                mIntentSendAction.setAction(ACTION_PLAY);
+                mIntentSendAction.putExtra(POSITION, mSongs.get(songNext).getResource());
                 startService(mIntentSendAction);
                 sing = true;
                 setBtnPlayPause(true);
