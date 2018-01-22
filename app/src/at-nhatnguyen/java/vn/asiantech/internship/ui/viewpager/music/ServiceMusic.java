@@ -219,6 +219,26 @@ public class ServiceMusic extends Service {
             sendInformationSong.setAction("CheckSing");
             sendInformationSong.putExtra("Information_song", mSongs.get(songPlay));
             sendBroadcast(sendInformationSong);
+            if (mCountDownTimerStart != null) {
+                sendInformationSong.setAction("CheckPlay");
+                mCountDownTimerStart = new CountDownTimer(mMediaPlayer.getDuration(), 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                        sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                        sendBroadcast(sendInformationSong);
+                        timeRemaining = millisUntilFinished;
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                        sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                        sendBroadcast(sendInformationSong);
+                    }
+                };
+                mCountDownTimerStart.start();
+            }
         }
     }
 
