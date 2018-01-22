@@ -8,13 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import vn.asiantech.internship.R;
 
 public class PreViewActivity extends AppCompatActivity {
-    private vn.asiantech.internship.databinding.ActivityPreViewBinding activityPreViewBinding;
+    public static final int EDIT_USER_REQUEST_CODE = 1;
 
+    private ActivityPreviewBinding activityPreViewBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityPreViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_pre_view);
+        activityPreViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_preview);
         // set hard data
         User user = new User();
         user.setName("JackMa");
@@ -28,7 +29,7 @@ public class PreViewActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == User.REQUEST_CODE && data != null) {
+        if (requestCode == EDIT_USER_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             activityPreViewBinding.setUser((User) data.getParcelableExtra(User.class.getSimpleName()));
         }
     }

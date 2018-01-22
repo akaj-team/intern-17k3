@@ -9,7 +9,7 @@
             type="vn.asiantech.internship.databinding.User" />
     </data>
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
@@ -19,13 +19,13 @@
             android:layout_width="match_parent"
             android:layout_height="230dp"
             android:background="@drawable/ic_bg_header_info"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="15dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="@string/tv_preview_info"
                 android:textColor="@color/colorWhite"
                 android:textSize="20dp" />
@@ -34,19 +34,15 @@
                 android:id="@+id/imgAvatar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_gravity="center"
                 android:layout_margin="10dp"
                 app:imageUrl="@{user.url}" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:editable="false"
-                android:gravity="center"
                 android:text="@{user.name}"
                 android:textColor="@color/colorWhite"
-                android:textSize="25sp"
-                tools:ignore="Deprecated" />
+                android:textSize="25sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -64,14 +60,12 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/bg_edt_number"
-                android:editable="false"
-                android:gravity="center"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_rectangle"
                 android:text="@{user.email}"
                 android:textColor="@color/colorBlack"
-                android:textSize="15dp"
-                tools:ignore="Deprecated" />
+                android:textSize="15dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,21 +82,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:text="@string/tv_birth_day"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/edtBirthday"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
                         android:background="@drawable/bg_edt_number"
-                        android:editable="false"
-                        android:gravity="center"
                         android:text="@{user.birthDay}"
                         android:textColor="@color/colorBlack"
-                        android:textSize="15dp"
-                        tools:ignore="Deprecated" />
-
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -115,39 +106,36 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:text="@string/tv_gender"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvGender"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
                         android:background="@drawable/bg_edt_number"
-                        android:gravity="center"
-                        android:text="@{user.getValueToGender}"
+                        android:text="@{user.getValueToGender(context)}"
                         android:textColor="@color/colorBlack"
-                        android:textSize="15dp"
-                        tools:ignore="Deprecated" />
+                        android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/edt_phone_edit_info"
+                android:layout_marginTop="10dp"
+                android:text="@string/tv_contact_number_title"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/edtContactNumber"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:background="@drawable/bg_edt_number"
-                android:editable="false"
-                android:gravity="center"
                 android:text="@{user.contactNumber}"
                 android:textColor="@color/colorBlack"
-                android:textSize="15dp"
-                tools:ignore="Deprecated" />
+                android:textSize="15dp" />
 
         </LinearLayout>
 
@@ -156,8 +144,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
-            android:onClick="@{()->user.editUser(user,context)}"
-            android:text="@string/name_btn_edit_profile" />
+            android:onClick="@{()->user.onEditUserClick(user,context)}"
+            android:text="@string/btn_edit_profile" />
 
     </LinearLayout>
 </layout>

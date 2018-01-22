@@ -16,9 +16,9 @@ public class EditInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // set content view Data Binding
         ActivityEditInfoBinding activityEditInfoBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_info);
-        // get data
-        if (getIntent().getParcelableExtra(User.class.getSimpleName()) != null) {
-            activityEditInfoBinding.setUser((User) getIntent().getParcelableExtra(User.class.getSimpleName()));
+        User user = getIntent().getParcelableExtra(User.class.getSimpleName());
+        if (user != null) {
+            activityEditInfoBinding.setUser(user);
         }
     }
 }

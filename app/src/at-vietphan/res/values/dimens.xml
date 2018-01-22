@@ -11,4 +11,5 @@
     <dimen name="column_corner_radius">3dp</dimen>
     <dimen name="custom_view_default_column_width">20dp</dimen>
     <dimen name="line_stroke_width">2dp</dimen>
+    <dimen name="tv_battery_status">20dp</dimen>
 </resources>
