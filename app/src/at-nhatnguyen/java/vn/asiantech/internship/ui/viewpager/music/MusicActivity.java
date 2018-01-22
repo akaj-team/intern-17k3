@@ -18,20 +18,15 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Song;
 
 public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnItemClickListener, View.OnClickListener {
-    private static final String POSITION = "position";
-    private static final String ACTION_PLAY = "Play";
     private RecyclerView mRecyclerViewSong;
-    private List<Song> mSongs;
+    private ArrayList<Song> mSongs;
     private Intent mIntentSendAction;
     private boolean sing;
-    private List<Integer> mListSong;
     private TextView mTvTimeSong;
     private TextView mTvNameSong;
     private SeekBar mSeekBarSong;
@@ -63,11 +58,19 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
                         int time = seekBar.getProgress();
-                        mIntentSendAction.setAction("Move");
+                        mIntentSendAction.setAction(ServiceMusic.ACTION_MOVE);
                         mIntentSendAction.putExtra("Move", time);
                         startService(mIntentSendAction);
                     }
                 });
+            } else if (TextUtils.equals(intent.getAction(), "Information")) {
+                Song song = intent.getParcelableExtra("Information_song");
+                mTvNameSong.setText(song.getName());
+                mImgAvatarSong.setImageResource(song.getAvatar());
+            } else if (TextUtils.equals(intent.getAction(),"CheckSing")){
+                Song song = intent.getParcelableExtra("Information_song");
+                mTvNameSong.setText(song.getName());
+                mImgAvatarSong.setImageResource(song.getAvatar());
             }
         }
     };
@@ -81,7 +84,11 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         initAdapter();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("CheckPlay");
+        intentFilter.addAction("Information");
+        intentFilter.addAction("CheckSing");
         registerReceiver(mBroadcastReceiver, intentFilter);
+        mIntentSendAction.setAction("check");
+        startService(mIntentSendAction);
     }
 
     private void updateController(boolean checkRun) {
@@ -124,7 +131,6 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     }
 
     private void initData() {
-        mListSong = new ArrayList<>();
         mSongs = new ArrayList<>();
         mSongs.add(new Song("Anh đang nơi đâu Anh đang nơi đâu ", R.drawable.ic_plate, R.raw.anhdangnoidau));
         mSongs.add(new Song("Buồn của anh Buồn của anh Buồn của anh", R.drawable.ic_plate, R.raw.buoncuaanh));
@@ -154,11 +160,9 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
 
     @Override
     public void onClickItem(int position) {
-        mTvNameSong.setText(mSongs.get(position).getName());
-        mImgAvatarSong.setImageResource(mSongs.get(position).getAvatar());
-        mListSong.add(position);
-        mIntentSendAction.setAction(ACTION_PLAY);
-        mIntentSendAction.putExtra(POSITION, mSongs.get(position).getResource());
+        sendListSong();
+        mIntentSendAction.setAction(ServiceMusic.ACTION_PLAY);
+        mIntentSendAction.putExtra(ServiceMusic.POSITION, position);
         startService(mIntentSendAction);
         mRunning = true;
         updateController(true);
@@ -172,7 +176,7 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnStop:
-                mIntentSendAction.setAction("Stop");
+                mIntentSendAction.setAction(ServiceMusic.ACTION_STOP);
                 startService(mIntentSendAction);
                 mRunning = false;
                 updateController(false);
@@ -184,39 +188,24 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
             case R.id.btnPlayPause:
                 if (sing) {
                     sing = false;
-                    mIntentSendAction.setAction("Pause");
+                    mIntentSendAction.setAction(ServiceMusic.ACTION_PAUSE);
                 } else {
                     sing = true;
-                    mIntentSendAction.setAction("Resume");
+                    mIntentSendAction.setAction(ServiceMusic.ACTION_RESUME);
                 }
                 startService(mIntentSendAction);
                 setBtnPlayPause(sing);
                 break;
             case R.id.btnPrevious:
-                if (mListSong.size() >= 2) {
-                    mListSong.remove(mListSong.size() - 1);
-                    int songPrevious = mListSong.get(mListSong.size() - 1);
-                    mTvNameSong.setText(mSongs.get(songPrevious).getName());
-                    mImgAvatarSong.setImageResource(mSongs.get(songPrevious).getAvatar());
-                    mIntentSendAction.setAction(ACTION_PLAY);
-                    mIntentSendAction.putExtra(POSITION, mSongs.get(songPrevious).getResource());
-                    startService(mIntentSendAction);
-                    sing = true;
-                    setBtnPlayPause(true);
-                } else {
-                    mIntentSendAction.setAction(ACTION_PLAY);
-                    mIntentSendAction.putExtra(POSITION, mSongs.get(0).getResource());
-                    startService(mIntentSendAction);
-                }
+                sendListSong();
+                mIntentSendAction.setAction(ServiceMusic.ACTION_PREVIOUS);
+                startService(mIntentSendAction);
+                sing = true;
+                setBtnPlayPause(true);
                 break;
             case R.id.btnNext:
-                Random r = new Random();
-                int songNext = r.nextInt(mSongs.size());
-                mTvNameSong.setText(mSongs.get(songNext).getName());
-                mImgAvatarSong.setImageResource(mSongs.get(songNext).getAvatar());
-                mListSong.add(songNext);
-                mIntentSendAction.setAction(ACTION_PLAY);
-                mIntentSendAction.putExtra(POSITION, mSongs.get(songNext).getResource());
+                sendListSong();
+                mIntentSendAction.setAction(ServiceMusic.ACTION_NEXT);
                 startService(mIntentSendAction);
                 sing = true;
                 setBtnPlayPause(true);
@@ -233,5 +222,11 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(mBroadcastReceiver);
+    }
+
+    private void sendListSong() {
+        mIntentSendAction.setAction(ServiceMusic.ACTION_SEND_DATA);
+        mIntentSendAction.putParcelableArrayListExtra("ListSong", mSongs);
+        startService(mIntentSendAction);
     }
 }
