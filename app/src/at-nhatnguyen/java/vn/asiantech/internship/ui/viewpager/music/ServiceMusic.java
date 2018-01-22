@@ -62,7 +62,6 @@ public class ServiceMusic extends Service {
     public void onCreate() {
         super.onCreate();
         mMediaPlayer = new MediaPlayer();
-//        sendTime = new Intent();
         sendInformationSong = new Intent();
         timeRemaining = 0;
         isPause = false;
@@ -225,6 +224,12 @@ public class ServiceMusic extends Service {
 
     @Override
     public void onDestroy() {
+        if (mCountDownTimerStart != null) {
+            mCountDownTimerStart.cancel();
+        }
+        if (mCountDownTimerResume != null) {
+            mCountDownTimerResume.cancel();
+        }
         mMediaPlayer.stop();
         super.onDestroy();
     }
@@ -236,7 +241,7 @@ public class ServiceMusic extends Service {
                 .setContentTitle(mSongs.get(songPlay).getName()).build();
         setListeners(remoteViews);
         notification.contentView = remoteViews;
-        if (!isPause) {
+        if (isPause) {
             notification.contentView.setViewVisibility(R.id.imgPause, View.GONE);
             notification.contentView.setViewVisibility(R.id.imgPlay, View.VISIBLE);
         } else {

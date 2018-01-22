@@ -51,7 +51,7 @@
                 <action android:name="delete" />
                 <action android:name="pause" />
                 <action android:name="next" />
-                <action android:name="play" />
+                <action android:name="resume" />
                 <action android:name="previous" />
             </intent-filter>
         </receiver>
