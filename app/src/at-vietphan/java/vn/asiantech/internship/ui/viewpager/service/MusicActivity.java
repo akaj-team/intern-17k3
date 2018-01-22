@@ -75,7 +75,7 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_service);
+        setContentView(R.layout.activity_music);
         initViews();
         initData();
         initAdapter();
