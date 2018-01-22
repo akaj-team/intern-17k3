@@ -1,5 +1,7 @@
 package vn.asiantech.internship.viewpagerandtablelayout.service;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.media.AudioManager;
@@ -7,11 +9,14 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import vn.asiantech.internship.R;
 import vn.asiantech.internship.viewpagerandtablelayout.models.Music;
 
 /**
@@ -22,6 +27,11 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
 
     private static final String CURRENT_TIME = "currentTime";
     private static final String TOTAL_TIME = "totalTime";
+    public static final String NOTIFY_PREVIOUS = "previous";
+    public static final String NOTIFY_DELETE = "delete";
+    public static final String NOTIFY_PAUSE = "pause";
+    public static final String NOTIFY_PLAY = "play";
+    public static final String NOTIFY_NEXT = "next";
     private static MediaPlayer mMediaPlayer;
     private ArrayList<Music> mMusicLists = new ArrayList<>();
     private int mPosition;
@@ -47,6 +57,7 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
                     break;
                 case "play":
                     resumeMusic();
+                    newNotification();
                     break;
                 case "pause":
                     pauseMusic();
@@ -164,6 +175,51 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
         } catch (IOException e) {
             Log.d("XXX", e.getMessage());
         }
+    }
+
+    private void newNotification() {
+        String songName = mMusicLists.get(mPosition).getName();
+        String albumName = mMusicLists.get(mPosition).getSinger();
+        RemoteViews remoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.item_custom_notification);
+        Notification notification = new NotificationCompat.Builder(getApplicationContext())
+                .setSmallIcon(R.drawable.ic_music_item)
+                .setContentTitle(songName).build();
+        setListeners(remoteViews);
+        notification.contentView = remoteViews;
+//        if (Constants.IS_SONG_PAUSED) {
+//            notification.contentView.setViewVisibility(R.id.imgPause, View.GONE);
+//            notification.contentView.setViewVisibility(R.id.imgPlay, View.VISIBLE);
+//        } else {
+//            notification.contentView.setViewVisibility(R.id.imgPause, View.VISIBLE);
+//            notification.contentView.setViewVisibility(R.id.imgPlay, View.GONE);
+//        }
+        notification.contentView.setTextViewText(R.id.tvSongName, songName);
+        notification.contentView.setTextViewText(R.id.tvAlbumName, albumName);
+        notification.flags |= Notification.FLAG_ONGOING_EVENT;
+        startForeground(77, notification);
+    }
+
+    /**
+     * Notification click listeners
+     *
+     * @param view view
+     */
+    public void setListeners(RemoteViews view) {
+        Intent previous = new Intent(NOTIFY_PREVIOUS);
+        Intent delete = new Intent(NOTIFY_DELETE);
+        Intent pause = new Intent(NOTIFY_PAUSE);
+        Intent next = new Intent(NOTIFY_NEXT);
+        Intent play = new Intent(NOTIFY_PLAY);
+        PendingIntent pPrevious = PendingIntent.getBroadcast(getApplicationContext(), 0, previous, PendingIntent.FLAG_UPDATE_CURRENT);
+        view.setOnClickPendingIntent(R.id.imgPrevious, pPrevious);
+        PendingIntent pDelete = PendingIntent.getBroadcast(getApplicationContext(), 0, delete, PendingIntent.FLAG_UPDATE_CURRENT);
+        view.setOnClickPendingIntent(R.id.btnDelete, pDelete);
+        PendingIntent pPause = PendingIntent.getBroadcast(getApplicationContext(), 0, pause, PendingIntent.FLAG_UPDATE_CURRENT);
+        view.setOnClickPendingIntent(R.id.imgPause, pPause);
+        PendingIntent pNext = PendingIntent.getBroadcast(getApplicationContext(), 0, next, PendingIntent.FLAG_UPDATE_CURRENT);
+        view.setOnClickPendingIntent(R.id.imgNext, pNext);
+        PendingIntent pPlay = PendingIntent.getBroadcast(getApplicationContext(), 0, play, PendingIntent.FLAG_UPDATE_CURRENT);
+        view.setOnClickPendingIntent(R.id.imgPlay, pPlay);
     }
 
     @Override

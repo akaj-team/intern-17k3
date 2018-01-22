@@ -56,6 +56,19 @@
         <activity
             android:name=".viewpagerandtablelayout.ui.PlayMusicActivity"
             android:theme="@style/NoActionBarTheme" />
+
+        <receiver
+            android:name=".viewpagerandtablelayout.receiver.NotificationBroadcast"
+            android:permission="dddd">
+            <intent-filter>
+                <action android:name="delete" />
+                <action android:name="pause" />
+                <action android:name="next" />
+                <action android:name="play" />
+                <action android:name="previous" />
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

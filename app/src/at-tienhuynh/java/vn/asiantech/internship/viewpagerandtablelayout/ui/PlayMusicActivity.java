@@ -1,21 +1,17 @@
 package vn.asiantech.internship.viewpagerandtablelayout.ui;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RemoteViews;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -179,49 +175,6 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         return check;
     }
 
-    /**
-     * Set notification manager
-     */
-    private void setNotification() {
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(1, buildNotification().build());
-    }
-
-    protected NotificationCompat.Builder buildNotification() {
-        // Open NotificationView.java Activity
-        PendingIntent pIntent = PendingIntent.getActivity(
-                this,
-                1,
-                getIntent(),
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                // Dismiss Notification
-                .setAutoCancel(false)
-                .setOngoing(true)
-                .setCustomContentView(getComplexNotificationView())
-                // Set PendingIntent into Notification
-                .setContentIntent(pIntent);
-        return builder;
-    }
-
-    private RemoteViews getComplexNotificationView() {
-        RemoteViews notificationView = new RemoteViews(
-                this.getPackageName(),
-                R.layout.activity_custom_notification);
-        notificationView.setTextViewText(R.id.tvTile, mMusicLists.get(mPosition).getName());
-        notificationView.setTextViewText(R.id.tvItemText, mMusicLists.get(mPosition).getSinger());
-        Intent intent = new Intent(this, PlayMusicActivity.class);
-        intent.setAction("stop");
-        PendingIntent pIntent = PendingIntent.getService(
-                this,
-                1,
-                intent,
-                0);
-        notificationView.setOnClickPendingIntent(R.id.imgPlayNotice, pIntent);
-        return notificationView;
-    }
-
     @Override
     public void onItemClickListener(int potion) {
         mIsShowBottomPanel = true;
@@ -235,9 +188,6 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         mIntent.putExtra("i", potion);
         startService(mIntent);
         mImgPlay.setImageResource(R.drawable.ic_pause_white_24dp);
-        // send notification
-        // set notification
-        setNotification();
     }
 
     private void setNameBottomPlay(int position) {
