@@ -45,8 +45,7 @@ public class User extends BaseObservable implements Parcelable {
     private String url;
 
     public User() {
-        //get Current Day
-        getCurrentDay();
+        //no-opp
     }
 
     /**
@@ -89,7 +88,7 @@ public class User extends BaseObservable implements Parcelable {
         return birthDay;
     }
 
-    private void setBirthDay(String birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
         notifyPropertyChanged(BR.birthDay);
     }
@@ -119,7 +118,7 @@ public class User extends BaseObservable implements Parcelable {
         return enableEditBtn;
     }
 
-    private void setEnableEditBtn(boolean enableEditBtn) {
+    public void setEnableEditBtn(boolean enableEditBtn) {
         this.enableEditBtn = enableEditBtn;
         notifyPropertyChanged(BR.enableEditBtn);
     }
@@ -147,35 +146,24 @@ public class User extends BaseObservable implements Parcelable {
         }
     }
 
-    private void getCurrentDay() {
-        // calendar
-        final Calendar calendar = Calendar.getInstance();
-        final int year = calendar.get(Calendar.YEAR);
-        final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);
-        setBirthDay(String.valueOf(day).concat("/").concat(String.valueOf(month + 1)).concat("/").concat(String.valueOf(year)));
-    }
-
     /**
      * show picker
      */
-    public void showDatePicker(final Context context) {
+    public void showDatePicker(Context context) {
         // calendar
         final Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-        SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
-
-        //show current day
-        setBirthDay(context.getResources().getString(R.string.edittext_birthday, day, month + 1, year));
-
+        final SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+        setBirthDay(String.valueOf(format.format(calendar.getTime())));
         DatePickerDialog datePickerDialog = new DatePickerDialog(context,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int month, int day) {
-                        setBirthDay(context.getResources().getString(R.string.edittext_birthday, month + 1, day, year));
+                        calendar.set(year, month, day);
+                        setBirthDay(String.valueOf(format.format(calendar.getTime())));
                     }
                 }, year, month, day);
         datePickerDialog.show();
@@ -227,14 +215,6 @@ public class User extends BaseObservable implements Parcelable {
         changeStatusUpdateButton();
     }
 
-    private void changeStatusUpdateButton() {
-        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(contactNumber)) {
-            setEnableEditBtn(true);
-        } else {
-            setEnableEditBtn(false);
-        }
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -248,5 +228,13 @@ public class User extends BaseObservable implements Parcelable {
         parcel.writeInt(gender);
         parcel.writeString(contactNumber);
         parcel.writeString(url);
+    }
+
+    private void changeStatusUpdateButton() {
+        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(contactNumber)) {
+            setEnableEditBtn(true);
+        } else {
+            setEnableEditBtn(false);
+        }
     }
 }

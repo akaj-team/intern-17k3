@@ -45,17 +45,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:afterTextChanged="@{(name)->user.afterTextChange(name,0)}"
-                    android:drawableRight="@drawable/ic_clear_white_18dp"
                     android:inputType="text"
                     android:text="@{user.name}"
                     android:textSize="15sp" />
 
                 <Button
-                    android:id="@+id/btnHintNameInfo"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:id="@+id/btnClearTextName"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="right"
-                    android:background="?android:attr/selectableItemBackground"
+                    android:background="@drawable/ic_clear_white_18dp"
                     android:onClick="@{()->user.clearText(0) }" />
             </FrameLayout>
         </LinearLayout>
@@ -85,16 +84,16 @@
                     android:layout_height="40dp"
                     android:afterTextChanged="@{(mail)->user.afterTextChange(mail,1)}"
                     android:background="@drawable/bg_edt_number"
-                    android:drawableRight="@drawable/ic_clear_black_18dp"
                     android:inputType="textEmailAddress"
                     android:text="@{user.email}" />
 
                 <Button
-                    android:id="@+id/btnHintEmailInfo"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:id="@+id/btnClearTextMail"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="right"
-                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_clear_black_18dp"
                     android:onClick="@{()->user.clearText(1)}" />
             </FrameLayout>
 
@@ -127,16 +126,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@drawable/bg_edt_number"
-                            android:drawableRight="@drawable/ic_keyboard_arrow_down_black_18dp"
                             android:text="@{user.birthDay}"
                             android:textColor="@color/colorBlack" />
 
                         <Button
-                            android:id="@+id/btnHintDateInfo"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:id="@+id/btnShowDatePiker"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="right"
-                            android:background="?android:attr/selectableItemBackground"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/ic_keyboard_arrow_down_black_18dp"
                             android:onClick="@{()->user.showDatePicker(context)}" />
                     </FrameLayout>
                 </LinearLayout>
@@ -155,14 +154,20 @@
                         android:text="@string/tv_gender"
                         android:textStyle="bold" />
 
-                    <Spinner
-                        android:id="@+id/spnGender"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/spinner_border"
-                        android:entries="@array/gender_array"
-                        android:selectedItemPosition="@={user.gender}" />
+                        android:background="@drawable/bg_rectangle">
+
+                        <Spinner
+                            android:id="@+id/spnGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:entries="@array/gender_array"
+                            android:selectedItemPosition="@={user.gender}" />
+                    </RelativeLayout>
+
                 </LinearLayout>
             </LinearLayout>
 
@@ -184,16 +189,16 @@
                     android:layout_marginTop="5dp"
                     android:afterTextChanged="@{(phone)->user.afterTextChange(phone,3)}"
                     android:background="@drawable/bg_edt_number"
-                    android:drawableRight="@drawable/ic_clear_black_18dp"
                     android:inputType="number"
                     android:text="@{user.contactNumber}" />
 
                 <Button
-                    android:id="@+id/btnHintPhoneInfo"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:id="@+id/btnClearTextContact"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="right"
-                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_clear_black_18dp"
                     android:onClick="@{()->user.clearText(2)}" />
             </FrameLayout>
         </LinearLayout>
@@ -206,6 +211,4 @@
             android:onClick="@{()->user.onUpdateUserClick(user,context)}"
             android:text="@string/name_btn_update_profile" />
     </LinearLayout>
-
-
 </layout>
