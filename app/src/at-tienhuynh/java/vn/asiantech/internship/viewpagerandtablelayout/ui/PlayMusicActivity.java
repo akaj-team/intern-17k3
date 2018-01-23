@@ -21,6 +21,7 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.viewpagerandtablelayout.adapters.MusicAdapter;
 import vn.asiantech.internship.viewpagerandtablelayout.models.Music;
 import vn.asiantech.internship.viewpagerandtablelayout.service.PlayMusicService;
+import vn.asiantech.internship.viewpagerandtablelayout.utils.MusicAction;
 
 /**
  * Play Music Activity to play music
@@ -28,6 +29,7 @@ import vn.asiantech.internship.viewpagerandtablelayout.service.PlayMusicService;
 public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter.onItemClick, View.OnClickListener {
 
     private static final String MY_PREFS_NAME = "checkShow";
+    private static final String PREFS_CHECK = "check";
     private SeekBar mSeekBarMusic;
     private ImageView mImgPlay;
     private TextView mTvTimeSongBottomPlay;
@@ -41,36 +43,48 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
     private boolean mIsPlay;
     private Intent mIntent;
     private int mPosition;
-    private boolean mIsShowBottomPanel;
 
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals("sendTime")) {
-                int current = intent.getIntExtra("currentTime", 0);
-                int total = intent.getIntExtra("totalTime", 0);
-                mSeekBarMusic.setProgress(current);
-                mSeekBarMusic.setMax(total);
-                mTvTimeSongBottomPlay.setText(getString(R.string.time_song, convertTime(current), convertTime(total)));
-                mSeekBarMusic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                        // no-opp
-                    }
+            switch (intent.getAction()) {
+                case MusicAction.SEND_TIME:
+                    int current = intent.getIntExtra(MusicAction.CURRENT_TIME, 0);
+                    int total = intent.getIntExtra(MusicAction.TOTAL_TIME, 0);
+                    int position = intent.getIntExtra(MusicAction.NAME_SONG_POSITION, 0);
+                    setNameBottomPlay(position);
+                    mSeekBarMusic.setProgress(current);
+                    mSeekBarMusic.setMax(total);
+                    mTvTimeSongBottomPlay.setText(getString(R.string.time_song, convertTime(current), convertTime(total)));
+                    mSeekBarMusic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                        @Override
+                        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                            // no-opp
+                        }
 
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-                        // no-opp
-                    }
+                        @Override
+                        public void onStartTrackingTouch(SeekBar seekBar) {
+                            // no-opp
+                        }
 
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-                        int timeMoving = seekBar.getProgress();
-                        mIntent.setAction("move");
-                        mIntent.putExtra("timeMoving", timeMoving);
-                        startService(mIntent);
+                        @Override
+                        public void onStopTrackingTouch(SeekBar seekBar) {
+                            int timeMoving = seekBar.getProgress();
+                            mIntent.setAction(MusicAction.MOVE_SEEK_BAR);
+                            mIntent.putExtra(MusicAction.TIME_MOVING, timeMoving);
+                            startService(mIntent);
+                        }
+                    });
+                    break;
+                case MusicAction.PLAY_STATUS:
+                    mIsPlay = intent.getBooleanExtra(MusicAction.IS_PLAY, false);
+                    if (mIsPlay) {
+                        mImgPlay.setImageResource(R.drawable.ic_pause_white_24dp);
+
+                    } else {
+                        mImgPlay.setImageResource(R.drawable.ic_play_arrow_white_24dp);
                     }
-                });
+                    break;
             }
         }
     };
@@ -94,7 +108,6 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         // set show panel
         showBottomPanel(isShowBottomPanel());
     }
-
 
     private void initViews() {
         mRecyclerViewPlayMusic = findViewById(R.id.recyclerViewMusic);
@@ -136,8 +149,8 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
      * Send data to service
      */
     private void sendData() {
-        mIntent.setAction("data");
-        mIntent.putParcelableArrayListExtra("list", mMusicLists);
+        mIntent.setAction(MusicAction.DATA);
+        mIntent.putParcelableArrayListExtra(MusicAction.DATA_LIST, mMusicLists);
         startService(mIntent);
     }
 
@@ -161,7 +174,7 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
      */
     private void setSharePreference(boolean check) {
         SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putBoolean("check", check);
+        editor.putBoolean(PREFS_CHECK, check);
         editor.apply();
     }
 
@@ -171,21 +184,20 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
     private boolean isShowBottomPanel() {
         boolean check;
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        check = prefs.getBoolean("check", false);
+        check = prefs.getBoolean(PREFS_CHECK, false);
         return check;
     }
 
     @Override
     public void onItemClickListener(int potion) {
-        mIsShowBottomPanel = true;
-        setSharePreference(mIsShowBottomPanel);
-        showBottomPanel(isShowBottomPanel());
         mIsPlay = true;
+        setSharePreference(mIsPlay);
+        showBottomPanel(isShowBottomPanel());
         mPosition = potion;
         //set name song to Bottom Play
         setNameBottomPlay(potion);
-        mIntent.setAction("potion");
-        mIntent.putExtra("i", potion);
+        mIntent.setAction(MusicAction.POSITION);
+        mIntent.putExtra(MusicAction.POSITION_LIST, potion);
         startService(mIntent);
         mImgPlay.setImageResource(R.drawable.ic_pause_white_24dp);
     }
@@ -198,33 +210,35 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imgExitPlayBottom:
-                mIntent.setAction("stop");
+                mIntent.setAction(MusicAction.STOP);
                 startService(mIntent);
                 mIsPlay = false;
-                mIsShowBottomPanel = false;
-                setSharePreference(mIsShowBottomPanel);
+                setSharePreference(mIsPlay);
                 showBottomPanel(isShowBottomPanel());
                 break;
             case R.id.imgPlayMusic:
                 if (!mIsPlay) {
                     // play
-                    mIntent.setAction("play");
-                    startService(mIntent);
+                    mIntent.setAction(MusicAction.PLAY);
                     mImgPlay.setImageResource(R.drawable.ic_pause_white_24dp);
                     mIsPlay = true;
+                    setSharePreference(mIsPlay);
+                    startService(mIntent);
                 } else {
                     // pause
-                    mIntent.setAction("pause");
-                    startService(mIntent);
+                    mIntent.setAction(MusicAction.PAUSE);
                     mImgPlay.setImageResource(R.drawable.ic_play_arrow_white_24dp);
                     mIsPlay = false;
+                    setSharePreference(mIsPlay);
+                    startService(mIntent);
                 }
                 break;
             case R.id.imgNextSong:
-                mIntent.setAction("next");
+                mIntent.setAction(MusicAction.NEXT);
                 startService(mIntent);
                 mImgPlay.setImageResource(R.drawable.ic_pause_white_24dp);
                 mIsPlay = true;
+                setSharePreference(mIsPlay);
                 mPosition += 1;
                 if (mPosition < mMusicLists.size()) {
                     setNameBottomPlay(mPosition);
@@ -233,10 +247,11 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
                 }
                 break;
             case R.id.imgPreviousSong:
-                mIntent.setAction("previous");
+                mIntent.setAction(MusicAction.PREVIOUS);
                 startService(mIntent);
                 mImgPlay.setImageResource(R.drawable.ic_pause_white_24dp);
                 mIsPlay = true;
+                setSharePreference(mIsPlay);
                 mPosition -= 1;
                 if (mPosition >= 0) {
                     setNameBottomPlay(mPosition);
@@ -258,8 +273,8 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
      */
     private void registerBroadcast() {
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("sendTime");
-        intentFilter.addAction("stop");
+        intentFilter.addAction(MusicAction.SEND_TIME);
+        intentFilter.addAction(MusicAction.PLAY_STATUS);
         registerReceiver(mBroadcastReceiver, intentFilter);
     }
 

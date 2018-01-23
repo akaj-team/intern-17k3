@@ -11,6 +11,7 @@ import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.viewpagerandtablelayout.models.Music;
+import vn.asiantech.internship.viewpagerandtablelayout.utils.MusicAction;
 
 /**
  * Created by TienHuynh on 17/01/2018.
@@ -25,20 +27,14 @@ import vn.asiantech.internship.viewpagerandtablelayout.models.Music;
  */
 public class PlayMusicService extends Service implements MediaPlayer.OnCompletionListener {
 
-    private static final String CURRENT_TIME = "currentTime";
-    private static final String TOTAL_TIME = "totalTime";
-    public static final String NOTIFY_PREVIOUS = "previous";
-    public static final String NOTIFY_DELETE = "delete";
-    public static final String NOTIFY_PAUSE = "pause";
-    public static final String NOTIFY_PLAY = "play";
-    public static final String NOTIFY_NEXT = "next";
     private static MediaPlayer mMediaPlayer;
     private ArrayList<Music> mMusicLists = new ArrayList<>();
     private int mPosition;
     private CountDownTimer mCountTimeStartSong;
     private CountDownTimer mCountTimeResumeSong;
     private long mTimeResuming;
-    final Intent sendTimeIntent = new Intent();
+    private final Intent sendBroadCastIntent = new Intent();
+    private boolean mIsPlay = false;
 
     @Override
     public void onCreate() {
@@ -47,51 +43,69 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
         initMedia();
     }
 
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent != null && intent.getAction() != null) {
             switch (intent.getAction()) {
-                case "data":
-                    mMusicLists = intent.getParcelableArrayListExtra("list");
+                case MusicAction.DATA:
+                    mMusicLists = intent.getParcelableArrayListExtra(MusicAction.DATA_LIST);
                     break;
-                case "play":
+                case MusicAction.PLAY:
+                    mIsPlay = true;
+                    sendSingStatus(mIsPlay);
                     resumeMusic();
                     newNotification();
                     break;
-                case "pause":
+                case MusicAction.PAUSE:
+                    mIsPlay = false;
+                    sendSingStatus(mIsPlay);
                     pauseMusic();
+                    newNotification();
                     break;
-                case "potion":
-                    mPosition = intent.getIntExtra("i", 0);
+                case MusicAction.POSITION:
+                    mIsPlay = true;
+                    mPosition = intent.getIntExtra(MusicAction.POSITION_LIST, 0);
+                    sendSingStatus(mIsPlay);
                     playSongMusic(mPosition);
+                    newNotification();
                     break;
-                case "next":
+                case MusicAction.NEXT:
                     mPosition += 1;
                     if (mPosition < mMusicLists.size()) {
                         playSongMusic(mPosition);
                     } else {
                         mPosition = mMusicLists.size() - 1;
                     }
+                    newNotification();
                     break;
-                case "previous":
+                case MusicAction.PREVIOUS:
                     mPosition -= 1;
                     if (mPosition >= 0) {
                         playSongMusic(mPosition);
                     } else {
                         mPosition = 0;
                     }
+                    newNotification();
                     break;
-                case "stop":
+                case MusicAction.STOP:
                     mMediaPlayer.stop();
                     break;
-                case "move":
-                    int timeMoving = intent.getIntExtra("timeMoving", 0);
+                case MusicAction.MOVE_SEEK_BAR:
+                    int timeMoving = intent.getIntExtra(MusicAction.TIME_MOVING, 0);
                     mMediaPlayer.seekTo(timeMoving);
                     break;
             }
         }
         return START_STICKY;
+    }
+
+    /**
+     * Send status of isPlay is true or phone to Activity
+     */
+    private void sendSingStatus(boolean isPlay) {
+        sendBroadCastIntent.setAction(MusicAction.PLAY_STATUS);
+        sendBroadCastIntent.putExtra(MusicAction.IS_PLAY, isPlay);
+        sendBroadcast(sendBroadCastIntent);
     }
 
     /**
@@ -111,21 +125,22 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
 
     private void resumeMusic() {
         mMediaPlayer.start();
-        sendTimeIntent.setAction("sendTime");
+        sendBroadCastIntent.setAction(MusicAction.SEND_TIME);
         mCountTimeResumeSong = new CountDownTimer(mTimeResuming, 1000) {
             @Override
             public void onTick(long l) {
-                sendTimeIntent.putExtra(CURRENT_TIME, mMediaPlayer.getCurrentPosition());
-                sendTimeIntent.putExtra(TOTAL_TIME, mMediaPlayer.getDuration());
-                sendBroadcast(sendTimeIntent);
+                sendBroadCastIntent.putExtra(MusicAction.NAME_SONG_POSITION, mPosition);
+                sendBroadCastIntent.putExtra(MusicAction.CURRENT_TIME, mMediaPlayer.getCurrentPosition());
+                sendBroadCastIntent.putExtra(MusicAction.TOTAL_TIME, mMediaPlayer.getDuration());
+                sendBroadcast(sendBroadCastIntent);
                 mTimeResuming = l;
             }
 
             @Override
             public void onFinish() {
-                sendTimeIntent.putExtra(CURRENT_TIME, mMediaPlayer.getCurrentPosition());
-                sendTimeIntent.putExtra(TOTAL_TIME, mMediaPlayer.getDuration());
-                sendBroadcast(sendTimeIntent);
+                sendBroadCastIntent.putExtra(MusicAction.CURRENT_TIME, mMediaPlayer.getCurrentPosition());
+                sendBroadCastIntent.putExtra(MusicAction.TOTAL_TIME, mMediaPlayer.getDuration());
+                sendBroadcast(sendBroadCastIntent);
             }
         }.start();
     }
@@ -154,21 +169,22 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
             mMediaPlayer.setDataSource(this, myUri);
             mMediaPlayer.prepare();
             mMediaPlayer.start();
-            sendTimeIntent.setAction("sendTime");
+            sendBroadCastIntent.setAction(MusicAction.SEND_TIME);
             mCountTimeStartSong = new CountDownTimer(mMediaPlayer.getDuration(), 1000) {
                 @Override
                 public void onTick(long l) {
-                    sendTimeIntent.putExtra(CURRENT_TIME, mMediaPlayer.getCurrentPosition());
-                    sendTimeIntent.putExtra(TOTAL_TIME, mMediaPlayer.getDuration());
-                    sendBroadcast(sendTimeIntent);
+                    sendBroadCastIntent.putExtra(MusicAction.NAME_SONG_POSITION, mPosition);
+                    sendBroadCastIntent.putExtra(MusicAction.CURRENT_TIME, mMediaPlayer.getCurrentPosition());
+                    sendBroadCastIntent.putExtra(MusicAction.TOTAL_TIME, mMediaPlayer.getDuration());
+                    sendBroadcast(sendBroadCastIntent);
                     mTimeResuming = l;
                 }
 
                 @Override
                 public void onFinish() {
-                    sendTimeIntent.putExtra(CURRENT_TIME, mMediaPlayer.getCurrentPosition());
-                    sendTimeIntent.putExtra(TOTAL_TIME, mMediaPlayer.getDuration());
-                    sendBroadcast(sendTimeIntent);
+                    sendBroadCastIntent.putExtra(MusicAction.CURRENT_TIME, mMediaPlayer.getCurrentPosition());
+                    sendBroadCastIntent.putExtra(MusicAction.TOTAL_TIME, mMediaPlayer.getDuration());
+                    sendBroadcast(sendBroadCastIntent);
                 }
             };
             mCountTimeStartSong.start();
@@ -186,13 +202,13 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
                 .setContentTitle(songName).build();
         setListeners(remoteViews);
         notification.contentView = remoteViews;
-//        if (Constants.IS_SONG_PAUSED) {
-//            notification.contentView.setViewVisibility(R.id.imgPause, View.GONE);
-//            notification.contentView.setViewVisibility(R.id.imgPlay, View.VISIBLE);
-//        } else {
-//            notification.contentView.setViewVisibility(R.id.imgPause, View.VISIBLE);
-//            notification.contentView.setViewVisibility(R.id.imgPlay, View.GONE);
-//        }
+        if (!mIsPlay) {
+            notification.contentView.setViewVisibility(R.id.imgPause, View.GONE);
+            notification.contentView.setViewVisibility(R.id.imgPlay, View.VISIBLE);
+        } else {
+            notification.contentView.setViewVisibility(R.id.imgPause, View.VISIBLE);
+            notification.contentView.setViewVisibility(R.id.imgPlay, View.GONE);
+        }
         notification.contentView.setTextViewText(R.id.tvSongName, songName);
         notification.contentView.setTextViewText(R.id.tvAlbumName, albumName);
         notification.flags |= Notification.FLAG_ONGOING_EVENT;
@@ -205,11 +221,11 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
      * @param view view
      */
     public void setListeners(RemoteViews view) {
-        Intent previous = new Intent(NOTIFY_PREVIOUS);
-        Intent delete = new Intent(NOTIFY_DELETE);
-        Intent pause = new Intent(NOTIFY_PAUSE);
-        Intent next = new Intent(NOTIFY_NEXT);
-        Intent play = new Intent(NOTIFY_PLAY);
+        Intent previous = new Intent(MusicAction.PREVIOUS);
+        Intent delete = new Intent(MusicAction.STOP);
+        Intent pause = new Intent(MusicAction.PAUSE);
+        Intent next = new Intent(MusicAction.NEXT);
+        Intent play = new Intent(MusicAction.PLAY);
         PendingIntent pPrevious = PendingIntent.getBroadcast(getApplicationContext(), 0, previous, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgPrevious, pPrevious);
         PendingIntent pDelete = PendingIntent.getBroadcast(getApplicationContext(), 0, delete, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -225,5 +241,11 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
         //no -opp
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mMediaPlayer.stop();
     }
 }
