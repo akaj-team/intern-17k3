@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context="vn.asiantech.internship.ui.service.MusicActivity">
 
     <android.support.v7.widget.RecyclerView
@@ -13,11 +13,11 @@
         android:layout_height="500dp" />
 
     <LinearLayout
-        android:visibility="invisible"
         android:id="@+id/llToolMusic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -28,21 +28,24 @@
                 android:id="@+id/btnPreviousMusic"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/ic_skip_previous_black_24dp" />
+                android:background="@drawable/ic_skip_previous_black_24dp"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/btnPlayMusic"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/selector_play_pause" />
+                android:background="@drawable/selector_play_pause"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/btnNextMusic"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_skip_next_black_24dp" />
+                android:background="@drawable/ic_skip_next_black_24dp"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
 
         <LinearLayout

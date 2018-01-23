@@ -39,7 +39,7 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     /**
      * ServiceConnection used to connect to service
      */
-    public static ServiceConnection musicConnection = new ServiceConnection() {
+    public ServiceConnection musicConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             MusicPlayService.MusicBinder binder = (MusicPlayService.MusicBinder) service;
@@ -88,14 +88,14 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     }
 
     private void initData() {
-        mMusicList.add(new Music("Người lạ ơi", "Karrik", false, R.raw.music_2));
-        mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", false, R.raw.music3));
-        mMusicList.add(new Music("Ánh Nắng Của Anh", "Đức Phúc", false, R.raw.music_anhnangcuaanh));
-        mMusicList.add(new Music("Sống xa anh chẵng dễ dàng", "Bảo Anh", false, R.raw.music_baoanh));
-        mMusicList.add(new Music("Người lạ ơi", "Karrik", false, R.raw.music_2));
-        mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", false, R.raw.music3));
-        mMusicList.add(new Music("Ánh Nắng Của Anh", "Đức Phúc", false, R.raw.music_anhnangcuaanh));
-        mMusicList.add(new Music("Sống xa anh chẵng dễ dàng", "Bảo Anh", false, R.raw.music_baoanh));
+        mMusicList.add(new Music("Người lạ ơi", "Karrik", R.raw.music_2));
+        mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", R.raw.music3));
+        mMusicList.add(new Music("Ánh Nắng Của Anh", "Đức Phúc", R.raw.music_anhnangcuaanh));
+        mMusicList.add(new Music("Sống xa anh chẵng dễ dàng", "Bảo Anh", R.raw.music_baoanh));
+        mMusicList.add(new Music("Người lạ ơi", "Karrik", R.raw.music_2));
+        mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", R.raw.music3));
+        mMusicList.add(new Music("Ánh Nắng Của Anh", "Đức Phúc", R.raw.music_anhnangcuaanh));
+        mMusicList.add(new Music("Sống xa anh chẵng dễ dàng", "Bảo Anh", R.raw.music_baoanh));
     }
 
     private void initListener() {
@@ -126,11 +126,11 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
                     startService(mIntent);
                     mBtnPlay.setSelected(false);
                     isPlay = true;
-                } else  {
+                } else {
                     mIntent.setAction("pause");
                     startService(mIntent);
                     mBtnPlay.setSelected(true);
-                    isPlay= false;
+                    isPlay = false;
                 }
                 break;
             case R.id.btnNextMusic:

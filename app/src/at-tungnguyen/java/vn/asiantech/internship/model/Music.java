@@ -11,17 +11,14 @@ import android.os.Parcelable;
 public class Music implements Parcelable {
     private String nameMusic;
     private String single;
-    private boolean isPlay;
     private int uriMusic;
 
     public Music() {
     }
 
-
-    public Music(String nameMusic, String single, boolean isPlay, int uriMusic) {
+    public Music(String nameMusic, String single, int uriMusic) {
         this.nameMusic = nameMusic;
         this.single = single;
-        this.isPlay = isPlay;
         this.uriMusic = uriMusic;
 
     }
@@ -29,7 +26,6 @@ public class Music implements Parcelable {
     private Music(Parcel in) {
         nameMusic = in.readString();
         single = in.readString();
-        isPlay = in.readByte() != 0;
         uriMusic = in.readInt();
     }
 
@@ -47,14 +43,6 @@ public class Music implements Parcelable {
 
     public String getNameMusic() {
         return nameMusic;
-    }
-
-    public boolean isPlay() {
-        return isPlay;
-    }
-
-    public void setPlay(boolean play) {
-        isPlay = play;
     }
 
     public void setNameMusic(String nameMusic) {
@@ -86,16 +74,6 @@ public class Music implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(nameMusic);
         parcel.writeString(single);
-        parcel.writeByte((byte) (isPlay ? 1 : 0));
         parcel.writeInt(uriMusic);
-    }
-
-    @Override
-    public String toString() {
-        return "Music{" +
-                "nameMusic='" + nameMusic + '\'' +
-                ", single='" + single + '\'' +
-                ", isPlay=" + isPlay +
-                '}';
     }
 }

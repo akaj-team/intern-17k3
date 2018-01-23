@@ -117,18 +117,8 @@ public class MusicPlayService extends Service {
         }
     }
 
-    public void onPause() {
-        mMediaPlayer.pause();
-    }
-
     public void onPlay() {
         mMediaPlayer.start();
-    }
-
-    public void onStop() {
-        if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
-        }
     }
 
     public String getNameMusic(int position) {
@@ -145,6 +135,16 @@ public class MusicPlayService extends Service {
         mediaMetadataRetriever.setDataSource(assetFileDescriptor.getFileDescriptor(),
                 assetFileDescriptor.getStartOffset(), assetFileDescriptor.getLength());
         return mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+    }
+
+    public void onStop() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+        }
+    }
+
+    public void onPause() {
+        mMediaPlayer.pause();
     }
 
     /**
@@ -185,7 +185,6 @@ public class MusicPlayService extends Service {
 
     /**
      * Notification click listeners
-     *
      * @param view view
      */
     public void setListeners(RemoteViews view) {
