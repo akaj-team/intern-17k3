@@ -58,6 +58,7 @@ public class MusicPlayService extends Service {
     }
 
     public void onNext(int position) {
+        mPosition = position;
         mPosition++;
         if (mPosition < mMusicList.size()) {
             if (mMediaPlayer.isPlaying()) {
