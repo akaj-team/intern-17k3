@@ -8,24 +8,29 @@ import android.os.Parcelable;
  * Created by tungnguyen on 17/01/2018.
  */
 
-public class Music implements Parcelable{
+public class Music implements Parcelable {
     private String nameMusic;
     private String single;
     private boolean isPlay;
+    private int uriMusic;
 
     public Music() {
     }
 
-    public Music(String nameMusic, String single, boolean isPlay) {
+
+    public Music(String nameMusic, String single, boolean isPlay, int uriMusic) {
         this.nameMusic = nameMusic;
         this.single = single;
         this.isPlay = isPlay;
+        this.uriMusic = uriMusic;
+
     }
 
     private Music(Parcel in) {
         nameMusic = in.readString();
         single = in.readString();
         isPlay = in.readByte() != 0;
+        uriMusic = in.readInt();
     }
 
     public static final Creator<Music> CREATOR = new Creator<Music>() {
@@ -64,6 +69,14 @@ public class Music implements Parcelable{
         this.single = single;
     }
 
+    public int getUriMusic() {
+        return uriMusic;
+    }
+
+    public void setUriMusic(int uriMusic) {
+        this.uriMusic = uriMusic;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -74,6 +87,7 @@ public class Music implements Parcelable{
         parcel.writeString(nameMusic);
         parcel.writeString(single);
         parcel.writeByte((byte) (isPlay ? 1 : 0));
+        parcel.writeInt(uriMusic);
     }
 
     @Override

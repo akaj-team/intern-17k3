@@ -1,13 +1,11 @@
 package vn.asiantech.internship.ui.service;
 
-import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,17 +13,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Music;
 
 public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnItemClickListener, View.OnClickListener {
-    private List<Music> mMusicList;
+    private ArrayList<Music> mMusicList;
     private RecyclerView mRecyclerViewMusic;
-    private MusicAdapter mMusicAdapter;
     private LinearLayout mLlMusic;
     private Button mBtnPlay;
     private Button mBtnNextMusic;
@@ -33,15 +30,16 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     private TextView mTvNameMusic;
     private TextView mTvSingle;
     boolean isSelected = true;
-    private MusicPlayService mMusicPlayService;
+    private static MusicPlayService mMusicPlayService;
     private boolean isPlay = false;
     private int mPosition = 0;
     private Intent mIntent;
+    static boolean isBound = false;
 
     /**
      * ServiceConnection used to connect to service
      */
-    private ServiceConnection musicConnection = new ServiceConnection() {
+    public static ServiceConnection musicConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             MusicPlayService.MusicBinder binder = (MusicPlayService.MusicBinder) service;
@@ -52,6 +50,8 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         @Override
         public void onServiceDisconnected(ComponentName name) {
             //No-opp
+            isBound = false;
+            mMusicPlayService = null;
         }
     };
 
@@ -59,11 +59,13 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
+        mMusicList = new ArrayList<>();
         initViews();
         initAdapter();
         initData();
         initListener();
         mIntent = new Intent(getApplicationContext(), MusicPlayService.class);
+        mIntent.putParcelableArrayListExtra("array", mMusicList);
         mIntent.setAction("data");
         bindService(mIntent, musicConnection, Context.BIND_AUTO_CREATE);
     }
@@ -80,16 +82,20 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
 
     private void initAdapter() {
         mMusicList = new ArrayList<>();
-        mMusicAdapter = new MusicAdapter(mMusicList, this);
+        MusicAdapter mMusicAdapter = new MusicAdapter(mMusicList, this);
         mRecyclerViewMusic.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewMusic.setAdapter(mMusicAdapter);
     }
 
     private void initData() {
-        mMusicList.add(new Music("Người lạ ơi", "Karrik", false));
-        mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", false));
-        mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", false));
-        mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", false));
+        mMusicList.add(new Music("Người lạ ơi", "Karrik", false, R.raw.music_2));
+        mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", false, R.raw.music3));
+        mMusicList.add(new Music("Ánh Nắng Của Anh", "Đức Phúc", false, R.raw.music_anhnangcuaanh));
+        mMusicList.add(new Music("Sống xa anh chẵng dễ dàng", "Bảo Anh", false, R.raw.music_baoanh));
+        mMusicList.add(new Music("Người lạ ơi", "Karrik", false, R.raw.music_2));
+        mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", false, R.raw.music3));
+        mMusicList.add(new Music("Ánh Nắng Của Anh", "Đức Phúc", false, R.raw.music_anhnangcuaanh));
+        mMusicList.add(new Music("Sống xa anh chẵng dễ dàng", "Bảo Anh", false, R.raw.music_baoanh));
     }
 
     private void initListener() {
@@ -105,11 +111,9 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         } else {
             mLlMusic.setVisibility(View.INVISIBLE);
         }
-        mTvNameMusic.setText(music.getNameMusic());
-        mTvSingle.setText(music.getSingle());
+        mTvNameMusic.setText(mMusicPlayService.getNameMusic(position));
+        mTvSingle.setText(mMusicPlayService.getSingle(position));
         mMusicPlayService.onItemMusicClick(position);
-        Notification();
-//        startService(mIntent);
     }
 
     @Override
@@ -118,32 +122,35 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
             case R.id.btnPlayMusic:
                 if (!isPlay) {
                     isPlay = true;
-                    mBtnPlay.setSelected(true);
-                    mMusicPlayService.onPause();
-                } else {
-                    isPlay = false;
+                    mIntent.setAction("play");
+                    startService(mIntent);
                     mBtnPlay.setSelected(false);
-                    mMusicPlayService.onPlay();
+                    isPlay = true;
+                } else  {
+                    mIntent.setAction("pause");
+                    startService(mIntent);
+                    mBtnPlay.setSelected(true);
+                    isPlay= false;
                 }
                 break;
             case R.id.btnNextMusic:
                 mPosition++;
-//                mTvNameMusic.setText(mMusicPlayService.getNameMusic(music));
-//                Log.d("", "onClick: "+mMusicPlayService.getNameMusic(music));
-                mMusicPlayService.onNext();
+                mMusicPlayService.onNext(mPosition);
+                if (mPosition < mMusicList.size()) {
+                    mTvNameMusic.setText(mMusicPlayService.getNameMusic(mPosition));
+                    mTvSingle.setText(mMusicPlayService.getSingle(mPosition));
+                } else if (mPosition > mMusicList.size() - 1) {
+                    Toast.makeText(this, R.string.tv_end, Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btnPreviousMusic:
-                mMusicPlayService.onPrevious();
+                mPosition--;
+                mMusicPlayService.onPrevious(mPosition);
+                if (mPosition < mMusicList.size()) {
+                    mTvNameMusic.setText(mMusicPlayService.getNameMusic(mPosition));
+                    mTvSingle.setText(mMusicPlayService.getSingle(mPosition));
+                } else if (mPosition == mMusicList.size() - 4) {
+                }
         }
-    }
-
-    public void Notification() {
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
-        mBuilder.setSmallIcon(R.drawable.ic_input_black_24dp);
-        mBuilder.setContentTitle("My notification");
-        mBuilder.setContentText("Hello World!");
-        mNotificationManager.notify(1, mBuilder.build());
-
     }
 }

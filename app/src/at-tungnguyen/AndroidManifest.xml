@@ -5,8 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -38,12 +36,25 @@
         <activity android:name=".ui.viewpager.ui.ViewPagerActivity" />
         <activity android:name=".ui.viewpager.ui.TabLayoutActivity" />
         <activity android:name=".ui.unittest.LoginActivity" />
-        <activity android:name=".ui.service.MusicActivity"/>
+        <activity android:name=".ui.service.MusicActivity" />
+
         <service
             android:name=".ui.service.MusicPlayService"
-            android:label="Music Service" >
+            android:exported="false"
+            android:label="Music Service">
+
         </service>
-
+        <receiver
+            android:name=".ui.service.NotificationBroadcast"
+            android:permission="notification">
+            <intent-filter>
+                <action android:name="delete" />
+                <action android:name="pause" />
+                <action android:name="next" />
+                <action android:name="play" />
+                <action android:name="previous" />
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
     </application>
-
 </manifest>
