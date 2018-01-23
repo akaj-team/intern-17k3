@@ -245,7 +245,7 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         mMediaPlayer.stop();
+        super.onDestroy();
     }
 }
