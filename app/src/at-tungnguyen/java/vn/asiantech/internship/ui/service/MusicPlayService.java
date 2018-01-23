@@ -57,7 +57,6 @@ public class MusicPlayService extends Service {
         super.onCreate();
     }
 
-
     public void onNext(int position) {
         mPosition++;
         if (mPosition < mMusicList.size()) {
@@ -185,6 +184,7 @@ public class MusicPlayService extends Service {
 
     /**
      * Notification click listeners
+     *
      * @param view view
      */
     public void setListeners(RemoteViews view) {
