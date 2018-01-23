@@ -36,8 +36,7 @@
                 android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:src="@drawable/profile"
-                app:imageUrl="@{user.url}"
-                 />
+                app:imageUrl="@{user.url}" />
 
             <TextView
                 android:id="@+id/tvNameProfile"
@@ -70,12 +69,10 @@
 
                 <TextView
                     android:id="@+id/tvEmailProfile"
-
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:text="@{user.email}" />
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -84,7 +81,6 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
@@ -106,7 +102,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
