@@ -42,6 +42,7 @@ public class ServiceMusic extends Service {
     public static final String ACTION_SEND_DATA = "SendData";
     public static final String ACTION_NEXT = "Next";
     public static final String ACTION_PREVIOUS = "Previous";
+    public static final String ACTION_CHECK_RUN = "CheckRun";
 
     public static final String POSITION = "Position";
 
@@ -61,7 +62,6 @@ public class ServiceMusic extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        mMediaPlayer = new MediaPlayer();
         sendInformationSong = new Intent();
         timeRemaining = 0;
         isPause = false;
@@ -80,12 +80,11 @@ public class ServiceMusic extends Service {
         if (intent != null) {
             if (intent.getAction() != null) {
                 switch (intent.getAction()) {
-                    case "check":
+                    case ACTION_CHECK_RUN:
                         checkRunSong();
                         break;
                     case ACTION_SEND_DATA:
-                        mSongs = intent.getParcelableArrayListExtra("ListSong");
-                        Log.d("xxx", "" + mSongs.size());
+                        mSongs = intent.getParcelableArrayListExtra(MusicActivity.KEY_LIST);
                         break;
                     case ACTION_PLAY:
                         isPause = false;
@@ -97,6 +96,11 @@ public class ServiceMusic extends Service {
                         int a = intent.getIntExtra("Move", 0);
                         mMediaPlayer.seekTo(a);
                         break;
+                    case ACTION_PAUSE:
+                        isPause = true;
+                        pauseMusic();
+                        newNotification();
+                        break;
                     case ACTION_RESUME:
                         isPause = false;
                         resumeMusic();
@@ -104,11 +108,6 @@ public class ServiceMusic extends Service {
                         break;
                     case ACTION_STOP:
                         stopMusic();
-                        break;
-                    case ACTION_PAUSE:
-                        isPause = true;
-                        pauseMusic();
-                        newNotification();
                         break;
                     case ACTION_NEXT:
                         nextMusic();
@@ -122,6 +121,12 @@ public class ServiceMusic extends Service {
     }
 
     private void previousMusic() {
+        if (mCountDownTimerStart != null) {
+            mCountDownTimerStart.cancel();
+        }
+        if (mCountDownTimerResume != null) {
+            mCountDownTimerResume.cancel();
+        }
         if (mListSong.size() >= 2) {
             mListSong.remove(mListSong.size() - 1);
             int songPrevious = mListSong.get(mListSong.size() - 1);
@@ -132,73 +137,48 @@ public class ServiceMusic extends Service {
     }
 
     private void nextMusic() {
-        Random r = new Random();
-        int songNext = r.nextInt(mSongs.size());
-        playMusic(songNext);
-        mListSong.add(songNext);
-    }
-
-    private void stopMusic() {
-        mMediaPlayer.stop();
         if (mCountDownTimerStart != null) {
             mCountDownTimerStart.cancel();
         }
         if (mCountDownTimerResume != null) {
             mCountDownTimerResume.cancel();
         }
-    }
-
-    private void resumeMusic() {
-        mMediaPlayer.start();
-        sendInformationSong.setAction("CheckPlay");
-        mCountDownTimerResume = new CountDownTimer(timeRemaining, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
-                sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
-                sendBroadcast(sendInformationSong);
-                timeRemaining = millisUntilFinished;
-            }
-
-            @Override
-            public void onFinish() {
-                sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
-                sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
-                sendBroadcast(sendInformationSong);
-            }
-        };
-        mCountDownTimerResume.start();
-    }
-
-    private void pauseMusic() {
-        mMediaPlayer.pause();
-        mCountDownTimerStart.cancel();
-        if (mCountDownTimerResume != null) {
-            mCountDownTimerResume.cancel();
-        }
+        Random r = new Random();
+        int songNext = r.nextInt(mSongs.size());
+        playMusic(songNext);
+        mListSong.add(songNext);
     }
 
     private void playMusic(int position) {
         songPlay = position;
         newNotification();
-        sendInformationSong.setAction("Information");
+        sendActionCheckRun(true);
+        sendActionInformationSong(position);
+        sendInformationSong.setAction(MusicActivity.ACTION_CHECK_SING);
+        sendInformationSong.putExtra("Information_sing", true);
         sendInformationSong.putExtra("Information_song", mSongs.get(position));
         sendBroadcast(sendInformationSong);
         String path = "android.resource://" + getPackageName() + "/" + mSongs.get(position).getResource();
         Uri uri = Uri.parse(path);
         try {
-            mMediaPlayer.reset();
+            if (mMediaPlayer == null) {
+                mMediaPlayer = new MediaPlayer();
+            } else {
+                mMediaPlayer.reset();
+            }
             mMediaPlayer.setDataSource(this, uri);
             mMediaPlayer.prepare();
             mMediaPlayer.start();
-            sendInformationSong.setAction("CheckPlay");
+            sendInformationSong.setAction(MusicActivity.ACTION_CHECK_TIME);
             mCountDownTimerStart = new CountDownTimer(mMediaPlayer.getDuration(), 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
-                    sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
-                    sendBroadcast(sendInformationSong);
-                    timeRemaining = millisUntilFinished;
+                    if (mMediaPlayer != null) {
+                        sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                        sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                        sendBroadcast(sendInformationSong);
+                        timeRemaining = millisUntilFinished;
+                    }
                 }
 
                 @Override
@@ -214,32 +194,117 @@ public class ServiceMusic extends Service {
         }
     }
 
-    private void checkRunSong() {
-        if (mMediaPlayer.isPlaying()) {
-            sendInformationSong.setAction("CheckSing");
-            sendInformationSong.putExtra("Information_song", mSongs.get(songPlay));
-            sendBroadcast(sendInformationSong);
-            if (mCountDownTimerStart != null) {
-                sendInformationSong.setAction("CheckPlay");
-                mCountDownTimerStart = new CountDownTimer(mMediaPlayer.getDuration(), 1000) {
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
-                        sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
-                        sendBroadcast(sendInformationSong);
-                        timeRemaining = millisUntilFinished;
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
-                        sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
-                        sendBroadcast(sendInformationSong);
-                    }
-                };
-                mCountDownTimerStart.start();
-            }
+    private void stopMusic() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
         }
+        if (mCountDownTimerStart != null) {
+            mCountDownTimerStart.cancel();
+        }
+        if (mCountDownTimerResume != null) {
+            mCountDownTimerResume.cancel();
+        }
+        sendActionCheckSing(false);
+        sendActionCheckRun(false);
+        mMediaPlayer = null;
+    }
+
+    private void resumeMusic() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.start();
+            sendActionCheckRun(true);
+            sendInformationSong.setAction(MusicActivity.ACTION_CHECK_TIME);
+            mCountDownTimerResume = new CountDownTimer(timeRemaining, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                    sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                    sendBroadcast(sendInformationSong);
+                    timeRemaining = millisUntilFinished;
+                }
+
+                @Override
+                public void onFinish() {
+                    sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                    sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                    sendBroadcast(sendInformationSong);
+                }
+            };
+            mCountDownTimerResume.start();
+        } else {
+            mMediaPlayer = new MediaPlayer();
+            nextMusic();
+        }
+    }
+
+    private void pauseMusic() {
+        mMediaPlayer.pause();
+        sendActionCheckRun(false);
+        mCountDownTimerStart.cancel();
+        if (mCountDownTimerResume != null) {
+            mCountDownTimerResume.cancel();
+        }
+    }
+
+    private void checkRunSong() {
+        if (mMediaPlayer != null) {
+//            sendActionCheckSing(false);
+            if (mMediaPlayer.isPlaying()) {
+                sendActionCheckRun(true);
+                sendInformationSong.setAction(MusicActivity.ACTION_CHECK_SING);
+                sendInformationSong.putExtra("Information_song", mSongs.get(songPlay));
+                sendInformationSong.putExtra("Information_sing", true);
+                sendBroadcast(sendInformationSong);
+                if (mCountDownTimerStart != null) {
+                    mCountDownTimerStart.cancel();
+                    sendInformationSong.setAction(MusicActivity.ACTION_CHECK_TIME);
+                    mCountDownTimerStart = new CountDownTimer(mMediaPlayer.getDuration()-mMediaPlayer.getCurrentPosition(), 1000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                            sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                            sendBroadcast(sendInformationSong);
+                            timeRemaining = millisUntilFinished;
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                            sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                            sendBroadcast(sendInformationSong);
+                        }
+                    };
+                    mCountDownTimerStart.start();
+                }
+            } else {
+                sendActionCheckSing(true);
+                sendInformationSong.setAction(MusicActivity.ACTION_CHECK_TIME);
+                sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                sendBroadcast(sendInformationSong);
+            }
+        } else {
+            mMediaPlayer = new MediaPlayer();
+            sendActionCheckSing(false);
+        }
+    }
+
+    private void sendActionCheckSing(boolean check) {
+        sendInformationSong.setAction(MusicActivity.ACTION_CHECK_SING);
+        sendInformationSong.putExtra("Information_sing", check);
+        sendBroadcast(sendInformationSong);
+    }
+
+    private void sendActionInformationSong(int position) {
+        sendInformationSong.setAction(MusicActivity.ACTION_INFORMATION_SONG);
+        sendInformationSong.putExtra("Information_song", mSongs.get(position));
+        sendBroadcast(sendInformationSong);
+    }
+
+    private void sendActionCheckRun(boolean check) {
+        sendInformationSong.setAction(MusicActivity.ACTION_CHECK_RUN);
+        sendInformationSong.putExtra("dung", check);
+        sendBroadcast(sendInformationSong);
     }
 
     @Override
@@ -250,7 +315,11 @@ public class ServiceMusic extends Service {
         if (mCountDownTimerResume != null) {
             mCountDownTimerResume.cancel();
         }
-        mMediaPlayer.stop();
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+            mMediaPlayer = null;
+        }
+        checkRunSong();
         super.onDestroy();
     }
 
@@ -279,19 +348,14 @@ public class ServiceMusic extends Service {
         Intent pause = new Intent(NOTIFY_PAUSE);
         Intent next = new Intent(NOTIFY_NEXT);
         Intent play = new Intent(NOTIFY_RESUME);
-
         PendingIntent pPrevious = PendingIntent.getBroadcast(getApplicationContext(), 0, previous, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgPrevious, pPrevious);
-
         PendingIntent pDelete = PendingIntent.getBroadcast(getApplicationContext(), 0, delete, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgDelete, pDelete);
-
         PendingIntent pPause = PendingIntent.getBroadcast(getApplicationContext(), 0, pause, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgPause, pPause);
-
         PendingIntent pNext = PendingIntent.getBroadcast(getApplicationContext(), 0, next, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgNext, pNext);
-
         PendingIntent pPlay = PendingIntent.getBroadcast(getApplicationContext(), 0, play, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgPlay, pPlay);
     }

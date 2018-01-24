@@ -23,6 +23,12 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Song;
 
 public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnItemClickListener, View.OnClickListener {
+    static final String ACTION_CHECK_TIME = "CheckTime";
+    static final String ACTION_INFORMATION_SONG = "Information";
+    static final String ACTION_CHECK_SING = "CheckSing";
+    static final String ACTION_CHECK_RUN = "CheckRun";
+
+    public static final String KEY_LIST = "ListSong";
     private RecyclerView mRecyclerViewSong;
     private ArrayList<Song> mSongs;
     private Intent mIntentSendAction;
@@ -33,12 +39,10 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     private LinearLayout mLlController;
     private Button mBtnPlayPause;
     private ImageView mImgAvatarSong;
-    private boolean mRunning;
-    private SharedPreferences mSharedPreferences;
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (TextUtils.equals(intent.getAction(), "CheckPlay")) {
+            if (TextUtils.equals(intent.getAction(), ACTION_CHECK_TIME)) {
                 int currentTime = intent.getIntExtra("CurrentTime", 0);
                 int totalTime = intent.getIntExtra("TotalTime", 0);
                 mTvTimeSong.setText(convertTime(currentTime).concat("/").concat(convertTime(totalTime)));
@@ -63,14 +67,21 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
                         startService(mIntentSendAction);
                     }
                 });
-            } else if (TextUtils.equals(intent.getAction(), "Information")) {
+            } else if (TextUtils.equals(intent.getAction(), ACTION_INFORMATION_SONG)) {
                 Song song = intent.getParcelableExtra("Information_song");
                 mTvNameSong.setText(song.getName());
                 mImgAvatarSong.setImageResource(song.getAvatar());
-            } else if (TextUtils.equals(intent.getAction(),"CheckSing")){
-                Song song = intent.getParcelableExtra("Information_song");
-                mTvNameSong.setText(song.getName());
-                mImgAvatarSong.setImageResource(song.getAvatar());
+            } else if (TextUtils.equals(intent.getAction(),ACTION_CHECK_SING)){
+                if(intent.getParcelableExtra("Information_song")!=null){
+                    Song song = intent.getParcelableExtra("Information_song");
+                    mTvNameSong.setText(song.getName());
+                    mImgAvatarSong.setImageResource(song.getAvatar());
+                }
+                boolean check = intent.getBooleanExtra("Information_sing",false);
+                updateController(check);
+            } else if(TextUtils.equals(intent.getAction(),ACTION_CHECK_RUN)){
+                sing = intent.getBooleanExtra("dung",false);
+                setBtnPlayPause(sing);
             }
         }
     };
@@ -83,11 +94,14 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         initData();
         initAdapter();
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CheckPlay");
-        intentFilter.addAction("Information");
-        intentFilter.addAction("CheckSing");
+        intentFilter.addAction(ACTION_CHECK_TIME);
+        intentFilter.addAction(ACTION_INFORMATION_SONG);
+        intentFilter.addAction(ACTION_CHECK_SING);
+        intentFilter.addAction(ACTION_CHECK_RUN);
         registerReceiver(mBroadcastReceiver, intentFilter);
-        mIntentSendAction.setAction("check");
+
+
+        mIntentSendAction.setAction(ServiceMusic.ACTION_CHECK_RUN);
         startService(mIntentSendAction);
     }
 
@@ -103,23 +117,19 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         mRecyclerViewSong = findViewById(R.id.recycleViewSong);
         mLlController = findViewById(R.id.llController);
         mBtnPlayPause = findViewById(R.id.btnPlayPause);
+        mTvTimeSong = findViewById(R.id.tvTimeSong);
+        mTvNameSong = findViewById(R.id.tvNameSong);
+        mSeekBarSong = findViewById(R.id.seekBarSong);
+        mImgAvatarSong = findViewById(R.id.imgAvatarSong);
         mIntentSendAction = new Intent(this, ServiceMusic.class);
         Button btnStop = findViewById(R.id.btnStop);
         Button btnPrevious = findViewById(R.id.btnPrevious);
         Button btnNext = findViewById(R.id.btnNext);
-        mTvTimeSong = findViewById(R.id.tvTimeSong);
-        mTvNameSong = findViewById(R.id.tvNameSong);
         mTvNameSong.setSelected(true);
-        mSeekBarSong = findViewById(R.id.seekBarSong);
-        mImgAvatarSong = findViewById(R.id.imgAvatarSong);
         btnStop.setOnClickListener(this);
         mBtnPlayPause.setOnClickListener(this);
         btnPrevious.setOnClickListener(this);
         btnNext.setOnClickListener(this);
-        mSharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
-        mRunning = mSharedPreferences.getBoolean("Run", false);
-        updateController(mRunning);
-        setBtnPlayPause(mRunning);
     }
 
     private void setBtnPlayPause(boolean checkSing) {
@@ -164,12 +174,6 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         mIntentSendAction.setAction(ServiceMusic.ACTION_PLAY);
         mIntentSendAction.putExtra(ServiceMusic.POSITION, position);
         startService(mIntentSendAction);
-        mRunning = true;
-        updateController(true);
-        setBtnPlayPause(mRunning);
-        SharedPreferences.Editor editorEdit = mSharedPreferences.edit();
-        editorEdit.putBoolean("Run", true);
-        editorEdit.apply();
     }
 
     @Override
@@ -178,37 +182,24 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
             case R.id.btnStop:
                 mIntentSendAction.setAction(ServiceMusic.ACTION_STOP);
                 startService(mIntentSendAction);
-                mRunning = false;
-                updateController(false);
-                setBtnPlayPause(mRunning);
-                SharedPreferences.Editor editorEdit = mSharedPreferences.edit();
-                editorEdit.putBoolean("Run", false);
-                editorEdit.apply();
                 break;
             case R.id.btnPlayPause:
                 if (sing) {
-                    sing = false;
                     mIntentSendAction.setAction(ServiceMusic.ACTION_PAUSE);
                 } else {
-                    sing = true;
                     mIntentSendAction.setAction(ServiceMusic.ACTION_RESUME);
                 }
                 startService(mIntentSendAction);
-                setBtnPlayPause(sing);
                 break;
             case R.id.btnPrevious:
                 sendListSong();
                 mIntentSendAction.setAction(ServiceMusic.ACTION_PREVIOUS);
                 startService(mIntentSendAction);
-                sing = true;
-                setBtnPlayPause(true);
                 break;
             case R.id.btnNext:
                 sendListSong();
                 mIntentSendAction.setAction(ServiceMusic.ACTION_NEXT);
                 startService(mIntentSendAction);
-                sing = true;
-                setBtnPlayPause(true);
         }
     }
 
@@ -226,7 +217,7 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
 
     private void sendListSong() {
         mIntentSendAction.setAction(ServiceMusic.ACTION_SEND_DATA);
-        mIntentSendAction.putParcelableArrayListExtra("ListSong", mSongs);
+        mIntentSendAction.putParcelableArrayListExtra(KEY_LIST, mSongs);
         startService(mIntentSendAction);
     }
 }
