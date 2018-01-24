@@ -14,8 +14,9 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityEditProfileBinding activityEditProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile);
-        if (getIntent().getParcelableExtra(ProfileUser.class.getSimpleName()) != null) {
-            activityEditProfileBinding.setProfileUser((ProfileUser) getIntent().getParcelableExtra(ProfileUser.class.getSimpleName()));
+        ProfileUser profileUser = getIntent().getParcelableExtra(ProfileUser.class.getSimpleName());
+        if (profileUser != null) {
+            activityEditProfileBinding.setProfileUser(profileUser);
         }
     }
 }

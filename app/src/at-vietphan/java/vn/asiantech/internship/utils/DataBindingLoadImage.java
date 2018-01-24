@@ -11,7 +11,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Class DataBindingLoadImage
  */
 public class DataBindingLoadImage {
-    @BindingAdapter({"imageUrl"})
+    @BindingAdapter("imageUrl")
     public static void loadImage(CircleImageView circleImageView, String url) {
         Glide.with(circleImageView.getContext()).load(url).into(circleImageView);
     }

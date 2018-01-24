@@ -13,7 +13,9 @@ import android.text.Editable;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import vn.asiantech.internship.BR;
 import vn.asiantech.internship.ui.databinding.EditProfileActivity;
@@ -34,7 +36,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
             return new ProfileUser[size];
         }
     };
-    public static final int REQUEST_CODE = 1;
+    public static final int EDIT_USER_REQUEST_CODE = 1;
     private String name;
     private String email;
     private String birthDate;
@@ -43,7 +45,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     private String imageUrl;
 
     public ProfileUser() {
-
+        //No-op
     }
 
     private ProfileUser(Parcel in) {
@@ -115,10 +117,19 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.imageUrl);
     }
 
-    public void editProfile(Context context, ProfileUser profileUser) {
+    public void onEditProfile(Context context, ProfileUser profileUser) {
         Intent intent = new Intent(context, EditProfileActivity.class);
         intent.putExtra(ProfileUser.class.getSimpleName(), profileUser);
-        ((AppCompatActivity) context).startActivityForResult(intent, REQUEST_CODE);
+        ((AppCompatActivity) context).startActivityForResult(intent, EDIT_USER_REQUEST_CODE);
+    }
+
+    public void onUpdateProfile(Context context, ProfileUser profileUser) {
+        if (context instanceof EditProfileActivity) {
+            Intent intent = new Intent();
+            intent.putExtra(ProfileUser.class.getSimpleName(), profileUser);
+            ((EditProfileActivity) context).setResult(EDIT_USER_REQUEST_CODE, intent);
+            ((EditProfileActivity) context).finish();
+        }
     }
 
     public void afterTextChange(Editable text, int index) {
@@ -133,29 +144,20 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         }
     }
 
-    public void updateProfile(Context context, ProfileUser profileUser) {
-        if (context instanceof EditProfileActivity) {
-            Intent intent = new Intent();
-            intent.putExtra(ProfileUser.class.getSimpleName(), profileUser);
-            ((EditProfileActivity) context).setResult(REQUEST_CODE, intent);
-            ((EditProfileActivity) context).finish();
-        }
-    }
-
     @SuppressLint("SetTextI18n")
     public void showDatePicker(final TextView edt) {
-        // calendar
         final Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-        //show current day
-        edt.setText(day + "/" + (month + 1) + "/" + year);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(edt.getContext(),
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(edt.getContext(),
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        setBirthDate(day + "/" + (month + 1) + "/" + year);
+                        calendar.set(year, month, day, 0, 0, 0);
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+                        String strDate = dateFormat.format(calendar.getTime());
+                        setBirthDate(strDate);
                     }
                 }, year, month, day);
         datePickerDialog.show();

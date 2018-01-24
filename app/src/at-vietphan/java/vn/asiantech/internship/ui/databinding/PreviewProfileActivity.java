@@ -5,32 +5,38 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.databinding.ActivityPreviewProfileBinding;
 import vn.asiantech.internship.models.ProfileUser;
 
 public class PreviewProfileActivity extends AppCompatActivity {
-    private ActivityPreviewProfileBinding mActivityPreviewProfileBinding;
+    private ActivityPreviewProfileBinding mPreviewProfileBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivityPreviewProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_preview_profile);
+        mPreviewProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_preview_profile);
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
         ProfileUser profileUser = new ProfileUser();
         profileUser.setName("viet");
         profileUser.setEmail("viet.phan@asiantech.vn");
-        profileUser.setBirthDate("2/4/1996");
+        profileUser.setBirthDate(dateFormat.format(cal.getTime()));
         profileUser.setGenDer(0);
         profileUser.setPhone("0979047004");
-        profileUser.setImageUrl("http://2sao.vietnamnetjsc.vn/images/2017/03/24/20/38/Anh-doi-thuong-xinh-dep-cua-hot-girl-bong-chuyen-tuyen-Viet-Nam-3.jpg");
-        mActivityPreviewProfileBinding.setProfileUser(profileUser);
+        profileUser.setImageUrl("https://znews-photo-td.zadn.vn/w1024/Uploaded/ohunua2/2017_03_24/huyen3.jpg");
+        mPreviewProfileBinding.setProfileUser(profileUser);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ProfileUser.REQUEST_CODE && data != null) {
-            mActivityPreviewProfileBinding.setProfileUser((ProfileUser) data.getParcelableExtra(ProfileUser.class.getSimpleName()));
+        if (requestCode == ProfileUser.EDIT_USER_REQUEST_CODE && data != null) {
+            mPreviewProfileBinding.setProfileUser((ProfileUser) data.getParcelableExtra(ProfileUser.class.getSimpleName()));
         }
     }
 }
