@@ -135,7 +135,9 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
                 break;
             case R.id.btnNextMusic:
                 mPosition++;
-                mMusicPlayService.onNext(mPosition);
+                Intent intent = new Intent(MusicActivity.this,MusicPlayService.class);
+                intent.setAction("next");
+                startService(intent);
                 if (mPosition < mMusicList.size()) {
                     mTvNameMusic.setText(mMusicPlayService.getNameMusic(mPosition));
                     mTvSingle.setText(mMusicPlayService.getSingle(mPosition));

@@ -15,6 +15,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Music;
@@ -35,7 +36,8 @@ public class MusicPlayService extends Service {
     public static final String NOTIFY_PAUSE = "pause";
     public static final String NOTIFY_PLAY = "play";
     public static final String NOTIFY_NEXT = "next";
-    private static boolean isPause = false;
+    private boolean isPause = false;
+    private Random randomGenerator;
 
     public MusicPlayService() {
     }
@@ -63,13 +65,14 @@ public class MusicPlayService extends Service {
         if (mPosition < mMusicList.size()) {
             if (mMediaPlayer.isPlaying()) {
                 mMediaPlayer.stop();
-                mMediaPlayer = MediaPlayer.create(getApplicationContext(), mMusicList.get(position).getUriMusic());
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(), mMusicList.get(mPosition).getUriMusic());
                 mMediaPlayer.start();
-                getNameMusic(position);
             }
+            getNameMusic(position);
         } else if (mPosition > mMusicList.size()) {
             Toast.makeText(this, R.string.tv_end, Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override
@@ -88,8 +91,8 @@ public class MusicPlayService extends Service {
                     break;
                 case "next":
                     onNext(mPosition);
-                    isPause = false;
                     newNotification();
+                    isPause = false;
                     break;
                 case "previous":
                     onPrevious(mPosition);
@@ -112,9 +115,10 @@ public class MusicPlayService extends Service {
             } else {
                 mPosition = mMusicList.size();
             }
-            mMediaPlayer = MediaPlayer.create(getApplicationContext(), mMusicList.get(position).getUriMusic());
+            mMediaPlayer = MediaPlayer.create(getApplicationContext(), mMusicList.get(mPosition).getUriMusic());
             mMediaPlayer.start();
         }
+        newNotification();
     }
 
     public void onPlay() {
@@ -135,6 +139,11 @@ public class MusicPlayService extends Service {
         mediaMetadataRetriever.setDataSource(assetFileDescriptor.getFileDescriptor(),
                 assetFileDescriptor.getStartOffset(), assetFileDescriptor.getLength());
         return mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     public void onStop() {

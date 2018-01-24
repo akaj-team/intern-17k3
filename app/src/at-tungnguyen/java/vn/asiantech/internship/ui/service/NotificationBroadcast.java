@@ -18,7 +18,6 @@ public class NotificationBroadcast extends BroadcastReceiver {
     private Intent mIntent;
 
     public void onReceive(Context context, Intent intent) {
-//        musicList = intent.getParcelableArrayListExtra("array");
         if (intent.getAction().equals(MusicPlayService.NOTIFY_PLAY)) {
             mIntent = new Intent(context, MusicPlayService.class);
             mIntent.setAction("play");
