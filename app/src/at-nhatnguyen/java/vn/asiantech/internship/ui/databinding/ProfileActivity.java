@@ -11,6 +11,7 @@ import vn.asiantech.internship.models.ProfileUser;
 
 public class ProfileActivity extends AppCompatActivity {
     private ActivityProfileBinding mActivityProfileBinding;
+    public static final int EDIT_PROFILE_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ProfileUser.REQUEST_CODE && data != null) {
+        if (requestCode == EDIT_PROFILE_REQUEST_CODE && data != null && resultCode == RESULT_OK) {
             mActivityProfileBinding.setProfileUser((ProfileUser) data.getParcelableExtra(ProfileUser.class.getSimpleName()));
         }
     }

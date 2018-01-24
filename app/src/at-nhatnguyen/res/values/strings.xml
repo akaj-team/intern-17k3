@@ -101,4 +101,5 @@
     <string name="health_over_voltage">OVER VOLTAGE</string>
     <string name="health_overheat">OVERHEAT</string>
     <string name="health_unspecified">FAILURE</string>
+    <string name="preview_profile">Preview Profile</string>
 </resources>

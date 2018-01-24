@@ -14,10 +14,15 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.DatePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import vn.asiantech.internship.BR;
+import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.databinding.DataBindingActivity;
+import vn.asiantech.internship.ui.databinding.EnumType;
+import vn.asiantech.internship.ui.databinding.ProfileActivity;
 
 /**
  * profile user
@@ -35,14 +40,22 @@ public class ProfileUser extends BaseObservable implements Parcelable {
             return new ProfileUser[size];
         }
     };
-    public static final int REQUEST_CODE = 1;
     private int gender;
     private String urlAvatar;
     private String name;
     private String email;
     private String birthDate;
     private String phoneNumber;
-    private boolean isTextEmpty;
+    private boolean enableSubmitBtn;
+
+    private ProfileUser(Parcel in) {
+        name = in.readString();
+        email = in.readString();
+        birthDate = in.readString();
+        gender = in.readInt();
+        phoneNumber = in.readString();
+        urlAvatar = in.readString();
+    }
 
     public ProfileUser(String name, String email, int gender, String phoneNumber, String urlAvatar) {
         this.name = name;
@@ -51,21 +64,14 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         this.phoneNumber = phoneNumber;
         this.urlAvatar = urlAvatar;
 
-        final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
-        updateBirthDate(year, month, day);
-        checkEmptyEditText();
-    }
-
-    protected ProfileUser(Parcel in) {
-        name = in.readString();
-        email = in.readString();
-        birthDate = in.readString();
-        gender = in.readInt();
-        phoneNumber = in.readString();
-        urlAvatar = in.readString();
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+        calendar.set(year, month, day);
+        setBirthDate(String.valueOf(format.format(calendar.getTime())));
+        updateStatusOfSubmitBtn();
     }
 
     @Bindable
@@ -119,13 +125,13 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     }
 
     @Bindable
-    public boolean isTextEmpty() {
-        return isTextEmpty;
+    public boolean isEnableSubmitBtn() {
+        return enableSubmitBtn;
     }
 
-    public void setTextEmpty(boolean textEmpty) {
-        isTextEmpty = textEmpty;
-        notifyPropertyChanged(BR.textEmpty);
+    public void setEnableSubmitBtn(boolean enableSubmitBtn) {
+        this.enableSubmitBtn = enableSubmitBtn;
+        notifyPropertyChanged(BR.enableSubmitBtn);
     }
 
     @Bindable
@@ -138,57 +144,52 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.urlAvatar);
     }
 
-    public void cleanName() {
+    public void onCleanNameClick() {
         setName("");
     }
 
-    public void cleanEmail() {
+    public void onCleanEmailClick() {
         setEmail("");
     }
 
-    public void cleanPhoneNumber() {
+    public void onCleanPhoneNumberClick() {
         setPhoneNumber("");
     }
 
-    public String displayGender() {
-        if (getGender() == 0) {
-            return "Male";
-        } else {
-            return "Female";
-        }
+    public String displayGender(Context context) {
+        String genders[] = context.getResources().getStringArray(R.array.spinner_gender);
+        return genders[gender];
     }
 
-    public void showDialog(View v) {
-        final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+    public void onShowDatePickerDialogClick(View v) {
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                updateBirthDate(year, month, dayOfMonth);
+                calendar.set(year, month, dayOfMonth);
+                setBirthDate(String.valueOf(format.format(calendar.getTime())));
             }
         }, year, month, day);
         datePickerDialog.show();
     }
 
-    public void updateBirthDate(int year, int month, int day) {
-        setBirthDate(String.valueOf(year).concat("-").concat(String.valueOf(month + 1).concat("-").concat(String.valueOf(day))));
-    }
-
-    public void updateProfile(Context context, ProfileUser profileUser) {
+    public void onUpdateProfileClick(Context context) {
         if (context instanceof DataBindingActivity) {
             Intent intent = new Intent();
-            intent.putExtra(ProfileUser.class.getSimpleName(), profileUser);
+            intent.putExtra(ProfileUser.class.getSimpleName(), this);
             ((DataBindingActivity) context).setResult(Activity.RESULT_OK, intent);
             ((DataBindingActivity) context).finish();
         }
     }
 
-    public void editProfile(Context context, ProfileUser profileUser) {
+    public void onEditProfileClick(Context context) {
         Intent intent = new Intent(context, DataBindingActivity.class);
-        intent.putExtra(ProfileUser.class.getSimpleName(), profileUser);
-        ((AppCompatActivity) context).startActivityForResult(intent, REQUEST_CODE);
+        intent.putExtra(ProfileUser.class.getSimpleName(), this);
+        ((AppCompatActivity) context).startActivityForResult(intent, ProfileActivity.EDIT_PROFILE_REQUEST_CODE);
     }
 
     @Override
@@ -206,24 +207,24 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         dest.writeString(urlAvatar);
     }
 
-    public void checkEmptyEditText() {
+    public void updateStatusOfSubmitBtn() {
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(phoneNumber)) {
-            setTextEmpty(false);
+            setEnableSubmitBtn(false);
         } else {
-            setTextEmpty(true);
+            setEnableSubmitBtn(true);
         }
     }
 
     public void afterTextChange(Editable s, int typeItem) {
-        if (typeItem == 0) {
+        if (typeItem == EnumType.NAME) {
             setName(s.toString());
-        } else if (typeItem == 1) {
+        } else if (typeItem == EnumType.EMAIL) {
             setEmail(s.toString());
-        } else if (typeItem == 2) {
+        } else if (typeItem == EnumType.BIRTHDAY) {
             setBirthDate(s.toString());
-        } else if (typeItem == 3) {
+        } else if (typeItem == EnumType.CONTACT_NUMBER) {
             setPhoneNumber(s.toString());
         }
-        checkEmptyEditText();
+        updateStatusOfSubmitBtn();
     }
 }
