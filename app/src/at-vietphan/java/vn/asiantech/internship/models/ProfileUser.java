@@ -44,10 +44,6 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     private String phone;
     private String imageUrl;
 
-    public ProfileUser() {
-        //No-op
-    }
-
     private ProfileUser(Parcel in) {
         name = in.readString();
         email = in.readString();
@@ -55,6 +51,10 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         genDer = in.readInt();
         phone = in.readString();
         imageUrl = in.readString();
+    }
+
+    public ProfileUser() {
+        //No-op
     }
 
     @Bindable
