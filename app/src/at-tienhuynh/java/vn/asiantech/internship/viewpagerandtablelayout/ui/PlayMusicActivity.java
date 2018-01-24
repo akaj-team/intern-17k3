@@ -97,6 +97,8 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         initData();
         // init views
         initViews();
+        //send first status
+        sendFirstStatus();
         // init RecyclerView
         initRecyclerView();
         // init Listener
@@ -107,6 +109,11 @@ public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter
         registerBroadcast();
         // set show panel
         showBottomPanel(isShowBottomPanel());
+    }
+
+    private void sendFirstStatus() {
+        mIntent.setAction("firstStatus");
+        startService(mIntent);
     }
 
     private void initViews() {
