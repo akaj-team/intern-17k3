@@ -41,7 +41,6 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_thread" />
-
     <Button
         android:id="@+id/btnLoadImage"
         android:layout_width="300dp"
@@ -59,10 +58,19 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_login_validation" />
-
     <Button
         android:id="@+id/btnDataBlind"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_datablind" />
+    <Button
+        android:id="@+id/btnBroadcastReceiver"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_broadcast" />
+    <Button
+        android:id="@+id/btnCanvas"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_canvas" />
 </LinearLayout>

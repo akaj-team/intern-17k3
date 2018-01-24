@@ -27,6 +27,7 @@
     <string name="btn_recyclerview">RecyclerView</string>
     <string name="btn_save_data">Save Data</string>
     <string name="btn_viewpager">ViewPager</string>
+    <string name="btn_canvas">Canvas</string>
     <string name="edt_hint_number_a">Number A</string>
     <string name="edt_hint_number_b">Number B</string>
     <string name="tv_number_not_0">Number B is not 0</string>
@@ -83,6 +84,13 @@
     <string name="tv_toolbar">Home</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="btn_start">Start</string>
+    <string name="tv_countdown">Tungkute</string>
+    <string name="btn_thread_ex1">Exercise1</string>
+    <string name="btn_thread_ex2">Exercise2</string>
+    <string name="tv_count">0</string>
+    <string name="tv_percent">0%</string>
+    <string name="tv_countdown_timer">Tungkute</string>
 
     <string name="tv_username">UserName</string>
     <string name="tv_password">Password</string>
@@ -123,14 +131,13 @@
     <string name="btn_broadcast">BroadCast</string>
     <string name="btn_thread">Thread-Handler</string>
 
-    <!-- TODO: Remove or change this placeholder text --><string name="btn_start">Start</string>
-    <string name="tv_countdown">Tungkute</string>
-    <string name="btn_thread_ex1">Exercise1</string>
-    <string name="btn_thread_ex2">Exercise2</string>
-    <string name="tv_count">0</string>
-    <string name="tv_percent">0%</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="have_not_picked_img">Not picked</string>
-    <string name="tv_countdown_timer">Tungkute</string>
+    <string name="tv_canvas_km">Km</string>
+    <string name="tv_canvas_5km">5Km</string>
+    <string name="tv_canvas_10km">10km</string>
+    <string name="tv_canvas_month">24 Jul</string>
+    <string name="tv_canvas_date">21 Oct</string>
     <string name="btn_datablind">DataBlind</string>
     <string name="tv_email_user">Email</string>
     <string name="tv_birthday_user">BirthDay</string>
