@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import vn.asiantech.internship.ui.viewpager.service.models.Song;
 
-public class UtilFunctions {
+public class FunctionsUtil {
 
     /**
      * Check if service is running or not
@@ -34,22 +34,22 @@ public class UtilFunctions {
      * Read the songs present in external storage
      *
      * @param context context
-     * @return listOfSongs
+     * @return getListSongs
      */
-    public static ArrayList<Song> listOfSongs(Context context) {
+    public static ArrayList<Song> getListSongs(Context context) {
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        Cursor c = context.getContentResolver().query(uri, null, MediaStore.Audio.Media.IS_MUSIC + " != 0", null, null);
-        ArrayList<Song> listOfSongs = new ArrayList<>();
-        c.moveToFirst();
-        while (c.moveToNext()) {
+        Cursor cursor = context.getContentResolver().query(uri, null, MediaStore.Audio.Media.IS_MUSIC + " != 0", null, null);
+        ArrayList<Song> listSongs = new ArrayList<>();
+        cursor.moveToFirst();
+        while (cursor.moveToNext()) {
             Song song = new Song();
-            String title = c.getString(c.getColumnIndex(MediaStore.Audio.Media.TITLE));
-            String artist = c.getString(c.getColumnIndex(MediaStore.Audio.Media.ARTIST));
-            String album = c.getString(c.getColumnIndex(MediaStore.Audio.Media.ALBUM));
-            long duration = c.getLong(c.getColumnIndex(MediaStore.Audio.Media.DURATION));
-            String data = c.getString(c.getColumnIndex(MediaStore.Audio.Media.DATA));
-            long albumId = c.getLong(c.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID));
-            String composer = c.getString(c.getColumnIndex(MediaStore.Audio.Media.COMPOSER));
+            String title = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE));
+            String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
+            String album = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM));
+            long duration = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
+            String data = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
+            long albumId = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID));
+            String composer = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.COMPOSER));
 
             song.setTitle(title);
             song.setAlbum(album);
@@ -58,10 +58,10 @@ public class UtilFunctions {
             song.setPath(data);
             song.setAlbumId(albumId);
             song.setComposer(composer);
-            listOfSongs.add(song);
+            listSongs.add(song);
         }
-        c.close();
-        return listOfSongs;
+        cursor.close();
+        return listSongs;
     }
 
     /**

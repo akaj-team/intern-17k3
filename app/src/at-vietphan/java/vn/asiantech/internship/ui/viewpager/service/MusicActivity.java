@@ -2,7 +2,10 @@ package vn.asiantech.internship.ui.viewpager.service;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -13,12 +16,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.viewpager.service.adapter.SongAdapter;
@@ -26,7 +31,7 @@ import vn.asiantech.internship.ui.viewpager.service.controller.MusicController;
 import vn.asiantech.internship.ui.viewpager.service.models.Song;
 import vn.asiantech.internship.ui.viewpager.service.service.MediaService;
 import vn.asiantech.internship.ui.viewpager.service.util.Constants;
-import vn.asiantech.internship.ui.viewpager.service.util.UtilFunctions;
+import vn.asiantech.internship.ui.viewpager.service.util.FunctionsUtil;
 
 public class MusicActivity extends AppCompatActivity implements SongAdapter.OnItemClickListener, OnClickListener {
     @SuppressLint("StaticFieldLeak")
@@ -44,21 +49,20 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
     private ProgressBar mProgressBar;
     private TextView mTvBufferDuration;
     private TextView mTvDuration;
+    private boolean isPlay;
 
-    @SuppressLint("SetTextI18n")
-    @SuppressWarnings("deprecation")
-    public static void updateLayoutUI() {
-        try {
-            Song song = Constants.SONGS_LIST.get(Constants.SONG_NUMBER);
-            mTvPlayingSong.setText(song.getTitle() + " " + song.getArtist() + "-" + song.getAlbum());
-            mLnPlayingSong.setVisibility(View.VISIBLE);
-        } catch (Exception ex) {
-            ex.getMessage();
+    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (TextUtils.equals(intent.getAction(),"play")){
+                isPlay = intent.getBooleanExtra("is_play", false);
+                Toast.makeText(context, ""+isPlay, Toast.LENGTH_SHORT).show();
+                updateUI(isPlay);
+            }
         }
-    }
-
-    public static void updateBtnUI() {
-        if (Constants.IS_SONG_PAUSED) {
+    };
+    private void updateUI(boolean isPlay){
+        if (!isPlay) {
             mImgPause.setVisibility(View.GONE);
             mImgPlay.setVisibility(View.VISIBLE);
         } else {
@@ -67,10 +71,32 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
         }
     }
 
-    public static void updateAllUI() {
-        updateLayoutUI();
-        updateBtnUI();
+    @SuppressLint("SetTextI18n")
+    @SuppressWarnings("deprecation")
+    public static void updateLayoutUI() {
+        try {
+            Song song = Constants.SONGS_LIST.get(Constants.SONG_INDEX);
+            mTvPlayingSong.setText(song.getTitle() + " " + song.getArtist() + "-" + song.getAlbum());
+            mLnPlayingSong.setVisibility(View.VISIBLE);
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
     }
+
+//    public static void updateBtnUI() {
+//        if (Constants.IS_SONG_PAUSED) {
+//            mImgPause.setVisibility(View.GONE);
+//            mImgPlay.setVisibility(View.VISIBLE);
+//        } else {
+//            mImgPause.setVisibility(View.VISIBLE);
+//            mImgPlay.setVisibility(View.GONE);
+//        }
+//    }
+//
+//    public static void updateAllUI() {
+//        updateLayoutUI();
+//        updateBtnUI();
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +106,9 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
         initData();
         initAdapter();
         initListeners();
-        this.getApplicationContext();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("play");
+        registerReceiver(mBroadcastReceiver,intentFilter);
     }
 
     private void initViews() {
@@ -109,7 +137,7 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             }
         } else {
-            Constants.SONGS_LIST = UtilFunctions.listOfSongs(getApplicationContext());
+            Constants.SONGS_LIST = FunctionsUtil.getListSongs(getApplicationContext());
         }
     }
 
@@ -132,10 +160,10 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
     protected void onResume() {
         super.onResume();
         try {
-            boolean isServiceRunning = UtilFunctions.isServiceRunning(MediaService.class.getName(), getApplicationContext());
+            boolean isServiceRunning = FunctionsUtil.isServiceRunning(MediaService.class.getName(), getApplicationContext());
             if (isServiceRunning) {
+//                updateAllUI();
                 updateLayoutUI();
-                updateBtnUI();
             } else {
                 mLnPlayingSong.setVisibility(View.GONE);
             }
@@ -144,8 +172,8 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
                 @Override
                 public void handleMessage(Message msg) {
                     Integer i[] = (Integer[]) msg.obj;
-                    mTvBufferDuration.setText(UtilFunctions.getDuration(i[0]));
-                    mTvDuration.setText(UtilFunctions.getDuration(i[1]));
+                    mTvBufferDuration.setText(FunctionsUtil.getDuration(i[0]));
+                    mTvDuration.setText(FunctionsUtil.getDuration(i[1]));
                     mProgressBar.setProgress(i[2]);
                 }
             };
@@ -157,15 +185,16 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
     @Override
     public void onItemClick(int position) {
         Constants.IS_SONG_PAUSED = false;
-        Constants.SONG_NUMBER = position;
-        boolean isServiceRunning = UtilFunctions.isServiceRunning(MediaService.class.getName(), getApplicationContext());
+        Constants.SONG_INDEX = position;
+        boolean isServiceRunning = FunctionsUtil.isServiceRunning(MediaService.class.getName(), getApplicationContext());
         if (!isServiceRunning) {
             Intent i = new Intent(getApplicationContext(), MediaService.class);
             startService(i);
         } else {
             Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
         }
-        updateAllUI();
+        updateLayoutUI();
+//        updateAllUI();
     }
 
     @Override
@@ -187,5 +216,17 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
                 stopService(new Intent(getApplicationContext(), MediaService.class));
                 mLnPlayingSong.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Constants.IS_RUNNING = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Constants.IS_RUNNING = false;
     }
 }

@@ -5,7 +5,7 @@ import android.content.Context;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.viewpager.service.service.MediaService;
 import vn.asiantech.internship.ui.viewpager.service.util.Constants;
-import vn.asiantech.internship.ui.viewpager.service.util.UtilFunctions;
+import vn.asiantech.internship.ui.viewpager.service.util.FunctionsUtil;
 
 public class MusicController {
 
@@ -18,15 +18,16 @@ public class MusicController {
     }
 
     public static void nextControl(Context context) {
-        boolean isServiceRunning = UtilFunctions.isServiceRunning(MediaService.class.getName(), context);
-        if (!isServiceRunning)
+        boolean isServiceRunning = FunctionsUtil.isServiceRunning(MediaService.class.getName(), context);
+        if (!isServiceRunning){
             return;
+        }
         if (Constants.SONGS_LIST.size() > 0) {
-            if (Constants.SONG_NUMBER < (Constants.SONGS_LIST.size() - 1)) {
-                Constants.SONG_NUMBER++;
+            if (Constants.SONG_INDEX < (Constants.SONGS_LIST.size() - 1)) {
+                Constants.SONG_INDEX++;
                 Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
             } else {
-                Constants.SONG_NUMBER = 0;
+                Constants.SONG_INDEX = 0;
                 Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
             }
         }
@@ -34,15 +35,15 @@ public class MusicController {
     }
 
     public static void previousControl(Context context) {
-        boolean isServiceRunning = UtilFunctions.isServiceRunning(MediaService.class.getName(), context);
+        boolean isServiceRunning = FunctionsUtil.isServiceRunning(MediaService.class.getName(), context);
         if (!isServiceRunning)
             return;
         if (Constants.SONGS_LIST.size() > 0) {
-            if (Constants.SONG_NUMBER > 0) {
-                Constants.SONG_NUMBER--;
+            if (Constants.SONG_INDEX > 0) {
+                Constants.SONG_INDEX--;
                 Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
             } else {
-                Constants.SONG_NUMBER = Constants.SONGS_LIST.size() - 1;
+                Constants.SONG_INDEX = Constants.SONGS_LIST.size() - 1;
                 Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
             }
         }

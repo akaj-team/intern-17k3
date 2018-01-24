@@ -25,18 +25,19 @@ import vn.asiantech.internship.ui.viewpager.service.MusicActivity;
 import vn.asiantech.internship.ui.viewpager.service.controller.MusicController;
 import vn.asiantech.internship.ui.viewpager.service.models.Song;
 import vn.asiantech.internship.ui.viewpager.service.util.Constants;
-import vn.asiantech.internship.ui.viewpager.service.util.UtilFunctions;
+import vn.asiantech.internship.ui.viewpager.service.util.FunctionsUtil;
 
 public class MediaService extends Service {
-    public static final String NOTIFY_PREVIOUS = "previous";
-    public static final String NOTIFY_DELETE = "delete";
-    public static final String NOTIFY_PAUSE = "pause";
     public static final String NOTIFY_PLAY = "play";
+    public static final String NOTIFY_PAUSE = "pause";
+    public static final String NOTIFY_PREVIOUS = "previous";
     public static final String NOTIFY_NEXT = "next";
+    public static final String NOTIFY_DELETE = "delete";
     private Timer mTimer;
     private MediaPlayer mMediaPlayer;
+    private Intent mIntent;
     @SuppressLint("HandlerLeak")
-    private final Handler handler = new Handler() {
+    private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (mMediaPlayer != null) {
@@ -61,6 +62,7 @@ public class MediaService extends Service {
 
     @Override
     public void onCreate() {
+        super.onCreate();
         mMediaPlayer = new MediaPlayer();
         mTimer = new Timer();
         mMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
@@ -69,27 +71,30 @@ public class MediaService extends Service {
                 MusicController.nextControl(getApplicationContext());
             }
         });
-        super.onCreate();
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(final Intent intent, int flags, int startId) {
         try {
             if (Constants.SONGS_LIST.size() <= 0) {
-                Constants.SONGS_LIST = UtilFunctions.listOfSongs(getApplicationContext());
+                Constants.SONGS_LIST = FunctionsUtil.getListSongs(getApplicationContext());
             }
-            Song song = Constants.SONGS_LIST.get(Constants.SONG_NUMBER);
+            Song song = Constants.SONGS_LIST.get(Constants.SONG_INDEX);
             String songPath = song.getPath();
             playSong(songPath);
             newNotification();
             Constants.SONG_CHANGE_HANDLER = new Handler(new Callback() {
                 @Override
                 public boolean handleMessage(Message msg) {
-                    Song song = Constants.SONGS_LIST.get(Constants.SONG_NUMBER);
+                    Song song = Constants.SONGS_LIST.get(Constants.SONG_INDEX);
                     String songPath = song.getPath();
                     newNotification();
                     playSong(songPath);
-                    MusicActivity.updateAllUI();
+                    mIntent = new Intent(getApplicationContext(),MusicActivity.class);
+                    mIntent.setAction("play");
+                    mIntent.putExtra("is_play",true);
+                    sendBroadcast(mIntent);
+//                    MusicActivity.updateAllUI();
                     return false;
                 }
             });
@@ -98,22 +103,28 @@ public class MediaService extends Service {
                 @Override
                 public boolean handleMessage(Message msg) {
                     String message = (String) msg.obj;
-                    if (mMediaPlayer == null)
+                    mIntent = new Intent();
+                    mIntent.setAction("play");
+                    if (mMediaPlayer == null) {
                         return false;
+                    }
                     if (message.equalsIgnoreCase(getResources().getString(R.string.play))) {
-                        Constants.IS_SONG_PAUSED = false;
+//                        Constants.IS_SONG_PAUSED = false;
+                        mIntent.putExtra("is_play",true);
+                        sendBroadcast(mIntent);
                         mMediaPlayer.start();
                     } else if (message.equalsIgnoreCase(getResources().getString(R.string.pause))) {
-                        Constants.IS_SONG_PAUSED = true;
+//                        Constants.IS_SONG_PAUSED = true;
+                        mIntent.putExtra("is_play",false);
+                        sendBroadcast(mIntent);
                         mMediaPlayer.pause();
                     }
                     newNotification();
-                    MusicActivity.updateBtnUI();
+//                    MusicActivity.updateBtnUI();
                     Log.d("TAG", "TAG Pressed: " + message);
                     return false;
                 }
             });
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -142,13 +153,13 @@ public class MediaService extends Service {
             mMediaPlayer.start();
             mTimer.scheduleAtFixedRate(new MainTask(), 0, 100);
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
     }
 
     private void newNotification() {
-        String songName = Constants.SONGS_LIST.get(Constants.SONG_NUMBER).getTitle();
-        String albumName = Constants.SONGS_LIST.get(Constants.SONG_NUMBER).getAlbum();
+        String songName = Constants.SONGS_LIST.get(Constants.SONG_INDEX).getTitle();
+        String composer = Constants.SONGS_LIST.get(Constants.SONG_INDEX).getComposer();
         RemoteViews remoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.custom_notification);
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.ic_music)
@@ -163,7 +174,7 @@ public class MediaService extends Service {
             notification.contentView.setViewVisibility(R.id.imgPlay, View.GONE);
         }
         notification.contentView.setTextViewText(R.id.tvSongName, songName);
-        notification.contentView.setTextViewText(R.id.tvAlbumName, albumName);
+        notification.contentView.setTextViewText(R.id.tvAlbumName, composer);
         notification.flags |= Notification.FLAG_ONGOING_EVENT;
         startForeground(77, notification);
     }
@@ -203,7 +214,7 @@ public class MediaService extends Service {
      */
     private class MainTask extends TimerTask {
         public void run() {
-            handler.sendEmptyMessage(0);
+            mHandler.sendEmptyMessage(0);
         }
     }
 }

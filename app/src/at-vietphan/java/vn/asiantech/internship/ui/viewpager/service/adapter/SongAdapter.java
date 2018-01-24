@@ -10,7 +10,7 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.viewpager.service.models.Song;
-import vn.asiantech.internship.ui.viewpager.service.util.UtilFunctions;
+import vn.asiantech.internship.ui.viewpager.service.util.FunctionsUtil;
 
 /**
  * Created by vietphan on 17/01/2018.
@@ -69,7 +69,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
             if (song != null) {
                 mTvSongName.setText(song.getTitle());
                 mTvArtist.setText(song.getArtist());
-                mTvDuration.setText(UtilFunctions.getDuration(song.getDuration()));
+                mTvDuration.setText(FunctionsUtil.getDuration(song.getDuration()));
             }
         }
 
