@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,18 +31,27 @@ public class PlayControlFragment extends Fragment {
     private ImageView mImgNext;
     private ImageView mImgPrevious;
     private Intent mIntent;
-    private boolean mIsPlay = false;
+    private boolean mIsPlaying = false;
+    private SharedPreferences mSharedPreferences;
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() != null) {
                 switch (intent.getAction()) {
                     case "sendData":
-                        Music music = intent.getParcelableExtra("music");
+                        Music music = intent.getParcelableExtra(getString(R.string.key_music));
                         if (music != null) {
                             mTvTittle.setText(music.getTittle());
-                            mTvArtist.setText(music.getSinger());
+                            mTvArtist.setText(music.getArtist());
                             mCircleImageViewAvatarMusic.setImageResource(music.getAvatar());
+                        }
+                        break;
+                    case "sendIsPlaying":
+                        mIsPlaying = intent.getBooleanExtra(getString(R.string.key_is_playing), false);
+                        if (mIsPlaying) {
+                            mImgPlay.setImageResource(R.drawable.ic_pause_black_24dp);
+                        } else {
+                            mImgPlay.setImageResource(R.drawable.ic_play_arrow_black_24dp);
                         }
                 }
             }
@@ -56,38 +66,40 @@ public class PlayControlFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_playback_control_bottom, container, false);
-        initViews(view);
         registerBroadcast();
+        initViews(view);
+        mSharedPreferences = getContext().getSharedPreferences(getResources().getString(R.string.key_save_data), Context.MODE_PRIVATE);
         mIntent = new Intent();
         mIntent = new Intent(getContext(), MusicService.class);
         mImgPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!mIsPlay) {
-                    mImgPlay.setImageResource(R.drawable.ic_play_arrow_black_24dp);
-                    mIntent.setAction("pause");
-                } else {
+                if (mIsPlaying) {
                     mImgPlay.setImageResource(R.drawable.ic_pause_black_24dp);
-                    mIntent.setAction("play");
+                    mIntent.setAction(getString(R.string.action_play));
+                } else {
+                    mImgPlay.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                    mIntent.setAction(getString(R.string.action_pause));
                 }
                 getContext().startService(mIntent);
-                mIsPlay = !mIsPlay;
+                mIsPlaying = !mIsPlaying;
             }
         });
         mImgNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mIntent.setAction("next");
+                mIntent.setAction(getString(R.string.action_next));
                 getContext().startService(mIntent);
             }
         });
         mImgPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mIntent.setAction("previous");
+                mIntent.setAction(getString(R.string.action_previous));
                 getContext().startService(mIntent);
             }
         });
+
         return view;
     }
 
@@ -103,6 +115,7 @@ public class PlayControlFragment extends Fragment {
     private void registerBroadcast() {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(getString(R.string.action_send_data));
+        intentFilter.addAction(getString(R.string.action_send_is_playing));
         getContext().registerReceiver(mBroadcastReceiver, intentFilter);
     }
 

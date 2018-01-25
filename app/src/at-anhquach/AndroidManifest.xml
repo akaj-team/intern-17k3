@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.viewpager_tablayout.activity.PlayMusicActivity">
+        <activity android:name=".ui.viewpager_tablayout.activity.StepActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,9 +36,10 @@
         <activity android:name=".image.VectorImageActivity" />
         <activity android:name=".asynchronous.ThreadActivity" />
         <activity android:name=".ui.viewpager_tablayout.activity.InfoBatteryActivity" />
-        <activity android:name=".ui.viewpager_tablayout.activity.StepActivity" />
+        <activity android:name=".ui.viewpager_tablayout.activity.PlayMusicActivity" />
 
-        <service android:name=".service.MusicService" />
+        <service android:name=".service.MusicService"
+            android:enabled="true"/>
     </application>
 
 </manifest>

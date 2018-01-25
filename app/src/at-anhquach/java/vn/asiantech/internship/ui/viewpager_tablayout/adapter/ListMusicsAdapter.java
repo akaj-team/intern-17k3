@@ -16,7 +16,6 @@ import vn.asiantech.internship.model.Music;
  * Created by anh.quach on 1/17/18.
  * Adapter list musics.
  */
-
 public class ListMusicsAdapter extends RecyclerView.Adapter<ListMusicsAdapter.ListMusicsViewHolder> {
     private List<Music> mListMusics;
     private OnClickItemListener mOnItemClickListener;
@@ -68,7 +67,7 @@ public class ListMusicsAdapter extends RecyclerView.Adapter<ListMusicsAdapter.Li
         private void onBindData() {
             Music music = mListMusics.get(getAdapterPosition());
             mTvNameMusic.setText(music.getTittle());
-            mTvSinger.setText(music.getSinger());
+            mTvSinger.setText(music.getArtist());
             mTvIdMusic.setText(music.getId());
             mImgAvatarMusic.setImageResource(music.getAvatar());
         }

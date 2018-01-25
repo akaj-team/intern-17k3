@@ -10,14 +10,14 @@ import android.os.Parcelable;
 public class Music implements Parcelable {
     private String id;
     private String tittle;
-    private String singer;
+    private String artist;
     private int avatar;
     private int music;
 
     public Music(String id, String tittle, String singer, int avatar, int music) {
         this.id = id;
         this.tittle = tittle;
-        this.singer = singer;
+        this.artist = singer;
         this.avatar = avatar;
         this.music = music;
     }
@@ -25,7 +25,7 @@ public class Music implements Parcelable {
     protected Music(Parcel in) {
         id = in.readString();
         tittle = in.readString();
-        singer = in.readString();
+        artist = in.readString();
         avatar = in.readInt();
         music = in.readInt();
     }
@@ -58,12 +58,12 @@ public class Music implements Parcelable {
         this.tittle = tittle;
     }
 
-    public String getSinger() {
-        return singer;
+    public String getArtist() {
+        return artist;
     }
 
-    public void setSinger(String singer) {
-        this.singer = singer;
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
     public int getAvatar() {
@@ -91,7 +91,7 @@ public class Music implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(tittle);
-        dest.writeString(singer);
+        dest.writeString(artist);
         dest.writeInt(avatar);
         dest.writeInt(music);
     }
