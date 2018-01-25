@@ -12,14 +12,14 @@ public class Music implements Parcelable {
     private String tittle;
     private String artist;
     private int avatar;
-    private int music;
+    private int audio;
 
     public Music(String id, String tittle, String singer, int avatar, int music) {
         this.id = id;
         this.tittle = tittle;
         this.artist = singer;
         this.avatar = avatar;
-        this.music = music;
+        this.audio = music;
     }
 
     protected Music(Parcel in) {
@@ -27,7 +27,7 @@ public class Music implements Parcelable {
         tittle = in.readString();
         artist = in.readString();
         avatar = in.readInt();
-        music = in.readInt();
+        audio = in.readInt();
     }
 
     public static final Creator<Music> CREATOR = new Creator<Music>() {
@@ -74,12 +74,12 @@ public class Music implements Parcelable {
         this.avatar = avatar;
     }
 
-    public int getMusic() {
-        return music;
+    public int getAudio() {
+        return audio;
     }
 
-    public void setMusic(int music) {
-        this.music = music;
+    public void setAudio(int audio) {
+        this.audio = audio;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Music implements Parcelable {
         dest.writeString(tittle);
         dest.writeString(artist);
         dest.writeInt(avatar);
-        dest.writeInt(music);
+        dest.writeInt(audio);
     }
 
     public static Creator<Music> getCREATOR() {

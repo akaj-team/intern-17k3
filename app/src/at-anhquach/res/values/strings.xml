@@ -73,7 +73,7 @@
     <string name="key_list_data">listData</string>
     <string name="key_position">position</string>
     <string name="key_is_playing">isPlaying</string>
-    <string name="key_music">music</string>
+    <string name="key_music">audio</string>
     <string name="android_resource">android.resource://</string>
     <string name="action_pause_notif">pauseNotif</string>
     <string name="action_next_notif">nextNotif</string>

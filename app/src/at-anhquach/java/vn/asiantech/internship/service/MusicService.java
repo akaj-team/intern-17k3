@@ -127,14 +127,14 @@ public class MusicService extends Service {
 
     private void setMedia(int position) {
         mMediaPlayer.reset();
-        Uri mMediaPath = Uri.parse(getString(R.string.android_resource) + getPackageName() + getString(R.string.operator_divide) + mListMusics.get(position).getMusic());
+        Uri mMediaPath = Uri.parse(getString(R.string.android_resource) + getPackageName() + getString(R.string.operator_divide) + mListMusics.get(position).getAudio());
         try {
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mMediaPlayer.setDataSource(this, mMediaPath);
             mMediaPlayer.prepare();
             mMediaPlayer.start();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.d(getResources().getString(R.string.tag_error), e.getMessage());
         }
         mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override

@@ -56,8 +56,9 @@ public class PlayMusicActivity extends AppCompatActivity implements ListMusicsAd
             mFrPlayControl.setVisibility(View.VISIBLE);
             int pos = mPreferences.getInt(getString(R.string.key_position), 0);
             sendDataBroadcast(pos);
-        } else
+        } else {
             mFrPlayControl.setVisibility(View.GONE);
+        }
     }
 
     private void initAdapter() {
