@@ -74,13 +74,23 @@
             android:tint="@android:color/black" />
 
         <ImageView
-            android:id="@+id/imgPlay"
+            android:id="@+id/imgPause"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?selectableItemBackgroundBorderless"
             android:contentDescription="@string/app_name"
             android:padding="12dp"
             android:src="@drawable/ic_pause_black_24dp"
+            android:tint="@android:color/black" />
+        <ImageView
+            android:id="@+id/imgPlay"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/app_name"
+            android:padding="12dp"
+            android:src="@drawable/ic_play_arrow_black_24dp"
+            android:visibility="gone"
             android:tint="@android:color/black" />
 
         <ImageView

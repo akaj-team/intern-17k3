@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -28,11 +27,10 @@ public class PlayControlFragment extends Fragment {
     private TextView mTvTittle;
     private TextView mTvArtist;
     private ImageView mImgPlay;
+    private ImageView mImgPause;
     private ImageView mImgNext;
     private ImageView mImgPrevious;
     private Intent mIntent;
-    private boolean mIsPlaying = false;
-    private SharedPreferences mSharedPreferences;
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -47,11 +45,13 @@ public class PlayControlFragment extends Fragment {
                         }
                         break;
                     case "sendIsPlaying":
-                        mIsPlaying = intent.getBooleanExtra(getString(R.string.key_is_playing), false);
+                        boolean mIsPlaying = intent.getBooleanExtra(getString(R.string.key_is_playing), false);
                         if (mIsPlaying) {
-                            mImgPlay.setImageResource(R.drawable.ic_pause_black_24dp);
+                            mImgPlay.setVisibility(View.GONE);
+                            mImgPause.setVisibility(View.VISIBLE);
                         } else {
-                            mImgPlay.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                            mImgPlay.setVisibility(View.VISIBLE);
+                            mImgPause.setVisibility(View.GONE);
                         }
                 }
             }
@@ -68,21 +68,24 @@ public class PlayControlFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_playback_control_bottom, container, false);
         registerBroadcast();
         initViews(view);
-        mSharedPreferences = getContext().getSharedPreferences(getResources().getString(R.string.key_save_data), Context.MODE_PRIVATE);
         mIntent = new Intent();
         mIntent = new Intent(getContext(), MusicService.class);
         mImgPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mIsPlaying) {
-                    mImgPlay.setImageResource(R.drawable.ic_pause_black_24dp);
-                    mIntent.setAction(getString(R.string.action_play));
-                } else {
-                    mImgPlay.setImageResource(R.drawable.ic_play_arrow_black_24dp);
-                    mIntent.setAction(getString(R.string.action_pause));
-                }
+                mImgPlay.setVisibility(View.GONE);
+                mImgPause.setVisibility(View.VISIBLE);
+                mIntent.setAction(getString(R.string.action_play));
                 getContext().startService(mIntent);
-                mIsPlaying = !mIsPlaying;
+            }
+        });
+        mImgPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mImgPlay.setVisibility(View.VISIBLE);
+                mImgPause.setVisibility(View.GONE);
+                mIntent.setAction(getString(R.string.action_pause));
+                getContext().startService(mIntent);
             }
         });
         mImgNext.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +110,7 @@ public class PlayControlFragment extends Fragment {
         mTvTittle = view.findViewById(R.id.tvTitle);
         mTvArtist = view.findViewById(R.id.tvArtist);
         mImgPlay = view.findViewById(R.id.imgPlay);
+        mImgPause = view.findViewById(R.id.imgPause);
         mImgNext = view.findViewById(R.id.imgNext);
         mImgPrevious = view.findViewById(R.id.imgPrevious);
         mCircleImageViewAvatarMusic = view.findViewById(R.id.circleimageviewAvatarPlayControl);

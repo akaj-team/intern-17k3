@@ -11,6 +11,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -56,53 +57,53 @@ public class MusicService extends Service {
                         mPos = intent.getIntExtra(getString(R.string.key_position), 0);
                         sendDataBroadcast(mPos);
                         setMedia(mPos);
-                        showNotifcation(mListMusics.get(mPos));
+                        showNotification(mListMusics.get(mPos));
                         mEditor.putInt(getString(R.string.key_position), mPos);
                         mEditor.apply();
                         break;
                     case "play":
                         mMediaPlayer.start();
-                        showNotifcation(mListMusics.get(mPos));
+                        showNotification(mListMusics.get(mPos));
                         break;
                     case "pause":
                         mMediaPlayer.pause();
-                        showNotifcation(mListMusics.get(mPos));
+                        showNotification(mListMusics.get(mPos));
                         saveIsPlaying();
                         break;
                     case "next":
                         playNextSong();
-                        showNotifcation(mListMusics.get(mPos));
+                        showNotification(mListMusics.get(mPos));
                         break;
                     case "previous":
                         playPreviousSong();
                         sendDataBroadcast(mPos);
                         setMedia(mPos);
-                        showNotifcation(mListMusics.get(mPos));
+                        showNotification(mListMusics.get(mPos));
                         break;
                     case "pauseNotif":
+                        mMediaPlayer.pause();
+                        showNotification(mListMusics.get(mPos));
                         stopForeground(false);
                         saveIsPlaying();
-                        mMediaPlayer.pause();
-                        showNotifcation(mListMusics.get(mPos));
                         sendIsPlayingBroadcast(false);
                         break;
                     case "playNotif":
-                        startForeground(11, notification);
                         mMediaPlayer.start();
-                        showNotifcation(mListMusics.get(mPos));
+                        startForeground(11, notification);
+                        showNotification(mListMusics.get(mPos));
                         sendIsPlayingBroadcast(true);
                         break;
                     case "nextNotif":
                         playNextSong();
                         sendDataBroadcast(mPos);
-                        showNotifcation(mListMusics.get(mPos));
+                        showNotification(mListMusics.get(mPos));
                         sendIsPlayingBroadcast(true);
                         break;
                     case "previousNotif":
                         playPreviousSong();
                         sendDataBroadcast(mPos);
                         setMedia(mPos);
-                        showNotifcation(mListMusics.get(mPos));
+                        showNotification(mListMusics.get(mPos));
                         sendIsPlayingBroadcast(true);
                 }
             }
@@ -186,7 +187,7 @@ public class MusicService extends Service {
         return null;
     }
 
-    private void showNotifcation(Music music) {
+    private void showNotification(Music music) {
         notificationView.setImageViewResource(R.id.imgAvatarNoti, music.getAvatar());
         notificationView.setTextViewText(R.id.tvTitleNoti, music.getTittle());
         notificationView.setTextViewText(R.id.tvArtistNoti, music.getArtist());
