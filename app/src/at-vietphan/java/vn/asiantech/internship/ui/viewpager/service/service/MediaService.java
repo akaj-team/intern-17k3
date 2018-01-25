@@ -91,10 +91,11 @@ public class MediaService extends Service {
                     newNotification();
                     playSong(songPath);
                     mIntent = new Intent(getApplicationContext(),MusicActivity.class);
-                    mIntent.setAction("play");
-                    mIntent.putExtra("is_play",true);
-                    sendBroadcast(mIntent);
-//                    MusicActivity.updateAllUI();
+//                    Constants.IS_SONG_PAUSED = false;
+//                    mIntent.setAction("paused");
+//                    mIntent.putExtra("is_paused",Constants.IS_SONG_PAUSED);
+//                    sendBroadcast(mIntent);
+                    MusicActivity.updateAllUI();
                     return false;
                 }
             });
@@ -104,23 +105,23 @@ public class MediaService extends Service {
                 public boolean handleMessage(Message msg) {
                     String message = (String) msg.obj;
                     mIntent = new Intent();
-                    mIntent.setAction("play");
+                    mIntent.setAction("paused");
                     if (mMediaPlayer == null) {
                         return false;
                     }
                     if (message.equalsIgnoreCase(getResources().getString(R.string.play))) {
-//                        Constants.IS_SONG_PAUSED = false;
-                        mIntent.putExtra("is_play",true);
-                        sendBroadcast(mIntent);
+                        Constants.IS_SONG_PAUSED = false;
+//                        mIntent.putExtra("is_paused",Constants.IS_SONG_PAUSED);
+//                        sendBroadcast(mIntent);
                         mMediaPlayer.start();
                     } else if (message.equalsIgnoreCase(getResources().getString(R.string.pause))) {
-//                        Constants.IS_SONG_PAUSED = true;
-                        mIntent.putExtra("is_play",false);
-                        sendBroadcast(mIntent);
+                        Constants.IS_SONG_PAUSED = true;
+//                        mIntent.putExtra("is_paused",Constants.IS_SONG_PAUSED);
+//                        sendBroadcast(mIntent);
                         mMediaPlayer.pause();
                     }
                     newNotification();
-//                    MusicActivity.updateBtnUI();
+                    MusicActivity.onChangeBtnUI();
                     Log.d("TAG", "TAG Pressed: " + message);
                     return false;
                 }
@@ -133,11 +134,11 @@ public class MediaService extends Service {
 
     @Override
     public void onDestroy() {
+        super.onDestroy();
         if (mMediaPlayer != null) {
             mMediaPlayer.stop();
             mMediaPlayer = null;
         }
-        super.onDestroy();
     }
 
     /**
@@ -162,8 +163,7 @@ public class MediaService extends Service {
         String composer = Constants.SONGS_LIST.get(Constants.SONG_INDEX).getComposer();
         RemoteViews remoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.custom_notification);
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
-                .setSmallIcon(R.drawable.ic_music)
-                .setContentTitle(songName).build();
+                .setSmallIcon(R.drawable.ic_music).setContentTitle(songName).build();
         setListeners(remoteViews);
         notification.contentView = remoteViews;
         if (Constants.IS_SONG_PAUSED) {
@@ -190,19 +190,14 @@ public class MediaService extends Service {
         Intent pause = new Intent(NOTIFY_PAUSE);
         Intent next = new Intent(NOTIFY_NEXT);
         Intent play = new Intent(NOTIFY_PLAY);
-
         PendingIntent pPrevious = PendingIntent.getBroadcast(getApplicationContext(), 0, previous, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgPrevious, pPrevious);
-
         PendingIntent pDelete = PendingIntent.getBroadcast(getApplicationContext(), 0, delete, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.btnDelete, pDelete);
-
         PendingIntent pPause = PendingIntent.getBroadcast(getApplicationContext(), 0, pause, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgPause, pPause);
-
         PendingIntent pNext = PendingIntent.getBroadcast(getApplicationContext(), 0, next, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgNext, pNext);
-
         PendingIntent pPlay = PendingIntent.getBroadcast(getApplicationContext(), 0, play, PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.imgPlay, pPlay);
     }

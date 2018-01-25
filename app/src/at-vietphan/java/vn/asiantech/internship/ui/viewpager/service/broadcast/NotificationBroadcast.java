@@ -30,5 +30,4 @@ public class NotificationBroadcast extends BroadcastReceiver {
             }
         }
     }
-
 }

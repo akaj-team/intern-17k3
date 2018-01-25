@@ -139,4 +139,6 @@
     <string name="idle">Idle</string>
     <string name="empty_text">Select song from below to play</string>
     <string name="player_button">Album Art Screen</string>
+    <string name="space" />
+    <string name="dash">-</string>
 </resources>
