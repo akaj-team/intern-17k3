@@ -1,6 +1,7 @@
 package vn.asiantech.internship.models;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -117,35 +118,36 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.imageUrl);
     }
 
-    public void onEditProfile(Context context, ProfileUser profileUser) {
+    public void onEditProfileClick(Context context) {
         Intent intent = new Intent(context, EditProfileActivity.class);
-        intent.putExtra(ProfileUser.class.getSimpleName(), profileUser);
+        intent.putExtra(ProfileUser.class.getSimpleName(), this);
         ((AppCompatActivity) context).startActivityForResult(intent, EDIT_USER_REQUEST_CODE);
     }
 
-    public void onUpdateProfile(Context context, ProfileUser profileUser) {
+    public void onUpdateProfileClick(Context context) {
         if (context instanceof EditProfileActivity) {
             Intent intent = new Intent();
-            intent.putExtra(ProfileUser.class.getSimpleName(), profileUser);
+            intent.putExtra(ProfileUser.class.getSimpleName(), this);
             ((EditProfileActivity) context).setResult(EDIT_USER_REQUEST_CODE, intent);
+            ((EditProfileActivity) context).setResult(Activity.RESULT_OK, intent);
             ((EditProfileActivity) context).finish();
         }
     }
 
     public void afterTextChange(Editable text, int index) {
-        if (index == 0) {
+        if (index == TypeItem.NAME.ordinal()) {
             setName(String.valueOf(text));
-        } else if (index == 1) {
+        } else if (index == TypeItem.EMAIL.ordinal()) {
             setEmail(String.valueOf(text));
-        } else if (index == 2) {
+        } else if (index == TypeItem.BIRTHDAY.ordinal()) {
             setBirthDate(String.valueOf(text));
-        } else if (index == 3) {
+        } else if (index == TypeItem.PHONE.ordinal()) {
             setPhone(String.valueOf(text));
         }
     }
 
     @SuppressLint("SetTextI18n")
-    public void showDatePicker(final TextView edt) {
+    public void onShowDatePickerDialogClick(final TextView edt) {
         final Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
@@ -176,5 +178,12 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         parcel.writeInt(genDer);
         parcel.writeString(phone);
         parcel.writeString(imageUrl);
+    }
+
+    private enum TypeItem {
+        NAME,
+        EMAIL,
+        BIRTHDAY,
+        PHONE
     }
 }

@@ -35,7 +35,7 @@ public class PreviewProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ProfileUser.EDIT_USER_REQUEST_CODE && data != null) {
+        if (requestCode == ProfileUser.EDIT_USER_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             mPreviewProfileBinding.setProfileUser((ProfileUser) data.getParcelableExtra(ProfileUser.class.getSimpleName()));
         }
     }

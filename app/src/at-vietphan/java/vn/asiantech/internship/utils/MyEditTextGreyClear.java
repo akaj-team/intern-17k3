@@ -14,10 +14,10 @@ import vn.asiantech.internship.R;
 
 /*
  * Created by vietphan on 11/01/2018.
- * Class MyEditText
+ * Class MyEditTextGreyClear
  */
 public class MyEditTextGreyClear extends AppCompatEditText {
-    public Drawable imgCloseButton = getResources().getDrawable(R.drawable.ic_clear_grey_800_24dp);
+    public Drawable imgCloseButton = getResources().getDrawable(R.drawable.ic_clear_grey_800_18dp);
 
     public MyEditTextGreyClear(Context context) {
         super(context);
@@ -34,7 +34,13 @@ public class MyEditTextGreyClear extends AppCompatEditText {
         init();
     }
 
-    void init() {
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean performClick() {
+        return true;
+    }
+
+    private void init() {
         imgCloseButton.setBounds(0, 0, imgCloseButton.getIntrinsicWidth(), imgCloseButton.getIntrinsicHeight());
         handleClearButton();
         //if the Close image is displayed and the user remove his finger from the button, clear it. Otherwise do nothing
@@ -75,7 +81,7 @@ public class MyEditTextGreyClear extends AppCompatEditText {
         });
     }
 
-    void handleClearButton() {
+    private void handleClearButton() {
         if (this.getText().toString().equals("")) {
             // add the clear button
             this.setCompoundDrawables(this.getCompoundDrawables()[0], this.getCompoundDrawables()[1], null, this.getCompoundDrawables()[3]);
@@ -83,11 +89,5 @@ public class MyEditTextGreyClear extends AppCompatEditText {
             //remove clear button
             this.setCompoundDrawables(this.getCompoundDrawables()[0], this.getCompoundDrawables()[1], imgCloseButton, this.getCompoundDrawables()[3]);
         }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    @Override
-    public boolean performClick() {
-        return true;
     }
 }
