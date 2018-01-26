@@ -11,7 +11,7 @@ public class Constants {
     //List of Songs
     public static List<Song> SONGS_LIST = new ArrayList<>();
     //Song number which is playing right now from SONGS_LIST
-    public static int SONG_INDEX = 0;
+    public static int SONG_POSITION = 0;
     //Song is playing or paused
     public static boolean IS_SONG_PAUSED = true;
     //Handler for song changed(next, previous) defined in service(MediaService)
@@ -20,6 +20,4 @@ public class Constants {
     public static Handler PLAY_PAUSE_HANDLER;
     //Handler for showing song progress defined in Activities(MusicActivity, AudioPlayerActivity)
     public static Handler PROGRESSBAR_HANDLER;
-    //State app is running or not running
-    public static boolean IS_RUNNING = false;
 }

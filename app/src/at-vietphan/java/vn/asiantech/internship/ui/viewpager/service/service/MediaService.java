@@ -21,7 +21,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.viewpager.service.MusicActivity;
 import vn.asiantech.internship.ui.viewpager.service.controller.MusicController;
 import vn.asiantech.internship.ui.viewpager.service.models.Song;
 import vn.asiantech.internship.ui.viewpager.service.util.Constants;
@@ -35,7 +34,6 @@ public class MediaService extends Service {
     public static final String NOTIFY_DELETE = "delete";
     private Timer mTimer;
     private MediaPlayer mMediaPlayer;
-    private Intent mIntent;
     @SuppressLint("HandlerLeak")
     private final Handler mHandler = new Handler() {
         @Override
@@ -54,6 +52,7 @@ public class MediaService extends Service {
             }
         }
     };
+    private Intent mIntent;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -79,23 +78,23 @@ public class MediaService extends Service {
             if (Constants.SONGS_LIST.size() <= 0) {
                 Constants.SONGS_LIST = FunctionsUtil.getListSongs(getApplicationContext());
             }
-            Song song = Constants.SONGS_LIST.get(Constants.SONG_INDEX);
+            Song song = Constants.SONGS_LIST.get(Constants.SONG_POSITION);
             String songPath = song.getPath();
             playSong(songPath);
             newNotification();
             Constants.SONG_CHANGE_HANDLER = new Handler(new Callback() {
                 @Override
                 public boolean handleMessage(Message msg) {
-                    Song song = Constants.SONGS_LIST.get(Constants.SONG_INDEX);
+                    Song song = Constants.SONGS_LIST.get(Constants.SONG_POSITION);
                     String songPath = song.getPath();
                     newNotification();
                     playSong(songPath);
-                    mIntent = new Intent(getApplicationContext(),MusicActivity.class);
-//                    Constants.IS_SONG_PAUSED = false;
-//                    mIntent.setAction("paused");
-//                    mIntent.putExtra("is_paused",Constants.IS_SONG_PAUSED);
-//                    sendBroadcast(mIntent);
-                    MusicActivity.updateAllUI();
+                    mIntent = new Intent();
+                    Constants.IS_SONG_PAUSED = false;
+                    mIntent.setAction("paused");
+                    mIntent.putExtra("is_paused", Constants.IS_SONG_PAUSED);
+                    sendBroadcast(mIntent);
+//                    MusicActivity.updateAllUI();
                     return false;
                 }
             });
@@ -104,24 +103,22 @@ public class MediaService extends Service {
                 @Override
                 public boolean handleMessage(Message msg) {
                     String message = (String) msg.obj;
-                    mIntent = new Intent();
-                    mIntent.setAction("paused");
                     if (mMediaPlayer == null) {
                         return false;
                     }
                     if (message.equalsIgnoreCase(getResources().getString(R.string.play))) {
                         Constants.IS_SONG_PAUSED = false;
-//                        mIntent.putExtra("is_paused",Constants.IS_SONG_PAUSED);
-//                        sendBroadcast(mIntent);
                         mMediaPlayer.start();
                     } else if (message.equalsIgnoreCase(getResources().getString(R.string.pause))) {
                         Constants.IS_SONG_PAUSED = true;
-//                        mIntent.putExtra("is_paused",Constants.IS_SONG_PAUSED);
-//                        sendBroadcast(mIntent);
                         mMediaPlayer.pause();
                     }
                     newNotification();
-                    MusicActivity.onChangeBtnUI();
+                    mIntent = new Intent();
+                    mIntent.setAction("paused");
+                    mIntent.putExtra("is_paused", Constants.IS_SONG_PAUSED);
+                    sendBroadcast(mIntent);
+//                    MusicActivity.onChangeBtnUI();
                     Log.d("TAG", "TAG Pressed: " + message);
                     return false;
                 }
@@ -159,8 +156,8 @@ public class MediaService extends Service {
     }
 
     private void newNotification() {
-        String songName = Constants.SONGS_LIST.get(Constants.SONG_INDEX).getTitle();
-        String composer = Constants.SONGS_LIST.get(Constants.SONG_INDEX).getComposer();
+        String songName = Constants.SONGS_LIST.get(Constants.SONG_POSITION).getTitle();
+        String composer = Constants.SONGS_LIST.get(Constants.SONG_POSITION).getComposer();
         RemoteViews remoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.custom_notification);
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.ic_music).setContentTitle(songName).build();
