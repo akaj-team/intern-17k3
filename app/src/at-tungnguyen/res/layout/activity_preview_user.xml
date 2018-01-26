@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,11 +10,10 @@
             type="vn.asiantech.internship.ui.databind.User" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context="vn.asiantech.internship.ui.databind.EditUserActivity">
 
@@ -20,13 +21,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:orientation="vertical">
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:gravity="center"
                 android:text="@string/tv_edit_profile"
                 android:textSize="16dp" />
 
@@ -34,17 +36,15 @@
                 android:id="@+id/profile_image"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:src="@drawable/profile"
-                app:imageUrl="@{user.url}" />
+                app:imageUrl="@{user.avatar}" />
 
             <TextView
                 android:id="@+id/tvNameProfile"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+
                 android:text="@{user.userName}" />
         </LinearLayout>
 
@@ -63,6 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:layout_marginTop="5dp"
                     android:text="@string/tv_email_user"
                     android:textColor="#797f81"
                     android:textSize="20sp" />

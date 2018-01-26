@@ -9,19 +9,20 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.databinding.ActivityPreviewUserBinding;
 
 public class PreviewUserActivity extends AppCompatActivity {
-    private ActivityPreviewUserBinding mActivityPreviewUserBinding;
+    private ActivityPreviewUserBinding mBinding;
+    public static final int EDIT_USER_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivityPreviewUserBinding = DataBindingUtil.setContentView(this, R.layout.activity_preview_user);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_preview_user);
         User user = new User();
         user.setUserName("TUngkute");
         user.setEmail("Thanhtunga0000");
         user.setContact("01626061362");
         user.setGender(0);
-        user.setUrl("https://i2-prod.mirror.co.uk/incoming/article9967270.ece/ALTERNATES/s615b/FC-Barcelona-v-RC-Celta-de-Vigo-La-Liga.jpg");
-        mActivityPreviewUserBinding.setUser(user);
+        user.setAvatar("https://i2-prod.mirror.co.uk/incoming/article9967270.ece/ALTERNATES/s615b/FC-Barcelona-v-RC-Celta-de-Vigo-La-Liga.jpg");
+        mBinding.setUser(user);
     }
 
     /**
@@ -30,8 +31,8 @@ public class PreviewUserActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == User.REQUEST_CODE_EDIT && data != null) {
-            mActivityPreviewUserBinding.setUser((User) data.getParcelableExtra(User.class.getSimpleName()));
+        if (requestCode == EDIT_USER_REQUEST_CODE && data != null) {
+            mBinding.setUser((User) data.getParcelableExtra(User.class.getSimpleName()));
         }
     }
 }

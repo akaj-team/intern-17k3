@@ -145,4 +145,8 @@
     <string name="tv_contact_user">Contact</string>
     <string name="tv_submit_user">Submit</string>
     <string name="tv_edit_profile">Edit Profile</string>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

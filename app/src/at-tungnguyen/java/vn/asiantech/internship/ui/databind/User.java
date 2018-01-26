@@ -13,9 +13,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.DatePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import vn.asiantech.internship.BR;
+import vn.asiantech.internship.R;
 
 /**
  * Author Asian Tech Inc.
@@ -28,21 +31,10 @@ public class User extends BaseObservable implements Parcelable {
     private String birthDate;
     private int gender;
     private String contact;
-    private String url;
-    private boolean isCheckEmpty = true;
-
-    public static final int REQUEST_CODE_EDIT = 123;
+    private String avatar;
+    private boolean enableEditBtn = true;
 
     public User() {
-    }
-
-    public User(String userName, String email, String birthDate, int gender, String contact, String url) {
-        this.userName = userName;
-        this.email = email;
-        this.birthDate = birthDate;
-        this.gender = gender;
-        this.contact = contact;
-        this.url = url;
     }
 
     protected User(Parcel in) {
@@ -51,7 +43,7 @@ public class User extends BaseObservable implements Parcelable {
         birthDate = in.readString();
         gender = in.readInt();
         contact = in.readString();
-        url = in.readString();
+        avatar = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -107,13 +99,13 @@ public class User extends BaseObservable implements Parcelable {
     }
 
     @Bindable
-    public String getUrl() {
-        return url;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-        notifyPropertyChanged(BR.url);
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+        notifyPropertyChanged(BR.avatar);
     }
 
     @Bindable
@@ -131,34 +123,29 @@ public class User extends BaseObservable implements Parcelable {
      */
     @Bindable
     public boolean isCheckEmptyUtil() {
-        return isCheckEmpty;
+        return enableEditBtn;
     }
 
-    private void setCheckEmpty(boolean checkEmpty) {
-        isCheckEmpty = checkEmpty;
+    private void setEnableEditBtn(boolean enableEditBtn) {
+        this.enableEditBtn = enableEditBtn;
         notifyPropertyChanged(BR.checkEmptyUtil);
-    }
-
-    /**
-     * Update DateTimePicker
-     */
-    private void updateBirthDate(int date, int month, int year) {
-        setBirthDate(String.valueOf(date).concat("-").concat(String.valueOf(month + 1).concat("-").concat(String.valueOf(year))));
     }
 
     /**
      * Show Dialog DataTimePicker
      */
     public void showDialogDate(final View view) {
-        Calendar calender = Calendar.getInstance();
-        int date = calender.get(Calendar.DAY_OF_MONTH);
-        int month = calender.get(Calendar.MONTH);
-        int year = calender.get(Calendar.YEAR);
-
+        final Calendar calender = Calendar.getInstance();
+        final int date = calender.get(Calendar.DAY_OF_MONTH);
+        final int month = calender.get(Calendar.MONTH);
+        final int year = calender.get(Calendar.YEAR);
+        final SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+        setBirthDate(String.valueOf(format.format(calender.getTime())));
         DatePickerDialog mDatePickerDialog = new DatePickerDialog(view.getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int dateOfMonth) {
-                updateBirthDate(year, month, dateOfMonth);
+                calender.set(year, month, date);
+                setBirthDate(String.valueOf(format.format(calender.getTime())));
             }
         }, year, month, date);
         mDatePickerDialog.show();
@@ -190,7 +177,7 @@ public class User extends BaseObservable implements Parcelable {
         } else if (type == 5) {
             contact = edtAfter.toString();
         }
-        checkEmptyUtil();
+        changeStatusUpdateButton();
     }
 
     /**
@@ -209,18 +196,17 @@ public class User extends BaseObservable implements Parcelable {
     public void editUser(User user, Context context) {
         Intent intent = new Intent(context, EditUserActivity.class);
         intent.putExtra(User.class.getSimpleName(), user);
-        ((PreviewUserActivity) context).startActivityForResult(intent, REQUEST_CODE_EDIT);
+        if (context instanceof PreviewUserActivity) {
+            ((PreviewUserActivity) context).startActivityForResult(intent, PreviewUserActivity.EDIT_USER_REQUEST_CODE);
+        }
     }
 
     /**
      * Select Item Gender
      */
-    public String selectItemGender() {
-        if (gender == 0) {
-            return "Male";
-        } else {
-            return "Female";
-        }
+    public String selectItemGender(Context context) {
+        String genders[] = context.getResources().getStringArray(R.array.gender_array);
+        return genders[gender];
     }
 
     @Override
@@ -235,17 +221,17 @@ public class User extends BaseObservable implements Parcelable {
         parcel.writeString(birthDate);
         parcel.writeInt(gender);
         parcel.writeString(contact);
-        parcel.writeString(url);
+        parcel.writeString(avatar);
     }
 
     /**
      * Check Empty username , email , contact
      */
-    public void checkEmptyUtil() {
+    public void changeStatusUpdateButton() {
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(contact)) {
-            setCheckEmpty(false);
+            setEnableEditBtn(false);
         } else {
-            setCheckEmpty(true);
+            setEnableEditBtn(true);
         }
     }
 }

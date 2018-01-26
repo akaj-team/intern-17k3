@@ -104,7 +104,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 Intent intentSaveData = new Intent(SplashActivity.this, SaveDataActivity.class);
                 startActivity(intentSaveData);
                 break;
-            case R.id.btnDrawerlayout:
+                case R.id.btnDrawerlayout:
                 Intent intentDrawer = new Intent(SplashActivity.this, DrawerActivity.class);
                 startActivity(intentDrawer);
                 break;
