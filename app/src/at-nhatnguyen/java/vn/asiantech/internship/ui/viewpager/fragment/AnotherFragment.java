@@ -11,12 +11,12 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.viewpager.battery.BatteryActivity;
+import vn.asiantech.internship.ui.viewpager.music.MusicActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class AnotherFragment extends Fragment {
-    private Button mBtnBattery;
 
     public AnotherFragment() {
         // Required empty public constructor
@@ -27,11 +27,18 @@ public class AnotherFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_another, container, false);
-        mBtnBattery = view.findViewById(R.id.btnBattery);
+        Button mBtnBattery = view.findViewById(R.id.btnBattery);
         mBtnBattery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), BatteryActivity.class));
+            }
+        });
+        Button mBtnMusic = view.findViewById(R.id.btnMusic);
+        mBtnMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), MusicActivity.class));
             }
         });
         return view;

@@ -42,6 +42,19 @@
         <activity android:name=".ui.customview.CanvasActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
         <activity android:name=".ui.viewpager.battery.BatteryActivity" />
+        <activity android:name=".ui.viewpager.music.MusicActivity" />
+
+        <service android:name=".ui.viewpager.music.ServiceMusic" />
+        <receiver android:name=".ui.viewpager.music.NotificationBroadCastReceiver"
+            android:permission="@string/button_viewpager">
+            <intent-filter>
+                <action android:name="delete" />
+                <action android:name="pause" />
+                <action android:name="next" />
+                <action android:name="resume" />
+                <action android:name="previous" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

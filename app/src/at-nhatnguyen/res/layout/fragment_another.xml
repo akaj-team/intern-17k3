@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="vn.asiantech.internship.ui.viewpager.fragment.AnotherFragment">
 
     <Button
@@ -9,5 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/battery"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnMusic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/music"
         android:textSize="20dp" />
 </LinearLayout>
