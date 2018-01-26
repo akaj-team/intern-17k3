@@ -60,10 +60,15 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_login_validation" />
-
     <Button
-        android:id="@+id/btnService"
+        android:id="@+id/btnBroadcast"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/btn_service" />
+        android:text="@string/btn_broadcast" />
+
+    <Button
+        android:id="@+id/btnCanvas"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_canvas" />
 </LinearLayout>
