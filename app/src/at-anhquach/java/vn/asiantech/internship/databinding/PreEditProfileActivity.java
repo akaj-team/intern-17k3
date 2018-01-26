@@ -15,7 +15,7 @@ import vn.asiantech.internship.model.User;
  */
 public class PreEditProfileActivity extends AppCompatActivity {
     private User mUser;
-    private ActivityPreEditProfileBinding mBinding;
+    private vn.asiantech.internship.databinding.ActivityPreEditProfileBinding mBinding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,9 +27,9 @@ public class PreEditProfileActivity extends AppCompatActivity {
     }
 
     private void setData() {
-        mUser.setImgUrl("https://i1.wp.com/therighthairstyles.com/wp-content/uploads/2013/12/5-wavy-brunette-bob.jpg?w=500&ssl=1");
+        mUser.setAvatar("https://i1.wp.com/therighthairstyles.com/wp-content/uploads/2013/12/5-wavy-brunette-bob.jpg?w=500&ssl=1");
         mUser.setFullname("Ngoc Anh");
-        mUser.setBirthday("28/09/1997");
+        mUser.setBirthday("Sep 28,1997");
         mUser.setGender(getResources().getStringArray(R.array.gender_arrays)[0]);
         mUser.setEmail("anh.quach@asiantech");
         mUser.setContactnumber("01679961569");
@@ -38,7 +38,7 @@ public class PreEditProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == User.REQUEST_CODE && data != null) {
+        if (requestCode == User.EDIT_USER_REQUEST_CODE && data != null) {
             mBinding.setUser((User) data.getParcelableExtra(User.class.getSimpleName()));
         }
     }

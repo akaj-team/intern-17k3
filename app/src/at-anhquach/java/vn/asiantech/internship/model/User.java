@@ -16,7 +16,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.databinding.EditProfileActivity;
@@ -26,7 +28,7 @@ import vn.asiantech.internship.databinding.PreEditProfileActivity;
  * Define class User
  */
 public class User extends BaseObservable implements Parcelable {
-    public static final int REQUEST_CODE = 1;
+    public static final int EDIT_USER_REQUEST_CODE = 1;
 
     private int id;
     private String fullname;
@@ -37,7 +39,7 @@ public class User extends BaseObservable implements Parcelable {
     private int age;
     private String usename;
     private String password;
-    private String imgUrl;
+    private String avatar;
 
     public User() {
     }
@@ -52,7 +54,7 @@ public class User extends BaseObservable implements Parcelable {
         age = in.readInt();
         usename = in.readString();
         password = in.readString();
-        imgUrl = in.readString();
+        avatar = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -107,12 +109,12 @@ public class User extends BaseObservable implements Parcelable {
 
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     @Bindable
@@ -179,7 +181,7 @@ public class User extends BaseObservable implements Parcelable {
     }
 
     public void intentActivityPreEdit(Context context) {
-        setImgUrl(imgUrl);
+        setAvatar(avatar);
         setFullname(fullname);
         setBirthday(birthday);
         setEmail(email);
@@ -194,7 +196,7 @@ public class User extends BaseObservable implements Parcelable {
     }
 
     public void intentActivityEdit(Context context) {
-        setImgUrl(imgUrl);
+        setAvatar(avatar);
         setFullname(fullname);
         setBirthday(birthday);
         setEmail(email);
@@ -202,7 +204,7 @@ public class User extends BaseObservable implements Parcelable {
         setContactnumber(contactnumber);
         Intent intent = new Intent(context, EditProfileActivity.class);
         intent.putExtra(User.class.getSimpleName(), this);
-        ((PreEditProfileActivity) context).startActivityForResult(intent, REQUEST_CODE);
+        ((PreEditProfileActivity) context).startActivityForResult(intent, EDIT_USER_REQUEST_CODE);
     }
 
     public void showDatePicker(final EditText edt, final Context context) {
@@ -215,10 +217,15 @@ public class User extends BaseObservable implements Parcelable {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int month, int day) {
-                        edt.setText(context.getResources().getString(R.string.edittext_birthday, day, month + 1, year));
+                        edt.setText(formatBirthday(c));
                     }
                 }, year, month, day);
         datePickerDialog.show();
+    }
+
+    private String formatBirthday(Calendar calendar) {
+        SimpleDateFormat resultFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
+        return resultFormat.format(calendar.getTime());
     }
 
     private void checkInputInfo(ImageView img) {
@@ -257,6 +264,6 @@ public class User extends BaseObservable implements Parcelable {
         dest.writeInt(age);
         dest.writeString(usename);
         dest.writeString(password);
-        dest.writeString(imgUrl);
+        dest.writeString(avatar);
     }
 }

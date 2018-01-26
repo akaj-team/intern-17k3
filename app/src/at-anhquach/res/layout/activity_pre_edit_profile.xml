@@ -34,8 +34,7 @@
                 android:layout_height="120dp"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/img_avatar"
-                app:imageUrl="@{user.imgUrl}" />
+                app:imageUrl="@{user.avatar}" />
 
             <TextView
                 android:layout_width="match_parent"
