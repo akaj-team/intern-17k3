@@ -130,7 +130,6 @@
                             android:layout_height="40dp"
                             android:afterTextChanged="@{(text) -> user.afterChangeText(text,3) }"
                             android:background="@drawable/bg_border_edt"
-                            android:drawableRight="@drawable/ic_arrow_drop_down_grey_600_24dp"
                             android:inputType="date"
                             android:text="@{user.birthDate}" />
 
