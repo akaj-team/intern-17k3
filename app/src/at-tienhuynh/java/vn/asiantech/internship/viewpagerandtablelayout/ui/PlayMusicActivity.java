@@ -27,7 +27,6 @@ import vn.asiantech.internship.viewpagerandtablelayout.utils.MusicAction;
  * Play Music Activity to play music
  */
 public class PlayMusicActivity extends AppCompatActivity implements MusicAdapter.onItemClick, View.OnClickListener {
-
     private static final String MY_PREFS_NAME = "checkShow";
     private static final String PREFS_CHECK = "check";
     private SeekBar mSeekBarMusic;

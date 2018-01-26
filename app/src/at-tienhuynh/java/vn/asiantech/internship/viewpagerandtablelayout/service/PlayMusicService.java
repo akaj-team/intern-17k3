@@ -26,7 +26,6 @@ import vn.asiantech.internship.viewpagerandtablelayout.utils.MusicAction;
  * AsianTech Co., Ltd
  */
 public class PlayMusicService extends Service implements MediaPlayer.OnCompletionListener {
-
     private static MediaPlayer mMediaPlayer;
     private ArrayList<Music> mMusicLists = new ArrayList<>();
     private int mPosition;
