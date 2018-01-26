@@ -7,14 +7,15 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-import android.os.Binder;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import vn.asiantech.internship.R;
@@ -29,103 +30,164 @@ import vn.asiantech.internship.model.Music;
 public class MusicPlayService extends Service {
     private MediaPlayer mMediaPlayer;
     private ArrayList<Music> mMusicList;
-    private int mPosition = 0;
-    private final IBinder musicBind = new MusicBinder();
+    private int mPositonNotification;
     public static final String NOTIFY_PREVIOUS = "previous";
     public static final String NOTIFY_DELETE = "delete";
     public static final String NOTIFY_PAUSE = "pause";
     public static final String NOTIFY_PLAY = "play";
     public static final String NOTIFY_NEXT = "next";
+
+    public static final String SEND_INFO_MUSIC = "infomusic";
+
+    public static final String POSITION = "Position";
+
+    public static final String ACTION_PLAY = "Play";
+    public static final String ACTION_RESUME = "Resume";
+    public static final String ACTION_STOP = "Stop";
+    public static final String ACTION_PAUSE = "Pause";
+    public static final String ACTION_NEXT = "Next";
+    public static final String ACTION_PREVIOUS = "Previous";
+    public static final String CHECK_RUN = "CheckRun";
+    public static final String INFO_SINNGING = "singing";
     private boolean isPause = false;
-    private Random randomGenerator;
+    private List<Integer> mLists;
+    private Notification mNotification;
+    private Intent mIntent;
 
     public MusicPlayService() {
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        mMusicList = intent.getParcelableArrayListExtra("array");
-        return musicBind;
-    }
-
-    class MusicBinder extends Binder {
-        MusicPlayService getService() {
-            return MusicPlayService.this;
-        }
+        return null;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-    }
-
-    public void onNext(int position) {
-        mPosition = position;
-        mPosition++;
-        if (mPosition < mMusicList.size()) {
-            if (mMediaPlayer.isPlaying()) {
-                mMediaPlayer.stop();
-                mMediaPlayer = MediaPlayer.create(getApplicationContext(), mMusicList.get(mPosition).getUriMusic());
-                mMediaPlayer.start();
-            }
-            getNameMusic(position);
-        } else if (mPosition > mMusicList.size()) {
-            Toast.makeText(this, R.string.tv_end, Toast.LENGTH_SHORT).show();
-        }
-
+        isPause = false;
+        mMediaPlayer = new MediaPlayer();
+        mLists = new ArrayList<>();
+        mIntent = new Intent();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent.getAction() != null) {
             switch (intent.getAction()) {
-                case "play":
-                    onPlay();
+                case ACTION_PLAY:
                     isPause = false;
+                    int Position = intent.getIntExtra(POSITION, 0);
+                    onPlayMusic(Position);
                     newNotification();
                     break;
-                case "pause":
-                    onPause();
+                case ACTION_PAUSE:
                     isPause = true;
+                    onPause();
                     newNotification();
                     break;
-                case "next":
-                    onNext(mPosition);
+                case ACTION_NEXT:
+                    onNext();
                     newNotification();
+                    break;
+                case ACTION_PREVIOUS:
+                    onPrevious();
+                    newNotification();
+                    break;
+                case CHECK_RUN:
+                    checkRunMusic();
+                    break;
+                case ACTION_RESUME:
                     isPause = false;
-                    break;
-                case "previous":
-                    onPrevious(mPosition);
-                    isPause = false;
+                    onResume();
                     newNotification();
                     break;
-                case "delete":
-                    stopService(intent);
+                case ACTION_STOP:
+                    break;
+                case "data":
+                    mMusicList = intent.getParcelableArrayListExtra("array");
                     break;
             }
         }
         return super.onStartCommand(intent, flags, startId);
     }
 
-    public void onPrevious(int position) {
-        mPosition--;
-        if (mPosition < mMusicList.size()) {
-            if (mMediaPlayer.isPlaying()) {
-                mMediaPlayer.stop();
-            } else {
-                mPosition = mMusicList.size();
-            }
-            mMediaPlayer = MediaPlayer.create(getApplicationContext(), mMusicList.get(mPosition).getUriMusic());
-            mMediaPlayer.start();
+    private void checkRunMusic() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.isPlaying();
+            sendActionCheckRun(true);
+
         }
-        newNotification();
     }
 
-    public void onPlay() {
-        mMediaPlayer.start();
+    private void onPause() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.pause();
+        }
     }
 
-    public String getNameMusic(int position) {
+    private void onNext() {
+        Random random = new Random();
+        int nextMusic = random.nextInt(mMusicList.size());
+        onPlayMusic(nextMusic);
+        mLists.add(nextMusic);
+    }
+
+    private void onPrevious() {
+        Random random = new Random();
+        int nextMusic = random.nextInt(mMusicList.size());
+        onPlayMusic(nextMusic);
+        mLists.add(nextMusic);
+    }
+
+    private void onResume() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.start();
+            isPause = false;
+        }
+    }
+
+    private void onPlayMusic(int position) {
+        mPositonNotification = position;
+        if (position < mMusicList.size()) {
+            sendInfoMusic(position);
+            mIntent.putExtra(INFO_SINNGING, true);
+            String path = "android.resource://" + getPackageName() + "/" + mMusicList.get(position).getUriMusic();
+            Uri uri = Uri.parse(path);
+            try {
+                mMediaPlayer.reset();
+                mMediaPlayer.setDataSource(this, uri);
+                mMediaPlayer.prepare();
+                mMediaPlayer.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        mMediaPlayer.stop();
+        super.onDestroy();
+    }
+
+    private void sendInfoMusic(int position) {
+        Intent intentInfo = new Intent();
+        intentInfo.setAction(SEND_INFO_MUSIC);
+        intentInfo.putExtra("name", getNameMusic(position));
+        intentInfo.putExtra("single", getSingle(position));
+        intentInfo.putExtra("sing", true);
+        sendBroadcast(intentInfo);
+    }
+
+    private void sendActionCheckRun(boolean checkRun) {
+        Intent intentCheckRun = new Intent();
+        intentCheckRun.setAction(MusicActivity.CHECK_RUN);
+        intentCheckRun.putExtra("true", checkRun);
+        sendBroadcast(intentCheckRun);
+    }
+
+    private String getNameMusic(int position) {
         MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
         AssetFileDescriptor assetFileDescriptor = getResources().openRawResourceFd(mMusicList.get(position).getUriMusic());
         mediaMetadataRetriever.setDataSource(assetFileDescriptor.getFileDescriptor(),
@@ -133,7 +195,7 @@ public class MusicPlayService extends Service {
         return mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
     }
 
-    public String getSingle(int position) {
+    private String getSingle(int position) {
         MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
         AssetFileDescriptor assetFileDescriptor = getResources().openRawResourceFd(mMusicList.get(position).getUriMusic());
         mediaMetadataRetriever.setDataSource(assetFileDescriptor.getFileDescriptor(),
@@ -141,55 +203,28 @@ public class MusicPlayService extends Service {
         return mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-    public void onStop() {
-        if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
-        }
-    }
-
-    public void onPause() {
-        mMediaPlayer.pause();
-    }
-
-    /**
-     * OnItemMusicClick
-     */
-    public void onItemMusicClick(int position) {
-        onStop();
-        mMediaPlayer = MediaPlayer.create(getApplicationContext(), mMusicList.get(position).getUriMusic());
-        mMediaPlayer.start();
-        mPosition = position;
-        newNotification();
-    }
-
     /**
      * Notification
      */
     private void newNotification() {
-        String songName = mMusicList.get(mPosition).getNameMusic();
-        String albumName = mMusicList.get(mPosition).getSingle();
-        RemoteViews remoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.notification_mediacontroller);
-        Notification notification = new NotificationCompat.Builder(getApplicationContext())
+        RemoteViews remoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.item_notification);
+        mNotification = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.ic_logo_music)
-                .setContentTitle(songName).build();
+                .setContentTitle(mMusicList.get(mPositonNotification).getNameMusic()).build();
+
         setListeners(remoteViews);
-        notification.contentView = remoteViews;
+        mNotification.contentView = remoteViews;
         if (isPause) {
-            notification.contentView.setViewVisibility(R.id.imgPause, View.GONE);
-            notification.contentView.setViewVisibility(R.id.imgPlay, View.VISIBLE);
+            mNotification.contentView.setViewVisibility(R.id.imgPause, View.GONE);
+            mNotification.contentView.setViewVisibility(R.id.imgPlay, View.VISIBLE);
         } else {
-            notification.contentView.setViewVisibility(R.id.imgPause, View.VISIBLE);
-            notification.contentView.setViewVisibility(R.id.imgPlay, View.GONE);
+            mNotification.contentView.setViewVisibility(R.id.imgPause, View.VISIBLE);
+            mNotification.contentView.setViewVisibility(R.id.imgPlay, View.GONE);
         }
-        notification.contentView.setTextViewText(R.id.tvSongName, songName);
-        notification.contentView.setTextViewText(R.id.tvAlbumName, albumName);
-        notification.flags |= Notification.FLAG_ONGOING_EVENT;
-        startForeground(77, notification);
+        mNotification.contentView.setTextViewText(R.id.tvSongName, mMusicList.get(mPositonNotification).getNameMusic());
+        mNotification.contentView.setTextViewText(R.id.tvAlbumName, mMusicList.get(mPositonNotification).getSingle());
+        mNotification.flags |= Notification.FLAG_ONGOING_EVENT;
+        startForeground(77, mNotification);
     }
 
     /**
@@ -197,7 +232,7 @@ public class MusicPlayService extends Service {
      *
      * @param view view
      */
-    public void setListeners(RemoteViews view) {
+    private void setListeners(RemoteViews view) {
         Intent previous = new Intent(NOTIFY_PREVIOUS);
         Intent delete = new Intent(NOTIFY_DELETE);
         Intent pause = new Intent(NOTIFY_PAUSE);

@@ -4,38 +4,28 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import java.util.ArrayList;
-
-import vn.asiantech.internship.model.Music;
-
 /**
  * Author Asian Tech Inc.
  * Created by tungnguyen on 22/01/2018.
  */
 
 public class NotificationBroadcast extends BroadcastReceiver {
-    private ArrayList<Music> musicList;
-    private Intent mIntent;
 
     public void onReceive(Context context, Intent intent) {
+         Intent mIntent = new Intent(context, MusicPlayService.class);
         if (intent.getAction().equals(MusicPlayService.NOTIFY_PLAY)) {
-            mIntent = new Intent(context, MusicPlayService.class);
-            mIntent.setAction("play");
+            mIntent.setAction(MusicPlayService.ACTION_RESUME);
             context.startService(mIntent);
         } else if (intent.getAction().equals(MusicPlayService.NOTIFY_PAUSE)) {
-            mIntent = new Intent(context, MusicPlayService.class);
-            mIntent.setAction("pause");
+            mIntent.setAction(MusicPlayService.ACTION_PAUSE);
             context.startService(mIntent);
         } else if (intent.getAction().equals(MusicPlayService.NOTIFY_NEXT)) {
-            mIntent = new Intent(context, MusicPlayService.class);
-            mIntent.setAction("next");
+            mIntent.setAction(MusicPlayService.ACTION_NEXT);
             context.startService(mIntent);
         } else if (intent.getAction().equals(MusicPlayService.NOTIFY_PREVIOUS)) {
-            mIntent = new Intent(context, MusicPlayService.class);
-            mIntent.setAction("previous");
+            mIntent.setAction(MusicPlayService.ACTION_PREVIOUS);
             context.startService(mIntent);
         } else if (intent.getAction().equals(MusicPlayService.NOTIFY_DELETE)) {
-            mIntent = new Intent(context, MusicPlayService.class);
             context.stopService(mIntent);
         }
     }

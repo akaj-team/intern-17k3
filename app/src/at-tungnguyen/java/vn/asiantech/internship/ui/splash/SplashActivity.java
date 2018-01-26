@@ -110,9 +110,11 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnValidation:
                 Intent intentValidation = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intentValidation);
+                break;
             case R.id.btnService:
                 Intent intentService = new Intent(SplashActivity.this, MusicActivity.class);
                 startActivity(intentService);
+                break;
         }
     }
 }

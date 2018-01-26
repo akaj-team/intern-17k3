@@ -1,11 +1,10 @@
 package vn.asiantech.internship.ui.service;
 
-import android.content.ComponentName;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,6 +19,7 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Music;
 
 public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnItemClickListener, View.OnClickListener {
+    public static final String CHECK_RUN = "CheckRun";
     private ArrayList<Music> mMusicList;
     private RecyclerView mRecyclerViewMusic;
     private LinearLayout mLlMusic;
@@ -30,28 +29,26 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     private TextView mTvNameMusic;
     private TextView mTvSingle;
     boolean isSelected = true;
-    private static MusicPlayService mMusicPlayService;
-    private boolean isPlay = false;
-    private int mPosition = 0;
+    private MusicPlayService mMusicPlayService;
     private Intent mIntent;
-    static boolean isBound = false;
+    private boolean isSing = false;
 
-    /**
-     * ServiceConnection used to connect to service
-     */
-    public ServiceConnection musicConnection = new ServiceConnection() {
+    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            MusicPlayService.MusicBinder binder = (MusicPlayService.MusicBinder) service;
-            //get service
-            mMusicPlayService = binder.getService();
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            //No-opp
-            isBound = false;
-            mMusicPlayService = null;
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction() != null) {
+                switch (intent.getAction()) {
+                    case MusicPlayService.SEND_INFO_MUSIC:
+                        mTvNameMusic.setText(intent.getStringExtra("name"));
+                        mTvSingle.setText(intent.getStringExtra("single"));
+                        isSing = intent.getBooleanExtra("sing", false);
+                        setBtnPlayPause(isSing);
+                        break;
+                    case CHECK_RUN:
+                        isSing = intent.getBooleanExtra("true", false);
+                        setBtnPlayPause(isSing);
+                }
+            }
         }
     };
 
@@ -67,9 +64,18 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         mIntent = new Intent(getApplicationContext(), MusicPlayService.class);
         mIntent.putParcelableArrayListExtra("array", mMusicList);
         mIntent.setAction("data");
-        bindService(mIntent, musicConnection, Context.BIND_AUTO_CREATE);
+        startService(mIntent);
+//        bindService(mIntent, musicConnection, Context.BIND_AUTO_CREATE);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(MusicPlayService.SEND_INFO_MUSIC);
+        intentFilter.addAction(CHECK_RUN);
+        registerReceiver(mBroadcastReceiver, intentFilter);
+        sendCheckRun();
     }
 
+    /**
+     * initViews MusicActivity
+     */
     private void initViews() {
         mBtnPrevious = findViewById(R.id.btnPreviousMusic);
         mBtnNextMusic = findViewById(R.id.btnNextMusic);
@@ -80,6 +86,9 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         mTvSingle = findViewById(R.id.tvSingle);
     }
 
+    /**
+     * initAdapter Music Activity
+     */
     private void initAdapter() {
         mMusicList = new ArrayList<>();
         MusicAdapter mMusicAdapter = new MusicAdapter(mMusicList, this);
@@ -87,6 +96,9 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         mRecyclerViewMusic.setAdapter(mMusicAdapter);
     }
 
+    /**
+     * initData MusicActivity
+     */
     private void initData() {
         mMusicList.add(new Music("Người lạ ơi", "Karrik", R.raw.music_2));
         mMusicList.add(new Music("Tình Đơn Phương", "Lam Trường", R.raw.music3));
@@ -98,12 +110,29 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         mMusicList.add(new Music("Sống xa anh chẵng dễ dàng", "Bảo Anh", R.raw.music_baoanh));
     }
 
+    /**
+     * initListener of MusicActivity
+     */
     private void initListener() {
         mBtnPrevious.setOnClickListener(this);
         mBtnPlay.setOnClickListener(this);
         mBtnNextMusic.setOnClickListener(this);
     }
 
+    /**
+     * set Button Play or Pause
+     */
+    private void setBtnPlayPause(boolean checkSing) {
+        if (checkSing) {
+            mBtnPlay.setBackground(getResources().getDrawable(R.drawable.ic_pause_black_24dp));
+        } else {
+            mBtnPlay.setBackground(getResources().getDrawable(R.drawable.ic_play_arrow_black_24dp));
+        }
+    }
+
+    /**
+     * onItemClick Music
+     */
     @Override
     public void onItemClick(Music music, int position) {
         if (isSelected) {
@@ -111,48 +140,45 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         } else {
             mLlMusic.setVisibility(View.INVISIBLE);
         }
-        mTvNameMusic.setText(mMusicPlayService.getNameMusic(position));
-        mTvSingle.setText(mMusicPlayService.getSingle(position));
-        mMusicPlayService.onItemMusicClick(position);
+        Intent intentClick = new Intent(MusicActivity.this, MusicPlayService.class);
+        intentClick.setAction(MusicPlayService.ACTION_PLAY);
+        intentClick.putExtra(MusicPlayService.POSITION, position);
+        startService(intentClick);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnPlayMusic:
-                if (!isPlay) {
-                    isPlay = true;
-                    mIntent.setAction("play");
+                if (isSing) {
+                    isSing = false;
+                    mBtnPlay.setBackground(getResources().getDrawable(R.drawable.ic_play_arrow_black_24dp));
+                    mIntent.setAction(MusicPlayService.ACTION_PAUSE);
                     startService(mIntent);
-                    mBtnPlay.setSelected(false);
-                    isPlay = true;
                 } else {
-                    mIntent.setAction("pause");
+                    isSing = true;
+                    mBtnPlay.setBackground(getResources().getDrawable(R.drawable.ic_pause_black_24dp));
+                    mIntent.setAction(MusicPlayService.ACTION_RESUME);
                     startService(mIntent);
-                    mBtnPlay.setSelected(true);
-                    isPlay = false;
                 }
                 break;
             case R.id.btnNextMusic:
-                mPosition++;
-                Intent intent = new Intent(MusicActivity.this,MusicPlayService.class);
-                intent.setAction("next");
-                startService(intent);
-                if (mPosition < mMusicList.size()) {
-                    mTvNameMusic.setText(mMusicPlayService.getNameMusic(mPosition));
-                    mTvSingle.setText(mMusicPlayService.getSingle(mPosition));
-                } else if (mPosition > mMusicList.size() - 1) {
-                    Toast.makeText(this, R.string.tv_end, Toast.LENGTH_SHORT).show();
-                }
+                mIntent.setAction(MusicPlayService.ACTION_NEXT);
+                startService(mIntent);
                 break;
             case R.id.btnPreviousMusic:
-                mPosition--;
-                mMusicPlayService.onPrevious(mPosition);
-                if (mPosition < mMusicList.size()) {
-                    mTvNameMusic.setText(mMusicPlayService.getNameMusic(mPosition));
-                    mTvSingle.setText(mMusicPlayService.getSingle(mPosition));
-                } else if (mPosition == mMusicList.size() - 4) {
-                }
+                mIntent.setAction(MusicPlayService.ACTION_PREVIOUS);
+                startService(mIntent);
+                break;
         }
+    }
+
+    /**
+     * Send check Run
+     */
+    private void sendCheckRun() {
+        mIntent = new Intent(getApplicationContext(), MusicPlayService.class);
+        mIntent.setAction(CHECK_RUN);
+        startService(mIntent);
     }
 }
