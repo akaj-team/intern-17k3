@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,10 +22,10 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.Song;
 
 public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnItemClickListener, View.OnClickListener {
-    static final String ACTION_CHECK_TIME = "CheckTime";
-    static final String ACTION_INFORMATION_SONG = "Information";
-    static final String ACTION_CHECK_SING = "CheckSing";
-    static final String ACTION_CHECK_RUN = "CheckRun";
+    public static final String ACTION_CHECK_TIME = "CheckTime";
+    public static final String ACTION_INFORMATION_SONG = "Information";
+    public static final String ACTION_CHECK_SING = "CheckSing";
+    public static final String ACTION_CHECK_RUN = "CheckRun";
 
     public static final String KEY_LIST = "ListSong";
     private RecyclerView mRecyclerViewSong;
@@ -43,8 +42,8 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         @Override
         public void onReceive(Context context, Intent intent) {
             if (TextUtils.equals(intent.getAction(), ACTION_CHECK_TIME)) {
-                int currentTime = intent.getIntExtra("CurrentTime", 0);
-                int totalTime = intent.getIntExtra("TotalTime", 0);
+                int currentTime = intent.getIntExtra(ServiceMusic.TIME_CURRENT, 0);
+                int totalTime = intent.getIntExtra(ServiceMusic.TIME_TOTAL, 0);
                 mTvTimeSong.setText(convertTime(currentTime).concat("/").concat(convertTime(totalTime)));
                 mSeekBarSong.setProgress(currentTime);
                 mSeekBarSong.setMax(totalTime);
@@ -63,24 +62,24 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
                     public void onStopTrackingTouch(SeekBar seekBar) {
                         int time = seekBar.getProgress();
                         mIntentSendAction.setAction(ServiceMusic.ACTION_MOVE);
-                        mIntentSendAction.putExtra("Move", time);
+                        mIntentSendAction.putExtra(ServiceMusic.MOVE, time);
                         startService(mIntentSendAction);
                     }
                 });
             } else if (TextUtils.equals(intent.getAction(), ACTION_INFORMATION_SONG)) {
-                Song song = intent.getParcelableExtra("Information_song");
+                Song song = intent.getParcelableExtra(ServiceMusic.INFORMATION_SONG);
                 mTvNameSong.setText(song.getName());
                 mImgAvatarSong.setImageResource(song.getAvatar());
-            } else if (TextUtils.equals(intent.getAction(),ACTION_CHECK_SING)){
-                if(intent.getParcelableExtra("Information_song")!=null){
-                    Song song = intent.getParcelableExtra("Information_song");
+            } else if (TextUtils.equals(intent.getAction(), ACTION_CHECK_SING)) {
+                if (intent.getParcelableExtra(ServiceMusic.INFORMATION_SONG) != null) {
+                    Song song = intent.getParcelableExtra(ServiceMusic.INFORMATION_SONG);
                     mTvNameSong.setText(song.getName());
                     mImgAvatarSong.setImageResource(song.getAvatar());
                 }
-                boolean check = intent.getBooleanExtra("Information_sing",false);
+                boolean check = intent.getBooleanExtra(ServiceMusic.INFORMATION_SING, false);
                 updateController(check);
-            } else if(TextUtils.equals(intent.getAction(),ACTION_CHECK_RUN)){
-                sing = intent.getBooleanExtra("dung",false);
+            } else if (TextUtils.equals(intent.getAction(), ACTION_CHECK_RUN)) {
+                sing = intent.getBooleanExtra(ServiceMusic.CHECK_RUN, false);
                 setBtnPlayPause(sing);
             }
         }
@@ -99,8 +98,6 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
         intentFilter.addAction(ACTION_CHECK_SING);
         intentFilter.addAction(ACTION_CHECK_RUN);
         registerReceiver(mBroadcastReceiver, intentFilter);
-
-
         mIntentSendAction.setAction(ServiceMusic.ACTION_CHECK_RUN);
         startService(mIntentSendAction);
     }
