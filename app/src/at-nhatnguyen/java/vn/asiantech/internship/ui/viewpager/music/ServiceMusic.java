@@ -54,19 +54,19 @@ public class ServiceMusic extends Service {
     public static final String TIME_TOTAL = "TotalTime";
     private MediaPlayer mMediaPlayer;
     private CountDownTimer mCountDownTimerStart;
-    private Intent sendInformationSong;
-    private long timeRemaining;
-    private boolean isPause;
+    private Intent mIntentSendInformationSong;
+    private long mTimeRemaining;
+    private boolean mIsPause;
     private ArrayList<Song> mSongs;
     private List<Integer> mListSong;
-    private int songPlay;
+    private int mSongPlay;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        sendInformationSong = new Intent();
-        timeRemaining = 0;
-        isPause = false;
+        mIntentSendInformationSong = new Intent();
+        mTimeRemaining = 0;
+        mIsPause = false;
         mSongs = new ArrayList<>();
         mListSong = new ArrayList<>();
     }
@@ -89,7 +89,7 @@ public class ServiceMusic extends Service {
                         mSongs = intent.getParcelableArrayListExtra(MusicActivity.KEY_LIST);
                         break;
                     case ACTION_PLAY:
-                        isPause = false;
+                        mIsPause = false;
                         int position = intent.getIntExtra(POSITION, 0);
                         mListSong.add(position);
                         playMusic(position);
@@ -101,12 +101,12 @@ public class ServiceMusic extends Service {
                         mMediaPlayer.seekTo(a);
                         break;
                     case ACTION_PAUSE:
-                        isPause = true;
+                        mIsPause = true;
                         pauseMusic();
                         newNotification();
                         break;
                     case ACTION_RESUME:
-                        isPause = false;
+                        mIsPause = false;
                         resumeMusic();
                         newNotification();
                         break;
@@ -148,14 +148,14 @@ public class ServiceMusic extends Service {
     }
 
     private void playMusic(int position) {
-        songPlay = position;
+        mSongPlay = position;
         newNotification();
         sendActionCheckRun(true);
         sendActionInformationSong(position);
-        sendInformationSong.setAction(MusicActivity.ACTION_CHECK_SING);
-        sendInformationSong.putExtra(INFORMATION_SING, true);
-        sendInformationSong.putExtra(INFORMATION_SONG, mSongs.get(position));
-        sendBroadcast(sendInformationSong);
+        mIntentSendInformationSong.setAction(MusicActivity.ACTION_CHECK_SING);
+        mIntentSendInformationSong.putExtra(INFORMATION_SING, true);
+        mIntentSendInformationSong.putExtra(INFORMATION_SONG, mSongs.get(position));
+        sendBroadcast(mIntentSendInformationSong);
         String path = "android.resource://" + getPackageName() + "/" + mSongs.get(position).getResource();
         Uri uri = Uri.parse(path);
         try {
@@ -189,7 +189,7 @@ public class ServiceMusic extends Service {
         if (mMediaPlayer != null) {
             mMediaPlayer.start();
             sendActionCheckRun(true);
-            createCountDownTimer(timeRemaining);
+            createCountDownTimer(mTimeRemaining);
         } else {
             mMediaPlayer = new MediaPlayer();
             nextMusic();
@@ -205,21 +205,21 @@ public class ServiceMusic extends Service {
         if (mCountDownTimerStart != null) {
             mCountDownTimerStart.cancel();
         }
-        sendInformationSong.setAction(MusicActivity.ACTION_CHECK_TIME);
+        mIntentSendInformationSong.setAction(MusicActivity.ACTION_CHECK_TIME);
         mCountDownTimerStart = new CountDownTimer(time, 100) {
             @Override
             public void onTick(long millisUntilFinished) {
-                sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
-                sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
-                sendBroadcast(sendInformationSong);
-                timeRemaining = millisUntilFinished;
+                mIntentSendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                mIntentSendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                sendBroadcast(mIntentSendInformationSong);
+                mTimeRemaining = millisUntilFinished;
             }
 
             @Override
             public void onFinish() {
-                sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
-                sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
-                sendBroadcast(sendInformationSong);
+                mIntentSendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                mIntentSendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                sendBroadcast(mIntentSendInformationSong);
                 nextMusic();
             }
         };
@@ -230,17 +230,17 @@ public class ServiceMusic extends Service {
         if (mMediaPlayer != null) {
             if (mMediaPlayer.isPlaying()) {
                 sendActionCheckRun(true);
-                sendInformationSong.setAction(MusicActivity.ACTION_CHECK_SING);
-                sendInformationSong.putExtra(INFORMATION_SONG, mSongs.get(songPlay));
-                sendInformationSong.putExtra(INFORMATION_SING, true);
-                sendBroadcast(sendInformationSong);
+                mIntentSendInformationSong.setAction(MusicActivity.ACTION_CHECK_SING);
+                mIntentSendInformationSong.putExtra(INFORMATION_SONG, mSongs.get(mSongPlay));
+                mIntentSendInformationSong.putExtra(INFORMATION_SING, true);
+                sendBroadcast(mIntentSendInformationSong);
                 createCountDownTimer(mMediaPlayer.getDuration() - mMediaPlayer.getCurrentPosition());
             } else {
                 sendActionCheckSing(true);
-                sendInformationSong.setAction(MusicActivity.ACTION_CHECK_TIME);
-                sendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
-                sendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
-                sendBroadcast(sendInformationSong);
+                mIntentSendInformationSong.setAction(MusicActivity.ACTION_CHECK_TIME);
+                mIntentSendInformationSong.putExtra(TIME_CURRENT, mMediaPlayer.getCurrentPosition());
+                mIntentSendInformationSong.putExtra(TIME_TOTAL, mMediaPlayer.getDuration());
+                sendBroadcast(mIntentSendInformationSong);
             }
         } else {
             mMediaPlayer = new MediaPlayer();
@@ -249,21 +249,21 @@ public class ServiceMusic extends Service {
     }
 
     private void sendActionCheckSing(boolean check) {
-        sendInformationSong.setAction(MusicActivity.ACTION_CHECK_SING);
-        sendInformationSong.putExtra(INFORMATION_SING, check);
-        sendBroadcast(sendInformationSong);
+        mIntentSendInformationSong.setAction(MusicActivity.ACTION_CHECK_SING);
+        mIntentSendInformationSong.putExtra(INFORMATION_SING, check);
+        sendBroadcast(mIntentSendInformationSong);
     }
 
     private void sendActionInformationSong(int position) {
-        sendInformationSong.setAction(MusicActivity.ACTION_INFORMATION_SONG);
-        sendInformationSong.putExtra(INFORMATION_SONG, mSongs.get(position));
-        sendBroadcast(sendInformationSong);
+        mIntentSendInformationSong.setAction(MusicActivity.ACTION_INFORMATION_SONG);
+        mIntentSendInformationSong.putExtra(INFORMATION_SONG, mSongs.get(position));
+        sendBroadcast(mIntentSendInformationSong);
     }
 
     private void sendActionCheckRun(boolean check) {
-        sendInformationSong.setAction(MusicActivity.ACTION_CHECK_RUN);
-        sendInformationSong.putExtra(CHECK_RUN, check);
-        sendBroadcast(sendInformationSong);
+        mIntentSendInformationSong.setAction(MusicActivity.ACTION_CHECK_RUN);
+        mIntentSendInformationSong.putExtra(CHECK_RUN, check);
+        sendBroadcast(mIntentSendInformationSong);
     }
 
     @Override
@@ -284,17 +284,17 @@ public class ServiceMusic extends Service {
         RemoteViews remoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.item_notification);
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.ic_plate)
-                .setContentTitle(mSongs.get(songPlay).getName()).build();
+                .setContentTitle(mSongs.get(mSongPlay).getName()).build();
         setListeners(remoteViews);
         notification.contentView = remoteViews;
-        if (isPause) {
+        if (mIsPause) {
             notification.contentView.setViewVisibility(R.id.imgPause, View.GONE);
             notification.contentView.setViewVisibility(R.id.imgPlay, View.VISIBLE);
         } else {
             notification.contentView.setViewVisibility(R.id.imgPause, View.VISIBLE);
             notification.contentView.setViewVisibility(R.id.imgPlay, View.GONE);
         }
-        notification.contentView.setTextViewText(R.id.tvSongName, mSongs.get(songPlay).getName());
+        notification.contentView.setTextViewText(R.id.tvSongName, mSongs.get(mSongPlay).getName());
         notification.flags |= Notification.FLAG_ONGOING_EVENT;
         startForeground(77, notification);
     }

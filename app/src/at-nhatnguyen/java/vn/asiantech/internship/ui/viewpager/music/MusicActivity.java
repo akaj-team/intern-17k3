@@ -31,7 +31,7 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
     private RecyclerView mRecyclerViewSong;
     private ArrayList<Song> mSongs;
     private Intent mIntentSendAction;
-    private boolean sing;
+    private boolean mSing;
     private TextView mTvTimeSong;
     private TextView mTvNameSong;
     private SeekBar mSeekBarSong;
@@ -79,8 +79,8 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
                 boolean check = intent.getBooleanExtra(ServiceMusic.INFORMATION_SING, false);
                 updateController(check);
             } else if (TextUtils.equals(intent.getAction(), ACTION_CHECK_RUN)) {
-                sing = intent.getBooleanExtra(ServiceMusic.CHECK_RUN, false);
-                setBtnPlayPause(sing);
+                mSing = intent.getBooleanExtra(ServiceMusic.CHECK_RUN, false);
+                setBtnPlayPause(mSing);
             }
         }
     };
@@ -181,7 +181,7 @@ public class MusicActivity extends AppCompatActivity implements MusicAdapter.OnI
                 startService(mIntentSendAction);
                 break;
             case R.id.btnPlayPause:
-                if (sing) {
+                if (mSing) {
                     mIntentSendAction.setAction(ServiceMusic.ACTION_PAUSE);
                 } else {
                     mIntentSendAction.setAction(ServiceMusic.ACTION_RESUME);
