@@ -61,6 +61,7 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
                     sendSingStatus(mIsPlay);
                     pauseMusic();
                     newNotification();
+                    stopForeground(false);
                     break;
                 case MusicAction.POSITION:
                     mIsPlay = true;
@@ -122,7 +123,6 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
     /**
      * resume music when click play button
      */
-
     private void resumeMusic() {
         mMediaPlayer.start();
         sendBroadCastIntent.setAction(MusicAction.SEND_TIME);
@@ -211,7 +211,6 @@ public class PlayMusicService extends Service implements MediaPlayer.OnCompletio
         }
         notification.contentView.setTextViewText(R.id.tvSongName, songName);
         notification.contentView.setTextViewText(R.id.tvAlbumName, albumName);
-        notification.flags |= Notification.FLAG_ONGOING_EVENT;
         startForeground(77, notification);
     }
 
