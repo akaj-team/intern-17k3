@@ -101,16 +101,16 @@
     <string name="password">Password</string>
     <string name="unit_test">Unit test</string>
     <string name="login">Login</string>
-    <string name="user_name_empty">User name is empty</string>
-    <string name="test_user_name_length">User name length is not allowed</string>
-    <string name="test_user_name_digit_number">User name not have two number</string>
-    <string name="test_user_name_capital_letter">User name not enough capital letter</string>
-    <string name="test_user_name_have_space">User name have character space</string>
-    <string name="test_user_name_special_character">Username have special character</string>
-    <string name="test_user_name_upper_case_or_lower_case">User name is case sensitive</string>
+    <string name="username_empty">Username is empty</string>
+    <string name="test_username_length">Username length is not allowed</string>
+    <string name="test_username_digit_number">Username above two number</string>
+    <string name="test_username_capital_letter">Username not enough capital letter</string>
+    <string name="test_username_have_space">Username have character space</string>
+    <string name="test_username_special_character">Username have special character</string>
+    <string name="test_username_upper_case_or_lower_case">Username is case sensitive</string>
     <string name="password_empty">Password is empty</string>
     <string name="test_password_length">Password length is not allowed</string>
-    <string name="test_password_different_user_name">Password is not different username</string>
+    <string name="test_password_different_username">Password is not different username</string>
     <string name="test_password_character_special_and_digit_number">Password have at least one special character or character number</string>
     <string name="test_password_have_space">Password have character space</string>
     <string name="test_password_capital_letter">Password not enough three capital letters</string>
@@ -136,4 +136,5 @@
     <string name="text_discharging">Discharging</string>
     <string name="text_full">Full</string>
     <string name="text_not_charging">Not Charging</string>
+    <string name="success_login">Congratulations on your successful login !!!</string>
 </resources>
