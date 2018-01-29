@@ -15,4 +15,7 @@
     <color name="white">#ffff</color>
     <color name="blueFacebook">#3B5998</color>
     <color name="pink">#FF3DBE</color>
+    <color name="colorColumnDistancePersonA">#6B2E9A</color>
+    <color name="colorColumnDistancePersonB">#018ABE</color>
+    <color name="colorColumnDistancePersonC">#F26722</color>
 </resources>

@@ -85,6 +85,8 @@
     <string name="text_nine_path">Nine Path</string>
     <string name="bai_tap_4">Load Image</string>
     <string name="bai_tap_7">View pager</string>
+    <string name="monday">Mon</string>
+    <string name="sunday">Sun</string>
     <string name="bai_tap_8">Thread-Handler</string>
     <string name="exercise_week_5">Exercise week 5</string>
     <string name="thread_handler">Thread handler</string>
@@ -136,5 +138,6 @@
     <string name="text_discharging">Discharging</string>
     <string name="text_full">Full</string>
     <string name="text_not_charging">Not Charging</string>
+    <string name="text_kilometer">KM</string>
     <string name="success_login">Congratulations on your successful login !!!</string>
 </resources>
