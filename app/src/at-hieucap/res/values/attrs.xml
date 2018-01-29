@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CustomView">
-        <attr name="stroke_with" format="integer" />
+        <attr name="stroke_with" format="dimension" />
     </declare-styleable>
 </resources>
