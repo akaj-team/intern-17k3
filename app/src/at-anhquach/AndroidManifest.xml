@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.drawerlayout.DrawerLayoutActivity">
+        <activity android:name=".ui.canvas.ChartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,6 +36,7 @@
         <activity android:name=".image.NinePathImageActivity" />
         <activity android:name=".image.VectorImageActivity" />
         <activity android:name=".asynchronous.ThreadActivity" />
+        <activity android:name=".ui.viewpager_tablayout.InfoBatteryActivity"/>
     </application>
 
 </manifest>

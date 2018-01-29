@@ -57,6 +57,8 @@
     <string name="event_two_term_is_empty">First term and second term is not empty !</string>
     <string name="text_null"> </string>
     <string name="event_second_term_is_value_0">Second term is not value = 0 !</string>
+    <string name="start">Start</string>
+    <string name="percent_start">0%</string>
     <string name="tv_skip">SKIP</string>
     <string name="tv_1">Fragment 1</string>
     <string name="tv_2">Fragment 2</string>
@@ -85,24 +87,37 @@
     <string name="bai_tap_7">View pager</string>
     <string name="monday">Mon</string>
     <string name="sunday">Sun</string>
+    <string name="bai_tap_8">Thread-Handler</string>
+    <string name="exercise_week_5">Exercise week 5</string>
+    <string name="thread_handler">Thread handler</string>
+    <string name="count_down_timer">Count down timer</string>
+    <string name="title_send">Send</string>
+    <string name="title_result">Result</string>
+    <string name="download" formatted="false">
+        Downloading %d Byte / %d Byte ( %.0f
+    </string>
+    <string name="download_error">Download error</string>
+    <string name="disconnect_error">Disconnect error</string>
+    <string name="close_error">Close input stream, output stream error</string>
     <string name="user_name">User name</string>
     <string name="password">Password</string>
     <string name="unit_test">Unit test</string>
     <string name="login">Login</string>
-    <string name="user_name_empty">User name is empty</string>
-    <string name="test_user_name_length">User name length is not allowed</string>
-    <string name="test_user_name_digit_number">User name not have two number</string>
-    <string name="test_user_name_capital_letter">User name not enough capital letter</string>
-    <string name="test_user_name_have_space">User name have character space</string>
-    <string name="test_user_name_special_character">Username have special character</string>
-    <string name="test_user_name_upper_case_or_lower_case">User name is case sensitive</string>
+    <string name="username_empty">Username is empty</string>
+    <string name="test_username_length">Username length is not allowed</string>
+    <string name="test_username_digit_number">Username above two number</string>
+    <string name="test_username_capital_letter">Username not enough capital letter</string>
+    <string name="test_username_have_space">Username have character space</string>
+    <string name="test_username_special_character">Username have special character</string>
+    <string name="test_username_upper_case_or_lower_case">Username is case sensitive</string>
     <string name="password_empty">Password is empty</string>
     <string name="test_password_length">Password length is not allowed</string>
-    <string name="test_password_different_user_name">Password is not different username</string>
+    <string name="test_password_different_username">Password is not different username</string>
     <string name="test_password_character_special_and_digit_number">Password have at least one special character or character number</string>
     <string name="test_password_have_space">Password have character space</string>
     <string name="test_password_capital_letter">Password not enough three capital letters</string>
     <string name="test_password_same_character">Password have character overlap more than two times</string>
     <string name="test_done">Done</string>
     <string name="text_kilometer">KM</string>
+    <string name="success_login">Congratulations on your successful login !!!</string>
 </resources>

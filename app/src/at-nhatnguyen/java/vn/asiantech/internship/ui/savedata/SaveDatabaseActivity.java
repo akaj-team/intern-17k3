@@ -13,7 +13,7 @@ import vn.asiantech.internship.R;
 import vn.asiantech.internship.models.People;
 
 /**
- * Activity display list people
+ * DownloadActivity display list people
  */
 public class SaveDatabaseActivity extends AppCompatActivity implements PeopleAdapter.OnItemClickListener {
     static final String KEY_INTENT_ID_COMPANY = "id_company_send";
