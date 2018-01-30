@@ -14,8 +14,9 @@ import vn.asiantech.internship.model.User;
  * Edit Profile Activity
  */
 public class PreEditProfileActivity extends AppCompatActivity {
+    public static final int EDIT_USER_REQUEST_CODE = 1;
     private User mUser;
-    private vn.asiantech.internship.databinding.ActivityPreEditProfileBinding mBinding;
+    private ActivityPreEditProfileBinding mBinding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,14 +33,20 @@ public class PreEditProfileActivity extends AppCompatActivity {
         mUser.setBirthday("Sep 28,1997");
         mUser.setGender(getResources().getStringArray(R.array.gender_arrays)[0]);
         mUser.setEmail("anh.quach@asiantech");
-        mUser.setContactnumber("01679961569");
+        mUser.setContactNumber("01679961569");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == User.EDIT_USER_REQUEST_CODE && data != null) {
-            mBinding.setUser((User) data.getParcelableExtra(User.class.getSimpleName()));
+        if (requestCode == EDIT_USER_REQUEST_CODE && data != null) {
+            User user = data.getParcelableExtra(User.class.getSimpleName());
+            mUser.setFullname(user.fullName);
+            mUser.setGender(user.gender);
+            mUser.setContactNumber(user.contactNumber);
+            mUser.setBirthday(user.birthday);
+            mUser.setEmail(user.email);
+            mBinding.setUser(mUser);
         }
     }
 }

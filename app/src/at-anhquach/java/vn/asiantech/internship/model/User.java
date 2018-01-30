@@ -14,12 +14,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import vn.asiantech.internship.BR;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.databinding.EditProfileActivity;
 import vn.asiantech.internship.databinding.PreEditProfileActivity;
@@ -28,35 +28,6 @@ import vn.asiantech.internship.databinding.PreEditProfileActivity;
  * Define class User
  */
 public class User extends BaseObservable implements Parcelable {
-    public static final int EDIT_USER_REQUEST_CODE = 1;
-
-    private int id;
-    private String fullname;
-    private String birthday;
-    private String email;
-    private String gender;
-    private String contactnumber;
-    private int age;
-    private String usename;
-    private String password;
-    private String avatar;
-
-    public User() {
-    }
-
-    protected User(Parcel in) {
-        id = in.readInt();
-        fullname = in.readString();
-        birthday = in.readString();
-        email = in.readString();
-        gender = in.readString();
-        contactnumber = in.readString();
-        age = in.readInt();
-        usename = in.readString();
-        password = in.readString();
-        avatar = in.readString();
-    }
-
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
         public User createFromParcel(Parcel in) {
@@ -69,6 +40,34 @@ public class User extends BaseObservable implements Parcelable {
         }
     };
 
+    public int id;
+    public String fullName;
+    public String birthday;
+    public String email;
+    public String gender;
+    public String contactNumber;
+    public int age;
+    private String usename;
+    public String password;
+    private String avatar;
+    private boolean enable;
+
+    public User() {
+    }
+
+    protected User(Parcel in) {
+        id = in.readInt();
+        fullName = in.readString();
+        birthday = in.readString();
+        email = in.readString();
+        gender = in.readString();
+        contactNumber = in.readString();
+        age = in.readInt();
+        usename = in.readString();
+        password = in.readString();
+        avatar = in.readString();
+    }
+
     public int getId() {
         return id;
     }
@@ -78,21 +77,22 @@ public class User extends BaseObservable implements Parcelable {
     }
 
     public String getFullname() {
-        return fullname;
+        return fullName;
     }
 
     @Bindable
     public void setFullname(String fullname) {
-        this.fullname = fullname;
+        this.fullName = fullname;
+        notifyPropertyChanged(BR.fullname);
     }
-
+    @Bindable
     public String getBirthday() {
         return birthday;
     }
 
-    @Bindable
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+        notifyPropertyChanged(BR.birthday);
     }
 
     public String getEmail() {
@@ -102,8 +102,9 @@ public class User extends BaseObservable implements Parcelable {
     @Bindable
     public void setEmail(String email) {
         this.email = email;
+        notifyPropertyChanged(BR.email);
     }
-
+    @Bindable
     public String getGender() {
         return gender;
 
@@ -117,18 +118,20 @@ public class User extends BaseObservable implements Parcelable {
         this.avatar = avatar;
     }
 
-    @Bindable
+
     public void setGender(String gender) {
         this.gender = gender;
+        notifyPropertyChanged(BR.gender);
     }
 
-    public String getContactnumber() {
-        return contactnumber;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
     @Bindable
-    public void setContactnumber(String contactnumber) {
-        this.contactnumber = contactnumber;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+        notifyPropertyChanged(BR.contactNumber);
     }
 
     public int getAge() {
@@ -147,46 +150,54 @@ public class User extends BaseObservable implements Parcelable {
         this.usename = usename;
     }
 
+    @Bindable
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+        notifyPropertyChanged(BR.password);
     }
 
-    public void clearEditText(EditText edt) {
+    @Bindable
+    public boolean isEnable() {
+        return enable;
+    }
+
+    private void setEnable(boolean enable) {
+        this.enable = enable;
+        notifyPropertyChanged(BR.enable);
+    }
+
+    public void onClearDataClick(EditText edt) {
         edt.setText("");
     }
 
-    public void afterTextChange(Editable text, int type, ImageView img) {
+    public void afterTextChange(Editable text, int type) {
         switch (type) {
-            case 0:
-                fullname = text.toString();
-                checkInputInfo(img);
+            case EditProfileActivity.FULLNAME:
+                fullName = text.toString();
                 break;
-            case 1:
+            case EditProfileActivity.EMAIL:
                 email = text.toString();
-                checkInputInfo(img);
                 break;
-            case 2:
+            case EditProfileActivity.BIRTHDAY:
                 birthday = text.toString();
-                checkInputInfo(img);
                 break;
-            case 3:
-                contactnumber = text.toString();
-                checkInputInfo(img);
-                break;
+            case EditProfileActivity.CONTACTNUMBER:
+                contactNumber = text.toString();
         }
+        changeStatusUpdateButton();
     }
 
-    public void intentActivityPreEdit(Context context) {
+    public void onPreviewProfileClick(Context context) {
         setAvatar(avatar);
-        setFullname(fullname);
+        setFullname(fullName);
         setBirthday(birthday);
         setEmail(email);
         setGender(gender);
-        setContactnumber(contactnumber);
+        setContactNumber(contactNumber);
         Intent intent = new Intent(context, PreEditProfileActivity.class);
         intent.putExtra(User.class.getSimpleName(), this);
         if (context instanceof EditProfileActivity) {
@@ -195,19 +206,19 @@ public class User extends BaseObservable implements Parcelable {
         }
     }
 
-    public void intentActivityEdit(Context context) {
+    public void onEditProfileClick(Context context) {
+        Intent intent = new Intent(context, EditProfileActivity.class);
         setAvatar(avatar);
-        setFullname(fullname);
+        setFullname(fullName);
         setBirthday(birthday);
         setEmail(email);
         setGender(gender);
-        setContactnumber(contactnumber);
-        Intent intent = new Intent(context, EditProfileActivity.class);
+        setContactNumber(contactNumber);
         intent.putExtra(User.class.getSimpleName(), this);
-        ((PreEditProfileActivity) context).startActivityForResult(intent, EDIT_USER_REQUEST_CODE);
+        ((PreEditProfileActivity) context).startActivityForResult(intent, PreEditProfileActivity.EDIT_USER_REQUEST_CODE);
     }
 
-    public void showDatePicker(final EditText edt, final Context context) {
+    public void onShowDatePickerClick(Context context) {
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
@@ -217,7 +228,7 @@ public class User extends BaseObservable implements Parcelable {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int month, int day) {
-                        edt.setText(formatBirthday(c));
+                        setBirthday(formatBirthday(c));
                     }
                 }, year, month, day);
         datePickerDialog.show();
@@ -228,14 +239,12 @@ public class User extends BaseObservable implements Parcelable {
         return resultFormat.format(calendar.getTime());
     }
 
-    private void checkInputInfo(ImageView img) {
-        if (!TextUtils.isEmpty(fullname) && !TextUtils.isEmpty(email) &&
-                !TextUtils.isEmpty(birthday) && !TextUtils.isEmpty(contactnumber)) {
-            img.setSelected(true);
-            img.setEnabled(true);
+    private void changeStatusUpdateButton() {
+        if (!TextUtils.isEmpty(fullName) && !TextUtils.isEmpty(email) &&
+                !TextUtils.isEmpty(birthday) && !TextUtils.isEmpty(contactNumber)) {
+            setEnable(true);
         } else {
-            img.setSelected(false);
-            img.setEnabled(false);
+            setEnable(false);
         }
     }
 
@@ -256,11 +265,11 @@ public class User extends BaseObservable implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeString(fullname);
+        dest.writeString(fullName);
         dest.writeString(birthday);
         dest.writeString(email);
         dest.writeString(gender);
-        dest.writeString(contactnumber);
+        dest.writeString(contactNumber);
         dest.writeInt(age);
         dest.writeString(usename);
         dest.writeString(password);
