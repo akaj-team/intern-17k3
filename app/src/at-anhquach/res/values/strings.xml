@@ -50,8 +50,9 @@
     <string name="textview_download" formatted="false">DownLoad %dKB/%dKB %d%%</string>
     <string name="title_tablayout_home">HOME</string>
     <string name="title_tablayout_info">INFO</string>
-    <string name="title_tablayout_info_battery">BATTERY</string>
+    <string name="title_tablayout_info_battery">BR and Service</string>
     <string name="btn_information_battery">Information Battery</string>
+    <string name="btn_play_music">Play Music</string>
     <string name="tv_level_battery" formatted="false">%d %%</string>
     <string name="tv_ac">AC</string>
     <string name="tv_usb">USB</string>
@@ -67,4 +68,20 @@
     <string name="tv_full">Full</string>
     <string name="day">24Jul</string>
     <string name="month">Oct</string>
+    <string name="action_send_data">sendData</string>
+    <string name="action_start">start</string>
+    <string name="key_list_data">listData</string>
+    <string name="key_position">position</string>
+    <string name="key_is_playing">isPlaying</string>
+    <string name="key_music">audio</string>
+    <string name="android_resource">android.resource://</string>
+    <string name="action_pause_notif">pauseNotif</string>
+    <string name="action_next_notif">nextNotif</string>
+    <string name="action_previous_notif">previousNotif</string>
+    <string name="action_play_notif">playNotif</string>
+    <string name="action_send_is_playing">sendIsPlaying</string>
+    <string name="action_play">play</string>
+    <string name="action_pause">pause</string>
+    <string name="action_next">next</string>
+    <string name="action_previous">previous</string>
 </resources>

@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import vn.asiantech.internship.R;
-import vn.asiantech.internship.ui.viewpager_tablayout.ScreenUtil;
+import vn.asiantech.internship.util.ScreenUtil;
 
 public class DialogUpdateFragment extends DialogFragment {
     private EditText mEdtName;

@@ -29,7 +29,7 @@ import vn.asiantech.internship.savedata.UserSQLiteActivity;
 import vn.asiantech.internship.ui.calculator.CalculatorViewActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
-import vn.asiantech.internship.ui.viewpager_tablayout.StepActivity;
+import vn.asiantech.internship.ui.viewpager_tablayout.activity.StepActivity;
 
 /**
  * Create Drawer Layout

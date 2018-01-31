@@ -12,7 +12,7 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.model.Card;
-import vn.asiantech.internship.ui.viewpager_tablayout.RotationPageTransformer;
+import vn.asiantech.internship.util.RotationPageTransformer;
 import vn.asiantech.internship.ui.viewpager_tablayout.adapter.CardAdapter;
 
 public class HomeFragment extends Fragment {
