@@ -124,7 +124,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_edt_gray"
                         android:padding="8dp"
-                        android:text="@{user.gender}"
+                        android:text="@{user.setStrGender(context)}"
                         android:textSize="14sp" />
                 </LinearLayout>
 

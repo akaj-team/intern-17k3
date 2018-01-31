@@ -31,7 +31,7 @@ public class PreEditProfileActivity extends AppCompatActivity {
         mUser.setAvatar("https://i1.wp.com/therighthairstyles.com/wp-content/uploads/2013/12/5-wavy-brunette-bob.jpg?w=500&ssl=1");
         mUser.setFullname("Ngoc Anh");
         mUser.setBirthday("Sep 28,1997");
-        mUser.setGender(getResources().getStringArray(R.array.gender_arrays)[0]);
+        mUser.setGender(0);
         mUser.setEmail("anh.quach@asiantech");
         mUser.setContactNumber("01679961569");
     }

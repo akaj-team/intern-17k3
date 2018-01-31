@@ -10,8 +10,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -44,7 +42,7 @@ public class User extends BaseObservable implements Parcelable {
     public String fullName;
     public String birthday;
     public String email;
-    public String gender;
+    public int gender;
     public String contactNumber;
     public int age;
     private String usename;
@@ -60,7 +58,7 @@ public class User extends BaseObservable implements Parcelable {
         fullName = in.readString();
         birthday = in.readString();
         email = in.readString();
-        gender = in.readString();
+        gender = in.readInt();
         contactNumber = in.readString();
         age = in.readInt();
         usename = in.readString();
@@ -85,6 +83,7 @@ public class User extends BaseObservable implements Parcelable {
         this.fullName = fullname;
         notifyPropertyChanged(BR.fullname);
     }
+
     @Bindable
     public String getBirthday() {
         return birthday;
@@ -104,10 +103,15 @@ public class User extends BaseObservable implements Parcelable {
         this.email = email;
         notifyPropertyChanged(BR.email);
     }
-    @Bindable
-    public String getGender() {
-        return gender;
 
+    @Bindable
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+        notifyPropertyChanged(BR.gender);
     }
 
     public String getAvatar() {
@@ -118,11 +122,6 @@ public class User extends BaseObservable implements Parcelable {
         this.avatar = avatar;
     }
 
-
-    public void setGender(String gender) {
-        this.gender = gender;
-        notifyPropertyChanged(BR.gender);
-    }
 
     public String getContactNumber() {
         return contactNumber;
@@ -228,6 +227,7 @@ public class User extends BaseObservable implements Parcelable {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int month, int day) {
+                        c.set(year, month, day);
                         setBirthday(formatBirthday(c));
                     }
                 }, year, month, day);
@@ -248,13 +248,8 @@ public class User extends BaseObservable implements Parcelable {
         }
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id, Context context) {
-        if (pos == 1) {
-            gender = context.getResources().getStringArray(R.array.gender_arrays)[pos];
-        } else {
-            gender = context.getResources().getStringArray(R.array.gender_arrays)[0];
-        }
+    public String setStrGender(Context context) {
+        return context.getResources().getStringArray(R.array.gender_arrays)[gender];
     }
 
     @Override
@@ -268,7 +263,7 @@ public class User extends BaseObservable implements Parcelable {
         dest.writeString(fullName);
         dest.writeString(birthday);
         dest.writeString(email);
-        dest.writeString(gender);
+        dest.writeInt(gender);
         dest.writeString(contactNumber);
         dest.writeInt(age);
         dest.writeString(usename);

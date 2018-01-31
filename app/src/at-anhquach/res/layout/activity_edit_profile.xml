@@ -171,8 +171,8 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_spinner"
                         android:entries="@array/gender_arrays"
-                        android:onItemSelected="@{(parent,view,pos,id) -> user.onItemSelected(parent,view,pos,id,context)}"
                         android:padding="7dp"
+                        android:selectedItemPosition="@={user.gender}"
                         android:textSize="14sp" />
                 </LinearLayout>
 
