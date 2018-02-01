@@ -33,6 +33,9 @@ import vn.asiantech.internship.ui.viewpager.service.util.Constants;
 import vn.asiantech.internship.ui.viewpager.service.util.FunctionsUtil;
 
 public class MusicActivity extends AppCompatActivity implements SongAdapter.OnItemClickListener, OnClickListener {
+    private static final String ACTION_PAUSE = "paused";
+    private static final String ACTION_STOP = "stopped";
+    private static final String IS_PAUSE = "is_paused";
     private LinearLayout mLnPlayingSong;
     private TextView mTvPlayingSong;
     private ImageView mImgPlay;
@@ -48,11 +51,11 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (TextUtils.equals(intent.getAction(), "paused")) {
-                boolean isPaused = intent.getBooleanExtra("is_paused", false);
+            if (TextUtils.equals(intent.getAction(), ACTION_PAUSE)) {
+                boolean isPaused = intent.getBooleanExtra(IS_PAUSE, false);
                 onChangeBtnUI(isPaused);
                 onChangeLayoutUI();
-            } else if (TextUtils.equals(intent.getAction(), "stopped")) {
+            } else if (TextUtils.equals(intent.getAction(), ACTION_STOP)) {
                 mLnPlayingSong.setVisibility(View.GONE);
             }
         }
@@ -104,8 +107,8 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
         initAdapter();
         initListeners();
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("paused");
-        intentFilter.addAction("stopped");
+        intentFilter.addAction(ACTION_PAUSE);
+        intentFilter.addAction(ACTION_STOP);
         registerReceiver(mBroadcastReceiver, intentFilter);
     }
 

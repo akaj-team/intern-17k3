@@ -12,7 +12,6 @@ import android.os.Handler.Callback;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -32,6 +31,8 @@ public class MediaService extends Service {
     public static final String NOTIFY_PREVIOUS = "previous";
     public static final String NOTIFY_NEXT = "next";
     public static final String NOTIFY_DELETE = "delete";
+    private static final String ACTION_PAUSE = "paused";
+    private static final String IS_PAUSE = "is_paused";
     private Timer mTimer;
     private MediaPlayer mMediaPlayer;
     @SuppressLint("HandlerLeak")
@@ -91,8 +92,8 @@ public class MediaService extends Service {
                     playSong(songPath);
                     mIntent = new Intent();
                     Constants.IS_SONG_PAUSED = false;
-                    mIntent.setAction("paused");
-                    mIntent.putExtra("is_paused", Constants.IS_SONG_PAUSED);
+                    mIntent.setAction(ACTION_PAUSE);
+                    mIntent.putExtra(IS_PAUSE, Constants.IS_SONG_PAUSED);
                     sendBroadcast(mIntent);
 //                    MusicActivity.updateAllUI();
                     return false;
@@ -115,27 +116,26 @@ public class MediaService extends Service {
                     }
                     newNotification();
                     mIntent = new Intent();
-                    mIntent.setAction("paused");
-                    mIntent.putExtra("is_paused", Constants.IS_SONG_PAUSED);
+                    mIntent.setAction(ACTION_PAUSE);
+                    mIntent.putExtra(IS_PAUSE, Constants.IS_SONG_PAUSED);
                     sendBroadcast(mIntent);
 //                    MusicActivity.onChangeBtnUI();
-                    Log.d("TAG", "TAG Pressed: " + message);
                     return false;
                 }
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         if (mMediaPlayer != null) {
             mMediaPlayer.stop();
             mMediaPlayer = null;
         }
+        super.onDestroy();
     }
 
     /**

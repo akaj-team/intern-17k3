@@ -21,3 +21,4 @@ public class Constants {
     //Handler for showing song progress defined in Activities(MusicActivity, AudioPlayerActivity)
     public static Handler PROGRESSBAR_HANDLER;
 }
+
