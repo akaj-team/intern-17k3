@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,52 +10,50 @@
             type="vn.asiantech.internship.models.ProfileUser" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_header_mp3"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingBottom="20dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:paddingTop="20dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/edit_profile"
-                android:textColor="@android:color/white" />
-
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/imgAvatar"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                app:civ_border_color="@android:color/white"
-                app:civ_border_width="1dp"
-                app:imageUrl="@{profileUser.imageUrl}"
-                tools:src="@drawable/bg_header_mp3" />
-
-            <TextView
-                android:id="@+id/edtName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/bg_bottom_line_edt_data_binding"
-                android:padding="@dimen/edt_tv_btn_padding"
-                android:text="@{profileUser.name}"
-                android:textColor="@android:color/white" />
-        </LinearLayout>
+                android:background="@drawable/bg_header_mp3"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="20dp">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/edit_profile"
+                    android:textColor="@android:color/white" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="1dp"
+                    app:imageUrl="@{profileUser.imageUrl}"
+                    tools:src="@drawable/bg_header_mp3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_bottom_line_edt_data_binding"
+                    android:padding="@dimen/edt_tv_btn_padding"
+                    android:text="@{profileUser.name}"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,7 +70,6 @@
                     android:text="@string/e_mail" />
 
                 <TextView
-                    android:id="@+id/edtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_number_text_view"
@@ -100,7 +98,6 @@
                             android:text="@string/birth_date" />
 
                         <TextView
-                            android:id="@+id/edtBirthDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_number_text_view"
@@ -126,14 +123,11 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_number_text_view">
 
-                            <Spinner
+                            <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:clickable="false"
-                                android:entries="@array/gender"
                                 android:padding="@dimen/edt_tv_btn_padding"
-                                android:selectedItemPosition="@{profileUser.genDer}"
-                                android:spinnerMode="dropdown" />
+                                android:text="@{profileUser.onShowGender(context)}" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -146,7 +140,6 @@
                     android:text="@string/contact_number" />
 
                 <TextView
-                    android:id="@+id/tvPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_number_text_view"
@@ -154,15 +147,13 @@
                     android:text="@{profileUser.phone}" />
 
                 <Button
-                    android:id="@+id/btnSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:onClick="@{()->profileUser.onEditProfileClick(context)}"
                     android:padding="@dimen/edt_tv_btn_padding"
                     android:text="@string/edit" />
             </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </layout>

@@ -1,6 +1,5 @@
 package vn.asiantech.internship.utils;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatEditText;
@@ -17,10 +16,14 @@ import vn.asiantech.internship.R;
  * Class MyEditTextWhileClear
  */
 public class MyEditTextWhileClear extends AppCompatEditText {
-    public Drawable imgCloseButton = getResources().getDrawable(R.drawable.ic_clear_white_18dp);
+    public Drawable mImgClearButton;
 
     public MyEditTextWhileClear(Context context) {
-        super(context);
+        this(context,null);
+    }
+
+    public MyEditTextWhileClear(Context context, AttributeSet attrs) {
+        super(context, attrs);
         init();
     }
 
@@ -29,40 +32,26 @@ public class MyEditTextWhileClear extends AppCompatEditText {
         init();
     }
 
-    public MyEditTextWhileClear(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean performClick() {
-        return true;
+        return super.performClick();
     }
 
     private void init() {
-        imgCloseButton.setBounds(0, 0, imgCloseButton.getIntrinsicWidth(), imgCloseButton.getIntrinsicHeight());
-        handleClearButton();
-        //if the Close image is displayed and the user remove his finger from the button, clear it. Otherwise do nothing
-        this.setOnTouchListener(new OnTouchListener() {
-            @SuppressLint("ClickableViewAccessibility")
+        mImgClearButton = getResources().getDrawable(R.drawable.ic_clear_white_18dp);
+        setCompoundDrawablesWithIntrinsicBounds(null, null, mImgClearButton, null);
+        setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                v.performClick();
                 MyEditTextWhileClear et = MyEditTextWhileClear.this;
-                if (et.getCompoundDrawables()[2] == null) {
-                    return false;
-                }
-                if (event.getAction() != MotionEvent.ACTION_UP) {
-                    return false;
-                }
-                if (event.getX() > et.getWidth() - et.getPaddingRight() - imgCloseButton.getIntrinsicWidth()) {
+                if (event.getX() > et.getWidth() - et.getPaddingRight() - mImgClearButton.getIntrinsicWidth()) {
                     et.setText("");
-                    MyEditTextWhileClear.this.handleClearButton();
                 }
                 return false;
             }
         });
-        this.addTextChangedListener(new TextWatcher() {
+        addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -71,7 +60,7 @@ public class MyEditTextWhileClear extends AppCompatEditText {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                MyEditTextWhileClear.this.handleClearButton();
+                handleClearButton();
             }
 
             @Override
@@ -82,12 +71,12 @@ public class MyEditTextWhileClear extends AppCompatEditText {
     }
 
     private void handleClearButton() {
-        if (this.getText().toString().equals("")) {
-            // add the clear button
-            this.setCompoundDrawables(this.getCompoundDrawables()[0], this.getCompoundDrawables()[1], null, this.getCompoundDrawables()[3]);
-        } else {
+        if (getText().toString().equals("")) {
             //remove clear button
-            this.setCompoundDrawables(this.getCompoundDrawables()[0], this.getCompoundDrawables()[1], imgCloseButton, this.getCompoundDrawables()[3]);
+            setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
+        } else {
+            // add the clear button
+            setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], mImgClearButton, getCompoundDrawables()[3]);
         }
     }
 }

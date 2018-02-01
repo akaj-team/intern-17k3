@@ -1,6 +1,5 @@
 package vn.asiantech.internship.models;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -19,7 +18,9 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import vn.asiantech.internship.BR;
+import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.databinding.EditProfileActivity;
+import vn.asiantech.internship.ui.databinding.PreviewProfileActivity;
 
 /**
  * Created by vietphan on 15/01/2017.
@@ -37,13 +38,12 @@ public class ProfileUser extends BaseObservable implements Parcelable {
             return new ProfileUser[size];
         }
     };
-    public static final int EDIT_USER_REQUEST_CODE = 1;
-    private String name;
-    private String email;
-    private String birthDate;
-    private int genDer;
-    private String phone;
-    private String imageUrl;
+    public String name;
+    public String email;
+    public String birthDate;
+    public int genDer;
+    public String phone;
+    public String imageUrl;
 
     private ProfileUser(Parcel in) {
         name = in.readString();
@@ -118,17 +118,21 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.imageUrl);
     }
 
+    public String onShowGender(Context context) {
+        String genders[] = context.getResources().getStringArray(R.array.gender);
+        return genders[genDer];
+    }
+
     public void onEditProfileClick(Context context) {
         Intent intent = new Intent(context, EditProfileActivity.class);
         intent.putExtra(ProfileUser.class.getSimpleName(), this);
-        ((AppCompatActivity) context).startActivityForResult(intent, EDIT_USER_REQUEST_CODE);
+        ((AppCompatActivity) context).startActivityForResult(intent, PreviewProfileActivity.EDIT_USER_REQUEST_CODE);
     }
 
     public void onUpdateProfileClick(Context context) {
         if (context instanceof EditProfileActivity) {
             Intent intent = new Intent();
             intent.putExtra(ProfileUser.class.getSimpleName(), this);
-            ((EditProfileActivity) context).setResult(EDIT_USER_REQUEST_CODE, intent);
             ((EditProfileActivity) context).setResult(Activity.RESULT_OK, intent);
             ((EditProfileActivity) context).finish();
         }
@@ -146,7 +150,6 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     public void onShowDatePickerDialogClick(final TextView edt) {
         final Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -180,7 +183,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         parcel.writeString(imageUrl);
     }
 
-    private enum TypeItem {
+    public enum TypeItem {
         NAME,
         EMAIL,
         BIRTHDAY,
