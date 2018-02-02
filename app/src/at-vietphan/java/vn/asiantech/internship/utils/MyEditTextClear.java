@@ -14,7 +14,7 @@ import vn.asiantech.internship.R;
 
 /*
  * Created by vietphan on 11/01/2018.
- * Class MyEditTextWhileClear
+ * Class MyEditTextClear
  */
 public class MyEditTextClear extends AppCompatEditText {
     public Drawable mImgClearButton;
