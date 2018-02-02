@@ -161,7 +161,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         try {
             calendar.setTime(dateFormat.parse(getBirthDate()));
         } catch (ParseException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
