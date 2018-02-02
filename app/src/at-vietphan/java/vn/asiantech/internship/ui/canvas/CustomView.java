@@ -84,8 +84,7 @@ public class CustomView extends View {
      */
     private void attributeSet(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.CustomView, 0, 0);
+                attrs, R.styleable.CustomView, 0, 0);
         try {
             mColumnWidth = typedArray.getDimensionPixelSize(R.styleable.CustomView_rect_width, getResources().getDimensionPixelSize(R.dimen.custom_view_default_column_width));
         } finally {

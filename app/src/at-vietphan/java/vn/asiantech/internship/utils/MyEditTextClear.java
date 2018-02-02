@@ -1,6 +1,7 @@
 package vn.asiantech.internship.utils;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
@@ -13,23 +14,22 @@ import vn.asiantech.internship.R;
 
 /*
  * Created by vietphan on 11/01/2018.
- * Class MyEditTextGreyClear
+ * Class MyEditTextWhileClear
  */
-public class MyEditTextGreyClear extends AppCompatEditText {
+public class MyEditTextClear extends AppCompatEditText {
     public Drawable mImgClearButton;
 
-    public MyEditTextGreyClear(Context context) {
+    public MyEditTextClear(Context context) {
         this(context, null);
     }
 
-    public MyEditTextGreyClear(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
+    public MyEditTextClear(Context context, AttributeSet attrs) {
+        this(context, attrs, android.R.attr.editTextStyle);
     }
 
-    public MyEditTextGreyClear(Context context, AttributeSet attrs, int defStyle) {
+    public MyEditTextClear(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
+        init(context, attrs);
     }
 
     @Override
@@ -37,14 +37,29 @@ public class MyEditTextGreyClear extends AppCompatEditText {
         return super.performClick();
     }
 
-    private void init() {
-        mImgClearButton = getResources().getDrawable(R.drawable.ic_clear_grey_800_18dp);
+    /**
+     * Get attrs from XML file
+     * NOTICE custom drawable for btnClearDrawable in right edt
+     *
+     * @param attrs attrs
+     */
+    private void attributeSet(Context context, AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyEditTextClear);
+        try {
+            mImgClearButton = typedArray.getDrawable(R.styleable.MyEditTextClear_customClearDrawable);
+        } finally {
+            typedArray.recycle();
+        }
+    }
+
+    private void init(Context context, AttributeSet attrs) {
+        attributeSet(context, attrs);
         setCompoundDrawablesWithIntrinsicBounds(null, null, mImgClearButton, null);
         setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 v.performClick();
-                MyEditTextGreyClear et = MyEditTextGreyClear.this;
+                MyEditTextClear et = MyEditTextClear.this;
                 if (event.getX() > et.getWidth() - et.getPaddingRight() - mImgClearButton.getIntrinsicWidth()) {
                     et.setText("");
                 }

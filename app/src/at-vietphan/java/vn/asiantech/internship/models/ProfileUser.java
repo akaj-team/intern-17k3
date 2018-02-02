@@ -13,6 +13,7 @@ import android.text.Editable;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -138,31 +139,39 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         }
     }
 
-    public void afterTextChange(Editable text, int index) {
-        if (index == TypeItem.NAME.ordinal()) {
-            setName(String.valueOf(text));
-        } else if (index == TypeItem.EMAIL.ordinal()) {
-            setEmail(String.valueOf(text));
-        } else if (index == TypeItem.BIRTHDAY.ordinal()) {
-            setBirthDate(String.valueOf(text));
-        } else if (index == TypeItem.PHONE.ordinal()) {
-            setPhone(String.valueOf(text));
+    public void afterTextChange(Editable text, TypeItem type) {
+        switch (type) {
+            case NAME:
+                setName(String.valueOf(text));
+                break;
+            case EMAIL:
+                setEmail(String.valueOf(text));
+                break;
+            case BIRTHDAY:
+                setBirthDate(String.valueOf(text));
+                break;
+            case PHONE:
+                setPhone(String.valueOf(text));
         }
     }
 
     public void onShowDatePickerDialogClick(final TextView edt) {
         final Calendar calendar = Calendar.getInstance();
-        final int year = calendar.get(Calendar.YEAR);
-        final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);
-        final DatePickerDialog datePickerDialog = new DatePickerDialog(edt.getContext(),
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+        try {
+            calendar.setTime(dateFormat.parse(getBirthDate()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(edt.getContext(),
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         calendar.set(year, month, day, 0, 0, 0);
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
-                        String strDate = dateFormat.format(calendar.getTime());
-                        setBirthDate(strDate);
+                        setBirthDate(dateFormat.format(calendar.getTime()));
                     }
                 }, year, month, day);
         datePickerDialog.show();

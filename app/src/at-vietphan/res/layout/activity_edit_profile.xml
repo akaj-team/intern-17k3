@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="vn.asiantech.internship.models.ProfileUser.TypeItem" />
+
         <variable
             name="profileUser"
             type="vn.asiantech.internship.models.ProfileUser" />
@@ -45,16 +47,17 @@
                     app:imageUrl="@{profileUser.imageUrl}"
                     tools:src="@drawable/bg_header_mp3" />
 
-                <vn.asiantech.internship.utils.MyEditTextWhileClear
+                <vn.asiantech.internship.utils.MyEditTextClear
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,0)}"
+                    android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,TypeItem.NAME)}"
                     android:background="@drawable/bg_bottom_line_edt_data_binding"
                     android:inputType="text"
                     android:padding="@dimen/edt_tv_btn_padding"
                     android:text="@{profileUser.name}"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    app:customClearDrawable="@drawable/ic_clear_white_18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -71,14 +74,15 @@
                     android:layout_marginTop="30dp"
                     android:text="@string/e_mail" />
 
-                <vn.asiantech.internship.utils.MyEditTextGreyClear
+                <vn.asiantech.internship.utils.MyEditTextClear
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,1)}"
+                    android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,TypeItem.EMAIL)}"
                     android:background="@drawable/bg_number_text_view"
                     android:inputType="textEmailAddress"
                     android:padding="@dimen/edt_tv_btn_padding"
-                    android:text="@{profileUser.email}" />
+                    android:text="@{profileUser.email}"
+                    app:customClearDrawable="@drawable/ic_clear_grey_800_18dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -105,7 +109,7 @@
                             android:id="@+id/tvBirthDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:afterTextChanged="@{(text)->profileUser.afterTextChange(text, 2)}"
+                            android:afterTextChanged="@{(text)->profileUser.afterTextChange(text, TypeItem.BIRTHDAY)}"
                             android:background="@drawable/bg_number_text_view"
                             android:drawableRight="@drawable/ic_expand_more_grey_800_18dp"
                             android:onClick="@{()->profileUser.onShowDatePickerDialogClick(tvBirthDate)}"
@@ -149,14 +153,15 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/contact_number" />
 
-                <vn.asiantech.internship.utils.MyEditTextGreyClear
+                <vn.asiantech.internship.utils.MyEditTextClear
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,3)}"
+                    android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,TypeItem.PHONE)}"
                     android:background="@drawable/bg_number_text_view"
                     android:inputType="phone"
                     android:padding="@dimen/edt_tv_btn_padding"
-                    android:text="@{profileUser.phone}" />
+                    android:text="@{profileUser.phone}"
+                    app:customClearDrawable="@drawable/ic_clear_grey_800_18dp" />
 
                 <Button
                     android:layout_width="match_parent"

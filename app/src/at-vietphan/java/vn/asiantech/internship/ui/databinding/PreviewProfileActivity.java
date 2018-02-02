@@ -21,7 +21,7 @@ public class PreviewProfileActivity extends AppCompatActivity {
         mProfileUser = new ProfileUser();
         mProfileUser.setName("viet");
         mProfileUser.setEmail("viet.phan@asiantech.vn");
-        mProfileUser.setBirthDate("Apr 2,1996");
+        mProfileUser.setBirthDate("Apr 02, 1996");
         mProfileUser.setGenDer(0);
         mProfileUser.setPhone("0979047004");
         mProfileUser.setImageUrl("https://znews-photo-td.zadn.vn/w1024/Uploaded/ohunua2/2017_03_24/huyen3.jpg");
