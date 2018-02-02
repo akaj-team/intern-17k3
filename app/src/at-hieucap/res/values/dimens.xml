@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="cardMargin">60dp</dimen>
+    <dimen name="columns_margin_horizontal">2dp</dimen>
+    <dimen name="column_corner_radius">2dp</dimen>
+    <dimen name="day_margin_horizontal">10dp</dimen>
+    <dimen name="column_margin_text">10dp</dimen>
+    <dimen name="stroke_width_line">3dp</dimen>
+    <dimen name="stroke_width_text">1.5dp</dimen>
+    <dimen name="text_size">15dp</dimen>
+    <dimen name="custom_view_default_column_width">30dp</dimen>
 </resources>
