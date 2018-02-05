@@ -123,13 +123,13 @@ public class User extends BaseObservable implements Parcelable {
      * Check Empty Edit text
      */
     @Bindable
-    public boolean isCheckEmptyUtil() {
+    public boolean  isEnableEditBtn() {
         return isEnableEditBtn;
     }
 
     private void setEnableEditBtn(boolean enableEditBtn) {
         this.isEnableEditBtn = enableEditBtn;
-        notifyPropertyChanged(BR.checkEmptyUtil);
+        notifyPropertyChanged(BR.enableEditBtn);
     }
 
     /**
