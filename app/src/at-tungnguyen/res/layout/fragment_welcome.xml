@@ -1,13 +1,40 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#FDDB00"
     tools:context="vn.asiantech.internship.ui.tutorial_kotlin.fragment.WelcomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+    <android.support.v7.widget.CardView
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="25dp"
+        android:layout_height="460dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:src="@drawable/ic_girl"
+            android:layout_height="240dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="center"
+                android:text="Welcome"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Express yourself through: \n-the art of the fashionism"
+                android:textSize="20dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

@@ -138,4 +138,5 @@
     <string name="tv_canvas_10km">10km</string>
     <string name="tv_canvas_month">24 Jul</string>
     <string name="tv_canvas_date">21 Oct</string>
+    <string name="btn_tutorial">Tutorial</string>
 </resources>

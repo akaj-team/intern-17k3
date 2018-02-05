@@ -1,4 +1,4 @@
-package vn.asiantech.internship.ui.tutorial_kotlin
+package vn.asiantech.internship.ui.tutorial_kotlin.fragment
 
 
 import android.os.Bundle
