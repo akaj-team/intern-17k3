@@ -2,5 +2,4 @@
     <string name="textview_kb">KB/</string>
     <string name="bracket_first">(</string>
     <string name="null_input_username">null input username</string>
-    <string name="tv_edit_user">Edit User</string>
 </resources>

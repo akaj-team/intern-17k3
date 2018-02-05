@@ -15,8 +15,4 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
-    <string-array name="spinnerItems">
-        <item>Male</item>
-        <item>Female</item>
-    </string-array>
 </resources>

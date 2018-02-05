@@ -10,6 +10,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 
@@ -140,7 +141,7 @@ public class User extends BaseObservable implements Parcelable {
         try {
             calender.setTime(format.parse(getBirthDate()));
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.e("Tag", e + "");
         }
         int date = calender.get(Calendar.DAY_OF_MONTH);
         int month = calender.get(Calendar.MONTH);
@@ -170,15 +171,20 @@ public class User extends BaseObservable implements Parcelable {
      * Set AfterChangeText Edit text
      * set Aft
      */
-    public void afterChangeText(Editable edtAfter, int type) {
-        if (type == 1) {
-            userName = edtAfter.toString();
-        } else if (type == 2) {
-            email = edtAfter.toString();
-        } else if (type == 3) {
-            birthDate = edtAfter.toString();
-        } else if (type == 5) {
-            contact = edtAfter.toString();
+    public void afterChangeText(Editable edtAfter, TypeItem type) {
+        switch (type) {
+            case NAME:
+                setUserName(String.valueOf(edtAfter));
+                break;
+            case EMAIL:
+                setEmail(String.valueOf(edtAfter));
+                break;
+            case BIRTHDAY:
+                setBirthDate(String.valueOf(edtAfter));
+                break;
+            case CONTACT:
+                setContact(String.valueOf(edtAfter));
+                break;
         }
         changeStatusUpdateButton();
     }
@@ -230,7 +236,7 @@ public class User extends BaseObservable implements Parcelable {
         NAME,
         EMAIL,
         BIRTHDAY,
-        CONTACT,
+        CONTACT
     }
 
     /**

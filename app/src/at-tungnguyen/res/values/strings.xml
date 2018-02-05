@@ -138,13 +138,14 @@
     <string name="tv_canvas_10km">10km</string>
     <string name="tv_canvas_month">24 Jul</string>
     <string name="tv_canvas_date">21 Oct</string>
-    <string name="btn_datablind">DataBlind</string>
+    <string name="btn_datablind">DataBinding</string>
     <string name="tv_email_user">Email</string>
     <string name="tv_birthday_user">BirthDay</string>
     <string name="tv_gender_user">Gender</string>
     <string name="tv_contact_user">Contact</string>
     <string name="tv_submit_user">Submit</string>
     <string name="tv_edit_profile">Edit Profile</string>
+    <string name="tv_edit_user">Edit User</string>
     <string-array name="gender_array">
         <item>Male</item>
         <item>Female</item>

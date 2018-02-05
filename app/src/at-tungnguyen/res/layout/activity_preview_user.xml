@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.text.InputType"/>
         <variable
             name="user"
             type="vn.asiantech.internship.ui.databind.User" />
@@ -17,11 +17,10 @@
         android:orientation="vertical"
         tools:context="vn.asiantech.internship.ui.databind.EditUserActivity">
 
-
         <LinearLayout
-            android:background="@drawable/bg_user"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:background="@drawable/bg_user"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="15dp">
@@ -38,15 +37,16 @@
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_margin="10dp"
-                android:src="@drawable/profile"
-                app:imageUrl="@{user.avatar}" />
+                app:imageUrl="@{user.avatar}"
+                tools:src="@drawable/profile" />
 
             <TextView
                 android:id="@+id/tvNameProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:text="@{user.userName}" />
+                android:inputType="text"
+                android:text="@{user.userName}"
+                tools:ignore="TextViewEdits" />
         </LinearLayout>
 
         <LinearLayout
@@ -66,28 +66,30 @@
                     android:layout_margin="10dp"
                     android:layout_marginTop="5dp"
                     android:text="@string/tv_email_user"
-                    android:textColor="#797f81"
+                    android:textColor="@color/colorView"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvEmailProfile"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_border_edt"
                     android:text="@{user.email}" />
             </LinearLayout>
 
             <LinearLayout
-                android:weightSum="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="10">
 
                 <LinearLayout
-                    android:layout_weight="5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
+                    android:layout_weight="5"
                     android:orientation="vertical">
 
                     <TextView
@@ -95,8 +97,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="@string/tv_birthday_user"
-                        android:textColor="#797f81"
+                        android:textColor="@color/colorView"
                         android:textSize="20sp" />
+
                     <TextView
                         android:id="@+id/edtBirthDate"
                         android:layout_width="170dp"
@@ -106,9 +109,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_weight="5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="5"
                     android:orientation="vertical">
 
                     <TextView
@@ -116,12 +119,13 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="@string/tv_gender_user"
-                        android:textColor="#797f81"
+                        android:textColor="@color/colorView"
                         android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/tvGender"
                         android:layout_width="120dp"
+                        android:background="@drawable/bg_border_edt"
                         android:layout_height="40dp"
                         android:text="@{user.getValueGender(context)}" />
                 </LinearLayout>
@@ -137,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:text="@string/tv_contact_user"
-                    android:textColor="#797f81"
+                    android:textColor="@color/colorView"
                     android:textSize="20sp" />
 
                 <TextView

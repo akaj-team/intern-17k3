@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="vn.asiantech.internship.ui.databind.User.TypeItem" />
+
         <variable
             name="user"
             type="vn.asiantech.internship.ui.databind.User" />
@@ -17,9 +19,9 @@
         tools:context="vn.asiantech.internship.ui.databind.EditUserActivity">
 
         <LinearLayout
-            android:background="@drawable/bg_user"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:background="@drawable/bg_user"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="15dp">
@@ -37,8 +39,8 @@
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center"
-                tools:src="@drawable/profile"
-                app:imageUrl="@{user.avatar}" />
+                app:imageUrl="@{user.avatar}"
+                tools:src="@drawable/profile" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -48,7 +50,7 @@
                     android:id="@+id/edtNameProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:afterTextChanged="@{(text) -> user.afterChangeText(text,1) }"
+                    android:afterTextChanged="@{(text) -> user.afterChangeText(text,TypeItem.NAME) }"
                     android:inputType="text"
                     android:text="@{user.userName}"
                     android:textSize="15dp" />
@@ -86,7 +88,7 @@
                     android:id="@+id/edtEmailProfile"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:afterTextChanged="@{(text) -> user.afterChangeText(text,2) }"
+                    android:afterTextChanged="@{(text) -> user.afterChangeText(text,TypeItem.EMAIL) }"
                     android:background="@drawable/bg_border_edt"
                     android:inputType="textEmailAddress"
                     android:text="@{user.email}" />
@@ -104,21 +106,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="5"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="@string/tv_birthday_user"
-                        android:textStyle="bold" />
+                        android:textColor="@color/colorView"
+                        android:text="@string/tv_birthday_user"/>
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -129,7 +132,7 @@
                             android:id="@+id/edtBirthDate"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:afterTextChanged="@{(text) -> user.afterChangeText(text,3) }"
+                            android:afterTextChanged="@{(text) -> user.afterChangeText(text,TypeItem.BIRTHDAY) }"
                             android:background="@drawable/bg_border_edt"
                             android:inputType="date"
                             android:text="@{user.birthDate}" />
@@ -149,7 +152,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="5"
                     android:orientation="vertical">
 
                     <TextView
@@ -164,7 +167,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_spinner"
-                        android:entries="@array/spinnerItems"
+                        android:entries="@array/gender_array"
                         android:selectedItemPosition="@={user.gender}" />
                 </LinearLayout>
             </LinearLayout>
@@ -179,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:text="@string/tv_contact_user"
-                    android:textColor="#797f81"
+                    android:textColor="@color/colorView"
                     android:textSize="20sp" />
 
                 <FrameLayout
@@ -191,7 +194,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
-                        android:afterTextChanged="@{(text) -> user.afterChangeText(text,5) }"
+                        android:afterTextChanged="@{(text) -> user.afterChangeText(text,TypeItem.CONTACT) }"
                         android:background="@drawable/bg_border_edt"
                         android:inputType="number"
                         android:text="@{user.contact}" />
