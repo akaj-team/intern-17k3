@@ -11,7 +11,6 @@ import vn.asiantech.internship.databinding.ActivityPreviewUserBinding;
 public class PreviewUserActivity extends AppCompatActivity {
     private ActivityPreviewUserBinding mBinding;
     static final int EDIT_USER_REQUEST_CODE = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
