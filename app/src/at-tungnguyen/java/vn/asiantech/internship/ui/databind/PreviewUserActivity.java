@@ -10,7 +10,7 @@ import vn.asiantech.internship.databinding.ActivityPreviewUserBinding;
 
 public class PreviewUserActivity extends AppCompatActivity {
     private ActivityPreviewUserBinding mBinding;
-    public static final int EDIT_USER_REQUEST_CODE = 1;
+    static final int EDIT_USER_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class PreviewUserActivity extends AppCompatActivity {
         user.setContact("01626061362");
         user.setGender(0);
         user.setAvatar("https://i2-prod.mirror.co.uk/incoming/article9967270.ece/ALTERNATES/s615b/FC-Barcelona-v-RC-Celta-de-Vigo-La-Liga.jpg");
+        user.setBirthDate("02/10/1997");
         mBinding.setUser(user);
     }
 

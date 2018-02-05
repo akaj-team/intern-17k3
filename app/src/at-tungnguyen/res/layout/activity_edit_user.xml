@@ -17,9 +17,10 @@
         tools:context="vn.asiantech.internship.ui.databind.EditUserActivity">
 
         <LinearLayout
+            android:background="@drawable/bg_user"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center"
             android:orientation="vertical"
             android:padding="15dp">
 
@@ -36,10 +37,10 @@
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center"
-                android:src="@drawable/profile"
+                tools:src="@drawable/profile"
                 app:imageUrl="@{user.avatar}" />
 
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp">
 
@@ -49,17 +50,17 @@
                     android:layout_height="wrap_content"
                     android:afterTextChanged="@{(text) -> user.afterChangeText(text,1) }"
                     android:inputType="text"
-                    android:src="@drawable/ic_clear_grey_600_18dp"
                     android:text="@{user.userName}"
                     android:textSize="15dp" />
 
                 <Button
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_gravity="right"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/ic_clear_grey_600_18dp"
-                    android:onClick="@{() -> user.cleanProfileName()}" />
-            </FrameLayout>
+                    android:gravity="right"
+                    android:onClick="@{() -> user.onCleanProfileNameClick()}" />
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -76,7 +77,7 @@
                 android:text="@string/tv_email_user"
                 android:textStyle="bold" />
 
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
@@ -94,11 +95,11 @@
                     android:id="@+id/btnDeleteMail"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:background="@drawable/ic_clear_grey_600_18dp"
-                    android:onClick="@{() -> user.cleanEmail()}" />
-            </FrameLayout>
+                    android:onClick="@{() -> user.onCleanEmailClick()}" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -140,7 +141,7 @@
                             android:layout_gravity="right"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
-                            android:onClick="@{user.showDialogDate}" />
+                            android:onClick="@{user.onShowDatePickerClick}" />
                     </FrameLayout>
                 </LinearLayout>
 
@@ -201,7 +202,7 @@
                         android:layout_gravity="right"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/ic_clear_grey_600_18dp"
-                        android:onClick="@{() -> user.cleanContact()}" />
+                        android:onClick="@{() -> user.onCleanContact()}" />
 
                 </FrameLayout>
             </LinearLayout>
@@ -213,7 +214,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:enabled="@{user.isCheckEmptyUtil}"
-            android:onClick="@{() -> user.setPreviewUser(user,context)}"
+            android:onClick="@{() -> user.onPreviewUserClick(user,context)}"
             android:text="@string/tv_submit_user"
             android:textSize="18dp" />
     </LinearLayout>

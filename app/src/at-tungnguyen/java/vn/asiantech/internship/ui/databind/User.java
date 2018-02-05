@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.DatePicker;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -24,7 +25,6 @@ import vn.asiantech.internship.R;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 12/01/2018.
  */
-
 public class User extends BaseObservable implements Parcelable {
     private String userName;
     private String email;
@@ -32,7 +32,7 @@ public class User extends BaseObservable implements Parcelable {
     private int gender;
     private String contact;
     private String avatar;
-    private boolean enableEditBtn = true;
+    private boolean isEnableEditBtn = true;
 
     public User() {
     }
@@ -123,43 +123,46 @@ public class User extends BaseObservable implements Parcelable {
      */
     @Bindable
     public boolean isCheckEmptyUtil() {
-        return enableEditBtn;
+        return isEnableEditBtn;
     }
 
     private void setEnableEditBtn(boolean enableEditBtn) {
-        this.enableEditBtn = enableEditBtn;
+        this.isEnableEditBtn = enableEditBtn;
         notifyPropertyChanged(BR.checkEmptyUtil);
     }
 
     /**
      * Show Dialog DataTimePicker
      */
-    public void showDialogDate(final View view) {
+    public void onShowDatePickerClick(final View view) {
         final Calendar calender = Calendar.getInstance();
-        final int date = calender.get(Calendar.DAY_OF_MONTH);
-        final int month = calender.get(Calendar.MONTH);
-        final int year = calender.get(Calendar.YEAR);
         final SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
-        setBirthDate(String.valueOf(format.format(calender.getTime())));
+        try {
+            calender.setTime(format.parse(getBirthDate()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int date = calender.get(Calendar.DAY_OF_MONTH);
+        int month = calender.get(Calendar.MONTH);
+        int year = calender.get(Calendar.YEAR);
         DatePickerDialog mDatePickerDialog = new DatePickerDialog(view.getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int dateOfMonth) {
-                calender.set(year, month, date);
                 setBirthDate(String.valueOf(format.format(calender.getTime())));
             }
         }, year, month, date);
         mDatePickerDialog.show();
     }
 
-    public void cleanProfileName() {
+    public void onCleanProfileNameClick() {
         setUserName("");
     }
 
-    public void cleanEmail() {
+    public void onCleanEmailClick() {
         setEmail("");
     }
 
-    public void cleanContact() {
+    public void onCleanContact() {
         setContact("");
     }
 
@@ -183,7 +186,7 @@ public class User extends BaseObservable implements Parcelable {
     /**
      * Send Data EditUser to PreViewUser
      */
-    public void setPreviewUser(User user, Context context) {
+    public void onPreviewUserClick(User user, Context context) {
         Intent intent = new Intent(context, PreviewUserActivity.class);
         intent.putExtra(User.class.getSimpleName(), user);
         ((EditUserActivity) context).setResult(Activity.RESULT_OK, intent);
@@ -193,7 +196,7 @@ public class User extends BaseObservable implements Parcelable {
     /**
      * Send Data PreViewUser to EditUser
      */
-    public void editUser(User user, Context context) {
+    public void onEditUserClick(User user, Context context) {
         Intent intent = new Intent(context, EditUserActivity.class);
         intent.putExtra(User.class.getSimpleName(), user);
         if (context instanceof PreviewUserActivity) {
@@ -204,9 +207,8 @@ public class User extends BaseObservable implements Parcelable {
     /**
      * Select Item Gender
      */
-    public String selectItemGender(Context context) {
-        String genders[] = context.getResources().getStringArray(R.array.gender_array);
-        return genders[gender];
+    public String getValueGender(Context context) {
+        return context.getResources().getStringArray(R.array.gender_array)[gender];
     }
 
     @Override
@@ -224,10 +226,17 @@ public class User extends BaseObservable implements Parcelable {
         parcel.writeString(avatar);
     }
 
+    public enum TypeItem {
+        NAME,
+        EMAIL,
+        BIRTHDAY,
+        CONTACT,
+    }
+
     /**
      * Check Empty username , email , contact
      */
-    public void changeStatusUpdateButton() {
+    private void changeStatusUpdateButton() {
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(contact)) {
             setEnableEditBtn(false);
         } else {

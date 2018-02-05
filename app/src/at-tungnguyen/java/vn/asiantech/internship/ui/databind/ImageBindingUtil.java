@@ -11,11 +11,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 16/01/2018.
  */
-
 public class ImageBindingUtil {
-    @BindingAdapter({"imageUrl"})
+    @BindingAdapter("imageUrl")
     public static void loadImage(CircleImageView view, String url) {
         Context context = view.getContext();
-        Glide.with(context).load(url).into(view);
+        Glide.with(view.getContext()).load(url).into(view);
     }
 }

@@ -109,9 +109,7 @@ dependencies {
     implementation 'com.romandanylyk:pageindicatorview:0.2.0'
     // UI Espresso framework
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    testImplementation 'org.mockito:mockito-core:2.13.0'
     testImplementation 'junit:junit:4.12'
-    implementation 'junit:junit:4.12'
     implementation('com.github.bumptech.glide:glide:4.5.0') {
         exclude group: "com.android.support"
     }

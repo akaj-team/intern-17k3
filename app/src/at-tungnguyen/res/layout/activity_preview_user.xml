@@ -19,6 +19,7 @@
 
 
         <LinearLayout
+            android:background="@drawable/bg_user"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:gravity="center_horizontal"
@@ -50,7 +51,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="263dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:orientation="vertical">
 
@@ -76,12 +77,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:weightSum="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:layout_weight="5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
@@ -94,15 +97,16 @@
                         android:text="@string/tv_birthday_user"
                         android:textColor="#797f81"
                         android:textSize="20sp" />
-
                     <TextView
                         android:id="@+id/edtBirthDate"
                         android:layout_width="170dp"
                         android:layout_height="40dp"
+                        android:background="@drawable/bg_border_edt"
                         android:text="@{user.birthDate}" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_weight="5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -119,7 +123,7 @@
                         android:id="@+id/tvGender"
                         android:layout_width="120dp"
                         android:layout_height="40dp"
-                        android:text="@{user.selectItemGender(context)}" />
+                        android:text="@{user.getValueGender(context)}" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -140,6 +144,7 @@
                     android:id="@+id/tvContact"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@drawable/bg_border_edt"
                     android:text="@{user.contact}" />
             </LinearLayout>
 
@@ -148,8 +153,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="@{() -> user.editUser(user,context)}"
+            android:layout_gravity="center_horizontal"
+            android:onClick="@{() -> user.onEditUserClick(user,context)}"
             android:text="@string/tv_edit_user"
             android:textSize="18dp" />
     </LinearLayout>

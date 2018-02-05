@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnValidation;
     private Button mBtnBroadcast;
     private Button mBtnThread;
-    private Button mBtnDataBlind;
+    private Button mBtnDataBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnCanVas = findViewById(R.id.btnCanvas);
         mBtnValidation = findViewById(R.id.btnValidation);
         mBtnBroadcast = findViewById(R.id.btnBroadcastReceiver);
-        mBtnDataBlind = findViewById(R.id.btnDataBlind);
+        mBtnDataBinding = findViewById(R.id.btnDataBlind);
     }
 
     /**
@@ -79,7 +79,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnValidation.setOnClickListener(this);
         mBtnThread.setOnClickListener(this);
         mBtnBroadcast.setOnClickListener(this);
-        mBtnDataBlind.setOnClickListener(this);
+        mBtnDataBinding.setOnClickListener(this);
     }
 
     /**
