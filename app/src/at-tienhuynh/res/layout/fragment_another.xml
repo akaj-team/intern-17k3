@@ -12,4 +12,12 @@
         android:layout_marginTop="20dp"
         android:background="@color/colorAccent"
         android:text="@string/name_btn_battery_info" />
+
+    <Button
+        android:id="@+id/btnPlayMusic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorAccent"
+        android:text="@string/name_btn_play_music" />
 </LinearLayout>

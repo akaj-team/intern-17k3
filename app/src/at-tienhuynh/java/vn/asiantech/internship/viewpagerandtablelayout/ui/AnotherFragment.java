@@ -17,6 +17,7 @@ import vn.asiantech.internship.R;
 public class AnotherFragment extends Fragment implements View.OnClickListener {
     private View mView;
     private Button mBtnBatteryInfo;
+    private Button mBtnPlayMusic;
 
     public AnotherFragment() {
         // No-opp
@@ -38,6 +39,7 @@ public class AnotherFragment extends Fragment implements View.OnClickListener {
      */
     private void initViews() {
         mBtnBatteryInfo = mView.findViewById(R.id.btnBatteryInfo);
+        mBtnPlayMusic = mView.findViewById(R.id.btnPlayMusic);
     }
 
     /**
@@ -45,6 +47,7 @@ public class AnotherFragment extends Fragment implements View.OnClickListener {
      */
     private void initListeners() {
         mBtnBatteryInfo.setOnClickListener(this);
+        mBtnPlayMusic.setOnClickListener(this);
     }
 
     /**
@@ -57,6 +60,9 @@ public class AnotherFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.btnBatteryInfo:
                 startActivity(new Intent(getActivity(), BatteryActivity.class));
+                break;
+            case R.id.btnPlayMusic:
+                startActivity(new Intent(getActivity(), PlayMusicActivity.class));
         }
     }
 }

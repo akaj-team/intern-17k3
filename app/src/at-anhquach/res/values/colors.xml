@@ -21,4 +21,5 @@
     <color name="colorPurple800">#6A1B9A</color>
     <color name="colorCyanA700">#00B8D4</color>
     <color name="colorOrange500">#FF9800</color>
+    <color name="colorHeader">#041e42</color>
 </resources>
