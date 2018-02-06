@@ -11,6 +11,7 @@ import vn.asiantech.internship.canvas.CanvasActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
+import vn.asiantech.internship.loginkotlintutorial.ui.TutorialActivity;
 import vn.asiantech.internship.recyclerview.StatusActivity;
 import vn.asiantech.internship.savedata.ExerciseManagementActivity;
 import vn.asiantech.internship.threadandhandler.SplashThreadAndHandlerActivity;
@@ -32,6 +33,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnThreadAndHandler;
     private Button mBtnCanvasScreen;
     private Button mBtnUnitTest;
+    private Button mBtnLoginKotlin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnThreadAndHandler = findViewById(R.id.btnThreadAndHandleScreen);
         mBtnCanvasScreen = findViewById(R.id.btnCanvasScreen);
         mBtnUnitTest = findViewById(R.id.btnUnitTest);
+        mBtnLoginKotlin = findViewById(R.id.btnLoginKotlin);
     }
 
     /**
@@ -73,6 +76,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnViewPager.setOnClickListener(this);
         mBtnCanvasScreen.setOnClickListener(this);
         mBtnUnitTest.setOnClickListener(this);
+        mBtnLoginKotlin.setOnClickListener(this);
     }
 
     /**
@@ -110,6 +114,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnUnitTest:
                 startActivity(new Intent(this, LoginUnitTestActivity.class));
+                break;
+            case R.id.btnLoginKotlin:
+                startActivity(new Intent(this, TutorialActivity.class));
+                break;
         }
     }
 }
