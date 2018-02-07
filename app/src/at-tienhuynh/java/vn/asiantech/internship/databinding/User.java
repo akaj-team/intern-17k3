@@ -24,6 +24,7 @@ import vn.asiantech.internship.R;
  * AsianTech Co., Ltd
  */
 public class User extends BaseObservable implements Parcelable {
+    final int EDIT_USER_REQUEST_CODE = 1;
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
         public User createFromParcel(Parcel in) {
@@ -136,10 +137,10 @@ public class User extends BaseObservable implements Parcelable {
     /**
      * Clear edt when user click button
      */
-    public void clearText(int type) {
-        if (type == EnumType.NAME) {
+    public void clearText(EnumType num) {
+        if (num == EnumType.NAME) {
             setName("");
-        } else if (type == EnumType.EMAIL) {
+        } else if (num == EnumType.EMAIL) {
             setEmail("");
         } else {
             setContactNumber("");
@@ -172,9 +173,9 @@ public class User extends BaseObservable implements Parcelable {
     /**
      * Update User Profile
      */
-    public void onUpdateUserClick(User user, Context context) {
+    public void onUpdateUserClick(Context context) {
         Intent intent = new Intent(context, PreViewActivity.class);
-        intent.putExtra(User.class.getSimpleName(), user);
+        intent.putExtra(User.class.getSimpleName(), this);
         if (context instanceof EditInfoActivity) {
             ((EditInfoActivity) context).setResult(Activity.RESULT_OK, intent);
             ((EditInfoActivity) context).finish();
@@ -184,11 +185,11 @@ public class User extends BaseObservable implements Parcelable {
     /**
      * Edit user when click Edit in Profile Activity
      */
-    public void onEditUserClick(User user, Context context) {
+    public void onEditUserClick(Context context) {
         Intent intent = new Intent(context, EditInfoActivity.class);
-        intent.putExtra(User.class.getSimpleName(), user);
+        intent.putExtra(User.class.getSimpleName(), this);
         if (context instanceof PreViewActivity) {
-            ((PreViewActivity) context).startActivityForResult(intent, PreViewActivity.EDIT_USER_REQUEST_CODE);
+            ((PreViewActivity) context).startActivityForResult(intent, EDIT_USER_REQUEST_CODE);
         }
     }
 
@@ -201,13 +202,13 @@ public class User extends BaseObservable implements Parcelable {
     }
 
     /**
-     * @param s    s is value of edit text
-     * @param type type of editText
+     * @param s   s is value of edit text
+     * @param num type of editText
      */
-    public void afterTextChange(Editable s, int type) {
-        if (type == EnumType.NAME) {
+    public void afterTextChange(Editable s, EnumType num) {
+        if (num == EnumType.NAME) {
             name = s.toString();
-        } else if (type == EnumType.EMAIL) {
+        } else if (num == EnumType.EMAIL) {
             email = s.toString();
         } else {
             contactNumber = s.toString();

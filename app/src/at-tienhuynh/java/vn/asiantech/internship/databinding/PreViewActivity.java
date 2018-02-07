@@ -12,7 +12,7 @@ import java.util.Locale;
 import vn.asiantech.internship.R;
 
 public class PreViewActivity extends AppCompatActivity {
-    public static final int EDIT_USER_REQUEST_CODE = 1;
+     final int EDIT_USER_REQUEST_CODE = 1;
 
     private ActivityPreviewBinding activityPreViewBinding;
 

@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
-            android:onClick="@{()->user.onEditUserClick(user,context)}"
+            android:onClick="@{()->user.onEditUserClick(context)}"
             android:text="@string/btn_edit_profile" />
 
     </LinearLayout>
