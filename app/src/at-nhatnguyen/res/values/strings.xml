@@ -91,4 +91,13 @@
     <string name="health_over_voltage">OVER VOLTAGE</string>
     <string name="health_overheat">OVERHEAT</string>
     <string name="health_unspecified">FAILURE</string>
+    <string name="button_tutorial">Tutorial</string>
+    <string name="sign_in">Sign in</string>
+    <string name="next">Next</string>
+    <string name="good_to">Good to see you \n again</string>
+    <string name="corporate_email">Corporate e-mail</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="join_us">Join us</string>
+    <string name="welcome">Welcome \n aboard</string>
+    <string name="name_join_us">Name</string>
 </resources>

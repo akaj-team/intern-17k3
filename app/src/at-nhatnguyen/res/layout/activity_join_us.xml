@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="vn.asiantech.internship.ui.tutorialkotlin.JoinUsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btnSignUpBack"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_back_blue" />
+
+        <TextView
+            android:id="@+id/tvNextJoinUs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:enabled="false"
+            android:text="@string/next"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            tools:ignore="RelativeOverlap" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/join_us"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="@string/welcome"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edtNameJoinUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edt_color_botton"
+            android:hint="@string/name_join_us"
+            android:inputType="text"
+            android:textColor="@color/colorPrimary"
+            android:textCursorDrawable="@drawable/shape_cursor_edt_joinus"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_text_view"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/edtEmailJoinUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edt_color_botton"
+            android:hint="@string/text_email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorPrimary"
+            android:textCursorDrawable="@drawable/shape_cursor_edt_joinus"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_text_view"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/edtPasswordJoinUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edt_color_botton"
+            android:hint="@string/pass_word"
+            android:inputType="textPassword"
+            android:textColor="@color/colorPrimary"
+            android:textCursorDrawable="@drawable/shape_cursor_edt_joinus"
+            android:textSize="15dp" />
+    </LinearLayout>
+</LinearLayout>
