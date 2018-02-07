@@ -1,13 +1,13 @@
 package vn.asiantech.internship.loginkotlintutorial.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import kotlinx.android.synthetic.`at-tienhuynh`.fragment_tutorial_item.view.*
 import vn.asiantech.internship.R
 import vn.asiantech.internship.loginkotlintutorial.utils.InitData
@@ -40,14 +40,16 @@ class TutorialItemFragment : Fragment() {
         mView.imgHeaderAvatar.setImageResource(InitData.listsTutorial()[positionItem].imgHeaderAvatar)
         mView.tvTitle.text = InitData.listsTutorial()[positionItem].title
         mView.tvContain.text = InitData.listsTutorial()[positionItem].content
-        mView.llContent.setBackgroundColor(ContextCompat.getColor(activity, InitData.listsTutorial()[positionItem].color))
-        mView.btnItemTutorial.background = ContextCompat.getDrawable(activity, InitData.listsTutorial()[positionItem].imgBackGround)
+        mView.rlContent.setBackgroundColor(ContextCompat.getColor(activity, InitData.listsTutorial()[positionItem].color))
         if (positionItem == 2) {
-            mView.btnItemTutorial.text = getString(R.string.tv_tutorial_join_us)
-            mView.btnItemTutorial.width = 600
-            mView.btnItemTutorial.setOnClickListener(View.OnClickListener {
-                Toast.makeText(activity, "aaa", Toast.LENGTH_SHORT).show()
+            mView.imgNextTutor.visibility = View.GONE
+            mView.cardViewBtn.visibility = View.VISIBLE
+            mView.cardViewBtn.setOnClickListener({
+                startActivity(Intent(activity, JoinUsActivity::class.java))
             })
+        } else {
+            mView.imgNextTutor.visibility = View.VISIBLE
+            mView.cardViewBtn.visibility = View.GONE
         }
     }
 }

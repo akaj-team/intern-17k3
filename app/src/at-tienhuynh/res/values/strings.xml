@@ -127,6 +127,11 @@
     <string name="tv_next_login">NEXT</string>
     <string name="tv_sign_in">Sign in</string>
     <string name="tv_title_sign_in">Good to see you \n again</string>
+    <string name="tv_title_join_us">Welcome \n aboard</string>
     <string name="hint_edt_email_login">Corporate e-mail</string>
     <string name="hint_edt_password_login">Password</string>
+    <string name="tv_forgot_password">Forgot your password?</string>
+    <string name="tv_join_us">Join Us</string>
+    <string name="hint_edt_email_join_us">Email</string>
+    <string name="hint_edt_name_join_us">Name</string>
 </resources>

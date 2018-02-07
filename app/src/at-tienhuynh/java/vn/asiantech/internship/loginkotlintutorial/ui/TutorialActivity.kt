@@ -3,7 +3,6 @@ package vn.asiantech.internship.loginkotlintutorial.ui
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import kotlinx.android.synthetic.`at-tienhuynh`.activity_tutorial.*
 import vn.asiantech.internship.R
 import vn.asiantech.internship.loginkotlintutorial.adapters.TutorialSlideAdapter
@@ -18,7 +17,7 @@ class TutorialActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tutorial)
         initAdapter()
-        tvSignIn.setOnClickListener(View.OnClickListener {
+        tvSignIn.setOnClickListener({
             startActivity(Intent(this@TutorialActivity, LoginActivity::class.java))
         })
     }
