@@ -54,6 +54,9 @@
         <activity
             android:name=".loginkotlintutorial.ui.TutorialActivity"
             android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".loginkotlintutorial.ui.LoginActivity"
+            android:theme="@style/NoActionBarTheme" />
     </application>
 
 </manifest>
