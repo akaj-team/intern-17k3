@@ -139,4 +139,11 @@
     <string name="tv_canvas_month">24 Jul</string>
     <string name="tv_canvas_date">21 Oct</string>
     <string name="btn_tutorial">Tutorial</string>
+    <string name="tv_title_unique">Be unique</string>
+    <string name="tv_welcome">Welcome</string>
+    <string name="tv_started">Get started</string>
+    <string name="tv_des_welcome">Express your self through \n the art of the fashionism</string>
+    <string name="tv_des_signup">Your profile is \n your \n online art gallery</string>
+    <string name="tv_des_joinup">Inspire everyone with the \n power of your ideas</string>
+    <string name="tv_submit">Submit</string>
 </resources>

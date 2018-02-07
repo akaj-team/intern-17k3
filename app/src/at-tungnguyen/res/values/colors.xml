@@ -25,4 +25,7 @@
     <color name="rockBlue">#9BACC6</color>
     <color name="santasGray">#9494AF</color>
     <color name="boulder">#757575</color>
+    <color name="color_welcome">#FDDB00</color>
+    <color name="color_singup">#00CCC7</color>
+    <color name="color_beunique">#FF5261</color>
 </resources>

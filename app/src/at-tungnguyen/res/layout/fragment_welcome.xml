@@ -1,40 +1,69 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#FDDB00"
     tools:context="vn.asiantech.internship.ui.tutorial_kotlin.fragment.WelcomeFragment">
+
     <android.support.v7.widget.CardView
         android:layout_width="300dp"
+        android:layout_height="500dp"
         android:layout_gravity="center"
-        app:cardCornerRadius="25dp"
-        android:layout_height="460dp">
+        app:cardCornerRadius="15dp">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <ImageView
-            android:layout_width="match_parent"
-            android:src="@drawable/ic_girl"
-            android:layout_height="240dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgGirl"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_girl"
+                />
+
             <TextView
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_gravity="center"
-                android:text="Welcome"/>
+                android:layout_marginTop="20dp"
+                android:text="Welcome"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="35dp" />
+
             <TextView
+                android:id="@+id/tvDesTutorial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Express yourself through: \n-the art of the fashionism"
-                android:textSize="20dp"
-                android:layout_gravity="center"/>
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="260dp"
+                android:layout_height="70dp"
+                android:textSize="15dp"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_shadow_button" />
+            <ImageView
+                android:id="@+id/imgNext"
+                android:layout_marginTop="30dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_next_button"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

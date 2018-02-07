@@ -3,7 +3,6 @@ package vn.asiantech.internship.ui.tutorial_kotlin
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import vn.asiantech.internship.ui.tutorial_kotlin.fragment.SignupFragment
 import vn.asiantech.internship.ui.tutorial_kotlin.fragment.WelcomeFragment
 
 /**
@@ -12,15 +11,14 @@ import vn.asiantech.internship.ui.tutorial_kotlin.fragment.WelcomeFragment
  */
 class Tutorial2Adapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment? {
-        when(position){
-            0 -> return WelcomeFragment()
-            1 -> return SignupFragment()
-            else -> return null
+        when (position) {
+            0 -> return WelcomeFragment.newInstance(Tutorial.WELCOME)
+            1 -> return WelcomeFragment.newInstance(Tutorial.SIGNUP)
+            2 -> return WelcomeFragment.newInstance(Tutorial.JOINUP)
         }
-
+        return null
     }
-
     override fun getCount(): Int {
-        return 2
+        return 3
     }
 }
