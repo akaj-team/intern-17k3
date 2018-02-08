@@ -66,7 +66,7 @@
                 android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/bg_bottom_line_edt"
                 android:hint="@string/corporate_e_mail"
                 android:inputType="textEmailAddress"
