@@ -14,13 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExerciseActivity">
+        <activity android:name=".BeginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ExerciseActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".ui.calculator.CalculatorActivity" />
@@ -40,5 +41,9 @@
         <activity android:name=".ui.asynchronous.activitys.CountDownTimerActivity" />
         <activity android:name=".ui.canvas.CanvasActivity" />
         <activity android:name=".ui.unittest.UnitTestActivity" />
+        <activity android:name=".kotlin.TutorialActivity" />
+        <activity android:name=".kotlin.LoginKotlinActivity" />
+        <activity android:name=".kotlin.JoinUsKotlinActivity"></activity>
     </application>
+
 </manifest>

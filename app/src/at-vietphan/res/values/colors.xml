@@ -17,4 +17,14 @@
     <color name="colorSignupAcc">#00A0EF</color>
     <color name="colorTerms">#00A4FA</color>
     <color name="colorTvResult">#FF327B</color>
+    <color name="colorItemWelcome_0">#FFCF27</color>
+    <color name="colorItemWelcome_1">#00CCC7</color>
+    <color name="colorItemWelcome_2">#FF5261</color>
+    <color name="page_indicator_color">#AAE6E6E6</color>
+    <color name="color_welcome">#094AFC</color>
+    <color name="color_btn_join_us">#0044FC</color>
+    <color name="edt_color_join_us">#255FFC</color>
+    <color name="tv_sign_in">#4F4F4F</color>
+    <color name="tv_next_color_not_select">#DEE6FE</color>
+    <color name="tv_next_pink_color_not_select">#FFDFE2</color>
 </resources>
