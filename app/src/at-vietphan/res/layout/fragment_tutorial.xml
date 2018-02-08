@@ -59,6 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@drawable/rectangle"
+                    android:paddingBottom="15dp"
                     android:text="@string/join_us"
                     android:textColor="@android:color/white"
                     android:visibility="gone" />
