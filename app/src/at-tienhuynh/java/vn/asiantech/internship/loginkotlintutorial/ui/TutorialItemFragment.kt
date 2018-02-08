@@ -43,13 +43,13 @@ class TutorialItemFragment : Fragment() {
         mView.rlContent.setBackgroundColor(ContextCompat.getColor(activity, InitData.listsTutorial()[positionItem].color))
         if (positionItem == 2) {
             mView.imgNextTutor.visibility = View.GONE
-            mView.cardViewBtn.visibility = View.VISIBLE
-            mView.cardViewBtn.setOnClickListener({
+            mView.btnJoinUs.visibility = View.VISIBLE
+            mView.btnJoinUs.setOnClickListener({
                 startActivity(Intent(activity, JoinUsActivity::class.java))
             })
         } else {
             mView.imgNextTutor.visibility = View.VISIBLE
-            mView.cardViewBtn.visibility = View.GONE
+            mView.btnJoinUs.visibility = View.GONE
         }
     }
 }

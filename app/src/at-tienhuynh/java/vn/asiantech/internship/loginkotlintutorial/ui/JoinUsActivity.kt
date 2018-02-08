@@ -36,7 +36,7 @@ class JoinUsActivity : AppCompatActivity(), TextWatcher {
                 || TextUtils.isEmpty(edtPassJoinUs.text)) {
             tvNextJoinUs.setTextColor(ContextCompat.getColor(this, R.color.colorBlue100))
         } else {
-            tvNextJoinUs.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
+            tvNextJoinUs.setTextColor(ContextCompat.getColor(this, R.color.colorBlue300))
         }
     }
 
