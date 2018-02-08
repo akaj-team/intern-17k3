@@ -1,5 +1,6 @@
 package vn.asiantech.internship.loginkotlintutorial.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -8,13 +9,14 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import kotlinx.android.synthetic.`at-tienhuynh`.activity_login2.*
 import vn.asiantech.internship.R
 
-class LoginActivity : AppCompatActivity(), TextWatcher {
+class LoginActivity : AppCompatActivity(), TextWatcher, View.OnTouchListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +24,7 @@ class LoginActivity : AppCompatActivity(), TextWatcher {
         addTextChangedListener()
         initListener()
         if (llSignIn !is EditText) {
-            llSignIn.setOnTouchListener { v, event ->
-                hideSoftKeyboard(this@LoginActivity)
-                false
-            }
+            llSignIn.setOnTouchListener(this)
         }
     }
 
@@ -53,6 +52,14 @@ class LoginActivity : AppCompatActivity(), TextWatcher {
                 Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(
                 activity.currentFocus!!.windowToken, 0)
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+        if (p1!!.action == MotionEvent.ACTION_UP) {
+            hideSoftKeyboard(this)
+        }
+        return true
     }
 
     override fun afterTextChanged(p0: Editable?) {

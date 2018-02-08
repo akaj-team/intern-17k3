@@ -1,5 +1,6 @@
 package vn.asiantech.internship.loginkotlintutorial.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -8,12 +9,14 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.view.MotionEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import kotlinx.android.synthetic.`at-tienhuynh`.activity_join_us.*
 import vn.asiantech.internship.R
 
-class JoinUsActivity : AppCompatActivity(), TextWatcher {
+class JoinUsActivity : AppCompatActivity(), TextWatcher, View.OnTouchListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +24,7 @@ class JoinUsActivity : AppCompatActivity(), TextWatcher {
         addTextChangedListener()
         initListener()
         if (llJoinUs !is EditText) {
-            llJoinUs.setOnTouchListener { v, event ->
-                hideSoftKeyboard(this@JoinUsActivity)
-                false
-            }
+            llJoinUs.setOnTouchListener(this)
         }
     }
 
@@ -47,6 +47,14 @@ class JoinUsActivity : AppCompatActivity(), TextWatcher {
         } else {
             tvNextJoinUs.setTextColor(ContextCompat.getColor(this, R.color.colorBlue300))
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+        if (p1!!.action == MotionEvent.ACTION_UP) {
+            hideSoftKeyboard(this)
+        }
+        return true
     }
 
     private fun hideSoftKeyboard(activity: Activity) {
