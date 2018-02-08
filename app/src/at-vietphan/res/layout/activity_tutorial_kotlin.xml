@@ -17,9 +17,9 @@
         android:id="@+id/tvSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
+        android:layout_alignRight="@id/viewPagerTutorial"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/sign_in"
         android:textColor="@android:color/white"
         android:textSize="18dp" />
