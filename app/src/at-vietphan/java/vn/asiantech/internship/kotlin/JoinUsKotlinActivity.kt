@@ -52,10 +52,8 @@ class JoinUsKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatc
     }
 
     fun hideSoftKeyboard(activity: Activity) {
-        val inputMethodManager = activity.getSystemService(
-                Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(
-                activity.currentFocus!!.windowToken, 0)
+        val inputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
     }
 
     override fun onClick(p0: View?) {
