@@ -10,14 +10,13 @@ import vn.asiantech.internship.databinding.ActivityPreviewProfileBinding;
 import vn.asiantech.internship.models.ProfileUser;
 
 public class PreviewProfileActivity extends AppCompatActivity {
-    public static final int EDIT_USER_REQUEST_CODE = 1;
-    private ActivityPreviewProfileBinding mPreviewProfileBinding;
+    private static final int EDIT_USER_REQUEST_CODE = 1;
     private ProfileUser mProfileUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPreviewProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_preview_profile);
+        ActivityPreviewProfileBinding previewProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_preview_profile);
         mProfileUser = new ProfileUser();
         mProfileUser.setName("viet");
         mProfileUser.setEmail("viet.phan@asiantech.vn");
@@ -25,7 +24,7 @@ public class PreviewProfileActivity extends AppCompatActivity {
         mProfileUser.setGenDer(0);
         mProfileUser.setPhone("0979047004");
         mProfileUser.setImageUrl("https://znews-photo-td.zadn.vn/w1024/Uploaded/ohunua2/2017_03_24/huyen3.jpg");
-        mPreviewProfileBinding.setProfileUser(mProfileUser);
+        previewProfileBinding.setProfileUser(mProfileUser);
     }
 
     @Override
@@ -38,7 +37,6 @@ public class PreviewProfileActivity extends AppCompatActivity {
             mProfileUser.setBirthDate(profileUser.birthDate);
             mProfileUser.setGenDer(profileUser.genDer);
             mProfileUser.setPhone(profileUser.phone);
-            mPreviewProfileBinding.setProfileUser(mProfileUser);
         }
     }
 }

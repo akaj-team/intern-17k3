@@ -21,7 +21,6 @@ import java.util.Locale;
 import vn.asiantech.internship.BR;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.databinding.EditProfileActivity;
-import vn.asiantech.internship.ui.databinding.PreviewProfileActivity;
 
 /**
  * Created by vietphan on 15/01/2017.
@@ -39,6 +38,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
             return new ProfileUser[size];
         }
     };
+    private static final int EDIT_USER_REQUEST_CODE = 1;
     public String name;
     public String email;
     public String birthDate;
@@ -127,7 +127,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     public void onEditProfileClick(Context context) {
         Intent intent = new Intent(context, EditProfileActivity.class);
         intent.putExtra(ProfileUser.class.getSimpleName(), this);
-        ((AppCompatActivity) context).startActivityForResult(intent, PreviewProfileActivity.EDIT_USER_REQUEST_CODE);
+        ((AppCompatActivity) context).startActivityForResult(intent, EDIT_USER_REQUEST_CODE);
     }
 
     public void onUpdateProfileClick(Context context) {
@@ -146,9 +146,6 @@ public class ProfileUser extends BaseObservable implements Parcelable {
                 break;
             case EMAIL:
                 setEmail(String.valueOf(text));
-                break;
-            case BIRTHDAY:
-                setBirthDate(String.valueOf(text));
                 break;
             case PHONE:
                 setPhone(String.valueOf(text));
@@ -195,7 +192,6 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     public enum TypeItem {
         NAME,
         EMAIL,
-        BIRTHDAY,
         PHONE
     }
 }

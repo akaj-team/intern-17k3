@@ -109,7 +109,6 @@
                             android:id="@+id/tvBirthDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:afterTextChanged="@{(text)->profileUser.afterTextChange(text, TypeItem.BIRTHDAY)}"
                             android:background="@drawable/bg_number_text_view"
                             android:drawableRight="@drawable/ic_expand_more_grey_800_18dp"
                             android:onClick="@{()->profileUser.onShowDatePickerDialogClick(tvBirthDate)}"
