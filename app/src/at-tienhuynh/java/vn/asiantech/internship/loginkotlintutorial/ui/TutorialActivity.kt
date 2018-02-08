@@ -25,7 +25,7 @@ class TutorialActivity : AppCompatActivity() {
     private fun initAdapter() {
         mSlideAdapter = TutorialSlideAdapter(supportFragmentManager, InitData.listsTutorial())
         viewPagerSlideTutorial.adapter = mSlideAdapter
-        circleIndicator.setViewPager(viewPagerSlideTutorial)
+        pageIndicatorView.setViewPager(viewPagerSlideTutorial)
         viewPagerSlideTutorial.currentItem = CURRENT_PAGE
     }
 }
