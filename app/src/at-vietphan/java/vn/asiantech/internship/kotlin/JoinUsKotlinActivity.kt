@@ -23,7 +23,7 @@ class JoinUsKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatc
         edtEmail.addTextChangedListener(this)
         edtPassword.addTextChangedListener(this)
         if (scrollViewJoinUs !is EditText) {
-            scrollViewJoinUs.setOnTouchListener { v, event ->
+            scrollViewJoinUs.setOnTouchListener { _, _ ->
                 hideSoftKeyboard(this@JoinUsKotlinActivity)
                 false
             }
@@ -47,7 +47,7 @@ class JoinUsKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatc
         }
     }
 
-    fun hideSoftKeyboard(activity: Activity) {
+    private fun hideSoftKeyboard(activity: Activity) {
         val inputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
     }
