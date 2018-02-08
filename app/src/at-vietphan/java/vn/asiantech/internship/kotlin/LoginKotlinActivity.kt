@@ -7,13 +7,14 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import kotlinx.android.synthetic.`at-vietphan`.activity_login_kotlin.*
 import vn.asiantech.internship.R
 
-class LoginKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
+class LoginKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatcher, View.OnTouchListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +23,16 @@ class LoginKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatch
         edtEmail.addTextChangedListener(this)
         edtPassword.addTextChangedListener(this)
         if (scrollViewSignIn !is EditText) {
-            scrollViewSignIn.setOnTouchListener { _, _ ->
-                hideSoftKeyboard(this@LoginKotlinActivity)
-                false
-            }
+            scrollViewSignIn.setOnTouchListener(this)
         }
+    }
+
+    override fun onTouch(view: View?, event: MotionEvent?): Boolean {
+        if (event?.action == MotionEvent.ACTION_UP) {
+            view?.performClick()
+            hideSoftKeyboard(this)
+        }
+        return true
     }
 
     override fun afterTextChanged(p0: Editable?) {
