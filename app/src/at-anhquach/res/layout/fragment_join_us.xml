@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llSignIn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_join_us"
+        android:textColor="@color/colorGrey900"
+        android:textSize="50sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:text="@string/tv_welcome_aboard"
+        android:textAlignment="center"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_edt_bottom_blue"
+        android:hint="@string/hint_name"
+        android:inputType="text"
+        android:paddingBottom="20dp"
+        android:textColor="@color/colorBlue300"
+        android:textColorHint="@color/colorBlue100"
+        android:textCursorDrawable="@drawable/shape_cusor_blue" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_edt_bottom_blue"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"
+        android:paddingBottom="20dp"
+        android:textColor="@color/colorBlue300"
+        android:textColorHint="@color/colorBlue100"
+        android:textCursorDrawable="@drawable/shape_cusor_blue" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_edt_bottom_no_color"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:paddingBottom="20dp"
+        android:textColor="@color/colorBlue300"
+        android:textColorHint="@color/colorBlue100"
+        android:textCursorDrawable="@drawable/shape_cusor_blue" />
+</LinearLayout>

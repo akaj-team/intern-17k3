@@ -67,4 +67,14 @@
     <string name="tv_full">Full</string>
     <string name="day">24Jul</string>
     <string name="month">Oct</string>
+    <string name="tv_next">NEXT</string>
+    <string name="tv_sign_in">Sign in</string>
+    <string name="hint_corporate_e_mail">Corporate e-mail</string>
+    <string name="tv_password">Password</string>
+    <string name="tv_forgot_your_password">Forgot your password?</string>
+    <string name="tv_join_us">Join us</string>
+    <string name="tv_welcome_aboard">Welcome aboard</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_password">Password</string>
 </resources>

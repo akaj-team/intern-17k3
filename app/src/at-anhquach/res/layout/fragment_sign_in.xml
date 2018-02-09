@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llSignIn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_sign_in"
+            android:textColor="@color/colorGrey900"
+            android:textSize="50sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginRight="85dp"
+            android:text="@string/tv_good_to_see_you_again"
+            android:textAlignment="center"
+            android:textSize="19sp" />
+
+        <EditText
+            android:id="@+id/edtCorporateEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_edt_bottom_gray"
+            android:hint="@string/hint_corporate_e_mail"
+            android:inputType="textEmailAddress"
+            android:paddingBottom="20dp"
+            android:textColor="@color/colorRedLight" />
+
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edt_bottom_no_color"
+            android:hint="@string/tv_password"
+            android:inputType="textPassword"
+            android:paddingBottom="20dp"
+            android:textColor="@color/colorRedLight" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_forgot_your_password"
+        android:textColor="@color/colorRedLight" />
+</LinearLayout>
