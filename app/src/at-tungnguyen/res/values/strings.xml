@@ -138,4 +138,20 @@
     <string name="tv_canvas_10km">10km</string>
     <string name="tv_canvas_month">24 Jul</string>
     <string name="tv_canvas_date">21 Oct</string>
+    <string name="btn_tutorial">Tutorial</string>
+    <string name="tv_title_unique">Be unique</string>
+    <string name="tv_welcome">Welcome</string>
+    <string name="tv_started">Get started</string>
+    <string name="tv_des_welcome">Express your self through \n the art of the fashionism</string>
+    <string name="tv_des_signup">Your profile is \n your \n online art gallery</string>
+    <string name="tv_des_joinup">Inspire everyone with the \n power of your ideas</string>
+    <string name="tv_submit">Submit</string>
+    <string name="tv_signin">SIGN IN</string>
+    <string name="tv_slogan_signin">Good to see you \n again</string>
+    <string name="tv_name_signin">Name</string>
+    <string name="tv_join_up">JOIN US</string>
+    <string name="tv_slogan_join_up">Welcome \n aboard</string>
+    <string name="tv_mail_signin">Corporate e-mail</string>
+    <string name="tv_next">Next</string>
+    <string name="tv_btn_joinup">Join us</string>
 </resources>

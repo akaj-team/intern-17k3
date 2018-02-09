@@ -15,6 +15,7 @@ import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.kotlin.tutorial.TutorialActivity;
 import vn.asiantech.internship.ui.unittest.LoginActivity;
 import vn.asiantech.internship.ui.viewpager.ui.ViewPagerActivity;
 import vn.asiantech.internship.ui.thread_handler.SplashThreadActivity;
@@ -35,6 +36,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnValidation;
     private Button mBtnBroadcast;
     private Button mBtnThread;
+    private Button mBtnTutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnCanVas = findViewById(R.id.btnCanvas);
         mBtnValidation = findViewById(R.id.btnValidation);
         mBtnBroadcast = findViewById(R.id.btnBroadcast);
+        mBtnTutorial = findViewById(R.id.btnTutorial);
     }
 
     /**
@@ -76,6 +79,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnValidation.setOnClickListener(this);
         mBtnThread.setOnClickListener(this);
         mBtnBroadcast.setOnClickListener(this);
+        mBtnTutorial.setOnClickListener(this);
     }
 
     /**
@@ -127,6 +131,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnCanvas:
                 Intent intentCanvas = new Intent(SplashActivity.this, CanvasActivity.class);
                 startActivity(intentCanvas);
+                break;
+            case R.id.btnTutorial:
+                Intent intentTutorial = new Intent(SplashActivity.this, TutorialActivity.class);
+                startActivity(intentTutorial);
                 break;
         }
     }
