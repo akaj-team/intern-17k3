@@ -149,7 +149,7 @@ class WelcomeFragment : Fragment() {
                 }
                 TutorialEnum.JOINUP -> {
                     btnSubmit.background = ContextCompat.getDrawable(it, R.drawable.bg_shadow_button)
-                    btnSubmit.text = getString(R.string.tv_join_up)
+                    btnSubmit.text = getString(R.string.tv_btn_joinup)
                     btnSubmit.visibility = View.VISIBLE
                 }
             }
