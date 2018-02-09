@@ -46,8 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="Welcome"
-                android:textColor="@color/colorPrimaryDark"
+it                android:textColor="@color/colorPrimaryDark"
                 android:textSize="30dp" />
 
             <TextView
