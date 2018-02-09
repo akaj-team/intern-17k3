@@ -46,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-it                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/tv_welcome"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="30dp" />
 
             <TextView
