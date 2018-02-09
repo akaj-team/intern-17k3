@@ -45,5 +45,4 @@
         <activity android:name=".kotlin.LoginKotlinActivity" />
         <activity android:name=".kotlin.JoinUsKotlinActivity"></activity>
     </application>
-
 </manifest>
