@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="vn.asiantech.internship.ui.tutorial_kotlin.TutorialActivity">
+    tools:context=".ui.kotlin.tutorial.TutorialActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPagerTutorial"

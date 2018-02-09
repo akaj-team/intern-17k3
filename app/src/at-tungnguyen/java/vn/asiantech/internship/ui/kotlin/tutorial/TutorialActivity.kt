@@ -1,18 +1,15 @@
-package vn.asiantech.internship.ui.tutorial_kotlin
+package vn.asiantech.internship.ui.kotlin.tutorial
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.`at-tungnguyen`.activity_tutorial.*
 import vn.asiantech.internship.R
 
 class TutorialActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
-    private var List = mutableListOf<String>()
-    private var mListFragment = mutableListOf<Fragment>()
     private var mIsFinishSlide:Boolean = false
     private var mLast:Int = 0
-    var mTutorialAdapter: Tutorial2Adapter? = null
+    var tutorialAdapter: TutorialAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tutorial)
@@ -22,8 +19,8 @@ class TutorialActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     }
 
     private fun initAdapter() {
-        mTutorialAdapter= Tutorial2Adapter(supportFragmentManager)
-        viewPagerTutorial.adapter = mTutorialAdapter
+        tutorialAdapter = TutorialAdapter(supportFragmentManager)
+        viewPagerTutorial.adapter = tutorialAdapter
         indicatorTutorial.setViewPager(viewPagerTutorial)
     }
 
@@ -32,7 +29,7 @@ class TutorialActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-        mIsFinishSlide = mLast == mTutorialAdapter!!.count - 1
+        mIsFinishSlide = mLast == tutorialAdapter!!.count - 1
         mLast = position
     }
 

@@ -146,4 +146,11 @@
     <string name="tv_des_signup">Your profile is \n your \n online art gallery</string>
     <string name="tv_des_joinup">Inspire everyone with the \n power of your ideas</string>
     <string name="tv_submit">Submit</string>
+    <string name="tv_signin">SIGN IN</string>
+    <string name="tv_slogan_signin">Good to see you \n again</string>
+    <string name="tv_name_signin">Name</string>
+    <string name="tv_join_up">JOIN US</string>
+    <string name="tv_slogan_join_up">Welcome \n aboard</string>
+    <string name="tv_mail_signin">Corporate e-mail</string>
+    <string name="tv_next">Next</string>
 </resources>

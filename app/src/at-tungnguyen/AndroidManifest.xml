@@ -41,7 +41,9 @@
         <activity android:name=".ui.unittest.LoginActivity" />
         <activity android:name=".ui.broadcast.BroadcastActivity" />
         <activity android:name=".ui.canvas.CanvasActivity" />
-        <activity android:name=".ui.tutorial_kotlin.TutorialActivity" />
+        <activity android:name="vn.asiantech.internship.ui.kotlin.tutorial.TutorialActivity" />
+        <activity android:name=".ui.kotlin.login.JoinUsKotlinActivity" />
+        <activity android:name=".ui.kotlin.login.SignInKotlinActivity"></activity>
     </application>
 
 </manifest>
