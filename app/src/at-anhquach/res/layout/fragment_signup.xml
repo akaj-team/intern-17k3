@@ -41,7 +41,7 @@
             android:id="@+id/edtEnterPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_edt_bottom"
+            android:background="@drawable/bg_edt_bottom_gray"
             android:hint="@string/edt_hint_enter_number"
             android:inputType="phone"
             android:textSize="20dp" />
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/bg_edt_bottom"
+        android:background="@drawable/bg_edt_bottom_gray"
         android:hint="@string/edt_hint_username"
         android:inputType="text"
         android:textSize="20dp" />
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/bg_edt_bottom"
+        android:background="@drawable/bg_edt_bottom_gray"
         android:hint="@string/edt_hint_password"
         android:inputType="textPassword"
         android:textSize="20dp" />

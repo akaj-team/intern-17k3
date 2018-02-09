@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_previous_blue" />
+
+        <TextView
+            android:id="@+id/tvNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/tv_next"
+            android:textColor="@color/colorBlue100"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:id="@+id/frLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgBack" />
+    </RelativeLayout>
+</ScrollView>

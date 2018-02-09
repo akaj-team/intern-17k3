@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagerTutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/tv_sign_in"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="15sp" />
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/pageIndicatorView"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        app:ci_drawable="@drawable/shape_dot_stroke_grey"
+        app:ci_drawable_unselected="@drawable/shape_dot_white"
+        app:ci_height="10dp"
+        app:ci_width="10dp" />
+</RelativeLayout>

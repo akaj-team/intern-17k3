@@ -8,7 +8,7 @@
         android:id="@+id/edtSaveData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_edt_bottom"
+        android:background="@drawable/bg_edt_bottom_gray"
         android:hint="@string/edt_hint_input_text"
         android:inputType="text"
         android:textSize="20dp" />
