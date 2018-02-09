@@ -7,15 +7,13 @@ import kotlinx.android.synthetic.`at-tungnguyen`.activity_tutorial.*
 import vn.asiantech.internship.R
 
 class TutorialActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
-    private var mIsFinishSlide:Boolean = false
-    private var mLast:Int = 0
-    var tutorialAdapter: TutorialAdapter? = null
+    private var mIsFinishSlide: Boolean = false
+    private var mLast: Int = 0
+    private var tutorialAdapter: TutorialAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tutorial)
-
         initAdapter()
-
     }
 
     private fun initAdapter() {
