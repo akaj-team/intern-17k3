@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.ui.viewpager.adapter.TabLayoutAdapter;
 
 /**
  * Created by vietphan on 13/12/2017.
