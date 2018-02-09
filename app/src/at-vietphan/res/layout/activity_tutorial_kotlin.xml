@@ -20,7 +20,6 @@
         android:layout_alignRight="@id/viewPagerTutorial"
         android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
-        android:layout_toLeftOf="@id/viewPagerTutorial"
         android:text="@string/sign_in"
         android:textColor="@android:color/white"
         android:textSize="18dp" />
