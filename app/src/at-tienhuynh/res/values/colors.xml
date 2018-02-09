@@ -16,4 +16,13 @@
     <color name="colorPurple800">#6A1B9A</color>
     <color name="colorCyanA700">#00B8D4</color>
     <color name="colorOrange500">#FF9800</color>
+    <color name="colorBackgroundLoginScreen">#FDDB00</color>
+    <color name="colorItemWelcome_0">#FFCF27</color>
+    <color name="colorItemWelcome_1">#00CCC7</color>
+    <color name="colorItemWelcome_2">#FF5261</color>
+    <color name="colorBlue100">#BBDEFB</color>
+    <color name="colorRed100">#FFCDD2</color>
+    <color name="colorBlue300">#1F4EFE</color>
+    <color name="colorPageIndicatorSelected">#AAE6E6E6</color>
+    <color name="colorGray200">#4F4F4F</color>
 </resources>

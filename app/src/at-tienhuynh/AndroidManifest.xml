@@ -50,7 +50,16 @@
         <activity android:name=".threadandhandler.SplashThreadAndHandlerActivity" />
         <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity" />
         <activity android:name=".unittest.LoginUnitTestActivity" />
-        <activity android:name=".viewpagerandtablelayout.ui.BatteryActivity"/>
+        <activity android:name=".viewpagerandtablelayout.ui.BatteryActivity" />
+        <activity
+            android:name=".loginkotlintutorial.ui.TutorialActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".loginkotlintutorial.ui.LoginActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".loginkotlintutorial.ui.JoinUsActivity"
+            android:theme="@style/NoActionBarTheme" />
     </application>
 
 </manifest>

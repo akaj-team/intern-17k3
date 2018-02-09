@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundLoginScreen"
+    tools:context="vn.asiantech.internship.loginkotlintutorial.ui.TutorialActivity">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagerSlideTutorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="right"
+        android:text="@string/tv_signIn"
+        android:textColor="@color/colorWhite"
+        android:textSize="18dp" />
+
+    <com.rd.PageIndicatorView
+        android:id="@+id/pageIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        app:piv_animationType="none"
+        app:piv_selectedColor="@color/colorPageIndicatorSelected"
+        app:piv_unselectedColor="@android:color/white" />
+</RelativeLayout>

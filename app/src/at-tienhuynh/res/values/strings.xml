@@ -121,4 +121,17 @@
     <string name="battery_status_dis_charging">DISCHARGING</string>
     <string name="battery_status_full">FULL</string>
     <string name="battery_status_not_charging">NOT CHARGING</string>
+    <string name="name_btn_login_with_kotlin">Kotlin tutorial</string>
+    <string name="tv_signIn">SIGN IN</string>
+    <string name="tv_tutorial_join_us">Join Us</string>
+    <string name="tv_next_login">NEXT</string>
+    <string name="tv_sign_in">Sign in</string>
+    <string name="tv_title_sign_in">Good to see you \n again</string>
+    <string name="tv_title_join_us">Welcome \n aboard</string>
+    <string name="hint_edt_email_login">Corporate e-mail</string>
+    <string name="hint_edt_password_login">Password</string>
+    <string name="tv_forgot_password">Forgot your password?</string>
+    <string name="tv_join_us">Join Us</string>
+    <string name="hint_edt_email_join_us">Email</string>
+    <string name="hint_edt_name_join_us">Name</string>
 </resources>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".SplashActivity">
@@ -76,6 +76,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:text="@string/name_btn_thread" />
+
         <Button
             android:id="@+id/btnCanvasScreen"
             android:layout_width="match_parent"
@@ -83,6 +84,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:text="@string/text_btn_canvas_screen" />
+
         <Button
             android:id="@+id/btnUnitTest"
             android:layout_width="match_parent"
@@ -90,6 +92,14 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:text="@string/name_btn_unit_text" />
+
+        <Button
+            android:id="@+id/btnLoginKotlin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="@string/name_btn_login_with_kotlin" />
 
     </LinearLayout>
 </ScrollView>
