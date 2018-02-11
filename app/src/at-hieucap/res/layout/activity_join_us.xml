@@ -1,0 +1,98 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollViewContain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_back_join_us" />
+
+        <TextView
+            android:id="@+id/tvNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+            android:text="@string/text_next"
+            android:textColor="@color/colorTextHintJoinUs"
+            android:textSize="30dp"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:id="@+id/tvJoinUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgBack"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="@string/text_join_us"
+            android:textColor="@android:color/black"
+            android:textSize="50dp" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvJoinUs"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/text_status_join_us"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvStatus"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_color_blue_text_hint_bottom_line"
+            android:hint="@string/test_name"
+            android:textColor="@color/colorTextJoinUs"
+            android:textColorHint="@color/colorTextHintJoinUs"
+            android:textCursorDrawable="@drawable/bg_color_blue_cursor"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_color_blue_text_hint_bottom_line"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorTextJoinUs"
+            android:textColorHint="@color/colorTextHintJoinUs"
+            android:textCursorDrawable="@drawable/bg_color_blue_cursor"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtEmail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_not_bottom_line"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@color/colorTextJoinUs"
+            android:textColorHint="@color/colorTextHintJoinUs"
+            android:textCursorDrawable="@drawable/bg_color_blue_cursor"
+            android:textSize="20dp" />
+    </RelativeLayout>
+</ScrollView>

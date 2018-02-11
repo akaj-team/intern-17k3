@@ -18,4 +18,14 @@
     <color name="colorColumnDistancePersonA">#6B2E9A</color>
     <color name="colorColumnDistancePersonB">#018ABE</color>
     <color name="colorColumnDistancePersonC">#F26722</color>
+    <color name="colorBackgroundStepOne">#FFCF0E</color>
+    <color name="colorBackgroundStepTwo">#1FD1CD</color>
+    <color name="colorBackgroundStepThree">#FF5B65</color>
+    <color name="colorBlueJoinUs">#1F4EFF</color>
+    <color name="colorSelected">#1000000f</color>
+    <color name="colorOrange">#FF6633</color>
+    <color name="colorTextJoinUs">#1F4EFF</color>
+    <color name="colorTextSignIn">#FF5B65</color>
+    <color name="colorTextHintJoinUs">#D9E1FF</color>
+    <color name="colorNextHint">#FFE0E2</color>
 </resources>

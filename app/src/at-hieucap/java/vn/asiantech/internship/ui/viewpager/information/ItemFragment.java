@@ -14,7 +14,7 @@ import vn.asiantech.internship.models.CardEnglish;
 
 /**
  * Created by tiboo on 19/12/2017.
- * Create Item Fragment
+ * Create Item StepLoginFragment
  */
 public class ItemFragment extends Fragment {
     private int mPosition;
