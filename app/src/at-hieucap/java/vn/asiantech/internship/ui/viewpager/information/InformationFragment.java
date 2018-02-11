@@ -12,7 +12,7 @@ import android.widget.TextView;
 import vn.asiantech.internship.R;
 
 /**
- * Create Information Fragment
+ * Create Information StepLoginFragment
  */
 public class InformationFragment extends Fragment {
     public static final int REQUEST_CODE = 1;
@@ -57,6 +57,6 @@ public class InformationFragment extends Fragment {
         alertDialogFragment = AlertDialogFragment.newInstance(mTvName.getText().toString(), mTvPhone.getText().toString(),
                 mTvStatus.getText().toString());
         alertDialogFragment.setTargetFragment(this, REQUEST_CODE);
-        alertDialogFragment.show(getFragmentManager(), "Alert Dialog Fragment");
+        alertDialogFragment.show(getFragmentManager(), "Alert Dialog StepLoginFragment");
     }
 }

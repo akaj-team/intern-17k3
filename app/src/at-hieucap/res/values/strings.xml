@@ -120,4 +120,22 @@
     <string name="test_done">Done</string>
     <string name="text_kilometer">KM</string>
     <string name="success_login">Congratulations on your successful login !!!</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="status_screen_1">Welcome</string>
+    <string name="status_screen_2">Be unique</string>
+    <string name="status_screen_3">Get started</string>
+    <string name="slogan_screen_1">Express yourself through \n the art of the fashionism.</string>
+    <string name="slogan_screen_2">Your profile is \n your \n online art gallery.</string>
+    <string name="slogan_screen_3">Inspire everyone with the \n power of your ideas.</string>
+    <string name="join_us">JOIN US</string>
+    <string name="text_join_us">Join us</string>
+    <string name="text_next">Next</string>
+    <string name="text_sign_in">Sign in</string>
+    <string name="text_status_sign_in">Good to see you \n again</string>
+    <string name="text_corporate_e_mail">Corporate e-mail</string>
+    <string name="text_forgot_your_password">Forgot your password?</string>
+    <string name="text_status_join_us">Welcome \n aboard</string>
+    <string name="test_name">Name</string>
+    <string name="bai_tap_9">Kotlin</string>
+    <string name="text_key">step</string>
 </resources>

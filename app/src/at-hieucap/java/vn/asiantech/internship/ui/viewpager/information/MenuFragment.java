@@ -15,7 +15,7 @@ import vn.asiantech.internship.models.CardEnglish;
 import vn.asiantech.internship.ui.viewpager.home.RotationPageTransformer;
 
 /**
- * Create Menu Fragment
+ * Create Menu StepLoginFragment
  */
 public class MenuFragment extends Fragment {
     public static final List<CardEnglish> mListCardEnglish = new ArrayList<>();
