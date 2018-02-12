@@ -16,4 +16,9 @@
     <color name="blue_500">#2196F3</color>
     <color name="black">#000000</color>
     <color name="background_yellow">#F4FA58</color>
+    <color name="colorItemWelcome_0">#FFCF27</color>
+    <color name="colorItemWelcome_1">#00CCC7</color>
+    <color name="colorItemWelcome_2">#FF5261</color>
+    <color name="colorBlue100">#BBDEFB</color>
+    <color name="colorRed100">#FFCDD2</color>
 </resources>
