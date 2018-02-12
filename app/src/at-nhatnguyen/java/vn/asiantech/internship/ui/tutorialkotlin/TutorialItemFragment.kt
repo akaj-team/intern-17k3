@@ -19,7 +19,7 @@ class TutorialItemFragment : Fragment() {
     private lateinit var mTutorial: Tutorial
 
     companion object {
-        const val ARG_ID = "args_id"
+        val ARG_ID = "args_id"
         fun newInstance(tutorial: Tutorial) = TutorialItemFragment().apply {
             arguments = Bundle().apply {
                 putParcelable(ARG_ID, tutorial)
@@ -35,14 +35,14 @@ class TutorialItemFragment : Fragment() {
             tvContent.text = mTutorial.content
             if (mTutorial.color == R.color.colorItemWelcome_2) {
                 imgNextTutor.visibility = View.GONE
-                cardViewBtn.visibility = View.VISIBLE
-                cardViewBtn.setOnClickListener({
+                btnJoinUs.visibility = View.VISIBLE
+                btnJoinUs.setOnClickListener({
                     startActivity(Intent(activity, JoinUsActivity::class.java))
                 })
             } else {
                 imgNextTutor.visibility = View.VISIBLE
                 imgNextTutor.setImageResource(mTutorial.imageViewClick)
-                cardViewBtn.visibility = View.GONE
+                btnJoinUs.visibility = View.GONE
             }
             llTutorial.setBackgroundColor(ContextCompat.getColor(activity, mTutorial.color))
         }

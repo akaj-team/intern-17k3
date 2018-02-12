@@ -1,5 +1,6 @@
 package vn.asiantech.internship.ui.tutorialkotlin
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +16,7 @@ class JoinUsActivity : AppCompatActivity(), TextWatcher {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_us)
         changeColorBtnNext()
+        btnJoinUpBack.setOnClickListener({ startActivity(Intent(this, TutorialActivity::class.java)) })
         edtEmailJoinUp.addTextChangedListener(this)
         edtPasswordJoinUs.addTextChangedListener(this)
         edtNameJoinUs.addTextChangedListener(this)

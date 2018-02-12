@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/btnSignUpBack"
+            android:id="@+id/btnJoinUpBack"
             android:layout_width="30dp"
             android:layout_height="20dp"
             android:layout_marginLeft="10dp"
