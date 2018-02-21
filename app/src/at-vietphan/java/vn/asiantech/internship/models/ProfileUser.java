@@ -41,8 +41,8 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     };
     public String name;
     public String email;
-    public String birthDate;
-    public int genDer;
+    private String birthDate;
+    private int genDer;
     public String phone;
     public String imageUrl;
 
