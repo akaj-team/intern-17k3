@@ -9,143 +9,153 @@
             type="vn.asiantech.internship.databinding.User" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorWhite"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:background="@drawable/ic_bg_header_info"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="15dp">
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_preview_info"
-                android:textColor="@color/colorWhite"
-                android:textSize="20dp" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgAvatar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                app:imageUrl="@{user.url}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{user.name}"
-                android:textColor="@color/colorWhite"
-                android:textSize="25sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="vertical"
-            android:padding="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/edt_email_edit_info"
-                android:textStyle="bold" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bg_rectangle"
-                android:text="@{user.email}"
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp" />
+                android:layout_height="230dp"
+                android:background="@drawable/ic_bg_header_info"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/tv_preview_info"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgAvatar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    app:imageUrl="@{user.url}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.name}"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="25sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edt_email_edit_info"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_rectangle"
+                    android:padding="10dp"
+                    android:text="@{user.email}"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:orientation="vertical">
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/tv_birth_day"
-                        android:textStyle="bold" />
+                        android:layout_weight="3"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/bg_edt_number"
-                        android:text="@{user.birthDay}"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/tv_birth_day"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/bg_edt_number"
+                            android:padding="10dp"
+                            android:text="@{user.birthDay}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="15dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/tv_gender"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/bg_edt_number"
+                            android:padding="10dp"
+                            android:text="@{user.getValueToGender(context)}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="15dp" />
+                    </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="2"
-                    android:orientation="vertical">
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_contact_number_title"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/tv_gender"
-                        android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_edt_number"
+                    android:padding="10dp"
+                    android:text="@{user.contactNumber}"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvGender"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/bg_edt_number"
-                        android:text="@{user.getValueToGender(context)}"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="15dp" />
-                </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/tv_contact_number_title"
-                android:textStyle="bold" />
-
-            <TextView
+            <Button
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_edt_number"
-                android:text="@{user.contactNumber}"
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp" />
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/colorAccent"
+                android:onClick="@{()->user.onEditUserClick(context)}"
+                android:text="@string/btn_edit_profile" />
 
         </LinearLayout>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@color/colorAccent"
-            android:onClick="@{()->user.onEditUserClick(context)}"
-            android:text="@string/btn_edit_profile" />
-
-    </LinearLayout>
+    </ScrollView>
 </layout>
