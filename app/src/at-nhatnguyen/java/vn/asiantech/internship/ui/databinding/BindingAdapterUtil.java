@@ -12,7 +12,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class BindingAdapterUtil {
 
-    @BindingAdapter({"imageUrl"})
+    @BindingAdapter("imageUrl")
     public static void loadImage(CircleImageView view, String url) {
         Glide.with(view.getContext()).load(url).into(view);
     }

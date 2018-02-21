@@ -71,7 +71,6 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         final SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
         calendar.set(year, month, day);
         setBirthDate(String.valueOf(format.format(calendar.getTime())));
-        updateStatusOfSubmitBtn();
     }
 
     @Bindable
@@ -207,7 +206,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         dest.writeString(urlAvatar);
     }
 
-    public void updateStatusOfSubmitBtn() {
+    private void updateStatusOfSubmitBtn() {
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(phoneNumber)) {
             setEnableSubmitBtn(false);
         } else {
@@ -215,7 +214,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
         }
     }
 
-    public void afterTextChange(Editable s, int typeItem) {
+    public void afterTextChange(Editable s, EnumType typeItem) {
         if (typeItem == EnumType.NAME) {
             setName(s.toString());
         } else if (typeItem == EnumType.EMAIL) {
