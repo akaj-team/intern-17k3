@@ -10,6 +10,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ import vn.asiantech.internship.ui.databinding.PreviewProfileActivity;
  * Class ProfileUser
  */
 public class ProfileUser extends BaseObservable implements Parcelable {
+
     public static final Creator<ProfileUser> CREATOR = new Creator<ProfileUser>() {
         @Override
         public ProfileUser createFromParcel(Parcel in) {
@@ -39,24 +41,47 @@ public class ProfileUser extends BaseObservable implements Parcelable {
             return new ProfileUser[size];
         }
     };
-    public String name;
-    public String email;
+    private boolean enableSubmit;
+    private String name;
+    private String email;
+    private String phone;
+    private String imageUrl;
     private String birthDate;
     private int genDer;
-    public String phone;
-    public String imageUrl;
-
-    private ProfileUser(Parcel in) {
-        name = in.readString();
-        email = in.readString();
-        birthDate = in.readString();
-        genDer = in.readInt();
-        phone = in.readString();
-        imageUrl = in.readString();
-    }
 
     public ProfileUser() {
         //No-op
+    }
+
+    private ProfileUser(Parcel in) {
+        enableSubmit = in.readByte() != 0;
+        name = in.readString();
+        email = in.readString();
+        phone = in.readString();
+        imageUrl = in.readString();
+        birthDate = in.readString();
+        genDer = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte((byte) (enableSubmit ? 1 : 0));
+        dest.writeString(name);
+        dest.writeString(email);
+        dest.writeString(phone);
+        dest.writeString(imageUrl);
+        dest.writeString(birthDate);
+        dest.writeInt(genDer);
+    }
+
+    @Bindable
+    public boolean isEnableSubmit() {
+        return enableSubmit;
+    }
+
+    public void setEnableSubmit(boolean enableSubmit) {
+        this.enableSubmit = enableSubmit;
+        notifyPropertyChanged(BR.enableSubmit);
     }
 
     @Bindable
@@ -150,6 +175,7 @@ public class ProfileUser extends BaseObservable implements Parcelable {
             case PHONE:
                 setPhone(String.valueOf(text));
         }
+        setEnableSubmit(!(TextUtils.isEmpty(name.trim()) || TextUtils.isEmpty(email.trim()) || TextUtils.isEmpty(phone.trim())));
     }
 
     public void onShowDatePickerDialogClick(final TextView edt) {
@@ -177,16 +203,6 @@ public class ProfileUser extends BaseObservable implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(email);
-        parcel.writeString(birthDate);
-        parcel.writeInt(genDer);
-        parcel.writeString(phone);
-        parcel.writeString(imageUrl);
     }
 
     public enum TypeItem {

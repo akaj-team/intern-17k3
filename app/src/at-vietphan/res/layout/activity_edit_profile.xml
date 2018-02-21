@@ -48,7 +48,6 @@
                     tools:src="@drawable/bg_header_mp3" />
 
                 <vn.asiantech.internship.utils.MyEditTextClear
-                    android:id="@+id/edtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -76,7 +75,6 @@
                     android:text="@string/e_mail" />
 
                 <vn.asiantech.internship.utils.MyEditTextClear
-                    android:id="@+id/edtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,TypeItem.EMAIL)}"
@@ -155,7 +153,6 @@
                     android:text="@string/contact_number" />
 
                 <vn.asiantech.internship.utils.MyEditTextClear
-                    android:id="@+id/edtPhoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,TypeItem.PHONE)}"
@@ -166,10 +163,10 @@
                     app:customClearDrawable="@drawable/ic_clear_grey_800_18dp" />
 
                 <Button
-                    android:id="@+id/btnSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:enabled="@{profileUser.enableSubmit}"
                     android:onClick="@{()->profileUser.onUpdateProfileClick(context)}"
                     android:padding="@dimen/edt_tv_btn_padding"
                     android:text="@string/submit" />
