@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
+        <import type="vn.asiantech.internship.databinding.EnumType" />
 
         <variable
             name="user"
@@ -47,7 +50,7 @@
                         android:id="@+id/edtNameProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:afterTextChanged="@{(fullName) -> user.afterTextChange(fullName,0)}"
+                        android:afterTextChanged="@{(fullName) -> user.afterTextChange(fullName,EnumType.NAME)}"
                         android:background="@drawable/bg_edt_bottom_white"
                         android:inputType="text"
                         android:padding="5dp"
@@ -91,7 +94,7 @@
                         android:id="@+id/edtEmailProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:afterTextChanged="@{(email) -> user.afterTextChange(email,1)}"
+                        android:afterTextChanged="@{(email) -> user.afterTextChange(email,EnumType.EMAIL)}"
                         android:background="@drawable/bg_edt_gray"
                         android:inputType="textEmailAddress"
                         android:padding="7dp"
@@ -143,13 +146,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp">
 
-                        <EditText
-                            android:id="@+id/edtDatePicker"
+                        <TextView
+                            android:id="@+id/tvDatePicker"
                             android:layout_width="180dp"
                             android:layout_height="wrap_content"
-                            android:afterTextChanged="@{(date) -> user.afterTextChange(date,2)}"
                             android:background="@drawable/bg_edt_gray"
-                            android:inputType="date"
                             android:padding="8dp"
                             android:text="@{user.birthday}"
                             android:textSize="14sp" />
@@ -194,7 +195,7 @@
                         android:id="@+id/edtContactNumberProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:afterTextChanged="@{(number) -> user.afterTextChange(number,3)}"
+                        android:afterTextChanged="@{(number) -> user.afterTextChange(number,EnumType.CONTACT_NUMBER)}"
                         android:background="@drawable/bg_edt_gray"
                         android:inputType="phone"
                         android:padding="7dp"

@@ -20,6 +20,7 @@ import java.util.Locale;
 import vn.asiantech.internship.BR;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.databinding.EditProfileActivity;
+import vn.asiantech.internship.databinding.EnumType;
 import vn.asiantech.internship.databinding.PreEditProfileActivity;
 
 /**
@@ -173,18 +174,18 @@ public class User extends BaseObservable implements Parcelable {
         edt.setText("");
     }
 
-    public void afterTextChange(Editable text, int type) {
+    public void afterTextChange(Editable text, EnumType type) {
         switch (type) {
-            case EditProfileActivity.FULLNAME:
+            case NAME:
                 fullName = text.toString();
                 break;
-            case EditProfileActivity.EMAIL:
+            case EMAIL:
                 email = text.toString();
                 break;
-            case EditProfileActivity.BIRTHDAY:
+            case BIRTHDAY:
                 birthday = text.toString();
                 break;
-            case EditProfileActivity.CONTACTNUMBER:
+            case CONTACT_NUMBER:
                 contactNumber = text.toString();
         }
         changeStatusUpdateButton();
@@ -206,13 +207,13 @@ public class User extends BaseObservable implements Parcelable {
     }
 
     public void onEditProfileClick(Context context) {
-        Intent intent = new Intent(context, EditProfileActivity.class);
         setAvatar(avatar);
         setFullname(fullName);
         setBirthday(birthday);
         setEmail(email);
         setGender(gender);
         setContactNumber(contactNumber);
+        Intent intent = new Intent(context, EditProfileActivity.class);
         intent.putExtra(User.class.getSimpleName(), this);
         ((PreEditProfileActivity) context).startActivityForResult(intent, PreEditProfileActivity.EDIT_USER_REQUEST_CODE);
     }

@@ -41,12 +41,12 @@ public class PreEditProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == EDIT_USER_REQUEST_CODE && data != null) {
             User user = data.getParcelableExtra(User.class.getSimpleName());
-            mUser.setFullname(user.fullName);
-            mUser.setGender(user.gender);
-            mUser.setContactNumber(user.contactNumber);
-            mUser.setBirthday(user.birthday);
-            mUser.setEmail(user.email);
-            mBinding.setUser(mUser);
+            mUser.setFullname(mBinding.getUser().fullName);
+            mUser.setGender(mBinding.getUser().gender);
+            mUser.setContactNumber(mBinding.getUser().contactNumber);
+            mUser.setBirthday(mBinding.getUser().birthday);
+            mUser.setEmail(mBinding.getUser().email);
+            mBinding.setUser(user);
         }
     }
 }
