@@ -15,7 +15,7 @@ public class DataBindingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityDataBindingBinding activityDataBindingBinding = DataBindingUtil.setContentView(this, R.layout.activity_data_binding);
         ProfileUser user = getIntent().getParcelableExtra(ProfileUser.class.getSimpleName());
-        if (user!= null) {
+        if (user != null) {
             activityDataBindingBinding.setProfileUser(user);
         }
     }
