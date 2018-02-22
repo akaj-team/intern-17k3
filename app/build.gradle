@@ -107,12 +107,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
     //UI Espresso framework
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation 'com.squareup.picasso:picasso:2.5.2'
-    // Android runner and rules support
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test:rules:1.0.1'
-    // UI Espresso framework
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     //glide
     implementation('com.github.bumptech.glide:glide:4.5.0') {
         exclude group: "com.android.support"
