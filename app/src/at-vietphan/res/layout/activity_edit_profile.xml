@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="vn.asiantech.internship.models.ProfileUser.TypeItem" />
+
+        <variable
+            name="profileUser"
+            type="vn.asiantech.internship.models.ProfileUser" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_header_mp3"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/edit_profile"
+                    android:textColor="@android:color/white" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="1dp"
+                    app:imageUrl="@{profileUser.imageUrl}"
+                    tools:src="@drawable/bg_header_mp3" />
+
+                <vn.asiantech.internship.utils.MyEditTextClear
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,TypeItem.NAME)}"
+                    android:background="@drawable/bg_bottom_line_edt_data_binding"
+                    android:inputType="text"
+                    android:padding="@dimen/edt_tv_btn_padding"
+                    android:text="@{profileUser.name}"
+                    android:textColor="@android:color/white"
+                    app:customClearDrawable="@drawable/ic_clear_white_18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/e_mail" />
+
+                <vn.asiantech.internship.utils.MyEditTextClear
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,TypeItem.EMAIL)}"
+                    android:background="@drawable/bg_number_text_view"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/edt_tv_btn_padding"
+                    android:text="@{profileUser.email}"
+                    app:customClearDrawable="@drawable/ic_clear_grey_800_18dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="50dp"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/birth_date" />
+
+                        <TextView
+                            android:id="@+id/tvBirthDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_number_text_view"
+                            android:drawableRight="@drawable/ic_expand_more_grey_800_18dp"
+                            android:onClick="@{()->profileUser.onShowDatePickerDialogClick(tvBirthDate)}"
+                            android:padding="@dimen/edt_tv_btn_padding"
+                            android:text="@{profileUser.birthDate}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/gender" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_number_text_view">
+
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/gender"
+                                android:padding="@dimen/edt_tv_btn_padding"
+                                android:selectedItemPosition="@={profileUser.genDer}"
+                                android:spinnerMode="dropdown" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/contact_number" />
+
+                <vn.asiantech.internship.utils.MyEditTextClear
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:afterTextChanged="@{(text)->profileUser.afterTextChange(text,TypeItem.PHONE)}"
+                    android:background="@drawable/bg_number_text_view"
+                    android:inputType="phone"
+                    android:padding="@dimen/edt_tv_btn_padding"
+                    android:text="@{profileUser.phone}"
+                    app:customClearDrawable="@drawable/ic_clear_grey_800_18dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:enabled="@{profileUser.enableSubmit}"
+                    android:onClick="@{()->profileUser.onUpdateProfileClick(context)}"
+                    android:padding="@dimen/edt_tv_btn_padding"
+                    android:text="@string/submit" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>
