@@ -12,7 +12,7 @@ import android.arch.persistence.room.PrimaryKey
 data class User(var userName: String = "", var password: String = "", var email: String = "") {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Int = 0
+    var id: Int? = null
 //    @ColumnInfo(name = "user_name")
 //    var mUserName: String = ""
 //    @ColumnInfo(name = "password")

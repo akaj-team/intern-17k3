@@ -21,7 +21,6 @@ import vn.asiantech.internship.kotlin.models.User
 
 
 class LoginKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatcher, View.OnTouchListener {
-    var user: User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_kotlin)
@@ -37,7 +36,16 @@ class LoginKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatch
     @SuppressLint("StaticFieldLeak")
     private inner class CheckUserLogin : AsyncTask<Void, Void, Void>() {
         override fun doInBackground(vararg p0: Void?): Void? {
-            user = MainApplication.database?.userDao()?.findUserByEmailAndPassword(edtEmail.text.toString().trim(), edtPassword.text.toString().trim())!!
+            val user: User? = MainApplication.database.userDao().findUserByEmailAndPassword(edtEmail.text.toString().trim(), edtPassword.text.toString().trim())
+            if (user != null) {
+                runOnUiThread({
+                    Toast.makeText(this@LoginKotlinActivity, "Login success!", Toast.LENGTH_SHORT).show()
+                })
+            } else {
+                runOnUiThread({
+                    Toast.makeText(this@LoginKotlinActivity, "User or password is false!", Toast.LENGTH_SHORT).show()
+                })
+            }
             return null
         }
     }
@@ -76,12 +84,6 @@ class LoginKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatch
         view?.apply {
             if (id == R.id.tvNext) {
                 CheckUserLogin().execute()
-                Thread.sleep(500)
-                if (user != null) {
-                    Toast.makeText(applicationContext, "Login success!", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(applicationContext, "User not exists!", Toast.LENGTH_SHORT).show()
-                }
             } else {
                 finish()
             }

@@ -11,7 +11,7 @@ import vn.asiantech.internship.kotlin.database.UserDatabase
 class MainApplication : Application(){
 
     companion object {
-        var database: UserDatabase? = null
+        lateinit var database: UserDatabase
     }
 
     override fun onCreate() {

@@ -21,7 +21,7 @@ import vn.asiantech.internship.kotlin.models.User
 
 class JoinUsKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatcher, View.OnTouchListener {
     private lateinit var user: User
-    private var arr = mutableListOf<User>()
+    private var userList = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +50,7 @@ class JoinUsKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatc
     @SuppressLint("StaticFieldLeak")
     private inner class InsertUser : AsyncTask<Void, Void, Void>() {
         override fun doInBackground(vararg p0: Void?): Void? {
+//            user = User(edtName.text.toString().trim(),edtPassword.text.toString().trim(),edtEmail.text.toString().toString.trim())
             user = User()
             user.userName = edtName.text.toString().trim()
             user.password = edtPassword.text.toString().trim()
@@ -62,7 +63,7 @@ class JoinUsKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatc
     @SuppressLint("StaticFieldLeak")
     private inner class GetAllUser : AsyncTask<Void, Void, Void>() {
         override fun doInBackground(vararg p0: Void?): Void? {
-            arr = MainApplication.database?.userDao()?.getAllUser() as MutableList<User>
+            userList = MainApplication.database?.userDao()?.getAllUser() as MutableList<User>
             return null
         }
     }
@@ -99,7 +100,7 @@ class JoinUsKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatc
                 GetAllUser().execute()
                 Thread.sleep(500)
                 Log.d("xxx", user.toString())
-                Log.d("ccc", arr.toString())
+                Log.d("ccc", userList.toString())
             } else {
                 finish()
             }
