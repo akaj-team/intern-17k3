@@ -1,6 +1,8 @@
 package vn.asiantech.internship.kotlin
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -11,20 +13,38 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import kotlinx.android.synthetic.`at-vietphan`.activity_login_kotlin.*
+import vn.asiantech.internship.MainApplication
 import vn.asiantech.internship.R
+import vn.asiantech.internship.kotlin.models.User
+
 
 class LoginKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatcher, View.OnTouchListener {
-
+    var user: User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_kotlin)
         imgBack.setOnClickListener(this)
+        tvNext.setOnClickListener(this)
         edtEmail.addTextChangedListener(this)
         edtPassword.addTextChangedListener(this)
         if (scrollViewSignIn !is EditText) {
             scrollViewSignIn.setOnTouchListener(this)
         }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private inner class CheckUserLogin : AsyncTask<Void, Void, Void>() {
+        override fun doInBackground(vararg p0: Void?): Void? {
+            user = MainApplication.database?.userDao()?.findUserByEmailAndPassword(edtEmail.text.toString().trim(), edtPassword.text.toString().trim())!!
+            return null
+        }
+    }
+
+    private fun hideSoftKeyboard(activity: Activity) {
+        val inputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
     }
 
     override fun onTouch(view: View?, event: MotionEvent?): Boolean {
@@ -52,12 +72,19 @@ class LoginKotlinActivity : AppCompatActivity(), View.OnClickListener, TextWatch
         }
     }
 
-    private fun hideSoftKeyboard(activity: Activity) {
-        val inputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
-    }
-
-    override fun onClick(p0: View?) {
-        finish()
+    override fun onClick(view: View?) {
+        view?.apply {
+            if (id == R.id.tvNext) {
+                CheckUserLogin().execute()
+                Thread.sleep(500)
+                if (user != null) {
+                    Toast.makeText(applicationContext, "Login success!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(applicationContext, "User not exists!", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                finish()
+            }
+        }
     }
 }

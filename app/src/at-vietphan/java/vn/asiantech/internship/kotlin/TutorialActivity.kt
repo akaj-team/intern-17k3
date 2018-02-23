@@ -33,7 +33,6 @@ class TutorialActivity : AppCompatActivity(), View.OnClickListener {
     private fun initAdapter() {
         mPagerAdapter = TutorialAdapter(supportFragmentManager, mItemWelcomeList)
         viewPagerTutorial.adapter = mPagerAdapter
-        Log.d("aaa", mItemWelcomeList.toString())
     }
 
     private fun initListeners() {
