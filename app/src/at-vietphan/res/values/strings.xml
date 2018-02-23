@@ -134,4 +134,15 @@
     <string name="birth_date">Birth Date</string>
     <string name="edit_profile">EDIT PROFILE</string>
     <string name="edit">EDIT</string>
+    <string name="kotlin_tutorial">KOTLIN TUTORIAL</string>
+    <string name="java_tutorial">JAVA TUTORIAL</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="join_us">JOIN US</string>
+    <string name="good_to_see_you_n_again">Good to see you\n again</string>
+    <string name="next">NEXT</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="corporate_e_mail">Corporate e-mail</string>
+    <string name="sign_in_upcase">Sign in</string>
+    <string name="join_us_upcase">Join us</string>
+    <string name="welcome_aboard">Welcome \naboard</string>
 </resources>
