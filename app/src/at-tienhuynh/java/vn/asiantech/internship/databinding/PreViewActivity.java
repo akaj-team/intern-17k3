@@ -10,9 +10,10 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import vn.asiantech.internship.R;
+import vn.asiantech.internship.databinding.ActivityPreviewBinding;
 
 public class PreViewActivity extends AppCompatActivity {
-    public static final int EDIT_USER_REQUEST_CODE = 1;
+    static final int EDIT_USER_REQUEST_CODE = 1;
 
     private ActivityPreviewBinding activityPreViewBinding;
 
@@ -26,7 +27,7 @@ public class PreViewActivity extends AppCompatActivity {
         User user = new User();
         user.setName("JackMa");
         user.setEmail("jack@gmail.com");
-        user.setBirthDay(String.valueOf(dateFormat.format(cal.getTime())));
+        user.setBirthDay(dateFormat.format(cal.getTime()));
         user.setGender(0);
         user.setContactNumber("09071319233");
         user.setUrl("https://beebom-redkapmedia.netdna-ssl.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg");

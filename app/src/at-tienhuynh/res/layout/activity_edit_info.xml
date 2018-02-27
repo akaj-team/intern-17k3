@@ -53,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:afterTextChanged="@{(name)->user.afterTextChange(name,EnumType.NAME)}"
                         android:inputType="text"
-                        android:padding="10dp"
+                        android:paddingLeft="10dp"
                         android:paddingRight="30dp"
                         android:text="@{user.name}"
                         android:textSize="15sp" />
@@ -95,7 +95,7 @@
                         android:afterTextChanged="@{(mail)->user.afterTextChange(mail,EnumType.EMAIL)}"
                         android:background="@drawable/bg_edt_number"
                         android:inputType="textEmailAddress"
-                        android:padding="10dp"
+                        android:paddingLeft="10dp"
                         android:paddingRight="30dp"
                         android:text="@{user.email}" />
 
@@ -206,7 +206,8 @@
                         android:afterTextChanged="@{(phone)->user.afterTextChange(phone,EnumType.CONTACT_NUMBER)}"
                         android:background="@drawable/bg_edt_number"
                         android:inputType="number"
-                        android:padding="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="30dp"
                         android:text="@{user.contactNumber}" />
 
                     <Button
@@ -215,7 +216,7 @@
                         android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:layout_gravity="right"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/ic_clear_black_18dp"
                         android:onClick="@{()->user.clearText(EnumType.CONTACT_NUMBER)}" />
                 </RelativeLayout>
