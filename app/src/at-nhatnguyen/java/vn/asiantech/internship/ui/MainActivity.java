@@ -9,6 +9,7 @@ import android.widget.Button;
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.calculator.CalculatorActivity;
 import vn.asiantech.internship.ui.customview.CanvasActivity;
+import vn.asiantech.internship.ui.databinding.ProfileActivity;
 import vn.asiantech.internship.ui.drawerlayout.DrawerActivity;
 import vn.asiantech.internship.ui.imageview.ImageActivity;
 import vn.asiantech.internship.ui.login.LoginActivity;
@@ -29,6 +30,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mBtnTest;
     private Button mBtnCanvas;
     private Button mBtnThread;
+    private Button mBtnDataBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnTest = findViewById(R.id.btnTest);
         mBtnCanvas = findViewById(R.id.btnCanvas);
         mBtnThread = findViewById(R.id.btnThread);
+        mBtnDataBinding = findViewById(R.id.btnDataBinding);
     }
 
     private void initListener() {
@@ -62,6 +65,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBtnCanvas.setOnClickListener(this);
         mBtnTest.setOnClickListener(this);
         mBtnThread.setOnClickListener(this);
+        mBtnDataBinding.setOnClickListener(this);
     }
 
     @Override
@@ -96,6 +100,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btnTest:
                 startActivity(new Intent(this, UnitTestActivity.class));
+                break;
+            case R.id.btnDataBinding:
+                startActivity(new Intent(this, ProfileActivity.class));
         }
     }
 }
