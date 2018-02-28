@@ -82,7 +82,7 @@ public class UserSQLiteHelper extends SQLiteOpenHelper {
         while (!cursor.isAfterLast()) {
             user = new User();
             user.setId(cursor.getInt(cursor.getColumnIndex(ID_USER)));
-            user.setName(cursor.getString(cursor.getColumnIndex(NAME_USER)));
+            user.setFullname(cursor.getString(cursor.getColumnIndex(NAME_USER)));
             user.setAge(cursor.getInt(cursor.getColumnIndex(AGE)));
             userList.add(user);
             cursor.moveToNext();
