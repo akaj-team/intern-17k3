@@ -10,9 +10,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -220,9 +222,16 @@ public class User extends BaseObservable implements Parcelable {
 
     public void onShowDatePickerClick(Context context) {
         final Calendar c = Calendar.getInstance();
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+        try {
+            c.setTime(dateFormat.parse(getBirthday()));
+        } catch (ParseException e) {
+            e.getMessage();
+        }
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
+        Log.d("hh", "onShowDatePickerClick: " + year);
         DatePickerDialog datePickerDialog = new DatePickerDialog(context,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
