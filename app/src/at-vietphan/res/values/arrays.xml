@@ -78,4 +78,8 @@
         <item>Linh dương đầu bò</item>
         <item>Ngựa vằn</item>
     </string-array>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

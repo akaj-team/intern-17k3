@@ -90,7 +90,7 @@
     <string name="jul_24">24 Jul</string>
     <string name="oct_9">9 Oct</string>
     <string name="km">Km</string>
-    <string name="unit_test">Unit Test</string>
+    <string name="unit_test">UNIT - UI TEST</string>
     <string name="input_username">Input UserName</string>
     <string name="input_password">Input Password</string>
     <string name="check_length_username">user name must have length more than 5 and a little than 24</string>
@@ -126,4 +126,12 @@
     <string name="discharging">Discharging</string>
     <string name="battery_full">Battery Full</string>
     <string name="not_charging">Not Charging</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="e_mail">E-mail</string>
+    <string name="data_binding">DATA BINDING</string>
+    <string name="submit">SUBMIT</string>
+    <string name="gender">Gender</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="edit">EDIT</string>
 </resources>

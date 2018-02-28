@@ -36,7 +36,7 @@ public class LoginFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_login, container, false);
         mChkTermsAccept = view.findViewById(R.id.chkTermsAccept);
         mBtnSubmit = view.findViewById(R.id.btnSubmit);
-        mEdtPhone = view.findViewById(R.id.edtPhone);
+        mEdtPhone = view.findViewById(R.id.tvPhone);
         mEdtFullName = view.findViewById(R.id.edtFullName);
         mEdtMail = view.findViewById(R.id.edtEmail);
         checkAllInputData();
