@@ -44,14 +44,16 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edt_bottom_white">
 
                     <EditText
                         android:id="@+id/edtNameProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/btnClearNameProfile"
                         android:afterTextChanged="@{(fullName) -> user.afterTextChange(fullName,EnumType.NAME)}"
-                        android:background="@drawable/bg_edt_bottom_white"
+                        android:background="@android:color/transparent"
                         android:inputType="text"
                         android:padding="5dp"
                         android:text="@{user.fullName}"
@@ -59,6 +61,7 @@
                         android:textSize="15sp" />
 
                     <Button
+                        android:id="@+id/btnClearNameProfile"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_alignParentRight="true"
@@ -88,20 +91,23 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_edt_gray">
 
                     <EditText
                         android:id="@+id/edtEmailProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/btnClearEmail"
                         android:afterTextChanged="@{(email) -> user.afterTextChange(email,EnumType.EMAIL)}"
-                        android:background="@drawable/bg_edt_gray"
+                        android:background="@android:color/transparent"
                         android:inputType="textEmailAddress"
                         android:padding="7dp"
                         android:text="@{user.email}"
                         android:textSize="14sp" />
 
                     <Button
+                        android:id="@+id/btnClearEmail"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_alignParentRight="true"
@@ -189,20 +195,23 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_edt_gray">
 
                     <EditText
                         android:id="@+id/edtContactNumberProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/btnClearNumberPhone"
                         android:afterTextChanged="@{(number) -> user.afterTextChange(number,EnumType.CONTACT_NUMBER)}"
-                        android:background="@drawable/bg_edt_gray"
+                        android:background="@android:color/transparent"
                         android:inputType="phone"
                         android:padding="7dp"
                         android:text="@{user.contactNumber}"
                         android:textSize="14sp" />
 
                     <Button
+                        android:id="@+id/btnClearNumberPhone"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_alignParentRight="true"

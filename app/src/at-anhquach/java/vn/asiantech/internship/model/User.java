@@ -10,7 +10,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -196,9 +195,9 @@ public class User extends BaseObservable implements Parcelable {
     public void onPreviewProfileClick(Context context) {
         setAvatar(avatar);
         setFullname(fullName);
-        setBirthday(birthday);
         setEmail(email);
         setGender(gender);
+        setBirthday(birthday);
         setContactNumber(contactNumber);
         Intent intent = new Intent(context, PreEditProfileActivity.class);
         intent.putExtra(User.class.getSimpleName(), this);
@@ -231,7 +230,6 @@ public class User extends BaseObservable implements Parcelable {
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
-        Log.d("hh", "onShowDatePickerClick: " + year);
         DatePickerDialog datePickerDialog = new DatePickerDialog(context,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
