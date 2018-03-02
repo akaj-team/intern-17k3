@@ -25,6 +25,10 @@
         android:layout_gravity="center"
         android:layout_marginBottom="40dp"
         android:layout_marginLeft="40dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        app:contentPadding="-5dp"
+        app:cardElevation="0dp"
         android:layout_marginRight="40dp"
         app:cardCornerRadius="15dp">
 

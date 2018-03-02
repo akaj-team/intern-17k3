@@ -57,21 +57,21 @@ class WelcomeFragment : Fragment() {
                 getFragmentBackground(typeItem)
                 getFragmentImage(typeItem)
                 getFragmentTitle(typeItem)
-                getFragmentDesription(typeItem)
+                getFragmentDescription(typeItem)
                 getFragmentBtn(typeItem)
             }
             TutorialEnum.JOINUP -> {
                 getFragmentBackground(typeItem)
                 getFragmentImage(typeItem)
                 getFragmentTitle(typeItem)
-                getFragmentDesription(typeItem)
+                getFragmentDescription(typeItem)
                 getFragmentBtn(typeItem)
             }
             TutorialEnum.SIGNUP -> {
                 getFragmentBackground(typeItem)
                 getFragmentImage(typeItem)
                 getFragmentTitle(typeItem)
-                getFragmentDesription(typeItem)
+                getFragmentDescription(typeItem)
                 getFragmentBtn(typeItem)
             }
         }
@@ -121,8 +121,7 @@ class WelcomeFragment : Fragment() {
             }
         }
     }
-
-    private fun getFragmentDesription(typeItem: TutorialEnum) {
+    private fun getFragmentDescription(typeItem: TutorialEnum) {
         when (typeItem) {
             TutorialEnum.WELCOME -> {
                 tvDesTutorial.text = getString(R.string.tv_des_welcome)

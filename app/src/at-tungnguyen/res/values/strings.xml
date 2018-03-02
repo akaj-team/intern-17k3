@@ -151,7 +151,10 @@
     <string name="tv_name_signin">Name</string>
     <string name="tv_join_up">JOIN US</string>
     <string name="tv_slogan_join_up">Welcome \n aboard</string>
+    <string name="tv_id_signin">ID</string>
     <string name="tv_mail_signin">Corporate e-mail</string>
     <string name="tv_next">Next</string>
     <string name="tv_btn_joinup">Join us</string>
+    <string name="tv_login_success">Login success</string>
+    <string name="tv_login_fail">Login Fail</string>
 </resources>

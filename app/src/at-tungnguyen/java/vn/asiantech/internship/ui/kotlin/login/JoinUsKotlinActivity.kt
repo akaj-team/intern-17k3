@@ -2,17 +2,23 @@ package vn.asiantech.internship.ui.kotlin.login
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import kotlinx.android.synthetic.`at-tungnguyen`.activity_join_us_kotlin.*
 import vn.asiantech.internship.R
+import vn.asiantech.internship.ui.kotlin.KotlinApplication
+import vn.asiantech.internship.ui.kotlin.tutorial.TutorialActivity
 
 class JoinUsKotlinActivity : AppCompatActivity(), View.OnTouchListener {
 
@@ -23,16 +29,24 @@ class JoinUsKotlinActivity : AppCompatActivity(), View.OnTouchListener {
         isCheckNext()
         isCheckKeyboard()
         initClick()
-
     }
 
-    fun initClick() {
+    private fun initClick() {
         imgBackJoin.setOnClickListener({
             finish()
         })
+        tvNextJoinUs.setOnClickListener({
+            AsyncTaskJoinUS().execute()
+        })
     }
 
-    fun hideSoftKeyboard(activity: Activity) {
+    fun getUser(): UserLogin {
+        val mailUser = edtEmailJoinUs.text.toString()
+        val passUser = edtPassWordJoinUs.text.toString()
+        return UserLogin(mailUser, passUser)
+    }
+
+    private fun hideSoftKeyboard(activity: Activity) {
         val inputMethodManager = activity.getSystemService(
                 Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(
@@ -91,6 +105,37 @@ class JoinUsKotlinActivity : AppCompatActivity(), View.OnTouchListener {
 
         })
     }
+
+    @SuppressLint("StaticFieldLeak")
+    inner class AsyncTaskJoinUS : AsyncTask<Void, String, Boolean>() {
+        override fun onPreExecute() {
+            super.onPreExecute()
+        }
+        override fun doInBackground(vararg p0: Void?): Boolean{
+            if(tvNextJoinUs.isSelected){
+                KotlinApplication.database?.userDao()?.run {
+                    insertUser(getUser())
+                    getAllUser()
+                }
+            }else{
+                return false
+            }
+            Log.d("AAA",""+KotlinApplication.database?.userDao()?.getAllUser())
+            return true
+        }
+
+        override fun onPostExecute(result: Boolean?) {
+            super.onPostExecute(result)
+            if(result==false){
+                Toast.makeText(this@JoinUsKotlinActivity,"Nhap du thong tin",Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this@JoinUsKotlinActivity,"OK",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@JoinUsKotlinActivity,TutorialActivity::class.java))
+            }
+        }
+    }
+
+
 
     private fun isCheckNext() {
         tvNextJoinUs.isSelected = !TextUtils.isEmpty(edtNameJoinUs.text) && !TextUtils.isEmpty(edtEmailJoinUs.text) && !TextUtils.isEmpty(edtPassWordJoinUs.text) && isCheckEmail(edtEmailJoinUs.text.toString())
