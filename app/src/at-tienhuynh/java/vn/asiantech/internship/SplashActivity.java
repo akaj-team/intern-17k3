@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import vn.asiantech.internship.calculation.CalculatorActivity;
 import vn.asiantech.internship.canvas.CanvasActivity;
+import vn.asiantech.internship.databinding.PreViewActivity;
 import vn.asiantech.internship.drawerlayout.DrawerLayoutActivity;
 import vn.asiantech.internship.image.ImageManagementExerciseActivity;
 import vn.asiantech.internship.login.LoginActivity;
@@ -22,6 +23,7 @@ import vn.asiantech.internship.viewpagerandtablelayout.ui.SlideActivity;
  * Created by jackty on 19/12/2017.
  */
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
+
     private Button mBtnLoginScreen;
     private Button mBtnCalculationScreen;
     private Button mBtnRecyclerViewScreen;
@@ -32,6 +34,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnThreadAndHandler;
     private Button mBtnCanvasScreen;
     private Button mBtnUnitTest;
+    private Button mBtnDataBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnThreadAndHandler = findViewById(R.id.btnThreadAndHandleScreen);
         mBtnCanvasScreen = findViewById(R.id.btnCanvasScreen);
         mBtnUnitTest = findViewById(R.id.btnUnitTest);
+        mBtnDataBinding = findViewById(R.id.btnDataBinding);
     }
 
     /**
@@ -73,6 +77,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnViewPager.setOnClickListener(this);
         mBtnCanvasScreen.setOnClickListener(this);
         mBtnUnitTest.setOnClickListener(this);
+        mBtnDataBinding.setOnClickListener(this);
     }
 
     /**
@@ -110,6 +115,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnUnitTest:
                 startActivity(new Intent(this, LoginUnitTestActivity.class));
+                break;
+            case R.id.btnDataBinding:
+                startActivity(new Intent(this, PreViewActivity.class));
         }
     }
 }

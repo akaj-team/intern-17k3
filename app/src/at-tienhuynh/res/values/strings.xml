@@ -108,6 +108,23 @@
     <string name="validate_password_space">password have space</string>
     <string name="validate_password_least_3_capital_letter">password have least 3 capital letter</string>
     <string name="validate_password_repeat">repeat character password 2 times</string>
+    <string name="name_btn_data_binding">Data binding</string>
+    <string name="name_btn_update_profile">update</string>
+    <string name="tv_edit_info">Edit Profile</string>
+    <string name="edt_email_edit_info">Email</string>
+    <string name="tv_birth_day">Birth Day</string>
+    <string name="tv_gender">Gender</string>
+    <string name="tv_contact_number_title">Contact Number</string>
+    <string name="tv_preview_info">Preview Info</string>
+    <string name="name_btn_back_to_edit_profile">edit profile</string>
+    <string name="edittext_birthday" formatted="false">%d %d,%d</string>
+    <string name="tv_gender_male">Male</string>
+    <string name="tv_gender_female">Female</string>
+    <string name="btn_edit_profile">Edit</string>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
     <string name="name_btn_battery_info">Battery info</string>
     <string name="battery_status_ac">AC</string>
     <string name="battery_status_usb">USB</string>
