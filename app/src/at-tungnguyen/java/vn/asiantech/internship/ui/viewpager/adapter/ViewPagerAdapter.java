@@ -16,7 +16,7 @@ import vn.asiantech.internship.R;
  * Author Asian Tech Inc.
  * Created by tungnguyen on 14/12/2017.
  */
-public class ViewPagerAdapter extends PagerAdapter {
+public class  ViewPagerAdapter extends PagerAdapter {
     private List<String> mStrings = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
 

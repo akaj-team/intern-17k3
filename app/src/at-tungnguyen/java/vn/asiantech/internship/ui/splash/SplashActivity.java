@@ -11,13 +11,14 @@ import vn.asiantech.internship.image.ImageExerciseActivity;
 import vn.asiantech.internship.ui.broadcast.BroadcastActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
 import vn.asiantech.internship.ui.canvas.CanvasActivity;
+import vn.asiantech.internship.ui.databind.PreviewUserActivity;
 import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.thread_handler.SplashThreadActivity;
 import vn.asiantech.internship.ui.unittest.LoginActivity;
 import vn.asiantech.internship.ui.viewpager.ui.ViewPagerActivity;
-import vn.asiantech.internship.ui.thread_handler.SplashThreadActivity;
 
 /**
  * Author Asian Tech Inc.
@@ -35,6 +36,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnValidation;
     private Button mBtnBroadcast;
     private Button mBtnThread;
+    private Button mBtnDataBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,8 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnThread = findViewById(R.id.btnThread);
         mBtnCanVas = findViewById(R.id.btnCanvas);
         mBtnValidation = findViewById(R.id.btnValidation);
-        mBtnBroadcast = findViewById(R.id.btnBroadcast);
+        mBtnBroadcast = findViewById(R.id.btnBroadcastReceiver);
+        mBtnDataBinding = findViewById(R.id.btnDataBlind);
     }
 
     /**
@@ -76,6 +79,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnValidation.setOnClickListener(this);
         mBtnThread.setOnClickListener(this);
         mBtnBroadcast.setOnClickListener(this);
+        mBtnDataBinding.setOnClickListener(this);
     }
 
     /**
@@ -100,15 +104,13 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 Intent intentSaveData = new Intent(SplashActivity.this, SaveDataActivity.class);
                 startActivity(intentSaveData);
                 break;
-            case R.id.btnDrawerlayout:
+                case R.id.btnDrawerlayout:
                 Intent intentDrawer = new Intent(SplashActivity.this, DrawerActivity.class);
                 startActivity(intentDrawer);
                 break;
             case R.id.btnLoadImage:
                 Intent intentLoadImage = new Intent(SplashActivity.this, ImageExerciseActivity.class);
                 startActivity(intentLoadImage);
-                Intent intentDrawerLayout = new Intent(SplashActivity.this, DrawerActivity.class);
-                startActivity(intentDrawerLayout);
                 break;
             case R.id.btnViewPager:
                 Intent intentViewPager = new Intent(SplashActivity.this, ViewPagerActivity.class);
@@ -117,13 +119,19 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnValidation:
                 Intent intentValidation = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intentValidation);
+                break;
             case R.id.btnThread:
                 Intent intentThread = new Intent(SplashActivity.this, SplashThreadActivity.class);
                 startActivity(intentThread);
                 break;
-            case R.id.btnBroadcast:
+            case R.id.btnDataBlind:
+                Intent intentDatablind = new Intent(SplashActivity.this, PreviewUserActivity.class);
+                startActivity(intentDatablind);
+                break;
+            case R.id.btnBroadcastReceiver:
                 Intent intentBroadcast = new Intent(SplashActivity.this, BroadcastActivity.class);
                 startActivity(intentBroadcast);
+                break;
             case R.id.btnCanvas:
                 Intent intentCanvas = new Intent(SplashActivity.this, CanvasActivity.class);
                 startActivity(intentCanvas);

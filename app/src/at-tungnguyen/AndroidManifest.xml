@@ -40,6 +40,8 @@
         <activity android:name=".ui.viewpager.ui.TabLayoutActivity" />
         <activity android:name=".ui.unittest.LoginActivity" />
         <activity android:name=".ui.broadcast.BroadcastActivity"/>
+        <activity android:name=".ui.databind.EditUserActivity" />
+        <activity android:name=".ui.databind.PreviewUserActivity"/>
         <activity android:name=".ui.canvas.CanvasActivity"/>
     </application>
 </manifest>
