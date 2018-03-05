@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.canvas.CanvasActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,6 +28,7 @@
         <activity android:name=".ui.savedata.SharePreferenceActivity" />
         <activity android:name=".ui.savedata.ExternalStorageActivity" />
         <activity android:name=".ui.savedata.SaveDatabaseActivity" />
+        <activity android:name=".ui.without_prefix.thread_handler.DownloadActivity"/>
         <activity android:name=".ui.savedata.CompanyActivity" />
         <activity android:name=".ui.savedata.SaveDataActivity" />
         <activity android:name=".ui.loadimage.MainActivity" />

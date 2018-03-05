@@ -27,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
         InformationAdapter adapter = new InformationAdapter(getSupportFragmentManager());
         adapter.addFragment(new MenuFragment(), "Menu");
         adapter.addFragment(new InformationFragment(), "Information");
+        adapter.addFragment(new InformationBatteryFragment(), "Battery");
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
     }
