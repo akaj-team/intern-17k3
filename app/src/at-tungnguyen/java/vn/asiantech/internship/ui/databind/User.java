@@ -33,7 +33,7 @@ public class User extends BaseObservable implements Parcelable {
     private int gender;
     private String contact;
     private String avatar;
-    private boolean isEnableEditBtn = true;
+    private boolean enableEditBtn;
 
     public User() {
     }
@@ -124,11 +124,11 @@ public class User extends BaseObservable implements Parcelable {
      */
     @Bindable
     public boolean  isEnableEditBtn() {
-        return isEnableEditBtn;
+        return enableEditBtn;
     }
 
     private void setEnableEditBtn(boolean enableEditBtn) {
-        this.isEnableEditBtn = enableEditBtn;
+        this.enableEditBtn = enableEditBtn;
         notifyPropertyChanged(BR.enableEditBtn);
     }
 
