@@ -3,4 +3,7 @@
     <declare-styleable name="CustomView">
         <attr name="rect_width" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="MyEditTextClear">
+        <attr name="customClearDrawable" format="reference" />
+    </declare-styleable>
 </resources>

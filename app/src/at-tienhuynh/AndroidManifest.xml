@@ -3,6 +3,7 @@
     package="vn.asiantech.internship">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,6 @@
             android:label="@string/SelectEx">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -50,7 +50,14 @@
         <activity android:name=".threadandhandler.SplashThreadAndHandlerActivity" />
         <activity android:name=".threadandhandler.countdowtimer.ui.CountDownTimerActivity" />
         <activity android:name=".unittest.LoginUnitTestActivity" />
-        <activity android:name=".viewpagerandtablelayout.ui.BatteryActivity"/>
+        <activity
+            android:name=".databinding.EditInfoActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".databinding.PreViewActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".viewpagerandtablelayout.ui.BatteryActivity" />
     </application>
 
 </manifest>
+
