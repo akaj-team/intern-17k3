@@ -59,7 +59,7 @@
     <string name="image_vector">IMAGE VECTOR</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="view_pager">VIEW PAGER - BROADCAST RECEIVER - SERVICE</string>
+    <string name="view_pager">VIEW PAGER</string>
     <string name="fragment_step_3">Fragment step 3</string>
     <string name="fragment_step_2">Fragment step 2</string>
     <string name="fragment_step_1">Fragment step 1</string>
@@ -126,6 +126,14 @@
     <string name="discharging">Discharging</string>
     <string name="battery_full">Battery Full</string>
     <string name="not_charging">Not Charging</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="e_mail">E-mail</string>
+    <string name="data_binding">DATA BINDING</string>
+    <string name="submit">SUBMIT</string>
+    <string name="gender">Gender</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="edit">EDIT</string>
     <string name="service">SERVICE</string>
     <string name="broadcast_receiver">BROADCAST RECEIVER</string>
     <string name="play_str">PLAY</string>

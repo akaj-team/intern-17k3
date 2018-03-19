@@ -8,13 +8,16 @@ import android.widget.Button;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.image.ImageExerciseActivity;
+import vn.asiantech.internship.ui.broadcast.BroadcastActivity;
 import vn.asiantech.internship.ui.caculatorview.CalculatorActivity;
+import vn.asiantech.internship.ui.canvas.CanvasActivity;
 import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 import vn.asiantech.internship.ui.unittest.LoginActivity;
 import vn.asiantech.internship.ui.viewpager.ui.ViewPagerActivity;
+import vn.asiantech.internship.ui.thread_handler.SplashThreadActivity;
 
 /**
  * Author Asian Tech Inc.
@@ -28,7 +31,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnDrawerlayout;
     private Button mBtnViewPager;
     private Button mBtnSaveData;
+    private Button mBtnCanVas;
     private Button mBtnValidation;
+    private Button mBtnBroadcast;
+    private Button mBtnThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +55,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnDrawerlayout = findViewById(R.id.btnDrawerlayout);
         mBtnLoadImage = findViewById(R.id.btnLoadImage);
         mBtnViewPager = findViewById(R.id.btnViewPager);
+        mBtnThread = findViewById(R.id.btnThread);
+        mBtnCanVas = findViewById(R.id.btnCanvas);
         mBtnValidation = findViewById(R.id.btnValidation);
+        mBtnBroadcast = findViewById(R.id.btnBroadcast);
     }
 
     /**
@@ -63,11 +72,13 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mBtnViewPager.setOnClickListener(this);
         mBtnLoadImage.setOnClickListener(this);
         mBtnSaveData.setOnClickListener(this);
+        mBtnCanVas.setOnClickListener(this);
         mBtnValidation.setOnClickListener(this);
+        mBtnThread.setOnClickListener(this);
+        mBtnBroadcast.setOnClickListener(this);
     }
 
     /**
-     *
      * Onclick between Activity
      */
     @Override
@@ -106,6 +117,17 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnValidation:
                 Intent intentValidation = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intentValidation);
+            case R.id.btnThread:
+                Intent intentThread = new Intent(SplashActivity.this, SplashThreadActivity.class);
+                startActivity(intentThread);
+                break;
+            case R.id.btnBroadcast:
+                Intent intentBroadcast = new Intent(SplashActivity.this, BroadcastActivity.class);
+                startActivity(intentBroadcast);
+            case R.id.btnCanvas:
+                Intent intentCanvas = new Intent(SplashActivity.this, CanvasActivity.class);
+                startActivity(intentCanvas);
+                break;
         }
     }
 }
