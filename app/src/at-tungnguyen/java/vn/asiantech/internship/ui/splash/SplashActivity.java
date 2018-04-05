@@ -15,6 +15,7 @@ import vn.asiantech.internship.ui.drawer.DrawerActivity;
 import vn.asiantech.internship.ui.login.MainActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
+import vn.asiantech.internship.ui.service.MusicActivity;
 import vn.asiantech.internship.ui.unittest.LoginActivity;
 import vn.asiantech.internship.ui.viewpager.ui.ViewPagerActivity;
 import vn.asiantech.internship.ui.thread_handler.SplashThreadActivity;
@@ -79,6 +80,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     /**
+     *
      * Onclick between Activity
      */
     @Override
