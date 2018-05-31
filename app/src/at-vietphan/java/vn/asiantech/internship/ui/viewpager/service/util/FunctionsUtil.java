@@ -22,9 +22,11 @@ public class FunctionsUtil {
      */
     public static boolean isServiceRunning(String serviceName, Context context) {
         ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceName.equals(service.service.getClassName())) {
-                return true;
+        if (manager != null) {
+            for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+                if (serviceName.equals(service.service.getClassName())) {
+                    return true;
+                }
             }
         }
         return false;
@@ -40,27 +42,29 @@ public class FunctionsUtil {
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         Cursor cursor = context.getContentResolver().query(uri, null, MediaStore.Audio.Media.IS_MUSIC + " != 0", null, null);
         ArrayList<Song> listSongs = new ArrayList<>();
-        cursor.moveToFirst();
-        while (cursor.moveToNext()) {
-            Song song = new Song();
-            String title = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE));
-            String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
-            String album = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM));
-            long duration = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
-            String data = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
-            long albumId = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID));
-            String composer = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.COMPOSER));
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while (cursor.moveToNext()) {
+                Song song = new Song();
+                String title = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE));
+                String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
+                String album = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM));
+                long duration = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
+                String data = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
+                long albumId = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID));
+                String composer = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.COMPOSER));
 
-            song.setTitle(title);
-            song.setAlbum(album);
-            song.setArtist(artist);
-            song.setDuration(duration);
-            song.setPath(data);
-            song.setAlbumId(albumId);
-            song.setComposer(composer);
-            listSongs.add(song);
+                song.setTitle(title);
+                song.setAlbum(album);
+                song.setArtist(artist);
+                song.setDuration(duration);
+                song.setPath(data);
+                song.setAlbumId(albumId);
+                song.setComposer(composer);
+                listSongs.add(song);
+            }
+            cursor.close();
         }
-        cursor.close();
         return listSongs;
     }
 

@@ -33,9 +33,6 @@ import vn.asiantech.internship.ui.viewpager.service.util.Constants;
 import vn.asiantech.internship.ui.viewpager.service.util.FunctionsUtil;
 
 public class MusicActivity extends AppCompatActivity implements SongAdapter.OnItemClickListener, OnClickListener {
-    private static final String ACTION_PAUSE = "paused";
-    private static final String ACTION_STOP = "stopped";
-    private static final String IS_PAUSE = "is_paused";
     private LinearLayout mLnPlayingSong;
     private TextView mTvPlayingSong;
     private ImageView mImgPlay;
@@ -51,11 +48,11 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (TextUtils.equals(intent.getAction(), ACTION_PAUSE)) {
-                boolean isPaused = intent.getBooleanExtra(IS_PAUSE, false);
+            if (TextUtils.equals(intent.getAction(), MediaService.ACTION_PAUSE)) {
+                boolean isPaused = intent.getBooleanExtra(MediaService.IS_PAUSE, false);
                 onChangeBtnUI(isPaused);
                 onChangeLayoutUI();
-            } else if (TextUtils.equals(intent.getAction(), ACTION_STOP)) {
+            } else if (TextUtils.equals(intent.getAction(), MediaService.ACTION_STOP)) {
                 mLnPlayingSong.setVisibility(View.GONE);
             }
         }
@@ -63,7 +60,7 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
 
     private void onChangeLayoutUI() {
         try {
-            Song song = Constants.SONGS_LIST.get(Constants.SONG_POSITION);
+            Song song = Constants.mSongs.get(Constants.mSongPosition);
             mTvPlayingSong.setText(song.getTitle().concat(" ")
                     .concat(song.getArtist()).concat("-").concat(song.getAlbum()));
             mLnPlayingSong.setVisibility(View.VISIBLE);
@@ -83,7 +80,7 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
     }
 
 //    public static void onChangeBtnUI() {
-//        if (Constants.IS_SONG_PAUSED) {
+//        if (Constants.mIsSongPaused) {
 //            mImgPause.setVisibility(View.GONE);
 //            mImgPlay.setVisibility(View.VISIBLE);
 //        } else {
@@ -94,7 +91,7 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
 
     private void updateAllUI() {
         onChangeLayoutUI();
-        onChangeBtnUI(Constants.IS_SONG_PAUSED);
+        onChangeBtnUI(Constants.mIsSongPaused);
 //        onChangeBtnUI();
     }
 
@@ -107,8 +104,8 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
         initAdapter();
         initListeners();
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ACTION_PAUSE);
-        intentFilter.addAction(ACTION_STOP);
+        intentFilter.addAction(MediaService.ACTION_PAUSE);
+        intentFilter.addAction(MediaService.ACTION_STOP);
         registerReceiver(mBroadcastReceiver, intentFilter);
     }
 
@@ -138,12 +135,12 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             }
         } else {
-            Constants.SONGS_LIST = FunctionsUtil.getListSongs(getApplicationContext());
+            Constants.mSongs = FunctionsUtil.getListSongs(getApplicationContext());
         }
     }
 
     private void initAdapter() {
-        SongAdapter songAdapter = new SongAdapter(Constants.SONGS_LIST, this);
+        SongAdapter songAdapter = new SongAdapter(Constants.mSongs, this);
         mRecyclerView.setAdapter(songAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -167,7 +164,7 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
             } else {
                 mLnPlayingSong.setVisibility(View.GONE);
             }
-            Constants.PROGRESSBAR_HANDLER = new Handler() {
+            Constants.mProgressbarHandler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
                     Integer i[] = (Integer[]) msg.obj;
@@ -183,14 +180,14 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
 
     @Override
     public void onItemClick(int position) {
-        Constants.IS_SONG_PAUSED = false;
-        Constants.SONG_POSITION = position;
+        Constants.mIsSongPaused = false;
+        Constants.mSongPosition = position;
         boolean isServiceRunning = FunctionsUtil.isServiceRunning(MediaService.class.getName(), getApplicationContext());
         if (!isServiceRunning) {
             Intent intent = new Intent(getApplicationContext(), MediaService.class);
             startService(intent);
         } else {
-            Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
+            Constants.mSongChangeHandler.sendMessage(Constants.mSongChangeHandler.obtainMessage());
         }
         updateAllUI();
     }

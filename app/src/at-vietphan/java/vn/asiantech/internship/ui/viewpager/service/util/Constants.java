@@ -8,17 +8,19 @@ import java.util.List;
 import vn.asiantech.internship.ui.viewpager.service.models.Song;
 
 public class Constants {
-    //List of Songs
-    public static List<Song> SONGS_LIST = new ArrayList<>();
-    //Song number which is playing right now from SONGS_LIST
-    public static int SONG_POSITION = 0;
-    //Song is playing or paused
-    public static boolean IS_SONG_PAUSED = true;
-    //Handler for song changed(next, previous) defined in service(MediaService)
-    public static Handler SONG_CHANGE_HANDLER;
-    //Handler for song play/pause defined in service(MediaService)
-    public static Handler PLAY_PAUSE_HANDLER;
-    //Handler for showing song progress defined in Activities(MusicActivity, AudioPlayerActivity)
-    public static Handler PROGRESSBAR_HANDLER;
-}
+    public static List<Song> mSongs = new ArrayList<>();
+    public static int mSongPosition = 0;
+    public static boolean mIsSongPaused = true;
+    public static Handler mSongChangeHandler;
+    public static Handler mPlayPauseHandler;
+    public static Handler mProgressbarHandler;
+    private static final Constants mConstants = new Constants();
 
+    private Constants() {
+        // No-op
+    }
+
+    public static Constants getInstance() {
+        return mConstants;
+    }
+}

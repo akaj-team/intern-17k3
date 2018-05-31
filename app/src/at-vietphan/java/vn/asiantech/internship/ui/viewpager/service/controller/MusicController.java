@@ -10,28 +10,26 @@ import vn.asiantech.internship.ui.viewpager.service.util.Constants;
 import vn.asiantech.internship.ui.viewpager.service.util.FunctionsUtil;
 
 public class MusicController {
-    private static final String ACTION_PAUSE = "paused";
-    private static final String IS_PAUSE = "is_paused";
     private static Intent mIntent;
 
     private static void init(Context context) {
         mIntent = new Intent(context, MusicActivity.class);
-        mIntent.setAction(ACTION_PAUSE);
+        mIntent.setAction(MediaService.ACTION_PAUSE);
     }
 
     public static void playControl(Context context) {
         sendMessage(context.getResources().getString(R.string.play));
         init(context);
-        Constants.IS_SONG_PAUSED = false;
-        mIntent.putExtra(IS_PAUSE, Constants.IS_SONG_PAUSED);
+        Constants.mIsSongPaused = false;
+        mIntent.putExtra(MediaService.IS_PAUSE, Constants.mIsSongPaused);
         context.sendBroadcast(mIntent);
     }
 
     public static void pauseControl(Context context) {
         sendMessage(context.getResources().getString(R.string.pause));
         init(context);
-        Constants.IS_SONG_PAUSED = true;
-        mIntent.putExtra(IS_PAUSE, Constants.IS_SONG_PAUSED);
+        Constants.mIsSongPaused = true;
+        mIntent.putExtra(MediaService.IS_PAUSE, Constants.mIsSongPaused);
         context.sendBroadcast(mIntent);
     }
 
@@ -40,18 +38,18 @@ public class MusicController {
         if (!isServiceRunning) {
             return;
         }
-        if (Constants.SONGS_LIST.size() > 0) {
-            if (Constants.SONG_POSITION < (Constants.SONGS_LIST.size() - 1)) {
-                Constants.SONG_POSITION++;
-                Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
+        if (Constants.mSongs.size() > 0) {
+            if (Constants.mSongPosition < (Constants.mSongs.size() - 1)) {
+                Constants.mSongPosition++;
+                Constants.mSongChangeHandler.sendMessage(Constants.mSongChangeHandler.obtainMessage());
             } else {
-                Constants.SONG_POSITION = 0;
-                Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
+                Constants.mSongPosition = 0;
+                Constants.mSongChangeHandler.sendMessage(Constants.mSongChangeHandler.obtainMessage());
             }
         }
-        Constants.IS_SONG_PAUSED = false;
+        Constants.mIsSongPaused = false;
         init(context);
-        mIntent.putExtra(IS_PAUSE, Constants.IS_SONG_PAUSED);
+        mIntent.putExtra(MediaService.IS_PAUSE, Constants.mIsSongPaused);
         context.sendBroadcast(mIntent);
     }
 
@@ -60,24 +58,24 @@ public class MusicController {
         if (!isServiceRunning) {
             return;
         }
-        if (Constants.SONGS_LIST.size() > 0) {
-            if (Constants.SONG_POSITION > 0) {
-                Constants.SONG_POSITION--;
-                Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
+        if (Constants.mSongs.size() > 0) {
+            if (Constants.mSongPosition > 0) {
+                Constants.mSongPosition--;
+                Constants.mSongChangeHandler.sendMessage(Constants.mSongChangeHandler.obtainMessage());
             } else {
-                Constants.SONG_POSITION = Constants.SONGS_LIST.size() - 1;
-                Constants.SONG_CHANGE_HANDLER.sendMessage(Constants.SONG_CHANGE_HANDLER.obtainMessage());
+                Constants.mSongPosition = Constants.mSongs.size() - 1;
+                Constants.mSongChangeHandler.sendMessage(Constants.mSongChangeHandler.obtainMessage());
             }
         }
-        Constants.IS_SONG_PAUSED = false;
+        Constants.mIsSongPaused = false;
         init(context);
-        mIntent.putExtra(IS_PAUSE, Constants.IS_SONG_PAUSED);
+        mIntent.putExtra(MediaService.IS_PAUSE, Constants.mIsSongPaused);
         context.sendBroadcast(mIntent);
     }
 
     private static void sendMessage(String message) {
         try {
-            Constants.PLAY_PAUSE_HANDLER.sendMessage(Constants.PLAY_PAUSE_HANDLER.obtainMessage(0, message));
+            Constants.mPlayPauseHandler.sendMessage(Constants.mPlayPauseHandler.obtainMessage(0, message));
         } catch (Exception e) {
             e.getMessage();
         }
