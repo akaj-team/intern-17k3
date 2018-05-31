@@ -180,8 +180,6 @@ public class MusicActivity extends AppCompatActivity implements SongAdapter.OnIt
 
     @Override
     public void onItemClick(int position) {
-        Constants.mIsSongPaused = false;
-        Constants.mSongPosition = position;
         boolean isServiceRunning = FunctionsUtil.isServiceRunning(MediaService.class.getName(), getApplicationContext());
         if (!isServiceRunning) {
             Intent intent = new Intent(getApplicationContext(), MediaService.class);

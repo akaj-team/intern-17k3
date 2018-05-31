@@ -10,6 +10,7 @@ import java.util.List;
 
 import vn.asiantech.internship.R;
 import vn.asiantech.internship.ui.viewpager.service.models.Song;
+import vn.asiantech.internship.ui.viewpager.service.util.Constants;
 import vn.asiantech.internship.ui.viewpager.service.util.FunctionsUtil;
 
 /**
@@ -77,6 +78,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Constants.mIsSongPaused = false;
+                    Constants.mSongPosition = getAdapterPosition();
                     mOnItemClickListener.onItemClick(getAdapterPosition());
                 }
             });
