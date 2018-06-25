@@ -78,7 +78,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Constants.mIsSongPaused = false;
                     Constants.mSongPosition = getAdapterPosition();
                     mOnItemClickListener.onItemClick(getAdapterPosition());
                 }

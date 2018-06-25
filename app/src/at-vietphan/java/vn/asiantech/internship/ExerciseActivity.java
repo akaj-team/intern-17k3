@@ -16,6 +16,7 @@ import vn.asiantech.internship.ui.login.LoginActivity;
 import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 import vn.asiantech.internship.ui.unittest.UnitTestActivity;
+import vn.asiantech.internship.ui.viewpager.SliderActivity;
 import vn.asiantech.internship.ui.viewpager.service.MusicActivity;
 
 /**
@@ -93,7 +94,7 @@ public class ExerciseActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this, ImageLoaderActivity.class));
                 break;
             case R.id.btnViewPager:
-                startActivity(new Intent(this, MusicActivity.class));
+                startActivity(new Intent(this, SliderActivity.class));
                 break;
             case R.id.btnAsynchronous:
                 startActivity(new Intent(this, AsynchronousActivity.class));

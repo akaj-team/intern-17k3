@@ -11,7 +11,6 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.IBinder;
 import android.os.Message;
-import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -38,6 +37,7 @@ public class MediaService extends Service {
 
     private Timer mTimer;
     private MediaPlayer mMediaPlayer;
+    private Intent mIntentSendBroadcast;
     @SuppressLint("HandlerLeak")
     private final Handler mHandler = new Handler() {
         @Override
@@ -56,7 +56,6 @@ public class MediaService extends Service {
             }
         }
     };
-    private Intent mIntent;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -68,6 +67,7 @@ public class MediaService extends Service {
         super.onCreate();
         mMediaPlayer = new MediaPlayer();
         mTimer = new Timer();
+        mIntentSendBroadcast = new Intent();
         mMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -80,25 +80,22 @@ public class MediaService extends Service {
     public int onStartCommand(final Intent intent, int flags, int startId) {
         try {
             if (Constants.mSongs.size() <= 0) {
-                Constants.mSongs = FunctionsUtil.   getListSongs(getApplicationContext());
+                Constants.mSongs = FunctionsUtil.getListSongs(getApplicationContext());
             }
             Song song = Constants.mSongs.get(Constants.mSongPosition);
             String songPath = song.getPath();
             playSong(songPath);
-            newNotification();
+            newNotification(false);
             Constants.mSongChangeHandler = new Handler(new Callback() {
                 @Override
                 public boolean handleMessage(Message msg) {
                     Song song = Constants.mSongs.get(Constants.mSongPosition);
                     String songPath = song.getPath();
-                    newNotification();
+                    newNotification(false);
                     playSong(songPath);
-                    mIntent = new Intent();
-                    Constants.mIsSongPaused = false;
-                    mIntent.setAction(ACTION_PAUSE);
-                    mIntent.putExtra(IS_PAUSE, Constants.mIsSongPaused);
-                    sendBroadcast(mIntent);
-//                    MusicActivity.updateAllUI();
+                    mIntentSendBroadcast.setAction(ACTION_PAUSE);
+                    mIntentSendBroadcast.putExtra(IS_PAUSE, false);
+                    sendBroadcast(mIntentSendBroadcast);
                     return false;
                 }
             });
@@ -107,22 +104,22 @@ public class MediaService extends Service {
                 @Override
                 public boolean handleMessage(Message msg) {
                     String message = (String) msg.obj;
+
+                    boolean isPause = false;
                     if (mMediaPlayer == null) {
                         return false;
                     }
                     if (message.equalsIgnoreCase(getResources().getString(R.string.play))) {
-                        Constants.mIsSongPaused = false;
+                        // isPause=false;
                         mMediaPlayer.start();
                     } else if (message.equalsIgnoreCase(getResources().getString(R.string.pause))) {
-                        Constants.mIsSongPaused = true;
+                        isPause = true;
                         mMediaPlayer.pause();
                     }
-                    newNotification();
-                    mIntent = new Intent();
-                    mIntent.setAction(ACTION_PAUSE);
-                    mIntent.putExtra(IS_PAUSE, Constants.mIsSongPaused);
-                    sendBroadcast(mIntent);
-//                    MusicActivity.onChangeBtnUI();
+                    newNotification(isPause);
+                    mIntentSendBroadcast.setAction(ACTION_PAUSE);
+                    mIntentSendBroadcast.putExtra(IS_PAUSE, isPause);
+                    sendBroadcast(mIntentSendBroadcast);
                     return false;
                 }
             });
@@ -158,15 +155,15 @@ public class MediaService extends Service {
         }
     }
 
-    private void newNotification() {
+    private void newNotification(boolean isPause) {
         String songName = Constants.mSongs.get(Constants.mSongPosition).getTitle();
         String composer = Constants.mSongs.get(Constants.mSongPosition).getComposer();
         RemoteViews remoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.custom_notification);
-        Notification notification = new NotificationCompat.Builder(getApplicationContext())
+        Notification notification = new Notification.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.ic_music).setContentTitle(songName).build();
         setListeners(remoteViews);
         notification.contentView = remoteViews;
-        if (Constants.mIsSongPaused) {
+        if (isPause) {
             notification.contentView.setViewVisibility(R.id.imgPause, View.GONE);
             notification.contentView.setViewVisibility(R.id.imgPlay, View.VISIBLE);
         } else {

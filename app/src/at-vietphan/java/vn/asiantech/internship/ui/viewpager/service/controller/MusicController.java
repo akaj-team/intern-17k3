@@ -20,16 +20,14 @@ public class MusicController {
     public static void playControl(Context context) {
         sendMessage(context.getResources().getString(R.string.play));
         init(context);
-        Constants.mIsSongPaused = false;
-        mIntent.putExtra(MediaService.IS_PAUSE, Constants.mIsSongPaused);
+        mIntent.putExtra(MediaService.IS_PAUSE, false);
         context.sendBroadcast(mIntent);
     }
 
     public static void pauseControl(Context context) {
         sendMessage(context.getResources().getString(R.string.pause));
         init(context);
-        Constants.mIsSongPaused = true;
-        mIntent.putExtra(MediaService.IS_PAUSE, Constants.mIsSongPaused);
+        mIntent.putExtra(MediaService.IS_PAUSE, true);
         context.sendBroadcast(mIntent);
     }
 
@@ -47,9 +45,8 @@ public class MusicController {
                 Constants.mSongChangeHandler.sendMessage(Constants.mSongChangeHandler.obtainMessage());
             }
         }
-        Constants.mIsSongPaused = false;
         init(context);
-        mIntent.putExtra(MediaService.IS_PAUSE, Constants.mIsSongPaused);
+        mIntent.putExtra(MediaService.IS_PAUSE, false);
         context.sendBroadcast(mIntent);
     }
 
@@ -67,9 +64,8 @@ public class MusicController {
                 Constants.mSongChangeHandler.sendMessage(Constants.mSongChangeHandler.obtainMessage());
             }
         }
-        Constants.mIsSongPaused = false;
         init(context);
-        mIntent.putExtra(MediaService.IS_PAUSE, Constants.mIsSongPaused);
+        mIntent.putExtra(MediaService.IS_PAUSE, false);
         context.sendBroadcast(mIntent);
     }
 
