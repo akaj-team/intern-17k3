@@ -17,6 +17,7 @@ import vn.asiantech.internship.ui.recyclerview.RecyclerViewActivity;
 import vn.asiantech.internship.ui.savedata.SaveDataActivity;
 import vn.asiantech.internship.ui.unittest.UnitTestActivity;
 import vn.asiantech.internship.ui.viewpager.SliderActivity;
+import vn.asiantech.internship.ui.viewpager.service.MusicActivity;
 
 /**
  * Created by vietphan on 07/12/2017

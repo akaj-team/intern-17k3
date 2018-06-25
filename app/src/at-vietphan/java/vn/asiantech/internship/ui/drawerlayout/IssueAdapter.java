@@ -80,7 +80,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     /**
-     * Interface onItemClickListener handle click change avatar and items issue
+     * Interface OnItemClickListener handle click change avatar and items issue
      */
     public interface OnItemClickListener {
         void onClickItemIssue(int position);

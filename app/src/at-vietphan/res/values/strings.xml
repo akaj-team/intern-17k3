@@ -90,7 +90,7 @@
     <string name="jul_24">24 Jul</string>
     <string name="oct_9">9 Oct</string>
     <string name="km">Km</string>
-    <string name="unit_test">UNIT - UI TEST</string>
+    <string name="unit_test">Unit Test</string>
     <string name="input_username">Input UserName</string>
     <string name="input_password">Input Password</string>
     <string name="check_length_username">user name must have length more than 5 and a little than 24</string>
@@ -134,4 +134,19 @@
     <string name="birth_date">Birth Date</string>
     <string name="edit_profile">EDIT PROFILE</string>
     <string name="edit">EDIT</string>
+    <string name="service">SERVICE</string>
+    <string name="broadcast_receiver">BROADCAST RECEIVER</string>
+    <string name="play_str">PLAY</string>
+    <string name="pause_str">PAUSE</string>
+    <string name="back">Back</string>
+    <string name="pause">Pause</string>
+    <string name="play">Play</string>
+    <string name="player">Audio Player</string>
+    <string name="next">Next</string>
+    <string name="open_playlist">Open Playlist</string>
+    <string name="idle">Idle</string>
+    <string name="empty_text">Select song from below to play</string>
+    <string name="player_button">Album Art Screen</string>
+    <string name="space" />
+    <string name="dash">-</string>
 </resources>
